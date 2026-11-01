@@ -1,0 +1,11 @@
+.k-aurora{position:relative;overflow:hidden;border-radius:14px;background:var(--k-zinc-950);color:var(--k-on-color);font-family:var(--k-font)}
+.k-aurora i{position:absolute;border-radius:50%;filter:blur(34px);display:block}
+.k-aurora .b1{width:230px;height:230px;left:-50px;top:-70px;background:color-mix(in srgb,var(--k-accent) 65%,transparent);animation:k-aur-a 13s var(--k-ease) infinite alternate}
+.k-aurora .b2{width:190px;height:190px;right:-40px;bottom:-80px;background:color-mix(in srgb,var(--k-core) 55%,transparent);animation:k-aur-b 17s var(--k-ease) infinite alternate}
+.k-aurora .b3{width:150px;height:150px;right:28%;top:-50px;background:color-mix(in srgb,var(--k-accent-ink) 45%,transparent);animation:k-aur-a 15s var(--k-ease) infinite alternate-reverse}
+.k-aurora-in{position:relative;padding:28px;text-align:left}
+.k-aurora-in h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.k-aurora-in p{margin-top:7px;font-size:13.5px;line-height:1.8;color:var(--k-zinc-300);max-width:34ch}
+@keyframes k-aur-a{from{transform:translate(0,0) scale(1)}to{transform:translate(46px,26px) scale(1.15)}}
+@keyframes k-aur-b{from{transform:translate(0,0) scale(1.1)}to{transform:translate(-38px,-20px) scale(.95)}}
+@media (prefers-reduced-motion:reduce){.k-aurora i{animation:none}}

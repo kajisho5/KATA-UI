@@ -114,3 +114,11 @@ body.dopen .drawer{transform:none}
 .scrim{position:fixed;inset:0;background:rgba(9,9,11,.42);z-index:79;opacity:0;pointer-events:none;transition:opacity .19s}
 body.dopen .scrim{opacity:1;pointer-events:auto}
 body.dopen{overflow:hidden}
+
+.exh{margin:26px 0 0;font-size:15px;font-weight:600;color:var(--ink)}
+.exstage{margin-top:8px}
+.dlinks{display:flex;flex-wrap:wrap;gap:6px;padding:0 6px 10px}
+.dlinks a{font-size:12px;border:1px solid var(--hair);border-radius:99px;padding:4px 10px;text-decoration:none;color:var(--ink2);background:#fff}
+.dfilter{width:calc(100% - 12px);margin:0 6px 6px;height:37px;border:1px solid var(--hair);border-radius:9px;padding:0 12px;font:inherit;font-size:13.5px;background:#fff;color:var(--ink);outline:none}
+.dfilter:focus{border-color:var(--ink3)}
+.dnone{padding:6px 8px;font-size:13px;color:var(--ink3)}

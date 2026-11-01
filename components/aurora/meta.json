@@ -1,0 +1,13 @@
+{
+  "title": "Aurora",
+  "category": "Motion",
+  "description": "A slow wash of color behind a hero — the accent and the core, drifting under glass.",
+  "tags": [
+    "gradient",
+    "hero",
+    "ambient"
+  ],
+  "status": "beta",
+  "usage": "As the backdrop of a hero or a featured card. It is a surface, not a decoration: keep the text on top short and let the wash move.",
+  "a11y": "Pure CSS. Under prefers-reduced-motion the wash holds still; text contrast comes from the dark ground, not the moving color."
+}

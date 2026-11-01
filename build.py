@@ -20,7 +20,13 @@ def load_components():
         js = js_file.read_text(encoding='utf-8') if js_file.exists() else None
         deps = sorted(set(re.findall(r'/components/([a-z0-9-]+)/\1\.css', preview))) 
         deps = [x for x in deps if x != slug]
-        comps.append(dict(slug=slug, meta=meta, preview=preview, css=css, js=js, deps=deps))
+        ex_file = d / 'examples.html'
+        examples = []
+        if ex_file.exists():
+            parts = re.split(r'<!--\s*example:\s*(.+?)\s*-->', ex_file.read_text(encoding='utf-8'))
+            for i in range(1, len(parts) - 1, 2):
+                examples.append((parts[i], parts[i + 1].strip()))
+        comps.append(dict(slug=slug, meta=meta, preview=preview, css=css, js=js, deps=deps, examples=examples))
     order = {c: i for i, c in enumerate(CATS)}
     comps.sort(key=lambda c: (order.get(c['meta']['category'], 99), c['meta']['title']))
     return comps
@@ -31,7 +37,7 @@ def esc(s):
 HEADER = """<header class="top"><div class="wrap top-in">
   <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="#18181b" stroke-width="4"/><rect x="19" y="19" width="10" height="10" rx="3" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
   <button class="menubtn" id="menubtn" type="button" aria-label="Open component menu">☰<span>Components</span></button>
-  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/#catalog">Categories</a><a href="#">Pricing</a></nav>
+  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a></nav>
   <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a>
 </div></header>"""
 
@@ -49,7 +55,10 @@ def drawer_html(comps, active):
 <div class="scrim" id="scrim"></div>
 <nav class="drawer" id="drawer" aria-label="All components">
   <div class="dhead"><span>Components</span><button class="dclose" id="dclose" type="button" aria-label="Close menu">✕</button></div>
+  <div class="dlinks"><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a><a href="/design-system/">Design System</a></div>
+  <input class="dfilter" id="dfilter" type="search" placeholder="Filter components…" aria-label="Filter components">
   {sidebar(comps, active)}
+  <p class="dnone" id="dnone" hidden>No matches.</p>
 </nav>"""
 
 DRAWER_JS = """<script>
@@ -59,6 +68,17 @@ mb.addEventListener('click',function(){setD(true);});
 var dc=document.getElementById('dclose');if(dc)dc.addEventListener('click',function(){setD(false);});
 var sc=document.getElementById('scrim');if(sc)sc.addEventListener('click',function(){setD(false);});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')setD(false);});
+var df=document.getElementById('dfilter');
+if(df){df.addEventListener('input',function(){
+  var q=df.value.trim().toLowerCase();var total=0;var side=df.closest('.drawer').querySelector('.side');
+  var kids=Array.prototype.slice.call(side.children);var curH=null;var curVis=false;
+  function flush(){if(curH)curH.style.display=curVis?'':'none';}
+  kids.forEach(function(el){
+    if(el.tagName==='H4'){flush();curH=el;curVis=false;}
+    else if(el.tagName==='A'){var hit=!q||el.textContent.toLowerCase().indexOf(q)>-1;el.style.display=hit?'':'none';if(hit){curVis=true;total++;}}
+  });flush();
+  var dn=document.getElementById('dnone');if(dn)dn.hidden=total>0;
+});}
 document.querySelectorAll('.side a.on').forEach(function(a){var c=a.closest('.drawer')||a.parentElement;if(c){try{c.scrollTop=Math.max(0,a.offsetTop-80);}catch(e){}}});
 })();
 </script>"""
@@ -133,6 +153,15 @@ LP_STYLE = """<style>
 .genre .gn{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
 .genre h3{margin-top:7px;font-size:15.5px;font-weight:600}
 .genre p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75}
+.showband{margin-top:64px;background:#101013;border-radius:18px;padding:30px 26px}
+.showband h2{font-size:22px;font-weight:600;letter-spacing:-.02em;color:#f4f4f5}
+.showband .sub{margin-top:7px;color:#a1a1aa;font-size:14px;line-height:1.8;max-width:62ch}
+.showgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+@media (max-width:720px){.showgrid{grid-template-columns:1fr}}
+.showtile{border:1px solid #26262b;border-radius:14px;padding:16px;background:#17171a;overflow:hidden}
+.showtile.wide{grid-column:1/-1}
+.showtile .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:#a1a1aa}
+.showtile .cap a{color:#f4f4f5;text-decoration:none;letter-spacing:0;font-size:12px}
 .compat{margin-top:20px;border:1px solid var(--hair);border-radius:12px;background:var(--soft);padding:18px;font-size:13.5px;line-height:1.9;color:var(--ink2)}
 .compat b{color:var(--ink);font-weight:600}
 .compat a{color:var(--ink);font-weight:550}
@@ -144,6 +173,18 @@ def landing(comps, blocks, n_icons):
     nb = len(blocks)
     shell = next((b for b in blocks if b['slug'] == 'app-shell'), None)
     shell_html = shell['preview'] if shell else ''
+    pv = {c['slug']: c for c in comps}
+    def tile(slug, label, wide=False):
+        c = pv.get(slug)
+        if not c:
+            return ''
+        return ('<div class="showtile' + (' wide' if wide else '') + '"><div class="cap"><span>' + label.upper() + '</span><a href="/components/' + slug + '/">Open part</a></div>' + c['preview'] + '</div>')
+    show_scripts = ''.join(f'<script src="/components/{sl}/{sl}.js?v={_v(pv[sl]["js"])}"></script>' for sl in ('counter', 'spotlight', 'text-reveal', 'follow-frame') if pv.get(sl) and pv[sl]['js'])
+    showcase = ('<section class="showband"><h2>The showy shelf</h2><p class="sub">The Motion line and the ambient pieces — live on this page, in the dark they were designed for. Built to be stared at a little.</p>'
+                '<div data-theme="dark"><div class="showgrid">'
+                + tile('aurora', 'Aurora') + tile('follow-frame', 'Follow Frame') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border')
+                + tile('text-reveal', 'Text Reveal', True) + tile('counter', 'Counter') + tile('marquee', 'Marquee')
+                + '</div></div>' + show_scripts + '</section>')
     body = f"""
 <div class="wrap lp">
   <div class="hero">
@@ -187,6 +228,7 @@ def landing(comps, blocks, n_icons):
       <b>For AI tools</b>, KATA speaks their formats: <a href="/registry.json">registry.json</a> for installers and agents, <a href="/llms.txt">llms.txt</a> for models that read the web.
     </div>
   </section>
+  {showcase}
   <div id="catalog">
 {catalog_sections(comps)}
   </div>
@@ -194,7 +236,8 @@ def landing(comps, blocks, n_icons):
 {FOOTER}
 </body>
 </html>"""
-    extra = '<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
+    extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter') if pv.get(sl)))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks):
@@ -219,6 +262,10 @@ def registry_json(comps, blocks):
         items.append({'name': b['slug'], 'type': 'registry:block', 'title': m['title'],
                       'description': m['description'], 'categories': ['Blocks'],
                       'dependencies': m.get('uses', []), 'files': files})
+    for t in load_themes():
+        items.append({'name': 'theme-' + t['name'], 'type': 'registry:theme', 'title': 'Theme: ' + t['label'],
+                      'description': t['note'], 'categories': ['Themes'],
+                      'files': [{'path': 'themes/' + t['name'] + '.css', 'type': 'registry:theme', 'content': theme_css(t)}]})
     return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui',
                        'homepage': 'https://kata-ui.dev', 'items': items}, ensure_ascii=False, indent=1)
 
@@ -229,7 +276,10 @@ def llms_txt(comps, blocks, n_icons):
              '## Docs', '',
              '- [Design System](https://kata-ui.dev/design-system/): the tokens every part is cast from (tokens.json is downloadable there)',
              f'- [Icons](https://kata-ui.dev/icons/): {n_icons} icons on one mold (24 grid, 2px stroke); click to copy the SVG',
-             '- [Registry](https://kata-ui.dev/registry.json): every component and block with its full CSS/JS/HTML, in the shadcn registry format', '',
+             '- [Registry](https://kata-ui.dev/registry.json): every component and block with its full CSS/JS/HTML, in the shadcn registry format',
+             '- [Themes](https://kata-ui.dev/themes/): accent presets as small CSS files; a theme redefines the five accent tokens only',
+             '- [Getting Started](https://kata-ui.dev/docs/getting-started/): load tokens.css once, then copy parts',
+             '- [Theming](https://kata-ui.dev/docs/theming/) / [Dark Mode](https://kata-ui.dev/docs/dark-mode/): dark mode is data-theme="dark" on any container', '',
              '## Components', '']
     for c in comps:
         lines.append(f"- [{c['meta']['title']}](https://kata-ui.dev/components/{c['slug']}/): {c['meta']['description']}")
@@ -342,6 +392,13 @@ def detail(comps, idx):
         nx = comps[idx + 1]
         next_html = f'<a class="next" href="/components/{nx["slug"]}/"><span class="dir">Next</span><div class="nm">{esc(nx["meta"]["title"])}</div></a>'
     stage_cls = 'stage col' if m.get('stage') == 'col' else 'stage'
+    examples_html = ''
+    if c.get('examples'):
+        blocks_out = []
+        for title, html_ex in c['examples']:
+            blocks_out.append(f'<h3 class="exh">{esc(title)}</h3><div class="stage col exstage">{html_ex}</div>'
+                              f'<div class="codebox"><div class="pane on"><pre>{esc(html_ex)}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div></div>')
+        examples_html = '<section class="doc"><h2>Examples</h2>' + ''.join(blocks_out) + '</section>'
     js_tag = f'<script src="/components/{slug}/{slug}.js?v={_v(c["js"])}"></script>' if c['js'] else ''
     body = f"""
 <div class="wrap">
@@ -364,6 +421,7 @@ def detail(comps, idx):
         <div class="codetabs">{tab_btns}</div>
         {panes}
       </div>
+      {examples_html}
       <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
       <section class="doc"><h2>Accessibility</h2><p>{esc(m.get('a11y',''))}</p></section>
       <div class="prevnext">{prev_html}{next_html}</div>
@@ -591,6 +649,167 @@ def block_detail(blocks, idx, comps):
     extra = f'<link rel="stylesheet" href="/blocks/{slug}/{slug}.css?v={_v(b["css"])}">'
     return head(f"{m['title']} — Blocks — KATA UI", m['description'], extra) + body
 
+def load_themes():
+    return json.loads((ROOT / 'system' / 'themes.json').read_text(encoding='utf-8'))
+
+def theme_css(t):
+    return ('/* KATA UI theme: ' + t['label'] + ' — load AFTER tokens.css.\n'
+            '   A theme moves the accent only. Neutrals, motion and the vermillion core never change. */\n'
+            ':root{\n'
+            '  --k-accent:' + t['accent'] + ';\n'
+            '  --k-accent-ink:' + t['ink'] + ';\n'
+            '  --k-accent-bg:rgba(' + t['rgb'] + ',.08);\n'
+            '  --k-accent-bg-strong:rgba(' + t['rgb'] + ',.1);\n'
+            '  --k-accent-line:rgba(' + t['rgb'] + ',.18);\n'
+            '}\n'
+            '[data-theme="dark"]{\n'
+            '  --k-accent-ink:' + t['darkInk'] + ';\n'
+            '}\n')
+
+THEME_STYLE = """<style>
+.th h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
+.th .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.thgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.thcard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.thcard:hover{border-color:var(--ink3)}
+.thcard.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.thcard .sw{display:flex;gap:5px;margin-bottom:11px}
+.thcard .sw i{width:22px;height:22px;border-radius:7px;display:block;border:1px solid var(--hair)}
+.thcard .nm{font-size:14px;font-weight:600}
+.thcard .nt{font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.6}
+.thdemo{margin-top:22px;border:1px solid var(--hair);border-radius:14px;background:#fff;padding:22px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.thdemo .lbl{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em;width:100%}
+.thcode{margin-top:16px;border:1px solid var(--hair);border-radius:12px;overflow:hidden}
+.thcode pre{margin:0;padding:16px;overflow:auto;font-family:var(--mono);font-size:12px;line-height:1.75;background:var(--soft)}
+.thcode .bar{display:flex;gap:8px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--hair);background:#fff}
+.thcode .bar b{font-size:12.5px;margin-right:auto}
+.thcode .bar a,.thcode .bar button{font:inherit;font-size:12px;border:1px solid var(--hair);background:#fff;border-radius:7px;padding:5px 11px;cursor:pointer;color:var(--ink);text-decoration:none}
+</style>"""
+
+def themes_page(themes):
+    import json as _json
+    cards = []
+    for i, t in enumerate(themes):
+        cards.append('<button class="thcard' + (' on' if i == 0 else '') + '" type="button" data-theme-card="' + t['name'] + '">'
+                     '<span class="sw"><i style="background:' + t['accent'] + '"></i><i style="background:' + t['ink'] + '"></i><i style="background:rgba(' + t['rgb'] + ',.12)"></i></span>'
+                     '<span class="nm">' + t['label'] + '</span><div class="nt">' + t['note'] + '</div></button>')
+    demo = """<div class="thdemo" id="thdemo">
+    <span class="lbl">LIVE — THE SAME PARTS, RE-CAST</span>
+    <button class="btn btn-teal btn-md">Accent button</button>
+    <span class="switchrow"><label class="switch teal"><input type="checkbox" checked><span class="tr"></span></label>Notifications</span>
+    <span class="badge teal"><i></i>Live</span>
+    <span class="badge">Neutral stays neutral</span>
+  </div>"""
+    script = '<script>var THEMES=' + _json.dumps(themes) + """;
+var CODES={};
+""" + ''.join('CODES["' + t['name'] + '"]=' + _json.dumps(theme_css(t)) + ';\n' for t in themes) + """
+var demo=document.getElementById('thdemo');
+function applyTheme(name){
+  var t=THEMES.find(function(x){return x.name===name;});if(!t)return;
+  demo.style.setProperty('--k-accent',t.accent);
+  demo.style.setProperty('--k-accent-ink',t.ink);
+  demo.style.setProperty('--k-accent-bg','rgba('+t.rgb+',.08)');
+  demo.style.setProperty('--k-accent-bg-strong','rgba('+t.rgb+',.1)');
+  demo.style.setProperty('--k-accent-line','rgba('+t.rgb+',.18)');
+  document.getElementById('thcss').textContent=CODES[name];
+  document.getElementById('thdl').href='/themes/'+name+'.css';
+  document.getElementById('thname').textContent=name+'.css';
+  document.querySelectorAll('[data-theme-card]').forEach(function(c){c.classList.toggle('on',c.dataset.themeCard===name);});
+}
+document.querySelectorAll('[data-theme-card]').forEach(function(c){c.addEventListener('click',function(){applyTheme(c.dataset.themeCard);});});
+document.getElementById('thcopy').addEventListener('click',function(){var b=this;if(navigator.clipboard)navigator.clipboard.writeText(document.getElementById('thcss').textContent);b.textContent='Copied';setTimeout(function(){b.textContent='Copy CSS';},1600);});
+applyTheme('teal');
+</script>"""
+    body = """
+<div class="wrap th">
+  <h1>Themes</h1>
+  <p class="lead">A theme moves one thing: the accent. Neutrals stay zinc, motion stays measured, and the vermillion core — the mark inside the Switch, the Radio and the logo — never changes. Pick a preset to see the same parts re-cast, then take the CSS.</p>
+  <div class="thgrid">""" + ''.join(cards) + """
+  </div>
+""" + demo + """
+  <div class="thcode">
+    <div class="bar"><b id="thname">teal.css</b><button id="thcopy" type="button">Copy CSS</button><a id="thdl" href="/themes/teal.css" download>Download</a></div>
+    <pre id="thcss"></pre>
+  </div>
+  <p class="lead" style="margin-top:18px">Making your own is the same move by hand: redefine the five accent tokens after <span style="font-family:var(--mono);font-size:13px">tokens.css</span>. See <a href="/docs/theming/">Theming</a>.</p>
+</div>
+""" + FOOTER + '\n' + script + """
+</body>
+</html>"""
+    extra = (THEME_STYLE + '<link rel="stylesheet" href="/components/button/button.css">'
+             '<link rel="stylesheet" href="/components/switch/switch.css">'
+             '<link rel="stylesheet" href="/components/badge/badge.css">')
+    return head('Themes — KATA UI', 'Accent presets for KATA UI: one token family changes, everything else holds.', extra) + body
+
+DOCS = [
+  ('getting-started', 'Getting Started', 'From zero to a working part in three steps.',
+   [('Start with the tokens', 'Every part reads its color, spacing, radius and motion from one file. Load it once, before anything else:', '<link rel="stylesheet" href="https://kata-ui.dev/tokens.css">', 'That file is the mold. Parts never hard-code a color, so this one link is what makes forty parts look like one product.'),
+    ('Copy a part', 'Open the part in Components and copy its three files: the HTML from the preview, the CSS, and the JS when it has one. Paste them into your project as they are. There is no install step and no package to keep updated — the code becomes yours, which is the point.', None, 'If the part says "Uses:" under its preview, it builds on another part (a Modal on Buttons, a Command palette on Kbd). Include that part\u2019s CSS too; the page names it.'),
+    ('Works anywhere HTML does', 'Plain HTML files, Astro, Laravel Blade, Django and Rails templates, WordPress themes. If it renders HTML, KATA parts drop in unchanged — no framework island, no build plugin, no runtime.', None, 'For AI tools and installers, the whole catalog is also published as registry.json in the shadcn registry format, and as llms.txt for models that read the web.')]),
+  ('theming', 'Theming', 'Change the tokens, not the parts.',
+   [('One surface', 'Parts reference only var(--k-…) tokens. To restyle everything, redefine tokens after tokens.css loads — never edit a part\u2019s CSS. An accent change is five lines:', ':root{ --k-accent:#4f46e5; --k-accent-ink:#4338ca; --k-accent-bg:rgba(79,70,229,.08); --k-accent-bg-strong:rgba(79,70,229,.1); --k-accent-line:rgba(79,70,229,.18); }', 'The Themes page ships five presets in exactly this form, each as a small CSS file you can download or copy.'),
+    ('Shape and motion are tokens too', 'Radius (--k-radius, --k-radius-lg), durations (--k-dur-1…3) and the easing curve are tokens. Tighten the whole product by tightening the mold; loosen one part and it stops matching its siblings.', None, 'One token is off-limits by design: --k-core, the vermillion at the center of active controls. It is the signature, not a setting.')]),
+  ('dark-mode', 'Dark Mode', 'One attribute flips every part.',
+   [('The attribute', 'Put data-theme="dark" on the root element — or on any container — and every part inside flips. The tokens carry both themes; parts do not know which one they are in:', '<section data-theme="dark"> …parts… </section>', 'The Light/Dark toggle on every component page is this attribute, applied to the preview stage.'),
+    ('What flips, what holds', 'Backgrounds, ink, lines, tracks and the accent ink (brighter in the dark) are theme tokens. The zinc scale underneath stays the same family, so a dark page still reads as the same product.', None, 'There is no automatic prefers-color-scheme switch built in: which theme a page wears is the page\u2019s decision. Setting the attribute from a media query in your own CSS is one line.')]),
+  ('accessibility', 'Accessibility', 'What the parts guarantee, and what stays yours.',
+   [('Native first', 'Where the platform has the element, the part is the element: dialog for Modal and Drawer, details for Accordion, real radio inputs for Segmented and Radio. Focus traps, Escape handling and screen-reader semantics come from the browser, not from scripts re-implementing them.', None, 'Interactive parts document their keyboard behavior on their own page, under Accessibility.'),
+    ('Focus, motion, contrast', 'Focus rings are a token (--k-ring), visible in both themes, and never removed without a replacement. The Motion line and the Drawer honor prefers-reduced-motion. Text colors come from the zinc scale at weights chosen to stay readable on their backgrounds.', None, 'Parts are a starting point, not a certification: labels, heading order and the meaning of the page remain the page\u2019s responsibility. Test with a keyboard and a screen reader before shipping.')]),
+]
+
+DOC_STYLE = """<style>
+.dc h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
+.dc .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.dc section{margin-top:36px;max-width:68ch}
+.dc h2{font-size:18px;font-weight:600;letter-spacing:-.015em}
+.dc p{margin-top:9px;font-size:14px;line-height:1.9;color:var(--ink2)}
+.dc pre{margin-top:12px;border:1px solid var(--hair);border-radius:10px;background:var(--soft);padding:13px 15px;font-family:var(--mono);font-size:12px;line-height:1.75;overflow:auto;color:var(--ink)}
+.dcgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.dccard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:17px;text-decoration:none;color:var(--ink);display:block}
+.dccard:hover{border-color:var(--ink3)}
+.dccard h3{font-size:15px;font-weight:600}
+.dccard p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7}
+</style>"""
+
+def docs_index():
+    cards = ''.join(f'<a class="dccard" href="/docs/{s}/"><h3>{esc(t)}</h3><p>{esc(d)}</p></a>' for s, t, d, _ in DOCS)
+    body = f"""
+<div class="wrap dc">
+  <h1>Docs</h1>
+  <p class="lead">The short version of everything: how to start, how to theme, how dark mode works, and what the parts promise about accessibility. The long version lives on each part's own page.</p>
+  <div class="dcgrid">{cards}</div>
+</div>
+{FOOTER}
+</body>
+</html>"""
+    return head('Docs — KATA UI', 'Getting started, theming, dark mode and accessibility for KATA UI.', DOC_STYLE) + body
+
+def doc_page(slug):
+    entry = next(d for d in DOCS if d[0] == slug)
+    _, title, desc, sections = entry
+    secs = []
+    for h, p1, code, p2 in sections:
+        chunk = f'<section><h2>{esc(h)}</h2><p>{esc(p1)}</p>'
+        if code:
+            chunk += f'<pre>{esc(code)}</pre>'
+        if p2:
+            chunk += f'<p>{esc(p2)}</p>'
+        secs.append(chunk + '</section>')
+    others = ' · '.join(f'<a href="/docs/{s}/">{esc(t)}</a>' for s, t, _, _ in DOCS if s != slug)
+    body = f"""
+<div class="wrap dc">
+  <p class="crumb" style="margin-top:22px"><a href="/docs/">Docs</a> / {esc(title)}</p>
+  <h1>{esc(title)}</h1>
+  <p class="lead">{esc(desc)}</p>
+  {''.join(secs)}
+  <section><h2>More docs</h2><p>{others}</p></section>
+</div>
+{FOOTER}
+</body>
+</html>"""
+    return head(f'{title} — Docs — KATA UI', desc, DOC_STYLE) + body
+
+
 def main():
     comps = load_components()
     blocks = load_blocks()
@@ -638,7 +857,20 @@ def main():
     (DIST / 'registry.json').write_text(registry_json(comps, blocks), encoding='utf-8')
     (DIST / 'llms.txt').write_text(llms_txt(comps, blocks, n_icons), encoding='utf-8')
     (DIST / 'llms-full.txt').write_text(llms_full(comps, blocks), encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks]
+    themes = load_themes()
+    tdir = DIST / 'themes'
+    tdir.mkdir(exist_ok=True)
+    (tdir / 'index.html').write_text(emit(themes_page(themes), comps, None), encoding='utf-8')
+    for t in themes:
+        (tdir / (t['name'] + '.css')).write_text(theme_css(t), encoding='utf-8')
+    ddir = DIST / 'docs'
+    ddir.mkdir(exist_ok=True)
+    (ddir / 'index.html').write_text(emit(docs_index(), comps, None), encoding='utf-8')
+    for dslug, *_ in DOCS:
+        dp = ddir / dslug
+        dp.mkdir(exist_ok=True)
+        (dp / 'index.html').write_text(emit(doc_page(dslug), comps, None), encoding='utf-8')
+    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/themes/', '/docs/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

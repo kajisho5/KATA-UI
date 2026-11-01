@@ -45,6 +45,9 @@ def check_component(d):
         if tuple(int(x) for x in m.groups()) not in ALLOWED_RGBA:
             errs.append(f'css: raw rgba color {m.group(0)}...) — hue must come from a --k- token')
     prev = prev_f.read_text(encoding='utf-8')
+    ex_f = d / 'examples.html'
+    if ex_f.exists():
+        prev += '\n' + ex_f.read_text(encoding='utf-8')
     for m in HEX.finditer(prev):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
     for m in re.finditer(r'stroke-width="([0-9.]+)"', prev):

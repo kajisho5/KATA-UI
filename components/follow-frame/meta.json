@@ -1,0 +1,13 @@
+{
+  "title": "Follow Frame",
+  "category": "Motion",
+  "description": "A dashed frame that trails the cursor and names the action waiting there.",
+  "tags": [
+    "cursor",
+    "tracking",
+    "playful"
+  ],
+  "status": "beta",
+  "usage": "For playful surfaces — onboarding, product tours, marketing panels. One frame per surface, and the label must name a real action.",
+  "a11y": "Pointer-only by design; touch and keyboard users lose nothing, since the frame carries no information the panel itself does not. It parks, centered, under prefers-reduced-motion."
+}

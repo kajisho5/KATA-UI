@@ -1,0 +1,24 @@
+{
+ "title": "Settings",
+ "description": "An account settings page: a section rail, a profile form with photo, notification switches, a language select and a danger zone — composed from form parts.",
+ "tags": [
+  "settings",
+  "account",
+  "forms",
+  "page"
+ ],
+ "status": "beta",
+ "uses": [
+  "field",
+  "input",
+  "textarea",
+  "select",
+  "switch",
+  "button",
+  "avatar",
+  "alert"
+ ],
+ "blocks": [],
+ "url": "app.acme.studio/settings",
+ "usage": "The rail switches the section; each card is an independent form. Every control is a catalog part — Field wraps Input and Textarea with labels and hints, the switches are the Switch part, the danger zone is an Alert plus a danger Button. Wire the save buttons to your backend; the page itself holds no state."
+}

@@ -1,0 +1,1 @@
+{"bin":{"kata-ui":"kata-ui.mjs"},"description":"CLI for KATA UI — install vanilla HTML/CSS/JS components, blocks, templates and themes from the registry.","engines":{"node":">=18"},"files":["kata-ui.mjs"],"homepage":"https://kata-ui.dev/docs/cli/","license":"MIT","name":"kata-ui","type":"module","version":"0.1.0"}

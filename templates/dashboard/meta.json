@@ -1,0 +1,23 @@
+{
+ "title": "Dashboard",
+ "description": "A product dashboard page: app sidebar with grouped navigation, a four-stat row, a revenue line chart and a sortable orders table — a whole screen composed from KATA parts.",
+ "tags": [
+  "dashboard",
+  "admin",
+  "analytics",
+  "page"
+ ],
+ "status": "beta",
+ "uses": [
+  "stat",
+  "line-chart",
+  "data-table",
+  "badge",
+  "button",
+  "input",
+  "avatar"
+ ],
+ "blocks": [],
+ "url": "app.acme.studio/overview",
+ "usage": "Copy the page as a starting shell, then swap the parts: the sidebar navigation, the stat row, the chart and the table are ordinary KATA parts with their own pages in the catalog. The table's sorting behavior comes from the Data Table part's script — include it alongside. Replace the fixture numbers and rows with your own data; nothing in the page phones home."
+}

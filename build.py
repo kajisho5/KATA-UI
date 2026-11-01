@@ -40,8 +40,8 @@ def esc(s):
 
 HEADER = """<header class="top"><div class="wrap top-in">
   <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="#18181b" stroke-width="4"/><rect x="19" y="19" width="10" height="10" rx="3" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
-  <button class="menubtn" id="menubtn" type="button" aria-label="Open component menu">☰<span>Components</span></button>
-  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a></nav>
+  <button class="menubtn" id="menubtn" type="button" aria-label="Open menu">☰<span>Menu</span></button>
+  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a></nav>
   <button class="hsearch" type="button" data-site-search aria-label="Search the catalog"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span class="hst">Search</span><span class="k-kbd">\u2318K</span></button>
   <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a>
 </div></header>"""
@@ -58,13 +58,32 @@ def _v(text):
 def drawer_html(comps, active):
     return f"""
 <div class="scrim" id="scrim"></div>
-<nav class="drawer" id="drawer" aria-label="All components">
-  <div class="dhead"><span>Components</span><button class="dclose" id="dclose" type="button" aria-label="Close menu">✕</button></div>
-  <div class="dlinks"><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a><a href="/design-system/">Design System</a></div>
-  <input class="dfilter" id="dfilter" type="search" placeholder="Filter components…" aria-label="Filter components">
+<nav class="drawer" id="drawer" aria-label="Site menu">
+  <div class="dhead"><span>Menu</span><button class="dclose" id="dclose" type="button" aria-label="Close menu">✕</button></div>
+  <div class="dlinks"><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a><a href="/design-system/">Design System</a></div>
+  <input class="dfilter" id="dfilter" type="search" placeholder="Filter parts, blocks, pages…" aria-label="Filter the menu">
   {sidebar(comps, active)}
+  {drawer_extra()}
   <p class="dnone" id="dnone" hidden>No matches.</p>
 </nav>"""
+
+
+def drawer_extra():
+    bl = _all_blocks()
+    blinks = ''.join('<a href="/blocks/' + b['slug'] + '/">' + esc(b['meta']['title']) + '</a>' for b in bl)
+    tlinks = ''
+    try:
+        tpls = load_templates()
+        tlinks = ''.join('<a href="/templates/' + t['slug'] + '/">' + esc(t['meta']['title']) + '</a>' for t in tpls)
+    except Exception:
+        tlinks = ''
+    elinks = ''.join('<a href="' + u + '">' + n + '</a>' for u, n in [
+        ('/icons/', 'Icons'), ('/themes/', 'Themes'), ('/design-system/', 'Design System'),
+        ('/docs/', 'Docs — all guides'), ('/docs/installation/', 'Installation'),
+        ('/docs/changelog/', 'Changelog'), ('/skill/SKILL.md', 'AI Skill (SKILL.md)')])
+    return ('<nav class="side dextra"><h4>Blocks</h4>' + blinks
+            + '<h4>Templates</h4>' + tlinks
+            + '<h4>Explore</h4>' + elinks + '</nav>')
 
 DRAWER_JS = """<script>
 (function(){var mb=document.getElementById('menubtn');if(!mb)return;
@@ -75,13 +94,15 @@ var sc=document.getElementById('scrim');if(sc)sc.addEventListener('click',functi
 document.addEventListener('keydown',function(e){if(e.key==='Escape')setD(false);});
 var df=document.getElementById('dfilter');
 if(df){df.addEventListener('input',function(){
-  var q=df.value.trim().toLowerCase();var total=0;var side=df.closest('.drawer').querySelector('.side');
+  var q=df.value.trim().toLowerCase();var total=0;
+  df.closest('.drawer').querySelectorAll('.side').forEach(function(side){
   var kids=Array.prototype.slice.call(side.children);var curH=null;var curVis=false;
   function flush(){if(curH)curH.style.display=curVis?'':'none';}
   kids.forEach(function(el){
     if(el.tagName==='H4'){flush();curH=el;curVis=false;}
     else if(el.tagName==='A'){var hit=!q||el.textContent.toLowerCase().indexOf(q)>-1;el.style.display=hit?'':'none';if(hit){curVis=true;total++;}}
   });flush();
+  });
   var dn=document.getElementById('dnone');if(dn)dn.hidden=total>0;
 });}
 document.querySelectorAll('.side a.on').forEach(function(a){var c=a.closest('.drawer')||a.parentElement;if(c){try{c.scrollTop=Math.max(0,a.offsetTop-80);}catch(e){}}});
@@ -101,7 +122,7 @@ _BLOCK_CACHE = None
 def _block_search_items():
     global _BLOCK_CACHE
     if _BLOCK_CACHE is None:
-        _BLOCK_CACHE = [{'t': b['meta']['title'], 'u': '/blocks/' + b['slug'] + '/', 'k': 'Block'} for b in load_blocks()]
+        _BLOCK_CACHE = [{'t': b['meta']['title'], 'u': '/blocks/' + b['slug'] + '/', 'k': 'Block'} for b in load_blocks()] + [{'t': t['meta']['title'], 'u': '/templates/' + t['slug'] + '/', 'k': 'Template'} for t in load_templates()]
     return _BLOCK_CACHE
 
 SEARCH_TMPL = """<dialog class="kcmd" data-site-dialog aria-label="Search KATA UI">
@@ -145,7 +166,7 @@ def search_html(comps):
     items = [{'t': c['meta']['title'], 'u': '/components/' + c['slug'] + '/', 'k': 'Component'} for c in comps]
     items += _block_search_items()
     items += [{'t': d[1], 'u': '/docs/' + d[0] + '/', 'k': 'Docs'} for d in DOCS]
-    items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/')]]
+    items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Templates', '/templates/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/')]]
     return SEARCH_TMPL.replace('__KATA_INDEX__', _json.dumps(items, ensure_ascii=False))
 
 def emit(page, comps, active):
@@ -231,14 +252,20 @@ LP_STYLE = """<style>
 .showtile .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:#a1a1aa}
 .showtile .cap a{color:#f4f4f5;text-decoration:none;letter-spacing:0;font-size:12px}
 .hero2{position:relative;border-radius:22px;overflow:hidden;background:#0b0b0f;margin-top:24px;padding:58px 26px 30px;text-align:center}
-.hero-aurora{position:absolute;inset:0;border-radius:0}
-.hero2::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 50% 0%,rgba(14,149,148,.22),transparent 65%),radial-gradient(520px 280px at 88% 100%,rgba(235,71,31,.12),transparent 65%)}
+.hero2 .k-aurora.hero-aurora{position:absolute;inset:0;border-radius:0}
+.hero2 .k-aurora i{filter:blur(58px)}
+.hero2 .k-aurora .b1{width:480px;height:480px;left:-120px;top:-170px;background:color-mix(in srgb,var(--k-accent) 82%,transparent)}
+.hero2 .k-aurora .b2{width:430px;height:430px;right:-110px;bottom:-170px;background:color-mix(in srgb,var(--k-core) 70%,transparent)}
+.hero2 .k-aurora .b3{width:340px;height:340px;right:22%;top:-150px;background:color-mix(in srgb,var(--k-accent-ink) 62%,transparent)}
+.hero2 .eyebrow{display:inline-flex;align-items:center;gap:8px}
+.hero2 .stats div{display:flex;flex-direction:column;align-items:center;gap:1px}
+.hero2::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 50% 0%,rgba(14,149,148,.12),transparent 65%),radial-gradient(520px 280px at 88% 100%,rgba(235,71,31,.12),transparent 65%)}
 .hero2-in{position:relative}
 .hero2 h1{font-size:45px;line-height:1.12;color:#f4f4f5;letter-spacing:-.025em;font-weight:650}
 .hero2 h1 .dim{color:#a1a1aa}
 .hero2-in>p{max-width:62ch;margin:17px auto 0;font-size:15px;line-height:1.85;color:#a1a1aa}
 .hero2 .eyebrow{border-color:#3f3f46;color:#d4d4d8;background:rgba(255,255,255,.05)}
-.hero2 .stats{border-color:#26262b}
+.hero2 .stats{border-color:#26262b;display:flex;gap:15px 38px;flex-wrap:wrap;justify-content:center;margin-top:34px;padding-top:22px;border-top:1px solid #26262b}
 .hero2 .stats b{color:#f4f4f5}
 .hero2 .stats span{color:#a1a1aa}
 .hero2 .browser{box-shadow:0 34px 90px -24px rgba(0,0,0,.65);margin-top:40px;text-align:left}
@@ -269,9 +296,10 @@ LP_STYLE = """<style>
 @media (max-width:720px){.lp .hero h1{font-size:33px}.browser .shell-side{display:none}}
 </style>"""
 
-def landing(comps, blocks, n_icons):
+def landing(comps, blocks, n_icons, templates=None):
     n = len(comps)
     nb = len(blocks)
+    nt = len(templates or [])
     shell = next((b for b in blocks if b['slug'] == 'app-shell'), None)
     shell_html = shell['preview'] if shell else ''
     pv = {c['slug']: c for c in comps}
@@ -293,7 +321,7 @@ def landing(comps, blocks, n_icons):
       '<tr><th>Distribution</th><td class="me">Copy-paste</td><td>Copy-paste (CLI)</td><td>npm package</td><td>Composer package</td></tr>'
       '<tr><th>Runtime required</th><td class="me">None</td><td>React</td><td>React</td><td>Livewire + Alpine</td></tr>'
       '<tr><th>Theming</th><td class="me">CSS tokens</td><td>Tailwind + variables</td><td>Theme object</td><td>Tailwind</td></tr>'
-      '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
+      '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks + Templates lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
       '</tbody></table></div>'
       '<p class="cmpnote">From each project’s public pages, November 2026. The honest summary: the others are excellent inside their framework. KATA is for everywhere else.</p></section>')
     faqsec = ('<section class="lpsec"><h2>Questions</h2><div style="margin-top:16px">' + (faq_b['preview'] if faq_b else '') + '</div></section>')
@@ -347,10 +375,11 @@ def landing(comps, blocks, n_icons):
     </div>
   </section>
   <section class="lpsec">
-    <h2>Four genres, one mold</h2>
+    <h2>Five genres, one mold</h2>
     <div class="genres">
       <a class="genre" href="/components/"><span class="gn">{n} PARTS</span><h3>Components</h3><p>The single parts: forms, overlays, feedback, display — and a Motion line other libraries do not carry.</p></a>
       <a class="genre" href="/blocks/"><span class="gn">{nb} SECTIONS</span><h3>Blocks</h3><p>Whole sections composed from the parts — sign-in, pricing, settings, an app shell. Start here, take apart later.</p></a>
+      <a class="genre" href="/templates/"><span class="gn">{nt} PAGES</span><h3>Templates</h3><p>Whole pages, already assembled — a dashboard, an inbox, a landing. The parts and blocks in their places, ready to take apart.</p></a>
       <a class="genre" href="/icons/"><span class="gn">{n_icons} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 2px stroke, three shapes only. Click to copy, and Lucide mixes in without a seam.</p></a>
       <a class="genre" href="/design-system/"><span class="gn">TOKENS.JSON</span><h3>Design System</h3><p>The foundation every part is cast from — color, type, spacing, radius, motion. Download it, diff it, fork it.</p></a>
     </div>
@@ -375,7 +404,7 @@ def landing(comps, blocks, n_icons):
              + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
-def registry_json(comps, blocks):
+def registry_json(comps, blocks, templates=None):
     items = []
     for c in comps:
         m = c['meta']
@@ -397,6 +426,16 @@ def registry_json(comps, blocks):
         items.append({'name': b['slug'], 'type': 'registry:block', 'title': m['title'],
                       'description': m['description'], 'categories': ['Blocks'],
                       'dependencies': m.get('uses', []), 'files': files})
+    for t in (templates or []):
+        m = t['meta']
+        files = [{'path': f"templates/{t['slug']}/{t['slug']}.css", 'type': 'registry:page', 'content': t['css']}]
+        if t['js']:
+            files.append({'path': f"templates/{t['slug']}/{t['slug']}.js", 'type': 'registry:page', 'content': t['js']})
+        example = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', t['preview']).strip()
+        files.append({'path': f"templates/{t['slug']}/example.html", 'type': 'registry:page', 'content': example})
+        items.append({'name': t['slug'], 'type': 'registry:page', 'title': m['title'],
+                      'description': m['description'], 'categories': ['Templates'],
+                      'dependencies': m.get('blocks', []) + m.get('uses', []), 'files': files})
     for t in load_themes():
         items.append({'name': 'theme-' + t['name'], 'type': 'registry:theme', 'title': 'Theme: ' + t['label'],
                       'description': t['note'], 'categories': ['Themes'],
@@ -404,7 +443,7 @@ def registry_json(comps, blocks):
     return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui',
                        'homepage': 'https://kata-ui.dev', 'items': items}, ensure_ascii=False, indent=1)
 
-def llms_txt(comps, blocks, n_icons):
+def llms_txt(comps, blocks, n_icons, templates=None):
     lines = ['# KATA UI', '',
              '> Practical UI components in plain HTML, CSS and JavaScript. No framework, no build step. Every part is cast from a single design-token mold; copy the code and own it.', '',
              'KATA is framework-free: parts drop into plain HTML, Astro, Laravel, Django, Rails and templates unchanged. Components depend on tokens.css (design tokens) being loaded once.', '',
@@ -414,6 +453,8 @@ def llms_txt(comps, blocks, n_icons):
              '- [Registry](https://kata-ui.dev/registry.json): every component and block with its full CSS/JS/HTML, in the shadcn registry format',
              '- [Themes](https://kata-ui.dev/themes/): accent presets as small CSS files; a theme redefines the five accent tokens only',
              '- [Getting Started](https://kata-ui.dev/docs/getting-started/): load tokens.css once, then copy parts',
+             '- [Skill for AI assistants](https://kata-ui.dev/skill/SKILL.md): a packaged SKILL.md that teaches an assistant to build with KATA correctly',
+             '- [CLI](https://kata-ui.dev/docs/cli/): a zero-dependency Node script that installs parts from the registry — node kata-ui.mjs add button',
              '- [Theming](https://kata-ui.dev/docs/theming/) / [Dark Mode](https://kata-ui.dev/docs/dark-mode/): dark mode is data-theme="dark" on any container', '',
              '## Components', '']
     for c in comps:
@@ -421,10 +462,13 @@ def llms_txt(comps, blocks, n_icons):
     lines += ['', '## Blocks', '']
     for b in blocks:
         lines.append(f"- [{b['meta']['title']}](https://kata-ui.dev/blocks/{b['slug']}/): {b['meta']['description']}")
+    lines += ['', '## Templates', '']
+    for t in (templates or []):
+        lines.append(f"- [{t['meta']['title']}](https://kata-ui.dev/templates/{t['slug']}/): {t['meta']['description']}")
     lines.append('')
     return '\n'.join(lines)
 
-def llms_full(comps, blocks):
+def llms_full(comps, blocks, templates=None):
     out = ['# KATA UI — full text', '',
            'Vanilla UI components: HTML, CSS and JS for every part, plus the design tokens.', '',
            '## Design tokens (tokens.css)', '', '```css', (ROOT / 'tokens.css').read_text(encoding='utf-8').strip(), '```', '']
@@ -444,6 +488,14 @@ def llms_full(comps, blocks):
                 '### CSS (glue)', '', '```css', b['css'].strip(), '```', '']
         if b['js']:
             out += ['### JS', '', '```js', b['js'].strip(), '```', '']
+    for t in (templates or []):
+        m = t['meta']
+        example = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', t['preview']).strip()
+        out += [f"## Template: {m['title']} ({t['slug']})", '', m['description'], '',
+                'Built from: ' + ', '.join(m.get('blocks', []) + m.get('uses', [])), '', '### HTML', '', '```html', example, '```', '',
+                '### CSS (glue)', '', '```css', t['css'].strip(), '```', '']
+        if t['js']:
+            out += ['### JS', '', '```js', t['js'].strip(), '```', '']
     return '\n'.join(out)
 
 
@@ -633,6 +685,17 @@ ICONS_STYLE = """<style>
 .icstat b{color:var(--acc);font-weight:600}
 </style>"""
 
+BRAND_GENRES = [
+    ('Social & messaging', ['x', 'instagram', 'facebook', 'threads', 'tiktok', 'linkedin', 'slack', 'discord', 'telegram', 'whatsapp', 'line', 'messenger', 'reddit', 'bluesky', 'meta']),
+    ('Video & audio', ['youtube', 'twitch', 'netflix', 'spotify', 'soundcloud']),
+    ('AI', ['claude', 'gemini', 'openai', 'perplexity', 'mistral']),
+    ('Development', ['github', 'gitlab', 'bitbucket', 'stackoverflow', 'codepen', 'docker', 'npm']),
+    ('Frameworks & site tools', ['react', 'vue', 'tailwind', 'wordpress', 'figma', 'notion', 'framer', 'linear']),
+    ('Commerce & payments', ['shopify', 'stripe', 'paypal', 'mastercard']),
+    ('Platforms & browsers', ['apple', 'google', 'microsoft', 'android', 'chrome', 'safari', 'firefox']),
+    ('Cloud & hosting', ['vercel', 'netlify', 'cloudflare', 'supabase', 'firebase']),
+]
+
 def icons_page():
     import json as _json
     files = sorted((ROOT / 'icons').glob('*.svg'))
@@ -644,17 +707,29 @@ def icons_page():
         inline = raw.replace('<svg ', '<svg width="22" height="22" aria-hidden="true" ', 1)
         cells.append('<button class="iccell" type="button" data-icon="' + f.stem + '">' + inline + '<span class="nm">' + f.stem + '</span></button>')
     bfiles = sorted((ROOT / 'icons' / 'brands').glob('*.svg')) if (ROOT / 'icons' / 'brands').exists() else []
-    bcells = []
+    bmap = {}
     for f in bfiles:
         raw = f.read_text(encoding='utf-8').strip()
         data[f.stem] = raw
         inline = raw.replace('<svg ', '<svg width="22" height="22" aria-hidden="true" ', 1)
-        bcells.append('<button class="iccell" type="button" data-icon="' + f.stem + '">' + inline + '<span class="nm">' + f.stem.replace('brand-', '') + '</span></button>')
+        bmap[f.stem.replace('brand-', '')] = '<button class="iccell" type="button" data-icon="' + f.stem + '">' + inline + '<span class="nm">' + f.stem.replace('brand-', '') + '</span></button>'
     brand_section = ''
-    if bcells:
+    if bmap:
+        used = set()
+        groups = []
+        for gname, members in BRAND_GENRES:
+            cells = ''.join(bmap[m] for m in members if m in bmap)
+            for m in members:
+                if m in bmap:
+                    used.add(m)
+            if cells:
+                groups.append('<h3 style="font-size:15px;font-weight:600;letter-spacing:-.01em;margin:28px 0 0">' + gname + '</h3><div class="icgrid" style="margin-top:12px">' + cells + '</div>')
+        rest = ''.join(bmap[k] for k in sorted(bmap) if k not in used)
+        if rest:
+            groups.append('<h3 style="font-size:15px;font-weight:600;letter-spacing:-.01em;margin:28px 0 0">More marks</h3><div class="icgrid" style="margin-top:12px">' + rest + '</div>')
         brand_section = ('<h2 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin-top:38px">Brand marks</h2>'
-          '<p style="margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:64ch">' + str(len(bcells)) + ' marks for the places a product has to name: social links, sign-in buttons, integration grids. Brand marks belong to their owners and are here for nominative use only — using one does not imply endorsement, and they are never part of the KATA identity. They are also the one exception to the three-shape mold: a mark keeps its owner’s geometry.</p>'
-          '<div class="icgrid">' + ''.join(bcells) + '</div>')
+          '<p style="margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:64ch">' + str(len(bmap)) + ' marks, grouped by the job they do on a site: social links, sign-in buttons, integration grids, logo clouds. Brand marks belong to their owners and are here for nominative use only — using one does not imply endorsement, and they are never part of the KATA identity. They are also the one exception to the three-shape mold: a mark keeps its owner’s geometry.</p>'
+          + ''.join(groups))
     script = "<script>var ICONS=__DATA__;\ndocument.querySelectorAll('[data-icon]').forEach(function(b){b.addEventListener('click',function(){var n=b.dataset.icon;var done=function(){document.getElementById('icstat').innerHTML='<b>'+n+'</b> copied.';};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ICONS[n]).then(done,done);}else{done();}});});\n</script>".replace('__DATA__', _json.dumps(data))
     body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 2px stroke, round caps and joins. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center, the same mark that sits inside the Switch, the Radio and the logo. Click any icon to copy its SVG. For anything beyond this set, Lucide speaks the same mold (24 / 2 / round) and mixes in without a seam.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>" + brand_section + "\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
     return head('Icons — KATA UI', 'The KATA icon set: 24 grid, 2px stroke, click to copy the SVG.', ICONS_STYLE) + body
@@ -815,6 +890,151 @@ def block_detail(blocks, idx, comps):
     extra = f'<link rel="stylesheet" href="/blocks/{slug}/{slug}.css?v={_v(b["css"])}">'
     return head(f"{m['title']} — Blocks — KATA UI", m['description'], extra) + body
 
+
+def load_templates():
+    templates = []
+    tdir = ROOT / 'templates'
+    if not tdir.exists():
+        return templates
+    for d in sorted(tdir.iterdir()):
+        if not d.is_dir():
+            continue
+        meta = json.loads((d / 'meta.json').read_text(encoding='utf-8'))
+        slug = d.name
+        preview = (d / 'preview.html').read_text(encoding='utf-8')
+        css = (d / f'{slug}.css').read_text(encoding='utf-8')
+        js_file = d / f'{slug}.js'
+        js = js_file.read_text(encoding='utf-8') if js_file.exists() else None
+        templates.append(dict(slug=slug, meta=meta, preview=preview, css=css, js=js))
+    templates.sort(key=lambda t: t['meta']['title'])
+    return templates
+
+TPL_STYLE = """<style>
+.tk h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
+.tk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.tplcards{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.tplcard{border:1px solid var(--hair);border-radius:14px;background:#fff;color:var(--ink);display:block;overflow:hidden;position:relative}
+.tplcard .tplmeta h3 a{color:inherit;text-decoration:none}
+.tplcard .tplmeta h3 a::after{content:"";position:absolute;inset:0}
+.tplcard:hover{border-color:var(--ink3)}
+.tplthumb{height:190px;overflow:hidden;border-bottom:1px solid var(--hair);position:relative;background:var(--soft)}
+.tplscale{width:1080px;transform:scale(.306);transform-origin:top left;pointer-events:none}
+.tplmeta{padding:16px 18px 18px}
+.tplmeta h3{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:8px}
+.tplmeta p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75}
+.tplmeta .uses{margin-top:12px;display:flex;gap:5px;flex-wrap:wrap}
+.tplmeta .uses span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--hair);border-radius:99px;padding:2px 8px}
+.tplframe{border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff}
+.tplbar{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--hair);background:var(--soft)}
+.tpldots{display:flex;gap:6px}
+.tpldots i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
+.tplurl{font-family:var(--mono);font-size:11.5px;color:var(--ink2);background:#fff;border:1px solid var(--hair);border-radius:7px;padding:3px 12px}
+.tplstage{border:0;border-radius:0;max-height:none}
+</style>"""
+
+def templates_index(templates):
+    cards = []
+    for t in templates:
+        m = t['meta']
+        uses = ''.join(f'<span>{esc(u)}</span>' for u in m.get('blocks', []) + m.get('uses', []))
+        cards.append(f"""<article class="tplcard">
+  <div class="tplthumb"><div class="tplscale">{t['preview']}</div></div>
+  <div class="tplmeta">
+  <h3><a href="/templates/{t['slug']}/">{esc(m['title'])}</a> <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h3>
+  <p>{esc(m['description'])}</p>
+  <span class="uses">{uses}</span>
+  </div>
+</article>""")
+    body = f"""
+<div class="wrap tk">
+  <h1>Templates</h1>
+  <p class="lead">Whole pages, assembled. A template is a block that kept going — the app shell, the stats, the chart and the table already in their places. Copy the page the same way you copy a part, then take it apart with the catalog.</p>
+  <div class="tplcards">
+{''.join(cards)}
+  </div>
+</div>
+{FOOTER}
+</body>
+</html>"""
+    extra = TPL_STYLE + ''.join(f'<link rel="stylesheet" href="/templates/{t["slug"]}/{t["slug"]}.css?v={_v(t["css"])}">' for t in templates)
+    return head('Templates — KATA UI', 'Full pages composed from KATA parts and blocks: dashboards, inboxes, landing pages.', extra) + body
+
+def template_detail(templates, idx, comps, blocks):
+    t = templates[idx]
+    m = t['meta']
+    slug = t['slug']
+    display_html = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', t['preview']).strip()
+    tabs = [('HTML', display_html), ('CSS', t['css'])]
+    if t['js']:
+        tabs.append(('JS', t['js']))
+    def tab_btn(i, name):
+        on = ' class="on"' if i == 0 else ''
+        return f'<button data-tab="{name}"{on}>{name}</button>'
+    tab_btns = ''.join(tab_btn(i, name) for i, (name, _) in enumerate(tabs))
+    panes = ''.join(
+        f'<div class="pane{" on" if i == 0 else ""}" data-pane="{name}"><pre>{esc(code)}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div>'
+        for i, (name, code) in enumerate(tabs))
+    by_slug = {x['slug']: x for x in comps}
+    blk_by_slug = {x['slug']: x for x in blocks}
+    bits = []
+    if m.get('blocks'):
+        bits.append('Blocks: ' + ', '.join(f'<a href="/blocks/{u}/">{esc(blk_by_slug[u]["meta"]["title"])}</a>' for u in m['blocks'] if u in blk_by_slug))
+    if m.get('uses'):
+        bits.append('Parts: ' + ', '.join(f'<a href="/components/{u}/">{esc(by_slug[u]["meta"]["title"])}</a>' for u in m['uses'] if u in by_slug))
+    deps_html = f'<p class="deps">Built from: {" &middot; ".join(bits)} — include their CSS alongside this template.</p>' if bits else ''
+    prev_html = next_html = '<span style="flex:1"></span>'
+    if idx > 0:
+        pb = templates[idx - 1]
+        prev_html = f'<a href="/templates/{pb["slug"]}/"><span class="dir">Previous</span><div class="nm">{esc(pb["meta"]["title"])}</div></a>'
+    if idx < len(templates) - 1:
+        nb = templates[idx + 1]
+        next_html = f'<a class="next" href="/templates/{nb["slug"]}/"><span class="dir">Next</span><div class="nm">{esc(nb["meta"]["title"])}</div></a>'
+    scripts = ''
+    for u in m.get('uses', []):
+        cj = next((x['js'] for x in comps if x['slug'] == u), None)
+        if cj:
+            scripts += f'<script src="/components/{u}/{u}.js?v={_v(cj)}"></script>'
+    for u in m.get('blocks', []):
+        bj = next((x['js'] for x in blocks if x['slug'] == u), None)
+        if bj:
+            scripts += f'<script src="/blocks/{u}/{u}.js?v={_v(bj)}"></script>'
+    if t['js']:
+        scripts += f'<script src="/templates/{slug}/{slug}.js?v={_v(t["js"])}"></script>'
+    body = f"""
+<div class="wrap">
+  <main class="detail">
+    <p class="crumb"><a href="/templates/">Templates</a> / {esc(m['title'])}</p>
+    <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h1>
+    <p class="desc">{esc(m['description'])}</p>
+    <div class="stagebar">
+      <span class="lbl">Preview</span>
+      <span class="seg" data-seg="width"><button data-v="desktop" class="on">Desktop</button><button data-v="mobile">Mobile</button></span>
+      <span class="seg" data-seg="theme"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></span>
+    </div>
+    <div class="tplframe">
+      <div class="tplbar"><span class="tpldots"><i></i><i></i><i></i></span><span class="tplurl">{esc(m.get('url','example.com'))}</span></div>
+      <div class="stage col tplstage" id="stage">
+{t['preview']}
+      </div>
+    </div>
+    {deps_html}
+    <div class="codebox">
+      <div class="codetabs">{tab_btns}</div>
+      {panes}
+    </div>
+    <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
+    <div class="prevnext">{prev_html}{next_html}</div>
+  </main>
+</div>
+{FOOTER}
+{scripts}
+{DETAIL_JS}
+</body>
+</html>"""
+    extra = f'<link rel="stylesheet" href="/templates/{slug}/{slug}.css?v={_v(t["css"])}">' + TPL_STYLE
+    return head(f"{m['title']} — Templates — KATA UI", m['description'], extra) + body
+
+
 def load_themes():
     return json.loads((ROOT / 'system' / 'themes.json').read_text(encoding='utf-8'))
 
@@ -912,6 +1132,10 @@ DOCS = [
    [('Start with the tokens', 'Every part reads its color, spacing, radius and motion from one file. Load it once, before anything else:', '<link rel="stylesheet" href="https://kata-ui.dev/tokens.css">', 'That file is the mold. Parts never hard-code a color, so this one link is what makes the whole catalog look like one product.'),
     ('Copy a part', 'Open the part in Components and copy its three files: the HTML from the preview, the CSS, and the JS when it has one. Paste them into your project as they are. There is no install step and no package to keep updated — the code becomes yours, which is the point.', None, 'If the part says "Uses:" under its preview, it builds on another part (a Modal on Buttons, a Command palette on Kbd). Include that part\u2019s CSS too; the page names it.'),
     ('Works anywhere HTML does', 'Plain HTML files, Astro, Laravel Blade, Django and Rails templates, WordPress themes. If it renders HTML, KATA parts drop in unchanged — no framework island, no build plugin, no runtime.', None, 'For AI tools and installers, the whole catalog is also published as registry.json in the shadcn registry format, and as llms.txt for models that read the web.')]),
+  ('cli', 'CLI', 'Install parts from your terminal instead of copy-pasting.',
+   [('Get the CLI', 'The CLI is a single Node file with no dependencies (Node 18+). Download it once and keep it anywhere:', 'curl -fsSL https://kata-ui.dev/cli/kata-ui.mjs -o kata-ui.mjs\nnode kata-ui.mjs list', 'It reads the same registry.json this site publishes for AI tools — the CLI is a friendlier reader of the same catalog. An npm package is on the way; the single file is the whole thing either way.'),
+    ('Add parts', 'init writes the design tokens. add writes a part — and everything it depends on — into ./kata by default:', 'node kata-ui.mjs init\nnode kata-ui.mjs add button select\nnode kata-ui.mjs add login', 'Blocks and templates install the same way: add dashboard writes the whole page. Theme presets too — add indigo writes the theme CSS. Pass --dir to choose another folder.'),
+    ('Then load the files', 'Link tokens.css first, then the part CSS, and paste the HTML in as it is:', '<link rel="stylesheet" href="kata/tokens.css">\n<link rel="stylesheet" href="kata/components/button/button.css">', 'Nothing phones home and nothing updates itself afterwards: the files are yours, like a copy-paste that typed itself.')]),
   ('theming', 'Theming', 'Change the tokens, not the parts.',
    [('One surface', 'Parts reference only var(--k-…) tokens. To restyle everything, redefine tokens after tokens.css loads — never edit a part\u2019s CSS. An accent change is five lines:', ':root{ --k-accent:#4f46e5; --k-accent-ink:#4338ca; --k-accent-bg:rgba(79,70,229,.08); --k-accent-bg-strong:rgba(79,70,229,.1); --k-accent-line:rgba(79,70,229,.18); }', 'The Themes page ships five presets in exactly this form, each as a small CSS file you can download or copy.'),
     ('Shape and motion are tokens too', 'Radius (--k-radius, --k-radius-lg), durations (--k-dur-1…3) and the easing curve are tokens. Tighten the whole product by tightening the mold; loosen one part and it stops matching its siblings.', None, 'One token is off-limits by design: --k-core, the vermillion at the center of active controls. It is the signature, not a setting.')]),
@@ -966,7 +1190,9 @@ DOCS = [
     ('Why no npm package?', 'Because the package would become the product, and the product is the code in your repo. The one-file bundle and the starter kit cover the “just give me everything” case without a dependency. If a package ever ships, it will be a mirror of these files, never the source of truth.', None, None),
     ('Who makes this?', 'One person, in the open, with the mold as the second pair of hands. The repository holds the parts, the checker, and the standard they are built to — issues and corrections are welcome there.', None, None)]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — The catalog fills in', 'Seventy-six components and thirteen blocks. New: Date Picker, Combobox, File Upload, Tag Input, Context Menu, Tree, Data Table, Color Picker, Split Panel, Scroll Area, Aspect Ratio, Toggle, and the Scatter, Radar and Funnel charts plus Sparkline. Blocks gained FAQ, Site Header, Site Footer, Testimonials, CTA Band and Logo Cloud. Installation becomes a real thing: the one-file bundle (kata-ui.css / kata-ui.js), the starter kit, and an Installation doc. The landing page now assembles its showcase from live parts, and the mobile overflow bugs reported on day one are fixed.', None, None),
+   [('November 2, 2026 — CLI, brand marks, wagara', 'The catalog is installable from a terminal now: a zero-dependency Node CLI (node kata-ui.mjs add button) reads registry.json and writes parts, blocks, templates and themes — dependencies included — into your project. Brand marks grew from 12 to 56, grouped by job (social, AI, development, commerce, platforms, cloud) on the Icons page, and the Integrations block grew to 18 tiles. Aurora learned three wagara textures — Seigaiha, Asanoha and Ichimatsu — as drifting line patterns under the wash, in its Examples. The site menu is labeled Menu and lists blocks, templates and docs next to the components.', None, None),
+    ('November 2, 2026 — Templates arrive', 'The catalog grows a third shelf: Templates — whole pages composed from parts and blocks, starting with a Dashboard page (sidebar, stat row, revenue chart, sortable orders table). The site navigation, search and registry now carry templates as first-class items (registry:page), and the landing page counts five genres.', None, None),
+   ('November 2, 2026 — The catalog fills in', 'Seventy-six components and thirteen blocks. New: Date Picker, Combobox, File Upload, Tag Input, Context Menu, Tree, Data Table, Color Picker, Split Panel, Scroll Area, Aspect Ratio, Toggle, and the Scatter, Radar and Funnel charts plus Sparkline. Blocks gained FAQ, Site Header, Site Footer, Testimonials, CTA Band and Logo Cloud. Installation becomes a real thing: the one-file bundle (kata-ui.css / kata-ui.js), the starter kit, and an Installation doc. The landing page now assembles its showcase from live parts, and the mobile overflow bugs reported on day one are fixed.', None, None),
     ('November 1, 2026 — Launch', 'KATA UI opens with 46 components in six groups, 5 blocks, 150 icons and 12 brand marks, the design-system tokens with light and dark themes, five accent themes, and the AI distribution files (registry.json, llms.txt). Every part is checked against the mold before it ships: required files, token-only colors, class coverage, icon geometry.', None, None)]),
 
 ]
@@ -1027,15 +1253,28 @@ def doc_page(slug):
 def main():
     comps = load_components()
     blocks = load_blocks()
+    templates = load_templates()
     n_icons = len(list((ROOT / 'icons').glob('*.svg')))
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
+    _cl = ROOT / 'cli'
+    if _cl.exists():
+        (DIST / 'cli').mkdir(exist_ok=True)
+        for _f in _cl.iterdir():
+            if _f.is_file():
+                shutil.copy(_f, DIST / 'cli' / _f.name)
     shutil.copy(ROOT / 'tokens.css', DIST / 'tokens.css')
+    _sk = ROOT / 'skill'
+    if _sk.exists():
+        (DIST / 'skill').mkdir(exist_ok=True)
+        for _f in _sk.iterdir():
+            if _f.is_file():
+                shutil.copy(_f, DIST / 'skill' / _f.name)
     shutil.copy(ROOT / 'logo' / 'favicon.svg', DIST / 'favicon.svg')
     shutil.copy(ROOT / 'logo' / 'logo.svg', DIST / 'logo.svg')
     shutil.copy(ROOT / 'site.css', DIST / 'site.css')
-    (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons), comps, None), encoding='utf-8')
+    (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons, templates), comps, None), encoding='utf-8')
     cdir = DIST / 'components'
     cdir.mkdir()
     (cdir / 'index.html').write_text(emit(components_index(comps), comps, None), encoding='utf-8')
@@ -1073,9 +1312,20 @@ def main():
             if f.is_file():
                 shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(block_detail(blocks, i, comps), comps, None), encoding='utf-8')
-    (DIST / 'registry.json').write_text(registry_json(comps, blocks), encoding='utf-8')
-    (DIST / 'llms.txt').write_text(llms_txt(comps, blocks, n_icons), encoding='utf-8')
-    (DIST / 'llms-full.txt').write_text(llms_full(comps, blocks), encoding='utf-8')
+    tpdir = DIST / 'templates'
+    tpdir.mkdir(exist_ok=True)
+    (tpdir / 'index.html').write_text(emit(templates_index(templates), comps, None), encoding='utf-8')
+    for i, t in enumerate(templates):
+        src = ROOT / 'templates' / t['slug']
+        dst = tpdir / t['slug']
+        dst.mkdir(exist_ok=True)
+        for f in src.iterdir():
+            if f.is_file():
+                shutil.copy(f, dst / f.name)
+        (dst / 'index.html').write_text(emit(template_detail(templates, i, comps, blocks), comps, None), encoding='utf-8')
+    (DIST / 'registry.json').write_text(registry_json(comps, blocks, templates), encoding='utf-8')
+    (DIST / 'llms.txt').write_text(llms_txt(comps, blocks, n_icons, templates), encoding='utf-8')
+    (DIST / 'llms-full.txt').write_text(llms_full(comps, blocks, templates), encoding='utf-8')
     themes = load_themes()
     tdir = DIST / 'themes'
     tdir.mkdir(exist_ok=True)
@@ -1098,6 +1348,9 @@ def main():
     for _b in blocks:
         if _b.get('css'):
             _css.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n' + _b['css'])
+    for _t in templates:
+        if _t.get('css'):
+            _css.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n' + _t['css'])
     bundle_css = '\n'.join(_css)
     (DIST / 'kata-ui.css').write_text(bundle_css, encoding='utf-8')
     _js = ['/* KATA UI behavior bundle - each part in its own scope. Load at the end of <body>. Parts whose markup is absent stay inert. */']
@@ -1107,6 +1360,9 @@ def main():
     for _b in blocks:
         if _b.get('js'):
             _js.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n(function(){\n' + _b['js'] + '\n})();')
+    for _t in templates:
+        if _t.get('js'):
+            _js.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n(function(){\n' + _t['js'] + '\n})();')
     bundle_js = '\n'.join(_js)
     (DIST / 'kata-ui.js').write_text(bundle_js, encoding='utf-8')
     import zipfile as _zf
@@ -1136,7 +1392,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/themes/', '/docs/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

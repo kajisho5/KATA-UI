@@ -1,0 +1,22 @@
+{
+ "title": "Inbox",
+ "description": "A mail client page in three panes: folders and labels, a message list with unread states, and a reading pane with a reply box — composed from KATA parts.",
+ "tags": [
+  "inbox",
+  "mail",
+  "app",
+  "page"
+ ],
+ "status": "beta",
+ "uses": [
+  "avatar",
+  "badge",
+  "button",
+  "input",
+  "textarea",
+  "separator"
+ ],
+ "blocks": [],
+ "url": "mail.acme.studio/inbox",
+ "usage": "Three panes, one page. The folder rail and the message rows are page glue; the avatars, badges, buttons, search input and reply textarea are catalog parts. Rows carry two states worth keeping when you wire real data: .sel for the open message and .unread for the bold subject and dot. Below 900px the reading pane steps aside, the way mail apps do."
+}

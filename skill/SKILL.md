@@ -1,0 +1,50 @@
+---
+name: kata-ui
+description: Build web UI with KATA UI — practical components, blocks and full-page templates in plain HTML, CSS and JavaScript (no framework, no build step). Use when the user wants pages or interfaces built with KATA parts, or asks for vanilla / framework-free UI code.
+---
+
+# Building with KATA UI
+
+KATA UI (https://kata-ui.dev) is a copy-paste library: every part is plain
+HTML + CSS + (sometimes) vanilla JS, cast from one design-token mold.
+There is nothing to install and no framework to adopt.
+
+## Sources of truth (fetch, don't guess)
+
+- Catalog index for models: https://kata-ui.dev/llms.txt
+- Everything, full text: https://kata-ui.dev/llms-full.txt
+- Machine-readable registry (shadcn format, code inline):
+  https://kata-ui.dev/registry.json
+- Design tokens: https://kata-ui.dev/design-system/ (tokens.json is linked there)
+
+Fetch the part's real code from the registry or its page
+(https://kata-ui.dev/components/<slug>/, /blocks/<slug>/, /templates/<slug>/)
+and paste it verbatim as the starting point. Never re-invent a part's markup
+from memory — class names are the API.
+
+## Assembly rules
+
+1. Load `tokens.css` once (or the one-file bundle `kata-ui.css` /
+   `kata-ui.js` from the Installation doc). Every part reads its colors,
+   spacing, radius and motion from the `--k-` tokens.
+2. A part's page lists the other parts it depends on ("Built from") —
+   include their CSS too. Blocks compose parts; templates compose blocks
+   and parts. Prefer composing existing parts over writing new markup.
+3. Dark mode is `data-theme="dark"` on any container. Themes only change
+   the five accent tokens.
+4. Behavior is progressive: scripts layer onto real markup (dialog,
+   details, native inputs). If a part has a JS file, include it after the
+   markup.
+5. Icons are SVGs on a 24 grid, stroke-width 2, round caps, `currentColor`.
+   The icon set is at https://kata-ui.dev/icons/ — click-to-copy there;
+   Lucide icons mix in without a seam.
+
+## House discipline (keep the mold)
+
+- Colors come from tokens only — no raw hex values in new CSS.
+- The vermilion core color (`--k-core`, #eb471f) appears only at the
+  center of active controls, the logo core and chart end points.
+  Never use it for surfaces, text or decoration.
+- One accent (teal by default). Zinc carries the neutrals.
+- Fictional placeholder content in examples: invented people, companies
+  and numbers — never a real client's data.

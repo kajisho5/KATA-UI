@@ -1,11 +1,24 @@
-.k-converge{width:100%;position:relative;border-radius:14px;background:var(--k-zinc-950);overflow:hidden;min-height:196px;display:grid;place-items:center;font-family:var(--k-font)}
+.k-converge{width:100%;position:relative;border-radius:14px;background:var(--k-zinc-950);overflow:hidden;min-height:196px;font-family:var(--k-font)}
 .k-converge .src{position:absolute;left:16px;top:50%;transform:translateY(-50%);display:grid;gap:7px;z-index:3}
-.k-converge .src span{display:flex;gap:6px;align-items:center;background:color-mix(in srgb,var(--k-on-color) 10%,transparent);border:1px solid color-mix(in srgb,var(--k-on-color) 28%,transparent);color:var(--k-on-color);backdrop-filter:blur(6px);font-size:11px;padding:5px 9px;border-radius:7px}
-.k-converge .stream{position:absolute;left:-12%;top:50%;width:64%;height:88px;border-radius:50%;filter:blur(16px);display:block}
-.k-converge .s1{transform:translateY(-88%) rotate(-7deg);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--k-accent) 70%,transparent),color-mix(in srgb,var(--k-on-color) 65%,transparent));animation:k-conv 3.4s var(--k-ease) infinite alternate}
-.k-converge .s2{transform:translateY(-12%) rotate(5deg);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--k-accent) 55%,transparent),color-mix(in srgb,var(--k-on-color) 45%,transparent));animation:k-conv 3.4s var(--k-ease) .7s infinite alternate-reverse}
-.k-converge .glow{position:absolute;left:50%;top:50%;width:200px;height:200px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--k-accent) 60%,transparent),transparent 65%);animation:k-conv-pulse 3.4s var(--k-ease) infinite alternate}
-.k-converge-tile{position:relative;z-index:2;width:64px;height:64px;border-radius:16px;background:var(--k-bg);display:grid;place-items:center;color:var(--k-ink);box-shadow:0 0 46px color-mix(in srgb,var(--k-accent) 55%,transparent)}
-@keyframes k-conv{from{opacity:.55;margin-left:0}to{opacity:1;margin-left:26px}}
-@keyframes k-conv-pulse{from{transform:translate(-50%,-50%) scale(.92);opacity:.7}to{transform:translate(-50%,-50%) scale(1.12);opacity:1}}
-@media (prefers-reduced-motion:reduce){.k-converge .stream,.k-converge .glow{animation:none}}
+.k-converge .src>span{display:flex;gap:6px;align-items:center;background:color-mix(in srgb,var(--k-on-color) 10%,transparent);border:1px solid color-mix(in srgb,var(--k-on-color) 28%,transparent);backdrop-filter:blur(6px);font-size:11px;padding:5px 9px;border-radius:7px}
+.k-converge .src .lb{color:var(--k-on-color)}
+.k-converge .beams{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
+.k-converge .beam{fill:none;stroke-width:1.8;stroke-linecap:round}
+.k-converge .beam-bg{fill:none;stroke-width:6;stroke-linecap:round;opacity:.14}
+.k-converge .b1{stroke:hsl(335 85% 68%)}
+.k-converge .b2{stroke:hsl(32 95% 60%)}
+.k-converge .b3{stroke:hsl(205 90% 63%)}
+.k-converge .dot .core{fill:var(--k-on-color)}
+.k-converge .dot.d1 .halo{fill:hsl(335 85% 68%);opacity:.45}
+.k-converge .dot.d2 .halo{fill:hsl(32 95% 60%);opacity:.45}
+.k-converge .dot.d3 .halo{fill:hsl(205 90% 63%);opacity:.45}
+.k-converge .glow{position:absolute;left:58%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 38% 32%,color-mix(in srgb,hsl(335 85% 68%) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,hsl(205 90% 63%) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%);animation:k-conv-pulse 3.4s var(--k-ease) infinite alternate;display:block}
+.k-converge .spark{position:absolute;z-index:2;display:grid;place-items:center;color:var(--k-on-color);animation:k-conv-tw 2.2s ease-in-out infinite alternate}
+.k-converge .sp1{left:48%;top:20%}
+.k-converge .sp2{left:67%;top:28%;animation-delay:.5s}
+.k-converge .sp3{left:65%;top:64%;animation-delay:1.1s}
+.k-converge .sp4{left:46%;top:60%;animation-delay:1.6s}
+.k-converge-tile{position:absolute;left:58%;top:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;border-radius:16px;background:var(--k-bg);display:grid;place-items:center;color:var(--k-ink);box-shadow:0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent)}
+@keyframes k-conv-tw{from{opacity:.15;transform:scale(.55) rotate(0deg)}to{opacity:1;transform:scale(1.05) rotate(18deg)}}
+@keyframes k-conv-pulse{from{transform:translate(-50%,-50%) scale(.94);opacity:.75}to{transform:translate(-50%,-50%) scale(1.1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.k-converge .glow,.k-converge .spark{animation:none}.k-converge .dot{display:none}}

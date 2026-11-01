@@ -1,0 +1,26 @@
+{
+ "title": "Landing Page",
+ "description": "A product landing page assembled entirely from blocks: site header, an aurora hero, logo cloud, testimonials, pricing with its billing toggle, FAQ, a call-to-action band and the site footer.",
+ "tags": [
+  "landing",
+  "marketing",
+  "page"
+ ],
+ "status": "beta",
+ "uses": [
+  "aurora",
+  "button",
+  "badge"
+ ],
+ "blocks": [
+  "site-header",
+  "logo-cloud",
+  "testimonials",
+  "pricing",
+  "faq",
+  "cta-band",
+  "site-footer"
+ ],
+ "url": "acme.studio",
+ "usage": "This template is the blocks, verbatim — open any block's own page to copy just that section. Only the hero and the page rhythm (section width and spacing) are template glue. The pricing toggle and the header's mobile menu keep their block scripts; include them alongside. Swap the fictional copy and the Acme name, and the page is yours."
+}

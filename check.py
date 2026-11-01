@@ -84,6 +84,7 @@ def check_component(d):
 
 
 REQUIRED_META_BLOCK = ['title', 'description', 'tags', 'status', 'uses', 'usage']
+REQUIRED_META_TEMPLATE = ['title', 'description', 'tags', 'status', 'uses', 'blocks', 'usage']
 
 def check_block(d, comp_slugs):
     slug = d.name
@@ -153,6 +154,79 @@ def check_block(d, comp_slugs):
             errs.append('js: no imports — a block must be self-contained')
     return errs
 
+def check_template(d, comp_slugs, block_slugs):
+    slug = d.name
+    errs = []
+    meta_f = d / 'meta.json'
+    prev_f = d / 'preview.html'
+    css_f = d / f'{slug}.css'
+    for f, label in [(meta_f, 'meta.json'), (prev_f, 'preview.html'), (css_f, f'{slug}.css')]:
+        if not f.exists():
+            errs.append(f'missing file: {label}')
+    if errs:
+        return errs
+    try:
+        meta = json.loads(meta_f.read_text(encoding='utf-8'))
+    except Exception as e:
+        return [f'meta.json is not valid JSON: {e}']
+    for k in REQUIRED_META_TEMPLATE:
+        if k not in meta:
+            errs.append(f'meta.{k} missing')
+    if meta.get('status') not in ('stable', 'beta'):
+        errs.append('meta.status must be stable or beta')
+    for u in meta.get('uses', []):
+        if u not in comp_slugs:
+            errs.append(f'meta.uses: unknown component {u}')
+    for u in meta.get('blocks', []):
+        if u not in block_slugs:
+            errs.append(f'meta.blocks: unknown block {u}')
+    css = css_f.read_text(encoding='utf-8')
+    for m in HEX.finditer(css):
+        if m.group(0).lower() not in ('#000', '#000000', '#fff', '#ffffff'):
+            errs.append(f'css: raw hex color {m.group(0)} — use a --k- token')
+    for m in RGBA.finditer(css):
+        if tuple(int(x) for x in m.groups()) not in ALLOWED_RGBA:
+            errs.append(f'css: raw rgba color {m.group(0)}...) — hue must come from a --k- token')
+    prev = prev_f.read_text(encoding='utf-8')
+    for m in HEX.finditer(prev):
+        errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
+    for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
+        if 'viewBox="0 0 24 24"' not in svg_m.group(0).split('>', 1)[0]:
+            continue
+        for m in re.finditer(r'stroke-width="([0-9.]+)"', svg_m.group(0)):
+            if m.group(1) != '2':
+                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
+    if re.search(r'<script', prev):
+        errs.append('preview: <script> belongs in the .js file, not preview.html')
+    defined = set(re.findall(r'\.([a-zA-Z][\w-]*)', css))
+    linked = {}
+    for m in re.finditer(r'href="(?:\.\./|/)(components|blocks)/([a-z0-9-]+)/\2\.css"', prev):
+        kind, dep = m.group(1), m.group(2)
+        linked[dep] = kind
+        dep_css = ROOT / kind / dep / f'{dep}.css'
+        if dep_css.exists():
+            defined |= set(re.findall(r'\.([a-zA-Z][\w-]*)', dep_css.read_text(encoding='utf-8')))
+    for u in meta.get('uses', []) + meta.get('blocks', []):
+        if u not in linked:
+            errs.append(f'meta: {u} is used but its CSS is not linked in preview.html')
+    used = set()
+    for attr in re.findall(r'class="([^"]+)"', prev):
+        used |= set(attr.split())
+    for cls in sorted(used - defined):
+        errs.append(f'preview: class .{cls} is not defined in this template or its linked parts')
+    for label, text in (('css', css), ('preview', prev)):
+        local = DEFINED_TOKENS | set(re.findall(r'@property\s+(--k-[a-z0-9-]+)', css))
+        for v in set(re.findall(r'var\((--k-[a-z0-9-]+)\)', text)):
+            if v not in local:
+                errs.append(f'{label}: var({v}) is not defined in tokens.css')
+    js_f = d / f'{slug}.js'
+    if js_f.exists():
+        js = js_f.read_text(encoding='utf-8')
+        if re.search(r'\bimport\b|require\(', js):
+            errs.append('js: no imports — a template must be self-contained')
+    return errs
+
+
 def main():
     args = sys.argv[1:]
     dirs = [ROOT / 'components' / a for a in args] if args else sorted((ROOT / 'components').iterdir())
@@ -187,6 +261,25 @@ def main():
                 print(f'OK  block:{d.name}')
         print(f'{len(bdirs) - bbad}/{len(bdirs)} blocks pass the mold')
         bad += bbad
+    tdir = ROOT / 'templates'
+    if tdir.exists() and not args:
+        comp_slugs = {d.name for d in (ROOT / 'components').iterdir() if d.is_dir()}
+        block_slugs = {d.name for d in (ROOT / 'blocks').iterdir() if d.is_dir()} if (ROOT / 'blocks').exists() else set()
+        tdirs = sorted(tdir.iterdir())
+        tbad = 0
+        for d in tdirs:
+            if not d.is_dir():
+                continue
+            errs = check_template(d, comp_slugs, block_slugs)
+            if errs:
+                tbad += 1
+                print(f'NG  template:{d.name}')
+                for e in errs:
+                    print(f'    - {e}')
+            else:
+                print(f'OK  template:{d.name}')
+        print(f'{len(tdirs) - tbad}/{len(tdirs)} templates pass the mold')
+        bad += tbad
     sys.exit(1 if bad else 0)
 
 if __name__ == '__main__':

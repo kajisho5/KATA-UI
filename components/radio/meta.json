@@ -1,0 +1,13 @@
+{
+  "title": "Radio group",
+  "category": "Form & Input",
+  "description": "One choice from a visible set. The dot scales in; nothing else moves.",
+  "tags": [
+    "form",
+    "choice",
+    "single"
+  ],
+  "status": "beta",
+  "usage": "Use when all options deserve to be seen (2–5). For longer lists use Select. Group with fieldset/legend.",
+  "a11y": "Native radio inputs share one name, so arrow keys move the choice. The visible circle is styled on the real input."
+}

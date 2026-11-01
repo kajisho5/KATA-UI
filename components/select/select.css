@@ -1,0 +1,9 @@
+/* KATA Select — native <select>, token-styled. No JS. */
+.k-select{position:relative;display:inline-block}
+.k-select select{appearance:none;-webkit-appearance:none;height:38px;max-width:100%;padding:0 32px 0 12px;border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);font-size:13.5px;cursor:pointer;transition:border-color .15s}
+.k-select select:hover{border-color:var(--k-border-strong)}
+.k-select select:focus-visible{outline:none;border-color:var(--k-ink);box-shadow:var(--k-ring)}
+.k-select select:disabled{opacity:.5;cursor:not-allowed}
+.k-select svg{position:absolute;right:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--k-ink-3)}
+.k-select[data-size="sm"] select{height:32px;font-size:12.5px}
+.k-select[data-size="lg"] select{height:44px;font-size:14px}

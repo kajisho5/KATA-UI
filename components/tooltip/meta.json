@@ -1,0 +1,14 @@
+{
+  "title": "Tooltip",
+  "category": "Overlays & Dialogs",
+  "description": "A label that appears on hover and focus, in ink black. Pure CSS — no positioning library, no JS.",
+  "tags": [
+    "hint",
+    "hover",
+    "label",
+    "no-js"
+  ],
+  "status": "beta",
+  "usage": "For naming icon buttons and shortening explanations. Never for essential information — if it matters, write it on the page. Keep it under five words.",
+  "a11y": "The trigger must be focusable so the tooltip appears on keyboard focus too. The tooltip text duplicates the accessible name; it never replaces it."
+}

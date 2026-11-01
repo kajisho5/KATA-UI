@@ -1,0 +1,13 @@
+{
+  "title": "Separator",
+  "category": "Layout & Navigation",
+  "description": "A hairline that divides without decorating. Plain, labelled, and vertical forms.",
+  "tags": [
+    "divider",
+    "rule",
+    "hr"
+  ],
+  "status": "beta",
+  "usage": "To separate groups, not to fill space. If everything needs a separator, the grouping is wrong. The labelled form is for alternatives (OR) and section breaks in forms.",
+  "a11y": "Use role=\"separator\" on the plain form when it carries meaning; purely visual separators are aria-hidden."
+}

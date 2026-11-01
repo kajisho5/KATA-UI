@@ -1,0 +1,14 @@
+{
+  "title": "Marquee",
+  "category": "Motion",
+  "description": "An endless, even loop. Pauses when you reach for it; fades at both edges.",
+  "tags": [
+    "loop",
+    "scroll",
+    "logos",
+    "ticker"
+  ],
+  "status": "beta",
+  "usage": "For logo rows and quiet tickers. The track holds the content twice; the second copy is aria-hidden. Speed is the animation duration — slower reads calmer.",
+  "a11y": "The duplicated half is aria-hidden so screen readers hear the list once. Motion stops under prefers-reduced-motion."
+}

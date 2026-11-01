@@ -1,0 +1,14 @@
+{
+  "title": "Stat",
+  "category": "Display & Media",
+  "description": "One number, its name, and which way it moved. Tabular figures, quiet deltas.",
+  "tags": [
+    "metric",
+    "dashboard",
+    "kpi",
+    "number"
+  ],
+  "status": "beta",
+  "usage": "For dashboards and summaries. One stat per idea; the delta always names its period in the label or title. Green means better, not just up.",
+  "a11y": "The delta's direction is in the text (the arrow and the sign), never color alone."
+}

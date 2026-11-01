@@ -1,0 +1,13 @@
+{
+  "title": "Progress",
+  "category": "Feedback & Status",
+  "description": "A thin bar that tells the truth: how much is done, in ink or in the one accent.",
+  "tags": [
+    "bar",
+    "upload",
+    "completion"
+  ],
+  "status": "beta",
+  "usage": "Determinate work only — uploads, exports, steps. The percentage in mono type next to the bar is part of the component, not decoration.",
+  "a11y": "role=\"progressbar\" with aria-valuenow/min/max. Keep the visible percentage in sync with the value."
+}

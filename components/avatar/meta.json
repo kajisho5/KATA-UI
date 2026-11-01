@@ -1,0 +1,13 @@
+{
+  "title": "Avatar",
+  "category": "Display & Media",
+  "description": "Initials first, photo when there is one. Three sizes, a status dot, and a stacking group.",
+  "tags": [
+    "user",
+    "profile",
+    "initials"
+  ],
+  "status": "beta",
+  "usage": "Initials are the default — they never 404. Use the group for teams; cap it at 4 faces plus a count chip.",
+  "a11y": "Decorative avatars are aria-hidden; meaningful ones carry the person's name as alt text or aria-label."
+}

@@ -1,0 +1,5 @@
+/* KATA Skeleton */
+.k-sk{display:block;border-radius:var(--k-radius-sm);background:linear-gradient(90deg,var(--k-bg-soft) 25%,var(--k-line) 50%,var(--k-bg-soft) 75%);background-size:200% 100%;animation:k-shimmer 1.4s ease-in-out infinite}
+.k-sk-circle{border-radius:50%}
+@keyframes k-shimmer{0%{background-position:120% 0}100%{background-position:-80% 0}}
+@media (prefers-reduced-motion: reduce){.k-sk{animation:none}}

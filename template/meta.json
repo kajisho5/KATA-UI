@@ -1,0 +1,13 @@
+{
+  "title": "Component Name",
+  "category": "Display",
+  "description": "One sentence, in English, saying what it is and when it shines.",
+  "tags": ["tag1", "tag2"],
+  "status": "beta",
+  "stage": "row",
+  "keywords": ["vanilla css component name"],
+  "since": "YYYY-MM-DD",
+  "pro": false,
+  "usage": "Where to use it, and what not to use it for. One to three sentences.",
+  "a11y": "Keyboard behavior, focus treatment and aria specifics. Be concrete."
+}

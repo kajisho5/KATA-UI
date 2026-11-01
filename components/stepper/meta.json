@@ -1,0 +1,13 @@
+{
+  "title": "Stepper",
+  "category": "Form & Input",
+  "description": "A number with minus and plus on either side, cast as one control. Bounds are enforced, not suggested.",
+  "tags": [
+    "number",
+    "quantity",
+    "increment"
+  ],
+  "status": "beta",
+  "usage": "For small integer quantities — seats, copies, nights. For typing a number directly, use Input type=number instead.",
+  "a11y": "Real buttons with aria-labels; the value is an <output> with aria-live so changes are announced. Buttons disable at the bounds."
+}

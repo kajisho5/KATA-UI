@@ -1,0 +1,14 @@
+{
+  "title": "Spotlight",
+  "category": "Motion",
+  "description": "A soft light that follows the cursor across a card's surface. Nothing moves but the light.",
+  "tags": [
+    "hover",
+    "glow",
+    "card",
+    "cursor"
+  ],
+  "status": "beta",
+  "usage": "For feature grids and plan cards that should feel alive without moving. The light is the accent at low strength; the content never shifts.",
+  "a11y": "Decoration only — it never appears on touch or keyboard, and nothing depends on it. The card works identically without the script."
+}

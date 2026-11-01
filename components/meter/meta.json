@@ -1,0 +1,14 @@
+{
+  "title": "Meter",
+  "category": "Feedback & Status",
+  "description": "A measured level with a tick scale — storage, capacity, load. The scale is part of the component.",
+  "tags": [
+    "gauge",
+    "level",
+    "capacity",
+    "scale"
+  ],
+  "status": "beta",
+  "usage": "For a value that has a limit and a meaning at a glance. Tones: default ink, warning amber, critical red. If there is no limit, it is not a meter — use Progress for work being done.",
+  "a11y": "role=\"meter\" with aria-valuenow/min/max and a label. The visible number next to it carries the same information as the bar."
+}

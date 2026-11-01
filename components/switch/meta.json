@@ -1,0 +1,13 @@
+{
+  "title": "Switch",
+  "category": "Form & Input",
+  "description": "A real checkbox underneath, so it works with no JS at all. Teal variant included.",
+  "tags": [
+    "toggle",
+    "form",
+    "settings"
+  ],
+  "status": "stable",
+  "usage": "For settings that take effect immediately. For choices applied on submit, use a Checkbox instead.",
+  "a11y": "It is a native checkbox: keyboard, focus and screen readers work out of the box. The clickable area includes the label text."
+}

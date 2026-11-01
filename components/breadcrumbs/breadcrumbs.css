@@ -1,0 +1,7 @@
+/* KATA Breadcrumbs */
+.k-crumbs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;font-family:var(--k-font);list-style:none}
+.k-crumbs li{display:flex;align-items:center;gap:8px}
+.k-crumbs a{color:var(--k-ink-2);text-decoration:none}
+.k-crumbs a:hover{color:var(--k-ink);text-decoration:underline;text-underline-offset:3px}
+.k-crumbs svg{color:var(--k-ink-3);flex:none}
+.k-crumbs [aria-current="page"]{color:var(--k-ink);font-weight:550}

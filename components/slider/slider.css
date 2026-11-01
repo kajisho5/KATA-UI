@@ -1,0 +1,9 @@
+/* KATA Slider */
+.k-slider{-webkit-appearance:none;appearance:none;width:100%;height:20px;background:transparent;cursor:pointer;--p:50%}
+.k-slider::-webkit-slider-runnable-track{height:4px;border-radius:var(--k-radius-full);background:linear-gradient(90deg,var(--k-ink) var(--p),var(--k-track) var(--p))}
+.k-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:-6px;border-radius:50%;background:radial-gradient(circle at center,var(--k-core) 0 2.5px,var(--k-knob) 3.2px);border:1.5px solid var(--k-border-strong);box-shadow:0 1px 2px rgba(16,24,40,.18)}
+.k-slider::-moz-range-track{height:4px;border-radius:var(--k-radius-full);background:var(--k-track)}
+.k-slider::-moz-range-progress{height:4px;border-radius:var(--k-radius-full);background:var(--k-ink)}
+.k-slider::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at center,var(--k-core) 0 2.5px,var(--k-knob) 3.2px);border:1.5px solid var(--k-border-strong);box-shadow:0 1px 2px rgba(16,24,40,.18)}
+.k-slider:focus-visible{outline:none}
+.k-slider:focus-visible::-webkit-slider-thumb{box-shadow:var(--k-ring)}

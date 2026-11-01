@@ -1,0 +1,13 @@
+{
+  "title": "Input",
+  "category": "Form & Input",
+  "description": "Labels, helper text, error states and a search variant. A focus ring wraps the field.",
+  "tags": [
+    "form",
+    "text",
+    "field"
+  ],
+  "status": "stable",
+  "usage": "Always pair with a visible label. Put helper text under the field; replace it with the error message when validation fails.",
+  "a11y": "Labels are real <label> elements. The error state uses color plus text — never color alone."
+}

@@ -1,0 +1,5 @@
+/* KATA Separator */
+.k-sep{border:0;border-top:1px solid var(--k-line)}
+.k-sep-label{display:flex;align-items:center;gap:12px;color:var(--k-ink-3);font-size:12px;font-family:var(--k-font)}
+.k-sep-label::before,.k-sep-label::after{content:"";height:1px;background:var(--k-line);flex:1}
+.k-sep-v{width:1px;align-self:stretch;background:var(--k-line);flex:none}

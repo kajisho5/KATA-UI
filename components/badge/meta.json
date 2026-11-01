@@ -1,0 +1,13 @@
+{
+  "title": "Badge",
+  "category": "Feedback & Status",
+  "description": "Small status pills — dots, colors and a solid variant.",
+  "tags": [
+    "status",
+    "label",
+    "tag"
+  ],
+  "status": "stable",
+  "usage": "Short status words only. Pair the dot variant with a text label; color alone is not a status.",
+  "a11y": "Status is carried by the text, never by color alone."
+}

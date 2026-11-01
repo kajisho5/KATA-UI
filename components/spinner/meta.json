@@ -1,0 +1,13 @@
+{
+  "title": "Spinner",
+  "category": "Feedback & Status",
+  "description": "One ring, one moving edge. Three sizes, tuned to sit inside buttons without shifting the label.",
+  "tags": [
+    "loading",
+    "progress",
+    "wait"
+  ],
+  "status": "beta",
+  "usage": "For waits under a few seconds. Inside a button, keep the label visible so the action stays named. For longer waits, say what is happening in words.",
+  "a11y": "Give it role=\"status\" and an accessible label (\"Loading\"). Never the only signal — pair with text when the wait matters."
+}

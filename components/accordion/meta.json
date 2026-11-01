@@ -1,0 +1,14 @@
+{
+  "title": "Accordion",
+  "category": "Layout & Navigation",
+  "description": "Disclosure built on native <details>. Zero JavaScript, keyboard and find-in-page included.",
+  "tags": [
+    "disclosure",
+    "details",
+    "faq",
+    "no-js"
+  ],
+  "status": "beta",
+  "usage": "For FAQs and secondary detail. The first item can start open; the rest stay shut. If content must be findable with Ctrl-F, this is the right primitive — details content is searchable.",
+  "a11y": "<details>/<summary> is natively focusable and announced as expandable. The chevron is decorative; state comes from the element itself."
+}

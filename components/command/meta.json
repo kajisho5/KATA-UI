@@ -1,0 +1,13 @@
+{
+  "title": "Command",
+  "category": "Overlays & Dialogs",
+  "description": "The ⌘K palette: one input that searches actions and pages, driven from the keyboard.",
+  "tags": [
+    "palette",
+    "search",
+    "keyboard"
+  ],
+  "status": "beta",
+  "usage": "For apps with many actions or pages. Trigger it with a button and with Cmd/Ctrl+K; selecting an item is the app’s job.",
+  "a11y": "Arrow keys move, Enter selects, Escape closes. The list is a listbox with aria-activedescendant left to the app; the input keeps focus throughout."
+}

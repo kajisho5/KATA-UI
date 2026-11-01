@@ -1,0 +1,13 @@
+{
+  "title": "Alert",
+  "category": "Feedback & Status",
+  "description": "A message that stays on the page: info, success, warning, danger. Flat, token-tinted, one icon.",
+  "tags": [
+    "message",
+    "notice",
+    "feedback"
+  ],
+  "status": "beta",
+  "usage": "For information the user must not miss but does not need to act on right now. Toasts interrupt; alerts stay. One alert per region is usually enough.",
+  "a11y": "Use role=\"alert\" only for messages injected after load; static alerts are plain regions. Tone is never carried by color alone — the icon and title say it too."
+}

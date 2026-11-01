@@ -1,0 +1,14 @@
+{
+  "title": "Timeline",
+  "category": "Display & Media",
+  "description": "Events on a rail, newest last. The current step carries the core.",
+  "tags": [
+    "history",
+    "log",
+    "events",
+    "steps"
+  ],
+  "status": "beta",
+  "usage": "For histories, delivery steps and changelogs. Times in mono, one line per event; if an event needs a paragraph, it belongs somewhere else.",
+  "a11y": "An ordered list in chronological order. The current step is marked with data-now and announced in its text, not by color alone."
+}

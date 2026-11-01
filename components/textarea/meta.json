@@ -1,0 +1,13 @@
+{
+  "title": "Textarea",
+  "category": "Form & Input",
+  "description": "Multi-line input on the same mold as Input: same border, same ring, same heights logic.",
+  "tags": [
+    "form",
+    "text",
+    "multiline"
+  ],
+  "status": "beta",
+  "usage": "For text longer than a line. Set rows for the expected length; keep the hint short and put character counts outside the field.",
+  "a11y": "Pair with a <label>. Use aria-describedby for hints and errors, aria-invalid for the error state."
+}

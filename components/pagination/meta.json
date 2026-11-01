@@ -1,0 +1,13 @@
+{
+  "title": "Pagination",
+  "category": "Layout & Navigation",
+  "description": "Page numbers with a clear current page: ink-filled, everything else quiet.",
+  "tags": [
+    "navigation",
+    "pages",
+    "list"
+  ],
+  "status": "beta",
+  "usage": "For lists longer than a screen. Show the current page and its neighbours; collapse the rest into an ellipsis. On mobile, the compact form (prev / next + position) is enough.",
+  "a11y": "A <nav> with aria-label=\"Pagination\"; the current page carries aria-current=\"page\"; prev/next say where they go, not just show arrows."
+}

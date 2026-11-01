@@ -1,0 +1,6 @@
+/* KATA Spinner */
+.k-spinner{display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid var(--k-line);border-top-color:var(--k-ink);animation:k-spin .7s linear infinite;flex:none}
+.k-spinner[data-size="sm"]{width:14px;height:14px;border-width:2px}
+.k-spinner[data-size="lg"]{width:26px;height:26px;border-width:3px}
+@keyframes k-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.k-spinner{animation-duration:1.6s}}

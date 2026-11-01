@@ -1,0 +1,13 @@
+{
+  "title": "Alert Dialog",
+  "category": "Overlays & Dialogs",
+  "description": "The decision that cannot be clicked away — for destructive, irreversible actions.",
+  "tags": [
+    "confirm",
+    "destructive",
+    "overlay"
+  ],
+  "status": "beta",
+  "usage": "Only for actions that cannot be undone: deletes, revocations, sends. If it can be dismissed casually, use the Modal instead.",
+  "a11y": "Unlike the Modal, backdrop clicks and Escape do not dismiss it — the cancel event is intercepted. The destructive button names the verb and the object."
+}

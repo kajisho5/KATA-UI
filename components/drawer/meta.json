@@ -1,0 +1,13 @@
+{
+  "title": "Drawer",
+  "category": "Overlays & Dialogs",
+  "description": "A panel that slides in from the edge — detail and forms without losing the page.",
+  "tags": [
+    "panel",
+    "slide-in",
+    "overlay"
+  ],
+  "status": "beta",
+  "usage": "For detail views and edit forms that belong to the current page. On narrow screens it takes most of the width.",
+  "a11y": "Built on <dialog>: focus is trapped and Escape closes. The close button is labelled, not just an icon."
+}

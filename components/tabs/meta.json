@@ -1,0 +1,14 @@
+{
+  "title": "Tabs",
+  "category": "Layout & Navigation",
+  "description": "The white thumb slides between tabs, and the panel switches with it.",
+  "tags": [
+    "navigation",
+    "switch",
+    "sections"
+  ],
+  "status": "stable",
+  "usage": "For peer sections of one object. Keep to 2–5 tabs with short labels.",
+  "a11y": "Buttons in a row; the active tab is marked with a class and aria-selected in the full version.",
+  "stage": "col"
+}

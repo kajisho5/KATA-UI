@@ -1,0 +1,11 @@
+/* Component styles. Colors ONLY via var(--k-*) tokens (see tokens.css and KATA.md).
+   Allowed literals: black/white alpha for shadows and scrims. Nothing else. */
+.tpl{
+  font-family:var(--k-font);
+  color:var(--k-ink);
+  background:var(--k-bg);
+  border:1px solid var(--k-line);
+  border-radius:var(--k-radius);
+  padding:10px 14px;
+}
+.tpl:focus-visible{ box-shadow:var(--k-ring); outline:0; }

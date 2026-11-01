@@ -1,0 +1,14 @@
+{
+  "title": "Counter",
+  "category": "Motion",
+  "description": "Numbers that count up once, when they arrive on screen — machined, not bouncy.",
+  "tags": [
+    "number",
+    "count-up",
+    "stats",
+    "scroll"
+  ],
+  "status": "beta",
+  "usage": "For stats and hero numbers. Set the target with data-count-to; decimals and duration are attributes too. It runs once, when the element enters the viewport.",
+  "a11y": "The final value is the text content from the start for no-JS and reduced-motion users — the animation only enhances. Screen readers get the settled number."
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Table",
+  "category": "Display & Media",
+  "description": "The admin staple — a quiet header, hairline rows, and a Badge for status.",
+  "tags": [
+    "data",
+    "list",
+    "admin"
+  ],
+  "status": "stable",
+  "usage": "Left-align text, right-align numbers. Keep row actions at the far right.",
+  "a11y": "Real <table> with <th> headers so screen readers can navigate by row and column.",
+  "stage": "col"
+}

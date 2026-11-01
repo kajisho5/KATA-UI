@@ -1,0 +1,13 @@
+{
+  "title": "Slider",
+  "category": "Form & Input",
+  "description": "A range with a filled track and the core in the thumb — the mark shows where your grip is.",
+  "tags": [
+    "range",
+    "input",
+    "volume"
+  ],
+  "status": "beta",
+  "usage": "For values that are felt, not typed: volume, brightness, opacity. Always pair with the numeric value; if the exact number matters, add an Input beside it.",
+  "a11y": "A native range input: arrows, Page Up/Down and screen readers work as the platform defines. The visible value updates with it."
+}

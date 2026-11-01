@@ -1,0 +1,14 @@
+{
+  "title": "Copy field",
+  "category": "Form & Input",
+  "description": "A value that exists to be copied: install commands, tokens, links. One click, confirmed in place.",
+  "tags": [
+    "copy",
+    "clipboard",
+    "token",
+    "command"
+  ],
+  "status": "beta",
+  "usage": "For values the user will paste somewhere else. The button confirms with 'Copied' for a moment — no toast needed for something this small.",
+  "a11y": "The button keeps a stable aria-label ('Copy value'). The visible label changes to 'Copied', which screen readers announce as the button's name."
+}

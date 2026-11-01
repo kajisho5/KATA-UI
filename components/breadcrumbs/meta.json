@@ -1,0 +1,13 @@
+{
+  "title": "Breadcrumbs",
+  "category": "Layout & Navigation",
+  "description": "Where you are, as a path. The last crumb is the page itself — not a link.",
+  "tags": [
+    "navigation",
+    "path",
+    "hierarchy"
+  ],
+  "status": "beta",
+  "usage": "For hierarchies three levels or deeper. Keep crumb names short; if the path gets long, collapse the middle on small screens rather than wrapping.",
+  "a11y": "A <nav> with an ordered list; the current page is plain text with aria-current=\"page\". Separators are decorative."
+}

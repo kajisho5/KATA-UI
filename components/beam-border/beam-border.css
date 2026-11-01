@@ -1,0 +1,6 @@
+/* KATA Beam border */
+@property --k-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+.k-beam{position:relative;border-radius:14px;padding:1.5px;background:conic-gradient(from var(--k-angle),transparent 0deg,transparent 255deg,var(--k-core) 305deg,transparent 360deg),linear-gradient(var(--k-line),var(--k-line));animation:k-beam-spin 4.5s linear infinite}
+.k-beam-in{border-radius:12.5px;background:var(--k-bg);padding:20px}
+@keyframes k-beam-spin{to{--k-angle:360deg}}
+@media (prefers-reduced-motion: reduce){.k-beam{animation:none}}

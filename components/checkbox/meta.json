@@ -1,0 +1,13 @@
+{
+  "title": "Checkbox / Radio",
+  "category": "Form & Input",
+  "description": "Native inputs with a restyled face. Keyboard support and form behavior stay intact.",
+  "tags": [
+    "form",
+    "choice",
+    "radio"
+  ],
+  "status": "stable",
+  "usage": "Checkboxes for independent options, radios for exactly one choice in a group.",
+  "a11y": "Native inputs restyled with appearance:none — focus rings, keyboard and form submission keep working."
+}

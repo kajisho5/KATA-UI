@@ -1,0 +1,13 @@
+{
+  "title": "Toast",
+  "category": "Feedback & Status",
+  "description": "Slides in at the bottom right and fades after a few seconds — for saves and sends.",
+  "tags": [
+    "notification",
+    "feedback",
+    "save"
+  ],
+  "status": "stable",
+  "usage": "Confirm completed actions. Never put errors that need action into a toast.",
+  "a11y": "Announces via a polite live region in the full version; auto-dismiss never hides critical information."
+}

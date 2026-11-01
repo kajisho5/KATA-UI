@@ -1,0 +1,13 @@
+{
+  "title": "Dropdown",
+  "category": "Overlays & Dialogs",
+  "description": "Opens with a soft scale. Headings, dividers and a red danger item included.",
+  "tags": [
+    "menu",
+    "actions",
+    "context"
+  ],
+  "status": "stable",
+  "usage": "Group actions under one trigger. Keep destructive actions last, below a divider, in red.",
+  "a11y": "Close on outside click and on Escape. Move focus back to the trigger when the menu closes."
+}

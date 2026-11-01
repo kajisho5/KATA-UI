@@ -1,0 +1,13 @@
+{
+  "title": "Select",
+  "category": "Form & Input",
+  "description": "A native select, dressed in KATA tokens. The platform picker and keyboard support come free.",
+  "tags": [
+    "form",
+    "dropdown",
+    "native"
+  ],
+  "status": "beta",
+  "usage": "Use for 4+ options where a native control is the honest tool. The chevron is decorative; the select itself carries the behavior.",
+  "a11y": "Real <select> with a <label>. Keyboard, touch pickers and screen readers work exactly as the platform intends."
+}

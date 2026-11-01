@@ -1,0 +1,14 @@
+{
+  "title": "Beam border",
+  "category": "Motion",
+  "description": "A single point of light travels the edge of a card. The beam is the core color — the one accent, in motion.",
+  "tags": [
+    "border",
+    "glow",
+    "highlight",
+    "card"
+  ],
+  "status": "beta",
+  "usage": "For the one card on the page that deserves attention — a featured plan, a key upgrade. If two beams are visible at once, both stop working.",
+  "a11y": "Pure decoration: the card's content carries all meaning. The animation is removed under prefers-reduced-motion; in browsers without @property the border rests, still complete."
+}

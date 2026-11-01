@@ -1,0 +1,13 @@
+{
+  "title": "Empty state",
+  "category": "Feedback & Status",
+  "description": "What a screen says when there is nothing in it yet: one icon, one line, one way forward.",
+  "tags": [
+    "blank",
+    "zero",
+    "placeholder"
+  ],
+  "status": "beta",
+  "usage": "For first-run and no-results states. Name what is missing, then give the single action that fixes it. Never a dead end, never a joke at the user's expense.",
+  "a11y": "The heading inside is a real heading at the right level for the page. The action is a real button or link."
+}

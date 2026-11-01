@@ -1,0 +1,5 @@
+/* KATA Spotlight */
+.k-spot{position:relative;overflow:hidden;border:1px solid var(--k-line);border-radius:var(--k-radius-lg);background:var(--k-bg)}
+.k-spot::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),var(--k-accent-bg-strong),transparent 70%);opacity:0;transition:opacity .25s;pointer-events:none}
+.k-spot:hover::before{opacity:1}
+.k-spot > *{position:relative}

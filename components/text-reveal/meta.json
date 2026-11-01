@@ -1,0 +1,14 @@
+{
+  "title": "Text reveal",
+  "category": "Motion",
+  "description": "A headline that arrives word by word, each word rising into place. Settles once, then stays.",
+  "tags": [
+    "headline",
+    "reveal",
+    "typography",
+    "scroll"
+  ],
+  "status": "beta",
+  "usage": "For one headline per page — the hero, a section opening. The script splits the text into words; the stagger is 45ms per word and the whole thing runs once.",
+  "a11y": "Without the script, the text is simply text. Screen readers read the original sentence; reduced-motion users get it static."
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Segmented control",
+  "category": "Form & Input",
+  "description": "A row of radios wearing one pill. Switching views or modes, cast as a single control.",
+  "tags": [
+    "form",
+    "toggle",
+    "view",
+    "radio"
+  ],
+  "status": "beta",
+  "usage": "For 2–4 mutually exclusive modes that switch content in place (Day / Week / Month). For settings that submit with a form, Tabs or Radio group may be the honest choice.",
+  "a11y": "Real radio inputs underneath, so arrows keys and screen readers behave. The pill is presentation only."
+}

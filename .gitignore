@@ -1,0 +1,6 @@
+dist/
+research/
+vision/
+site/
+__pycache__/
+*.muse-github-snapshot-sync.json

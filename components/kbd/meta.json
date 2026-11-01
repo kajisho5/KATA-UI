@@ -1,0 +1,13 @@
+{
+  "title": "Kbd",
+  "category": "Display & Media",
+  "description": "Keyboard keys as small cast pieces: a bottom edge, mono type, nothing else.",
+  "tags": [
+    "keyboard",
+    "shortcut",
+    "hint"
+  ],
+  "status": "beta",
+  "usage": "In menus, tooltips and empty states to teach shortcuts. Use symbols (⌘ ⇧ ⌥) on Apple platforms, words (Ctrl, Alt) elsewhere.",
+  "a11y": "Wrap the key in <kbd> so it is announced as keyboard input. A shortcut hint never replaces a visible label for the action itself."
+}

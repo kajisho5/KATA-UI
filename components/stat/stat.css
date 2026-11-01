@@ -1,0 +1,6 @@
+/* KATA Stat */
+.k-stat{font-family:var(--k-font)}
+.k-stat .k-stat-lbl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--k-ink-3)}
+.k-stat .k-stat-val{margin-top:5px;font-size:26px;font-weight:600;letter-spacing:-.02em;color:var(--k-ink);font-variant-numeric:tabular-nums}
+.k-stat .k-stat-delta{display:inline-flex;align-items:center;gap:3px;margin-top:6px;padding:2px 8px;border-radius:var(--k-radius-full);font-size:11.5px;font-weight:550;background:var(--k-accent-bg);color:var(--k-accent-ink)}
+.k-stat .k-stat-delta[data-dir="down"]{background:var(--k-danger-bg);color:var(--k-danger-ink)}

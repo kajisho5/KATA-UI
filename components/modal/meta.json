@@ -1,0 +1,13 @@
+{
+  "title": "Modal",
+  "category": "Overlays & Dialogs",
+  "description": "Built on the native dialog element — backdrop blur and Esc-to-close come free.",
+  "tags": [
+    "dialog",
+    "confirm",
+    "overlay"
+  ],
+  "status": "stable",
+  "usage": "For confirmations that block the flow. Keep the message to one decision.",
+  "a11y": "<dialog> traps focus and closes on Escape natively. Label the primary action with the verb, not \"OK\"."
+}

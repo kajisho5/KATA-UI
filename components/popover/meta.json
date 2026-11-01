@@ -1,0 +1,13 @@
+{
+  "title": "Popover",
+  "category": "Overlays & Dialogs",
+  "description": "A small panel anchored to its trigger — for detail that does not deserve a page.",
+  "tags": [
+    "overlay",
+    "panel",
+    "anchored"
+  ],
+  "status": "beta",
+  "usage": "For rich, short content tied to one element: share panels, quick info, mini forms. Not for plain text — that is the Tooltip.",
+  "a11y": "Toggle with aria-expanded on the trigger. Escape and outside clicks close it; focus returns to the trigger."
+}

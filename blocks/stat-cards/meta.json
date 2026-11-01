@@ -1,0 +1,14 @@
+{
+  "title": "Stat Cards",
+  "description": "Four numbers a dashboard opens with — each with its delta and its verdict.",
+  "tags": [
+    "dashboard",
+    "metrics"
+  ],
+  "status": "beta",
+  "uses": [
+    "stat",
+    "badge"
+  ],
+  "usage": "The card adds what the Stat part deliberately leaves out: a frame and a verdict badge. Four across on desktop, stacking down on mobile."
+}

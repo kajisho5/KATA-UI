@@ -31,8 +31,8 @@ def esc(s):
 HEADER = """<header class="top"><div class="wrap top-in">
   <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="#18181b" stroke-width="4"/><rect x="19" y="19" width="10" height="10" rx="3" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
   <button class="menubtn" id="menubtn" type="button" aria-label="Open component menu">☰<span>Components</span></button>
-  <nav><a href="/components/">Components</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/#catalog">Categories</a><a href="#">Pricing</a></nav>
-  <a class="gh" href="https://github.com/kajisho5" rel="noopener">GitHub</a>
+  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/#catalog">Categories</a><a href="#">Pricing</a></nav>
+  <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a>
 </div></header>"""
 
 FOOTER = """<div class="wrap"><footer class="site">
@@ -350,6 +350,117 @@ def design_system_page(tokens):
 </html>"""
     return head('Design System — KATA UI', 'The KATA design system: color, type, spacing, radius and motion tokens.', DS_STYLE) + body
 
+
+def load_blocks():
+    blocks = []
+    bdir = ROOT / 'blocks'
+    if not bdir.exists():
+        return blocks
+    for d in sorted(bdir.iterdir()):
+        if not d.is_dir():
+            continue
+        meta = json.loads((d / 'meta.json').read_text(encoding='utf-8'))
+        slug = d.name
+        preview = (d / 'preview.html').read_text(encoding='utf-8')
+        css = (d / f'{slug}.css').read_text(encoding='utf-8')
+        js_file = d / f'{slug}.js'
+        js = js_file.read_text(encoding='utf-8') if js_file.exists() else None
+        blocks.append(dict(slug=slug, meta=meta, preview=preview, css=css, js=js))
+    blocks.sort(key=lambda b: b['meta']['title'])
+    return blocks
+
+BLOCK_STYLE = """<style>
+.bk h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
+.bk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.bcards{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(264px,1fr));gap:12px}
+.bcard{border:1px solid var(--hair);border-radius:14px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);display:block}
+.bcard:hover{border-color:var(--ink3)}
+.bcard h3{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:8px}
+.bcard p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75}
+.bcard .uses{margin-top:12px;display:flex;gap:5px;flex-wrap:wrap}
+.bcard .uses span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--hair);border-radius:99px;padding:2px 8px}
+</style>"""
+
+def blocks_index(blocks):
+    cards = []
+    for b in blocks:
+        m = b['meta']
+        uses = ''.join(f'<span>{esc(u)}</span>' for u in m.get('uses', []))
+        cards.append(f"""<a class="bcard" href="/blocks/{b['slug']}/">
+  <h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h3>
+  <p>{esc(m['description'])}</p>
+  <span class="uses">{uses}</span>
+</a>""")
+    body = f"""
+<div class="wrap bk">
+  <h1>Blocks</h1>
+  <p class="lead">Components, composed into whole sections. A block is copied the same way as a component — HTML, CSS and JS — and every part inside it stays a part you already own. Start from a block, then take it apart with the catalog.</p>
+  <div class="bcards">
+{''.join(cards)}
+  </div>
+</div>
+{FOOTER}
+</body>
+</html>"""
+    return head('Blocks — KATA UI', 'Whole sections composed from KATA components: sign-in, pricing, settings, app shells.', BLOCK_STYLE) + body
+
+def block_detail(blocks, idx, comps):
+    b = blocks[idx]
+    m = b['meta']
+    slug = b['slug']
+    display_html = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', b['preview']).strip()
+    tabs = [('HTML', display_html), ('CSS', b['css'])]
+    if b['js']:
+        tabs.append(('JS', b['js']))
+    def tab_btn(i, name):
+        on = ' class="on"' if i == 0 else ''
+        return f'<button data-tab="{name}"{on}>{name}</button>'
+    tab_btns = ''.join(tab_btn(i, name) for i, (name, _) in enumerate(tabs))
+    panes = ''.join(
+        f'<div class="pane{" on" if i == 0 else ""}" data-pane="{name}"><pre>{esc(code)}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div>'
+        for i, (name, code) in enumerate(tabs))
+    by_slug = {x['slug']: x for x in comps}
+    links = ', '.join(f'<a href="/components/{u}/">{esc(by_slug[u]["meta"]["title"])}</a>' for u in m.get('uses', []) if u in by_slug)
+    deps_html = f'<p class="deps">Built from: {links} — include their CSS alongside this block.</p>' if links else ''
+    prev_html = next_html = '<span style="flex:1"></span>'
+    if idx > 0:
+        pb = blocks[idx - 1]
+        prev_html = f'<a href="/blocks/{pb["slug"]}/"><span class="dir">Previous</span><div class="nm">{esc(pb["meta"]["title"])}</div></a>'
+    if idx < len(blocks) - 1:
+        nb = blocks[idx + 1]
+        next_html = f'<a class="next" href="/blocks/{nb["slug"]}/"><span class="dir">Next</span><div class="nm">{esc(nb["meta"]["title"])}</div></a>'
+    js_tag = f'<script src="/blocks/{slug}/{slug}.js?v={_v(b["js"])}"></script>' if b['js'] else ''
+    body = f"""
+<div class="wrap">
+  <main class="detail">
+    <p class="crumb"><a href="/blocks/">Blocks</a> / {esc(m['title'])}</p>
+    <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h1>
+    <p class="desc">{esc(m['description'])}</p>
+    <div class="stagebar">
+      <span class="lbl">Preview</span>
+      <span class="seg" data-seg="width"><button data-v="desktop" class="on">Desktop</button><button data-v="mobile">Mobile</button></span>
+      <span class="seg" data-seg="theme"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></span>
+    </div>
+    <div class="stage col" id="stage">
+{b['preview']}
+    </div>
+    {deps_html}
+    <div class="codebox">
+      <div class="codetabs">{tab_btns}</div>
+      {panes}
+    </div>
+    <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
+    <div class="prevnext">{prev_html}{next_html}</div>
+  </main>
+</div>
+{FOOTER}
+{js_tag}
+{DETAIL_JS}
+</body>
+</html>"""
+    extra = f'<link rel="stylesheet" href="/blocks/{slug}/{slug}.css?v={_v(b["css"])}">'
+    return head(f"{m['title']} — Blocks — KATA UI", m['description'], extra) + body
+
 def main():
     comps = load_components()
     if DIST.exists():
@@ -381,7 +492,19 @@ def main():
     (idir / 'index.html').write_text(emit(icons_page(), comps, None), encoding='utf-8')
     for f in (ROOT / 'icons').glob('*.svg'):
         shutil.copy(f, idir / f.name)
-    urls = ['/', '/components/', '/design-system/', '/icons/'] + [f"/components/{c['slug']}/" for c in comps]
+    blocks = load_blocks()
+    bkdir = DIST / 'blocks'
+    bkdir.mkdir(exist_ok=True)
+    (bkdir / 'index.html').write_text(emit(blocks_index(blocks), comps, None), encoding='utf-8')
+    for i, b in enumerate(blocks):
+        src = ROOT / 'blocks' / b['slug']
+        dst = bkdir / b['slug']
+        dst.mkdir(exist_ok=True)
+        for f in src.iterdir():
+            if f.is_file():
+                shutil.copy(f, dst / f.name)
+        (dst / 'index.html').write_text(emit(block_detail(blocks, i, comps), comps, None), encoding='utf-8')
+    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

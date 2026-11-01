@@ -1,0 +1,17 @@
+{
+  "title": "Pricing",
+  "description": "Three plans and a billing switch. The middle plan carries the decision; the rest is context.",
+  "tags": [
+    "plans",
+    "billing",
+    "marketing"
+  ],
+  "status": "beta",
+  "uses": [
+    "button",
+    "badge",
+    "switch",
+    "separator"
+  ],
+  "usage": "Prices live in data-m (monthly) and data-y (yearly) on each amount; the switch swaps them. Rewire the amounts, keep the rhythm."
+}

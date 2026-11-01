@@ -1,0 +1,19 @@
+{
+  "title": "Settings",
+  "description": "A profile settings section: identity first, preferences second, one save bar at the end.",
+  "tags": [
+    "form",
+    "profile",
+    "account"
+  ],
+  "status": "beta",
+  "uses": [
+    "avatar",
+    "input",
+    "textarea",
+    "switch",
+    "button",
+    "separator"
+  ],
+  "usage": "One card per settings group, in the order people look for them. Switches apply immediately in spirit — if yours do not, move them above the save bar."
+}

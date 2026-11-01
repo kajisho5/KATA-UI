@@ -1,0 +1,19 @@
+{
+  "title": "App Shell",
+  "description": "The frame most apps live in: a sidebar that stays, a topbar that orients, content that changes.",
+  "tags": [
+    "layout",
+    "dashboard",
+    "navigation"
+  ],
+  "status": "beta",
+  "uses": [
+    "avatar",
+    "badge",
+    "breadcrumbs",
+    "button",
+    "separator",
+    "stat"
+  ],
+  "usage": "Nav items are plain links; the active one carries the core-colored icon. Below 720px the sidebar steps aside — replace that with your own drawer pattern when it matters."
+}

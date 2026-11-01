@@ -1,0 +1,17 @@
+{
+  "title": "Login",
+  "description": "A centered sign-in card: brand mark, two fields, one decision, and the way out.",
+  "tags": [
+    "auth",
+    "form",
+    "card"
+  ],
+  "status": "beta",
+  "uses": [
+    "input",
+    "button",
+    "checkbox",
+    "separator"
+  ],
+  "usage": "Drop it on a bare page with the tokens loaded. The card centers itself; the SSO button and the footer link are the first things to rewire."
+}

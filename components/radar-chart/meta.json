@@ -1,0 +1,13 @@
+{
+  "title": "Radar Chart",
+  "category": "Display & Media",
+  "description": "Five or six qualities on one shape — the chart for profiles, not for precision.",
+  "tags": [
+    "chart",
+    "radar",
+    "data"
+  ],
+  "status": "beta",
+  "usage": "For comparing profiles: two products, two quarters, plan vs. actual. Keep it to six axes; past that the shape becomes a star and stops meaning anything.",
+  "a11y": "Radar shapes are nearly impossible to read aloud point by point, so the label states the verdict and the axes are listed in order."
+}

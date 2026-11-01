@@ -1,0 +1,13 @@
+{
+  "title": "Aspect Ratio",
+  "category": "Display & Media",
+  "description": "A box that holds its shape — 16/9 for video, 4/3 for photos, 1/1 for avatars — whatever fills it.",
+  "tags": [
+    "ratio",
+    "media",
+    "responsive"
+  ],
+  "status": "beta",
+  "usage": "For media slots whose content arrives late or varies: embeds, thumbnails, covers. The layout never jumps because the shape was reserved first.",
+  "a11y": "Pure CSS — the aspect-ratio property does the work, so there is nothing to announce and nothing to break. Put the alt text on the media inside, as usual."
+}

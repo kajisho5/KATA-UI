@@ -1,4 +1,4 @@
-.k-aurora{position:relative;overflow:hidden;border-radius:14px;background:var(--k-zinc-950);color:var(--k-on-color);font-family:var(--k-font)}
+.k-aurora{width:100%;position:relative;overflow:hidden;border-radius:14px;background:var(--k-zinc-950);color:var(--k-on-color);font-family:var(--k-font)}
 .k-aurora i{position:absolute;border-radius:50%;filter:blur(34px);display:block}
 .k-aurora .b1{width:230px;height:230px;left:-50px;top:-70px;background:color-mix(in srgb,var(--k-accent) 65%,transparent);animation:k-aur-a 13s var(--k-ease) infinite alternate}
 .k-aurora .b2{width:190px;height:190px;right:-40px;bottom:-80px;background:color-mix(in srgb,var(--k-core) 55%,transparent);animation:k-aur-b 17s var(--k-ease) infinite alternate}

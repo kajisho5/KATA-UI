@@ -1,0 +1,13 @@
+{
+  "title": "Combobox",
+  "category": "Form & Input",
+  "description": "Type to filter, arrows to choose — the Select for lists too long to scan.",
+  "tags": [
+    "autocomplete",
+    "search",
+    "select"
+  ],
+  "status": "beta",
+  "usage": "For long option lists: frameworks, countries, customers. Under a dozen options, a Select is faster and needs no JavaScript.",
+  "a11y": "The full ARIA combobox pattern: aria-expanded, aria-activedescendant, listbox and option roles, so screen readers announce the active option without moving focus."
+}

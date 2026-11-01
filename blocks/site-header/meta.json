@@ -1,0 +1,14 @@
+{
+  "title": "Site Header",
+  "description": "The bar at the top of every page: mark, navigation, and the one action that matters.",
+  "tags": [
+    "header",
+    "navbar",
+    "navigation"
+  ],
+  "status": "beta",
+  "uses": [
+    "button"
+  ],
+  "usage": "For marketing sites and app shells alike. Keep the links to five; the sixth thing you want up here is what the button is for."
+}

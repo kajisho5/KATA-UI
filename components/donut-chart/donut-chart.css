@@ -1,6 +1,6 @@
 .k-donut{font-family:var(--k-font);text-align:left;margin:0}
 .k-donut figcaption{font-size:13px;font-weight:600;color:var(--k-ink);margin-bottom:12px}
-.k-donut-wrap{display:flex;align-items:center;gap:20px}
+.k-donut-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .k-donut-ring{position:relative;width:158px;height:158px;flex:none}
 .k-donut-ring svg{transform:rotate(-90deg)}
 .k-donut-c{position:absolute;inset:0;display:grid;place-content:center;text-align:center}

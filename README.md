@@ -8,7 +8,7 @@ Practical UI components in plain HTML, CSS and JavaScript. No framework, no buil
 
 ## What's inside
 
-- **41 components** in six groups — Form & Input, Layout & Navigation, Overlays & Dialogs, Feedback & Status, Display & Media, and a Motion line you will not find in other libraries
+- **76 components** in six groups — Form & Input, Layout & Navigation, Overlays & Dialogs, Feedback & Status, Display & Media, and a Motion line you will not find in other libraries
 - **150 icons** drawn on one mold: a 24 grid, a 2px stroke, round caps — and fully compatible with [Lucide](https://lucide.dev), which follows the same spec, for anything beyond the set
 - **A design system** (`system/tokens.json`) — color, type, spacing, radius and motion scales that every part is cast from
 - **Blocks** — components composed into whole sections (sign-in, pricing, settings, app shells). In progress.

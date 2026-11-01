@@ -1,0 +1,9 @@
+.k-combo{position:relative;font-family:var(--k-font);text-align:left}
+.k-combo .chev{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--k-ink-3);pointer-events:none;display:grid;place-items:center}
+.k-combo-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:50;list-style:none;margin:0;padding:5px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:12px;box-shadow:0 20px 44px -14px rgba(16,24,40,.22);max-height:238px;overflow:auto}
+.k-combo-list[hidden]{display:none}
+.k-combo-list li{padding:8px 10px;border-radius:8px;font-size:13.5px;color:var(--k-ink);cursor:pointer;display:flex;align-items:center;gap:8px}
+.k-combo-list li .ck{color:var(--k-accent);visibility:hidden;display:grid;place-items:center}
+.k-combo-list li.act{background:var(--k-bg-soft)}
+.k-combo-list li[aria-selected="true"] .ck{visibility:visible}
+.k-combo-list li.none{color:var(--k-ink-3);cursor:default}

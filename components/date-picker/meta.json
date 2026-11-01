@@ -1,0 +1,12 @@
+{
+  "title": "Date Picker",
+  "category": "Form & Input",
+  "description": "A calendar that opens under the input — real month math, a core dot for today, no library.",
+  "tags": [
+    "calendar",
+    "date"
+  ],
+  "status": "beta",
+  "usage": "For single dates: deadlines, start dates, birthdays. Ranges and time are separate problems; this part does one day, completely.",
+  "a11y": "Full keyboard support: arrows move by day and week, Page Up/Down by month, Enter selects, Esc closes. The grid is a real table-like structure with weekday headers, and today carries aria-current=\"date\"."
+}

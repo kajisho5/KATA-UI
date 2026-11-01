@@ -1,0 +1,13 @@
+{
+  "title": "Data Table",
+  "category": "Display & Media",
+  "description": "The table with its working clothes on: sortable columns, selectable rows, and an honest footer.",
+  "tags": [
+    "table",
+    "sorting",
+    "admin"
+  ],
+  "status": "beta",
+  "usage": "For admin lists where the reader compares, sorts and acts. Read-only data stays a plain Table; the moment headers sort and rows select, it is this part.",
+  "a11y": "Sort state lives on aria-sort at the column header; checkboxes carry row names in their labels. Sorting is stable and never reorders under a screen reader without announcing it."
+}

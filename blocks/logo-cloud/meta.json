@@ -1,0 +1,14 @@
+{
+  "title": "Logo Cloud",
+  "description": "The wall of names, moving slowly — social proof at the speed of a conveyor belt.",
+  "tags": [
+    "logos",
+    "social-proof",
+    "landing"
+  ],
+  "status": "beta",
+  "uses": [
+    "marquee"
+  ],
+  "usage": "Under the hero or above the footer. Motion earns attention the static grid spends; pause on hover is built into the Marquee part it rides on."
+}

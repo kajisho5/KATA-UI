@@ -1,0 +1,5 @@
+.k-ar{position:relative;border-radius:12px;overflow:hidden;background:var(--k-bg-soft);border:1px solid var(--k-line);font-family:var(--k-font);color:var(--k-ink-3)}
+.k-ar[data-r="16/9"]{aspect-ratio:16/9}
+.k-ar[data-r="4/3"]{aspect-ratio:4/3}
+.k-ar[data-r="1/1"]{aspect-ratio:1/1}
+.k-ar .in{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:6px;font-size:12px;font-weight:550}

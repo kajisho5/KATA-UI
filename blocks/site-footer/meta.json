@@ -1,0 +1,15 @@
+{
+  "title": "Site Footer",
+  "description": "The bottom of the page, treated as navigation: sitemap columns, a newsletter that asks once, and the legal line.",
+  "tags": [
+    "footer",
+    "navigation",
+    "landing"
+  ],
+  "status": "beta",
+  "uses": [
+    "input",
+    "button"
+  ],
+  "usage": "For the end of every marketing page. The footer is where undecided visitors look for proof the company exists — address, legal links, a working contact."
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Color Picker",
+  "category": "Form & Input",
+  "description": "A curated palette first, any color second — swatches for the 95% case, a native picker for the rest.",
+  "tags": [
+    "color",
+    "swatches",
+    "palette"
+  ],
+  "status": "beta",
+  "usage": "For brand colors, labels and categories — anywhere the right answer is usually one of a few known colors. Free-form color fields invite off-brand chaos; the palette is the point.",
+  "a11y": "Swatches are radio inputs in disguise: one selected, arrow keys move, the choice is announced. The custom tile is a native color input, so the full picker is the platform one."
+}

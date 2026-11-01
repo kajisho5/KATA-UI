@@ -1,0 +1,13 @@
+{
+  "title": "Tag Input",
+  "category": "Form & Input",
+  "description": "An input that turns words into chips — Enter commits, Backspace repents.",
+  "tags": [
+    "tags",
+    "chips",
+    "tokens"
+  ],
+  "status": "beta",
+  "usage": "For labels, skills, invite lists. Built on the Chip part, so committed tags look and behave exactly like chips everywhere else.",
+  "a11y": "Chips are removed by real buttons. The input keeps a plain text value for the tag being typed, so nothing is lost if JavaScript is off — it degrades to a comma-separated field."
+}

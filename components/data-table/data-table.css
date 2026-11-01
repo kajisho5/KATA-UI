@@ -1,0 +1,15 @@
+.k-dt{border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);font-family:var(--k-font);overflow:hidden;text-align:left;color:var(--k-ink)}
+.k-dt-t{width:100%;border-collapse:collapse;font-size:13.5px}
+.k-dt-t th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;text-align:left;padding:11px 14px;border-bottom:1px solid var(--k-line);background:var(--k-bg-soft);white-space:nowrap}
+.k-dt-t td{padding:12px 14px;border-bottom:1px solid var(--k-line);vertical-align:middle}
+.k-dt-t tbody tr:hover{background:var(--k-bg-soft)}
+.k-dt-t tbody tr:last-child td{border-bottom:none}
+.k-dt-t .num{text-align:right;font-variant-numeric:tabular-nums}
+.k-dt-t th.num{text-align:right}
+.k-dt-sort{display:inline-flex;align-items:center;gap:5px;border:none;background:none;font:inherit;color:inherit;cursor:pointer;padding:0;text-transform:inherit;letter-spacing:inherit}
+.k-dt-sort .arr{display:grid;place-items:center;opacity:.35;transition:transform .15s var(--k-ease),opacity .15s}
+.k-dt-sort[data-dir="asc"] .arr{opacity:1;transform:rotate(180deg)}
+.k-dt-sort[data-dir="desc"] .arr{opacity:1}
+.k-dt input[type="checkbox"]{accent-color:var(--k-accent);width:15px;height:15px;cursor:pointer;vertical-align:middle}
+.k-dt-f{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--k-line);font-size:12.5px;color:var(--k-ink-3)}
+.k-dt-f .pg{margin-left:auto;display:flex;gap:7px}

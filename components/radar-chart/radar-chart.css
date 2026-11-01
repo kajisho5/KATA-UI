@@ -1,0 +1,3 @@
+.k-radar{font-family:var(--k-font);text-align:left;color:var(--k-ink)}
+.k-radar figcaption{display:flex;gap:14px;font-size:11.5px;color:var(--k-ink-2);margin-top:6px}
+.k-radar figcaption i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}

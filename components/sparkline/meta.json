@@ -1,0 +1,14 @@
+{
+  "title": "Sparkline",
+  "category": "Display & Media",
+  "description": "A chart the size of a word — trend without axes, made to sit inside a sentence or a stat.",
+  "tags": [
+    "chart",
+    "sparkline",
+    "data",
+    "mini"
+  ],
+  "status": "beta",
+  "usage": "Next to a number that needs a direction: this week vs. the trend. It deliberately has no axes; if the reader needs values, give them the Line Chart.",
+  "a11y": "Decorative by design — the number and delta beside it carry the meaning, and the figure label repeats the trend in words."
+}

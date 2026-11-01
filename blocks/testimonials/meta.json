@@ -1,0 +1,15 @@
+{
+  "title": "Testimonials",
+  "description": "Three voices, named and pictured — proof that reads as people, not as marketing.",
+  "tags": [
+    "testimonials",
+    "quotes",
+    "landing"
+  ],
+  "status": "beta",
+  "uses": [
+    "card",
+    "avatar"
+  ],
+  "usage": "For the proof section of a landing page. Every quote is attributed to a named person at a named company; anonymous praise convinces no one."
+}

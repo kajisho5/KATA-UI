@@ -1,0 +1,12 @@
+{
+  "title": "Context Menu",
+  "category": "Overlays & Dialogs",
+  "description": "The right-click menu, written as a component instead of an accident of the browser.",
+  "tags": [
+    "right-click",
+    "menu"
+  ],
+  "status": "beta",
+  "usage": "For dense surfaces — file rows, canvas items, table cells — where actions belong to the thing under the cursor. Always mirror the same actions somewhere visible; a context menu is a shortcut, never the only door.",
+  "a11y": "Opens on the contextmenu event and on Shift+F10 / the Menu key for keyboard users, takes focus, and returns it on Esc. Items are real buttons."
+}

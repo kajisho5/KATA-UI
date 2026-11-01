@@ -122,3 +122,12 @@ body.dopen{overflow:hidden}
 .dfilter{width:calc(100% - 12px);margin:0 6px 6px;height:37px;border:1px solid var(--hair);border-radius:9px;padding:0 12px;font:inherit;font-size:13.5px;background:#fff;color:var(--ink);outline:none}
 .dfilter:focus{border-color:var(--ink3)}
 .dnone{padding:6px 8px;font-size:13px;color:var(--ink3)}
+
+.stage>*{min-width:0}
+
+.hsearch{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--hair);border-radius:9px;background:var(--soft);color:var(--ink3);font:inherit;font-size:13px;cursor:pointer;margin-left:6px}
+.hsearch:hover{border-color:var(--ink3);color:var(--ink2)}
+.catsearch{margin:22px 0 2px;display:flex;align-items:center;gap:9px;border:1px solid var(--hair);border-radius:11px;background:#fff;padding:0 14px;height:44px;max-width:460px;color:var(--ink3)}
+.catsearch input{border:none;outline:none;font:inherit;font-size:14px;flex:1;background:transparent;color:var(--ink);min-width:0}
+.catnone{margin-top:16px;color:var(--ink2);font-size:14px}
+@media (max-width:720px){.hsearch .hst{display:none}.hsearch{padding:0 9px}}

@@ -1,0 +1,13 @@
+{
+  "title": "Scroll Area",
+  "category": "Layout & Navigation",
+  "description": "A long list in a fixed frame, with a scrollbar that matches the room and a fade that admits there is more.",
+  "tags": [
+    "scroll",
+    "overflow",
+    "list"
+  ],
+  "status": "beta",
+  "usage": "For sidebars, logs and pickers that must not push the page around. If the content is the page, let the page scroll — this is for regions inside it.",
+  "a11y": "Native scrolling throughout: keyboard, wheel and touch all work because nothing is faked. The custom styling is paint only."
+}

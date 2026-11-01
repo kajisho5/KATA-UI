@@ -1,0 +1,13 @@
+{
+  "title": "Toggle",
+  "category": "Form & Input",
+  "description": "A button that stays pressed — for bold, for pinning, for anything that is a state, not an action.",
+  "tags": [
+    "toggle",
+    "pressed",
+    "button"
+  ],
+  "status": "beta",
+  "usage": "For state that lives on the button itself: formatting, filters, pins. If pressing it does something and finishes, that is a Button; if it stays down, it is this.",
+  "a11y": "aria-pressed carries the state, and the pressed style is more than color — weight and fill change too, so the state survives grayscale."
+}

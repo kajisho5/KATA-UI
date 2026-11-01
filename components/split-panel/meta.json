@@ -1,0 +1,13 @@
+{
+  "title": "Split Panel",
+  "category": "Layout & Navigation",
+  "description": "Two panes and a handle — drag it, or tab to it and use the arrow keys.",
+  "tags": [
+    "resizable",
+    "split",
+    "layout"
+  ],
+  "status": "beta",
+  "usage": "For editors, mail clients and inspectors: a list on one side, the thing itself on the other. Below two panes, stop — stack instead.",
+  "a11y": "The divider is a real separator: role=\"separator\" with aria-valuenow for the split percentage, arrow keys to move it, so the layout is adjustable without a pointer."
+}

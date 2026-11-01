@@ -1,0 +1,13 @@
+{
+  "title": "Funnel Chart",
+  "category": "Display & Media",
+  "description": "Stages that only shrink — visited, signed up, activated, paid — with the leak visible at every step.",
+  "tags": [
+    "chart",
+    "funnel",
+    "data"
+  ],
+  "status": "beta",
+  "usage": "For conversion pipelines where each stage is a subset of the last. If stages can grow or repeat, it is not a funnel; use a Bar Chart and keep everyone honest.",
+  "a11y": "Every stage is a text row first — name, count, share — and the bar is decoration on top, so the whole funnel reads without the picture."
+}

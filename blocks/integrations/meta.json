@@ -1,0 +1,14 @@
+{
+  "title": "Integrations",
+  "description": "The grid of tools a product plays well with — a mark, a name, and what it is for.",
+  "tags": [
+    "integrations",
+    "logos",
+    "grid"
+  ],
+  "status": "beta",
+  "uses": [
+    "button"
+  ],
+  "usage": "For the \"works with\" section of a landing page. Marks are nominative: they name the tool, they do not decorate. Keep the grid to names a visitor already knows."
+}

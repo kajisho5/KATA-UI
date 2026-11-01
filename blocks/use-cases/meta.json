@@ -1,0 +1,18 @@
+{
+  "title": "Use Cases",
+  "description": "A numbered switcher: pick the reader you are, and the picture changes with the story.",
+  "tags": [
+    "use-cases",
+    "switcher",
+    "landing"
+  ],
+  "status": "beta",
+  "uses": [
+    "aurora",
+    "glass-panel",
+    "button",
+    "badge",
+    "progress"
+  ],
+  "usage": "For the \"who is it for\" section of a landing page. Each case pairs a promise on the left with its evidence on the right — a real screen fragment, not an illustration."
+}

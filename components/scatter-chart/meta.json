@@ -1,0 +1,13 @@
+{
+  "title": "Scatter Chart",
+  "category": "Display & Media",
+  "description": "Two measures, one cloud of dots — the chart that shows whether they move together.",
+  "tags": [
+    "chart",
+    "scatter",
+    "data"
+  ],
+  "status": "beta",
+  "usage": "For correlation questions: spend vs. return, price vs. rating. If the reader only needs one measure over time, that is a Line Chart; this is for two measures at once.",
+  "a11y": "The figure carries the conclusion in its label (\"spend and signups rise together\"), because a dot cloud cannot be read point by point by ear."
+}

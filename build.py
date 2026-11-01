@@ -7,6 +7,10 @@ ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
 CATS = ['Form & Input', 'Layout & Navigation', 'Overlays & Dialogs', 'Feedback & Status', 'Display & Media', 'Motion']
 
+STARTER_HTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>KATA Starter — your first page</title>\n<link rel="stylesheet" href="kata-ui.css">\n<style>\n  body{font-family:var(--k-font);background:var(--k-bg-soft);color:var(--k-ink);margin:0;padding:36px 18px}\n  main{max-width:520px;margin:0 auto;display:grid;gap:14px}\n  h1{font-size:21px;letter-spacing:-.02em}\n  p.lead{color:var(--k-ink-2);font-size:14px;line-height:1.75}\n</style>\n</head>\n<body>\n<main>\n  <h1>It works. This page is KATA parts, unmodified.</h1>\n  <p class="lead">Everything below comes from kata-ui.css and kata-ui.js in this folder. Copy a part from kata-ui.dev, paste it here, and it matches — same mold, same tokens.</p>\n  <div class="k-card">\n    <div class="k-card-h">Create your account</div>\n    <div class="k-card-b" style="display:grid;gap:12px">\n      <span class="field" style="display:grid;gap:6px"><label for="em">Email</label><input class="input" id="em" type="email" placeholder="you@company.com"></span>\n      <label class="switchrow" style="display:flex;align-items:center;gap:10px;font-size:13.5px"><span class="switch"><input type="checkbox" checked><span class="tr"></span></span>Email me product updates</label>\n      <div style="display:flex;gap:9px;align-items:center">\n        <button class="btn btn-pri btn-md">Create account</button>\n        <span class="badge teal"><i></i>Free for 30 days</span>\n      </div>\n    </div>\n  </div>\n  <p class="lead">Next: browse the catalog at kata-ui.dev/components — each part carries its own CSS tab, so you can drop the bundle and keep only what you use.</p>\n</main>\n<script src="kata-ui.js"></script>\n</body>\n</html>\n'
+STARTER_README = "# KATA Starter\n\nA working first page built only from KATA UI parts.\n\n## Use it\n\n1. Unzip. Open `index.html` in a browser — no server, no build step.\n2. Edit the HTML. Every class on the page comes from `kata-ui.css`.\n3. When you settle, slim down: each part at kata-ui.dev carries just its own\n   CSS/JS, so production pages can load only what they use.\n\n## Files\n\n- `index.html` — the demo page (Card, Input, Switch, Button, Badge)\n- `kata-ui.css` — design tokens + every component and block style\n- `kata-ui.js` — every part's behavior, each in its own scope\n\nMIT licensed. KATA UI — parts, cast from a single mold.\n"
+
+
 def load_components():
     comps = []
     for d in sorted((ROOT / 'components').iterdir()):
@@ -38,6 +42,7 @@ HEADER = """<header class="top"><div class="wrap top-in">
   <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="#18181b" stroke-width="4"/><rect x="19" y="19" width="10" height="10" rx="3" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
   <button class="menubtn" id="menubtn" type="button" aria-label="Open component menu">☰<span>Components</span></button>
   <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a></nav>
+  <button class="hsearch" type="button" data-site-search aria-label="Search the catalog"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span class="hst">Search</span><span class="k-kbd">\u2318K</span></button>
   <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a>
 </div></header>"""
 
@@ -83,8 +88,68 @@ document.querySelectorAll('.side a.on').forEach(function(a){var c=a.closest('.dr
 })();
 </script>"""
 
+_BLOCKS_FULL = None
+
+def _all_blocks():
+    global _BLOCKS_FULL
+    if _BLOCKS_FULL is None:
+        _BLOCKS_FULL = load_blocks()
+    return _BLOCKS_FULL
+
+_BLOCK_CACHE = None
+
+def _block_search_items():
+    global _BLOCK_CACHE
+    if _BLOCK_CACHE is None:
+        _BLOCK_CACHE = [{'t': b['meta']['title'], 'u': '/blocks/' + b['slug'] + '/', 'k': 'Block'} for b in load_blocks()]
+    return _BLOCK_CACHE
+
+SEARCH_TMPL = """<dialog class="kcmd" data-site-dialog aria-label="Search KATA UI">
+  <div class="kcmd-input-row">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg>
+    <input class="kcmd-input" data-site-input type="text" placeholder="Search components, blocks, docs\u2026" aria-label="Search KATA UI">
+  </div>
+  <ul class="kcmd-list" data-site-list></ul>
+  <div class="kcmd-empty" data-site-empty style="display:none">No results.</div>
+</dialog>
+<script>
+const KIDX = __KATA_INDEX__;
+const sDlg = document.querySelector('[data-site-dialog]');
+const sIn = sDlg.querySelector('[data-site-input]');
+const sList = sDlg.querySelector('[data-site-list]');
+const sEmpty = sDlg.querySelector('[data-site-empty]');
+let sAct = 0, sShown = [];
+function sRender(q) {
+  const query = (q || '').trim().toLowerCase();
+  sShown = KIDX.filter(it => !query || it.t.toLowerCase().includes(query) || it.k.toLowerCase().includes(query)).slice(0, 14);
+  sAct = 0;
+  sList.innerHTML = sShown.map((it, i) => '<li><button type="button" class="kcmd-item' + (i === sAct ? ' active' : '') + '" data-su="' + it.u + '"><span>' + it.t + '</span><span class="kcmd-hint">' + it.k + '</span></button></li>').join('');
+  sEmpty.style.display = sShown.length ? 'none' : '';
+  sList.querySelectorAll('[data-su]').forEach(b => b.addEventListener('click', () => { location.href = b.dataset.su; }));
+}
+function sOpen() { if (!sDlg.open) { sIn.value = ''; sRender(''); sDlg.showModal(); sIn.focus(); } }
+function sMove(d) { if (!sShown.length) return; sAct = (sAct + d + sShown.length) % sShown.length; sList.querySelectorAll('.kcmd-item').forEach((el, i) => el.classList.toggle('active', i === sAct)); }
+document.querySelectorAll('[data-site-search]').forEach(b => b.addEventListener('click', sOpen));
+document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); sOpen(); } });
+sIn.addEventListener('input', () => sRender(sIn.value));
+sIn.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown') { e.preventDefault(); sMove(1); }
+  if (e.key === 'ArrowUp') { e.preventDefault(); sMove(-1); }
+  if (e.key === 'Enter' && sShown[sAct]) { location.href = sShown[sAct].u; }
+});
+sDlg.addEventListener('click', e => { if (e.target === sDlg) sDlg.close(); });
+</script>"""
+
+def search_html(comps):
+    import json as _json
+    items = [{'t': c['meta']['title'], 'u': '/components/' + c['slug'] + '/', 'k': 'Component'} for c in comps]
+    items += _block_search_items()
+    items += [{'t': d[1], 'u': '/docs/' + d[0] + '/', 'k': 'Docs'} for d in DOCS]
+    items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/')]]
+    return SEARCH_TMPL.replace('__KATA_INDEX__', _json.dumps(items, ensure_ascii=False))
+
 def emit(page, comps, active):
-    return page.replace('</body>', drawer_html(comps, active) + DRAWER_JS + '</body>', 1)
+    return page.replace('</body>', drawer_html(comps, active) + DRAWER_JS + search_html(comps) + '</body>', 1)
 
 def head(title, desc, extra=''):
     return f"""<!doctype html>
@@ -100,6 +165,8 @@ def head(title, desc, extra=''):
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/tokens.css?v={_v((ROOT / 'tokens.css').read_text(encoding='utf-8'))}">
 <link rel="stylesheet" href="/site.css?v={_v((ROOT / 'site.css').read_text(encoding='utf-8'))}">
+<link rel="stylesheet" href="/components/command/command.css?v={_v((ROOT / 'components/command/command.css').read_text(encoding='utf-8'))}">
+<link rel="stylesheet" href="/components/kbd/kbd.css?v={_v((ROOT / 'components/kbd/kbd.css').read_text(encoding='utf-8'))}">
 {extra}
 </head>
 <body>
@@ -109,7 +176,8 @@ def head(title, desc, extra=''):
 def card(c):
     m = c['meta']
     tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in m.get('tags', []))
-    return f"""<a class="card" href="/components/{c['slug']}/">
+    q = esc((m['title'] + ' ' + c['slug'] + ' ' + ' '.join(m.get('tags', [])) + ' ' + m['category']).lower())
+    return f"""<a class="card" data-q="{q}" href="/components/{c['slug']}/">
   <h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h3>
   <p>{esc(m['description'])}</p>
   <span class="tags">{tags}</span>
@@ -162,6 +230,39 @@ LP_STYLE = """<style>
 .showtile.wide{grid-column:1/-1}
 .showtile .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:#a1a1aa}
 .showtile .cap a{color:#f4f4f5;text-decoration:none;letter-spacing:0;font-size:12px}
+.hero2{position:relative;border-radius:22px;overflow:hidden;background:#0b0b0f;margin-top:24px;padding:58px 26px 30px;text-align:center}
+.hero-aurora{position:absolute;inset:0;border-radius:0}
+.hero2::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 50% 0%,rgba(14,149,148,.22),transparent 65%),radial-gradient(520px 280px at 88% 100%,rgba(235,71,31,.12),transparent 65%)}
+.hero2-in{position:relative}
+.hero2 h1{font-size:45px;line-height:1.12;color:#f4f4f5;letter-spacing:-.025em;font-weight:650}
+.hero2 h1 .dim{color:#a1a1aa}
+.hero2-in>p{max-width:62ch;margin:17px auto 0;font-size:15px;line-height:1.85;color:#a1a1aa}
+.hero2 .eyebrow{border-color:#3f3f46;color:#d4d4d8;background:rgba(255,255,255,.05)}
+.hero2 .stats{border-color:#26262b}
+.hero2 .stats b{color:#f4f4f5}
+.hero2 .stats span{color:#a1a1aa}
+.hero2 .browser{box-shadow:0 34px 90px -24px rgba(0,0,0,.65);margin-top:40px;text-align:left}
+.hero2 .framecap{color:#a1a1aa}
+.hero2 .framecap a{color:#e4e4e7}
+@media (max-width:720px){.hero2{padding:42px 16px 22px}.hero2 h1{font-size:31px}}
+.collage-sec{margin-top:64px}
+.collage-sec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.collage-sec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.collage-cell{border:1px solid var(--hair);border-radius:14px;padding:18px;background:#fff;overflow:hidden;min-width:0}
+.collage-cell.wide{grid-column:1/-1}
+.collage-cell .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink3)}
+.collage-cell .cap a{color:var(--acc);text-decoration:none;font-family:inherit}
+@media (max-width:720px){.collage{grid-template-columns:1fr}}
+.cmptable{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px;background:#fff;border:1px solid var(--hair);border-radius:12px;overflow:hidden}
+.cmptable th,.cmptable td{padding:11px 14px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
+.cmptable thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);background:var(--soft);font-weight:600}
+.cmptable tbody th{font-weight:550;color:var(--ink2);white-space:nowrap}
+.cmptable td{color:var(--ink2)}
+.cmptable td.me{color:var(--ink);font-weight:550}
+.cmptable tr:last-child td,.cmptable tr:last-child th{border-bottom:none}
+.cmpnote{margin-top:9px;font-size:12px;color:var(--ink3)}
+@media (max-width:720px){.cmptable{font-size:12px}.cmptable th,.cmptable td{padding:9px 9px}}
 .compat{margin-top:20px;border:1px solid var(--hair);border-radius:12px;background:var(--soft);padding:18px;font-size:13.5px;line-height:1.9;color:var(--ink2)}
 .compat b{color:var(--ink);font-weight:600}
 .compat a{color:var(--ink);font-weight:550}
@@ -180,6 +281,33 @@ def landing(comps, blocks, n_icons):
             return ''
         return ('<div class="showtile' + (' wide' if wide else '') + '"><div class="cap"><span>' + label.upper() + '</span><a href="/components/' + slug + '/">Open part</a></div>' + c['preview'] + '</div>')
     show_scripts = ''.join(f'<script src="/components/{sl}/{sl}.js?v={_v(pv[sl]["js"])}"></script>' for sl in ('counter', 'spotlight', 'text-reveal', 'follow-frame', 'reorder') if pv.get(sl) and pv[sl]['js'])
+    faq_b = next((b for b in blocks if b['slug'] == 'faq'), None)
+    principles = ('<section class="lpsec"><h2>Three rules, cast into every part</h2><div class="steps">'
+      '<div class="step"><span class="no">RULE 1</span><h3>One mold</h3><p>Every part is checked by a program before it ships — tokens only, classes covered, icons on the grid. Two parts built months apart look built on the same day. <a href="/docs/the-mold/" style="color:var(--acc)">How the mold works</a></p></div>'
+      '<div class="step"><span class="no">RULE 2</span><h3>Yours, not rented</h3><p>Copied code has no roadmap and no breaking changes. Nobody can sunset it, reprice it, or deprecate it under you. <a href="/docs/why-vanilla/" style="color:var(--acc)">Why vanilla</a></p></div>'
+      '<div class="step"><span class="no">RULE 3</span><h3>Native first</h3><p>Where the platform has the element — dialog, details, real inputs — the part is the element. Scripts layer behavior on markup; they never generate it.</p></div>'
+      '</div></section>')
+    compare = ('<section class="lpsec"><h2>How KATA compares</h2>'
+      '<div style="overflow-x:auto"><table class="cmptable"><thead><tr><th></th><th>KATA UI</th><th>shadcn/ui</th><th>MUI</th><th>Flux UI</th></tr></thead><tbody>'
+      '<tr><th>Framework</th><td class="me">None — plain HTML</td><td>React</td><td>React</td><td>Laravel + Livewire</td></tr>'
+      '<tr><th>Distribution</th><td class="me">Copy-paste</td><td>Copy-paste (CLI)</td><td>npm package</td><td>Composer package</td></tr>'
+      '<tr><th>Runtime required</th><td class="me">None</td><td>React</td><td>React</td><td>Livewire + Alpine</td></tr>'
+      '<tr><th>Theming</th><td class="me">CSS tokens</td><td>Tailwind + variables</td><td>Theme object</td><td>Tailwind</td></tr>'
+      '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
+      '</tbody></table></div>'
+      '<p class="cmpnote">From each project’s public pages, November 2026. The honest summary: the others are excellent inside their framework. KATA is for everywhere else.</p></section>')
+    faqsec = ('<section class="lpsec"><h2>Questions</h2><div style="margin-top:16px">' + (faq_b['preview'] if faq_b else '') + '</div></section>')
+    sc_block = next((b for b in blocks if b['slug'] == 'stat-cards'), None)
+    def ccell(href, label, html, wide=False):
+        return ('<div class="collage-cell' + (' wide' if wide else '') + '"><div class="cap"><span>' + label.upper() + '</span><a href="' + href + '">Open part</a></div>' + html + '</div>')
+    collage = ('<section class="collage-sec"><h2>Assembled, not illustrated.</h2>'
+               '<p class="sub">This dashboard is not a screenshot. Every panel here is a live part from the catalog — the same code the copy button hands you, running on this page.</p>'
+               '<div class="collage">'
+               + (ccell('/blocks/stat-cards/', 'Stat Cards — Block', sc_block['preview'], True) if sc_block else '')
+               + ccell('/components/data-table/', 'Data Table', pv['data-table']['preview'], True)
+               + ccell('/components/line-chart/', 'Line Chart', pv['line-chart']['preview'])
+               + ccell('/components/donut-chart/', 'Donut Chart', pv['donut-chart']['preview'])
+               + '</div></section>')
     showcase = ('<section class="showband"><h2>The showy shelf</h2><p class="sub">The Motion line and the ambient pieces — live on this page, in the dark they were designed for. Built to be stared at a little.</p>'
                 '<div data-theme="dark"><div class="showgrid">'
                 + tile('aurora', 'Aurora') + tile('converge', 'Converge') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border') + tile('glass-panel', 'Glass Panel') + tile('follow-frame', 'Follow Frame')
@@ -187,13 +315,15 @@ def landing(comps, blocks, n_icons):
                 + '</div></div>' + show_scripts + '</section>')
     body = f"""
 <div class="wrap lp">
-  <div class="hero">
+  <div class="hero2">
+    <div class="k-aurora hero-aurora" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+    <div class="hero2-in">
     <span class="eyebrow"><i></i>Vanilla components — no framework, no build step</span>
     <h1>Parts, cast from a single mold.<br><span class="dim">Copy the code. Own the design.</span></h1>
     <p>From buttons to app shells — practical components in plain HTML, CSS and JS, each with a live preview and copy-ready code. Every part is cast from a single mold — kata, the Japanese discipline of the form.</p>
     <div class="cta">
-      <a class="kbtn-primary" href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#18181b;color:#fff;font-weight:500;font-size:14px;text-decoration:none">Browse components</a>
-      <a href="/blocks/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid var(--hair);font-weight:500;font-size:14px;text-decoration:none;background:#fff">See blocks</a>
+      <a class="kbtn-primary" href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#f4f4f5;color:#18181b;font-weight:550;font-size:14px;text-decoration:none">Browse components</a>
+      <a href="/blocks/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid #3f3f46;font-weight:500;font-size:14px;text-decoration:none;background:rgba(255,255,255,.05);color:#f4f4f5">See blocks</a>
     </div>
     <div class="stats">
       <div><b>{n}</b><span>components</span></div>
@@ -207,6 +337,7 @@ def landing(comps, blocks, n_icons):
 {shell_html}
   </div>
   <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
+  </div>
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">
@@ -228,7 +359,11 @@ def landing(comps, blocks, n_icons):
       <b>For AI tools</b>, KATA speaks their formats: <a href="/registry.json">registry.json</a> for installers and agents, <a href="/llms.txt">llms.txt</a> for models that read the web.
     </div>
   </section>
+  {principles}
+  {compare}
+  {faqsec}
   {showcase}
+  {collage}
   <div id="catalog">
 {catalog_sections(comps)}
   </div>
@@ -237,7 +372,7 @@ def landing(comps, blocks, n_icons):
 </body>
 </html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
-             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder') if pv.get(sl)))
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks):
@@ -312,6 +447,9 @@ def llms_full(comps, blocks):
     return '\n'.join(out)
 
 
+CATALOG_SCRIPT = "<script>\nconst catq = document.getElementById('catq');\ncatq.addEventListener('input', () => {\n  const q = catq.value.trim().toLowerCase();\n  let any = false;\n  document.querySelectorAll('.catsec').forEach(sec => {\n    let vis = 0;\n    sec.querySelectorAll('.card').forEach(cd => { const hit = !q || (cd.dataset.q || '').includes(q); cd.style.display = hit ? '' : 'none'; if (hit) vis++; });\n    sec.style.display = vis ? '' : 'none';\n    if (vis) any = true;\n  });\n  document.getElementById('catnone').style.display = any ? 'none' : '';\n});\n</script>"
+
+
 def components_index(comps):
     body = f"""
 <div class="wrap">
@@ -319,7 +457,10 @@ def components_index(comps):
     <h1 style="font-size:36px">Components</h1>
     <p>Every part is a folder in the registry — preview, CSS and JS are the same files you copy.</p>
   </div>
+  <div class="catsearch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><input id="catq" type="text" placeholder="Filter parts — try \u201cchart\u201d, \u201cdate\u201d, \u201cmenu\u201d\u2026" aria-label="Filter components"></div>
+  <p class="catnone" id="catnone" style="display:none">No parts match that word. Try something shorter.</p>
 {catalog_sections(comps)}
+{CATALOG_SCRIPT}
 </div>
 {FOOTER}
 </body>
@@ -347,6 +488,7 @@ DETAIL_JS = """<script>
       const v = btn.dataset.v;
       if (seg.dataset.seg === 'theme') { v === 'dark' ? stage.setAttribute('data-theme','dark') : stage.removeAttribute('data-theme'); }
       if (seg.dataset.seg === 'width') { stage.classList.toggle('narrow', v === 'mobile'); }
+      window.dispatchEvent(new Event('resize'));
     }));
   });
   document.querySelectorAll('.codetabs button').forEach(btn => btn.addEventListener('click', () => {
@@ -400,6 +542,15 @@ def detail(comps, idx):
                               f'<div class="codebox"><div class="pane on"><pre>{esc(html_ex)}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div></div>')
         examples_html = '<section class="doc"><h2>Examples</h2>' + ''.join(blocks_out) + '</section>'
     js_tag = f'<script src="/components/{slug}/{slug}.js?v={_v(c["js"])}"></script>' if c['js'] else ''
+    siblings = [x for x in comps if x['meta']['category'] == m['category'] and x['slug'] != slug][:4]
+    related = ''
+    if siblings:
+        related = '<section class="doc"><h2>Related parts</h2><div class="cards">' + ''.join(card(x) for x in siblings) + '</div></section>'
+    used_in_blocks = [b for b in _all_blocks() if slug in b['meta'].get('uses', [])]
+    used_in = ''
+    if used_in_blocks:
+        links = ''.join(f'<a class="card" href="/blocks/{b["slug"]}/"><h3>{esc(b["meta"]["title"])}</h3><p>{esc(b["meta"]["description"])}</p></a>' for b in used_in_blocks)
+        used_in = f'<section class="doc"><h2>Used in these blocks</h2><div class="cards">{links}</div></section>'
     body = f"""
 <div class="wrap">
   <div class="layout">
@@ -424,6 +575,8 @@ def detail(comps, idx):
       {examples_html}
       <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
       <section class="doc"><h2>Accessibility</h2><p>{esc(m.get('a11y',''))}</p></section>
+      {used_in}
+      {related}
       <div class="prevnext">{prev_html}{next_html}</div>
     </main>
   </div>
@@ -756,7 +909,7 @@ applyTheme('teal');
 
 DOCS = [
   ('getting-started', 'Getting Started', 'From zero to a working part in three steps.',
-   [('Start with the tokens', 'Every part reads its color, spacing, radius and motion from one file. Load it once, before anything else:', '<link rel="stylesheet" href="https://kata-ui.dev/tokens.css">', 'That file is the mold. Parts never hard-code a color, so this one link is what makes forty parts look like one product.'),
+   [('Start with the tokens', 'Every part reads its color, spacing, radius and motion from one file. Load it once, before anything else:', '<link rel="stylesheet" href="https://kata-ui.dev/tokens.css">', 'That file is the mold. Parts never hard-code a color, so this one link is what makes the whole catalog look like one product.'),
     ('Copy a part', 'Open the part in Components and copy its three files: the HTML from the preview, the CSS, and the JS when it has one. Paste them into your project as they are. There is no install step and no package to keep updated — the code becomes yours, which is the point.', None, 'If the part says "Uses:" under its preview, it builds on another part (a Modal on Buttons, a Command palette on Kbd). Include that part\u2019s CSS too; the page names it.'),
     ('Works anywhere HTML does', 'Plain HTML files, Astro, Laravel Blade, Django and Rails templates, WordPress themes. If it renders HTML, KATA parts drop in unchanged — no framework island, no build plugin, no runtime.', None, 'For AI tools and installers, the whole catalog is also published as registry.json in the shadcn registry format, and as llms.txt for models that read the web.')]),
   ('theming', 'Theming', 'Change the tokens, not the parts.',
@@ -768,6 +921,54 @@ DOCS = [
   ('accessibility', 'Accessibility', 'What the parts guarantee, and what stays yours.',
    [('Native first', 'Where the platform has the element, the part is the element: dialog for Modal and Drawer, details for Accordion, real radio inputs for Segmented and Radio. Focus traps, Escape handling and screen-reader semantics come from the browser, not from scripts re-implementing them.', None, 'Interactive parts document their keyboard behavior on their own page, under Accessibility.'),
     ('Focus, motion, contrast', 'Focus rings are a token (--k-ring), visible in both themes, and never removed without a replacement. The Motion line and the Drawer honor prefers-reduced-motion. Text colors come from the zinc scale at weights chosen to stay readable on their backgrounds.', None, 'Parts are a starting point, not a certification: labels, heading order and the meaning of the page remain the page\u2019s responsibility. Test with a keyboard and a screen reader before shipping.')]),
+  ('installation', 'Installation', 'Four ways in — from a single part to the whole set.',
+   [('Copy a part — the default', 'Every part is three files at most: HTML, CSS, and JS when it needs behavior. Copy them from the part’s page into your project and they are yours — no dependency to update, no version to pin. Load the design tokens once, first:', '<link rel="stylesheet" href="https://kata-ui.dev/tokens.css">', 'Parts that build on other parts say "Uses:" on their page; include those parts’ CSS as well. That is the entire install for most pages.'),
+    ('The one-file bundle', 'To evaluate everything at once, download the full bundle — every component and block, styles and behavior:', '<link rel="stylesheet" href="https://kata-ui.dev/kata-ui.css">\n<script src="https://kata-ui.dev/kata-ui.js"></script>', 'The CSS is the tokens plus all parts in catalog order. The JS runs each part in its own scope; parts whose markup is not on the page stay inert. When you settle on the parts you use, swap the bundle for their individual files and the page gets leaner.'),
+    ('The starter kit', 'kata-starter.zip is a working first page — Card, Input, Switch, Button and Badge already composed — with the bundle beside it. Unzip, open index.html in a browser, and edit. No server, no build step:', 'https://kata-ui.dev/starter/kata-starter.zip', 'The README inside explains how to slim the starter down to per-part files when you are ready.'),
+    ('For AI tools and installers', 'The catalog is published in machine-readable forms: registry.json in the shadcn registry format (every part and block with its files inline), llms.txt as a short index, and llms-full.txt with the full text and code.', 'https://kata-ui.dev/registry.json\nhttps://kata-ui.dev/llms.txt\nhttps://kata-ui.dev/llms-full.txt', 'Point your assistant at llms.txt and it can fetch the exact part it needs instead of inventing one.')]),
+  ('javascript', 'JavaScript', 'What the scripts do — and what still works without them.',
+   [('Plain scripts, data hooks', 'A part’s JS is a single plain script: no imports, no framework, no build. It finds its root by a data attribute (data-dp, data-combo, data-tags…) and keeps its state in the DOM — classes and ARIA attributes you can inspect. Copy it next to the HTML and it runs.', None, 'In the one-file bundle each script is wrapped in its own function scope, so parts never collide with each other or with your code.'),
+    ('What works with no JavaScript', 'More than you might expect. Accordion is native details. Rating and Segmented are radio inputs. Switch and Checkbox are checkboxes. Marquee, Aurora, Beam Border and the charts are CSS and SVG. These parts are complete with the script tag deleted.', None, 'Parts that do need JS say so by having a JS tab — and the honest ones degrade: Tag Input falls back to a plain text field, Combobox to a text input, the Date Picker to a text input.'),
+    ('Behavior contracts', 'Interactive parts document their keyboard behavior on their own page, under Accessibility. The shared rules: Escape closes what is open and returns focus, arrows move within a part, and nothing ever traps the pointer. Motion parts check prefers-reduced-motion once and honor it.', None, 'If a part’s script fails to load, the page still renders — behavior is layered on markup, never generated by it (the Date Picker calendar grid is the one exception, and it is labelled as such).')]),
+  ('guide-dashboard', 'Guide: Building a Dashboard', 'The parts, in the order a reader’s eyes take them.',
+   [('Start with the frame', 'A dashboard is the App Shell block and then restraint. Sidebar navigation, a top bar, and a content column — the shell is already composed from the catalog’s own parts, so the page inherits the mold for free. Resist adding a second navigation pattern inside the content; one way to move is a feature.', None, 'Below 720px the shell hides its sidebar. Whatever your page adds must survive that: if a control only exists in the sidebar, it needs a second home.'),
+    ('Numbers before charts', 'The first row is Stat Cards — three or four numbers with deltas, because most visits answer one question: is it up or down? Charts come second, and one chart per question. The Line Chart shows change, the Donut shows share, the Bar Chart compares. A dashboard with six charts answers nothing; it performs analysis instead of providing it.', None, 'Every chart in the catalog states its conclusion in its accessible label. Keep that habit in your own charts: the sentence first, the picture second.'),
+    ('Tables carry the work', 'Below the fold, a Data Table with sortable columns and row selection does the actual job of the page. Keep rows to the fields people compare, put the row’s main action first, and let the footer paginate honestly. If a table needs fourteen columns, the answer is a detail page, not a wider table.', None, None)]),
+  ('guide-settings', 'Guide: Building a Settings Page', 'Grouped switches, honest saves, and no settings that do nothing.',
+   [('Group by consequence', 'Order groups by how much damage a wrong toggle does: profile, notifications, billing, danger. The Settings block ships this shape — a rail of groups on the left, forms on the right, and the destructive group last, in red, far from the save button it does not belong to.', None, 'A setting that takes effect immediately gets a Switch. A setting that needs a save gets inputs and a button. Mixing the two in one group teaches users that saving is optional, and they will believe you at the worst moment.'),
+    ('The save contract', 'If the page has a Save button, it saves everything on the page or it says exactly what it did not save. Show the saved state — a Toast, a timestamp, a disabled button that wakes on the next edit. Never let a user wonder whether the click landed.', None, 'Validation belongs to the Field part: label, hint, error, in that order, with the error replacing the hint rather than pushing the layout down the page.'),
+    ('Danger gets its own room', 'Delete-account, revoke-keys, cancel-plan: these live in their own group, behind an Alert Dialog that names the consequence in the button itself — “Delete workspace”, not “Yes”. The dialog is not friction; it is the feature.', None, None)]),
+  ('guide-pricing', 'Guide: Building a Pricing Page', 'Three plans, one switch, and prices that survive the toggle.',
+   [('The toggle is a Switch', 'Monthly/yearly is the Pricing block’s own composition: a Switch flips data attributes on the prices, so the numbers in the page are the numbers that were checked. Never compute prices in the browser from a formula nobody audited — write both prices down, in the markup, where a reviewer can diff them.', None, 'Yearly shows the monthly-equivalent price with the saving stated once, plainly. “Save 17%” is a claim; make sure it is arithmetically true on every plan, including the free one.'),
+    ('One plan is the answer', 'Three plans, the middle one marked — not because it is the most profitable, but because it is the right default for the reader the page is for. The block’s .plan-hot and its badge exist for exactly one plan. Two highlighted plans is a page that refuses to recommend, and readers can tell.', None, 'Feature lists compare downward: every plan lists what it adds over the one before. A grid of forty checkmarks and crosses is a spreadsheet wearing a costume.'),
+    ('Under the plans', 'The FAQ block answers the five questions pricing always raises — switching, refunds, seats, taxes, cancellation — and after it, one CTA Band. A pricing page that ends at the table assumes the reader decided; most have not, and the questions are the decision.', None, None)]),
+  ('guide-auth', 'Guide: Sign-in & Account Pages', 'The smallest pages in the product, held to the highest standard.',
+   [('One card, one job', 'The Login block is a Card with two fields and one primary button, and that is the whole page’s ambition. Every element added to a sign-in page — a banner, a testimonial, a “what’s new” — is measured against the only metric that matters here: does the person get in?', None, 'Errors on auth pages are written for someone who is already frustrated: say what failed and what to try, never which half of the credential was wrong. “Email or password did not match” is both kinder and safer.'),
+    ('Password rules, stated before typing', 'If the account-creation form rejects passwords, the rules sit in the Field hint before the first keystroke, not in an error after the third attempt. Length is the rule that matters; composition rules mostly manufacture Post-it notes.', None, 'Offer the platform’s help: autocomplete attributes (email, current-password, new-password, one-time-code) and the Input OTP part for codes. The browser and the password manager are part of your interface whether you design for them or not.'),
+    ('After the door', 'Sign-in succeeds into the App Shell, not into a celebration. If the session was heading somewhere — a deep link, an invite — it lands there. The welcome-back toast is the most that should mark the occasion.', None, None)]),
+  ('why-vanilla', 'Why Vanilla', 'An honest account of what copy-paste gives you, and what it costs.',
+   [('What you get', 'No runtime. A KATA page ships the HTML, CSS and JS you can read in the tab next to this one — nothing transpiles, nothing hydrates, and the dependency list is empty, so there is nothing to audit, patch or be broken by. The code is yours in the plainest sense: fork a part, rename its classes, delete the half you do not need. It will still be running, unchanged, in ten years, because nothing underneath it can be deprecated.', None, 'This is also why AI tools are good at KATA: a part is a complete, self-contained answer in one context window. The registry and llms.txt exist so the model copies the mold instead of improvising one.'),
+    ('What it costs', 'No components in the framework sense: no props, no reactivity, no tree-shaking. State that spans many parts — a cart, a multi-step wizard with shared data — is yours to wire, and past a certain size a framework earns its keep. KATA’s bet is that most pages are not that size: they are forms, tables, dashboards and marketing sections, and for those the framework was never the point.', None, 'The honest line: if your app is a document with behavior, vanilla wins. If it is a program with a document attached, use the framework — and KATA’s tokens and CSS still drop into it unchanged.'),
+    ('Why copy-paste, not a package', 'A package makes the library’s roadmap your roadmap: upgrades, breaking changes, abandonment. Copied code has no roadmap. shadcn proved the model for React; the trade is the same in vanilla — you own the code, including its bugs, and in exchange nobody can take it away, sunset it, or put it behind a pricing page.', None, None)]),
+  ('the-mold', 'The Mold', 'How every part is made, and the checks it has to pass before it exists.',
+   [('One mold', 'Kata — 型 — is the Japanese discipline of the form: the pattern from which things are cast, and the practice that keeps the casting true. Every KATA part is built to one production standard: same file layout, same tokens, same class grammar, same accessibility contract. The consistency is not a style guide people try to remember; it is a checklist a program enforces.', None, 'Two parts built months apart should look like they were built on the same day, by the same hand. The mold is how a library with one author keeps that promise.'),
+    ('The checks', 'Before a part ships, a checker reads its files the way a casting inspector reads a mold. Required files present. Metadata complete. No raw color anywhere — tokens only, because a hard-coded hex is a part that will not survive a theme. Every class used in the preview actually defined. Icons drawn on the 24-grid at stroke 2, from three shapes: circle, 45-degree line, rounded corner. A part that fails does not ship; the count on the homepage only ever counts parts that passed.', None, 'The checker is in the repository (check.py) and the standard is written down (KATA.md), so the mold is inspectable, not vibes.'),
+    ('The signature', 'One color is reserved: a vermillion core, #EB471F, that appears only at the center of active controls — the dot inside a checked radio, the core of an on switch, the end point of a line chart, the heart of the logo. Never on a surface, never as text, never changed by a theme. It is how you can tell a KATA part at a glance, and how the parts tell you where the action is.', None, None)]),
+  ('anatomy', 'Anatomy of a Part', 'What is inside every folder in the catalog.',
+   [('The files', 'A part is a folder: preview.html (the markup, exactly as you copy it), the part’s CSS, a JS file when the part behaves, and meta.json. Examples, when a part has them, live in examples.html and render on the part’s page under the preview. What you see on the site is not a rendering of the part — it is the part, loaded live.', 'components/button/\n  preview.html   the markup\n  button.css     the styles\n  button.js      the behavior (when any)\n  examples.html  variations (when any)\n  meta.json      title, category, usage, accessibility', 'Blocks are folders too, with one addition: meta.json names the parts they use, and their previews load those parts’ CSS — a block is a composition, never a re-implementation.'),
+    ('The contract', 'Every part reads color, spacing, radius and motion from the tokens and nothing else. Classes follow one grammar. Interactive parts state their keyboard behavior and their no-JavaScript fallback in their metadata, and the part’s page prints both. If two parts disagree about anything, that is a bug in one of them, and the mold decides which.', None, 'Status is printed on every part: stable means the contract is settled; beta means the shape is right but the edges are still being filed. The catalog counts both, and labels both.')]),
+  ('from-tailwind', 'Coming from Tailwind', 'For the largest group of visitors: what changes, what does not.',
+   [('The mental shift', 'Tailwind puts the design system in your class attributes; KATA puts it in tokens and part CSS. You will write longer stylesheets and shorter markup. A card stops being eleven utilities and becomes .k-card — which means the design can be retuned in one place, and the HTML reads as structure instead of as styling.', None, 'They coexist fine: Tailwind for layout glue in a page, KATA parts for the components. The tokens are plain CSS variables, so a Tailwind config can point at the same values and the two systems stop arguing.'),
+    ('Rough translations', 'A few mappings to start: bg-zinc-900 text-white becomes a part on a dark section (data-theme="dark" does the whole subtree). rounded-xl is --k-radius-lg. The accent button is .btn-pri or .btn-teal, not a recipe of bg-, hover: and focus: classes — hover and focus are in the part, tested once, everywhere. Arbitrary values like w-[340px] stay inline styles in KATA too; the mold is strict about color, relaxed about one-off geometry.', None, 'What you give up: the utility for the one weird case, answered inline. What you get back: a page whose markup a new hire (or a model) can read at a glance, and parts that look related because they are.')]),
+  ('site-faq', 'FAQ', 'About the library itself — licensing, the Pro line, and what is not planned.',
+   [('Licensing and Pro', 'Every component and icon in this catalog is MIT-licensed: copy it, ship it, sell what you build with it. Blocks and full templates are the commercial line — sold once, lifetime, no subscription — because composed screens are where the hours actually go. The parts will never move behind the paywall retroactively; a part that is free is free in every future version.', None, None),
+    ('Is there a React version?', 'Not today. The parts paste into any stack that renders HTML, including inside React as plain markup for static sections. A native React port, in the shadcn registry format, is the most-requested item on the list and is being considered honestly — the registry file already published is the first step, since it describes every part in that format.', None, None),
+    ('Why no npm package?', 'Because the package would become the product, and the product is the code in your repo. The one-file bundle and the starter kit cover the “just give me everything” case without a dependency. If a package ever ships, it will be a mirror of these files, never the source of truth.', None, None),
+    ('Who makes this?', 'One person, in the open, with the mold as the second pair of hands. The repository holds the parts, the checker, and the standard they are built to — issues and corrections are welcome there.', None, None)]),
+  ('changelog', 'Changelog', 'What shipped, newest first.',
+   [('November 2, 2026 — The catalog fills in', 'Seventy-six components and thirteen blocks. New: Date Picker, Combobox, File Upload, Tag Input, Context Menu, Tree, Data Table, Color Picker, Split Panel, Scroll Area, Aspect Ratio, Toggle, and the Scatter, Radar and Funnel charts plus Sparkline. Blocks gained FAQ, Site Header, Site Footer, Testimonials, CTA Band and Logo Cloud. Installation becomes a real thing: the one-file bundle (kata-ui.css / kata-ui.js), the starter kit, and an Installation doc. The landing page now assembles its showcase from live parts, and the mobile overflow bugs reported on day one are fixed.', None, None),
+    ('November 1, 2026 — Launch', 'KATA UI opens with 46 components in six groups, 5 blocks, 150 icons and 12 brand marks, the design-system tokens with light and dark themes, five accent themes, and the AI distribution files (registry.json, llms.txt). Every part is checked against the mold before it ships: required files, token-only colors, class coverage, icon geometry.', None, None)]),
+
 ]
 
 DOC_STYLE = """<style>
@@ -888,7 +1089,54 @@ def main():
         dp = ddir / dslug
         dp.mkdir(exist_ok=True)
         (dp / 'index.html').write_text(emit(doc_page(dslug), comps, None), encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/themes/', '/docs/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks]
+    # --- install artifacts: full bundles + starter zip ---
+    _base = Path(__file__).parent
+    _css = ['/* KATA UI full bundle - tokens + every component and block. For production, per-part copies are leaner; this is the fast start. */\n' + (_base / 'tokens.css').read_text(encoding='utf-8')]
+    for _c in comps:
+        if _c.get('css'):
+            _css.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n' + _c['css'])
+    for _b in blocks:
+        if _b.get('css'):
+            _css.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n' + _b['css'])
+    bundle_css = '\n'.join(_css)
+    (DIST / 'kata-ui.css').write_text(bundle_css, encoding='utf-8')
+    _js = ['/* KATA UI behavior bundle - each part in its own scope. Load at the end of <body>. Parts whose markup is absent stay inert. */']
+    for _c in comps:
+        if _c.get('js'):
+            _js.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n(function(){\n' + _c['js'] + '\n})();')
+    for _b in blocks:
+        if _b.get('js'):
+            _js.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n(function(){\n' + _b['js'] + '\n})();')
+    bundle_js = '\n'.join(_js)
+    (DIST / 'kata-ui.js').write_text(bundle_js, encoding='utf-8')
+    import zipfile as _zf
+    _sdir = DIST / 'starter'
+    _sdir.mkdir(exist_ok=True)
+    with _zf.ZipFile(_sdir / 'kata-starter.zip', 'w', _zf.ZIP_DEFLATED) as _z:
+        _z.writestr('kata-starter/index.html', STARTER_HTML)
+        _z.writestr('kata-starter/kata-ui.css', bundle_css)
+        _z.writestr('kata-starter/kata-ui.js', bundle_js)
+        _z.writestr('kata-starter/README.md', STARTER_README)
+    # --- 404 + robots ---
+    nf = head('Page not found — KATA UI', 'That page is not in the catalog.', '') + """
+<div class="wrap">
+  <div class="hero" style="text-align:center;padding:80px 0 30px">
+    <span class="eyebrow"><i></i>404</span>
+    <h1 style="font-size:40px;letter-spacing:-.025em">This part is not in the catalog.</h1>
+    <p style="margin:14px auto 0;max-width:52ch;color:var(--ink2);line-height:1.85">The page moved, or it never existed. The catalog search is the fastest way back — press the search button above, or start from a genre:</p>
+    <div class="cta" style="justify-content:center;margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn-p" href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#18181b;color:#fff;font-weight:500;font-size:14px;text-decoration:none">Browse components</a>
+      <a href="/blocks/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid var(--hair);font-weight:500;font-size:14px;text-decoration:none;background:#fff">See blocks</a>
+      <a href="/docs/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid var(--hair);font-weight:500;font-size:14px;text-decoration:none;background:#fff">Read the docs</a>
+    </div>
+  </div>
+</div>
+""" + FOOTER + """
+</body>
+</html>"""
+    (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
+    (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
+    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/themes/', '/docs/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

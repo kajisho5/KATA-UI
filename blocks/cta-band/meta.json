@@ -1,0 +1,15 @@
+{
+  "title": "CTA Band",
+  "description": "The last thing on the page: one sentence, one button, lit by the Aurora.",
+  "tags": [
+    "cta",
+    "landing",
+    "band"
+  ],
+  "status": "beta",
+  "uses": [
+    "aurora",
+    "button"
+  ],
+  "usage": "For the bottom of a landing page, after the proof. One action only — a band with two buttons is a menu, not a call."
+}

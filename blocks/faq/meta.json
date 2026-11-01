@@ -1,0 +1,14 @@
+{
+  "title": "FAQ",
+  "description": "Questions and answers, in the reader's order — asked often first, answered in one breath each.",
+  "tags": [
+    "faq",
+    "accordion",
+    "landing"
+  ],
+  "status": "beta",
+  "uses": [
+    "accordion"
+  ],
+  "usage": "For the questions support answers weekly. Write the answer first and the question second; if an answer needs a paragraph, it belongs in the docs, linked."
+}

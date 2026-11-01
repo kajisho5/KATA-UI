@@ -1,0 +1,13 @@
+{
+  "title": "Tree",
+  "category": "Layout & Navigation",
+  "description": "Nested things, honestly indented — files, folders, and outlines that fold away.",
+  "tags": [
+    "files",
+    "hierarchy",
+    "outline"
+  ],
+  "status": "beta",
+  "usage": "For file structures and nested navigation. Depth beyond four levels is a smell; flatten or split before the indent eats the label.",
+  "a11y": "Real nested lists with aria-expanded on the toggles, so the hierarchy is announced as a hierarchy. Files and folders are text, not links, unless they navigate."
+}

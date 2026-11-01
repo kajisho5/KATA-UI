@@ -1,0 +1,14 @@
+<!-- example: Hint and error -->
+<div style="display:grid;gap:14px;max-width:340px">
+  <div class="field"><label for="ex-ws">Workspace name</label><input class="input" id="ex-ws" value="acme-studio"><span class="hint">Shown on invoices and emails</span></div>
+  <div class="field"><label for="ex-slug">Workspace URL</label><input class="input errb" id="ex-slug" value="acme studio"><span class="err">Letters, numbers and hyphens only</span></div>
+</div>
+<!-- example: Search -->
+<div style="max-width:340px">
+  <div class="field"><label for="ex-q">Search</label><span class="searchwrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--k-ink-3)"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input class="input" id="ex-q" placeholder="Filter by name…"></span></div>
+</div>
+<!-- example: Disabled and read-only -->
+<div style="display:grid;gap:14px;max-width:340px">
+  <div class="field"><label for="ex-dis">Billing email</label><input class="input" id="ex-dis" value="owner@acme.example" disabled><span class="hint">Only the workspace owner can change this</span></div>
+  <div class="field"><label for="ex-ro">Account ID</label><input class="input" id="ex-ro" value="acct_8f42" readonly></div>
+</div>

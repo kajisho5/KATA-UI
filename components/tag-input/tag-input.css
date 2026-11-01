@@ -1,0 +1,4 @@
+.k-tags{display:flex;flex-wrap:wrap;gap:7px;align-items:center;border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);padding:7px 9px;font-family:var(--k-font);transition:border-color .13s, box-shadow .13s;text-align:left}
+.k-tags:focus-within{border-color:var(--k-accent);box-shadow:0 0 0 3px var(--k-accent-bg)}
+.k-tags-in{flex:1;min-width:110px;border:none;outline:none;background:transparent;font:inherit;font-size:13.5px;color:var(--k-ink);height:29px}
+.k-tags-in::placeholder{color:var(--k-ink-3)}

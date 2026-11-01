@@ -1,0 +1,10 @@
+.k-scroll{position:relative;font-family:var(--k-font);text-align:left;color:var(--k-ink)}
+.k-scroll-in{max-height:216px;overflow-y:auto;padding-right:6px;scrollbar-width:thin;scrollbar-color:var(--k-border-strong) transparent}
+.k-scroll-in::-webkit-scrollbar{width:8px}
+.k-scroll-in::-webkit-scrollbar-thumb{background:var(--k-border-strong);border-radius:99px}
+.k-scroll-in::-webkit-scrollbar-track{background:transparent}
+.k-scroll::after{content:"";position:absolute;left:0;right:10px;bottom:0;height:34px;background:linear-gradient(transparent,var(--k-bg));pointer-events:none}
+.k-scroll .rl{display:flex;gap:10px;padding:9px 8px;border-radius:9px;font-size:13px;align-items:baseline}
+.k-scroll .rl:hover{background:var(--k-bg-soft)}
+.k-scroll .rl time{font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3);flex:none}
+.k-scroll .rl b{font-weight:550}

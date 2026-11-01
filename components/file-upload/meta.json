@@ -1,0 +1,12 @@
+{
+  "title": "File Upload",
+  "category": "Form & Input",
+  "description": "A dropzone that says what it accepts, and a list that shows what it got.",
+  "tags": [
+    "dropzone",
+    "files"
+  ],
+  "status": "beta",
+  "usage": "For attachments and imports. State the accepted types and the size limit on the zone itself — not in a help article the user will never open.",
+  "a11y": "The zone is a real label for a real file input, so keyboard and screen-reader users browse the same way. Dropped files join the same list as browsed ones, each removable."
+}

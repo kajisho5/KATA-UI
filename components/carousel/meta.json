@@ -1,0 +1,12 @@
+{
+  "title": "Carousel",
+  "category": "Display & Media",
+  "description": "A row of panels that scrolls like it means it — snap points, real buttons, no autoplay.",
+  "tags": [
+    "gallery",
+    "scroll-snap"
+  ],
+  "status": "beta",
+  "usage": "For galleries and card rails on narrow screens. On wide screens it is a grid that happens to scroll; design for that first.",
+  "a11y": "Built on native scroll, so touch, trackpads and keyboards all work. Buttons move by one panel; dots are buttons too, labelled by position."
+}

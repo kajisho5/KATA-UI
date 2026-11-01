@@ -1,0 +1,13 @@
+{
+  "title": "Donut Chart",
+  "category": "Display & Media",
+  "description": "Parts of a whole, as a ring — with the one segment that matters wearing the core.",
+  "tags": [
+    "chart",
+    "ring",
+    "share"
+  ],
+  "status": "beta",
+  "usage": "For shares of a total with three to five parts. The segment the reader should act on takes the core; the rest stay in the accent family and zinc.",
+  "a11y": "A chart is a picture of numbers: give the figure role=\"img\" and an aria-label that states the conclusion (\"Signups rose from 22 to 71 over the year\"), and keep the data available as a table nearby."
+}

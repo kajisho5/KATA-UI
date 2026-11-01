@@ -1,0 +1,13 @@
+{
+  "title": "Steps",
+  "category": "Layout & Navigation",
+  "description": "Where you are in a sequence of things that must happen in order.",
+  "tags": [
+    "wizard",
+    "progress",
+    "checkout"
+  ],
+  "status": "beta",
+  "usage": "For checkouts, onboarding and setup flows of three to five steps. The current step carries the core dot — the same signature as the Switch and the Radio.",
+  "a11y": "An ordered list underneath: screen readers get the sequence for free. Mark the current step with aria-current=\"step\"."
+}

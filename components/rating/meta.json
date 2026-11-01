@@ -1,0 +1,13 @@
+{
+  "title": "Rating",
+  "category": "Form & Input",
+  "description": "Five stars, no JavaScript — a radio group wearing its meaning on its face.",
+  "tags": [
+    "stars",
+    "review",
+    "score"
+  ],
+  "status": "beta",
+  "usage": "For reviews and satisfaction scores. The stars are decoration; the radio group underneath is the actual control, so forms and keyboards just work.",
+  "a11y": "Real radio inputs with text labels available to screen readers (\"Rate 4 of 5\"). Hover preview is pointer-only; the checked state never depends on it."
+}

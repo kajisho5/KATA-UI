@@ -1,0 +1,12 @@
+.k-steps{list-style:none;margin:0;padding:0;display:flex;font-family:var(--k-font)}
+.k-steps li{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;text-align:center}
+.k-steps li::before{content:"";position:absolute;top:13px;left:calc(-50% + 16px);right:calc(50% + 16px);height:2px;background:var(--k-line);border-radius:2px}
+.k-steps li:first-child::before{display:none}
+.k-steps li[data-state="done"]::before{background:var(--k-ink)}
+.k-steps .n{width:27px;height:27px;border-radius:50%;border:2px solid var(--k-line);background:var(--k-bg);display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--k-ink-3);position:relative;z-index:1}
+.k-steps li[data-state="done"] .n{background:var(--k-ink);border-color:var(--k-ink);color:var(--k-bg)}
+.k-steps li[data-state="current"] .n{border-color:var(--k-ink);color:var(--k-ink)}
+.k-steps li[data-state="current"] .n::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--k-core);position:absolute}
+.k-steps .t{font-size:12px;font-weight:550;color:var(--k-ink-3)}
+.k-steps li[data-state="current"] .t{color:var(--k-ink)}
+.k-steps li[data-state="done"] .t{color:var(--k-ink-2)}

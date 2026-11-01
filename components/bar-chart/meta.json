@@ -1,0 +1,13 @@
+{
+  "title": "Bar Chart",
+  "category": "Display & Media",
+  "description": "Columns for comparing a handful of values — the chart people read correctly at a glance.",
+  "tags": [
+    "chart",
+    "columns",
+    "comparison"
+  ],
+  "status": "beta",
+  "usage": "For comparing categories: weeks, plans, channels. Keep it under a dozen bars, label every value, and highlight at most one bar — the one the reader should remember.",
+  "a11y": "A chart is a picture of numbers: give the figure role=\"img\" and an aria-label that states the conclusion (\"Signups rose from 22 to 71 over the year\"), and keep the data available as a table nearby."
+}

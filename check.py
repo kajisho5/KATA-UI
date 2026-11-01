@@ -50,9 +50,13 @@ def check_component(d):
         prev += '\n' + ex_f.read_text(encoding='utf-8')
     for m in HEX.finditer(prev):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
-    for m in re.finditer(r'stroke-width="([0-9.]+)"', prev):
-        if m.group(1) != '2':
-            errs.append(f'preview: svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
+    # the stroke rule binds icon glyphs (24-grid SVGs) only; chart/diagram SVGs use their own geometry
+    for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
+        if 'viewBox="0 0 24 24"' not in svg_m.group(0).split('>', 1)[0]:
+            continue
+        for m in re.finditer(r'stroke-width="([0-9.]+)"', svg_m.group(0)):
+            if m.group(1) != '2':
+                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
     if re.search(r'<script', prev):
         errs.append('preview: <script> belongs in the .js file, not preview.html')
     # classes used in preview must be defined in own CSS or a linked dependency's CSS
@@ -114,9 +118,13 @@ def check_block(d, comp_slugs):
     prev = prev_f.read_text(encoding='utf-8')
     for m in HEX.finditer(prev):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
-    for m in re.finditer(r'stroke-width="([0-9.]+)"', prev):
-        if m.group(1) != '2':
-            errs.append(f'preview: svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
+    # the stroke rule binds icon glyphs (24-grid SVGs) only; chart/diagram SVGs use their own geometry
+    for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
+        if 'viewBox="0 0 24 24"' not in svg_m.group(0).split('>', 1)[0]:
+            continue
+        for m in re.finditer(r'stroke-width="([0-9.]+)"', svg_m.group(0)):
+            if m.group(1) != '2':
+                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
     if re.search(r'<script', prev):
         errs.append('preview: <script> belongs in the .js file, not preview.html')
     defined = set(re.findall(r'\.([a-zA-Z][\w-]*)', css))

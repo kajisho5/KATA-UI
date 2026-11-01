@@ -1,0 +1,13 @@
+{
+  "title": "Hover Card",
+  "category": "Overlays & Dialogs",
+  "description": "A richer tooltip for things with a face: profiles, previews, and anything a title attribute cannot carry.",
+  "tags": [
+    "profile",
+    "preview",
+    "hover"
+  ],
+  "status": "beta",
+  "usage": "For profile previews on names and avatars. Rich content only — anything actionable belongs in a Popover, which also works on tap.",
+  "a11y": "Opens on focus as well as hover, with a delay both ways so it never flickers. Touch users get the Popover pattern instead; never hide essential content here."
+}

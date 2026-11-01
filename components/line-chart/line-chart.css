@@ -1,0 +1,8 @@
+.k-line-chart{font-family:var(--k-font);text-align:left;margin:0}
+.k-line-chart figcaption{display:flex;align-items:baseline;justify-content:space-between;font-size:13px;font-weight:600;color:var(--k-ink);margin-bottom:12px}
+.k-line-chart figcaption span{font-size:12px;font-weight:500;color:var(--k-ink-3)}
+.k-line-chart svg{width:100%;height:auto;display:block}
+.k-line-chart .line{stroke:var(--k-accent);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:k-draw 1.5s var(--k-ease) .1s forwards}
+.k-line-chart .x{display:flex;justify-content:space-between;font-size:11px;color:var(--k-ink-3);margin-top:8px;padding:0 1px}
+@keyframes k-draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.k-line-chart .line{animation:none;stroke-dashoffset:0}}

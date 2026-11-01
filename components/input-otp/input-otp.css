@@ -1,0 +1,4 @@
+.k-otp{display:flex;gap:8px;align-items:center;font-family:var(--k-font)}
+.k-otp input{width:44px;height:50px;border:1px solid var(--k-line);border-radius:10px;background:var(--k-bg);color:var(--k-ink);font-family:var(--k-mono);font-size:19px;font-weight:600;text-align:center;outline:none;transition:border-color .13s, box-shadow .13s}
+.k-otp input:focus{border-color:var(--k-accent);box-shadow:0 0 0 3px var(--k-accent-bg)}
+.k-otp .gap{width:10px;height:2px;border-radius:2px;background:var(--k-line)}

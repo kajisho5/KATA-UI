@@ -1,0 +1,13 @@
+{
+  "title": "Field",
+  "category": "Form & Input",
+  "description": "The wrapper every control deserves: a label, a hint, and an error that knows which input it belongs to.",
+  "tags": [
+    "form",
+    "label",
+    "validation"
+  ],
+  "status": "beta",
+  "usage": "Wrap any single control in a Field so labels, hints and errors stay attached. Stack Fields with a consistent gap and a form stops looking improvised.",
+  "a11y": "The label is a real <label>, the hint and error are wired with aria-describedby, and the error carries role=\"alert\" only when it appears after submit — not while typing."
+}

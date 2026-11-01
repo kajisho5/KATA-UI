@@ -1,0 +1,12 @@
+{
+  "title": "Card",
+  "category": "Display & Media",
+  "description": "The universal container: a hairline box with a header, a body and a footer that agree with each other.",
+  "tags": [
+    "container",
+    "panel"
+  ],
+  "status": "beta",
+  "usage": "The default box for grouped content. If a thing has a title, a body and actions, it is a card; if it only has a body, use a plain section.",
+  "a11y": "A card is a region, not a landmark: give the page real headings and let the card carry an aria-label only when it needs a name."
+}

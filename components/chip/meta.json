@@ -1,0 +1,13 @@
+{
+  "title": "Chip",
+  "category": "Display & Media",
+  "description": "A small labeled thing that can be removed, selected, or both — tags, filters, people.",
+  "tags": [
+    "tag",
+    "filter",
+    "removable"
+  ],
+  "status": "beta",
+  "usage": "For tag sets and active filters. Chips state what is in play and offer the way out (the ×); they are not buttons for primary actions.",
+  "a11y": "The remove control is a real button with the chip name in its label (\"Remove tag Design\"), so removing never depends on sight."
+}

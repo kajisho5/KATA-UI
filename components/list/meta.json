@@ -1,0 +1,12 @@
+{
+  "title": "List",
+  "category": "Display & Media",
+  "description": "Rows of like things: a face or an icon, a title, a whisper of meta, and somewhere to go.",
+  "tags": [
+    "rows",
+    "index"
+  ],
+  "status": "beta",
+  "usage": "For indexes, member lists, file lists — anywhere the same row shape repeats. If rows need sorting or filtering, that is the Data Table pattern, not this part.",
+  "a11y": "A real list element underneath. Rows that navigate are links; rows that act are buttons — never a clickable div."
+}

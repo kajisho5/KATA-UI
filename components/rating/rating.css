@@ -1,0 +1,8 @@
+.k-rate{display:inline-flex;flex-direction:row-reverse;gap:3px;font-family:var(--k-font)}
+.k-rate input{position:absolute;opacity:0;width:1px;height:1px}
+.k-rate label{cursor:pointer;color:var(--k-border-strong);display:grid;place-items:center;padding:2px}
+.k-rate label svg path{fill:none;transition:fill .12s}
+.k-rate input:checked ~ label{color:var(--k-accent)}
+.k-rate input:checked ~ label svg path{fill:currentColor}
+.k-rate label:hover,.k-rate label:hover ~ label{color:var(--k-accent)}
+.k-rate input:focus-visible + label{outline:2px solid var(--k-accent);outline-offset:2px;border-radius:6px}

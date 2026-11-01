@@ -1,0 +1,13 @@
+{
+  "title": "Input OTP",
+  "category": "Form & Input",
+  "description": "Six boxes for a code that arrives somewhere else — typed, pasted, or autofilled as one.",
+  "tags": [
+    "code",
+    "2fa",
+    "verification"
+  ],
+  "status": "beta",
+  "usage": "For verification codes and short PINs. One component, one inputmode, no per-box tab stops to fight with.",
+  "a11y": "Each box is a real input with inputmode=\"numeric\" and autocomplete=\"one-time-code\" on the first, so password managers and SMS autofill land properly. Arrow keys and paste are handled."
+}

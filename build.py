@@ -105,32 +105,162 @@ def catalog_sections(comps):
         out.append(f'<section class="catsec"><h2>{esc(cat)}</h2><div class="cards">\n{cards}\n</div></section>')
     return '\n'.join(out)
 
-def landing(comps):
+LP_STYLE = """<style>
+.lp .hero{padding:64px 0 8px;text-align:center}
+.lp .hero h1{font-size:44px;line-height:1.12}
+.lp .hero p{margin-left:auto;margin-right:auto}
+.lp .cta{justify-content:center}
+.lp .stats{justify-content:center}
+.browser{margin:38px auto 0;max-width:880px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -30px rgba(16,24,40,.25);text-align:left}
+.browser-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--hair);background:var(--soft)}
+.browser-bar i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
+.browser-bar .url{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:3px 10px;background:#fff}
+.browser .shell{border:0;border-radius:0}
+.framecap{max-width:880px;margin:10px auto 0;text-align:right;font-size:12px;color:var(--ink3)}
+.framecap a{color:var(--ink2)}
+.lpsec{margin-top:64px}
+.lpsec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.lpsec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch}
+.steps{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.step{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:18px}
+.step .no{font-family:var(--mono);font-size:11px;color:var(--acc);font-weight:600;letter-spacing:.08em}
+.step h3{margin-top:8px;font-size:15px;font-weight:600}
+.step p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75}
+.step code{font-family:var(--mono);font-size:12px;background:var(--soft);border-radius:5px;padding:1px 5px}
+.genres{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.genre{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);display:block}
+.genre:hover{border-color:var(--ink3)}
+.genre .gn{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
+.genre h3{margin-top:7px;font-size:15.5px;font-weight:600}
+.genre p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75}
+.compat{margin-top:20px;border:1px solid var(--hair);border-radius:12px;background:var(--soft);padding:18px;font-size:13.5px;line-height:1.9;color:var(--ink2)}
+.compat b{color:var(--ink);font-weight:600}
+.compat a{color:var(--ink);font-weight:550}
+@media (max-width:720px){.lp .hero h1{font-size:33px}.browser .shell-side{display:none}}
+</style>"""
+
+def landing(comps, blocks, n_icons):
     n = len(comps)
+    nb = len(blocks)
+    shell = next((b for b in blocks if b['slug'] == 'app-shell'), None)
+    shell_html = shell['preview'] if shell else ''
     body = f"""
-<div class="wrap">
+<div class="wrap lp">
   <div class="hero">
     <span class="eyebrow"><i></i>Vanilla components — no framework, no build step</span>
-    <h1>A store of UI parts &amp; code.<br><span class="dim">Try it live, then paste it in.</span></h1>
-    <p>From buttons to modals — the parts you need to build a screen, each with a live preview and copy-ready code. No libraries, no build step. Every part is cast from a single mold — kata, the Japanese discipline of the form.</p>
+    <h1>Parts, cast from a single mold.<br><span class="dim">Copy the code. Own the design.</span></h1>
+    <p>From buttons to app shells — practical components in plain HTML, CSS and JS, each with a live preview and copy-ready code. Every part is cast from a single mold — kata, the Japanese discipline of the form.</p>
     <div class="cta">
       <a class="kbtn-primary" href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#18181b;color:#fff;font-weight:500;font-size:14px;text-decoration:none">Browse components</a>
-      <a href="#catalog" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid var(--hair);font-weight:500;font-size:14px;text-decoration:none;background:#fff">How it works</a>
+      <a href="/blocks/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid var(--hair);font-weight:500;font-size:14px;text-decoration:none;background:#fff">See blocks</a>
     </div>
     <div class="stats">
-      <div><b>{n}</b><span>components (v1)</span></div>
-      <div><b>0</b><span>libraries</span></div>
-      <div><b>1 file</b><span>copy-paste ready</span></div>
+      <div><b>{n}</b><span>components</span></div>
+      <div><b>{nb}</b><span>blocks</span></div>
+      <div><b>{n_icons}</b><span>icons</span></div>
+      <div><b>0</b><span>dependencies</span></div>
     </div>
   </div>
-    <div id="catalog">
+  <div class="browser" aria-hidden="true">
+    <div class="browser-bar"><i></i><i></i><i></i><span class="url">your-app.com</span></div>
+{shell_html}
+  </div>
+  <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
+  <section class="lpsec">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><span class="no">STEP 1</span><h3>Take the tokens</h3><p>Load <code>tokens.css</code> once. Every part reads its color, spacing, radius and motion from it — that file is the mold.</p></div>
+      <div class="step"><span class="no">STEP 2</span><h3>Paste the part</h3><p>Copy the HTML, the CSS and the JS from the part's page. No install, no package, nothing phoning home.</p></div>
+      <div class="step"><span class="no">STEP 3</span><h3>Make it yours</h3><p>Adjust the tokens, not the parts. One change in the mold re-casts everything on the page.</p></div>
+    </div>
+  </section>
+  <section class="lpsec">
+    <h2>Four genres, one mold</h2>
+    <div class="genres">
+      <a class="genre" href="/components/"><span class="gn">{n} PARTS</span><h3>Components</h3><p>The single parts: forms, overlays, feedback, display — and a Motion line other libraries do not carry.</p></a>
+      <a class="genre" href="/blocks/"><span class="gn">{nb} SECTIONS</span><h3>Blocks</h3><p>Whole sections composed from the parts — sign-in, pricing, settings, an app shell. Start here, take apart later.</p></a>
+      <a class="genre" href="/icons/"><span class="gn">{n_icons} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 2px stroke, three shapes only. Click to copy, and Lucide mixes in without a seam.</p></a>
+      <a class="genre" href="/design-system/"><span class="gn">TOKENS.JSON</span><h3>Design System</h3><p>The foundation every part is cast from — color, type, spacing, radius, motion. Download it, diff it, fork it.</p></a>
+    </div>
+    <div class="compat">
+      <b>Drops into</b> plain HTML, Astro, Laravel, Django, Rails and WordPress themes — anywhere that renders HTML, with no React island required.<br>
+      <b>For AI tools</b>, KATA speaks their formats: <a href="/registry.json">registry.json</a> for installers and agents, <a href="/llms.txt">llms.txt</a> for models that read the web.
+    </div>
+  </section>
+  <div id="catalog">
 {catalog_sections(comps)}
   </div>
 </div>
 {FOOTER}
 </body>
 </html>"""
-    return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', '') + body
+    extra = '<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
+    return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
+
+def registry_json(comps, blocks):
+    items = []
+    for c in comps:
+        m = c['meta']
+        files = [{'path': f"components/{c['slug']}/{c['slug']}.css", 'type': 'registry:component', 'content': c['css']}]
+        if c['js']:
+            files.append({'path': f"components/{c['slug']}/{c['slug']}.js", 'type': 'registry:component', 'content': c['js']})
+        example = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', c['preview']).strip()
+        files.append({'path': f"components/{c['slug']}/example.html", 'type': 'registry:component', 'content': example})
+        items.append({'name': c['slug'], 'type': 'registry:component', 'title': m['title'],
+                      'description': m['description'], 'categories': [m['category']],
+                      'dependencies': c['deps'], 'files': files})
+    for b in blocks:
+        m = b['meta']
+        files = [{'path': f"blocks/{b['slug']}/{b['slug']}.css", 'type': 'registry:block', 'content': b['css']}]
+        if b['js']:
+            files.append({'path': f"blocks/{b['slug']}/{b['slug']}.js", 'type': 'registry:block', 'content': b['js']})
+        example = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', b['preview']).strip()
+        files.append({'path': f"blocks/{b['slug']}/example.html", 'type': 'registry:block', 'content': example})
+        items.append({'name': b['slug'], 'type': 'registry:block', 'title': m['title'],
+                      'description': m['description'], 'categories': ['Blocks'],
+                      'dependencies': m.get('uses', []), 'files': files})
+    return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui',
+                       'homepage': 'https://kata-ui.dev', 'items': items}, ensure_ascii=False, indent=1)
+
+def llms_txt(comps, blocks, n_icons):
+    lines = ['# KATA UI', '',
+             '> Practical UI components in plain HTML, CSS and JavaScript. No framework, no build step. Every part is cast from a single design-token mold; copy the code and own it.', '',
+             'KATA is framework-free: parts drop into plain HTML, Astro, Laravel, Django, Rails and templates unchanged. Components depend on tokens.css (design tokens) being loaded once.', '',
+             '## Docs', '',
+             '- [Design System](https://kata-ui.dev/design-system/): the tokens every part is cast from (tokens.json is downloadable there)',
+             f'- [Icons](https://kata-ui.dev/icons/): {n_icons} icons on one mold (24 grid, 2px stroke); click to copy the SVG',
+             '- [Registry](https://kata-ui.dev/registry.json): every component and block with its full CSS/JS/HTML, in the shadcn registry format', '',
+             '## Components', '']
+    for c in comps:
+        lines.append(f"- [{c['meta']['title']}](https://kata-ui.dev/components/{c['slug']}/): {c['meta']['description']}")
+    lines += ['', '## Blocks', '']
+    for b in blocks:
+        lines.append(f"- [{b['meta']['title']}](https://kata-ui.dev/blocks/{b['slug']}/): {b['meta']['description']}")
+    lines.append('')
+    return '\n'.join(lines)
+
+def llms_full(comps, blocks):
+    out = ['# KATA UI — full text', '',
+           'Vanilla UI components: HTML, CSS and JS for every part, plus the design tokens.', '',
+           '## Design tokens (tokens.css)', '', '```css', (ROOT / 'tokens.css').read_text(encoding='utf-8').strip(), '```', '']
+    for c in comps:
+        m = c['meta']
+        example = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', c['preview']).strip()
+        out += [f"## Component: {m['title']} ({c['slug']})", '', m['description'], '',
+                f"Usage: {m.get('usage','')}", '', '### HTML', '', '```html', example, '```', '',
+                '### CSS', '', '```css', c['css'].strip(), '```', '']
+        if c['js']:
+            out += ['### JS', '', '```js', c['js'].strip(), '```', '']
+    for b in blocks:
+        m = b['meta']
+        example = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', b['preview']).strip()
+        out += [f"## Block: {m['title']} ({b['slug']})", '', m['description'], '',
+                'Built from: ' + ', '.join(m.get('uses', [])), '', '### HTML', '', '```html', example, '```', '',
+                '### CSS (glue)', '', '```css', b['css'].strip(), '```', '']
+        if b['js']:
+            out += ['### JS', '', '```js', b['js'].strip(), '```', '']
+    return '\n'.join(out)
+
 
 def components_index(comps):
     body = f"""
@@ -463,6 +593,8 @@ def block_detail(blocks, idx, comps):
 
 def main():
     comps = load_components()
+    blocks = load_blocks()
+    n_icons = len(list((ROOT / 'icons').glob('*.svg')))
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
@@ -470,7 +602,7 @@ def main():
     shutil.copy(ROOT / 'logo' / 'favicon.svg', DIST / 'favicon.svg')
     shutil.copy(ROOT / 'logo' / 'logo.svg', DIST / 'logo.svg')
     shutil.copy(ROOT / 'site.css', DIST / 'site.css')
-    (DIST / 'index.html').write_text(emit(landing(comps), comps, None), encoding='utf-8')
+    (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons), comps, None), encoding='utf-8')
     cdir = DIST / 'components'
     cdir.mkdir()
     (cdir / 'index.html').write_text(emit(components_index(comps), comps, None), encoding='utf-8')
@@ -492,7 +624,6 @@ def main():
     (idir / 'index.html').write_text(emit(icons_page(), comps, None), encoding='utf-8')
     for f in (ROOT / 'icons').glob('*.svg'):
         shutil.copy(f, idir / f.name)
-    blocks = load_blocks()
     bkdir = DIST / 'blocks'
     bkdir.mkdir(exist_ok=True)
     (bkdir / 'index.html').write_text(emit(blocks_index(blocks), comps, None), encoding='utf-8')
@@ -504,6 +635,9 @@ def main():
             if f.is_file():
                 shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(block_detail(blocks, i, comps), comps, None), encoding='utf-8')
+    (DIST / 'registry.json').write_text(registry_json(comps, blocks), encoding='utf-8')
+    (DIST / 'llms.txt').write_text(llms_txt(comps, blocks, n_icons), encoding='utf-8')
+    (DIST / 'llms-full.txt').write_text(llms_full(comps, blocks), encoding='utf-8')
     urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'

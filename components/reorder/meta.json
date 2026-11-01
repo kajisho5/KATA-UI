@@ -1,0 +1,13 @@
+{
+  "title": "Reorder",
+  "category": "Motion",
+  "description": "A ranked list that re-sorts itself — rows glide to their new positions instead of jumping.",
+  "tags": [
+    "list",
+    "ranking",
+    "flip"
+  ],
+  "status": "beta",
+  "usage": "For leaderboards, priority queues and anything whose order is the message. The FLIP technique keeps the motion honest: rows travel, they never teleport.",
+  "a11y": "Rows keep their text and rank numbers after every move, so screen readers follow the final order. Autoplay pauses on hover and never starts under prefers-reduced-motion."
+}

@@ -1,0 +1,11 @@
+.k-converge{position:relative;border-radius:14px;background:var(--k-zinc-950);overflow:hidden;min-height:196px;display:grid;place-items:center;font-family:var(--k-font)}
+.k-converge .src{position:absolute;left:16px;top:50%;transform:translateY(-50%);display:grid;gap:7px;z-index:3}
+.k-converge .src span{display:flex;gap:6px;align-items:center;background:color-mix(in srgb,var(--k-on-color) 10%,transparent);border:1px solid color-mix(in srgb,var(--k-on-color) 28%,transparent);color:var(--k-on-color);backdrop-filter:blur(6px);font-size:11px;padding:5px 9px;border-radius:7px}
+.k-converge .stream{position:absolute;left:-12%;top:50%;width:64%;height:88px;border-radius:50%;filter:blur(16px);display:block}
+.k-converge .s1{transform:translateY(-88%) rotate(-7deg);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--k-accent) 70%,transparent),color-mix(in srgb,var(--k-on-color) 65%,transparent));animation:k-conv 3.4s var(--k-ease) infinite alternate}
+.k-converge .s2{transform:translateY(-12%) rotate(5deg);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--k-accent) 55%,transparent),color-mix(in srgb,var(--k-on-color) 45%,transparent));animation:k-conv 3.4s var(--k-ease) .7s infinite alternate-reverse}
+.k-converge .glow{position:absolute;left:50%;top:50%;width:200px;height:200px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--k-accent) 60%,transparent),transparent 65%);animation:k-conv-pulse 3.4s var(--k-ease) infinite alternate}
+.k-converge-tile{position:relative;z-index:2;width:64px;height:64px;border-radius:16px;background:var(--k-bg);display:grid;place-items:center;color:var(--k-ink);box-shadow:0 0 46px color-mix(in srgb,var(--k-accent) 55%,transparent)}
+@keyframes k-conv{from{opacity:.55;margin-left:0}to{opacity:1;margin-left:26px}}
+@keyframes k-conv-pulse{from{transform:translate(-50%,-50%) scale(.92);opacity:.7}to{transform:translate(-50%,-50%) scale(1.12);opacity:1}}
+@media (prefers-reduced-motion:reduce){.k-converge .stream,.k-converge .glow{animation:none}}

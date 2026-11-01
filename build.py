@@ -37,7 +37,7 @@ def esc(s):
 HEADER = """<header class="top"><div class="wrap top-in">
   <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="#18181b" stroke-width="4"/><rect x="19" y="19" width="10" height="10" rx="3" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
   <button class="menubtn" id="menubtn" type="button" aria-label="Open component menu">☰<span>Components</span></button>
-  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a></nav>
+  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a><a href="/font/">Font</a></nav>
   <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a>
 </div></header>"""
 
@@ -55,7 +55,7 @@ def drawer_html(comps, active):
 <div class="scrim" id="scrim"></div>
 <nav class="drawer" id="drawer" aria-label="All components">
   <div class="dhead"><span>Components</span><button class="dclose" id="dclose" type="button" aria-label="Close menu">✕</button></div>
-  <div class="dlinks"><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a><a href="/design-system/">Design System</a></div>
+  <div class="dlinks"><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a><a href="/font/">Font</a><a href="/design-system/">Design System</a></div>
   <input class="dfilter" id="dfilter" type="search" placeholder="Filter components…" aria-label="Filter components">
   {sidebar(comps, active)}
   <p class="dnone" id="dnone" hidden>No matches.</p>
@@ -179,11 +179,11 @@ def landing(comps, blocks, n_icons):
         if not c:
             return ''
         return ('<div class="showtile' + (' wide' if wide else '') + '"><div class="cap"><span>' + label.upper() + '</span><a href="/components/' + slug + '/">Open part</a></div>' + c['preview'] + '</div>')
-    show_scripts = ''.join(f'<script src="/components/{sl}/{sl}.js?v={_v(pv[sl]["js"])}"></script>' for sl in ('counter', 'spotlight', 'text-reveal', 'follow-frame') if pv.get(sl) and pv[sl]['js'])
+    show_scripts = ''.join(f'<script src="/components/{sl}/{sl}.js?v={_v(pv[sl]["js"])}"></script>' for sl in ('counter', 'spotlight', 'text-reveal', 'follow-frame', 'reorder') if pv.get(sl) and pv[sl]['js'])
     showcase = ('<section class="showband"><h2>The showy shelf</h2><p class="sub">The Motion line and the ambient pieces — live on this page, in the dark they were designed for. Built to be stared at a little.</p>'
                 '<div data-theme="dark"><div class="showgrid">'
-                + tile('aurora', 'Aurora') + tile('follow-frame', 'Follow Frame') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border')
-                + tile('text-reveal', 'Text Reveal', True) + tile('counter', 'Counter') + tile('marquee', 'Marquee')
+                + tile('aurora', 'Aurora') + tile('converge', 'Converge') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border') + tile('glass-panel', 'Glass Panel') + tile('follow-frame', 'Follow Frame')
+                + tile('text-reveal', 'Text Reveal', True) + tile('reorder', 'Reorder', True) + tile('counter', 'Counter') + tile('marquee', 'Marquee')
                 + '</div></div>' + show_scripts + '</section>')
     body = f"""
 <div class="wrap lp">
@@ -237,7 +237,7 @@ def landing(comps, blocks, n_icons):
 </body>
 </html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
-             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter') if pv.get(sl)))
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder') if pv.get(sl)))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks):
@@ -490,9 +490,67 @@ def icons_page():
         data[f.stem] = raw
         inline = raw.replace('<svg ', '<svg width="22" height="22" aria-hidden="true" ', 1)
         cells.append('<button class="iccell" type="button" data-icon="' + f.stem + '">' + inline + '<span class="nm">' + f.stem + '</span></button>')
+    bfiles = sorted((ROOT / 'icons' / 'brands').glob('*.svg')) if (ROOT / 'icons' / 'brands').exists() else []
+    bcells = []
+    for f in bfiles:
+        raw = f.read_text(encoding='utf-8').strip()
+        data[f.stem] = raw
+        inline = raw.replace('<svg ', '<svg width="22" height="22" aria-hidden="true" ', 1)
+        bcells.append('<button class="iccell" type="button" data-icon="' + f.stem + '">' + inline + '<span class="nm">' + f.stem.replace('brand-', '') + '</span></button>')
+    brand_section = ''
+    if bcells:
+        brand_section = ('<h2 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin-top:38px">Brand marks</h2>'
+          '<p style="margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:64ch">' + str(len(bcells)) + ' marks for the places a product has to name: social links, sign-in buttons, integration grids. Brand marks belong to their owners and are here for nominative use only — using one does not imply endorsement, and they are never part of the KATA identity. They are also the one exception to the three-shape mold: a mark keeps its owner’s geometry.</p>'
+          '<div class="icgrid">' + ''.join(bcells) + '</div>')
     script = "<script>var ICONS=__DATA__;\ndocument.querySelectorAll('[data-icon]').forEach(function(b){b.addEventListener('click',function(){var n=b.dataset.icon;var done=function(){document.getElementById('icstat').innerHTML='<b>'+n+'</b> copied.';};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ICONS[n]).then(done,done);}else{done();}});});\n</script>".replace('__DATA__', _json.dumps(data))
-    body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 2px stroke, round caps and joins. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center, the same mark that sits inside the Switch, the Radio and the logo. Click any icon to copy its SVG. For anything beyond this set, Lucide speaks the same mold (24 / 2 / round) and mixes in without a seam.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
+    body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 2px stroke, round caps and joins. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center, the same mark that sits inside the Switch, the Radio and the logo. Click any icon to copy its SVG. For anything beyond this set, Lucide speaks the same mold (24 / 2 / round) and mixes in without a seam.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>" + brand_section + "\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
     return head('Icons — KATA UI', 'The KATA icon set: 24 grid, 2px stroke, click to copy the SVG.', ICONS_STYLE) + body
+
+
+FONT_STYLE = """<style>
+@font-face{font-family:'KATA Display';src:url('/font/KATA-Display.woff2') format('woff2');font-display:swap}
+.kf h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
+.kf .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.kf .spec{font-family:'KATA Display',monospace;margin-top:30px;border:1px solid var(--hair);border-radius:16px;padding:30px 28px;background:#101013;color:#f4f4f5}
+.kf .spec .big{font-size:54px;line-height:1.25;letter-spacing:.01em;outline:none}
+.kf .spec .hint{margin-top:14px;font-family:var(--mono);font-size:11px;color:#a1a1aa;letter-spacing:.06em}
+.kf .glyphs{font-family:'KATA Display',monospace;margin-top:22px;font-size:27px;line-height:1.9;letter-spacing:.14em;color:var(--ink)}
+.kf h2{font-size:19px;font-weight:600;letter-spacing:-.015em;margin-top:36px}
+.kf .note{margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.85;max-width:64ch}
+.kf .dl{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap}
+.kf .dl a{border:1px solid var(--hair);background:#fff;border-radius:99px;padding:8px 15px;font-size:13px;font-weight:550;color:var(--ink);text-decoration:none}
+</style>"""
+
+def font_page():
+    latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    figs = '0123456789'
+    kana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン'
+    small = 'ァィゥェォッャュョー・'
+    body = f"""
+<div class="wrap kf">
+  <h1>KATA Display</h1>
+  <p class="lead">The typeface of the mold — drawn the same way as the icons: one stroke weight, round caps, nothing else. A display face for headlines, wordmarks and numbers, cast from the same rules as every other part. Version 0.1: Latin capitals, figures, punctuation and katakana.</p>
+  <div class="dl">
+    <a href="/font/KATA-Display.woff2" download>Download WOFF2</a>
+    <a href="/font/KATA-Display.ttf" download>Download TTF</a>
+    <a href="/icons/">Icons</a>
+    <a href="/design-system/">Design System</a>
+  </div>
+  <div class="spec">
+    <div class="big" contenteditable="true" spellcheck="false">DESIGN, CAST IN A MOLD. カタ 0123</div>
+    <p class="hint">CLICK THE SPECIMEN AND TYPE — IT IS LIVE. CAPITALS, FIGURES AND KATAKANA.</p>
+  </div>
+  <h2>Capitals &amp; figures</h2>
+  <p class="glyphs">{latin}<br>{figs}</p>
+  <h2>Katakana</h2>
+  <p class="glyphs">{kana}<br>{small}</p>
+  <h2>Terms</h2>
+  <p class="note">Free for any use, like the components — MIT. The stroke construction means it stays a display face: at body sizes it reads as a technical drawing, which is the point. Lowercase and dakuten marks are not in 0.1; the glyph set is data, so growing it is a pull request, not a redesign.</p>
+</div>
+""" + FOOTER + """
+</body>
+</html>"""
+    return head('KATA Display — KATA UI', 'KATA Display: a stroke-built display typeface (capitals, figures, katakana) cast from the same mold as the KATA icons.', FONT_STYLE) + body
 
 def design_system_page(tokens):
     def swatches(scale_name, scale):
@@ -843,6 +901,17 @@ def main():
     (idir / 'index.html').write_text(emit(icons_page(), comps, None), encoding='utf-8')
     for f in (ROOT / 'icons').glob('*.svg'):
         shutil.copy(f, idir / f.name)
+    bdir2 = ROOT / 'icons' / 'brands'
+    if bdir2.exists():
+        (idir / 'brands').mkdir(exist_ok=True)
+        for f in bdir2.glob('*.svg'):
+            shutil.copy(f, idir / 'brands' / f.name)
+    fdir = DIST / 'font'
+    fdir.mkdir(exist_ok=True)
+    (fdir / 'index.html').write_text(emit(font_page(), comps, None), encoding='utf-8')
+    for f in (ROOT / 'font').glob('KATA-Display.*'):
+        if f.suffix in ('.ttf', '.woff2'):
+            shutil.copy(f, fdir / f.name)
     bkdir = DIST / 'blocks'
     bkdir.mkdir(exist_ok=True)
     (bkdir / 'index.html').write_text(emit(blocks_index(blocks), comps, None), encoding='utf-8')
@@ -870,7 +939,7 @@ def main():
         dp = ddir / dslug
         dp.mkdir(exist_ok=True)
         (dp / 'index.html').write_text(emit(doc_page(dslug), comps, None), encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/themes/', '/docs/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks]
+    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/themes/', '/docs/', '/font/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

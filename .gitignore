@@ -4,3 +4,5 @@ vision/
 site/
 __pycache__/
 *.muse-github-snapshot-sync.json
+font/*.ttf
+font/*.woff2

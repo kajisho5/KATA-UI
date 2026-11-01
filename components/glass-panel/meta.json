@@ -1,0 +1,13 @@
+{
+  "title": "Glass Panel",
+  "category": "Display & Media",
+  "description": "A translucent panel that floats over bright surfaces — the menu in front of the aurora.",
+  "tags": [
+    "glass",
+    "translucent",
+    "overlay"
+  ],
+  "status": "beta",
+  "usage": "For panels that sit on photography, gradients or the Aurora: menus, summaries, now-playing cards. Needs a busy surface behind it; on a plain page it is just a card.",
+  "a11y": "The blur is decorative; text sits on a 68% ground so contrast holds in both themes. Do not put small print on the thinnest part of the blur."
+}

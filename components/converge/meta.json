@@ -1,0 +1,13 @@
+{
+  "title": "Converge",
+  "category": "Motion",
+  "description": "Light streams gather into one tile — many inputs, one place where they land.",
+  "tags": [
+    "glow",
+    "hero",
+    "streams"
+  ],
+  "status": "beta",
+  "usage": "For the moment a product pulls everything into itself: integration heroes, import screens, AI summaries. The tile holds your mark or the action everything feeds.",
+  "a11y": "Pure CSS. The streams stop under prefers-reduced-motion; the tile and its label carry the meaning without them."
+}

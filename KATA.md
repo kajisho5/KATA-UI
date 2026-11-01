@@ -98,3 +98,6 @@ components/<slug>/
 - **増やし方**： 幾何学で描けるものだけを採用し、フリーハンドの有機的な形は入れない。
 - **KATA の顔**： 素材は3つの形だけ——円、45°の線、r2 の角。有機的なフリーハンド曲線は使わない。一部のアイコンは中心に **芯（塗りの点）** を持つ（target / radio / wifi / thermometer / blocks / component）。これはロゴと Switch と Radio を貫く署名で、置くのは意味の中心がある glyph だけ。乱用しない。
 - **互換**： Lucide と同一規格（24/2/round）。KATA にないアイコンは Lucide から混ぜて使える、が公式の線引き。数を自前で追わない。
+
+## Brand marks (exception)
+`icons/brands/` holds third-party brand marks (social / AI services). They do NOT follow the three-shape mold — a mark keeps its owner's geometry — and they are provided for nominative use only (social links, sign-in, integration grids). Trademarks belong to their owners; never use a brand mark as part of KATA's own identity.

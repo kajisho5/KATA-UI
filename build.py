@@ -225,7 +225,7 @@ function log(msg){var d=document.createElement('div');var now=new Date();d.textC
 function dark(){return root.getAttribute('data-theme')==='dark'}
 function applyAccent(p,quiet){S.accent=p[1];S.accentInk=p[2];S.darkInk=p[3];S.accentName=p[0];root.style.setProperty('--k-accent',p[1]);root.style.setProperty('--acc',p[1]);root.style.setProperty('--k-accent-ink',dark()?p[3]:p[2]);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.toggle('on',b.dataset.n===p[0])});if(!quiet)log('Accent \u2192 '+p[0]);save();}
 function applyRadius(v,quiet){S.radius=+v;root.style.setProperty('--k-radius',v+'px');root.style.setProperty('--k-radius-sm',Math.max(0,Math.round(v*.75))+'px');root.style.setProperty('--k-radius-lg',Math.round(v*1.5)+'px');document.getElementById('fd-rv').textContent=v+'px';if(!quiet)log('Radius \u2192 '+v+'px');save();}
-function applyMode(d,quiet){S.dark=d;if(d)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');if(S.accent){var p=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p)root.style.setProperty('--k-accent-ink',d?p[3]:p[2]);}document.getElementById('fd-light').classList.toggle('on',!d);document.getElementById('fd-dark').classList.toggle('on',d);if(!quiet)log(d?'Mode \u2192 Dark (sumi)':'Mode \u2192 Light (washi)');document.querySelectorAll('#stage').forEach(function(st){if(d)st.setAttribute('data-theme','dark');else st.removeAttribute('data-theme');});document.querySelectorAll('[data-seg="theme"]').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',(b.dataset.v==='dark')===!!d);});});save();}
+function applyMode(d,quiet){S.dark=d;if(d)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');if(S.accent){var p=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p)root.style.setProperty('--k-accent-ink',d?p[3]:p[2]);}document.getElementById('fd-light').classList.toggle('on',!d);document.getElementById('fd-dark').classList.toggle('on',d);if(!quiet)log(d?'Mode \u2192 Dark (sumi)':'Mode \u2192 Light (washi)');document.querySelectorAll('#stage').forEach(function(st){st.setAttribute('data-theme',d?'dark':'light');});document.querySelectorAll('[data-seg="theme"]').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',(b.dataset.v==='dark')===!!d);});});save();}
 function applyMotion(v,quiet){S.mscale=+v;root.style.setProperty('--k-mscale',v);document.getElementById('fd-mv').textContent=(+v).toFixed(1)+'\u00d7';if(!quiet)log('Motion \u2192 '+(+v).toFixed(1)+'\u00d7');save();}
 var sws=document.getElementById('fd-sws');PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='sw';b.dataset.n=p[0];b.title=p[0];b.style.background=p[1];b.setAttribute('aria-label','Accent '+p[0]);b.addEventListener('click',function(){applyAccent(p)});sws.appendChild(b);});
 fab.addEventListener('click',function(){var open=deck.classList.toggle('open');fab.setAttribute('aria-expanded',open)});
@@ -313,10 +313,10 @@ LP_STYLE = """<style>
 .lp .hero p{margin-left:auto;margin-right:auto}
 .lp .cta{justify-content:center}
 .lp .stats{justify-content:center}
-.browser{margin:38px auto 0;max-width:880px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 30px 70px -30px rgba(16,24,40,.25);text-align:left}
+.browser{margin:38px auto 0;max-width:880px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:var(--paper);box-shadow:0 30px 70px -30px rgba(16,24,40,.25);text-align:left}
 .browser-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--hair);background:var(--soft)}
 .browser-bar i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
-.browser-bar .url{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:3px 10px;background:#fff}
+.browser-bar .url{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:3px 10px;background:var(--paper)}
 .browser .shell{border:0;border-radius:0}
 .framecap{max-width:880px;margin:10px auto 0;text-align:right;font-size:12px;color:var(--ink3)}
 .framecap a{color:var(--ink2)}
@@ -324,13 +324,13 @@ LP_STYLE = """<style>
 .lpsec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
 .lpsec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .steps{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.step{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:18px}
+.step{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:18px}
 .step .no{font-family:var(--mono);font-size:11px;color:var(--acc);font-weight:600;letter-spacing:.08em}
 .step h3{margin-top:8px;font-size:15px;font-weight:600}
 .step p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
 .step code{font-family:var(--mono);font-size:12px;background:var(--soft);border-radius:5px;padding:1px 5px}
 .genres{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.genre{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);display:block}
+.genre{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:18px;text-decoration:none;color:var(--ink);display:block}
 .genre:hover{border-color:var(--ink3)}
 .genre .gn{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
 .genre h3{margin-top:7px;font-size:15.5px;font-weight:600}
@@ -371,14 +371,14 @@ LP_STYLE = """<style>
 .collage-sec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
 .collage-sec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .collage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-.collage-cell{border:1px solid var(--hair);border-radius:14px;padding:18px;background:#fff;overflow:hidden;min-width:0}
+.collage-cell{border:1px solid var(--hair);border-radius:14px;padding:18px;background:var(--paper);overflow:hidden;min-width:0}
 .collage-cell.wide{grid-column:1/-1}
 .collage-cell .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink3)}
 .collage-cell .cap a{color:var(--acc);text-decoration:none;font-family:inherit}
 .collage-cell div.k-dt{overflow-x:auto;max-width:none!important}
 .collage-cell table.k-dt-t{min-width:500px}
 @media (max-width:720px){.collage{grid-template-columns:1fr}}
-.cmptable{width:100%;min-width:600px;border-collapse:collapse;margin-top:18px;font-size:13.5px;background:#fff;border:1px solid var(--hair);border-radius:12px;overflow:hidden}
+.cmptable{width:100%;min-width:600px;border-collapse:collapse;margin-top:18px;font-size:13.5px;background:var(--paper);border:1px solid var(--hair);border-radius:12px;overflow:hidden}
 .cmptable th,.cmptable td{padding:11px 14px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
 .cmptable thead th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);background:var(--soft);font-weight:600}
 .cmptable tbody th{font-weight:550;color:var(--ink2);white-space:nowrap}
@@ -651,7 +651,7 @@ def components_index(comps):
 {FOOTER}
 </body>
 </html>"""
-    return head('Components — KATA UI', 'All KATA UI components.', '<link rel="stylesheet" href="/kata-ui.css">') + body
+    return head('Components — KATA UI', 'All KATA UI components.', '<link rel="stylesheet" href="/kata-ui.css">') + body.replace('</body>', '<script src="/kata-ui.js" defer></script></body>', 1)
 
 def sidebar(comps, active):
     out = []
@@ -706,12 +706,16 @@ def nav_tree(comps, active, current):
 
 DETAIL_JS = """<script>
   const stage = document.getElementById('stage');
+  if (stage && window.matchMedia('(max-width: 719px)').matches) {
+    stage.classList.add('narrow');
+    document.querySelectorAll('[data-seg="width"] button').forEach(b => b.classList.toggle('on', b.dataset.v === 'mobile'));
+  }
   document.querySelectorAll('[data-seg]').forEach(seg => {
     seg.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
       seg.querySelectorAll('button').forEach(b => b.classList.remove('on'));
       btn.classList.add('on');
       const v = btn.dataset.v;
-      if (seg.dataset.seg === 'theme') { v === 'dark' ? stage.setAttribute('data-theme','dark') : stage.removeAttribute('data-theme'); }
+      if (seg.dataset.seg === 'theme') { stage.setAttribute('data-theme', v); }
       if (seg.dataset.seg === 'width') { stage.classList.toggle('narrow', v === 'mobile'); }
       window.dispatchEvent(new Event('resize'));
     }));
@@ -910,7 +914,7 @@ DS_STYLE = """<style>
 .ds h2{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .ds .note{margin-top:7px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:66ch;letter-spacing:.012em}
 .swatches{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:9px}
-.sw{border:1px solid var(--hair);border-radius:10px;overflow:hidden;background:#fff}
+.sw{border:1px solid var(--hair);border-radius:10px;overflow:hidden;background:var(--paper)}
 .sw .fill{height:44px}
 .sw .meta{padding:7px 9px;font-family:var(--mono);font-size:10.5px;color:var(--ink2);line-height:1.6}
 .sw .meta b{color:var(--ink);font-weight:600}
@@ -926,11 +930,11 @@ DS_STYLE = """<style>
 .radii{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
 .radii .box{width:74px;height:56px;border:1.5px solid var(--ink);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-family:var(--mono);font-size:10.5px;color:var(--ink2)}
 .motions{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
-.motions .m{flex:1;min-width:150px;border:1px solid var(--hair);border-radius:12px;padding:14px;background:#fff;font-size:12.5px;color:var(--ink2)}
+.motions .m{flex:1;min-width:150px;border:1px solid var(--hair);border-radius:12px;padding:14px;background:var(--paper);font-size:12.5px;color:var(--ink2)}
 .motions .dot{width:16px;height:16px;border-radius:50%;background:var(--ink);margin-top:10px;transition:transform var(--dur) cubic-bezier(.3,.7,.3,1)}
 .motions .m:hover .dot{transform:translateX(56px)}
 .dl{margin-top:16px;display:flex;gap:9px;flex-wrap:wrap}
-.dl a{border:1px solid var(--hair);border-radius:8px;padding:9px 14px;font-size:13px;font-weight:500;text-decoration:none;background:#fff}
+.dl a{border:1px solid var(--hair);border-radius:8px;padding:9px 14px;font-size:13px;font-weight:500;text-decoration:none;background:var(--paper)}
 .dl a:hover{background:var(--soft)}
 </style>"""
 
@@ -939,7 +943,7 @@ ICONS_STYLE = """<style>
 .ic h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
 .ic .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .icgrid{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:9px}
-.iccell{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:16px 6px 11px;display:grid;justify-items:center;gap:9px;cursor:pointer;font:inherit;color:var(--ink)}
+.iccell{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:16px 6px 11px;display:grid;justify-items:center;gap:9px;cursor:pointer;font:inherit;color:var(--ink)}
 .iccell:hover{border-color:var(--ink3)}
 .iccell .nm{font-family:var(--mono);font-size:10.5px;color:var(--ink2)}
 .icstat{margin-top:14px;font-size:13px;color:var(--ink2);min-height:20px}
@@ -999,7 +1003,7 @@ def icons_page():
 
 PRICING_STYLE = """<style>
 .pr .tiers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
-.pr .tier{border:1px solid var(--hair);border-radius:16px;padding:26px;background:#fff}
+.pr .tier{border:1px solid var(--hair);border-radius:16px;padding:26px;background:var(--paper)}
 .pr .tier.pro{border-color:var(--ink);box-shadow:0 24px 50px -30px rgba(16,24,40,.35)}
 .pr .tier h2{font-size:19px;display:flex;align-items:baseline;gap:10px}
 .pr .price{font-size:34px;font-weight:700;letter-spacing:-.03em;margin:12px 0 2px}
@@ -1008,8 +1012,8 @@ PRICING_STYLE = """<style>
 .pr .tier li{font-size:13.5px;color:var(--ink2);display:flex;gap:9px;line-height:1.6;letter-spacing:.012em}
 .pr .tier li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-top:7px}
 .pr .tier.pro li::before{background:#eb471f}
-.pr .cta{display:inline-flex;margin-top:22px;padding:10px 18px;border-radius:9px;background:var(--ink);color:#fff;font-weight:550;font-size:14px;text-decoration:none}
-.pr .cta.ghost{background:#fff;color:var(--ink2);border:1px solid var(--hair);cursor:default}
+.pr .cta{display:inline-flex;margin-top:22px;padding:10px 18px;border-radius:9px;background:var(--ink);color:var(--paper);font-weight:550;font-size:14px;text-decoration:none}
+.pr .cta.ghost{background:var(--paper);color:var(--ink2);border:1px solid var(--hair);cursor:default}
 .pr .note{margin-top:14px;font-size:12.5px;color:var(--ink3);line-height:1.7;letter-spacing:.01em}
 .pr .qa{margin-top:44px;display:grid;gap:0}
 .pr .qa div{border-top:1px solid var(--hair);padding:18px 2px}
@@ -1122,12 +1126,12 @@ JA_STYLE = """<style>
 .ja-sec h2{font-size:20px;font-weight:650;letter-spacing:.05em}
 .ja-sec p{font-size:14px;line-height:1.9;color:var(--ink2);margin-top:9px;max-width:640px;letter-spacing:.04em}
 .ja-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-.ja-step{border:1px solid var(--hair);border-radius:13px;padding:17px;background:#fff}
+.ja-step{border:1px solid var(--hair);border-radius:13px;padding:17px;background:var(--paper)}
 .ja-step .no{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc)}
 .ja-step h3{font-size:14.5px;margin:7px 0 5px;letter-spacing:.04em}
 .ja-step p{font-size:13px;line-height:1.8;color:var(--ink2);letter-spacing:.04em}
 .ja-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-.ja-card{border:1px solid var(--hair);border-radius:13px;padding:19px;background:#fff;text-decoration:none;color:inherit;display:block}
+.ja-card{border:1px solid var(--hair);border-radius:13px;padding:19px;background:var(--paper);text-decoration:none;color:inherit;display:block}
 .ja-card h3{font-size:15.5px;letter-spacing:.04em}
 .ja-card p{font-size:13px;line-height:1.8;color:var(--ink2);margin-top:6px;letter-spacing:.04em}
 .ja-card .go{font-size:12.5px;font-weight:600;color:var(--acc);margin-top:10px;display:inline-block}
@@ -1188,7 +1192,7 @@ def ja_page():
 
 SC_STYLE = """<style>
 .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
-.sc-card{border:1px solid var(--hair);border-radius:14px;padding:20px;background:#fff;text-decoration:none;color:inherit;display:block}
+.sc-card{border:1px solid var(--hair);border-radius:14px;padding:20px;background:var(--paper);text-decoration:none;color:inherit;display:block}
 .sc-card:hover{border-color:var(--ink3)}
 .sc-card .k{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
 .sc-card h3{font-size:16px;margin:7px 0 5px}
@@ -1308,7 +1312,7 @@ BLOCK_STYLE = """<style>
 .bk h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
 .bk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .bcards{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(264px,1fr));gap:12px}
-.bcard{border:1px solid var(--hair);border-radius:14px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);display:block}
+.bcard{border:1px solid var(--hair);border-radius:14px;background:var(--paper);padding:18px;text-decoration:none;color:var(--ink);display:block}
 .bcard:hover{border-color:var(--ink3)}
 .bcard h3{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:8px}
 .bcard p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
@@ -1447,7 +1451,7 @@ TPL_STYLE = """<style>
 .tk h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
 .tk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .tplcards{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
-.tplcard{border:1px solid var(--hair);border-radius:14px;background:#fff;color:var(--ink);display:block;overflow:hidden;position:relative}
+.tplcard{border:1px solid var(--hair);border-radius:14px;background:var(--paper);color:var(--ink);display:block;overflow:hidden;position:relative}
 .tplcard .tplmeta h3 a{color:inherit;text-decoration:none}
 .tplcard .tplmeta h3 a::after{content:"";position:absolute;inset:0}
 .tplcard:hover{border-color:var(--ink3)}
@@ -1458,11 +1462,11 @@ TPL_STYLE = """<style>
 .tplmeta p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
 .tplmeta .uses{margin-top:12px;display:flex;gap:5px;flex-wrap:wrap}
 .tplmeta .uses span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--hair);border-radius:99px;padding:2px 8px}
-.tplframe{border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff}
+.tplframe{border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:var(--paper)}
 .tplbar{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid var(--hair);background:var(--soft)}
 .tpldots{display:flex;gap:6px}
 .tpldots i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
-.tplurl{font-family:var(--mono);font-size:11.5px;color:var(--ink2);background:#fff;border:1px solid var(--hair);border-radius:7px;padding:3px 12px}
+.tplurl{font-family:var(--mono);font-size:11.5px;color:var(--ink2);background:var(--paper);border:1px solid var(--hair);border-radius:7px;padding:3px 12px}
 .tplstage{border:0;border-radius:0;max-height:none}
 </style>"""
 
@@ -1595,20 +1599,20 @@ THEME_STYLE = """<style>
 .th h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
 .th .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .thgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-.thcard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
+.thcard{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
 .thcard:hover{border-color:var(--ink3)}
 .thcard.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
 .thcard .sw{display:flex;gap:5px;margin-bottom:11px}
 .thcard .sw i{width:22px;height:22px;border-radius:7px;display:block;border:1px solid var(--hair)}
 .thcard .nm{font-size:14px;font-weight:600}
 .thcard .nt{font-size:12px;color:var(--ink2);margin-top:3px;line-height:1.6}
-.thdemo{margin-top:22px;border:1px solid var(--hair);border-radius:14px;background:#fff;padding:22px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.thdemo{margin-top:22px;border:1px solid var(--hair);border-radius:14px;background:var(--paper);padding:22px;display:flex;gap:22px;align-items:center;flex-wrap:wrap}
 .thdemo .lbl{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em;width:100%}
 .thcode{margin-top:16px;border:1px solid var(--hair);border-radius:12px;overflow:hidden}
 .thcode pre{margin:0;padding:16px;overflow:auto;font-family:var(--mono);font-size:12px;line-height:1.75;background:var(--soft)}
-.thcode .bar{display:flex;gap:8px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--hair);background:#fff}
+.thcode .bar{display:flex;gap:8px;align-items:center;padding:9px 12px;border-bottom:1px solid var(--hair);background:var(--paper)}
 .thcode .bar b{font-size:12.5px;margin-right:auto}
-.thcode .bar a,.thcode .bar button{font:inherit;font-size:12px;border:1px solid var(--hair);background:#fff;border-radius:7px;padding:5px 11px;cursor:pointer;color:var(--ink);text-decoration:none}
+.thcode .bar a,.thcode .bar button{font:inherit;font-size:12px;border:1px solid var(--hair);background:var(--paper);border-radius:7px;padding:5px 11px;cursor:pointer;color:var(--ink);text-decoration:none}
 </style>"""
 
 BUILDER_STYLE = """<style>
@@ -1623,13 +1627,13 @@ DENTOU_STYLE = """<style>
 .dentou{margin-top:52px;border-top:1px solid var(--hair);padding-top:34px}
 .dentou .dtk{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;font-size:15px;letter-spacing:.4em;color:var(--ink3)}
 .dentou h2{font-size:24px;font-weight:600;letter-spacing:-.01em;margin-top:8px}
-.dtpv{margin-top:18px;border:1px solid var(--hair);border-radius:14px;background:#fff;padding:16px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.dtpv{margin-top:18px;border:1px solid var(--hair);border-radius:14px;background:var(--paper);padding:16px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .dtpv .lbl{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em;width:100%}
 .dtpv .dtstatus{font-size:12.5px;color:var(--ink2)}
 .dtfam{font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:28px 0 10px;display:flex;gap:12px;align-items:baseline}
 .dtfam span{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.25em;color:var(--ink3);font-size:13px;text-transform:none;font-weight:400}
 .dtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px}
-.dtcard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:0;text-align:left;cursor:pointer;overflow:hidden;font:inherit;color:var(--ink);display:flex;flex-direction:column;width:100%}
+.dtcard{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:0;text-align:left;cursor:pointer;overflow:hidden;font:inherit;color:var(--ink);display:flex;flex-direction:column;width:100%}
 .dtcard .dsw{height:58px;display:block;border-bottom:1px solid var(--hair);flex:none}
 .dtcard:hover{border-color:var(--ink3)}
 .dtcard.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
@@ -1901,7 +1905,8 @@ DOCS = [
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
- 'November 2, 2026 \u2014 The mark, restored', '<p>The mark goes back to the four quadrants, on the maker\u2019s call: the three-shape recut from this afternoon is retired the same day it shipped. The restored mark \u2014 ink, an ichimatsu nested in the top-right, zinc, and the vermillion quarter \u2014 returns to the header, favicon, app icons and the OGP card, and the hero cast mark assembles its four quadrants again. One improvement survives the revert: the header mark\u2019s ink cells are currentColor now, driven by the same ink token as the wordmark, so the mark follows the theme instead of being patched for it.</p>', None, None),
+ 'November 2, 2026 \u2014 Dark, finished', '<p>Dark mode stops being a coat of paint and becomes a scope. The token sheet gains an explicit light scope next to the dark one, so a stage set to Light is actually light on a dark page \u2014 before, it inherited the page\u2019s dark tokens and the toggle changed nothing. Every fixed white in the chrome is tokenized now (cards, the drawer, filters, pricing tiers, template frames), catalog cards hydrate from the same JS bundle the copy button ships \u2014 calendars and cascaders render in the shelf instead of standing empty \u2014 and two block scripts learned to stay inert when their markup is not on the page. On a phone, detail pages open at Mobile stage width; the pricing call-to-action keeps its contrast in both modes; and the single-column detail layout can no longer be stretched past the screen by one long line of code. Audited page by page, in the dark, at phone width.</p>', None, None),
+    ('November 2, 2026 \u2014 The mark, restored', '<p>The mark goes back to the four quadrants, on the maker\u2019s call: the three-shape recut from this afternoon is retired the same day it shipped. The restored mark \u2014 ink, an ichimatsu nested in the top-right, zinc, and the vermillion quarter \u2014 returns to the header, favicon, app icons and the OGP card, and the hero cast mark assembles its four quadrants again. One improvement survives the revert: the header mark\u2019s ink cells are currentColor now, driven by the same ink token as the wordmark, so the mark follows the theme instead of being patched for it.</p>', None, None),
     ('November 2, 2026 \u2014 Breakage, mended', '<p>Breakage gets a visual language: kintsugi. A seam of yamabuki gold \u2014 the same token the Kintsugi Card draws its veins with \u2014 now marks the broken and the in-between everywhere on the site. The 404 is a mended plate, its crack run across the panel in gold, with the house rule written under it: shown honestly, mended visibly. The \u2318K preview pane\u2019s casting and unavailable states wear the same seam, and the Design System documents the rule next to the tokens it comes from. Errors are not dressed as success here; they are repaired in the open.</p>', None, None),
     ('November 2, 2026 \u2014 Galleries, benches, taking things apart', '<p>The specimen stops posing and starts working. The <b>Components catalog is a gallery now</b>: every card carries its part live \u2014 the real preview, cast from the same files you copy \u2014 so the shelf is browsable by eye, not by name. Component pages go <b>two-column</b>: the live stage pinned on the left, the code on the right, on a wider canvas. The <b>Design System page is a casting bench</b> \u2014 a foundry floor with live parts and cast buttons for accent, radius and motion, wired to the same saved state as the Foundry deck; the radius specimens in the token tables cast too. And the landing page gains <b>Assembled, then taken apart</b>: the Pricing block composed live from Button, Badge, Switch and Separator, with a switch that explodes it back into its parts. Nothing here is a screenshot; if it looks cast, it was cast.</p>', None, None),
     ('November 2, 2026 \u2014 The mark, recast', '<p>The mark itself is recast. The four-quadrant logo gives way to the three shapes and nothing else: an r2-corner frame, a single 45\u00b0 cut, and the vermillion core sitting at the exact center \u2014 the same geometry the hero cast mark assembles, and the same 24-grid, 1.7-stroke discipline as the icon set. It ships everywhere the old mark lived: header, favicon, app icons, the OGP card. Around it, the specimen grows its second layer: component pages gain a <b>Tokens it reads</b> decomposition (every custom property in the part\u2019s CSS, with live values), stage toggles that demo calm (reduced motion) and keyboard focus in place, a wagara backdrop row in the Foundry deck (Seigaiha, Asanoha, Ichimatsu over the whole page), \u2318K search results that preview the highlighted part live from its own page, a KATAYABURI section that breaks its grid once as it scrolls in and re-forms, and a pricing page that shows its arithmetic: 28 assembled artifacts, 87 composed part-instances, roughly 77 hours of assembly behind the $129.</p>', None, None),
@@ -1937,7 +1942,7 @@ DOC_STYLE = """<style>
 .dc p{margin-top:9px;font-size:14px;line-height:1.9;color:var(--ink2);letter-spacing:.012em}
 .dc pre{margin-top:12px;border:1px solid var(--hair);border-radius:10px;background:var(--soft);padding:13px 15px;font-family:var(--mono);font-size:12px;line-height:1.75;overflow:auto;color:var(--ink)}
 .dcgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.dccard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:17px;text-decoration:none;color:var(--ink);display:block}
+.dccard{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:17px;text-decoration:none;color:var(--ink);display:block}
 .dccard:hover{border-color:var(--ink3)}
 .dccard h3{font-size:15px;font-weight:600}
 .dccard p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7;letter-spacing:.01em}

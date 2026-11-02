@@ -22,7 +22,9 @@ for (let i = 0; i < argv.length; i++) {
   else if (argv[i] === '--base') BASE = String(argv[++i]).replace(/\/$/, '');
   else rest.push(argv[i]);
 }
+const VERSION = '1.0.0';
 const cmd = rest[0];
+if (cmd === 'version' || cmd === '--version' || cmd === '-v') { console.log('kata-ui ' + VERSION); process.exit(0); }
 const positional = rest.slice(1);
 
 const KIND = {

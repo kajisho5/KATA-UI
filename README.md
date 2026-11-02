@@ -6,15 +6,17 @@ Practical UI components in plain HTML, CSS and JavaScript. No framework, no buil
 
 **Live site: [kata-ui.dev](https://kata-ui.dev)** — previews, code and docs for every part.
 
+**Current release: v1.0.0** — see [CHANGELOG.md](CHANGELOG.md).
+
 ## What's inside
 
-- **76 components** in six groups — Form & Input, Layout & Navigation, Overlays & Dialogs, Feedback & Status, Display & Media, and a Motion line you will not find in other libraries
+- **136 components** in eight groups — Form & Input, Layout & Navigation, Overlays & Dialogs, Feedback & Status, Display & Media, Motion, KATAYABURI (型破り, deliberate showpieces) and Japan (wagara, hanko, kintsugi, noren, tategaki)
 - **150 icons** drawn on one mold: a 24 grid, a 1.7px stroke, square caps and bevel joins — the nearest kin is [Lucide](https://lucide.dev) (24 grid, round), which sits comfortably alongside for anything beyond the set
 - **56 brand marks** (X, GitHub, OpenAI, Figma, Stripe, LINE and more), grouped by job: social, AI, development, commerce, platforms, cloud
 - **A CLI** — `node kata-ui.mjs add button` installs parts, blocks, templates and themes from the registry, dependencies included (zero dependencies itself)
 - **A design system** (`system/tokens.json`) — color, type, spacing, radius and motion scales that every part is cast from
-- **13 blocks** — components composed into whole sections (sign-in, pricing, settings, app shells, integrations)
-- **4 templates** — whole pages composed from parts and blocks (dashboard, settings, inbox, landing)
+- **21 blocks** — components composed into whole sections (sign-in, pricing, settings, app shells, kanban, invoices)
+- **7 templates** — whole pages composed from parts and blocks (dashboard, settings, inbox, landing, checkout, product, blog)
 
 ## Use a part
 

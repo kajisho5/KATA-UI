@@ -166,7 +166,7 @@ def search_html(comps):
     items = [{'t': c['meta']['title'], 'u': '/components/' + c['slug'] + '/', 'k': 'Component'} for c in comps]
     items += _block_search_items()
     items += [{'t': d[1], 'u': '/docs/' + d[0] + '/', 'k': 'Docs'} for d in DOCS]
-    items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Templates', '/templates/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/')]]
+    items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Templates', '/templates/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/'), ('Pricing', '/pricing/'), ('Showcase', '/showcase/')]]
     return SEARCH_TMPL.replace('__KATA_INDEX__', _json.dumps(items, ensure_ascii=False))
 
 def emit(page, comps, active, current=None, tree=False):
@@ -340,6 +340,9 @@ def landing(comps, blocks, n_icons, templates=None):
       '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks + Templates lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
       '</tbody></table></div>'
       '<p class="cmpnote">From each project’s public pages, November 2026. The honest summary: the others are excellent inside their framework. KATA is for everywhere else.</p></section>')
+    wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro opens soon</h2>'
+      '<p>The blocks and templates — 21 sections and 7 whole pages — go on sale at $129, once, lifetime. The parts stay free either way. Leave an email and the launch is the only message you will ever get.</p>'
+      + waitlist_form(dark=True) + '</div></section>')
     faqsec = ('<section class="lpsec"><h2>Questions</h2><div style="margin-top:16px">' + (faq_b['preview'] if faq_b else '') + '</div></section>')
     sc_block = next((b for b in blocks if b['slug'] == 'stat-cards'), None)
     def ccell(href, label, html, wide=False):
@@ -407,6 +410,7 @@ def landing(comps, blocks, n_icons, templates=None):
   {principles}
   {compare}
   {faqsec}
+  {wlband}
   {showcase}
   {collage}
   <div id="catalog">
@@ -456,7 +460,7 @@ def registry_json(comps, blocks, templates=None):
         items.append({'name': 'theme-' + t['name'], 'type': 'registry:theme', 'title': 'Theme: ' + t['label'],
                       'description': t['note'], 'categories': ['Themes'],
                       'files': [{'path': 'themes/' + t['name'] + '.css', 'type': 'registry:theme', 'content': theme_css(t)}]})
-    return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui',
+    return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': '1.0.0',
                        'homepage': 'https://kata-ui.dev', 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
@@ -566,7 +570,7 @@ def _sec(title, links_html):
 
 def tree_sections(comps, active, current):
     gs = ['introduction', 'getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'cli', 'registry', 'mcp', 'theming', 'dark-mode', 'accessibility', 'rtl', 'changelog']
-    concepts = ['why-vanilla', 'the-mold', 'anatomy', 'forms', 'from-tailwind']
+    concepts = ['why-vanilla', 'the-mold', 'anatomy', 'forms', 'from-tailwind', 'vs-shadcn']
     guides = [d[0] for d in DOCS if d[0].startswith('guide-')]
     doc = lambda slugs: ''.join(_nav_link('/docs/' + x + '/', _doc_title(x), current) for x in slugs)
     return [
@@ -851,6 +855,39 @@ PRICING_STYLE = """<style>
 @media (max-width:720px){.pr .tiers{grid-template-columns:1fr}}
 </style>"""
 
+def waitlist_form(label='Get one email when Pro sales open', button='Notify me',
+                  note='One email, on launch day. No newsletter, no list for sale — addresses land in the maker\'s inbox and nowhere else.',
+                  done='You\'re on the list. One email, when the doors open.',
+                  fail='That didn\'t go through — email kajiyama@seventh-well.com and you will be added by hand.',
+                  dark=False):
+    cls = 'wl wl-dark' if dark else 'wl'
+    return f'''<form class="{cls}" data-wl novalidate>
+  <label class="wl-label">{label}</label>
+  <div class="wl-row">
+    <input type="email" required placeholder="you@studio.com" autocomplete="email" aria-label="Email address">
+    <button type="submit">{button}</button>
+  </div>
+  <p class="wl-note">{note}</p>
+  <p class="wl-done" hidden>{done}</p>
+</form>
+<script>
+document.querySelectorAll('[data-wl]').forEach(function(f){{ if(f.__wl) return; f.__wl = 1;
+  f.addEventListener('submit', function(e){{ e.preventDefault();
+    var input = f.querySelector('input'), btn = f.querySelector('button');
+    if(!input.checkValidity()){{ input.reportValidity(); return; }}
+    btn.disabled = true; btn.textContent = '…';
+    fetch('https://formsubmit.co/ajax/kajiyama@seventh-well.com', {{method:'POST',
+      headers:{{'Content-Type':'application/json','Accept':'application/json'}},
+      body: JSON.stringify({{email: input.value, _subject:'KATA UI — Pro waitlist', _template:'table', _captcha:'false'}})
+    }}).then(function(r){{ if(!r.ok) throw 0;
+      f.querySelector('.wl-row').hidden = true; f.querySelector('.wl-note').hidden = true;
+      f.querySelector('.wl-label').hidden = true; f.querySelector('.wl-done').hidden = false;
+    }}).catch(function(){{ btn.disabled = false; btn.textContent = '{button}';
+      f.querySelector('.wl-note').textContent = '{fail}'; }});
+  }});
+}});
+</script>'''
+
 def pricing_page():
     body = """
 <div class="wrap pr">
@@ -862,7 +899,7 @@ def pricing_page():
       <p class="price">$0</p>
       <p class="per">MIT licensed. No account, no catch.</p>
       <ul>
-        <li>All 96 components, with live previews and examples</li>
+        <li>All 136 components, with live previews and examples</li>
         <li>150 icons and 56 brand marks</li>
         <li>5 themes and the full design-token system</li>
         <li>The CLI, the registry, the MCP server and the AI Skill</li>
@@ -883,6 +920,7 @@ def pricing_page():
         <li>No seats, no per-project fees, no subscription</li>
       </ul>
       <span class="cta ghost">Sales open soon</span>
+      __WAITLIST__
       <p class="note">Not on sale yet: the blocks and templates are still open on this site while Pro is being prepared. When sales open, $129 is the price — once, and the code is yours either way.</p>
     </div>
   </div>
@@ -895,7 +933,113 @@ def pricing_page():
 """ + FOOTER + """
 </body>
 </html>"""
-    return head('Pricing — KATA UI', 'KATA UI pricing: every component free forever under MIT; Pro is the blocks and templates, $129 once, lifetime.', PRICING_STYLE) + body
+    return (head('Pricing — KATA UI', 'KATA UI pricing: every component free forever under MIT; Pro is the blocks and templates, $129 once, lifetime.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form())
+
+JA_STYLE = """<style>
+.ja-hero{padding:34px 0 6px}
+.ja-hero h1{font-size:34px;line-height:1.35;letter-spacing:.01em}
+.ja-hero .lead{margin-top:14px}
+.ja-stats{display:flex;gap:15px 34px;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid var(--hair)}
+.ja-stats div b{display:block;font-size:23px;font-weight:650;letter-spacing:-.01em}
+.ja-stats div span{font-size:12px;color:var(--ink3)}
+.ja-sec{margin-top:44px}
+.ja-sec h2{font-size:20px;font-weight:650}
+.ja-sec p{font-size:14px;line-height:1.9;color:var(--ink2);margin-top:9px;max-width:640px}
+.ja-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.ja-step{border:1px solid var(--hair);border-radius:13px;padding:17px;background:#fff}
+.ja-step .no{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc)}
+.ja-step h3{font-size:14.5px;margin:7px 0 5px}
+.ja-step p{font-size:13px;line-height:1.8;color:var(--ink2)}
+.ja-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.ja-card{border:1px solid var(--hair);border-radius:13px;padding:19px;background:#fff;text-decoration:none;color:inherit;display:block}
+.ja-card h3{font-size:15.5px}
+.ja-card p{font-size:13px;line-height:1.8;color:var(--ink2);margin-top:6px}
+.ja-card .go{font-size:12.5px;font-weight:600;color:var(--acc);margin-top:10px;display:inline-block}
+.ja-wl{margin-top:44px;background:#101013;border-radius:16px;padding:26px;color:#f4f4f5}
+.ja-wl h2{color:#f4f4f5}
+.ja-wl p{color:#c9c9ce}
+@media (max-width:720px){.ja-steps,.ja-cards{grid-template-columns:1fr}.ja-hero h1{font-size:27px}.ja-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 18px}}
+</style>"""
+
+def ja_page():
+    body = """
+<div class="wrap ja">
+  <div class="ja-hero">
+    <h1>型から生まれる、UI部品。</h1>
+    <p class="lead">KATA UIは、素のHTML・CSS・JavaScriptだけでできた実用コンポーネント集です。フレームワークなし、ビルドなし、依存なし。部品をコピーして貼れば、そのコードはあなたのものになります。</p>
+    <div class="ja-stats">
+      <div><b>136</b><span>コンポーネント</span></div>
+      <div><b>21</b><span>ブロック</span></div>
+      <div><b>7</b><span>テンプレート</span></div>
+      <div><b>150</b><span>アイコン</span></div>
+      <div><b>0</b><span>依存</span></div>
+    </div>
+  </div>
+  <section class="ja-sec">
+    <h2>使い方</h2>
+    <div class="ja-steps">
+      <div class="ja-step"><span class="no">STEP 1</span><h3>トークンを読み込む</h3><p>tokens.cssを一度読み込むだけ。色・余白・角丸・動きはすべてそこから来ます。それが「型」です。</p></div>
+      <div class="ja-step"><span class="no">STEP 2</span><h3>部品を貼る</h3><p>部品ページからHTML・CSS・JSをコピー。インストールもパッケージもありません。</p></div>
+      <div class="ja-step"><span class="no">STEP 3</span><h3>型を調整する</h3><p>変えるのは部品ではなくトークン。型をひとつ変えれば、ページ全体が鋳直されます。</p></div>
+    </div>
+  </section>
+  <section class="ja-sec">
+    <h2>棚の紹介</h2>
+    <p>実務の部品が中心ですが、他にはない棚もあります。動きの部品を集めた Motion、型破りを自称する KATAYABURI、そして和柄を幾何から作図する Wagara、朱色の判子、 金継ぎのカード、暖簾、縦書きを収めた Japan ジャンル。</p>
+    <div class="ja-cards">
+      <a class="ja-card" href="/components/"><h3>カタログを見る</h3><p>全136部品にライブプレビューとコピーできるコード付き。カタログとドキュメントは英語です（部品名とコードはそのまま使えます）。</p><span class="go">Components →</span></a>
+      <a class="ja-card" href="/components/wagara/"><h3>Japanジャンル</h3><p>青海波・麻の葉・七宝・市松を貼り絵ではなく作図で。判子は到着すると自分で押されます。</p><span class="go">Wagara →</span></a>
+    </div>
+  </section>
+  <section class="ja-sec">
+    <h2>料金</h2>
+    <p>コンポーネントとアイコンは永久無料（MIT）。有料の Pro は、組み上げ済みのブロックとテンプレートで、$129の買い切り・買い切り後の追加料金なし。販売は近日開始です。</p>
+  </section>
+  <div class="ja-wl">
+    <h2>販売開始の通知</h2>
+    <p>Proの販売が始まった日に、1通だけメールします。それ以外の連絡はしません。</p>
+    """ + waitlist_form(label='販売開始日に1通だけ受け取る', button='通知する',
+                        note='販売開始日の1通だけ。ニュースレターも、第三者への提供もありません。',
+                        done='登録しました。販売開始日に1通だけ送ります。',
+                        fail='送信できませんでした — kajiyama@seventh-well.com 宛にご連絡いただければ手動で追加します。',
+                        dark=True) + """
+  </div>
+</div>
+""" + FOOTER + """
+</body>
+</html>"""
+    return (head('KATA UI — 日本語', 'KATA UIの日本語案内。素のHTML/CSS/JSのUIコンポーネント集、136部品・21ブロック・7テンプレート。フレームワークなし、依存なし。', JA_STYLE) + body).replace('<html lang="en">', '<html lang="ja">', 1)
+
+SC_STYLE = """<style>
+.sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.sc-card{border:1px solid var(--hair);border-radius:14px;padding:20px;background:#fff;text-decoration:none;color:inherit;display:block}
+.sc-card:hover{border-color:var(--ink3)}
+.sc-card .k{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
+.sc-card h3{font-size:16px;margin:7px 0 5px}
+.sc-card p{font-size:13px;line-height:1.75;color:var(--ink2)}
+.sc-card .go{font-size:12.5px;font-weight:600;margin-top:10px;display:inline-block}
+@media (max-width:720px){.sc-grid{grid-template-columns:1fr}}
+</style>"""
+
+def showcase_page(templates, blocks):
+    cards = ''.join(
+        f'<a class="sc-card" href="/templates/{esc(tp["slug"])}/"><span class="k">Template — live page</span><h3>{esc(tp["meta"]["title"])}</h3><p>{esc(tp["meta"]["description"])}</p><span class="go">Open the live page →</span></a>'
+        for tp in templates)
+    body = """
+<div class="wrap sc">
+  <h1>Showcase</h1>
+  <p class="lead">No mockups. Every page below is assembled from the catalog itself — the same parts, blocks and tokens the copy button hands you — and rendered live. Take any of them apart to see.</p>
+  <div class="sc-grid">
+    <a class="sc-card" href="/"><span class="k">This site</span><h3>kata-ui.dev itself</h3><p>The landing page's showcase and collage are not screenshots: the dashboard in the hero window, the stat cards and the charts are live parts running on the page.</p><span class="go">See it on the home page →</span></a>
+    <a class="sc-card" href="/starter/kata-starter.zip"><span class="k">Starter kit</span><h3>The starter project</h3><p>Tokens, the one-file bundle and a first page, zipped. The fastest honest test of the mold: unzip, open, and everything on screen is a part.</p><span class="go">Download the starter →</span></a>
+""" + cards + """
+  </div>
+  <p class="note" style="margin-top:20px;font-size:13px;color:var(--ink3);line-height:1.8">Building something with KATA? The maker reads every issue on the repository — a link there is how a project joins this page.</p>
+</div>
+""" + FOOTER + """
+</body>
+</html>"""
+    return head('Showcase — KATA UI', 'Live pages assembled from the KATA UI catalog itself: templates, the starter kit, and this site.', SC_STYLE) + body
 
 def design_system_page(tokens):
     def swatches(scale_name, scale):
@@ -1430,6 +1574,11 @@ DOCS = [
   ('from-tailwind', 'Coming from Tailwind', 'For the largest group of visitors: what changes, what does not.',
    [('The mental shift', 'Tailwind puts the design system in your class attributes; KATA puts it in tokens and part CSS. You will write longer stylesheets and shorter markup. A card stops being eleven utilities and becomes .k-card — which means the design can be retuned in one place, and the HTML reads as structure instead of as styling.', None, 'They coexist fine: Tailwind for layout glue in a page, KATA parts for the components. The tokens are plain CSS variables, so a Tailwind config can point at the same values and the two systems stop arguing.'),
     ('Rough translations', 'A few mappings to start: bg-zinc-900 text-white becomes a part on a dark section (data-theme="dark" does the whole subtree). rounded-xl is --k-radius-lg. The accent button is .btn-pri or .btn-teal, not a recipe of bg-, hover: and focus: classes — hover and focus are in the part, tested once, everywhere. Arbitrary values like w-[340px] stay inline styles in KATA too; the mold is strict about color, relaxed about one-off geometry.', None, 'What you give up: the utility for the one weird case, answered inline. What you get back: a page whose markup a new hire (or a model) can read at a glance, and parts that look related because they are.')]),
+  ('vs-shadcn', 'KATA vs shadcn/ui', 'The honest comparison, written by the side with more to gain from flattery.',
+   [('The short version', 'shadcn/ui and KATA start from the same conviction: you should own the code — copy it into your project, change it, never rent it back from a package. shadcn casts that idea for React. KATA casts it for everywhere else HTML renders: plain files, Astro, Laravel, Django, Rails, WordPress, email templates, the admin page nobody frameworks. If your product is a React app, shadcn is excellent and this page will tell you so twice. If your stack is anything else, the React door is simply not your door.', None, None),
+    ('Where shadcn wins', 'The React ecosystem, first: thousands of projects, snippets, and answers already exist, and a team hiring React developers hires people who know it. Its primitives stand on Radix, whose accessibility engineering — focus management, aria patterns, edge cases in dialogs and menus — is deep and battle-tested. It is TypeScript-first in a way KATA, being plain files, does not try to be. And its design language is the current default for a reason: it is tasteful, consistent, and safe to choose in a meeting.', None, None),
+    ('Where KATA wins', 'Adoption cost outside React: a KATA part is three files and no toolchain, so it lands in a ten-year-old Laravel app as easily as in a fresh Astro site. Range: the catalog carries shelves shadcn does not — a Motion line, the KATAYABURI shelf of deliberate showpieces, a Japan genre (wagara patterns constructed from their geometry, a hanko seal, a kintsugi card), charts, and 150 icons cut to one spec. Composed work: blocks and templates are first-class citizens here, not community links. And the machine surface: registry.json, an MCP server, and an installable AI Skill are published by the catalog itself, so an assistant asked for a sidebar installs this Sidebar instead of improvising one.', None, None),
+    ('The honest summary', 'Framework: React and Tailwind, versus none at all. Runtime: React, versus nothing. Distribution: a CLI and registry, versus copy-paste, a CLI and a registry. License: MIT, versus MIT for every part (blocks and templates are the paid line here). Community: enormous, versus one maker and a mold. Neither list is an embarrassment — they are answers to different questions. Choose by the stack you actually ship, not by the loudest timeline.', None, 'A fair number of teams will run both: shadcn inside the product, KATA on the marketing site, the docs, and the pages that were never going to be React.')]),
   ('site-faq', 'FAQ', 'About the library itself — licensing, the Pro line, and what is not planned.',
    [('Licensing and Pro', 'Every component and icon in this catalog is MIT-licensed: copy it, ship it, sell what you build with it. Blocks and full templates are the commercial line — sold once, lifetime, no subscription — because composed screens are where the hours actually go. The parts will never move behind the paywall retroactively; a part that is free is free in every future version.', None, None),
     ('Is there a React version?', 'Not today. The parts paste into any stack that renders HTML, including inside React as plain markup for static sections. A native React port, in the shadcn registry format, is the most-requested item on the list and is being considered honestly — the registry file already published is the first step, since it describes every part in that format.', None, None),
@@ -1455,7 +1604,8 @@ DOCS = [
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — Japan, a genre', 'A new eighth category: Japan — built with patience, not souvenir. Wagara constructs four classical patterns from their real geometry (seigaiha\u2019s half-offset arcs, asanoha\u2019s six-fold hemp, shippo\u2019s equal circles, ichimatsu with the nested mini-checker the mark wears) and plays them in three house tones; Hanko is a vermillion seal that stamps itself on arrival and again on click; the Kintsugi Card reports an incident honestly, its cracks gilded and re-drawn on arrival; Noren hangs a three-panel curtain as a section divider that sways and parts on hover; and Tategaki sets vertical text properly — shuhari, obey the form, break the form, leave the form, the discipline this whole library runs on. The landing hero was re-dressed in the same pass: compact eyebrow, a brighter second line, stats four-across, and a ghost button that survives its gradient. The catalog stands at 136 parts.', None, None),
+   [('November 2, 2026 — v1.0.0', 'The catalog gets a version number and a front door for the sale to come. v1.0.0 is now stamped where machines look: registry.json carries it, the CLI answers --version with it, and the MCP server already spoke it. The pricing page and the landing page both take waitlist emails for the Pro launch — one email on the day, promised in writing next to the form. Three new pages: an honest KATA vs shadcn/ui comparison in the docs (it recommends shadcn twice, for React teams), a Showcase that assembles the evidence — every template is a live page built from the parts it lists — and a Japanese landing at /ja/, one page, for the home market. The README finally counts what is actually in the catalog: 136 parts in eight categories, 21 blocks, 7 templates.', None, None),
+    ('November 2, 2026 — Japan, a genre', 'A new eighth category: Japan — built with patience, not souvenir. Wagara constructs four classical patterns from their real geometry (seigaiha\u2019s half-offset arcs, asanoha\u2019s six-fold hemp, shippo\u2019s equal circles, ichimatsu with the nested mini-checker the mark wears) and plays them in three house tones; Hanko is a vermillion seal that stamps itself on arrival and again on click; the Kintsugi Card reports an incident honestly, its cracks gilded and re-drawn on arrival; Noren hangs a three-panel curtain as a section divider that sways and parts on hover; and Tategaki sets vertical text properly — shuhari, obey the form, break the form, leave the form, the discipline this whole library runs on. The landing hero was re-dressed in the same pass: compact eyebrow, a brighter second line, stats four-across, and a ghost button that survives its gradient. The catalog stands at 136 parts.', None, None),
     ('November 2, 2026 — Effects, on duty', 'Six effect parts, all of them working parts first: a Burst Button that answers clicks with sparks, a Liquid Button that pours on hover, Goo Tabs whose indicator travels like liquid over real tab panels, a Glow Button in a rotating ring of light (with the same ring as a search-field treatment), a Particle Net quiet enough to carry a hero, and a Torn Ticket with mask-cut perforations and a stub that keeps the code. The catalog stands at 131 parts.', None, None),
     ('November 2, 2026 — Back to work', 'A practical round, on request: the toys stay on their shelf and this one is all tools. A Dual Range slider for price filters; four working blocks — Invoice, Order Confirmation, Filter Toolbar and a Cookie Consent with no dark patterns; and two full templates, a Product Page (gallery, options, accordions) and a Blog Article (prose rhythm, contents rail, author card). The catalog stands at 125 parts, 21 blocks and 7 templates.', None, None),
     ('November 2, 2026 — More weather, and the Pro line grows teeth', 'Seven more parts: KATAYABURI gains Fireworks (click the sky), Newton\u2019s Cradle in pure CSS, a 3D Carousel Ring and Bounce Letters; Motion gains Stacking Cards, an Accordion Gallery and a Horizontal Reel. Blocks and templates — the Pro line — now wear a Pro pill on their cards and pages, and the line itself grew: Team Grid, Roadmap and Plan Compare blocks, and a full Checkout template composing steps, forms and a sticky summary. The catalog stands at 124 parts, 17 blocks and 5 templates.', None, None),
@@ -1578,6 +1728,12 @@ def main():
     prdir = DIST / 'pricing'
     prdir.mkdir()
     (prdir / 'index.html').write_text(emit(pricing_page(), comps, None, '/pricing/', True), encoding='utf-8')
+    jadir = DIST / 'ja'
+    jadir.mkdir()
+    (jadir / 'index.html').write_text(emit(ja_page(), comps, None, '/ja/', True), encoding='utf-8')
+    scdir = DIST / 'showcase'
+    scdir.mkdir()
+    (scdir / 'index.html').write_text(emit(showcase_page(templates, blocks), comps, None, '/showcase/', True), encoding='utf-8')
     shutil.copy(ROOT / 'system' / 'tokens.json', dsdir / 'tokens.json')
     idir = DIST / 'icons'
     idir.mkdir(exist_ok=True)
@@ -1680,7 +1836,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

@@ -2,6 +2,6 @@
 .k-pagination{display:flex;align-items:center;gap:4px}
 .k-page{min-width:32px;height:32px;padding:0 7px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--k-radius);font-size:13px;color:var(--k-ink-2);text-decoration:none;font-family:var(--k-font);transition:background .13s}
 a.k-page:hover{background:var(--k-bg-soft);color:var(--k-ink)}
-.k-page[aria-current="page"]{background:var(--k-ink);color:var(--k-on-color);font-weight:550}
+.k-page[aria-current="page"]{background:var(--k-ink);color:var(--k-bg);font-weight:550}
 .k-page.dots{color:var(--k-ink-3);pointer-events:none}
 .k-page.disabled{opacity:.4;pointer-events:none}

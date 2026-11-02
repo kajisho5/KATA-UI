@@ -1,4 +1,4 @@
-// KATA Wagara — one hundred patterns, drawn from their constructions.
+// KATA Wagara — classical patterns that tile, drawn from their constructions.
 document.querySelectorAll('[data-wag]').forEach(function (root) {
   var canvas = root.querySelector('canvas');
   var ctx = canvas.getContext('2d');
@@ -44,30 +44,11 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     watsunagi: 'Watsunagi — linked rings. Ring inside ring inside ring, an unbroken chain: continuity, hand to hand.',
     bishamon: 'Bishamon-kikko — the tortoiseshell of Bishamon-ten, guardian of warriors; his armor is drawn as hexagons worked with triangles.',
     tatenami: 'Tatenami — standing waves. Bold arcs rearing in rows, crests flecked with foam; the sea with its back up.',
-    chidori: 'Chidori — plovers in flight. Birds that cross rough seas in pairs, drawn as one bold silhouette: a wish for safe passage.',
-    kiku: 'Kiku — the chrysanthemum. Sixteen petals around eight, the imperial flower; long life, drawn at sixteen-fold symmetry.',
-    sakura: 'Sakura — the cherry blossom. Five petals, each notched at the tip the way the real petal tears; spring, and its brevity.',
-    ume: 'Ume — the plum blossom. Five round petals on the branch that blooms in snow; endurance before the spring.',
-    fuji: 'Fuji — wisteria. Clusters hanging heavy off the vine, drawn as falling rows of fruit; longevity that droops with plenty.',
-    matsuba: 'Matsuba — pine needles. Needles fall in pairs and stay joined, so the pattern wishes a bond that holds to the ground.',
-    take: 'Take — bamboo. Jointed stalks that bend and do not break; the nodes are drawn true, one segment at a time.',
-    icho: 'Icho — the ginkgo leaf. A fan split down the middle, older than the dinosaurs; drawn with its veins and its notch.',
-    momiji: 'Momiji — the maple leaf. Five lobes pointed for autumn; the other spring, the one that burns red.',
-    ogi: 'Ogi — the folding fan. Ribs from one pivot, opening wider toward the end: suehiro, a future that fans out.',
-    hyotan: 'Hyotan — the gourd. Two round bellies tied at the waist; a charm against drowning and bad luck alike.',
-    sekka: 'Sekka — snow flowers. Six-fold crystals, no two alike in the field; here they agree to a grid.',
-    hoshi: 'Hoshi — stars. Five-pointed and small, scattered like the winter sky over a plain ground.',
     kanzemizu: 'Kanzemizu — the Kanze school water. Great slow swirls named for a Noh house; water that turns and remembers.',
-    uzu: 'Uzu — the whirlpool. One line spiralling in; the sea at Naruto, turning without malice.',
-    tomoe: 'Tomoe — the comma swirl. Three commas chasing inside a ring; water, war and warding, turning as one.',
     genjigumo: 'Genjigumo — Genji clouds. Long cloud bands with a curled end, named for the Tale of Genji chapter screens.',
     kasumi: 'Kasumi — mist. Flat bands drifting at offsets; the pattern for everything half-seen and better for it.',
     kumo: 'Kumo — clouds. Single arcs in rows, the scalloped edge of a cloud bank, drawn out to the horizon.',
     ame: 'Ame — rain. Slanted strokes in companies, the way rain actually arrives: together, and at an angle.',
-    shibakusa: 'Shibakusa — lawn grass. Five blades to a tuft and a bead of dew; the ground, paying attention.',
-    wakamatsu: 'Wakamatsu — the young pine. A fan of needles from one tie; new growth, celebrated at the new year.',
-    kikusui: 'Kikusui — chrysanthemum on water. A half-bloom riding two wave lines; the crest of Kusunoki, loyalty afloat.',
-    hamon: 'Hamon — ripples. Rings where a stone went in, drawn at three removes; cause and echo.',
     yanagi: 'Yanagi — the willow. Strands hung from the top of the cloth, leafed and swaying; what bends in the wind, survives it.',
     raimon: 'Raimon — the thunder pattern. One squared spiral, struck like a bolt and repeated; an old pattern with a loud name.',
     kojitsunagi: 'Kojitsunagi — the character 工， linked. Bars turned alternately so the letters hold each other up.',
@@ -82,7 +63,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     igasuri: 'Igasuri — the well kasuri. Small # marks in offset rows; the kasuri weaver counting in wells.',
     fundotsunagi: 'Fundotsunagi — linked scale-weights. The fundo weight of the money-changer, chained lobe to lobe.',
     kusari: 'Kusari — the chain. Oval links turned alternately, each holding the next; drawn double, like the real links.',
-    zenimon: 'Zenimon — the coin. A round coin with its square hole, tiled; prosperity you can count.',
     matsukawabishi: 'Matsukawabishi — pine-bark diamonds. Tall diamonds stacked like the plates of pine bark.',
     takedabishi: 'Takedabishi — the Takeda diamonds. Four diamonds in a square, the crest of the Takeda house.',
     mitsubishi: 'Mitsubishi — three diamonds. One above two, the arrangement that became a company mark the world knows.',
@@ -95,32 +75,10 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     ishigaki: 'Ishigaki — the stone wall. Rounded blocks laid in offset courses, the pattern of castle foundations.',
     takegaki: 'Takegaki — the bamboo fence. Slats in pairs with tied crossbars, the garden fence drawn flat.',
     senbongoshi: 'Senbongoshi — the thousand-bar lattice. Thin slats ruled by heavier frames, a window drawn as a pattern.',
-    yaezakura: 'Yaezakura — the double cherry. Two rings of notched petals, the blossom at its fullest.',
-    kozakura: 'Kozakura — small cherries. The sakura drawn at komon scale, a drift of little blossoms.',
-    nadeshiko: 'Nadeshiko — the dianthus. Five petals frilled at the tip; the flower that names an ideal and outlives it.',
-    kikyo: 'Kikyo — the bellflower. A five-pointed star that is a flower; the crest of Akechi, drawn plainly.',
-    karahana: 'Karahana — the Tang flower. An imagined blossom of eight petals, older than any garden that grew it.',
-    tessen: 'Tessen — clematis. Six petals with a curl at the heart, named for the wire strength of its vine.',
-    budoukarakusa: 'Budou karakusa — grape arabesque. A vine curl with a bunch of grapes hanging off it; plenty, trailing.',
     hakarakusa: 'Hakarakusa — leaf arabesque. A waving stem putting out leaves in turn, the vine drawn as a border.',
-    ayame: 'Ayame — the iris. One tall standard, two falls; a flower that stands like a flag by the water.',
-    omodaka: 'Omodaka — the arrowhead. A spear-point leaf on a bent stem; the water plant that became a crest.',
-    kobana: 'Kobana — little flowers. Four petals and a dot, at the scale where a pattern becomes a texture.',
-    mokkou: 'Mokkou — the quince section. Four lobes in one outline, a crest shape tiled into a field.',
     noshi: 'Noshi — the gift band. Strips of the noshi wrapper laid diagonally, folds and all; ceremony as a pattern.',
     tabanenoshi: 'Tabane noshi — bundled bands. Ribbons in threes, tied at intervals; many gifts, one bundle.',
-    sasa: 'Sasa — bamboo grass. Four pointed leaves from one node, the understory of every bamboo grove.',
-    inaho: 'Inaho — the rice ear. Grains in pairs down a stem with its awns up; the harvest, standing.',
-    yotsuba: 'Yotsuba — four leaves. Round petals at the cardinals; luck, before the clover claimed it.',
-    tanzaku: 'Tanzaku — poem slips. Paper strips hung by a string, waiting for a verse at Tanabata.',
-    botan: 'Botan — the peony. Ring inside ring of scalloped petals; the king of flowers, drawn as circles.',
-    cho: 'Cho — the butterfly. Wings in pairs and a plain body; drawn symmetric, the way crests draw it.',
-    tsuru: 'Tsuru — the crane. One folded silhouette, wing up; a thousand years in a dozen straight lines.',
-    usagi: 'Usagi — the rabbit. Ears up, sitting still; the animal in the moon, caught on cloth.',
-    tonbo: 'Tonbo — the dragonfly. Four glass wings and a ruled body; the insect that never retreats, a samurai emblem.',
     maruuroko: 'Maru uroko — round scales. The uroko tiling with circles for triangles; a softer armor.',
-    temari: 'Temari — the thread ball. Great circles crossing on a sphere, with a diamond at the heart.',
-    fuusha: 'Fuusha — the pinwheel. Four blades turning on a square hub; the wind, made visible and toy-sized.',
   };
   var pattern = 'seigaiha', W, H;
   function seigaiha(t) {
@@ -487,231 +445,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
       }
     }
   }
-  function chidori(t) {
-    var sx = 54, sy = 48, row = 0;
-    ctx.fillStyle = t.fg;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        var f = (row % 2) ? -1 : 1;
-        ctx.save(); ctx.translate(x, y); ctx.scale(f, 1); ctx.globalAlpha = .88;
-        ctx.beginPath();
-        ctx.moveTo(15, -1);
-        ctx.quadraticCurveTo(8, -6, 2, -5);
-        ctx.quadraticCurveTo(-6, -12, -14, -9);
-        ctx.quadraticCurveTo(-8, -3, -6, 0);
-        ctx.quadraticCurveTo(-11, 4, -13, 8);
-        ctx.quadraticCurveTo(-5, 7, -1, 5);
-        ctx.quadraticCurveTo(6, 8, 10, 3);
-        ctx.quadraticCurveTo(14, 1, 15, -1);
-        ctx.closePath(); ctx.fill();
-        ctx.restore(); ctx.globalAlpha = 1;
-      }
-    }
-  }
-  function kiku(t) {
-    var sx = 62, sy = 62, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.3;
-        for (var k = 0; k < 16; k++) {
-          var a = Math.PI / 8 * k;
-          ctx.beginPath(); ctx.ellipse(x + 13 * Math.cos(a), y + 13 * Math.sin(a), 4.6, 9.5, a + Math.PI / 2, 0, 7); ctx.stroke();
-        }
-        ctx.strokeStyle = t.mid;
-        for (var k2 = 0; k2 < 8; k2++) {
-          var a2 = Math.PI / 4 * k2 + Math.PI / 8;
-          ctx.beginPath(); ctx.ellipse(x + 6.5 * Math.cos(a2), y + 6.5 * Math.sin(a2), 2.8, 5.4, a2 + Math.PI / 2, 0, 7); ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function sakura(t) {
-    var sx = 56, sy = 54, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 5; k++) {
-          ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI * 2 / 5 * k - Math.PI / 2);
-          ctx.beginPath();
-          ctx.moveTo(0, -3);
-          ctx.bezierCurveTo(-6.4, -6, -6.8, -12.5, -1.9, -14.6);
-          ctx.lineTo(0, -12.4); ctx.lineTo(1.9, -14.6);
-          ctx.bezierCurveTo(6.8, -12.5, 6.4, -6, 0, -3);
-          ctx.closePath();
-          ctx.fillStyle = t.soft; ctx.fill();
-          ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2; ctx.stroke();
-          ctx.restore();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 2.6, 0, 7); ctx.strokeStyle = t.fg; ctx.stroke();
-        ctx.fillStyle = t.fg;
-        for (var k2 = 0; k2 < 5; k2++) { var a = Math.PI * 2 / 5 * k2; ctx.beginPath(); ctx.arc(x + 4.6 * Math.cos(a), y + 4.6 * Math.sin(a), .95, 0, 7); ctx.fill(); }
-      }
-    }
-  }
-  function ume(t) {
-    var sx = 52, sy = 50, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 5; k++) {
-          var a = Math.PI * 2 / 5 * k - Math.PI / 2;
-          ctx.beginPath(); ctx.arc(x + 8 * Math.cos(a), y + 8 * Math.sin(a), 6.2, 0, 7);
-          ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2; ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 3, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function fuji(t) {
-    var sx = 58, sy = 64, row = 0;
-    for (var y = 16; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2;
-        ctx.beginPath(); ctx.moveTo(x - 12, y - 12); ctx.quadraticCurveTo(x, y - 6, x, y); ctx.stroke();
-        ctx.beginPath(); ctx.ellipse(x - 13, y - 9, 3, 6.5, .7, 0, 7); ctx.stroke();
-        ctx.beginPath(); ctx.ellipse(x + 1, y - 13, 3, 6.5, -.4, 0, 7); ctx.stroke();
-        var rows = [[3, 0], [4, 7], [3, 13.5], [2, 19], [1, 24]];
-        rows.forEach(function (rw, ri) {
-          for (var i = 0; i < rw[0]; i++) {
-            var gx = x + (i - (rw[0] - 1) / 2) * 6.8, gy = y + rw[1];
-            ctx.beginPath(); ctx.arc(gx, gy, 3.1, 0, 7);
-            ctx.fillStyle = ri % 2 ? t.mid : t.fg; ctx.fill();
-          }
-        });
-      }
-    }
-  }
-  function matsuba(t) {
-    var sx = 50, sy = 46, row = 0;
-    ctx.lineWidth = 1.4; ctx.strokeStyle = t.fg; ctx.lineCap = 'round';
-    for (var y = sy - 8; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        [-0.9, -0.45, 0, 0.45, 0.9].forEach(function (da) {
-          var a = -Math.PI / 2 + da;
-          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 21 * Math.cos(a), y + 21 * Math.sin(a)); ctx.stroke();
-        });
-        ctx.beginPath(); ctx.moveTo(x - 5, y + 1.5); ctx.lineTo(x + 5, y + 1.5); ctx.stroke();
-      }
-    }
-  }
-  function take(t) {
-    var sx = 46;
-    ctx.lineWidth = 1.3;
-    for (var x = sx / 2; x < W + sx; x += sx) {
-      var off = (Math.round(x / sx) % 2) * 20;
-      for (var y = -20 + off; y < H + 30; y += 34) {
-        ctx.beginPath();
-        ctx.moveTo(x - 5, y); ctx.lineTo(x + 5, y); ctx.lineTo(x + 5, y + 27); ctx.lineTo(x - 5, y + 27); ctx.closePath();
-        ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x - 6.5, y + 29.5); ctx.lineTo(x + 6.5, y + 29.5); ctx.stroke();
-        ctx.beginPath(); ctx.ellipse(x + 11, y + 24, 3, 7.5, -.8, 0, 7); ctx.strokeStyle = t.mid; ctx.stroke();
-        ctx.beginPath(); ctx.ellipse(x - 11, y + 24, 3, 7.5, .8, 0, 7); ctx.stroke();
-      }
-    }
-  }
-  function icho(t) {
-    var sx = 54, sy = 56, row = 0;
-    for (var y = sy / 2 + 8; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.beginPath();
-        ctx.moveTo(x, y + 16); ctx.lineTo(x, y + 2);
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.3; ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(x, y + 2);
-        ctx.lineTo(x - 15, y - 10);
-        ctx.arc(x, y - 10, 15, Math.PI, Math.PI * 1.42);
-        ctx.lineTo(x, y - 13.5);
-        ctx.lineTo(x, y - 10);
-        ctx.arc(x, y - 10, 15, Math.PI * 1.58, 0);
-        ctx.lineTo(x, y + 2);
-        ctx.closePath();
-        ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-        [-.5, 0, .5].forEach(function (da) {
-          ctx.beginPath(); ctx.moveTo(x, y + 1); ctx.lineTo(x + 13 * Math.sin(da), y - 10 - 12 * Math.cos(da) + 3); ctx.strokeStyle = t.mid; ctx.stroke();
-        });
-      }
-    }
-  }
-  function momiji(t) {
-    var sx = 58, sy = 56, row = 0;
-    ctx.fillStyle = t.fg;
-    var half = [[-90, 17.5], [-73, 6.5], [-55, 13.5], [-36, 5.5], [-14, 11], [2, 5], [26, 8], [48, 4], [75, 7]];
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        var pts = [];
-        half.forEach(function (p) { var a = p[0] * Math.PI / 180; pts.push([p[1] * Math.cos(a), p[1] * Math.sin(a)]); });
-        for (var k = half.length - 2; k >= 1; k--) { var a2 = (180 - half[k][0]) * Math.PI / 180; pts.push([half[k][1] * Math.cos(a2), half[k][1] * Math.sin(a2)]); }
-        ctx.save(); ctx.translate(x, y); ctx.globalAlpha = .88;
-        ctx.beginPath();
-        pts.forEach(function (p, i) { if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]); });
-        ctx.closePath(); ctx.fill();
-        ctx.beginPath(); ctx.moveTo(0, 3); ctx.lineTo(0, 15); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.7; ctx.stroke();
-        ctx.restore(); ctx.globalAlpha = 1;
-      }
-    }
-  }
-  function ogi(t) {
-    var sx = 58, sy = 56, row = 0;
-    for (var y = sy / 2 + 14; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.3;
-        ctx.beginPath(); ctx.arc(x, y, 21, Math.PI * 1.22, Math.PI * 1.78); ctx.stroke();
-        ctx.beginPath(); ctx.arc(x, y, 16.5, Math.PI * 1.22, Math.PI * 1.78); ctx.strokeStyle = t.mid; ctx.stroke();
-        ctx.strokeStyle = t.fg;
-        for (var k = 0; k <= 4; k++) {
-          var a = Math.PI * (1.22 + .14 * k);
-          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 21 * Math.cos(a), y + 21 * Math.sin(a)); ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function hyotan(t) {
-    var sx = 56, sy = 62, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.beginPath(); ctx.arc(x, y - 9, 7.5, 0, 7); ctx.fillStyle = t.soft; ctx.fill();
-        ctx.beginPath(); ctx.arc(x, y + 7, 11, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(x, y - 9, 7.5, 0, 7); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.3; ctx.stroke();
-        ctx.beginPath(); ctx.arc(x, y + 7, 11, 0, 7); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x - 5.5, y - 1.5); ctx.lineTo(x + 5.5, y - 1.5); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x, y - 16.5); ctx.lineTo(x, y - 20); ctx.stroke();
-      }
-    }
-  }
-  function sekka(t) {
-    var sx = 58, sy = 58, row = 0;
-    ctx.strokeStyle = t.fg; ctx.lineWidth = 1.3;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 6; k++) {
-          var a = Math.PI / 3 * k;
-          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 15 * Math.cos(a), y + 15 * Math.sin(a)); ctx.stroke();
-          var bx = x + 9.5 * Math.cos(a), by = y + 9.5 * Math.sin(a);
-          [a - .5, a + .5].forEach(function (ba) {
-            ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx + 4.6 * Math.cos(ba), by + 4.6 * Math.sin(ba)); ctx.stroke();
-          });
-        }
-        ctx.beginPath();
-        for (var k2 = 0; k2 < 6; k2++) { var a2 = Math.PI / 3 * k2 + Math.PI / 6, px = x + 4.4 * Math.cos(a2), py = y + 4.4 * Math.sin(a2); if (k2 === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
-        ctx.closePath(); ctx.strokeStyle = t.mid; ctx.stroke(); ctx.strokeStyle = t.fg;
-      }
-    }
-  }
-  function hoshi(t) {
-    var sx = 46, sy = 44, row = 0;
-    ctx.fillStyle = t.fg;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.beginPath();
-        for (var k = 0; k < 10; k++) {
-          var a = Math.PI / 5 * k - Math.PI / 2, rr = k % 2 ? 3.6 : 8.6, px = x + rr * Math.cos(a), py = y + rr * Math.sin(a);
-          if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-        }
-        ctx.closePath(); ctx.globalAlpha = .88; ctx.fill(); ctx.globalAlpha = 1;
-        ctx.beginPath(); ctx.arc(x + sx / 2, y + (row % 2 ? 0 : sy / 2), 1.4, 0, 7); ctx.fillStyle = t.mid; ctx.fill(); ctx.fillStyle = t.fg;
-      }
-    }
-  }
   function kanzemizu(t) {
     var s = 96;
     ctx.lineWidth = 2.1; ctx.lineCap = 'round';
@@ -730,37 +463,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
       ctx.beginPath();
       for (var x2 = 0; x2 <= W; x2 += 6) { var y2 = y + s * .42 + Math.sin(x2 * .03 + row * 2) * 4; if (x2 === 0) ctx.moveTo(x2, y2); else ctx.lineTo(x2, y2); }
       ctx.stroke(); ctx.lineWidth = 2.1;
-    }
-  }
-  function uzu(t) {
-    var sx = 62, sy = 60, row = 0;
-    ctx.lineWidth = 1.7; ctx.lineCap = 'round'; ctx.strokeStyle = t.fg;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.beginPath();
-        for (var a = 0; a <= Math.PI * 4.6; a += .22) {
-          var r = .8 + a * 1.62, px = x + r * Math.cos(a + row), py = y + r * Math.sin(a + row);
-          if (a === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
-        }
-        ctx.stroke();
-      }
-    }
-  }
-  function tomoe(t) {
-    var sx = 62, sy = 62, row = 0;
-    ctx.fillStyle = t.fg;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.beginPath(); ctx.arc(x, y, 18.5, 0, 7); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.5; ctx.stroke();
-        for (var k = 0; k < 3; k++) {
-          var a = Math.PI * 2 / 3 * k - Math.PI / 2;
-          ctx.beginPath();
-          ctx.arc(x, y, 13, a + .35, a + 1.85);
-          ctx.arc(x, y, 9.6, a + 1.85, a + .35, true);
-          ctx.closePath(); ctx.fill();
-          ctx.beginPath(); ctx.arc(x + 11.3 * Math.cos(a + .35), y + 11.3 * Math.sin(a + .35), 5.2, 0, 7); ctx.fill();
-        }
-      }
     }
   }
   function genjigumo(t) {
@@ -816,63 +518,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
           var x = gx + k * 7;
           ctx.beginPath(); ctx.moveTo(x, gy); ctx.lineTo(x - 7, gy + 27); ctx.stroke();
         }
-      }
-    }
-  }
-  function shibakusa(t) {
-    var sx = 44, sy = 42, row = 0;
-    ctx.lineWidth = 1.4; ctx.strokeStyle = t.fg; ctx.lineCap = 'round';
-    for (var y = sy - 6; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        [[-11, -15], [0, -19], [11, -15], [-6, -18], [6, -18]].forEach(function (d) {
-          ctx.beginPath(); ctx.moveTo(x, y); ctx.quadraticCurveTo(x + d[0] * .4, y + d[1] * .7, x + d[0], y + d[1]); ctx.stroke();
-        });
-        ctx.beginPath(); ctx.arc(x + 6, y - 19, 1.7, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function wakamatsu(t) {
-    var sx = 52, sy = 52, row = 0;
-    ctx.lineWidth = 1.4; ctx.strokeStyle = t.fg; ctx.lineCap = 'round';
-    for (var y = sy - 8; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = -3; k <= 3; k++) {
-          var a = -Math.PI / 2 + k * .3;
-          ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 23 * Math.cos(a), y + 23 * Math.sin(a)); ctx.stroke();
-        }
-        ctx.beginPath(); ctx.moveTo(x - 4.5, y + 2); ctx.lineTo(x + 4.5, y + 2); ctx.stroke();
-      }
-    }
-  }
-  function kikusui(t) {
-    var bh = 58;
-    for (var r = 0; r * bh < H + bh; r++) {
-      var y = r * bh + 34, off = (r % 2) * 46;
-      ctx.strokeStyle = t.mid; ctx.lineWidth = 1.4;
-      [0, 1].forEach(function (k) {
-        ctx.beginPath();
-        for (var x = 0; x <= W; x += 6) { var yy = y + 12 + k * 7 + Math.sin(x * .05 + r * 2 + k * 2) * 3; if (x === 0) ctx.moveTo(x, yy); else ctx.lineTo(x, yy); }
-        ctx.stroke();
-      });
-      for (var x2 = 30 + off; x2 < W + 40; x2 += 92) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2;
-        for (var k2 = 0; k2 < 9; k2++) {
-          var a = Math.PI + Math.PI / 8 * k2;
-          ctx.beginPath(); ctx.ellipse(x2 + 11 * Math.cos(a), y + 11 * Math.sin(a) + 12, 3.6, 7.6, a - Math.PI / 2, 0, 7); ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x2, y + 12, 2, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function hamon(t) {
-    var sx = 74, sy = 66, row = 0;
-    ctx.lineWidth = 1.3;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        [16, 11, 6].forEach(function (rr, i) {
-          ctx.beginPath(); ctx.arc(x, y, rr, 0, 7); ctx.strokeStyle = i ? t.mid : t.fg; ctx.stroke();
-        });
-        ctx.beginPath(); ctx.arc(x + sx / 2, y + sy / 2, 4.5, 0, 7); ctx.strokeStyle = t.mid; ctx.stroke();
       }
     }
   }
@@ -1038,16 +683,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
       }
     }
   }
-  function zenimon(t) {
-    var s = 48, row = 0;
-    for (var y = s / 2; y < H + s; y += s, row++) {
-      for (var x = s / 2 + (row % 2 ? s / 2 : 0); x < W + s; x += s) {
-        ctx.beginPath(); ctx.arc(x, y, 12.5, 0, 7); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.6; ctx.stroke();
-        ctx.beginPath(); ctx.arc(x, y, 9.2, 0, 7); ctx.strokeStyle = t.mid; ctx.lineWidth = 1; ctx.stroke();
-        ctx.beginPath(); ctx.rect(x - 3.4, y - 3.4, 6.8, 6.8); ctx.fillStyle = t.bg; ctx.fill(); ctx.strokeStyle = t.fg; ctx.stroke();
-      }
-    }
-  }
   function matsukawabishi(t) {
     var sx = 42;
     ctx.lineWidth = 1.3;
@@ -1200,127 +835,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     for (var x2 = 0; x2 < W + 49; x2 += 49) ctx.fillRect(x2 - 1.3, 0, 2.6, H);
     for (var y = 0; y < H + 49; y += 49) ctx.fillRect(0, y - 1.3, W, 2.6);
   }
-  function yaezakura(t) {
-    var sx = 58, sy = 56, row = 0;
-    function petal(x, y, rot, len, wdt) {
-      ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
-      ctx.beginPath();
-      ctx.moveTo(0, -len * .2);
-      ctx.bezierCurveTo(-wdt, -len * .42, -wdt * 1.06, -len * .86, -wdt * .3, -len * .97);
-      ctx.lineTo(0, -len * .82); ctx.lineTo(wdt * .3, -len * .97);
-      ctx.bezierCurveTo(wdt * 1.06, -len * .86, wdt, -len * .42, 0, -len * .2);
-      ctx.closePath();
-      ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.15; ctx.stroke();
-      ctx.restore();
-    }
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 5; k++) petal(x, y, Math.PI * 2 / 5 * k - Math.PI / 2, 17, 7);
-        for (var k2 = 0; k2 < 5; k2++) petal(x, y, Math.PI * 2 / 5 * k2 - Math.PI / 2 + Math.PI / 5, 10.5, 4.6);
-        ctx.beginPath(); ctx.arc(x, y, 2, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function kozakura(t) {
-    var sx = 36, sy = 36, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 5; k++) {
-          ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI * 2 / 5 * k - Math.PI / 2);
-          ctx.beginPath();
-          ctx.moveTo(0, -1.6);
-          ctx.bezierCurveTo(-3.4, -3.2, -3.6, -6.8, -1, -7.8);
-          ctx.lineTo(0, -6.6); ctx.lineTo(1, -7.8);
-          ctx.bezierCurveTo(3.6, -6.8, 3.4, -3.2, 0, -1.6);
-          ctx.closePath(); ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1; ctx.stroke();
-          ctx.restore();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 1.3, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function nadeshiko(t) {
-    var sx = 56, sy = 54, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 5; k++) {
-          ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI * 2 / 5 * k - Math.PI / 2);
-          ctx.beginPath();
-          ctx.moveTo(0, -3);
-          ctx.bezierCurveTo(-5.6, -5.6, -5.4, -10, -2.7, -12.6);
-          ctx.lineTo(-1.35, -14.4); ctx.lineTo(0, -13); ctx.lineTo(1.35, -14.4); ctx.lineTo(2.7, -12.6);
-          ctx.bezierCurveTo(5.4, -10, 5.6, -5.6, 0, -3);
-          ctx.closePath(); ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.15; ctx.stroke();
-          ctx.restore();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function kikyo(t) {
-    var sx = 54, sy = 52, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2;
-        for (var k = 0; k < 5; k++) {
-          var a = Math.PI * 2 / 5 * k - Math.PI / 2;
-          ctx.beginPath(); ctx.ellipse(x + 7.2 * Math.cos(a), y + 7.2 * Math.sin(a), 4.3, 8.6, a + Math.PI / 2, 0, 7);
-          ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 2.5, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-        ctx.beginPath(); ctx.arc(x, y, 4.6, 0, 7); ctx.strokeStyle = t.mid; ctx.lineWidth = 1; ctx.stroke();
-      }
-    }
-  }
-  function karahana(t) {
-    var sx = 56, sy = 56, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2;
-        for (var k = 0; k < 8; k++) {
-          var a = Math.PI / 4 * k;
-          ctx.beginPath(); ctx.ellipse(x + 8.8 * Math.cos(a), y + 8.8 * Math.sin(a), 3.8, 8.2, a + Math.PI / 2, 0, 7); ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 3.2, 0, 7); ctx.strokeStyle = t.mid; ctx.stroke();
-        ctx.fillStyle = t.mid;
-        for (var k2 = 0; k2 < 8; k2++) { var a2 = Math.PI / 4 * k2 + Math.PI / 8; ctx.beginPath(); ctx.arc(x + 16.5 * Math.cos(a2), y + 16.5 * Math.sin(a2), 1.1, 0, 7); ctx.fill(); }
-      }
-    }
-  }
-  function tessen(t) {
-    var sx = 56, sy = 56, row = 0;
-    ctx.strokeStyle = t.fg; ctx.lineWidth = 1.25;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 6; k++) {
-          var a = Math.PI / 3 * k;
-          ctx.beginPath(); ctx.ellipse(x + 8 * Math.cos(a), y + 8 * Math.sin(a), 3.6, 8.6, a + Math.PI / 2 + .45, 0, 7); ctx.stroke();
-        }
-        ctx.beginPath();
-        for (var a2 = 0; a2 <= Math.PI * 3.4; a2 += .3) { var r = .6 + a2 * 1.05, px = x + r * Math.cos(a2), py = y + r * Math.sin(a2); if (a2 === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
-        ctx.strokeStyle = t.mid; ctx.stroke();
-        ctx.strokeStyle = t.fg;
-      }
-    }
-  }
-  function budoukarakusa(t) {
-    var s = 58, row = 0;
-    ctx.lineCap = 'round';
-    for (var y = s / 2; y < H + s; y += s, row++) {
-      for (var x = s / 2; x < W + s; x += s) {
-        var cx = x + (row % 2 ? s / 2 : 0), cy = y;
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        for (var a = 0; a <= Math.PI * 4.2; a += .3) { var r = 1 + a * 1.05, px = cx - 12 + r * Math.cos(a), py = cy - 8 + r * Math.sin(a); if (a === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
-        ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(cx + 2, cy - 14); ctx.quadraticCurveTo(cx + 8, cy - 6, cx + 8, cy - 1); ctx.stroke();
-        [[8, 2], [2.5, 4.5], [13.5, 4.5], [5, 10.5], [11, 10.5], [8, 16]].forEach(function (g, gi) {
-          ctx.beginPath(); ctx.arc(cx + g[0], cy + g[1], 3.3, 0, 7);
-          ctx.fillStyle = gi % 2 ? t.mid : t.fg; ctx.fill();
-        });
-      }
-    }
-  }
   function hakarakusa(t) {
     var bh = 46;
     ctx.lineWidth = 1.5; ctx.lineCap = 'round';
@@ -1334,68 +848,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
         var y2 = base + Math.sin(x2 * .05 + r * 2.2) * 5, up = ((x2 / 44 + r) % 2) === 0;
         ctx.beginPath(); ctx.ellipse(x2, y2 + (up ? -8 : 8), 3.8, 8, up ? -.5 : .5 + Math.PI, 0, 7);
         ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.stroke();
-      }
-    }
-  }
-  function ayame(t) {
-    var sx = 56, sy = 60, row = 0;
-    for (var y = sy / 2 + 4; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.25;
-        ctx.beginPath(); ctx.moveTo(x, y + 17); ctx.lineTo(x, y + 7); ctx.stroke();
-        [[-1, 58], [1, -58]].forEach(function (sd) {
-          ctx.beginPath(); ctx.ellipse(x + sd[0] * 9.5, y + 7.5, 3.6, 9.2, sd[1] * Math.PI / 180, 0, 7); ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-        });
-        [[-1, -30], [1, 30]].forEach(function (sd) {
-          ctx.beginPath(); ctx.ellipse(x + sd[0] * 5.5, y - 8.5, 2.4, 7.2, sd[1] * Math.PI / 180, 0, 7); ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-        });
-        ctx.beginPath();
-        ctx.moveTo(x, y + 9); ctx.quadraticCurveTo(x - 6, y - 7, x, y - 19); ctx.quadraticCurveTo(x + 6, y - 7, x, y + 9);
-        ctx.closePath(); ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-      }
-    }
-  }
-  function omodaka(t) {
-    var sx = 54, sy = 58, row = 0;
-    for (var y = sy / 2 + 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.beginPath();
-        ctx.moveTo(x, y - 15); ctx.lineTo(x + 8.5, y + 5); ctx.lineTo(x, y + 1); ctx.lineTo(x - 8.5, y + 5); ctx.closePath();
-        ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.25; ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x, y + 1); ctx.quadraticCurveTo(x + 2, y + 10, x, y + 16); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x, y - 12); ctx.lineTo(x, y + 0); ctx.strokeStyle = t.mid; ctx.stroke();
-        ctx.beginPath(); ctx.arc(x + 7, y + 13, 2.3, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function kobana(t) {
-    var s = 31, row = 0;
-    for (var y = s / 2; y < H + s; y += s, row++) {
-      for (var x = s / 2 + (row % 2 ? s / 2 : 0); x < W + s; x += s) {
-        for (var k = 0; k < 4; k++) {
-          var a = Math.PI / 2 * k + Math.PI / 4;
-          ctx.beginPath(); ctx.arc(x + 3.1 * Math.cos(a), y + 3.1 * Math.sin(a), 2.9, 0, 7);
-          ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = .95; ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 1.25, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-        ctx.beginPath(); ctx.arc(x + s / 2, y + s / 2, .95, 0, 7); ctx.fillStyle = t.mid; ctx.fill();
-      }
-    }
-  }
-  function mokkou(t) {
-    var sx = 58, sy = 58, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.save(); ctx.translate(x, y);
-        ctx.beginPath();
-        for (var k = 0; k < 4; k++) {
-          ctx.arc(-7, -7, 8.5, -0.6, 2.17, true);
-          ctx.rotate(Math.PI / 2);
-        }
-        ctx.closePath();
-        ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.3; ctx.stroke();
-        ctx.restore();
-        ctx.beginPath(); ctx.arc(x, y, 2, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
       }
     }
   }
@@ -1427,154 +879,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
       ctx.fillStyle = t.mid; ctx.fillRect(x - 8, ky + 34, 16, 6.5);
     }
   }
-  function sasa(t) {
-    var sx = 56, sy = 58, row = 0;
-    for (var y = sy / 2 + 12; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.3;
-        ctx.beginPath(); ctx.moveTo(x, y + 14); ctx.lineTo(x, y); ctx.stroke();
-        [[-.72, 19], [-.26, 22], [.26, 22], [.72, 19]].forEach(function (L) {
-          var a = -Math.PI / 2 + L[0], len = L[1];
-          var tipx = x + len * Math.cos(a), tipy = y + len * Math.sin(a);
-          var mx = x + len * .5 * Math.cos(a), my = y + len * .5 * Math.sin(a);
-          var px = Math.cos(a + Math.PI / 2) * 3.4, py = Math.sin(a + Math.PI / 2) * 3.4;
-          ctx.beginPath();
-          ctx.moveTo(x, y);
-          ctx.quadraticCurveTo(mx + px, my + py, tipx, tipy);
-          ctx.quadraticCurveTo(mx - px, my - py, x, y);
-          ctx.closePath(); ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-        });
-      }
-    }
-  }
-  function inaho(t) {
-    var sx = 46, sy = 64, row = 0;
-    ctx.lineWidth = 1.3;
-    for (var y = 34; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg;
-        ctx.beginPath(); ctx.moveTo(x, y + 22); ctx.lineTo(x, y - 24); ctx.stroke();
-        for (var k = 0; k < 6; k++) {
-          var gy = y - 20 + k * 6.4;
-          [-1, 1].forEach(function (sd) {
-            ctx.beginPath(); ctx.ellipse(x + sd * 3.6, gy, 2.3, 5.2, sd * .62, 0, 7);
-            ctx.fillStyle = t.fg; ctx.globalAlpha = .82; ctx.fill(); ctx.globalAlpha = 1;
-          });
-        }
-        ctx.lineWidth = .9;
-        [-.3, 0, .3].forEach(function (da) {
-          ctx.beginPath(); ctx.moveTo(x, y - 24); ctx.lineTo(x + da * 22, y - 34); ctx.stroke();
-        });
-        ctx.lineWidth = 1.3;
-      }
-    }
-  }
-  function yotsuba(t) {
-    var sx = 52, sy = 52, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 4; k++) {
-          var a = Math.PI / 2 * k - Math.PI / 2;
-          ctx.beginPath(); ctx.arc(x + 6.2 * Math.cos(a), y + 6.2 * Math.sin(a), 6.9, 0, 7);
-          ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2; ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(x, y, 1.8, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function tanzaku(t) {
-    var sx = 44;
-    for (var x = sx / 2; x < W + sx; x += sx) {
-      var col = Math.round(x / sx), off = (col * 37) % 23;
-      for (var y = -30 + off; y < H + 40; y += 74) {
-        ctx.beginPath(); ctx.roundRect(x - 8, y, 16, 47, 2);
-        ctx.fillStyle = t.soft; ctx.fill(); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2; ctx.stroke();
-        ctx.beginPath(); ctx.arc(x, y + 6, 1.7, 0, 7); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x, y - 8); ctx.lineTo(x, y + 4.3); ctx.strokeStyle = t.mid; ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(x - 4.5, y + 14); ctx.lineTo(x + 4.5, y + 14); ctx.stroke();
-      }
-    }
-  }
-  function botan(t) {
-    var sx = 60, sy = 60, row = 0;
-    function ring(x, y, r, n, bump, col) {
-      ctx.strokeStyle = col; ctx.lineWidth = 1.2;
-      for (var k = 0; k < n; k++) {
-        var a = Math.PI * 2 / n * k;
-        ctx.beginPath(); ctx.arc(x + r * Math.cos(a), y + r * Math.sin(a), bump, 0, 7); ctx.stroke();
-      }
-    }
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ring(x, y, 11.5, 9, 5.4, t.fg);
-        ring(x, y, 7.2, 7, 4.3, t.mid);
-        ring(x, y, 3.6, 5, 2.9, t.fg);
-        ctx.beginPath(); ctx.arc(x, y, 1.4, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-      }
-    }
-  }
-  function cho(t) {
-    var sx = 58, sy = 54, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.2;
-        [[-1, -.5], [1, .5]].forEach(function (sd) {
-          ctx.beginPath(); ctx.ellipse(x + sd[0] * 8, y - 5, 6.4, 10.4, sd[1], 0, 7); ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-          ctx.beginPath(); ctx.ellipse(x + sd[0] * 7, y + 6.5, 5.4, 7.8, -sd[1] * .8, 0, 7); ctx.fill(); ctx.stroke();
-        });
-        ctx.beginPath(); ctx.ellipse(x, y, 2.1, 9.5, 0, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-        [-1, 1].forEach(function (sd) {
-          ctx.beginPath(); ctx.moveTo(x + sd * 1.2, y - 8.5); ctx.quadraticCurveTo(x + sd * 5, y - 14, x + sd * 7.5, y - 15.5); ctx.stroke();
-        });
-      }
-    }
-  }
-  function tsuru(t) {
-    var sx = 62, sy = 54, row = 0;
-    ctx.fillStyle = t.fg;
-    var pts = [[-17, 6], [-7, -1], [-1, -15], [3, -3], [16, -10], [10, 0], [13.5, 7], [3, 4.5], [-2, 9.5], [-7, 3]];
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.save(); ctx.translate(x, y); ctx.scale(row % 2 ? -1 : 1, 1); ctx.globalAlpha = .9;
-        ctx.beginPath();
-        pts.forEach(function (p, i) { if (i === 0) ctx.moveTo(p[0], p[1]); else ctx.lineTo(p[0], p[1]); });
-        ctx.closePath(); ctx.fill();
-        ctx.restore(); ctx.globalAlpha = 1;
-      }
-    }
-  }
-  function usagi(t) {
-    var sx = 62, sy = 56, row = 0;
-    ctx.fillStyle = t.fg;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.save(); ctx.translate(x, y); ctx.scale(row % 2 ? -1 : 1, 1); ctx.globalAlpha = .88;
-        ctx.beginPath(); ctx.ellipse(-1, 5, 10.5, 7.6, 0, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(9.5, -2.5, 5.6, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(7.2, -12, 2.1, 8.6, .22, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.ellipse(11.8, -11.4, 2.1, 8.2, .48, 0, 7); ctx.fill();
-        ctx.beginPath(); ctx.arc(-11, 2.5, 2.7, 0, 7); ctx.fillStyle = t.bg; ctx.fill();
-        ctx.beginPath(); ctx.arc(11.2, -3.6, 1.05, 0, 7); ctx.fill();
-        ctx.restore(); ctx.globalAlpha = 1; ctx.fillStyle = t.fg;
-      }
-    }
-  }
-  function tonbo(t) {
-    var sx = 58, sy = 58, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.strokeStyle = t.fg; ctx.lineWidth = 1.15;
-        [[-1, -.16, -8], [1, .16, -8], [-1, .3, 0], [1, -.3, 0]].forEach(function (w) {
-          ctx.beginPath(); ctx.ellipse(x + w[0] * 11.5, y + w[2], 12.5, 3.4, w[1], 0, 7);
-          ctx.fillStyle = t.soft; ctx.fill(); ctx.stroke();
-        });
-        ctx.beginPath(); ctx.ellipse(x, y + 1, 2.4, 13.5, 0, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
-        ctx.beginPath(); ctx.arc(x, y - 14.5, 3.3, 0, 7); ctx.fill();
-        ctx.strokeStyle = t.bg;
-        [-2, 3.5, 9].forEach(function (yy) { ctx.beginPath(); ctx.moveTo(x - 2.2, y + yy); ctx.lineTo(x + 2.2, y + yy); ctx.stroke(); });
-      }
-    }
-  }
   function maruuroko(t) {
     var R = 15;
     ctx.lineWidth = 1.25;
@@ -1587,34 +891,6 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
       }
     }
   }
-  function temari(t) {
-    var sx = 56, sy = 56, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        ctx.beginPath(); ctx.arc(x, y, 14.5, 0, 7); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.4; ctx.stroke();
-        ctx.beginPath(); ctx.ellipse(x, y, 6, 14.5, 0, 0, 7); ctx.strokeStyle = t.mid; ctx.lineWidth = 1.1; ctx.stroke();
-        ctx.beginPath(); ctx.ellipse(x, y, 14.5, 6, 0, 0, 7); ctx.stroke();
-        ctx.beginPath(); ctx.ellipse(x, y, 11, 11, Math.PI / 4, 0, 7); ctx.stroke();
-        ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI / 4); ctx.fillStyle = t.fg; ctx.fillRect(-2.4, -2.4, 4.8, 4.8); ctx.restore();
-      }
-    }
-  }
-  function fuusha(t) {
-    var sx = 52, sy = 52, row = 0;
-    for (var y = sy / 2; y < H + sy; y += sy, row++) {
-      for (var x = sx / 2 + (row % 2 ? sx / 2 : 0); x < W + sx; x += sx) {
-        for (var k = 0; k < 4; k++) {
-          ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI / 2 * k + (row % 2 ? Math.PI / 4 : 0));
-          ctx.beginPath();
-          ctx.moveTo(2.6, -2.6); ctx.lineTo(15.5, -2.6); ctx.lineTo(2.6, -11.5); ctx.closePath();
-          ctx.fillStyle = k % 2 ? t.mid : t.fg; ctx.globalAlpha = .9; ctx.fill();
-          ctx.restore();
-        }
-        ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI / 4); ctx.fillStyle = t.fg; ctx.fillRect(-2.5, -2.5, 5, 5); ctx.restore();
-        ctx.globalAlpha = 1;
-      }
-    }
-  }
   function draw() {
     var TONES = tones();
     var t = TONES[effTone()];
@@ -1623,7 +899,7 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.fillStyle = t.bg; ctx.fillRect(0, 0, W, H);
-    ({ seigaiha: seigaiha, asanoha: asanoha, shippo: shippo, ichimatsu: ichimatsu, kikko: kikko, uroko: uroko, same: same, yagasuri: yagasuri, kanoko: kanoko, hishi: hishi, sayagata: sayagata, kagome: kagome, karakusa: karakusa, ryusui: ryusui, tatewaku: tatewaku, yukwa: yukwa, ajiro: ajiro, sankuzushi: sankuzushi, higaki: higaki, hanabishi: hanabishi, watsunagi: watsunagi, bishamon: bishamon, tatenami: tatenami, chidori: chidori, kiku: kiku, sakura: sakura, ume: ume, fuji: fuji, matsuba: matsuba, take: take, icho: icho, momiji: momiji, ogi: ogi, hyotan: hyotan, sekka: sekka, hoshi: hoshi, kanzemizu: kanzemizu, uzu: uzu, tomoe: tomoe, genjigumo: genjigumo, kasumi: kasumi, kumo: kumo, ame: ame, shibakusa: shibakusa, wakamatsu: wakamatsu, kikusui: kikusui, hamon: hamon, yanagi: yanagi, raimon: raimon, kojitsunagi: kojitsunagi, manjitsunagi: manjitsunagi, igeta: igeta, mansuji: mansuji, komochijima: komochijima, yamaji: yamaji, arare: arare, hyoretsu: hyoretsu, jujigasuri: jujigasuri, igasuri: igasuri, fundotsunagi: fundotsunagi, kusari: kusari, zenimon: zenimon, matsukawabishi: matsukawabishi, takedabishi: takedabishi, mitsubishi: mitsubishi, kenhanabishi: kenhanabishi, nijukikko: nijukikko, kikkohanabishi: kikkohanabishi, hanashippo: hanashippo, amime: amime, kakutoshi: kakutoshi, ishigaki: ishigaki, takegaki: takegaki, senbongoshi: senbongoshi, yaezakura: yaezakura, kozakura: kozakura, nadeshiko: nadeshiko, kikyo: kikyo, karahana: karahana, tessen: tessen, budoukarakusa: budoukarakusa, hakarakusa: hakarakusa, ayame: ayame, omodaka: omodaka, kobana: kobana, mokkou: mokkou, noshi: noshi, tabanenoshi: tabanenoshi, sasa: sasa, inaho: inaho, yotsuba: yotsuba, tanzaku: tanzaku, botan: botan, cho: cho, tsuru: tsuru, usagi: usagi, tonbo: tonbo, maruuroko: maruuroko, temari: temari, fuusha: fuusha })[pattern](t);
+    ({ seigaiha: seigaiha, asanoha: asanoha, shippo: shippo, ichimatsu: ichimatsu, kikko: kikko, uroko: uroko, same: same, yagasuri: yagasuri, kanoko: kanoko, hishi: hishi, sayagata: sayagata, kagome: kagome, karakusa: karakusa, ryusui: ryusui, tatewaku: tatewaku, yukwa: yukwa, ajiro: ajiro, sankuzushi: sankuzushi, higaki: higaki, hanabishi: hanabishi, watsunagi: watsunagi, bishamon: bishamon, tatenami: tatenami, kanzemizu: kanzemizu, genjigumo: genjigumo, kasumi: kasumi, kumo: kumo, ame: ame, yanagi: yanagi, raimon: raimon, kojitsunagi: kojitsunagi, manjitsunagi: manjitsunagi, igeta: igeta, mansuji: mansuji, komochijima: komochijima, yamaji: yamaji, arare: arare, hyoretsu: hyoretsu, jujigasuri: jujigasuri, igasuri: igasuri, fundotsunagi: fundotsunagi, kusari: kusari, matsukawabishi: matsukawabishi, takedabishi: takedabishi, mitsubishi: mitsubishi, kenhanabishi: kenhanabishi, nijukikko: nijukikko, kikkohanabishi: kikkohanabishi, hanashippo: hanashippo, amime: amime, kakutoshi: kakutoshi, ishigaki: ishigaki, takegaki: takegaki, senbongoshi: senbongoshi, hakarakusa: hakarakusa, noshi: noshi, tabanenoshi: tabanenoshi, maruuroko: maruuroko })[pattern](t);
     cap.textContent = CAPS[pattern];
   }
   root.querySelectorAll('[data-wag-p]').forEach(function (b) {

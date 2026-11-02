@@ -2,11 +2,12 @@
 document.querySelectorAll('[data-fw]').forEach(function (stage) {
   var canvas = stage.querySelector('canvas');
   var ctx = canvas.getContext('2d');
+  var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cs = getComputedStyle(stage);
   var COLORS = ['--k-accent', '--k-on-color', '--k-amber-ink', '--k-on-color'].map(function (v) { return cs.getPropertyValue(v).trim(); }).filter(Boolean);
   var W, H, rockets = [], sparks = [];
-  function size() { W = canvas.clientWidth; H = canvas.clientHeight; canvas.width = W; canvas.height = H; }
+  function size() { W = canvas.clientWidth; H = canvas.clientHeight; canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
   function launch(tx, ty) {
     rockets.push({ x: tx != null ? tx : 40 + Math.random() * (W - 80), y: H, ty: ty != null ? ty : 40 + Math.random() * H * .45, vy: -(9.5 + Math.random() * 3), c: COLORS[Math.floor(Math.random() * COLORS.length)] });
   }

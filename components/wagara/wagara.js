@@ -2,6 +2,7 @@
 document.querySelectorAll('[data-wag]').forEach(function (root) {
   var canvas = root.querySelector('canvas');
   var ctx = canvas.getContext('2d');
+  var DPR = Math.min(3, window.devicePixelRatio || 1);
   var cap = root.querySelector('.k-wag-cap');
   var cs = getComputedStyle(root);
   var V = function (n) { return cs.getPropertyValue(n).trim(); };
@@ -89,7 +90,7 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
   function draw() {
     var t = TONES[tone];
     W = canvas.clientWidth; H = canvas.clientHeight;
-    canvas.width = W; canvas.height = H;
+    canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.fillStyle = t.bg; ctx.fillRect(0, 0, W, H);
     ({ seigaiha: seigaiha, asanoha: asanoha, shippo: shippo, ichimatsu: ichimatsu })[pattern](t);
     cap.textContent = CAPS[pattern];

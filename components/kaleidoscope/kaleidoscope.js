@@ -2,13 +2,14 @@
 document.querySelectorAll('[data-kal]').forEach(function (stage) {
   var canvas = stage.querySelector('canvas');
   var ctx = canvas.getContext('2d');
+  var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var SEG = 10, W, H, cx, cy, drawing = false, prev = null, auto = !reduced, t = 0;
   var paper = getComputedStyle(stage).getPropertyValue('--k-on-color').trim() || '#ffffff';
   var accent = getComputedStyle(stage).getPropertyValue('--k-accent').trim() || '#0e9594';
   function size() {
     W = canvas.clientWidth; H = canvas.clientHeight;
-    canvas.width = W; canvas.height = H;
+    canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     cx = W / 2; cy = H / 2;
     ctx.fillStyle = '#09090b'; ctx.fillRect(0, 0, W, H);
   }

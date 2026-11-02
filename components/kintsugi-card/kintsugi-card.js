@@ -2,6 +2,7 @@
 document.querySelectorAll('[data-kin]').forEach(function (card) {
   var canvas = card.querySelector('canvas');
   var ctx = canvas.getContext('2d');
+  var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cs = getComputedStyle(card);
   var GOLD = cs.getPropertyValue('--k-amber').trim();
@@ -14,7 +15,7 @@ document.querySelectorAll('[data-kin]').forEach(function (card) {
     [[.68, .66], [.74, .86], [.72, 1.02]]
   ];
   var W, H;
-  function size() { W = card.clientWidth; H = card.clientHeight; canvas.width = W; canvas.height = H; }
+  function size() { W = card.clientWidth; H = card.clientHeight; canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
   function draw(t) {
     ctx.clearRect(0, 0, W, H);
     CRACKS.forEach(function (line) {

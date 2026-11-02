@@ -2,13 +2,14 @@
 document.querySelectorAll('[data-rain]').forEach(function (stage) {
   var canvas = stage.querySelector('canvas');
   var ctx = canvas.getContext('2d');
+  var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var GLYPHS = 'アカサタナハマヤラワイキシチニヒミリヲ0123456789';
   var W, H, cols, drops;
   var accent = getComputedStyle(stage).getPropertyValue('--k-accent').trim() || '#0e9594';
   function size() {
     W = canvas.clientWidth; H = canvas.clientHeight;
-    canvas.width = W; canvas.height = H;
+    canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     cols = Math.floor(W / 17);
     drops = [];
     for (var i = 0; i < cols; i++) drops.push({ y: Math.random() * -40, speed: .5 + Math.random() * 1.1 });

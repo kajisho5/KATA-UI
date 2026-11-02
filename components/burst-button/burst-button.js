@@ -3,17 +3,18 @@ document.querySelectorAll('[data-burst]').forEach(function (wrap) {
   var canvas = wrap.querySelector('canvas');
   var btn = wrap.querySelector('.k-burst-btn');
   var ctx = canvas.getContext('2d');
+  var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cs = getComputedStyle(wrap);
   var COLORS = ['--k-accent', '--k-ink', '--k-zinc-400'].map(function (v) { return cs.getPropertyValue(v).trim(); }).filter(Boolean);
-  var parts = [], raf = null;
-  function size() { canvas.width = wrap.offsetWidth + 180; canvas.height = wrap.offsetHeight + 140; }
+  var parts = [], raf = null, W = 0, H = 0;
+  function size() { W = wrap.offsetWidth + 180; H = wrap.offsetHeight + 140; canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
   function fire(cx, cy) {
     if (reduced) return;
     size();
     var r = wrap.getBoundingClientRect();
-    var ox = cx != null ? cx - r.left + 90 : canvas.width / 2;
-    var oy = cy != null ? cy - r.top + 70 : canvas.height / 2;
+    var ox = cx != null ? cx - r.left + 90 : W / 2;
+    var oy = cy != null ? cy - r.top + 70 : H / 2;
     for (var i = 0; i < 30; i++) {
       var a = Math.PI * 2 * Math.random();
       var sp = 1.4 + Math.random() * 4.4;
@@ -22,7 +23,7 @@ document.querySelectorAll('[data-burst]').forEach(function (wrap) {
     if (!raf) tick();
   }
   function tick() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, W, H);
     parts = parts.filter(function (p) { return p.life > 0; });
     parts.forEach(function (p) {
       p.vy += .11; p.vx *= .985; p.vy *= .985;

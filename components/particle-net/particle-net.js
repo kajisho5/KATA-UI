@@ -2,6 +2,7 @@
 document.querySelectorAll('[data-net]').forEach(function (stage) {
   var canvas = stage.querySelector('canvas');
   var ctx = canvas.getContext('2d');
+  var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cs = getComputedStyle(stage);
   var INK = cs.getPropertyValue('--k-zinc-400').trim() || '#a1a1aa';
@@ -9,7 +10,7 @@ document.querySelectorAll('[data-net]').forEach(function (stage) {
   var W, H, pts = [], mouse = { x: -9999, y: -9999 };
   function size() {
     W = stage.clientWidth; H = stage.clientHeight;
-    canvas.width = W; canvas.height = H;
+    canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     var n = Math.min(78, Math.floor(W * H / 2600));
     pts = [];
     for (var i = 0; i < n; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .34, vy: (Math.random() - .5) * .34 });

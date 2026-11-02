@@ -358,10 +358,19 @@ LP_STYLE = """<style>
 .browser-bar i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
 .browser-bar .url{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:3px 10px;background:var(--paper)}
 .browser .shell{border:0;border-radius:0}
+.livechip{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink2)}
+.livechip i{width:7px;height:7px;border-radius:50%;background:var(--acc);flex:none}
+.livechip.on-dark{color:#d4d4d8}
+.browser{position:relative}
+.framelive{position:absolute;top:12px;left:14px;z-index:4;background:rgba(11,11,15,.78);padding:5px 10px;border-radius:99px}
+.fann{position:absolute;z-index:4;font-family:var(--mono);font-size:11px;font-weight:600;background:rgba(11,11,15,.85);color:#f4f4f5;padding:5px 10px;border-radius:99px;opacity:0;transition:opacity .18s ease;pointer-events:none;white-space:nowrap}
+.browser:hover .fann,.browser:focus-within .fann{opacity:1}
+@media (hover:none){.fann{display:none}}
 .framecap{max-width:880px;margin:10px auto 0;text-align:right;font-size:12px;color:var(--ink3)}
 .framecap a{color:var(--ink2)}
 .lpsec{margin-top:64px}
-.lpsec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
+.lpsec.proof{margin-top:96px}
+.lpsec h2{font-size:27px;font-weight:600;letter-spacing:-.02em}
 .lpsec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .steps{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
 .step{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:18px}
@@ -375,7 +384,7 @@ LP_STYLE = """<style>
 .genre .gn{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
 .genre h3{margin-top:7px;font-size:15.5px;font-weight:600}
 .genre p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
-.showband{margin-top:64px;background:#101013;border-radius:18px;padding:30px 26px}
+.showband{margin-top:64px;background:#0b0b0f;border-radius:18px;padding:30px 26px}
 .showband h2{font-size:22px;font-weight:600;letter-spacing:-.02em;color:#f4f4f5}
 .showband .sub{margin-top:7px;color:#a1a1aa;font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .showgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
@@ -393,7 +402,7 @@ LP_STYLE = """<style>
 @media (max-width:720px){.hero2 .hkanji{font-size:250px;right:-24px}}
 .hero2 .eyebrow i{background:var(--k-core)}
 .hero2-in{position:relative}
-.hero2 h1{font-size:45px;line-height:1.12;color:#f4f4f5;letter-spacing:-.025em;font-weight:650}
+.hero2 h1{font-size:64px;line-height:1.05;color:#f4f4f5;letter-spacing:-.028em;font-weight:650}
 .hero2 h1 .dim{color:#d4d4d8}
 .hero2-in>p{max-width:62ch;margin:17px auto 0;font-size:15px;line-height:1.85;color:#a1a1aa;letter-spacing:.012em}
 .hero2 .eyebrow{border-color:#3f3f46;color:#d4d4d8;background:rgba(255,255,255,.05)}
@@ -406,7 +415,9 @@ LP_STYLE = """<style>
 .hero2 .browser{box-shadow:0 34px 90px -24px rgba(0,0,0,.65);margin-top:40px;text-align:left;position:relative;z-index:1}
 .hero2 .framecap{color:#a1a1aa;position:relative;z-index:1}
 .hero2 .framecap a{color:#e4e4e7}
-@media (max-width:720px){.hero2{padding:42px 16px 22px}.hero2 h1{font-size:31px}}
+@media (max-width:720px){.hero2{padding:42px 16px 22px}.hero2 h1{font-size:34px}}
+@media (max-width:720px){.hero2 .cta{flex-direction:column;align-items:stretch}.hero2 .cta a{flex:none;justify-content:center}}
+@media (max-width:560px){.hero2 .eyebrow{white-space:normal;line-height:1.6;text-align:center}}
 .collage-sec{margin-top:64px}
 .collage-sec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
 .collage-sec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
@@ -437,6 +448,8 @@ def landing(comps, blocks, n_icons, templates=None):
     n = len(comps)
     nb = len(blocks)
     nt = len(templates or [])
+    _nbrands = len(list((ROOT / 'icons' / 'brands').glob('*.svg')))
+    LIVECHIP = '<span class="livechip"><i></i>LIVE \u2014 this code is copyable</span>'
     shell = next((b for b in blocks if b['slug'] == 'app-shell'), None)
     shell_html = shell['preview'] if shell else ''
     pv = {c['slug']: c for c in comps}
@@ -514,7 +527,7 @@ def landing(comps, blocks, n_icons, templates=None):
     moldlive = ('<section class="lpsec"><h2>Try it — the mold, live</h2>'
       '<p class="lpnote">Four real parts from the catalog, running unmodified. Turn the radius, the accent or the mode in the Foundry deck \u2014 bottom right, on every page \u2014 and watch them re-cast from the same tokens. One change in the mold, every part follows.</p>'
       '<div class="castlive" data-theme="light" style="margin:18px 0 6px">'
-      '<div class="cl-cap"><span>Live cast</span><a href="#" id="cl-open">Open the Foundry deck</a></div>'
+      '<div class="cl-cap"><span>Live cast</span><span class="livechip"><i></i>LIVE</span><a href="#" id="cl-open">Open the Foundry deck</a></div>'
       '<div class="cl-row">'
       '<button class="btn btn-pri btn-md" type="button">Cast me</button>'
       '<span class="switch asagi"><input type="checkbox" checked aria-label="Live cast switch"><span class="tr"></span></span>'
@@ -536,6 +549,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '<div class="genres">' + _demo_cards + '</div></section>') if _demo_cards else ''
     videoband = ('<section class="lpsec"><h2>Watch one get built</h2>'
       '<p class="lpnote">A settings page, assembled from catalog parts in one take \u2014 no cuts, nothing written on camera. Each element lands by pasting the part from its page, and the timer is the real one: sixteen seconds of pasting, because the styling was already done inside the parts.</p>'
+      '<div style="margin-top:14px"><span class="livechip"><i></i>LIVE \u2014 this code is copyable</span></div>'
       '<div class="vidwrap"><video autoplay muted loop playsinline preload="metadata" poster="/media/build-settings-poster.jpg" aria-label="Screen recording: a settings page assembled from KATA parts in sixteen seconds"><source src="/media/build-settings.webm" type="video/webm"><source src="/media/build-settings.mp4" type="video/mp4"></video></div>'
       '<p class="lpnote" style="margin-top:12px">The finished page is the <a href="/templates/settings-page/demo/">Settings template, running live</a> \u2014 open it and take it apart.</p></section>')
     reactband = ('<section class="lpsec"><h2>On React? Cast anyway.</h2>'
@@ -568,14 +582,15 @@ def landing(comps, blocks, n_icons, templates=None):
       <a class="kbtn-primary" href="#first-five" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#f4f4f5;color:#18181b;font-weight:550;font-size:14px;text-decoration:none">Copy your first part</a>
       <a href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid #71717a;font-weight:500;font-size:14px;text-decoration:none;background:rgba(255,255,255,.08);color:#f4f4f5">Browse {n} components</a>
     </div>
-    <p class="statsline"><span><b>{n}</b> components</span><i>&middot;</i><span><b>{nb}</b> blocks</span><i>&middot;</i><span><b>{n_icons}</b> icons</span><i>&middot;</i><span><b>0</b> dependencies</span></p>
+    <p class="statsline"><span><b>{n}</b> components</span><i>&middot;</i><span><b>{nb}</b> blocks</span><i>&middot;</i><span><b>{n_icons + _nbrands}</b> icons &amp; marks</span><i>&middot;</i><span><b>0</b> dependencies</span></p>
     <p class="herotrust">This page is built with KATA — every part on it is the real part, unmodified. <span class="fmold">{MOLD_STATUS}</span></p>
   </div>
   <div class="browser" aria-hidden="true">
+    <span class="livechip on-dark framelive"><i></i>LIVE \u2014 this code is copyable</span><span class="fann" style="left:5%;top:30%">App Shell \u00b7 Block</span><span class="fann" style="left:36%;top:20%">Stat Cards \u00b7 Block</span><span class="fann" style="left:56%;top:52%">Data Table</span>
     <div class="browser-bar"><i></i><i></i><i></i><span class="url">your-app.com</span></div>
 {shell_html}
   </div>
-  <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
+  <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block. Not a screenshot: hover to take it apart.</p>
   </div>
   {moldlive}
   {demoband}
@@ -598,7 +613,7 @@ def landing(comps, blocks, n_icons, templates=None):
       <a class="genre" href="/components/"><span class="gn">{n} PARTS</span><h3>Components</h3><p>The single parts: forms, overlays, feedback, display — and a Motion line other libraries do not carry.</p></a>
       <a class="genre" href="/blocks/"><span class="gn">{nb} SECTIONS</span><h3>Blocks</h3><p>Whole sections composed from the parts — sign-in, pricing, settings, an app shell. Start here, take apart later.</p></a>
       <a class="genre" href="/templates/"><span class="gn">{nt} PAGES</span><h3>Templates</h3><p>Whole pages, already assembled — a dashboard, an inbox, a landing. The parts and blocks in their places, ready to take apart.</p></a>
-      <a class="genre" href="/icons/"><span class="gn">{n_icons} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 1.7 stroke cut square, three shapes only. Click to copy the SVG.</p></a>
+      <a class="genre" href="/icons/"><span class="gn">{n_icons + _nbrands} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 1.7 stroke cut square, three shapes only. Click to copy the SVG.</p></a>
       <a class="genre" href="/design-system/"><span class="gn">TOKENS.JSON</span><h3>Design System</h3><p>The foundation every part is cast from — color, type, spacing, radius, motion. Download it, diff it, fork it.</p></a>
     </div>
     <div class="compat">
@@ -2238,6 +2253,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 The front page, given a louder first three seconds', '<p>The hero headline steps up to 64px, the stats now count all 370 icons and marks, and the App Shell frame names itself LIVE \u2014 hover it and its panels answer with their part names, App Shell, Stat Cards, Data Table. A shared LIVE chip now marks every real, copyable surface on the page. Section headings step up a class, proof sections breathe at 96px, the two sumi panels agree on one black, and the mobile hero \u2014 eyebrow and CTAs \u2014 is measured and fixed at real width.</p>', None, None),
+    (
  'November 3, 2026 \u2014 Sixteen seconds, one settings page', '<p>The front page now carries the proof as a recording: a settings page assembled from catalog parts in a single take \u2014 twelve pastes, a real on-screen timer, no cuts and no code written on camera. Sixteen seconds, because the styling was already done inside the parts. The finished page is the Settings template, which runs live one click away.</p>', None, None),
     (
  'November 3, 2026 \u2014 Cast together: compositions on the part pages', '<p>Eleven part pages grow a Cast together section: live compositions \u2014 a subscribe row, a scoped search, feature flags on a card, a rename dialog, a roster \u2014 each copyable as one scene, with the parts in it named. Building them exposed two single-instance assumptions, now fixed in the parts themselves: Modal and Toast each bind every opener and container on the page, not just the first.</p>', None, None),

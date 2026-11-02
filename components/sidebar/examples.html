@@ -1,0 +1,39 @@
+<!-- example: Icon rail -->
+<div style="display:flex;border:1px solid var(--k-line);border-radius:14px;overflow:hidden;max-width:480px;background:var(--k-bg)">
+  <nav class="k-side rail" data-side aria-label="Rail preview">
+    <div class="k-side-brand"><span class="k-side-mark"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3.5 2.5 8.5 12 13.5l9.5-5L12 3.5Z"/><path d="m2.5 12.8 9.5 5 9.5-5"/></svg></span></div>
+    <div class="k-side-nav">
+      <a class="k-side-item on" href="#" title="Overview"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/></svg><span class="k-side-t">Overview</span></a>
+      <a class="k-side-item" href="#" title="Projects"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span class="k-side-t">Projects</span></a>
+      <a class="k-side-item" href="#" title="Calendar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="k-side-t">Calendar</span></a>
+      <a class="k-side-item" href="#" title="Reports"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 20v-6M12 20V4M18 20v-9"/><path d="M3.5 20.5h17"/></svg><span class="k-side-t">Reports</span></a>
+      <a class="k-side-item" href="#" title="Team"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="9" cy="8.5" r="3.4"/><path d="M2.8 20c.7-3.4 3.2-5.2 6.2-5.2s5.5 1.8 6.2 5.2"/><path d="M16 5.4a3.4 3.4 0 0 1 0 6.4M18.5 15.4c1.5.8 2.5 2.4 2.9 4.6"/></svg><span class="k-side-t">Team</span></a>
+      <a class="k-side-item" href="#" title="Settings"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span class="k-side-t">Settings</span></a>
+    </div>
+    <div class="k-side-user"><span class="k-side-ava">AR</span></div>
+  </nav>
+  <div style="flex:1;padding:20px;min-width:0">
+    <p style="font-size:15px;font-weight:600">The rail</p>
+    <p style="font-size:13px;color:var(--k-ink-2);line-height:1.8;margin-top:6px">Same part, one class narrower. Labels hide visually and stay in the markup; every icon keeps its title. For tools whose users live in the content, not the nav.</p>
+  </div>
+</div>
+<!-- example: In dark -->
+<div data-theme="dark" style="border-radius:14px;padding:14px;background:var(--k-zinc-950)">
+  <div style="display:flex;border:1px solid var(--k-line);border-radius:12px;overflow:hidden;background:var(--k-bg)">
+    <nav class="k-side" data-side aria-label="Dark sidebar preview">
+      <div class="k-side-brand"><span class="k-side-mark"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3.5 2.5 8.5 12 13.5l9.5-5L12 3.5Z"/><path d="m2.5 12.8 9.5 5 9.5-5"/></svg></span>Northwind</div>
+      <div class="k-side-sec">MAIN</div>
+      <div class="k-side-nav">
+        <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/></svg><span class="k-side-t">Overview</span></a>
+        <a class="k-side-item on" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M18 16H6c.6-1.2 1-2.6 1-4.5V10a5 5 0 0 1 10 0v1.5c0 1.9.4 3.3 1 4.5Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="k-side-t">Activity</span><span class="k-side-badge">9</span></a>
+        <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span class="k-side-t">Documents</span></a>
+        <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span class="k-side-t">Settings</span></a>
+      </div>
+      <div class="k-side-user"><span class="k-side-ava">AR</span><span class="k-side-umeta"><span class="k-side-uname">Aoki Ren</span><br><span class="k-side-urole">Workspace admin</span></span></div>
+    </nav>
+    <div style="flex:1;padding:20px;min-width:0">
+      <p style="font-size:15px;font-weight:600">Activity</p>
+      <p style="font-size:13px;color:var(--k-ink-2);line-height:1.8;margin-top:6px">Nothing about the part changes in the dark — the tokens turn, the core stays vermillion. This whole frame is one data-theme attribute.</p>
+    </div>
+  </div>
+</div>

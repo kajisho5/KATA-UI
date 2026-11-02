@@ -1,5 +1,8 @@
-/* KATA Spotlight */
-.k-spot{position:relative;overflow:hidden;border:1px solid var(--k-line);border-radius:var(--k-radius-lg);background:var(--k-bg)}
-.k-spot::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),var(--k-accent-bg-strong),transparent 70%);opacity:0;transition:opacity .25s;pointer-events:none}
-.k-spot:hover::before{opacity:1}
-.k-spot > *{position:relative}
+/* KATA Spotlight — a flashlight, not a wash. The panel sits in the dark and
+   the words are silhouettes until the beam reaches them: inside the pool the
+   text is fully lit, outside it is barely there. */
+.k-spot{--mx:30%;--my:34%;position:relative;overflow:hidden;border-radius:var(--k-radius-lg);background:var(--k-zinc-950);color:var(--k-on-color);font-family:var(--k-font)}
+.k-spot::before{content:"";position:absolute;inset:0;background:radial-gradient(200px circle at var(--mx) var(--my),rgba(255,255,255,.17),rgba(255,255,255,.05) 55%,transparent 72%);pointer-events:none}
+.k-spot-in{position:relative;padding:22px;color:rgba(255,255,255,.3)}
+.k-spot-lit{position:absolute;inset:0;pointer-events:none;-webkit-mask-image:radial-gradient(150px circle at var(--mx) var(--my),#000 52%,rgba(0,0,0,.5) 68%,transparent 80%);mask-image:radial-gradient(150px circle at var(--mx) var(--my),#000 52%,rgba(0,0,0,.5) 68%,transparent 80%)}
+.k-spot-lit .k-spot-in{color:var(--k-on-color)}

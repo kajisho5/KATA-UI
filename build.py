@@ -190,6 +190,11 @@ def head(title, desc, extra=''):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#18181b">
 <link rel="stylesheet" href="/tokens.css?v={_v((ROOT / 'tokens.css').read_text(encoding='utf-8'))}">
 <link rel="stylesheet" href="/site.css?v={_v((ROOT / 'site.css').read_text(encoding='utf-8'))}">
 <link rel="stylesheet" href="/components/command/command.css?v={_v((ROOT / 'components/command/command.css').read_text(encoding='utf-8'))}">
@@ -326,7 +331,7 @@ def landing(comps, blocks, n_icons, templates=None):
     compare = ('<section class="lpsec"><h2>How KATA compares</h2>'
       '<div style="overflow-x:auto"><table class="cmptable"><thead><tr><th></th><th>KATA UI</th><th>shadcn/ui</th><th>MUI</th><th>Flux UI</th></tr></thead><tbody>'
       '<tr><th>Framework</th><td class="me">None — plain HTML</td><td>React</td><td>React</td><td>Laravel + Livewire</td></tr>'
-      '<tr><th>Distribution</th><td class="me">Copy-paste</td><td>Copy-paste (CLI)</td><td>npm package</td><td>Composer package</td></tr>'
+      '<tr><th>Distribution</th><td class="me">Copy-paste, CLI & registry</td><td>Copy-paste + CLI</td><td>npm package</td><td>Composer package</td></tr>'
       '<tr><th>Runtime required</th><td class="me">None</td><td>React</td><td>React</td><td>Livewire + Alpine</td></tr>'
       '<tr><th>Theming</th><td class="me">CSS tokens</td><td>Tailwind + variables</td><td>Theme object</td><td>Tailwind</td></tr>'
       '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks + Templates lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
@@ -639,6 +644,45 @@ def detail(comps, idx):
                               f'<div class="codebox"><div class="pane on"><pre>{esc(html_ex)}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div></div>')
         examples_html = '<section class="doc"><h2>Examples</h2>' + ''.join(blocks_out) + '</section>'
     js_tag = f'<script src="/components/{slug}/{slug}.js?v={_v(c["js"])}"></script>' if c['js'] else ''
+    dep_cli = ' Dependencies are resolved and written with it.' if c['deps'] else ''
+    js_step = ' The part has a script — include it after the markup; it initializes itself.' if c['js'] else ''
+    install_html = f'''<section class="doc"><h2>Installation</h2>
+      <h3 class="insth">CLI</h3>
+      <div class="codebox"><div class="pane on"><pre>node kata-ui.mjs add {slug}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div></div>
+      <p class="anote">Writes the part\u2019s CSS{(' and JS' if c['js'] else '')} into your project.{dep_cli} New to the CLI? See the <a href="/docs/cli/">CLI doc</a>.</p>
+      <h3 class="insth">Manual</h3>
+      <ol class="instol">
+        <li>Load <code>tokens.css</code> once, before any part.</li>
+        <li>Copy the CSS tab into your stylesheet.</li>
+        <li>Copy the HTML where it belongs.{js_step}</li>
+      </ol></section>'''
+    cls_seen = []
+    for mm in re.finditer(r'\.([a-zA-Z][\w-]*)', c['css']):
+        if mm.group(1) not in cls_seen:
+            cls_seen.append(mm.group(1))
+    hooks = []
+    for src in (c['preview'], c['js'] or ''):
+        for mm in re.finditer(r'data-[a-z0-9-]+', src):
+            if mm.group(0) not in hooks:
+                hooks.append(mm.group(0))
+    arias = []
+    for mm in re.finditer(r'aria-[a-z]+', c['preview']):
+        if mm.group(0) not in arias:
+            arias.append(mm.group(0))
+    rows = ''
+    for n in cls_seen[:14]:
+        rows += f'<tr><td><code>.{esc(n)}</code></td><td>class</td></tr>'
+    if len(cls_seen) > 14:
+        rows += f'<tr><td><code>+{len(cls_seen) - 14} more</code></td><td>classes \u2014 see the CSS tab</td></tr>'
+    for h in hooks[:10]:
+        rows += f'<tr><td><code>{esc(h)}</code></td><td>data hook</td></tr>'
+    for a in arias[:8]:
+        rows += f'<tr><td><code>{esc(a)}</code></td><td>ARIA</td></tr>'
+    anatomy_html = ''
+    if rows:
+        anatomy_html = ('<section class="doc"><h2>Anatomy</h2>'
+                        '<p class="anote">The public surface of this part, read from its own source. Class names are the API \u2014 the CSS tab above is the full contract.</p>'
+                        f'<table class="anatomy"><tbody>{rows}</tbody></table></section>')
     siblings = [x for x in comps if x['meta']['category'] == m['category'] and x['slug'] != slug][:4]
     related = ''
     if siblings:
@@ -669,9 +713,11 @@ def detail(comps, idx):
         <div class="codetabs">{tab_btns}</div>
         {panes}
       </div>
+      {install_html}
       {examples_html}
       <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
       <section class="doc"><h2>Accessibility</h2><p>{esc(m.get('a11y',''))}</p></section>
+      {anatomy_html}
       {used_in}
       {related}
       <div class="prevnext">{prev_html}{next_html}</div>
@@ -878,6 +924,20 @@ def blocks_index(blocks):
 </html>"""
     return head('Blocks — KATA UI', 'Whole sections composed from KATA components: sign-in, pricing, settings, app shells.', BLOCK_STYLE) + body
 
+def install_section(slug, noun, has_js, dep_note=''):
+    js_bit = ' and JS' if has_js else ''
+    js_step = ' The page has scripts — include them after the markup; they initialize themselves.' if has_js else ''
+    return f'''<section class="doc"><h2>Installation</h2>
+      <h3 class="insth">CLI</h3>
+      <div class="codebox"><div class="pane on"><pre>node kata-ui.mjs add {slug}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div></div>
+      <p class="anote">Writes the {noun}\u2019s CSS{js_bit} into your project.{dep_note} New to the CLI? See the <a href="/docs/cli/">CLI doc</a>.</p>
+      <h3 class="insth">Manual</h3>
+      <ol class="instol">
+        <li>Load <code>tokens.css</code> once, before any part.</li>
+        <li>Copy the CSS tab into your stylesheet, with the CSS of everything listed under \u201cBuilt from\u201d above.</li>
+        <li>Copy the HTML where it belongs.{js_step}</li>
+      </ol></section>'''
+
 def block_detail(blocks, idx, comps):
     b = blocks[idx]
     m = b['meta']
@@ -904,6 +964,7 @@ def block_detail(blocks, idx, comps):
         nb = blocks[idx + 1]
         next_html = f'<a class="next" href="/blocks/{nb["slug"]}/"><span class="dir">Next</span><div class="nm">{esc(nb["meta"]["title"])}</div></a>'
     js_tag = f'<script src="/blocks/{slug}/{slug}.js?v={_v(b["js"])}"></script>' if b['js'] else ''
+    install_html = install_section(slug, 'block', bool(b['js']), ' Everything it is built from comes with it.' if links else '')
     body = f"""
 <div class="wrap">
   <main class="detail">
@@ -923,6 +984,7 @@ def block_detail(blocks, idx, comps):
       <div class="codetabs">{tab_btns}</div>
       {panes}
     </div>
+    {install_html}
     <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
     <div class="prevnext">{prev_html}{next_html}</div>
   </main>
@@ -1034,6 +1096,7 @@ def template_detail(templates, idx, comps, blocks):
     if idx < len(templates) - 1:
         nb = templates[idx + 1]
         next_html = f'<a class="next" href="/templates/{nb["slug"]}/"><span class="dir">Next</span><div class="nm">{esc(nb["meta"]["title"])}</div></a>'
+    install_html = install_section(slug, 'template', bool(t['js']), ' Everything it is built from comes with it.' if bits else '')
     scripts = ''
     for u in m.get('uses', []):
         cj = next((x['js'] for x in comps if x['slug'] == u), None)
@@ -1067,6 +1130,7 @@ def template_detail(templates, idx, comps, blocks):
       <div class="codetabs">{tab_btns}</div>
       {panes}
     </div>
+    {install_html}
     <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
     <div class="prevnext">{prev_html}{next_html}</div>
   </main>
@@ -1284,7 +1348,8 @@ DOCS = [
     ('Why no npm package?', 'Because the package would become the product, and the product is the code in your repo. The one-file bundle and the starter kit cover the “just give me everything” case without a dependency. If a package ever ships, it will be a mirror of these files, never the source of truth.', None, None),
     ('Who makes this?', 'One person, in the open, with the mold as the second pair of hands. The repository holds the parts, the checker, and the standard they are built to — issues and corrections are welcome there.', None, None)]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — A sharper cut, a new mark', 'The icon set was re-cut on the user’s call: a 1.7 stroke, square caps and bevel joins replace the round 2px line, in all 150 glyphs and every inline copy. The logo changed too — the framed mold mark gave way to a frameless four-part square with a small ichimatsu checker nested in its top-right quarter, a mold inside the mold. New part: Typeset, long-form text as one cast piece. Every chart part gained Examples (two-series lines, a six-axis radar, four-segment donuts and more), the Themes page learned to build a custom theme from any color, and the docs grew per-stack install guides for Plain HTML, Astro and Laravel.', None, None),
+   [('November 2, 2026 — Structure, and the furniture', 'Every part, block and template page now opens with an Installation section (CLI or manual) and closes with an Anatomy table read from the part\u2019s own source. New part: Sidebar, with sections, collapsible groups and an icon rail. Spotlight was rebuilt as a flashlight — a dark panel, a resting beam, and words that light only where the beam reaches. The site itself grew its furniture: a full favicon set and PWA icons drawn from the new mark, a web manifest and service worker (documents network-first, so deploys are never stale), Open Graph and Twitter cards on every page with a proper social image, and canonical URLs throughout. The comparison table now says what is true: distribution is copy-paste, CLI & registry.', None, None),
+    ('November 2, 2026 — A sharper cut, a new mark', 'The icon set was re-cut on the user’s call: a 1.7 stroke, square caps and bevel joins replace the round 2px line, in all 150 glyphs and every inline copy. The logo changed too — the framed mold mark gave way to a frameless four-part square with a small ichimatsu checker nested in its top-right quarter, a mold inside the mold. New part: Typeset, long-form text as one cast piece. Every chart part gained Examples (two-series lines, a six-axis radar, four-segment donuts and more), the Themes page learned to build a custom theme from any color, and the docs grew per-stack install guides for Plain HTML, Astro and Laravel.', None, None),
    ('November 2, 2026 — CLI, brand marks, wagara', 'The catalog is installable from a terminal now: a zero-dependency Node CLI (node kata-ui.mjs add button) reads registry.json and writes parts, blocks, templates and themes — dependencies included — into your project. Brand marks grew from 12 to 56, grouped by job (social, AI, development, commerce, platforms, cloud) on the Icons page, and the Integrations block grew to 18 tiles. Aurora learned three wagara textures — Seigaiha, Asanoha and Ichimatsu — as drifting line patterns under the wash, in its Examples. The site menu is labeled Menu and lists blocks, templates and docs next to the components.', None, None),
     ('November 2, 2026 — Templates arrive', 'The catalog grows a third shelf: Templates — whole pages composed from parts and blocks, starting with a Dashboard page (sidebar, stat row, revenue chart, sortable orders table). The site navigation, search and registry now carry templates as first-class items (registry:page), and the landing page counts five genres.', None, None),
    ('November 2, 2026 — The catalog fills in', 'Seventy-six components and thirteen blocks. New: Date Picker, Combobox, File Upload, Tag Input, Context Menu, Tree, Data Table, Color Picker, Split Panel, Scroll Area, Aspect Ratio, Toggle, and the Scatter, Radar and Funnel charts plus Sparkline. Blocks gained FAQ, Site Header, Site Footer, Testimonials, CTA Band and Logo Cloud. Installation becomes a real thing: the one-file bundle (kata-ui.css / kata-ui.js), the starter kit, and an Installation doc. The landing page now assembles its showcase from live parts, and the mobile overflow bugs reported on day one are fixed.', None, None),
@@ -1368,6 +1433,10 @@ def main():
                 shutil.copy(_f, DIST / 'skill' / _f.name)
     shutil.copy(ROOT / 'logo' / 'favicon.svg', DIST / 'favicon.svg')
     shutil.copy(ROOT / 'logo' / 'logo.svg', DIST / 'logo.svg')
+    for _a in ('favicon.ico', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'ogp.png'):
+        shutil.copy(ROOT / 'logo' / _a, DIST / _a)
+    shutil.copy(ROOT / 'manifest.webmanifest', DIST / 'manifest.webmanifest')
+    shutil.copy(ROOT / 'sw.js', DIST / 'sw.js')
     shutil.copy(ROOT / 'site.css', DIST / 'site.css')
     (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons, templates), comps, None), encoding='utf-8')
     cdir = DIST / 'components'
@@ -1491,6 +1560,39 @@ def main():
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')
+    # --- furniture post-pass: canonical, social meta, service worker ---
+    import html as _html
+    _sw = "<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>"
+    for _p in sorted(DIST.rglob('*.html')):
+        _t = _p.read_text(encoding='utf-8')
+        if '</body>' in _t and _sw not in _t:
+            _t = _t.replace('</body>', _sw + '\n</body>', 1)
+        if _p.name != '404.html' and 'og:title' not in _t:
+            _rel = _p.relative_to(DIST)
+            if _p.name == 'index.html':
+                _url = '/' + '/'.join(_rel.parts[:-1]) + ('/' if _rel.parts[:-1] else '')
+            else:
+                _url = '/' + '/'.join(_rel.parts)
+            _mt = re.search(r'<title>(.*?)</title>', _t, re.S)
+            _md = re.search(r'<meta name="description" content="(.*?)"', _t, re.S)
+            _title = _html.unescape(_mt.group(1)) if _mt else 'KATA UI'
+            _desc = _html.unescape(_md.group(1)) if _md else ''
+            _abs = 'https://kata-ui.dev' + _url
+            _meta = ('<link rel="canonical" href="' + _abs + '">'
+                     '<meta property="og:type" content="website">'
+                     '<meta property="og:site_name" content="KATA UI">'
+                     '<meta property="og:title" content="' + esc(_title) + '">'
+                     '<meta property="og:description" content="' + esc(_desc) + '">'
+                     '<meta property="og:url" content="' + _abs + '">'
+                     '<meta property="og:image" content="https://kata-ui.dev/ogp.png">'
+                     '<meta property="og:image:width" content="1200">'
+                     '<meta property="og:image:height" content="630">'
+                     '<meta name="twitter:card" content="summary_large_image">'
+                     '<meta name="twitter:title" content="' + esc(_title) + '">'
+                     '<meta name="twitter:description" content="' + esc(_desc) + '">'
+                     '<meta name="twitter:image" content="https://kata-ui.dev/ogp.png">')
+            _t = _t.replace('</head>', _meta + '\n</head>', 1)
+        _p.write_text(_t, encoding='utf-8')
     print(f'built {len(comps)} components -> {DIST}')
 
 if __name__ == '__main__':

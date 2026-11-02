@@ -5,9 +5,12 @@ description: Build web UI with KATA UI — practical components, blocks and full
 
 # Building with KATA UI
 
-KATA UI (https://kata-ui.dev) is a copy-paste library: every part is plain
-HTML + CSS + (sometimes) vanilla JS, cast from one design-token mold.
-There is nothing to install and no framework to adopt.
+KATA UI (https://kata-ui.dev) is a copy-paste library with a CLI and a
+machine-readable registry: every part is plain HTML + CSS + (sometimes)
+vanilla JS, cast from one design-token mold. There is no framework to
+adopt and no runtime to install; in a terminal, `node kata-ui.mjs add
+<slug>` (see https://kata-ui.dev/docs/cli/) fetches parts and their
+dependencies for you.
 
 ## Sources of truth (fetch, don't guess)
 

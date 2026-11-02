@@ -1,14 +1,1 @@
-{
-  "title": "Spotlight",
-  "category": "Motion",
-  "description": "A soft light that follows the cursor across a card's surface. Nothing moves but the light.",
-  "tags": [
-    "hover",
-    "glow",
-    "card",
-    "cursor"
-  ],
-  "status": "beta",
-  "usage": "For feature grids and plan cards that should feel alive without moving. The light is the accent at low strength; the content never shifts.",
-  "a11y": "Decoration only — it never appears on touch or keyboard, and nothing depends on it. The card works identically without the script."
-}
+{"a11y":"The lit layer is a clone the script builds — aria-hidden, with its links made unfocusable; the words themselves live once, in the dim layer. A decoration-forward part: never put copy here that exists nowhere else, and keep the dim layer a legible silhouette, not invisible.","category":"Motion","description":"A flashlight beam that follows the cursor across a dark panel. The words sit in shadow until the light reaches them.","status":"beta","tags":["beam","reveal","cursor","dark"],"title":"Spotlight","usage":"For hero panels and short lists that should feel like a torch in a dark room. Keep the copy short — the reader hunts for it, line by line. The beam rests at the top left until the pointer moves, so touch readers meet the panel already lit in one place."}

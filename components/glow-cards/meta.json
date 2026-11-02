@@ -1,0 +1,15 @@
+{
+  "title": "Glow Cards",
+  "category": "Motion",
+  "description": "A grid of cards whose borders light up where the cursor passes — the glow lives in the frame, not the fill.",
+  "tags": [
+    "glow",
+    "cards",
+    "border",
+    "cursor",
+    "grid"
+  ],
+  "status": "beta",
+  "usage": "For feature grids that need life without noise: at rest the cards are plain catalog cards, and only the border near the cursor warms. The script tracks the pointer per card and feeds two custom properties; the frame does the rest with a masked radial gradient.",
+  "a11y": "The glow is a border treatment on cards that read perfectly without it — no information rides on the light. It follows the pointer only, so keyboard and touch users lose nothing, and it is off under prefers-reduced-motion."
+}

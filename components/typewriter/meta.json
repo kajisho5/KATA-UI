@@ -1,0 +1,15 @@
+{
+  "title": "Typewriter",
+  "category": "Motion",
+  "description": "A sentence that types itself, deletes itself, and types the next one — with a patient caret.",
+  "tags": [
+    "typewriter",
+    "typing",
+    "text",
+    "hero",
+    "loop"
+  ],
+  "status": "beta",
+  "usage": "Phrases live in the data-phrases attribute as a JSON list. The rhythm is the design: type at reading-aloud speed, rest on the finished line, delete faster than you typed. One typewriter per page — two is a typing pool.",
+  "a11y": "The animation is a performance of text that must also exist statically: the element carries an aria-label with the full sentence, the animated text is aria-hidden, and under prefers-reduced-motion the first phrase simply stands typed. Never put information only in a later phrase."
+}

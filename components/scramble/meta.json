@@ -1,0 +1,15 @@
+{
+  "title": "Scramble",
+  "category": "Motion",
+  "description": "Text that decodes itself: glyphs churn, then settle into the word, left to right.",
+  "tags": [
+    "scramble",
+    "decode",
+    "text",
+    "reveal",
+    "terminal"
+  ],
+  "status": "beta",
+  "usage": "For short, loud strings — a title, a status line, a launch date. The script runs when the element scrolls into view and again whenever it is clicked. Long sentences scramble into noise; keep it under a dozen characters per burst if you can.",
+  "a11y": "The real string is the element’s text and its aria-label from the start; the churn is aria-hidden theatre in a sibling span. Under prefers-reduced-motion there is no churn at all — the word simply stands there, decoded since birth."
+}

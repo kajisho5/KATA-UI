@@ -1,0 +1,5 @@
+/* KATA Blur In — words sharpening in sequence. */
+.k-blur{font-family:var(--k-font)}
+.k-blur .w{display:inline-block;opacity:0;filter:blur(9px);transform:translateY(7px);animation:k-blur-in .7s cubic-bezier(.2,.6,.2,1) forwards}
+@keyframes k-blur-in{to{opacity:1;filter:blur(0);transform:none}}
+@media (prefers-reduced-motion:reduce){.k-blur .w{animation:none;opacity:1;filter:none;transform:none}}

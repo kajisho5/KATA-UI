@@ -1,0 +1,15 @@
+{
+  "title": "Orbit",
+  "category": "Motion",
+  "description": "Icons in orbit around a center: two rings, two speeds, everything staying upright.",
+  "tags": [
+    "orbit",
+    "icons",
+    "rings",
+    "hero",
+    "circular"
+  ],
+  "status": "beta",
+  "usage": "A hero device for \"things that work around your product\" — integrations, features, the catalog itself. Two rings is the composition limit; a third is a solar system. Chips counter-rotate so the glyphs never tilt: the ring travels, the icons ride.",
+  "a11y": "The orbit is a picture of the list, so give the figure an aria-label naming what circles (\"Integrations orbiting the workspace\") and keep a real list nearby in the page. Under prefers-reduced-motion the rings stop mid-sky, upright and readable."
+}

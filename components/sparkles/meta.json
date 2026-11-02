@@ -1,0 +1,14 @@
+{
+  "title": "Sparkles",
+  "category": "Motion",
+  "description": "Twinkling points of light scattered over a line of type — celebration, kept quiet.",
+  "tags": [
+    "sparkles",
+    "twinkle",
+    "stars",
+    "celebration"
+  ],
+  "status": "beta",
+  "usage": "The script scatters about two dozen specks inside the stage and each twinkles on its own clock. Dots take the container’s color (currentColor), so the same part sparkles white over a hero and ink over a card. Keep the count low and the stage honest — sparkle is seasoning.",
+  "a11y": "Decoration only, aria-hidden, and the twinkle stops under prefers-reduced-motion. The text it decorates must read complete with every speck removed — it will be, for some readers."
+}

@@ -1,0 +1,5 @@
+/* KATA Typewriter — types, rests, deletes, repeats. */
+.k-type{font-family:var(--k-font)}
+.k-type-caret{display:inline-block;width:2.5px;height:1.02em;margin-inline-start:2px;background:var(--k-ink);vertical-align:-0.14em;animation:k-type-blink 1.05s steps(1) infinite}
+@keyframes k-type-blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.k-type-caret{animation:none}}

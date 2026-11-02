@@ -1,0 +1,15 @@
+{
+  "title": "Blur In",
+  "category": "Motion",
+  "description": "Words arrive out of focus and sharpen one after another, like eyes adjusting.",
+  "tags": [
+    "blur",
+    "reveal",
+    "text",
+    "focus",
+    "entrance"
+  ],
+  "status": "beta",
+  "usage": "For the one sentence a page opens with. The script splits the element’s words into spans and staggers their sharpening; run it once, on load or on scroll into view — a headline that re-blurs on every visit is a jump scare. Pairs well with restraint everywhere else.",
+  "a11y": "The words are all in the DOM from the start, in order — screen readers read the sentence, not the stagger. Under prefers-reduced-motion nothing blurs: the words simply stand there, which is what they were doing anyway."
+}

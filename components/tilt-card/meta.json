@@ -1,0 +1,16 @@
+{
+  "title": "Tilt Card",
+  "category": "Motion",
+  "description": "A card that tips toward the cursor in 3D, with a glare that follows and a layer that floats.",
+  "tags": [
+    "tilt",
+    "3d",
+    "card",
+    "glare",
+    "hover",
+    "perspective"
+  ],
+  "status": "beta",
+  "usage": "One card per view earns this — a featured plan, a product shot, the thing being sold. The tilt caps at a few degrees, the glare is a whisper, and an inner layer floats on translateZ so the depth is real. The moment everything on the page tilts, nothing does.",
+  "a11y": "The tilt is pointer-only garnish on a static card: content, order and actions are identical with the script removed, and touch and keyboard never trigger it. Under prefers-reduced-motion the card stays flat, which suits it fine."
+}

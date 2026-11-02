@@ -1,0 +1,5 @@
+/* KATA Sparkles — specks on their own clocks. */
+.k-spk{position:relative;font-family:var(--k-font)}
+.k-spk-i{position:absolute;border-radius:50%;background:currentColor;animation:k-spk-tw ease-in-out infinite alternate;pointer-events:none}
+@keyframes k-spk-tw{from{opacity:.08;transform:scale(.55)}to{opacity:.95;transform:scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.k-spk-i{animation:none;opacity:.35}}

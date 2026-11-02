@@ -1,0 +1,15 @@
+{
+  "title": "Tracing Beam",
+  "category": "Motion",
+  "description": "A line of light that travels down the page as you read, filling the rail beside the text.",
+  "tags": [
+    "beam",
+    "scroll",
+    "progress",
+    "reading",
+    "docs"
+  ],
+  "status": "beta",
+  "usage": "For long reads — guides, changelogs, case studies — where knowing how far in you are is kindness. The fill is the scroll fraction of the container beside it, nothing more mystical. Pair it with a Scrollspy when the reader also needs to jump; use it alone when they only need to feel progress.",
+  "a11y": "The beam is a progress picture, aria-hidden, duplicating what the scrollbar already says. Content never depends on it, and under prefers-reduced-motion the rail stays a plain hairline."
+}

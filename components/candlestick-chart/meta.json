@@ -1,0 +1,14 @@
+{
+  "title": "Candlestick Chart",
+  "category": "Display & Media",
+  "description": "Open, high, low, close as cast candles — price action for a session at a glance.",
+  "tags": [
+    "chart",
+    "finance",
+    "trading",
+    "ohlc"
+  ],
+  "status": "beta",
+  "usage": "For price series where the range matters as much as the close: markets, exchange rates, any OHLC data. Up sessions take the accent, down sessions the danger color; the wick is the full range, the body is open to close.",
+  "a11y": "Nobody can read fourteen candles aloud, so the figure label states the verdict — direction, period and range — and the underlying OHLC table belongs next to the chart for anyone who needs exact values."
+}

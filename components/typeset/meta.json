@@ -1,0 +1,14 @@
+{
+  "title": "Typeset",
+  "category": "Display & Media",
+  "description": "Long-form text as one cast part: eyebrow, headings, lead, body, lists, quotes and code on a single type scale.",
+  "tags": [
+    "typography",
+    "prose",
+    "article",
+    "docs"
+  ],
+  "status": "stable",
+  "usage": "Wrap any article, doc or changelog body in .k-type and write plain semantic HTML inside — h1/h2/h3, p, ul, blockquote, code. Add .lead to the first paragraph and .eyebrow above the title. One wrapper, no per-element classes.",
+  "a11y": "Keep a real heading order (one h1, h2 before h3) and let the text be the link text — 'read the migration guide', never 'click here'. The measure caps at 68ch so lines stay readable."
+}

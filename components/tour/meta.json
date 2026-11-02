@@ -1,0 +1,14 @@
+{
+  "title": "Tour",
+  "category": "Overlays & Dialogs",
+  "description": "A short guided walk: a ring on the thing, a card that explains it, and a way out at every step.",
+  "tags": [
+    "tour",
+    "onboarding",
+    "coachmark",
+    "walkthrough"
+  ],
+  "status": "beta",
+  "usage": "Introduce a surface once, in four steps at most: KATATour.start([{el, title, text}, …]). Each step rings its target and anchors the card to it. Skip is always on screen — a tour the reader cannot leave is a modal in disguise.",
+  "a11y": "Focus moves into the card on each step and the dialog is labelled by its heading. Escape skips the whole tour, arrow-right advances, and nothing the tour points at is ever blocked by it."
+}

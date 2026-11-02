@@ -9,7 +9,7 @@ Practical UI components in plain HTML, CSS and JavaScript. No framework, no buil
 ## What's inside
 
 - **76 components** in six groups — Form & Input, Layout & Navigation, Overlays & Dialogs, Feedback & Status, Display & Media, and a Motion line you will not find in other libraries
-- **150 icons** drawn on one mold: a 24 grid, a 2px stroke, round caps — and fully compatible with [Lucide](https://lucide.dev), which follows the same spec, for anything beyond the set
+- **150 icons** drawn on one mold: a 24 grid, a 1.7px stroke, square caps and bevel joins — the nearest kin is [Lucide](https://lucide.dev) (24 grid, round), which sits comfortably alongside for anything beyond the set
 - **56 brand marks** (X, GitHub, OpenAI, Figma, Stripe, LINE and more), grouped by job: social, AI, development, commerce, platforms, cloud
 - **A CLI** — `node kata-ui.mjs add button` installs parts, blocks, templates and themes from the registry, dependencies included (zero dependencies itself)
 - **A design system** (`system/tokens.json`) — color, type, spacing, radius and motion scales that every part is cast from

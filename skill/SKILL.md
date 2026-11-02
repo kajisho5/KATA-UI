@@ -35,7 +35,7 @@ from memory — class names are the API.
 4. Behavior is progressive: scripts layer onto real markup (dialog,
    details, native inputs). If a part has a JS file, include it after the
    markup.
-5. Icons are SVGs on a 24 grid, stroke-width 2, round caps, `currentColor`.
+5. Icons are SVGs on a 24 grid, stroke-width 1.7, square caps and bevel joins, `currentColor`.
    The icon set is at https://kata-ui.dev/icons/ — click-to-copy there;
    Lucide icons mix in without a seam.
 

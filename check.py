@@ -54,9 +54,11 @@ def check_component(d):
     for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
         if 'viewBox="0 0 24 24"' not in svg_m.group(0).split('>', 1)[0]:
             continue
+        if 'data-brand' in svg_m.group(0).split('>', 1)[0]:
+            continue
         for m in re.finditer(r'stroke-width="([0-9.]+)"', svg_m.group(0)):
-            if m.group(1) != '2':
-                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
+            if m.group(1) != '1.7':
+                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 1.7 (24 grid)')
     if re.search(r'<script', prev):
         errs.append('preview: <script> belongs in the .js file, not preview.html')
     # classes used in preview must be defined in own CSS or a linked dependency's CSS
@@ -123,9 +125,11 @@ def check_block(d, comp_slugs):
     for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
         if 'viewBox="0 0 24 24"' not in svg_m.group(0).split('>', 1)[0]:
             continue
+        if 'data-brand' in svg_m.group(0).split('>', 1)[0]:
+            continue
         for m in re.finditer(r'stroke-width="([0-9.]+)"', svg_m.group(0)):
-            if m.group(1) != '2':
-                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
+            if m.group(1) != '1.7':
+                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 1.7 (24 grid)')
     if re.search(r'<script', prev):
         errs.append('preview: <script> belongs in the .js file, not preview.html')
     defined = set(re.findall(r'\.([a-zA-Z][\w-]*)', css))
@@ -193,9 +197,11 @@ def check_template(d, comp_slugs, block_slugs):
     for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
         if 'viewBox="0 0 24 24"' not in svg_m.group(0).split('>', 1)[0]:
             continue
+        if 'data-brand' in svg_m.group(0).split('>', 1)[0]:
+            continue
         for m in re.finditer(r'stroke-width="([0-9.]+)"', svg_m.group(0)):
-            if m.group(1) != '2':
-                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 2 (24 grid)')
+            if m.group(1) != '1.7':
+                errs.append(f'preview: icon svg stroke-width {m.group(1)} — the icon mold is 1.7 (24 grid)')
     if re.search(r'<script', prev):
         errs.append('preview: <script> belongs in the .js file, not preview.html')
     defined = set(re.findall(r'\.([a-zA-Z][\w-]*)', css))

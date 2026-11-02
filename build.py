@@ -39,11 +39,11 @@ def esc(s):
     return html.escape(s)
 
 HEADER = """<header class="top"><div class="wrap top-in">
-  <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="#18181b" stroke-width="4"/><rect x="19" y="19" width="10" height="10" rx="3" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
+  <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="16.6" height="16.6" fill="#18181b"/><rect x="32.95" y="7" width="8.05" height="8.05" fill="#18181b"/><rect x="24.4" y="15.55" width="8.05" height="8.05" fill="#18181b"/><rect x="7" y="24.4" width="16.6" height="16.6" fill="#d4d4d8"/><rect x="24.4" y="24.4" width="16.6" height="16.6" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
   <button class="menubtn" id="menubtn" type="button" aria-label="Open menu">☰<span>Menu</span></button>
-  <nav><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/design-system/">Design System</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a></nav>
+  <nav><a href="/docs/">Docs</a><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/design-system/">Design System</a></nav>
   <button class="hsearch" type="button" data-site-search aria-label="Search the catalog"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span class="hst">Search</span><span class="k-kbd">\u2318K</span></button>
-  <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a>
+  <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener" aria-label="KATA UI on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-9.2 9.2c0 4.1 2.7 7.6 6.4 9 .5.1.6-.2.6-.4v-1.4c-2.6.6-3.1-1.2-3.1-1.2-.4-1.1-1-1.3-1-1.3-.9-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.9 1.4 2.2 1 2.7.8.1-.6.3-1.1.6-1.3-2.1-.2-4.2-1-4.2-4.6 0-1 .4-1.8.9-2.5-.1-.2-.4-1.1.1-2.3 0 0 .8-.2 2.5.9a8.6 8.6 0 0 1 4.5 0c1.7-1.1 2.5-.9 2.5-.9.5 1.2.2 2.1.1 2.3.5.7.9 1.5.9 2.5 0 3.6-2.2 4.4-4.2 4.6.3.3.6.9.6 1.8v2.6c0 .2.2.5.6.4a9.2 9.2 0 0 0 6.4-9A9.2 9.2 0 0 0 12 2.8z"/></svg></a>
 </div></header>"""
 
 FOOTER = """<div class="wrap"><footer class="site">
@@ -62,9 +62,9 @@ def drawer_html(comps, active):
   <div class="dhead"><span>Menu</span><button class="dclose" id="dclose" type="button" aria-label="Close menu">✕</button></div>
   <div class="dlinks"><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/docs/">Docs</a><a href="/design-system/">Design System</a></div>
   <input class="dfilter" id="dfilter" type="search" placeholder="Filter parts, blocks, pages…" aria-label="Filter the menu">
-  {sidebar(comps, active)}
-  {drawer_extra()}
+  {''.join(tree_sections(comps, active, None))}
   <p class="dnone" id="dnone" hidden>No matches.</p>
+  <div class="dlinks dgh-row"><a href="https://github.com/kajisho5/KATA-UI" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-9.2 9.2c0 4.1 2.7 7.6 6.4 9 .5.1.6-.2.6-.4v-1.4c-2.6.6-3.1-1.2-3.1-1.2-.4-1.1-1-1.3-1-1.3-.9-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.9 1.4 2.2 1 2.7.8.1-.6.3-1.1.6-1.3-2.1-.2-4.2-1-4.2-4.6 0-1 .4-1.8.9-2.5-.1-.2-.4-1.1.1-2.3 0 0 .8-.2 2.5.9a8.6 8.6 0 0 1 4.5 0c1.7-1.1 2.5-.9 2.5-.9.5 1.2.2 2.1.1 2.3.5.7.9 1.5.9 2.5 0 3.6-2.2 4.4-4.2 4.6.3.3.6.9.6 1.8v2.6c0 .2.2.5.6.4a9.2 9.2 0 0 0 6.4-9A9.2 9.2 0 0 0 12 2.8z"/></svg>GitHub</a></div>
 </nav>"""
 
 
@@ -169,7 +169,13 @@ def search_html(comps):
     items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Templates', '/templates/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/')]]
     return SEARCH_TMPL.replace('__KATA_INDEX__', _json.dumps(items, ensure_ascii=False))
 
-def emit(page, comps, active):
+def emit(page, comps, active, current=None, tree=False):
+    if tree:
+        import re as _re
+        page = _re.sub(r'<div class="(wrap|wrap dc|wrap ds|wrap bk|wrap tk)">',
+                       lambda m: m.group(0) + '<div class="layout">' + nav_tree(comps, active, current) + '<div class="lmain">',
+                       page, count=1)
+        page = page.replace('<div class="wrap"><footer class="site">', '</div></div><div class="wrap"><footer class="site">', 1)
     return page.replace('</body>', drawer_html(comps, active) + DRAWER_JS + search_html(comps) + '</body>', 1)
 
 def head(title, desc, extra=''):
@@ -268,8 +274,8 @@ LP_STYLE = """<style>
 .hero2 .stats{border-color:#26262b;display:flex;gap:15px 38px;flex-wrap:wrap;justify-content:center;margin-top:34px;padding-top:22px;border-top:1px solid #26262b}
 .hero2 .stats b{color:#f4f4f5}
 .hero2 .stats span{color:#a1a1aa}
-.hero2 .browser{box-shadow:0 34px 90px -24px rgba(0,0,0,.65);margin-top:40px;text-align:left}
-.hero2 .framecap{color:#a1a1aa}
+.hero2 .browser{box-shadow:0 34px 90px -24px rgba(0,0,0,.65);margin-top:40px;text-align:left;position:relative;z-index:1}
+.hero2 .framecap{color:#a1a1aa;position:relative;z-index:1}
 .hero2 .framecap a{color:#e4e4e7}
 @media (max-width:720px){.hero2{padding:42px 16px 22px}.hero2 h1{font-size:31px}}
 .collage-sec{margin-top:64px}
@@ -280,8 +286,10 @@ LP_STYLE = """<style>
 .collage-cell.wide{grid-column:1/-1}
 .collage-cell .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink3)}
 .collage-cell .cap a{color:var(--acc);text-decoration:none;font-family:inherit}
+.collage-cell div.k-dt{overflow-x:auto}
+.collage-cell table.k-dt-t{min-width:500px}
 @media (max-width:720px){.collage{grid-template-columns:1fr}}
-.cmptable{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px;background:#fff;border:1px solid var(--hair);border-radius:12px;overflow:hidden}
+.cmptable{width:100%;min-width:600px;border-collapse:collapse;margin-top:18px;font-size:13.5px;background:#fff;border:1px solid var(--hair);border-radius:12px;overflow:hidden}
 .cmptable th,.cmptable td{padding:11px 14px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
 .cmptable thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);background:var(--soft);font-weight:600}
 .cmptable tbody th{font-weight:550;color:var(--ink2);white-space:nowrap}
@@ -380,7 +388,7 @@ def landing(comps, blocks, n_icons, templates=None):
       <a class="genre" href="/components/"><span class="gn">{n} PARTS</span><h3>Components</h3><p>The single parts: forms, overlays, feedback, display — and a Motion line other libraries do not carry.</p></a>
       <a class="genre" href="/blocks/"><span class="gn">{nb} SECTIONS</span><h3>Blocks</h3><p>Whole sections composed from the parts — sign-in, pricing, settings, an app shell. Start here, take apart later.</p></a>
       <a class="genre" href="/templates/"><span class="gn">{nt} PAGES</span><h3>Templates</h3><p>Whole pages, already assembled — a dashboard, an inbox, a landing. The parts and blocks in their places, ready to take apart.</p></a>
-      <a class="genre" href="/icons/"><span class="gn">{n_icons} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 2px stroke, three shapes only. Click to copy, and Lucide mixes in without a seam.</p></a>
+      <a class="genre" href="/icons/"><span class="gn">{n_icons} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 1.7 stroke cut square, three shapes only. Click to copy the SVG.</p></a>
       <a class="genre" href="/design-system/"><span class="gn">TOKENS.JSON</span><h3>Design System</h3><p>The foundation every part is cast from — color, type, spacing, radius, motion. Download it, diff it, fork it.</p></a>
     </div>
     <div class="compat">
@@ -401,7 +409,7 @@ def landing(comps, blocks, n_icons, templates=None):
 </body>
 </html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
-             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else ''))
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks, templates=None):
@@ -449,12 +457,13 @@ def llms_txt(comps, blocks, n_icons, templates=None):
              'KATA is framework-free: parts drop into plain HTML, Astro, Laravel, Django, Rails and templates unchanged. Components depend on tokens.css (design tokens) being loaded once.', '',
              '## Docs', '',
              '- [Design System](https://kata-ui.dev/design-system/): the tokens every part is cast from (tokens.json is downloadable there)',
-             f'- [Icons](https://kata-ui.dev/icons/): {n_icons} icons on one mold (24 grid, 2px stroke); click to copy the SVG',
+             f'- [Icons](https://kata-ui.dev/icons/): {n_icons} icons on one mold (24 grid, 1.7 stroke, square caps); click to copy the SVG',
              '- [Registry](https://kata-ui.dev/registry.json): every component and block with its full CSS/JS/HTML, in the shadcn registry format',
              '- [Themes](https://kata-ui.dev/themes/): accent presets as small CSS files; a theme redefines the five accent tokens only',
              '- [Getting Started](https://kata-ui.dev/docs/getting-started/): load tokens.css once, then copy parts',
              '- [Skill for AI assistants](https://kata-ui.dev/skill/SKILL.md): a packaged SKILL.md that teaches an assistant to build with KATA correctly',
              '- [CLI](https://kata-ui.dev/docs/cli/): a zero-dependency Node script that installs parts from the registry — node kata-ui.mjs add button',
+             '- [Installation](https://kata-ui.dev/docs/installation/): four ways in, plus per-stack guides for Plain HTML (https://kata-ui.dev/docs/install-html/), Astro (https://kata-ui.dev/docs/install-astro/) and Laravel (https://kata-ui.dev/docs/install-laravel/)',
              '- [Theming](https://kata-ui.dev/docs/theming/) / [Dark Mode](https://kata-ui.dev/docs/dark-mode/): dark mode is data-theme="dark" on any container', '',
              '## Components', '']
     for c in comps:
@@ -531,6 +540,42 @@ def sidebar(comps, active):
             out.append(f'<a href="/components/{c["slug"]}/"{on}>{esc(c["meta"]["title"])}</a>')
     return '<aside class="side">' + '\n'.join(out) + '</aside>'
 
+def _doc_title(slug):
+    for d in DOCS:
+        if d[0] == slug:
+            return d[1]
+    return slug
+
+
+def _nav_link(url, label, current):
+    on = ' class="on"' if current == url else ''
+    return f'<a href="{url}"{on}>{esc(label)}</a>'
+
+
+def _sec(title, links_html):
+    return '<nav class="side"><h4>' + esc(title) + '</h4>' + links_html + '</nav>'
+
+
+def tree_sections(comps, active, current):
+    gs = ['getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'cli', 'theming', 'dark-mode', 'accessibility', 'changelog']
+    concepts = ['why-vanilla', 'the-mold', 'anatomy', 'from-tailwind']
+    guides = [d[0] for d in DOCS if d[0].startswith('guide-')]
+    doc = lambda slugs: ''.join(_nav_link('/docs/' + x + '/', _doc_title(x), current) for x in slugs)
+    return [
+        _sec('Getting Started', doc(gs)),
+        _sec('Concepts', doc(concepts)),
+        _sec('Guides', doc(guides)),
+        sidebar(comps, active),
+        _sec('Blocks', ''.join(_nav_link('/blocks/' + b['slug'] + '/', b['meta']['title'], current) for b in _all_blocks())),
+        _sec('Templates', ''.join(_nav_link('/templates/' + t['slug'] + '/', t['meta']['title'], current) for t in load_templates())),
+        _sec('Resources', ''.join(_nav_link(u, n, current) for u, n in [('/icons/', 'Icons'), ('/themes/', 'Themes'), ('/design-system/', 'Design System'), ('/skill/SKILL.md', 'AI Skill (SKILL.md)')])),
+    ]
+
+
+def nav_tree(comps, active, current):
+    return '<div class="sidenav">' + ''.join(tree_sections(comps, active, current)) + '</div>'
+
+
 DETAIL_JS = """<script>
   const stage = document.getElementById('stage');
   document.querySelectorAll('[data-seg]').forEach(seg => {
@@ -606,7 +651,7 @@ def detail(comps, idx):
     body = f"""
 <div class="wrap">
   <div class="layout">
-    {sidebar(comps, slug)}
+    {nav_tree(comps, slug, '/components/' + slug + '/')}
     <main class="detail">
       <p class="crumb"><a href="/components/">Components</a> / {esc(m['category'])} / {esc(m['title'])}</p>
       <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h1>
@@ -731,8 +776,8 @@ def icons_page():
           '<p style="margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:64ch">' + str(len(bmap)) + ' marks, grouped by the job they do on a site: social links, sign-in buttons, integration grids, logo clouds. Brand marks belong to their owners and are here for nominative use only — using one does not imply endorsement, and they are never part of the KATA identity. They are also the one exception to the three-shape mold: a mark keeps its owner’s geometry.</p>'
           + ''.join(groups))
     script = "<script>var ICONS=__DATA__;\ndocument.querySelectorAll('[data-icon]').forEach(function(b){b.addEventListener('click',function(){var n=b.dataset.icon;var done=function(){document.getElementById('icstat').innerHTML='<b>'+n+'</b> copied.';};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ICONS[n]).then(done,done);}else{done();}});});\n</script>".replace('__DATA__', _json.dumps(data))
-    body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 2px stroke, round caps and joins. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center, the same mark that sits inside the Switch, the Radio and the logo. Click any icon to copy its SVG. For anything beyond this set, Lucide speaks the same mold (24 / 2 / round) and mixes in without a seam.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>" + brand_section + "\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
-    return head('Icons — KATA UI', 'The KATA icon set: 24 grid, 2px stroke, click to copy the SVG.', ICONS_STYLE) + body
+    body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 1.7 stroke, square caps and bevel joins — a sharper cut than the usual round line icon. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center — the same vermillion that sits inside the Switch and the Radio. Click any icon to copy its SVG. For anything beyond this set, Lucide is the nearest kin (24 grid, round) and sits comfortably alongside.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>" + brand_section + "\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
+    return head('Icons — KATA UI', 'The KATA icon set: 24 grid, 1.7 stroke, square caps, click to copy the SVG.', ICONS_STYLE) + body
 
 
 def design_system_page(tokens):
@@ -1072,6 +1117,14 @@ THEME_STYLE = """<style>
 .thcode .bar a,.thcode .bar button{font:inherit;font-size:12px;border:1px solid var(--hair);background:#fff;border-radius:7px;padding:5px 11px;cursor:pointer;color:var(--ink);text-decoration:none}
 </style>"""
 
+BUILDER_STYLE = """<style>
+.thbuild{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0 0;padding:16px;border:1px solid var(--hair);border-radius:14px;background:var(--paper)}
+.thbuild input[type=color]{width:46px;height:46px;border:1px solid var(--hair);border-radius:10px;background:none;padding:3px;cursor:pointer;flex:none}
+.thbuild .hb{font-weight:600;font-size:13.5px;color:var(--ink)}
+.thbuild .hn{font-size:12.5px;color:var(--ink3);margin-top:2px;max-width:52ch}
+.thbuild code{font-family:var(--mono);font-size:12.5px;color:var(--ink2);margin-left:auto}
+</style>"""
+
 def themes_page(themes):
     import json as _json
     cards = []
@@ -1085,6 +1138,11 @@ def themes_page(themes):
     <span class="switchrow"><label class="switch teal"><input type="checkbox" checked><span class="tr"></span></label>Notifications</span>
     <span class="badge teal"><i></i>Live</span>
     <span class="badge">Neutral stays neutral</span>
+  </div>"""
+    builder = """<div class="thbuild">
+    <input type="color" id="thcolor" value="#0e9594" aria-label="Pick an accent color">
+    <div><div class="hb">Make your own</div><div class="hn">Pick any accent — the ink shade, the dark-mode ink and the washes are derived for you, and the code below becomes your theme.</div></div>
+    <code id="thhex">#0e9594</code>
   </div>"""
     script = '<script>var THEMES=' + _json.dumps(themes) + """;
 var CODES={};
@@ -1104,15 +1162,39 @@ function applyTheme(name){
 }
 document.querySelectorAll('[data-theme-card]').forEach(function(c){c.addEventListener('click',function(){applyTheme(c.dataset.themeCard);});});
 document.getElementById('thcopy').addEventListener('click',function(){var b=this;if(navigator.clipboard)navigator.clipboard.writeText(document.getElementById('thcss').textContent);b.textContent='Copied';setTimeout(function(){b.textContent='Copy CSS';},1600);});
+function h2r(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
+function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;var mx=Math.max(r,g,b),mn=Math.min(r,g,b),h=0,s=0,l=(mx+mn)/2;if(mx!==mn){var d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);if(mx===r)h=(g-b)/d+(g<b?6:0);else if(mx===g)h=(b-r)/d+2;else h=(r-g)/d+4;h*=60;}return [h,s*100,l*100];}
+function hslToHex(h,s,l){s/=100;l/=100;var a=s*Math.min(l,1-l);function f(n){var k=(n+h/30)%12;return l-a*Math.max(-1,Math.min(k-3,Math.min(9-k,1)));}function to(x){var s2=Math.round(x*255).toString(16);return s2.length<2?('0'+s2):s2;}return '#'+to(f(0))+to(f(8))+to(f(4));}
+var blobUrl=null;
+function applyCustom(hex){
+  var rgb=h2r(hex);var hsl=rgbToHsl(rgb[0],rgb[1],rgb[2]);
+  var ink=hslToHex(hsl[0],hsl[1],hsl[2]*0.84);
+  var dink=hslToHex(hsl[0],Math.max(hsl[1]-8,0),hsl[2]+(100-hsl[2])*0.55);
+  demo.style.setProperty('--k-accent',hex);
+  demo.style.setProperty('--k-accent-ink',ink);
+  demo.style.setProperty('--k-accent-bg','rgba('+rgb.join(',')+',.08)');
+  demo.style.setProperty('--k-accent-bg-strong','rgba('+rgb.join(',')+',.1)');
+  demo.style.setProperty('--k-accent-line','rgba('+rgb.join(',')+',.18)');
+  var css='/* KATA UI theme: Custom \u2014 load AFTER tokens.css.\n   A theme moves the accent only. Neutrals, motion and the vermillion core never change. */\n:root{\n  --k-accent:'+hex+';\n  --k-accent-ink:'+ink+';\n  --k-accent-bg:rgba('+rgb.join(',')+',.08);\n  --k-accent-bg-strong:rgba('+rgb.join(',')+',.1);\n  --k-accent-line:rgba('+rgb.join(',')+',.18);\n}\n[data-theme="dark"]{\n  --k-accent-ink:'+dink+';\n}\n';
+  document.getElementById('thcss').textContent=css;
+  document.getElementById('thname').textContent='custom.css';
+  if(blobUrl)URL.revokeObjectURL(blobUrl);
+  blobUrl=URL.createObjectURL(new Blob([css],{type:'text/css'}));
+  document.getElementById('thdl').href=blobUrl;
+  document.getElementById('thdl').setAttribute('download','custom.css');
+  document.getElementById('thhex').textContent=hex;
+  document.querySelectorAll('[data-theme-card]').forEach(function(c){c.classList.remove('on');});
+}
+document.getElementById('thcolor').addEventListener('input',function(){applyCustom(this.value);});
 applyTheme('teal');
 </script>"""
     body = """
 <div class="wrap th">
   <h1>Themes</h1>
-  <p class="lead">A theme moves one thing: the accent. Neutrals stay zinc, motion stays measured, and the vermillion core — the mark inside the Switch, the Radio and the logo — never changes. Pick a preset to see the same parts re-cast, then take the CSS.</p>
+  <p class="lead">A theme moves one thing: the accent. Neutrals stay zinc, motion stays measured, and the vermillion core — the mark inside the Switch and the Radio — never changes. Pick a preset to see the same parts re-cast, then take the CSS.</p>
   <div class="thgrid">""" + ''.join(cards) + """
   </div>
-""" + demo + """
+""" + demo + builder + """
   <div class="thcode">
     <div class="bar"><b id="thname">teal.css</b><button id="thcopy" type="button">Copy CSS</button><a id="thdl" href="/themes/teal.css" download>Download</a></div>
     <pre id="thcss"></pre>
@@ -1122,7 +1204,7 @@ applyTheme('teal');
 """ + FOOTER + '\n' + script + """
 </body>
 </html>"""
-    extra = (THEME_STYLE + '<link rel="stylesheet" href="/components/button/button.css">'
+    extra = (THEME_STYLE + BUILDER_STYLE + '<link rel="stylesheet" href="/components/button/button.css">'
              '<link rel="stylesheet" href="/components/switch/switch.css">'
              '<link rel="stylesheet" href="/components/badge/badge.css">')
     return head('Themes — KATA UI', 'Accent presets for KATA UI: one token family changes, everything else holds.', extra) + body
@@ -1150,6 +1232,18 @@ DOCS = [
     ('The one-file bundle', 'To evaluate everything at once, download the full bundle — every component and block, styles and behavior:', '<link rel="stylesheet" href="https://kata-ui.dev/kata-ui.css">\n<script src="https://kata-ui.dev/kata-ui.js"></script>', 'The CSS is the tokens plus all parts in catalog order. The JS runs each part in its own scope; parts whose markup is not on the page stay inert. When you settle on the parts you use, swap the bundle for their individual files and the page gets leaner.'),
     ('The starter kit', 'kata-starter.zip is a working first page — Card, Input, Switch, Button and Badge already composed — with the bundle beside it. Unzip, open index.html in a browser, and edit. No server, no build step:', 'https://kata-ui.dev/starter/kata-starter.zip', 'The README inside explains how to slim the starter down to per-part files when you are ready.'),
     ('For AI tools and installers', 'The catalog is published in machine-readable forms: registry.json in the shadcn registry format (every part and block with its files inline), llms.txt as a short index, and llms-full.txt with the full text and code.', 'https://kata-ui.dev/registry.json\nhttps://kata-ui.dev/llms.txt\nhttps://kata-ui.dev/llms-full.txt', 'Point your assistant at llms.txt and it can fetch the exact part it needs instead of inventing one.')]),
+  ('install-html', 'Plain HTML', 'A static page is the simplest host there is: two links, then paste parts.',
+   [('Link the bundle', 'The fastest way in is the hosted one-file bundle — every part’s CSS and JS, plus the tokens that make them one product:', '<link rel="stylesheet" href="https://kata-ui.dev/tokens.css">\n<link rel="stylesheet" href="https://kata-ui.dev/kata-ui.css">\n<script src="https://kata-ui.dev/kata-ui.js" defer></script>', 'Parts with behavior initialize themselves on load. Nothing to configure, nothing to build.'),
+    ('Or take the starter', 'The starter kit is a working index.html with the tokens and a first set of parts already wired, ready to edit:', 'curl -O https://kata-ui.dev/starter/kata-starter.zip', 'Unzip it anywhere and open index.html. It is plain files all the way down — host it on any static host, or none.'),
+    ('Then paste parts', 'Open any part in the catalog, copy its HTML, and paste it into your page. For production, swap the bundle for just the parts you use — each part page lists its own CSS and JS files, and the page stays as lean as what is on it.', None, 'Because the code is yours, there is no upgrade treadmill: a part you pasted last year keeps working exactly as it does today.')]),
+  ('install-astro', 'Astro', 'Astro renders HTML and asks for nothing else. KATA parts paste into .astro files unchanged.',
+   [('Fetch the parts with the CLI', 'Run the CLI into public/ so Astro serves the files as static assets:', 'curl -fsSL https://kata-ui.dev/cli/kata-ui.mjs -o kata-ui.mjs\nnode kata-ui.mjs init --dir public/kata\nnode kata-ui.mjs add button switch card --dir public/kata', 'init writes tokens.css; add writes each part’s CSS and JS next to it, dependencies included.'),
+    ('Link them in your layout', 'In src/layouts/Layout.astro, load the tokens first, then the parts you use — once, for every page:', '<link rel="stylesheet" href="/kata/tokens.css">\n<link rel="stylesheet" href="/kata/button.css">\n<link rel="stylesheet" href="/kata/switch.css">', 'KATA CSS is global by design, which suits Astro: load it in the layout instead of a component’s scoped style block, and every page shares the same mold.'),
+    ('Paste parts into pages', 'Copy a part’s HTML into any .astro file — frontmatter expressions work inside it like anywhere else. A part’s JS is a plain script: paste it into a script tag at the end of the page, or serve the file and reference it.', None, 'No island, no hydration, no client framework. The parts were never components in the framework sense; Astro’s HTML-first model is exactly the ground they were cast for.')]),
+  ('install-laravel', 'Laravel', 'Blade templates are HTML with echoes — KATA parts drop in unchanged.',
+   [('Fetch the parts with the CLI', 'Run the CLI into public/ so the files are served as static assets:', 'curl -fsSL https://kata-ui.dev/cli/kata-ui.mjs -o kata-ui.mjs\nnode kata-ui.mjs init --dir public/kata\nnode kata-ui.mjs add button switch data-table --dir public/kata', 'init writes tokens.css; add writes each part’s CSS and JS next to it, dependencies included.'),
+    ('Link them in your layout Blade', 'In resources/views/layouts/app.blade.php, load the tokens first, then the parts — once, for every view:', '<link rel="stylesheet" href="{{ asset(\'kata/tokens.css\') }}">\n<link rel="stylesheet" href="{{ asset(\'kata/button.css\') }}">', 'Serve a part’s JS the same way, with the defer attribute, at the end of the layout.'),
+    ('Paste parts into views', 'Copy a part’s HTML into any Blade view. Echoes and directives work inside the markup as usual — a @foreach over your models can stamp out cards, rows and list items from a single pasted part.', None, 'If the project builds front-end assets with Vite instead, the same files can live under resources/ and be imported unchanged; they are plain CSS and JS either way.')]),
   ('javascript', 'JavaScript', 'What the scripts do — and what still works without them.',
    [('Plain scripts, data hooks', 'A part’s JS is a single plain script: no imports, no framework, no build. It finds its root by a data attribute (data-dp, data-combo, data-tags…) and keeps its state in the DOM — classes and ARIA attributes you can inspect. Copy it next to the HTML and it runs.', None, 'In the one-file bundle each script is wrapped in its own function scope, so parts never collide with each other or with your code.'),
     ('What works with no JavaScript', 'More than you might expect. Accordion is native details. Rating and Segmented are radio inputs. Switch and Checkbox are checkboxes. Marquee, Aurora, Beam Border and the charts are CSS and SVG. These parts are complete with the script tag deleted.', None, 'Parts that do need JS say so by having a JS tab — and the honest ones degrade: Tag Input falls back to a plain text field, Combobox to a text input, the Date Picker to a text input.'),
@@ -1177,7 +1271,7 @@ DOCS = [
   ('the-mold', 'The Mold', 'How every part is made, and the checks it has to pass before it exists.',
    [('One mold', 'Kata — 型 — is the Japanese discipline of the form: the pattern from which things are cast, and the practice that keeps the casting true. Every KATA part is built to one production standard: same file layout, same tokens, same class grammar, same accessibility contract. The consistency is not a style guide people try to remember; it is a checklist a program enforces.', None, 'Two parts built months apart should look like they were built on the same day, by the same hand. The mold is how a library with one author keeps that promise.'),
     ('The checks', 'Before a part ships, a checker reads its files the way a casting inspector reads a mold. Required files present. Metadata complete. No raw color anywhere — tokens only, because a hard-coded hex is a part that will not survive a theme. Every class used in the preview actually defined. Icons drawn on the 24-grid at stroke 2, from three shapes: circle, 45-degree line, rounded corner. A part that fails does not ship; the count on the homepage only ever counts parts that passed.', None, 'The checker is in the repository (check.py) and the standard is written down (KATA.md), so the mold is inspectable, not vibes.'),
-    ('The signature', 'One color is reserved: a vermillion core, #EB471F, that appears only at the center of active controls — the dot inside a checked radio, the core of an on switch, the end point of a line chart, the heart of the logo. Never on a surface, never as text, never changed by a theme. It is how you can tell a KATA part at a glance, and how the parts tell you where the action is.', None, None)]),
+    ('The signature', 'One color is reserved: a vermillion core, #EB471F, that appears only at the center of active controls — the dot inside a checked radio, the core of an on switch, the end point of a line chart, and one quarter of the logo itself. Never on a surface, never as text, never changed by a theme. It is how you can tell a KATA part at a glance, and how the parts tell you where the action is.', None, None)]),
   ('anatomy', 'Anatomy of a Part', 'What is inside every folder in the catalog.',
    [('The files', 'A part is a folder: preview.html (the markup, exactly as you copy it), the part’s CSS, a JS file when the part behaves, and meta.json. Examples, when a part has them, live in examples.html and render on the part’s page under the preview. What you see on the site is not a rendering of the part — it is the part, loaded live.', 'components/button/\n  preview.html   the markup\n  button.css     the styles\n  button.js      the behavior (when any)\n  examples.html  variations (when any)\n  meta.json      title, category, usage, accessibility', 'Blocks are folders too, with one addition: meta.json names the parts they use, and their previews load those parts’ CSS — a block is a composition, never a re-implementation.'),
     ('The contract', 'Every part reads color, spacing, radius and motion from the tokens and nothing else. Classes follow one grammar. Interactive parts state their keyboard behavior and their no-JavaScript fallback in their metadata, and the part’s page prints both. If two parts disagree about anything, that is a bug in one of them, and the mold decides which.', None, 'Status is printed on every part: stable means the contract is settled; beta means the shape is right but the edges are still being filed. The catalog counts both, and labels both.')]),
@@ -1190,7 +1284,8 @@ DOCS = [
     ('Why no npm package?', 'Because the package would become the product, and the product is the code in your repo. The one-file bundle and the starter kit cover the “just give me everything” case without a dependency. If a package ever ships, it will be a mirror of these files, never the source of truth.', None, None),
     ('Who makes this?', 'One person, in the open, with the mold as the second pair of hands. The repository holds the parts, the checker, and the standard they are built to — issues and corrections are welcome there.', None, None)]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — CLI, brand marks, wagara', 'The catalog is installable from a terminal now: a zero-dependency Node CLI (node kata-ui.mjs add button) reads registry.json and writes parts, blocks, templates and themes — dependencies included — into your project. Brand marks grew from 12 to 56, grouped by job (social, AI, development, commerce, platforms, cloud) on the Icons page, and the Integrations block grew to 18 tiles. Aurora learned three wagara textures — Seigaiha, Asanoha and Ichimatsu — as drifting line patterns under the wash, in its Examples. The site menu is labeled Menu and lists blocks, templates and docs next to the components.', None, None),
+   [('November 2, 2026 — A sharper cut, a new mark', 'The icon set was re-cut on the user’s call: a 1.7 stroke, square caps and bevel joins replace the round 2px line, in all 150 glyphs and every inline copy. The logo changed too — the framed mold mark gave way to a frameless four-part square with a small ichimatsu checker nested in its top-right quarter, a mold inside the mold. New part: Typeset, long-form text as one cast piece. Every chart part gained Examples (two-series lines, a six-axis radar, four-segment donuts and more), the Themes page learned to build a custom theme from any color, and the docs grew per-stack install guides for Plain HTML, Astro and Laravel.', None, None),
+   ('November 2, 2026 — CLI, brand marks, wagara', 'The catalog is installable from a terminal now: a zero-dependency Node CLI (node kata-ui.mjs add button) reads registry.json and writes parts, blocks, templates and themes — dependencies included — into your project. Brand marks grew from 12 to 56, grouped by job (social, AI, development, commerce, platforms, cloud) on the Icons page, and the Integrations block grew to 18 tiles. Aurora learned three wagara textures — Seigaiha, Asanoha and Ichimatsu — as drifting line patterns under the wash, in its Examples. The site menu is labeled Menu and lists blocks, templates and docs next to the components.', None, None),
     ('November 2, 2026 — Templates arrive', 'The catalog grows a third shelf: Templates — whole pages composed from parts and blocks, starting with a Dashboard page (sidebar, stat row, revenue chart, sortable orders table). The site navigation, search and registry now carry templates as first-class items (registry:page), and the landing page counts five genres.', None, None),
    ('November 2, 2026 — The catalog fills in', 'Seventy-six components and thirteen blocks. New: Date Picker, Combobox, File Upload, Tag Input, Context Menu, Tree, Data Table, Color Picker, Split Panel, Scroll Area, Aspect Ratio, Toggle, and the Scatter, Radar and Funnel charts plus Sparkline. Blocks gained FAQ, Site Header, Site Footer, Testimonials, CTA Band and Logo Cloud. Installation becomes a real thing: the one-file bundle (kata-ui.css / kata-ui.js), the starter kit, and an Installation doc. The landing page now assembles its showcase from live parts, and the mobile overflow bugs reported on day one are fixed.', None, None),
     ('November 1, 2026 — Launch', 'KATA UI opens with 46 components in six groups, 5 blocks, 150 icons and 12 brand marks, the design-system tokens with light and dark themes, five accent themes, and the AI distribution files (registry.json, llms.txt). Every part is checked against the mold before it ships: required files, token-only colors, class coverage, icon geometry.', None, None)]),
@@ -1277,7 +1372,7 @@ def main():
     (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons, templates), comps, None), encoding='utf-8')
     cdir = DIST / 'components'
     cdir.mkdir()
-    (cdir / 'index.html').write_text(emit(components_index(comps), comps, None), encoding='utf-8')
+    (cdir / 'index.html').write_text(emit(components_index(comps), comps, None, '/components/', True), encoding='utf-8')
     for i, c in enumerate(comps):
         src = ROOT / 'components' / c['slug']
         dst = cdir / c['slug']
@@ -1289,11 +1384,11 @@ def main():
     tokens = json.loads((ROOT / 'system' / 'tokens.json').read_text(encoding='utf-8'))
     dsdir = DIST / 'design-system'
     dsdir.mkdir()
-    (dsdir / 'index.html').write_text(emit(design_system_page(tokens), comps, None), encoding='utf-8')
+    (dsdir / 'index.html').write_text(emit(design_system_page(tokens), comps, None, '/design-system/', True), encoding='utf-8')
     shutil.copy(ROOT / 'system' / 'tokens.json', dsdir / 'tokens.json')
     idir = DIST / 'icons'
     idir.mkdir(exist_ok=True)
-    (idir / 'index.html').write_text(emit(icons_page(), comps, None), encoding='utf-8')
+    (idir / 'index.html').write_text(emit(icons_page(), comps, None, '/icons/', True), encoding='utf-8')
     for f in (ROOT / 'icons').glob('*.svg'):
         shutil.copy(f, idir / f.name)
     bdir2 = ROOT / 'icons' / 'brands'
@@ -1303,7 +1398,7 @@ def main():
             shutil.copy(f, idir / 'brands' / f.name)
     bkdir = DIST / 'blocks'
     bkdir.mkdir(exist_ok=True)
-    (bkdir / 'index.html').write_text(emit(blocks_index(blocks), comps, None), encoding='utf-8')
+    (bkdir / 'index.html').write_text(emit(blocks_index(blocks), comps, None, '/blocks/', True), encoding='utf-8')
     for i, b in enumerate(blocks):
         src = ROOT / 'blocks' / b['slug']
         dst = bkdir / b['slug']
@@ -1311,10 +1406,10 @@ def main():
         for f in src.iterdir():
             if f.is_file():
                 shutil.copy(f, dst / f.name)
-        (dst / 'index.html').write_text(emit(block_detail(blocks, i, comps), comps, None), encoding='utf-8')
+        (dst / 'index.html').write_text(emit(block_detail(blocks, i, comps), comps, None, '/blocks/' + blocks[i]['slug'] + '/', True), encoding='utf-8')
     tpdir = DIST / 'templates'
     tpdir.mkdir(exist_ok=True)
-    (tpdir / 'index.html').write_text(emit(templates_index(templates), comps, None), encoding='utf-8')
+    (tpdir / 'index.html').write_text(emit(templates_index(templates), comps, None, '/templates/', True), encoding='utf-8')
     for i, t in enumerate(templates):
         src = ROOT / 'templates' / t['slug']
         dst = tpdir / t['slug']
@@ -1322,23 +1417,23 @@ def main():
         for f in src.iterdir():
             if f.is_file():
                 shutil.copy(f, dst / f.name)
-        (dst / 'index.html').write_text(emit(template_detail(templates, i, comps, blocks), comps, None), encoding='utf-8')
+        (dst / 'index.html').write_text(emit(template_detail(templates, i, comps, blocks), comps, None, '/templates/' + templates[i]['slug'] + '/', True), encoding='utf-8')
     (DIST / 'registry.json').write_text(registry_json(comps, blocks, templates), encoding='utf-8')
     (DIST / 'llms.txt').write_text(llms_txt(comps, blocks, n_icons, templates), encoding='utf-8')
     (DIST / 'llms-full.txt').write_text(llms_full(comps, blocks, templates), encoding='utf-8')
     themes = load_themes()
     tdir = DIST / 'themes'
     tdir.mkdir(exist_ok=True)
-    (tdir / 'index.html').write_text(emit(themes_page(themes), comps, None), encoding='utf-8')
+    (tdir / 'index.html').write_text(emit(themes_page(themes), comps, None, '/themes/', True), encoding='utf-8')
     for t in themes:
         (tdir / (t['name'] + '.css')).write_text(theme_css(t), encoding='utf-8')
     ddir = DIST / 'docs'
     ddir.mkdir(exist_ok=True)
-    (ddir / 'index.html').write_text(emit(docs_index(), comps, None), encoding='utf-8')
+    (ddir / 'index.html').write_text(emit(docs_index(), comps, None, '/docs/', True), encoding='utf-8')
     for dslug, *_ in DOCS:
         dp = ddir / dslug
         dp.mkdir(exist_ok=True)
-        (dp / 'index.html').write_text(emit(doc_page(dslug), comps, None), encoding='utf-8')
+        (dp / 'index.html').write_text(emit(doc_page(dslug), comps, None, '/docs/' + dslug + '/', True), encoding='utf-8')
     # --- install artifacts: full bundles + starter zip ---
     _base = Path(__file__).parent
     _css = ['/* KATA UI full bundle - tokens + every component and block. For production, per-part copies are leaner; this is the fast start. */\n' + (_base / 'tokens.css').read_text(encoding='utf-8')]

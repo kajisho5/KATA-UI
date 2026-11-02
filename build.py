@@ -503,7 +503,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '<div class="cl-cap"><span>Live cast</span><a href="#" id="cl-open">Open the Foundry deck</a></div>'
       '<div class="cl-row">'
       '<button class="btn btn-pri btn-md" type="button">Cast me</button>'
-      '<span class="switch"><input type="checkbox" checked aria-label="Live cast switch"><span class="tr"></span></span>'
+      '<span class="switch asagi"><input type="checkbox" checked aria-label="Live cast switch"><span class="tr"></span></span>'
       '<input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:210px" aria-label="Live cast input">'
       '<span class="badge asagi"><i></i>Same mold</span>'
       '</div></div>'
@@ -520,6 +520,14 @@ def landing(comps, blocks, n_icons, templates=None):
     demoband = ('<section class="lpsec"><h2>Whole pages, not screenshots</h2>'
       '<p class="lpnote">Every template is a real page, running full-screen — no site chrome, nothing flattened into an image. Open one, resize it, break it; then take it apart on its template page.</p>'
       '<div class="genres">' + _demo_cards + '</div></section>') if _demo_cards else ''
+    reactband = ('<section class="lpsec"><h2>On React? Cast anyway.</h2>'
+      '<p class="lpnote">Framework-free is not framework-hostile. The markup pastes into JSX, the CSS loads once at your root, and the few JS parts mount where they land and enhance in place. React keeps the state; the mold keeps the look.</p>'
+      '<div class="steps" style="margin-top:16px">'
+      '<div class="step"><span class="no">JSX</span><h3>Paste the markup</h3><p>class becomes className, comments get braces — the rest of the part is already written.</p></div>'
+      '<div class="step"><span class="no">CSS ONCE</span><h3>Load it at the root</h3><p>tokens.css and the part styles go in your layout or global stylesheet. No CSS-in-JS, no runtime.</p></div>'
+      '<div class="step"><span class="no">ISLANDS</span><h3>Enhance in place</h3><p>Tabs, dialogs and menus read the DOM you server-render. No wrappers, no hydration contract.</p></div>'
+      '</div>'
+      '<p class="lpnote" style="margin-top:14px"><a href="/docs/react/" style="font-weight:600">The React field guide \u2192</a></p></section>')
     trust = ('<section class="lpsec"><p class="trustnote"><b>Public since November 1, 2026 \u2014 early days, on the record.</b> '
       'No customer logos yet, and this page will not invent any; the changelog above is the track record so far. '
       'Built something with KATA? <a href="/showcase/">Get it listed</a> \u00b7 <a href="https://github.com/kajisho5/KATA-UI">KATA on GitHub</a></p></section>')
@@ -553,6 +561,7 @@ def landing(comps, blocks, n_icons, templates=None):
   </div>
   {moldlive}
   {demoband}
+  {reactband}
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">
@@ -1426,16 +1435,11 @@ def design_system_page(tokens):
 <div class="wrap ds">
   <h1>Design System</h1>
   <p class="lead">The foundation every KATA component is cast from: color, type, spacing, radius, motion. One accent, hairline borders, flat surfaces — and tokens for everything, so the system survives every theme.</p>
-  <div class="dl">
-    <a href="/tokens.css">tokens.css</a>
-    <a href="/design-system/tokens.json">tokens.json</a>
-    <a href="/components/">Browse components</a>
-  </div>
-  <section class="dsfloor" id="ds-floor"><h2>The foundry floor</h2>
-    <p class="note">This page is a casting bench, not a museum. Cast a token and the real parts below \u2014 and every part on the page \u2014 re-cast at once. The Foundry deck (bottom right) remembers it across the site.</p>
+  <section class="dsfloor" id="ds-floor"><h2>One token, everything moves</h2>
+    <p class="note">This page is a casting bench, not a museum — and this bench is the whole system in one gesture. Cast an accent, a radius or a motion scale, and the real parts below re-cast at once. The Foundry deck (bottom right) remembers it across the site.</p>
     <div class="ds-live">
       <button class="btn btn-pri btn-md" type="button">Cast me</button>
-      <span class="switch"><input type="checkbox" checked aria-label="Foundry floor switch"><span class="tr"></span></span>
+      <span class="switch asagi"><input type="checkbox" checked aria-label="Foundry floor switch"><span class="tr"></span></span>
       <input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:200px" aria-label="Foundry floor input">
       <span class="badge asagi"><i></i>Same mold</span>
     </div>
@@ -1444,8 +1448,17 @@ def design_system_page(tokens):
       <div class="ds-castrow"><span>Radius</span><span class="ds-btns"><button type="button" data-cast-radius="0">0</button><button type="button" data-cast-radius="4">4</button><button type="button" data-cast-radius="8">8 \u00b7 mold</button><button type="button" data-cast-radius="12">12</button><button type="button" data-cast-radius="16">16</button><button type="button" data-cast-radius="20">20</button></span></div>
       <div class="ds-castrow"><span>Motion</span><span class="ds-btns"><button type="button" data-cast-motion="0.7">0.7\u00d7</button><button type="button" data-cast-motion="1">1.0\u00d7 \u00b7 mold</button><button type="button" data-cast-motion="1.4">1.4\u00d7</button></span></div>
     </div>
+    <div class="ds-live2">
+      <div class="k-card"><div class="k-card-h"><div><h3>Casting notes</h3><p>The same card, whatever the mold says.</p></div><span class="sp"><span class="badge asagi">Live</span></span></div><div class="k-card-b">Its badge answers the accent, and the controls above answer every cast \u2014 radius, accent, motion. The frame was cast from the same tokens when this page loaded; nothing here was re-styled by hand.</div><div class="k-card-f">Cast from tokens<span class="sp"><button class="btn btn-pri btn-sm" type="button">Open report</button></span></div></div>
+      <div class="ds-prog"><div class="ds-prog-cap"><span>Deploy queue</span><span>68%</span></div><div class="k-progress" data-tone="accent" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><div class="k-progress-bar" style="width:68%"></div></div><p class="note" style="margin-top:10px">The bar wears the accent outright. Cast Ruri above and watch it turn \u2014 no reload, no re-style.</p></div>
+    </div>
     <p class="ds-stat" id="ds-stat" role="status"></p>
   </section>
+  <div class="dl">
+    <a href="/tokens.css">tokens.css</a>
+    <a href="/design-system/tokens.json">tokens.json</a>
+    <a href="/components/">Browse components</a>
+  </div>
   <section><h2>Color — Zinc</h2><p class="note">The dominant scale. Interfaces are built from zinc first; color is the exception.</p>{swatches('zinc', tokens['color']['zinc'])}</section>
   <section><h2>Color — Asagi (the one accent)</h2><p class="note">A single accent, used sparingly: links, highlights, the core of the mark. If everything is asagi, nothing is.</p>{swatches('asagi', tokens['color']['asagi'])}</section>
   <section><h2>Color — Roles</h2><div class="roles">{roles}</div></section>
@@ -1468,7 +1481,7 @@ def design_system_page(tokens):
 {FOOTER}
 </body>
 </html>"""
-    ds_links = ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css">' for sl in ('button', 'switch', 'input', 'badge'))
+    ds_links = ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css">' for sl in ('button', 'switch', 'input', 'badge', 'card', 'progress'))
     return head('Design System — KATA UI', 'The KATA design system: color, type, spacing, radius and motion tokens.', DS_STYLE + ds_links) + body.replace('</body>', DS_CAST_TAG + '</body>', 1)
 
 
@@ -2165,6 +2178,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 A door for React on the front page; the bench, promoted', '<p>The front page now speaks to React teams directly: framework-free is not framework-hostile \u2014 paste the markup into JSX, load the CSS once, mount the JS parts as islands \u2014 with the field guide one click away. The Design System bench takes the top of its page under its true name, One token, everything moves, and its specimen row grows a full card and a progress bar, so a single cast visibly re-casts a composed surface, not just loose controls.</p>', None, None),
+    (
  'November 3, 2026 — Full-page demos, two guides, and the itemized shelf', '<p>Every template now runs full-screen at its own demo address — no site chrome, the real page, one click from its detail page. The showcase cards carry their composition (parts in; hours by hand versus minutes with Pro), and the shelf is openly first-party until outside builds join it. Two new guides go deep where pages actually fail: forms (validation timing, the submit path, errors that teach) and data tables (sorting as a contract, filtering, the honest limit at ten thousand rows) — plus an AI prompt library of six paste-ready prompts that make an assistant fetch real parts instead of improvising them. Pricing now itemizes all 28 Pro artifacts, states the Founding 100 terms, and walks the post-checkout path before asking for anything.</p>', None, None),
     ('November 3, 2026 — Vanilla, stated plainly; a door for React', '<p>Three changes aimed at the first five minutes. The homepage hero now leads with the whole proposition — <b>Vanilla HTML, CSS and JS. No framework. No build step.</b> — and the live mold demo sits directly under the hero, where a first visit meets it. A new docs page, <a href="/docs/react/">React &amp; Next.js</a>, shows the whole integration honestly: paste as JSX, load the CSS once, run a part\u2019s script when it mounts — and where a framework genuinely earns its keep instead. Pricing now draws its arithmetic: the composed shelf\u2019s ≈77 hours of assembly, priced at three hourly rates against $129 once.</p>', None, None),
     ('November 3, 2026 \u2014 One hundred, patterns only', '<p>Forty-two more patterns join the loom, every one a continuous field: staggered and diagonal checks, stone paving and rough stone walls, houndstooth, twill weave, basket weaves, nested hemp stars and nested seven treasures, abacus beads, crescent moons, linked squares and doubled lattices. The count is back to <b>one hundred</b> \u2014 and this time the hundred are all patterns, no pictures among them.</p>', None, None),

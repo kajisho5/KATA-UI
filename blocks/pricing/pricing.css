@@ -7,7 +7,7 @@
 .plan{position:relative;border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);padding:22px 20px}
 .plan-hot{border-color:var(--k-ink)}
 .plan-badge{position:absolute;top:-11px;left:20px}
-.plan-name{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--k-ink-2)}
+.plan-name{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-2)}
 .plan-price{margin-top:10px;font-size:32px;font-weight:600;letter-spacing:-.03em}
 .plan-per{font-size:13px;font-weight:500;color:var(--k-ink-3);letter-spacing:0}
 .plan-desc{margin-top:7px;font-size:13px;line-height:1.7;color:var(--k-ink-2)}

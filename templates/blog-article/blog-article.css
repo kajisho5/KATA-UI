@@ -1,7 +1,7 @@
 /* KATA Template: Blog Article */
 .k-tpl-bl{background:var(--k-bg);border:1px solid var(--k-line);border-radius:16px;padding:30px 26px;font-family:var(--k-font);color:var(--k-ink)}
 .k-tpl-bl-grid{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:34px;max-width:920px;margin:0 auto}
-.k-tpl-bl h1{font-size:29px;font-weight:700;letter-spacing:-.026em;line-height:1.25;margin:12px 0 10px}
+.k-tpl-bl h1{font-size:29px;font-weight:700;letter-spacing:-.025em;line-height:1.25;margin:12px 0 10px}
 .k-tpl-bl .stand{font-size:16.5px;line-height:1.75;color:var(--k-ink-2)}
 .k-tpl-bl-by{display:flex;align-items:center;gap:11px;margin:18px 0 20px;padding:13px 0;border-top:1px solid var(--k-line);border-bottom:1px solid var(--k-line)}
 .k-tpl-bl-by b{font-size:13.5px;display:block}

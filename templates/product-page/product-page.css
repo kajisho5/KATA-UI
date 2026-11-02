@@ -7,7 +7,7 @@
 .k-tpl-pd-thumbs{display:flex;gap:9px;margin-top:9px}
 .k-tpl-pd-thumbs span{flex:1;height:56px;border-radius:10px;border:1px solid var(--k-line)}
 .k-tpl-pd-thumbs .on{outline:2px solid var(--k-accent);outline-offset:1px}
-.k-tpl-pd-info h2{font-size:23px;font-weight:650;letter-spacing:-.022em;margin:9px 0 7px}
+.k-tpl-pd-info h2{font-size:23px;font-weight:650;letter-spacing:-.02em;margin:9px 0 7px}
 .k-tpl-pd-stars{display:flex;align-items:center;gap:7px;color:var(--k-amber-ink);font-size:12.5px}
 .k-tpl-pd-stars span{color:var(--k-ink-2)}
 .k-tpl-pd-price{display:flex;align-items:baseline;gap:10px;margin:15px 0 4px}
@@ -15,7 +15,7 @@
 .k-tpl-pd-price s{color:var(--k-ink-3);font-size:15px}
 .k-tpl-pd-price .save{color:var(--k-success-ink);font-size:12.5px;font-weight:650}
 .k-tpl-pd-note{font-size:12.5px;color:var(--k-ink-2);margin-bottom:16px}
-.k-tpl-pd-lbl{font-size:12px;font-weight:650;letter-spacing:.07em;text-transform:uppercase;color:var(--k-ink-3);margin:15px 0 8px}
+.k-tpl-pd-lbl{font-size:12px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);margin:15px 0 8px}
 .k-tpl-pd-sw{display:flex;gap:9px}
 .k-tpl-pd-sw label{cursor:pointer}
 .k-tpl-pd-sw input{position:absolute;opacity:0}

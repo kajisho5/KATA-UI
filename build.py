@@ -298,7 +298,7 @@ LP_STYLE = """<style>
 @media (max-width:720px){.collage{grid-template-columns:1fr}}
 .cmptable{width:100%;min-width:600px;border-collapse:collapse;margin-top:18px;font-size:13.5px;background:#fff;border:1px solid var(--hair);border-radius:12px;overflow:hidden}
 .cmptable th,.cmptable td{padding:11px 14px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top}
-.cmptable thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink3);background:var(--soft);font-weight:600}
+.cmptable thead th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);background:var(--soft);font-weight:600}
 .cmptable tbody th{font-weight:550;color:var(--ink2);white-space:nowrap}
 .cmptable td{color:var(--ink2)}
 .cmptable td.me{color:var(--ink);font-weight:550}

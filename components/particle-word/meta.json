@@ -1,0 +1,15 @@
+{
+  "title": "Particle Word",
+  "category": "KATAYABURI",
+  "description": "A word made of a thousand dots that scatter when you touch them — the KATAYABURI flagship.",
+  "tags": [
+    "particles",
+    "canvas",
+    "text",
+    "interactive",
+    "playground"
+  ],
+  "status": "beta",
+  "usage": "KATAYABURI is the shelf where the mold breaks on purpose. This one samples a word into points and gives every point a spring home and a fear of cursors. Change the word with the buttons, or the data-word attribute. It proves nothing, sells nothing, and is the part people will remember — which, occasionally, is the job.",
+  "a11y": "The word also exists as plain text for assistive technology; the canvas is aria-hidden theatre. Under prefers-reduced-motion the dots assemble instantly and stay put — the word, without the weather."
+}

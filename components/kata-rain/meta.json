@@ -1,0 +1,15 @@
+{
+  "title": "Kata Rain",
+  "category": "KATAYABURI",
+  "description": "Katakana rain: columns of falling glyphs over a black sky, because this library would.",
+  "tags": [
+    "rain",
+    "matrix",
+    "katakana",
+    "canvas",
+    "background"
+  ],
+  "status": "beta",
+  "usage": "A decorative downpour for the pages that can take it — launches, easter eggs, the 404 with a sense of humor. The glyphs are katakana and digits, the heads burn accent-bright, and the trails fade the way rain does. On any page doing actual business, this is the whole budget of mischief, spent at once.",
+  "a11y": "Canvas only, aria-hidden, behind real content with real contrast. Under prefers-reduced-motion one frozen frame stands instead of the rain — the sky, holding its breath."
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Kaleidoscope",
+  "category": "KATAYABURI",
+  "description": "Draw once, get ten drawings: a pointer sketch mirrored into a living mandala.",
+  "tags": [
+    "kaleidoscope",
+    "draw",
+    "canvas",
+    "mandala",
+    "playground"
+  ],
+  "status": "beta",
+  "usage": "The stage draws by itself until you touch it — a slow lissajous pen — then your strokes take over, mirrored across ten segments. The Clear button is the only adult in the room. Screenshots of it make excellent album covers and terrible documentation.",
+  "a11y": "A drawing toy: the canvas carries a plain label, and nothing on any sane page may depend on what gets drawn. Under prefers-reduced-motion the pen rests and the stage waits, blank and patient, for a hand."
+}

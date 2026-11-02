@@ -1,0 +1,15 @@
+{
+  "title": "Gravity Playground",
+  "category": "KATAYABURI",
+  "description": "The catalog, dropped: chips of parts fall, bounce, pile and can be thrown across the stage.",
+  "tags": [
+    "physics",
+    "gravity",
+    "drag",
+    "playground",
+    "interactive"
+  ],
+  "status": "beta",
+  "usage": "Every chip is a part name with a small physics body: gravity, wall bounces, cheap collisions, and a pointer that can grab and fling. It is a toy — the kind a conference booth runs on a big screen. Put it anywhere the brand can afford to be caught playing.",
+  "a11y": "A toy, honestly labeled: the chips are inert text to assistive technology (the same names exist in the Components index, in order). Under prefers-reduced-motion the chips rest in a neat pile at the floor — gravity, but polite."
+}

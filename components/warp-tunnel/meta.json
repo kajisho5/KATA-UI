@@ -1,0 +1,15 @@
+{
+  "title": "Warp Tunnel",
+  "category": "KATAYABURI",
+  "description": "Rings rushing out of the dark: a hyperspace tunnel in pure CSS, no script at all.",
+  "tags": [
+    "warp",
+    "tunnel",
+    "3d",
+    "css",
+    "hyperspace"
+  ],
+  "status": "beta",
+  "usage": "Twelve rings, one keyframe, staggered delays — the cheapest speed in the catalog. Drop it behind a launch headline when the message is \"fast\" and the meeting is short. It is the only KATAYABURI part with no JavaScript, which the shelf finds hilarious.",
+  "a11y": "Decoration with a strong motion signature: under prefers-reduced-motion the rings freeze into a target — still pretty, entirely honest. Never put the only copy of a message inside the tunnel; text rides above it or not at all."
+}

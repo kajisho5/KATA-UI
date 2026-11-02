@@ -1,0 +1,15 @@
+{
+  "title": "Jelly Buttons",
+  "category": "KATAYABURI",
+  "description": "Buttons made of jelly: they squash on the press, overshoot on the release, and wobble home.",
+  "tags": [
+    "jelly",
+    "buttons",
+    "squash",
+    "spring",
+    "playful"
+  ],
+  "status": "beta",
+  "usage": "An elastic timing curve and a squish keyframe turn the most serious control on the page into dessert. Use it where the brand is allowed to grin — a game, a toy, a checkout that just succeeded. Keep it away from the delete button; some actions should feel like actions.",
+  "a11y": "The jelly is transform-only: size, name, focus and order are untouched, and the keyboard press is as dignified as any other button. Under prefers-reduced-motion the wobble is off and the buttons are, sadly, professional."
+}

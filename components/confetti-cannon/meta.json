@@ -1,0 +1,15 @@
+{
+  "title": "Confetti Cannon",
+  "category": "KATAYABURI",
+  "description": "A button that fires confetti out of both corners of its stage. You already pressed it twice.",
+  "tags": [
+    "confetti",
+    "celebration",
+    "canvas",
+    "button",
+    "party"
+  ],
+  "status": "beta",
+  "usage": "For the moments software should celebrate out loud: the deploy, the signup, the invoice marked paid. Two cannons fire from the stage corners in the token palette — even the confetti is on-token. It fires once when it scrolls into view, then waits for the button like a loaded party.",
+  "a11y": "The celebration is visual only: the success it marks must be announced in words by the thing it celebrates (\"Payment complete\" — the Result part exists for exactly this). Under prefers-reduced-motion the cannon stays unloaded and the button simply says its line."
+}

@@ -1399,7 +1399,7 @@ def theme_css(t):
 
 THEME_STYLE = """<style>
 .th h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
-.th .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.th .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .thgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
 .thcard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:14px;text-align:left;cursor:pointer;font:inherit;color:var(--ink)}
 .thcard:hover{border-color:var(--ink3)}
@@ -1427,13 +1427,13 @@ BUILDER_STYLE = """<style>
 
 DENTOU_STYLE = """<style>
 .dentou{margin-top:52px;border-top:1px solid var(--hair);padding-top:34px}
-.dentou .dtk{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:14px;letter-spacing:.4em;color:var(--ink3)}
-.dentou h2{font-size:24px;font-weight:600;letter-spacing:-.02em;margin-top:8px}
+.dentou .dtk{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;font-size:15px;letter-spacing:.4em;color:var(--ink3)}
+.dentou h2{font-size:24px;font-weight:600;letter-spacing:-.01em;margin-top:8px}
 .dtpv{margin-top:18px;border:1px solid var(--hair);border-radius:14px;background:#fff;padding:16px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .dtpv .lbl{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em;width:100%}
 .dtpv .dtstatus{font-size:12.5px;color:var(--ink2)}
 .dtfam{font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:28px 0 10px;display:flex;gap:12px;align-items:baseline}
-.dtfam span{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.25em;color:var(--ink3);font-size:12px;text-transform:none;font-weight:400}
+.dtfam span{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.25em;color:var(--ink3);font-size:13px;text-transform:none;font-weight:400}
 .dtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px}
 .dtcard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:0;text-align:left;cursor:pointer;overflow:hidden;font:inherit;color:var(--ink);display:flex;flex-direction:column;width:100%}
 .dtcard .dsw{height:58px;display:block;border-bottom:1px solid var(--hair);flex:none}
@@ -1441,12 +1441,12 @@ DENTOU_STYLE = """<style>
 .dtcard.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
 .dtcard .dsw{height:58px;display:block;border-bottom:1px solid var(--hair)}
 .dtcard .dbd{display:block;padding:10px 12px 11px}
-.dtcard .dkj{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:19px;line-height:1.25;display:block}
-.dtcard .drm{font-size:12.5px;font-weight:600;margin-top:3px;display:block}
-.dtcard .drm i{font-style:normal;font-weight:400;color:var(--ink3);font-size:11.5px;margin-left:5px}
-.dtcard .dhx{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-top:5px;display:flex;justify-content:space-between;align-items:center}
+.dtcard .dkj{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;font-size:21px;line-height:1.3;display:block;letter-spacing:.06em}
+.dtcard .drm{font-size:12.5px;font-weight:600;margin-top:3px;display:flex;flex-wrap:wrap;column-gap:6px;align-items:baseline;letter-spacing:.01em}
+.dtcard .drm i{font-style:normal;font-weight:400;color:var(--ink3);font-size:11.5px;letter-spacing:.05em;white-space:nowrap}
+.dtcard .dhx{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-top:5px;display:flex;justify-content:space-between;align-items:center;letter-spacing:.03em}
 .dtcard .dhx .cp{font-size:10.5px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:2px 7px}
-.dtcard .dnt{font-size:11.5px;color:var(--ink2);line-height:1.6;margin-top:6px;display:block}
+.dtcard .dnt{font-size:11.5px;color:var(--ink2);line-height:1.65;margin-top:6px;display:block;letter-spacing:.01em}
 .dtcard.core{cursor:default;background:var(--soft)}
 .dtcard .core-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ink3);border:1px solid var(--hair);border-radius:99px;padding:2px 7px}
 </style>"""
@@ -1597,7 +1597,7 @@ applyTheme('teal');
 """ + FOOTER + '\n' + script + dentou_script + """
 </body>
 </html>"""
-    extra = (THEME_STYLE + BUILDER_STYLE + DENTOU_STYLE + '<link rel="stylesheet" href="/components/button/button.css">'
+    extra = (THEME_STYLE + BUILDER_STYLE + DENTOU_STYLE + '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap" rel="stylesheet">' + '<link rel="stylesheet" href="/components/button/button.css">'
              '<link rel="stylesheet" href="/components/switch/switch.css">'
              '<link rel="stylesheet" href="/components/badge/badge.css">')
     return head('Themes — KATA UI', 'Accent presets for KATA UI: one token family changes, everything else holds.', extra) + body

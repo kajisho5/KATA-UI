@@ -509,6 +509,17 @@ def landing(comps, blocks, n_icons, templates=None):
       '</div></div>'
       "<script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();});</script>"
       '</section>')
+    _demo_cards = ''
+    if templates:
+        _by = {t['slug']: t for t in templates}
+        for _slug, _blurb in (('dashboard', 'Sidebar, stat row, revenue chart and the orders table — the whole first screen of a product.'), ('settings-page', 'Grouped switches, honest saves and a danger zone with its own room.'), ('landing', 'Hero, logos, pricing and FAQ — the marketing page, assembled.')):
+            _t = _by.get(_slug)
+            if _t:
+                _np = len(_t['meta'].get('uses', [])) + len(_t['meta'].get('blocks', []))
+                _demo_cards += ('<a class="genre" href="/templates/' + _slug + '/demo/"><span class="gn">' + str(_np) + ' PARTS COMPOSED</span><h3>' + esc(_t['meta']['title']) + '</h3><p>' + _blurb + '</p><span class="go" style="font-size:12.5px;font-weight:600;color:var(--acc)">Open the live page \u2192</span></a>')
+    demoband = ('<section class="lpsec"><h2>Whole pages, not screenshots</h2>'
+      '<p class="lpnote">Every template is a real page, running full-screen — no site chrome, nothing flattened into an image. Open one, resize it, break it; then take it apart on its template page.</p>'
+      '<div class="genres">' + _demo_cards + '</div></section>') if _demo_cards else ''
     trust = ('<section class="lpsec"><p class="trustnote"><b>Public since November 1, 2026 \u2014 early days, on the record.</b> '
       'No customer logos yet, and this page will not invent any; the changelog above is the track record so far. '
       'Built something with KATA? <a href="/showcase/">Get it listed</a> \u00b7 <a href="https://github.com/kajisho5/KATA-UI">KATA on GitHub</a></p></section>')
@@ -541,6 +552,7 @@ def landing(comps, blocks, n_icons, templates=None):
   <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
   </div>
   {moldlive}
+  {demoband}
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">

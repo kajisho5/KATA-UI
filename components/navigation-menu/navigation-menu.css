@@ -1,6 +1,7 @@
 /* KATA Navigation Menu — one line on top, the depth underneath. */
 .k-navm{position:relative;font-family:var(--k-font);color:var(--k-ink)}
-.k-navm-bar{display:flex;align-items:center;gap:4px}
+.k-navm-bar{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none}
+.k-navm-bar::-webkit-scrollbar{display:none}
 .k-navm-item{position:relative}
 .k-navm-btn{display:flex;align-items:center;gap:6px;padding:8px 12px;border:0;background:none;font-family:inherit;font-size:13.5px;font-weight:550;color:var(--k-ink-2);border-radius:8px;cursor:pointer;text-decoration:none}
 .k-navm-btn:hover,.k-navm-item.open .k-navm-btn{background:var(--k-bg-soft);color:var(--k-ink)}

@@ -1,5 +1,5 @@
 /* KATA Dual Range — two thumbs, one honest track. */
-.k-dr{font-family:var(--k-font);color:var(--k-ink);max-width:340px}
+.k-dr{font-family:var(--k-font);color:var(--k-ink);width:100%;max-width:340px}
 .k-dr-track{position:relative;height:26px}
 .k-dr-track::before{content:"";position:absolute;left:0;right:0;top:11px;height:4px;border-radius:3px;background:var(--k-zinc-200)}
 .k-dr-fill{position:absolute;top:11px;height:4px;border-radius:3px;background:var(--k-accent)}

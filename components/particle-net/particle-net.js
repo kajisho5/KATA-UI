@@ -10,7 +10,7 @@ document.querySelectorAll('[data-net]').forEach(function (stage) {
   function size() {
     W = stage.clientWidth; H = stage.clientHeight;
     canvas.width = W; canvas.height = H;
-    var n = Math.min(78, Math.floor(W * H / 6200));
+    var n = Math.min(78, Math.floor(W * H / 2600));
     pts = [];
     for (var i = 0; i < n; i++) pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .34, vy: (Math.random() - .5) * .34 });
   }
@@ -30,14 +30,14 @@ document.querySelectorAll('[data-net]').forEach(function (stage) {
       var d = Math.hypot(p.x - q.x, p.y - q.y);
       if (d < 108) {
         ctx.strokeStyle = INK;
-        ctx.globalAlpha = (1 - d / 108) * .34;
+        ctx.globalAlpha = (1 - d / 108) * .42;
         ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
       }
     }
     ctx.globalAlpha = 1;
     pts.forEach(function (p, i) {
       ctx.fillStyle = i % 9 === 0 ? ACCENT : INK;
-      ctx.beginPath(); ctx.arc(p.x, p.y, 1.7, 0, 7); ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, 7); ctx.fill();
     });
   }
   function frame() { draw(); if (!reduced) requestAnimationFrame(frame); }

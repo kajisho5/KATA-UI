@@ -23,7 +23,7 @@
         <h2 id="bl-s2">What the check actually checks</h2>
         <p>Files first, then tokens, then class coverage: every class used in a preview must be defined by the part itself or a declared dependency. The rule sounds clerical until the first time it catches a part quietly depending on another part’s stylesheet — which was week one.</p>
         <pre><code>python3 check.py
-131/131 components pass the mold</code></pre>
+136/136 components pass the mold</code></pre>
         <p>Three rules did most of the work:</p>
         <ul>
           <li>Colors come from tokens, never from hex — themes stay possible.</li>

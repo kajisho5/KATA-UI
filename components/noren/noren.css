@@ -1,0 +1,13 @@
+/* KATA Noren — the shop curtain, as a divider. */
+.k-nor{font-family:var(--k-font);background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:14px;padding:0 26px 22px;overflow:hidden}
+.k-nor-bar{height:7px;border-radius:4px;background:var(--k-zinc-800);margin:0 -6px}
+.k-nor-row{display:flex;gap:5px;justify-content:center}
+.k-nor-p{width:86px;height:118px;transform-origin:top center;display:flex;align-items:center;justify-content:center;color:var(--k-on-color);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.k-nor-p.c1{background:var(--k-zinc-800);animation:k-nor-sway 5.2s ease-in-out infinite alternate}
+.k-nor-p.c2{background:var(--k-accent);animation:k-nor-sway 6.4s ease-in-out infinite alternate-reverse}
+.k-nor-p.c3{background:var(--k-zinc-700);animation:k-nor-sway 5.8s ease-in-out infinite alternate}
+.k-nor:hover .k-nor-p.c1{transform:translateX(-11px)}
+.k-nor:hover .k-nor-p.c3{transform:translateX(11px)}
+@keyframes k-nor-sway{from{rotate:-1.1deg}to{rotate:1.1deg}}
+.k-nor-cap{text-align:center;font-size:12px;color:var(--k-ink-3);margin-top:16px;letter-spacing:.12em}
+@media (prefers-reduced-motion:reduce){.k-nor-p{animation:none}}

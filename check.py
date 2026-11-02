@@ -6,7 +6,7 @@ import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).parent
-CATS = {'Form & Input', 'Layout & Navigation', 'Overlays & Dialogs', 'Feedback & Status', 'Display & Media', 'Motion', 'KATAYABURI'}
+CATS = {'Form & Input', 'Layout & Navigation', 'Overlays & Dialogs', 'Feedback & Status', 'Display & Media', 'Motion', 'KATAYABURI', 'Japan'}
 REQUIRED_META = ['title', 'category', 'description', 'tags', 'status', 'usage', 'a11y']
 ALLOWED_RGBA = {(0, 0, 0), (255, 255, 255), (16, 24, 40), (24, 24, 27), (244, 244, 245)}
 HEX = re.compile(r'#[0-9a-fA-F]{3,8}\b')

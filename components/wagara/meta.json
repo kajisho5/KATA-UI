@@ -1,0 +1,16 @@
+{
+  "title": "Wagara",
+  "category": "Japan",
+  "description": "Four classical Japanese patterns, constructed — not pasted: seigaiha waves, asanoha hemp, shippo circles, ichimatsu checks.",
+  "tags": [
+    "wagara",
+    "pattern",
+    "japanese",
+    "seigaiha",
+    "asanoha",
+    "background"
+  ],
+  "status": "beta",
+  "usage": "Each pattern is drawn from its real geometry by the script — seigaiha as concentric arcs on a half-offset grid, asanoha as the true six-fold hemp construction, shippo as equal overlapping circles, ichimatsu with the nested mini-checker the logo wears. Three tones (paper, ink, night) and all colors come from the token set on purpose: the patterns are classical, the palette stays the house’s. Use them as section textures, empty-state skies, and the inside of covers.",
+  "a11y": "Pattern is texture: the canvas is aria-hidden and any text over it must pass contrast on the flat tone color alone, pattern removed. Under prefers-reduced-motion nothing changes — patterns were always still."
+}

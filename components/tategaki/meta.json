@@ -1,0 +1,16 @@
+{
+  "title": "Tategaki",
+  "category": "Japan",
+  "description": "Vertical Japanese text, set properly: shuhari — obey the form, break the form, leave the form — as an editorial monument.",
+  "tags": [
+    "tategaki",
+    "vertical",
+    "typography",
+    "japanese",
+    "shuhari",
+    "editorial"
+  ],
+  "status": "beta",
+  "usage": "Tategaki is not rotated text: writing-mode vertical-rl lays the columns right-to-left with the glyphs upright, the way a book opens. The three characters are shuhari (守破離), the craft discipline this whole library runs on — first obey the mold, then break it deliberately, then leave it behind. Use the part for chapter heads, manifestos, and the page that states what a studio believes.",
+  "a11y": "Vertical text is genuinely harder for some readers, so the part always travels with its horizontal gloss: the three terms, translated, in reading order beside it. Screen readers receive the text in DOM order — characters, then gloss — regardless of the visual direction."
+}

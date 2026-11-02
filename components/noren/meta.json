@@ -1,0 +1,15 @@
+{
+  "title": "Noren",
+  "category": "Japan",
+  "description": "A noren curtain as a section divider: three hanging panels that sway, and part when you reach for them.",
+  "tags": [
+    "noren",
+    "curtain",
+    "divider",
+    "japanese",
+    "section"
+  ],
+  "status": "beta",
+  "usage": "Shops hang a noren to say \"open, and someone is home\" — as a divider it marks a threshold between sections of a page: the catalog above, the story below. The panels sway on staggered clocks (transform-origin at the bar, a degree and a bit each way), and part a few pixels on hover, the way a hand brushes cloth. The crest on the middle panel is the mold glyph; swap in your own mark.",
+  "a11y": "A divider is a picture of a doorway: it carries an aria-label if it must say anything, and the heading structure of the page does the real work of separating sections. The sway is transform-only and stops under prefers-reduced-motion."
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Kintsugi Card",
+  "category": "Japan",
+  "description": "A status card repaired in gold: the cracks of an incident, drawn as kintsugi veins that mend on arrival.",
+  "tags": [
+    "kintsugi",
+    "card",
+    "status",
+    "incident",
+    "gold",
+    "repair"
+  ],
+  "status": "beta",
+  "usage": "Kintsugi is the craft of repairing broken pottery with gold — the break becomes the most valuable part. This card reports an incident the same way: what broke, how long it took, and the veins drawn across the surface as the record, gilded instead of hidden. The mend animates on arrival; hover draws it again. For status pages and postmortems that intend to be believed.",
+  "a11y": "The facts are text — status, downtime, data loss — in a normal card; the veins are canvas decoration above it. Under prefers-reduced-motion the veins are drawn complete and still: repaired is repaired, animated or not."
+}

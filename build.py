@@ -373,6 +373,34 @@ LP_STYLE = """<style>
 .lpc-row>span:first-child{width:52px;flex:none;font-weight:550}
 .lpc-note{font-size:12.5px;color:var(--k-ink-2)}
 .tokcode{font-family:var(--mono);font-size:12px;line-height:1.75;background:var(--soft);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;overflow-x:auto;text-align:left;margin-top:12px;white-space:pre}
+.sctabs{display:flex;gap:6px;margin-top:18px;overflow-x:auto;padding-bottom:2px}
+.sctab-btn{flex:none;font:inherit;font-size:13.5px;font-weight:550;padding:8px 16px;border-radius:99px;border:1px solid var(--hair);background:var(--paper);color:var(--ink2);cursor:pointer}
+.sctab-btn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.scframe{position:relative;margin-top:14px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff}
+.scframe iframe{width:100%;height:600px;border:0;display:block}
+@media (max-width:720px){.scframe iframe{height:540px}}
+.framelive{pointer-events:none}
+.sccap{margin-top:12px;font-size:13.5px;color:var(--ink2)}
+.scmeta{margin-top:6px;font-family:var(--mono);font-size:11.5px;color:var(--ink2);display:flex;gap:14px;flex-wrap:wrap}
+.scmeta a{color:var(--acc)}
+.motiongrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media (max-width:720px){.motiongrid{grid-template-columns:1fr}}
+.billboard{font-size:34px;font-weight:650;letter-spacing:-.022em;margin-top:28px;line-height:1.2}
+.cmpcta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+.cmpsum{display:none}
+@media (max-width:720px){.cmpsum{display:grid;gap:8px;margin-top:16px}.cmpsum>div{display:flex;gap:12px;align-items:baseline;font-size:13px;border:1px solid var(--hair);border-radius:10px;padding:9px 12px}.cmpsum b{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink3);flex:none;width:86px}.cmpsum .k{font-weight:600}.billboard{font-size:27px}}
+.pronums{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.pronums b{display:block;font-size:42px;font-weight:650;letter-spacing:-.025em;line-height:1.05}
+.pronums span{font-size:13px;color:var(--ink2)}
+@media (max-width:720px){.pronums{grid-template-columns:1fr}.pronums b{font-size:34px}}
+.probars{margin-top:26px;display:grid;gap:12px;max-width:660px}
+.probar{display:grid;grid-template-columns:150px 1fr 64px;align-items:center;gap:12px;font-size:13px}
+.probar .track{height:10px;background:var(--soft);border-radius:99px;overflow:hidden}
+.probar .track i{display:block;height:100%;border-radius:99px}
+.probar b{text-align:right;font-weight:600}
+@media (max-width:560px){.probar{grid-template-columns:104px 1fr 52px;font-size:12px}}
+.finalcta{text-align:center}
+.fc-cta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .framecap{max-width:880px;margin:10px auto 0;text-align:right;font-size:12px;color:var(--ink3)}
 .framecap a{color:var(--ink2)}
 .lpsec{margin-top:64px}
@@ -472,6 +500,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '<div class="step"><span class="no">PLATFORM</span><h3>Native first</h3><p>Where the platform has the element \u2014 dialog, details, real inputs \u2014 the part is the element. Scripts layer behavior on markup; they never generate it.</p></div>'
       '</div></section>')
     compare = ('<section class="lpsec"><h2>How KATA compares</h2>'
+      '<div class="cmpsum"><div><b>FRAMEWORK</b><span class="k">KATA: none</span><span>shadcn/ui: React</span></div><div><b>RUNTIME</b><span class="k">KATA: none</span><span>shadcn/ui: React</span></div><div><b>DISTRIBUTION</b><span class="k">KATA: copy-paste</span><span>shadcn/ui: CLI + copy</span></div></div>'
       '<div style="overflow-x:auto"><table class="cmptable"><thead><tr><th></th><th>KATA UI</th><th>shadcn/ui</th><th>MUI</th><th>Flux UI</th></tr></thead><tbody>'
       '<tr><th>Framework</th><td class="me">None — plain HTML</td><td>React</td><td>React</td><td>Laravel + Livewire</td></tr>'
       '<tr><th>Distribution</th><td class="me">Copy-paste, CLI & registry</td><td>Copy-paste + CLI</td><td>npm package</td><td>Composer package</td></tr>'
@@ -479,13 +508,30 @@ def landing(comps, blocks, n_icons, templates=None):
       '<tr><th>Theming</th><td class="me">CSS tokens</td><td>Tailwind + variables</td><td>Theme object</td><td>Tailwind</td></tr>'
       '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks + Templates lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
       '</tbody></table></div>'
-      '<p class="cmpnote">From each project’s public pages, November 2026. The honest summary: the others are excellent inside their framework. KATA is for everywhere else.</p></section>')
+      '<p class="cmpnote">From each project\u2019s public pages, November 2026. The honest summary: the others are excellent inside their framework.</p>'
+      '<p class="billboard">KATA is for everywhere else.</p>'
+      '<p class="cmpcta"><a class="btn btn-pri btn-md" href="/components/">Browse the catalog</a><a class="btn btn-ghost btn-md" href="/docs/react/">Read the React guide</a></p></section>')
     wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro, in preparation</h2>'
       '<p>Free is the finished product — all 136 components, MIT, forever. Pro adds the assembled work: 21 blocks and 7 templates, $129 once, lifetime. Sales open soon; leave an email and the launch is the only message you will ever get.</p>'
       + waitlist_form(dark=True) + '</div></section>')
-    motionband = ''
-    finalcta = ''
-    proband = wlband
+    _mt = ''
+    for _slug, _label in [('aurora', 'Aurora'), ('spotlight', 'Spotlight'), ('text-reveal', 'Text Reveal'), ('converge', 'Converge')]:
+        _c = pv.get(_slug)
+        if _c:
+            _mt += ('<div class="showtile"><div class="cap"><span>' + _label.upper() + '</span><span class="livechip"><i></i>LIVE</span><a href="/components/' + _slug + '/">Open part</a></div>' + _c['preview'] + '</div>')
+    motionband = ('<section class="lpsec proof"><h2>Motion, on duty</h2>'
+      '<p class="sub">Motion is not decoration here. It points at what changed, confirms what you did, and explains state while it happens \u2014 and every part below is running live, with its reduced-motion behavior written in.</p>'
+      '<div class="motiongrid">' + _mt + '</div></section>')
+    finalcta = ('<section class="lpsec finalcta"><h2>Start with one part.</h2>'
+      '<p class="sub" style="margin-left:auto;margin-right:auto">Ninety seconds from now it can be on your page \u2014 tokens in, part pasted, shipped.</p>'
+      '<p class="fc-cta"><a class="btn btn-pri btn-lg" href="#first-five">Copy your first part</a><a class="btn btn-ghost btn-lg" href="#pro">Notify me for Pro</a></p></section>')
+    proband = ('<section class="lpsec proof" id="pro"><h2>Pro is assembled time.</h2>'
+      '<p class="sub">The parts are free. What Pro sells is the hours you do not spend composing them \u2014 21 blocks and 7 templates, assembled, responsive, and checked against the same mold.</p>'
+      '<div class="pronums"><div><b>&asymp;77 h</b><span>of assembly, done for you</span></div><div><b>$129</b><span>once \u2014 lifetime, every future block</span></div><div><b>$1.68</b><span>per hour of it</span></div></div>'
+      '<div class="probars"><div class="probar"><span>Assemble it yourself</span><div class="track"><i style="width:100%;background:var(--ink)"></i></div><b>&asymp;77 h</b></div><div class="probar"><span>With Pro</span><div class="track"><i style="width:2%;background:var(--acc);min-width:10px"></i></div><b>minutes</b></div></div>'
+      '<p class="lpnote" style="margin-top:16px">Founding 100: $99, plus two blocks that will never be sold separately \u2014 Invoice Desk and Kanban Board.</p>'
+      + waitlist_form() +
+      '<p class="lpnote" style="margin-top:14px">Free is the finished product. Pro is for people who would rather not compose. <a href="/pricing/" style="color:var(--acc)">See everything in Pro</a></p></section>')
     pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
     asmx = ''
     if pr_block:
@@ -497,10 +543,10 @@ def landing(comps, blocks, n_icons, templates=None):
           '<div class="asm-frame">' + pr_block['preview'] + '</div>'
           '<div class="showgrid asm-parts">' + ''.join(tile(u, pv[u]['meta']['title']) for u in pr_uses) + '</div>'
           + pr_js + '</section>')
-    mstrip = ('<section class="lpsec"><h2>Motion, on duty</h2><div class="mstrip">'
+    mstrip = ('<section class="lpsec"><h2>The motion shelf</h2><div class="mstrip">'
       + tile('aurora', 'Aurora') + tile('beam-border', 'Beam Border') + tile('spotlight', 'Spotlight') + '</div>'
       '<p class="framecap">Live parts, auto-playing — the Motion line itself, not a video of it.</p></section>')
-    lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Is it really free?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. Every component — all 136, with the code on its page — is MIT-licensed, free for personal and commercial work. Pro adds the assembled blocks and templates; the parts themselves are never paywalled.</div></details><details class="k-acc"><summary>Which frameworks does it work with?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">All of them, and none. Parts are plain HTML, CSS and JS, so they paste into Astro, Laravel, Rails, WordPress, a static page, or the corner of a legacy app. There is no runtime and no build step unless you bring your own.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files — or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">The assembled shelf: 21 blocks and 7 page templates, plus every future block. Free is the finished product — Pro is for people who would rather not compose. One payment of $129, lifetime; sales open soon, and the waitlist gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes — the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
+    lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Can I use it with React?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. The parts are plain HTML, CSS and JS: markup pastes into JSX as-is, the CSS loads once, globally, and the JS parts mount as islands where a page needs them. The honest limits are in the open, too \u2014 read the <a href="/docs/react/" style="color:var(--acc)">React guide</a>.</div></details><details class="k-acc"><summary>Will the free parts ever go paid?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">No. All 136 components are MIT \u2014 free for personal and commercial work, forever. Pro only ever adds assembled work on top: blocks and templates. It never reaches back for the parts.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files \u2014 or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">The assembled shelf: 21 blocks and 7 page templates, plus every future block. Free is the finished product \u2014 Pro is for people who would rather not compose. One payment of $129, lifetime; sales open soon, and the waitlist gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes \u2014 the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
               '<p class="more">Still stuck? <a href="/docs/">Read the docs</a> — or check the <a href="/docs/faq/">full FAQ</a>.</p></section>'
               '<link rel="stylesheet" href="/components/accordion/accordion.css">')
     _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'card', 'tabs', 'toast')]
@@ -556,17 +602,28 @@ def landing(comps, blocks, n_icons, templates=None):
       "<script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();});</script>"
       '<script>(function(){var root=document.documentElement;var PRESETS={Asagi:["#33A6B8","#165E83","#81C7D4"],Ruri:["#1E50A2","#223A70","#58B2DC"],Edomurasaki:["#745399","#592C63","#8B81C3"],Suo:["#8E354A","#64363C","#DC9FB4"],Kaki:["#ED6D3D","#95483F","#E2943B"]};function load(){try{return JSON.parse(localStorage.getItem("kata-fdeck")||"{}")}catch(e){return{}}}function save(S){try{localStorage.setItem("kata-fdeck",JSON.stringify(S))}catch(e){}}function dark(){return root.getAttribute("data-theme")==="dark"}function mark(){var S=load();document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.classList.toggle("on",b.dataset.lpcAccent===S.accentName)});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcRadius===(S.radius||8))});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.classList.toggle("on",(b.dataset.lpcMode==="dark")===dark())})}function accent(name){var pr=PRESETS[name];if(!pr)return;var S=load();S.accent=pr[0];S.accentInk=pr[1];S.darkInk=pr[2];S.accentName=name;root.style.setProperty("--k-accent",pr[0]);root.style.setProperty("--acc",pr[0]);root.style.setProperty("--k-accent-ink",dark()?pr[2]:pr[1]);save(S);mark()}function radius(v){var S=load();S.radius=v;root.style.setProperty("--k-radius",v+"px");root.style.setProperty("--k-radius-sm",Math.max(0,Math.round(v*.75))+"px");root.style.setProperty("--k-radius-lg",Math.round(v*1.5)+"px");save(S);mark()}function mode(d){var S=load();S.dark=d;if(d)root.setAttribute("data-theme","dark");else root.removeAttribute("data-theme");if(S.accentName&&PRESETS[S.accentName]){var pr=PRESETS[S.accentName];root.style.setProperty("--k-accent-ink",d?pr[2]:pr[1])}save(S);mark()}document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.addEventListener("click",function(){accent(b.dataset.lpcAccent)})});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.addEventListener("click",function(){radius(+b.dataset.lpcRadius)})});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.addEventListener("click",function(){mode(b.dataset.lpcMode==="dark")})});mark();})();</script>'
       '</section>')
-    _demo_cards = ''
-    if templates:
-        _by = {t['slug']: t for t in templates}
-        for _slug, _blurb in (('dashboard', 'Sidebar, stat row, revenue chart and the orders table — the whole first screen of a product.'), ('settings-page', 'Grouped switches, honest saves and a danger zone with its own room.'), ('landing', 'Hero, logos, pricing and FAQ — the marketing page, assembled.')):
-            _t = _by.get(_slug)
-            if _t:
-                _np = len(_t['meta'].get('uses', [])) + len(_t['meta'].get('blocks', []))
-                _demo_cards += ('<a class="genre" href="/templates/' + _slug + '/demo/"><span class="gn">' + str(_np) + ' PARTS COMPOSED</span><h3>' + esc(_t['meta']['title']) + '</h3><p>' + _blurb + '</p><span class="go" style="font-size:12.5px;font-weight:600;color:var(--acc)">Open the live page \u2192</span></a>')
-    demoband = ('<section class="lpsec"><h2>Whole pages, not screenshots</h2>'
-      '<p class="lpnote">Every template is a real page, running full-screen — no site chrome, nothing flattened into an image. Open one, resize it, break it; then take it apart on its template page.</p>'
-      '<div class="genres">' + _demo_cards + '</div></section>') if _demo_cards else ''
+    _sc_tabs = [('dashboard', 'Dashboard'), ('inbox', 'Inbox'), ('settings-page', 'Settings'), ('checkout', 'Checkout')]
+    _tmap = {t['slug']: t for t in (templates or [])}
+    _tab_btns = ''
+    _tab_panels = ''
+    for _i, (_slug, _label) in enumerate(_sc_tabs):
+        _t = _tmap.get(_slug)
+        if not _t:
+            continue
+        _on = ' on' if _i == 0 else ''
+        _tab_btns += f'<button type="button" role="tab" class="sctab-btn{_on}" data-sctab="{_slug}" aria-selected="{"true" if _i == 0 else "false"}">{_label}</button>'
+        _nparts = len(_t['meta'].get('uses', []))
+        _src = f' src="/templates/{_slug}/demo/"' if _i == 0 else f' data-src="/templates/{_slug}/demo/"'
+        _hid = '' if _i == 0 else ' hidden'
+        _tab_panels += (f'<div class="sctab-panel" data-panel="{_slug}"{_hid}>'
+          f'<div class="scframe"><span class="livechip on-dark framelive"><i></i>LIVE \u2014 this code is copyable</span><iframe{_src} title="{_label} template, running live" loading="lazy"></iframe></div>'
+          '<p class="sccap">Not a screenshot. This is running on this page, right now \u2014 every control live, every pixel a part you can copy.</p>'
+          f'<p class="scmeta"><span>Parts composed: {_nparts}</span><span>&asymp;5 hours by hand from free parts \u00b7 minutes with Pro</span><a href="/templates/{_slug}/demo/">Open the full page &rarr;</a><a href="/templates/{_slug}/">See the parts</a></p></div>')
+    demoband = ('<section class="lpsec proof"><h2>Whole pages, not screenshots</h2>'
+      '<p class="sub">Every template is a real page, running at full size \u2014 switch between them; each one below is the actual template, embedded live, composed entirely from parts on this site.</p>'
+      f'<div class="sctabs" role="tablist">{_tab_btns}</div>{_tab_panels}'
+      '<script>(function(){var btns=[].slice.call(document.querySelectorAll("[data-sctab]"));btns.forEach(function(b){b.addEventListener("click",function(){btns.forEach(function(x){x.classList.toggle("on",x===b);x.setAttribute("aria-selected",x===b?"true":"false")});document.querySelectorAll("[data-panel]").forEach(function(pn){var on=pn.dataset.panel===b.dataset.sctab;pn.hidden=!on;if(on){var f=pn.querySelector("iframe");if(f&&!f.getAttribute("src")&&f.dataset.src)f.src=f.dataset.src;}});});});})();</script>'
+      '</section>') if _tab_panels else ''
     videoband = ('<section class="lpsec"><h2>Watch one get built</h2>'
       '<p class="lpnote">A settings page, assembled from catalog parts in one take \u2014 no cuts, nothing written on camera. Each element lands by pasting the part from its page, and the timer is the real one: sixteen seconds of pasting, because the styling was already done inside the parts.</p>'
       '<div style="margin-top:14px"><span class="livechip"><i></i>LIVE \u2014 this code is copyable</span></div>'
@@ -2277,6 +2334,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 Whole pages, a bigger motion shelf, and time priced out loud', '<p>The template cards become four live tabs \u2014 Dashboard, Inbox, Settings, Checkout, each the real template running in the page, loaded only when opened, captioned without apology: not a screenshot. Motion steps up the page as four large live tiles under one argument, <b>Motion, on duty</b>. The comparison now closes on a billboard \u2014 KATA is for everywhere else \u2014 with a two-column summary on phones. Pro states its arithmetic on the page: &asymp;77 hours of assembly, $129 once, $1.68 an hour, the do-it-yourself bar against the minutes bar. The FAQ leads with the two questions that actually block people \u2014 React, and whether free stays free \u2014 and the page ends on an action: Start with one part.</p>', None, None),
+    (
  'November 3, 2026 \u2014 One mold, second on the page', '<p>The front page is re-sequenced around its proofs. The live-cast panel becomes <b>One mold</b>: the token file\u2019s promise as the headline, five specimens including a composed card, and the casting controls set into the section itself \u2014 accent, radius and mode, writing the same state the Foundry deck keeps, so what you cast here follows you across the site. How it works follows the showcases and shows the real token file in Step 1; the principles shed their first rule to the mold section and stand as two.</p>', None, None),
     (
  'November 3, 2026 \u2014 The front page, given a louder first three seconds', '<p>The hero headline steps up to 64px, the stats now count all 370 icons and marks, and the App Shell frame names itself LIVE \u2014 hover it and its panels answer with their part names, App Shell, Stat Cards, Data Table. A shared LIVE chip now marks every real, copyable surface on the page. Section headings step up a class, proof sections breathe at 96px, the two sumi panels agree on one black, and the mobile hero \u2014 eyebrow and CTAs \u2014 is measured and fixed at real width.</p>', None, None),

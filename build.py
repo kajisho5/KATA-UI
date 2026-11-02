@@ -30,7 +30,21 @@ def load_components():
             parts = re.split(r'<!--\s*example:\s*(.+?)\s*-->', ex_file.read_text(encoding='utf-8'))
             for i in range(1, len(parts) - 1, 2):
                 examples.append((parts[i], parts[i + 1].strip()))
-        comps.append(dict(slug=slug, meta=meta, preview=preview, css=css, js=js, deps=deps, examples=examples))
+        cb_file = d / 'combos.html'
+        combos = []
+        if cb_file.exists():
+            raw = cb_file.read_text(encoding='utf-8')
+            pm = re.search(r'<!--\s*parts:\s*(.+?)\s*-->', raw)
+            cparts = [x.strip() for x in pm.group(1).split(',')] if pm else []
+            chunks = re.split(r'<!--\s*combo:\s*(.+?)\s*-->', raw)
+            for i in range(1, len(chunks) - 1, 2):
+                seg = chunks[i + 1]
+                nm = re.search(r'<!--\s*note:\s*(.+?)\s*-->', seg)
+                note = nm.group(1) if nm else ''
+                if nm:
+                    seg = seg.replace(nm.group(0), '', 1)
+                combos.append((chunks[i], note, cparts, seg.strip()))
+        comps.append(dict(slug=slug, meta=meta, preview=preview, css=css, js=js, deps=deps, examples=examples, combos=combos))
     order = {c: i for i, c in enumerate(CATS)}
     comps.sort(key=lambda c: (order.get(c['meta']['category'], 99), c['meta']['title']))
     return comps
@@ -943,6 +957,25 @@ def detail(comps, idx):
         _top = [c for c in _top if c]
         if _top:
             cast_with = '<section class="doc"><h2>Often cast with</h2><div class="cards">' + ''.join(card(x) for x in _top) + '</div></section>'
+    combos_html = ''
+    combo_css = ''
+    combo_js = ''
+    if c.get('combos'):
+        by2 = {x['slug']: x for x in comps}
+        out = []
+        _union = []
+        for title, note, cparts, html_c in c['combos']:
+            for _p in cparts:
+                if _p not in _union and _p != slug:
+                    _union.append(_p)
+            plinks = ', '.join(f'<a href="/components/{_p}/">{esc(by2[_p]["meta"]["title"])}</a>' for _p in cparts if _p in by2)
+            out.append(f'<h3 class="exh">{esc(title)}</h3>' + (f'<p class="anote">{esc(note)}</p>' if note else '') + f'<div class="stage col exstage">{html_c}</div><div class="codebox"><div class="pane on"><pre>{esc(html_c)}</pre><div class="copyrow"><button class="copybtn">Copy</button></div></div></div>' + (f'<p class="deps">Parts in this scene: {plinks} \u2014 each brings its own CSS, named on its page.</p>' if plinks else ''))
+        combos_html = '<section class="doc"><h2>Cast together</h2><p class="anote">Compositions, not variants: this part at work with others, running live on this page. Copy the whole scene \u2014 the mold is what makes the pieces agree.</p>' + ''.join(out) + '</section>'
+        for _p in _union:
+            if _p in by2:
+                combo_css += f'<link rel="stylesheet" href="/components/{_p}/{_p}.css?v={_v(by2[_p]["css"])}">'
+                if by2[_p]['js']:
+                    combo_js += f'<script src="/components/{_p}/{_p}.js?v={_v(by2[_p]["js"])}"></script>'
     body = f"""
 <div class="wrap dc">
   <div class="layout">
@@ -977,6 +1010,7 @@ def detail(comps, idx):
       {token_html}
       {used_in}
       {cast_with}
+      {combos_html}
       {related}
       <div class="prevnext">{prev_html}{next_html}</div>
     </main>
@@ -984,11 +1018,12 @@ def detail(comps, idx):
 </div>
 {FOOTER}
 {js_tag}
+{combo_js}
 {DETAIL_JS}
 </body>
 </html>"""
     extra = f'<link rel="stylesheet" href="/components/{slug}/{slug}.css?v={_v(c["css"])}">'
-    return head(f"{m['title']} — KATA UI", m['description'], extra) + body
+    return head(f"{m['title']} — KATA UI", m['description'], extra + combo_css) + body
 
 
 DS_STYLE = """<style>
@@ -2198,6 +2233,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 Cast together: compositions on the part pages', '<p>Eleven part pages grow a Cast together section: live compositions \u2014 a subscribe row, a scoped search, feature flags on a card, a rename dialog, a roster \u2014 each copyable as one scene, with the parts in it named. Building them exposed two single-instance assumptions, now fixed in the parts themselves: Modal and Toast each bind every opener and container on the page, not just the first.</p>', None, None),
+    (
  'November 3, 2026 \u2014 Traditional colors, shown large', '<p>The fifty traditional colors of Japan get room to breathe: each card is now a full dye-band with its name set large, every family carries a Cast this theme button that casts its lead color and copies the whole token set as a ready theme file, and the casting strip at the top grows a switch and a small card dyed by the cast \u2014 border, wash and ink following the color you picked.</p>', None, None),
     (
  'November 3, 2026 \u2014 A door for React on the front page; the bench, promoted', '<p>The front page now speaks to React teams directly: framework-free is not framework-hostile \u2014 paste the markup into JSX, load the CSS once, mount the JS parts as islands \u2014 with the field guide one click away. The Design System bench takes the top of its page under its true name, One token, everything moves, and its specimen row grows a full card and a progress bar, so a single cast visibly re-casts a composed surface, not just loose controls.</p>', None, None),

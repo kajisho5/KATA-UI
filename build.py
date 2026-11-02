@@ -861,6 +861,9 @@ def waitlist_form(label='Get one email when Pro sales open', button='Notify me',
                   fail='That didn\'t go through — email kajiyama@seventh-well.com and you will be added by hand.',
                   dark=False):
     cls = 'wl wl-dark' if dark else 'wl'
+    import json as _json
+    fail_js = _json.dumps(fail)
+    button_js = _json.dumps(button)
     return f'''<form class="{cls}" data-wl novalidate>
   <label class="wl-label">{label}</label>
   <div class="wl-row">
@@ -882,8 +885,8 @@ document.querySelectorAll('[data-wl]').forEach(function(f){{ if(f.__wl) return; 
     }}).then(function(r){{ if(!r.ok) throw 0;
       f.querySelector('.wl-row').hidden = true; f.querySelector('.wl-note').hidden = true;
       f.querySelector('.wl-label').hidden = true; f.querySelector('.wl-done').hidden = false;
-    }}).catch(function(){{ btn.disabled = false; btn.textContent = '{button}';
-      f.querySelector('.wl-note').textContent = '{fail}'; }});
+    }}).catch(function(){{ btn.disabled = false; btn.textContent = {button_js};
+      f.querySelector('.wl-note').textContent = {fail_js}; }});
   }});
 }});
 </script>'''
@@ -1466,7 +1469,7 @@ function applyCustom(hex){
   demo.style.setProperty('--k-accent-bg','rgba('+rgb.join(',')+',.08)');
   demo.style.setProperty('--k-accent-bg-strong','rgba('+rgb.join(',')+',.1)');
   demo.style.setProperty('--k-accent-line','rgba('+rgb.join(',')+',.18)');
-  var css='/* KATA UI theme: Custom \u2014 load AFTER tokens.css.\n   A theme moves the accent only. Neutrals, motion and the vermillion core never change. */\n:root{\n  --k-accent:'+hex+';\n  --k-accent-ink:'+ink+';\n  --k-accent-bg:rgba('+rgb.join(',')+',.08);\n  --k-accent-bg-strong:rgba('+rgb.join(',')+',.1);\n  --k-accent-line:rgba('+rgb.join(',')+',.18);\n}\n[data-theme="dark"]{\n  --k-accent-ink:'+dink+';\n}\n';
+  var css='/* KATA UI theme: Custom \u2014 load AFTER tokens.css.\\n   A theme moves the accent only. Neutrals, motion and the vermillion core never change. */\\n:root{\\n  --k-accent:'+hex+';\\n  --k-accent-ink:'+ink+';\\n  --k-accent-bg:rgba('+rgb.join(',')+',.08);\\n  --k-accent-bg-strong:rgba('+rgb.join(',')+',.1);\\n  --k-accent-line:rgba('+rgb.join(',')+',.18);\\n}\\n[data-theme="dark"]{\\n  --k-accent-ink:'+dink+';\\n}\\n';
   document.getElementById('thcss').textContent=css;
   document.getElementById('thname').textContent='custom.css';
   if(blobUrl)URL.revokeObjectURL(blobUrl);
@@ -1604,7 +1607,8 @@ DOCS = [
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — Retina, at last', 'A bug report from a phone: the canvas parts were drawing at 1x and being stretched on retina screens — the shippo circles gave it away, soft where they should be cut. All nine canvas parts (Wagara, Kintsugi Card, Particle Net, Particle Word, Fireworks, Kata Rain, Kaleidoscope, Confetti Cannon, Burst Button) now back their canvases at device pixel ratio, up to 3x, and draw through the transform in CSS pixels as before. Same pictures, drawn at the resolution your screen actually has.', None, None),
+   [('November 2, 2026 — Ten patterns on the loom', 'The Wagara instrument grows from four patterns to ten, each still drawn from its construction: Kikko (nested tortoiseshell hexagons), Uroko (the triangle scale tiling), Samekomon (dots riding the scale arcs, sharkskin-fine), Yagasuri (the arrow-feather silhouette), Kanoko (staggered shibori fawn-spots) and Hishi (the diamond lattice, studded at its crossings). Same three tones, same tokens — the loom is bigger, the discipline is not.', None, None),
+    ('November 2, 2026 — Retina, at last', 'A bug report from a phone: the canvas parts were drawing at 1x and being stretched on retina screens — the shippo circles gave it away, soft where they should be cut. All nine canvas parts (Wagara, Kintsugi Card, Particle Net, Particle Word, Fireworks, Kata Rain, Kaleidoscope, Confetti Cannon, Burst Button) now back their canvases at device pixel ratio, up to 3x, and draw through the transform in CSS pixels as before. Same pictures, drawn at the resolution your screen actually has.', None, None),
     ('November 2, 2026 — v1.0.0', 'The catalog gets a version number and a front door for the sale to come. v1.0.0 is now stamped where machines look: registry.json carries it, the CLI answers --version with it, and the MCP server already spoke it. The pricing page and the landing page both take waitlist emails for the Pro launch — one email on the day, promised in writing next to the form. Three new pages: an honest KATA vs shadcn/ui comparison in the docs (it recommends shadcn twice, for React teams), a Showcase that assembles the evidence — every template is a live page built from the parts it lists — and a Japanese landing at /ja/, one page, for the home market. The README finally counts what is actually in the catalog: 136 parts in eight categories, 21 blocks, 7 templates.', None, None),
     ('November 2, 2026 — Japan, a genre', 'A new eighth category: Japan — built with patience, not souvenir. Wagara constructs four classical patterns from their real geometry (seigaiha\u2019s half-offset arcs, asanoha\u2019s six-fold hemp, shippo\u2019s equal circles, ichimatsu with the nested mini-checker the mark wears) and plays them in three house tones; Hanko is a vermillion seal that stamps itself on arrival and again on click; the Kintsugi Card reports an incident honestly, its cracks gilded and re-drawn on arrival; Noren hangs a three-panel curtain as a section divider that sways and parts on hover; and Tategaki sets vertical text properly — shuhari, obey the form, break the form, leave the form, the discipline this whole library runs on. The landing hero was re-dressed in the same pass: compact eyebrow, a brighter second line, stats four-across, and a ghost button that survives its gradient. The catalog stands at 136 parts.', None, None),
     ('November 2, 2026 — Effects, on duty', 'Six effect parts, all of them working parts first: a Burst Button that answers clicks with sparks, a Liquid Button that pours on hover, Goo Tabs whose indicator travels like liquid over real tab panels, a Glow Button in a rotating ring of light (with the same ring as a search-field treatment), a Particle Net quiet enough to carry a hero, and a Torn Ticket with mask-cut perforations and a stub that keeps the code. The catalog stands at 131 parts.', None, None),

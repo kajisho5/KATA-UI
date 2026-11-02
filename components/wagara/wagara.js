@@ -1,4 +1,4 @@
-// KATA Wagara — the four patterns, drawn from their constructions.
+// KATA Wagara — ten patterns, drawn from their constructions.
 document.querySelectorAll('[data-wag]').forEach(function (root) {
   var canvas = root.querySelector('canvas');
   var ctx = canvas.getContext('2d');
@@ -15,7 +15,13 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     seigaiha: 'Seigaiha — blue ocean waves. Concentric arcs, each row offset by half a fan; a wish for calm seas and a long life.',
     asanoha: 'Asanoha — the hemp leaf. Six-fold geometry from a hexagon\u2019s triangles; hemp grows fast and straight, so the pattern guards children.',
     shippo: 'Shippo — seven treasures. Equal circles overlapping by a quarter, each petal a treasure, the whole an unbroken wish for harmony.',
-    ichimatsu: 'Ichimatsu — the checkered pattern named for the kabuki actor Sanogawa Ichimatsu. The nested band is the one the KATA mark wears.'
+    ichimatsu: 'Ichimatsu — the checkered pattern named for the kabuki actor Sanogawa Ichimatsu. The nested band is the one the KATA mark wears.',
+    kikko: 'Kikko — the tortoiseshell. Hexagons from the turtle\u2019s shell; the tortoise lives ten thousand years, so the pattern is worn for a long life.',
+    uroko: 'Uroko — scales. Overlapping triangles of fish and dragon scale; what sheds its skin sheds misfortune with it.',
+    same: 'Samekomon — sharkskin. Dots riding the arcs of scales, dyed so fine it counted as plain cloth under Edo sumptuary law — luxury hiding in the dots.',
+    yagasuri: 'Yagasuri — the arrow feather. An arrow once shot never returns, so the pattern rides wedding kimono: go, and do not come back.',
+    kanoko: 'Kanoko — the fawn\u2019s spots. Shibori dots pinched and dyed one by one, named for the dapples down a young deer\u2019s back.',
+    hishi: 'Hishi — the diamond. The floating leaf of the water caltrop, squared into a lattice that crosses the whole cloth.'
   };
   var pattern = 'seigaiha', tone = 0, W, H;
   function seigaiha(t) {
@@ -87,12 +93,113 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
       if (((xx / s2) + ((yy - y0) / s2)) % 2 === 0) { ctx.fillStyle = t.fg; ctx.fillRect(xx, yy, s2, s2); }
     }
   }
+
+  function kikko(t) {
+    var R = 22, dx = Math.sqrt(3) * R, dy = 1.5 * R;
+    ctx.lineWidth = 1.2;
+    var row = 0;
+    for (var y = -R; y < H + R; y += dy, row++) {
+      for (var x = -dx; x < W + dx; x += dx) {
+        var cx = x + (row % 2 ? dx / 2 : 0), cy = y;
+        [1, .58].forEach(function (sc, i) {
+          ctx.beginPath();
+          for (var k = 0; k < 6; k++) {
+            var a = Math.PI / 3 * k - Math.PI / 2, px = cx + R * sc * Math.cos(a), py = cy + R * sc * Math.sin(a);
+            if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          }
+          ctx.closePath();
+          ctx.strokeStyle = i === 0 ? t.fg : t.mid;
+          ctx.stroke();
+        });
+      }
+    }
+  }
+  function uroko(t) {
+    var s = 30, h = s * .87;
+    ctx.lineWidth = 1.2;
+    var row = 0;
+    for (var y = h; y < H + h; y += h, row++) {
+      for (var x = -s; x < W + s; x += s) {
+        ctx.beginPath();
+        ctx.moveTo(x, y); ctx.lineTo(x + s / 2, y - h); ctx.lineTo(x + s, y); ctx.closePath();
+        ctx.fillStyle = row % 2 ? t.bg : t.soft;
+        ctx.fill();
+        ctx.strokeStyle = t.fg;
+        ctx.stroke();
+      }
+    }
+  }
+  function same(t) {
+    var R = 18;
+    ctx.fillStyle = t.fg;
+    var rows = Math.ceil(H / (R * .62)) + 2;
+    for (var r = rows; r >= -1; r--) {
+      var y = r * R * .62 + R;
+      var off = (r % 2) * R;
+      for (var x = -R + off; x < W + R; x += R * 2) {
+        [1, .6].forEach(function (sc) {
+          var Rk = R * sc, stepA = 5.6 / Rk;
+          for (var a = Math.PI; a <= Math.PI * 2 + .001; a += stepA) {
+            ctx.beginPath(); ctx.arc(x + Rk * Math.cos(a), y + Rk * Math.sin(a), 1.35, 0, 7); ctx.fill();
+          }
+        });
+        ctx.beginPath(); ctx.arc(x, y, 1.35, 0, 7); ctx.fill();
+      }
+    }
+  }
+  function yagasuri(t) {
+    var w = 24, h = 46;
+    var row = 0;
+    for (var y = -h; y < H + h; y += h * .8, row++) {
+      for (var x = 0; x < W + w; x += w) {
+        var cx = x + (row % 2 ? w / 2 : 0), cy = y;
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + w * .4, cy + h * .34);
+        ctx.lineTo(cx + w * .13, cy + h * .34);
+        ctx.lineTo(cx + w * .13, cy + h);
+        ctx.lineTo(cx, cy + h * .7);
+        ctx.lineTo(cx - w * .13, cy + h);
+        ctx.lineTo(cx - w * .13, cy + h * .34);
+        ctx.lineTo(cx - w * .4, cy + h * .34);
+        ctx.closePath();
+        ctx.fillStyle = row % 2 ? t.mid : t.fg;
+        ctx.globalAlpha = .88;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+  }
+  function kanoko(t) {
+    var s = 23;
+    var row = 0;
+    for (var y = s / 2; y < H + s; y += s, row++) {
+      for (var x = s / 2 + (row % 2 ? s / 2 : 0); x < W + s; x += s) {
+        ctx.beginPath(); ctx.arc(x, y, 8, 0, 7); ctx.strokeStyle = t.soft; ctx.lineWidth = 3.4; ctx.stroke();
+        ctx.beginPath(); ctx.arc(x, y, 4.4, 0, 7); ctx.strokeStyle = t.fg; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.beginPath(); ctx.arc(x, y, 1.5, 0, 7); ctx.fillStyle = t.fg; ctx.fill();
+      }
+    }
+  }
+  function hishi(t) {
+    var s = 25;
+    ctx.lineWidth = 1.1; ctx.strokeStyle = t.mid;
+    ctx.beginPath();
+    for (var d = -H; d < W + H; d += s) { ctx.moveTo(d, 0); ctx.lineTo(d + H, H); }
+    for (var d2 = 0; d2 < W + 2 * H; d2 += s) { ctx.moveTo(d2, 0); ctx.lineTo(d2 - H, H); }
+    ctx.stroke();
+    ctx.fillStyle = t.fg;
+    for (var gy = 0; gy <= H + s; gy += s) for (var gx = 0; gx <= W + s; gx += s) {
+      var px = gx + ((gy / s) % 2 ? 0 : 0), py = gy;
+      ctx.save(); ctx.translate(px, py); ctx.rotate(Math.PI / 4); ctx.fillRect(-2.1, -2.1, 4.2, 4.2); ctx.restore();
+    }
+  }
   function draw() {
     var t = TONES[tone];
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.fillStyle = t.bg; ctx.fillRect(0, 0, W, H);
-    ({ seigaiha: seigaiha, asanoha: asanoha, shippo: shippo, ichimatsu: ichimatsu })[pattern](t);
+    ({ seigaiha: seigaiha, asanoha: asanoha, shippo: shippo, ichimatsu: ichimatsu, kikko: kikko, uroko: uroko, same: same, yagasuri: yagasuri, kanoko: kanoko, hishi: hishi })[pattern](t);
     cap.textContent = CAPS[pattern];
   }
   root.querySelectorAll('[data-wag-p]').forEach(function (b) {

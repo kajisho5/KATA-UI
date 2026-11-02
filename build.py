@@ -734,7 +734,7 @@ def _sec(title, links_html):
 
 def tree_sections(comps, active, current):
     gs = ['introduction', 'getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'react', 'cli', 'registry', 'mcp', 'theming', 'dark-mode', 'accessibility', 'rtl', 'changelog']
-    concepts = ['why-vanilla', 'the-mold', 'contributing', 'anatomy', 'forms', 'from-tailwind', 'vs-shadcn']
+    concepts = ['why-vanilla', 'the-mold', 'contributing', 'anatomy', 'forms', 'from-tailwind', 'vs-shadcn', 'ai-prompts']
     guides = [d[0] for d in DOCS if d[0].startswith('guide-')]
     doc = lambda slugs: ''.join(_nav_link('/docs/' + x + '/', _doc_title(x), current) for x in slugs)
     secs = [
@@ -1071,6 +1071,24 @@ def icons_page():
 
 
 PRICING_STYLE = """<style>
+.inventory{margin-top:44px}
+.inventory h2{font-size:20px;font-weight:650;letter-spacing:-.015em}
+.inventory .rs{font-size:13.5px;color:var(--ink2);margin-top:8px;max-width:660px;line-height:1.7}
+.invgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px;margin-top:18px}
+.inv{border:1px solid var(--hair);border-radius:10px;padding:12px 14px;text-decoration:none;color:inherit;display:block;background:var(--paper)}
+.inv b{font-size:13.5px;display:block;font-weight:600}
+.inv span{font-size:11.5px;color:var(--ink3)}
+.founding{margin-top:36px;border:1px solid var(--ink);border-radius:16px;padding:24px 26px;background:var(--paper)}
+.founding h2{font-size:18px;font-weight:650}
+.founding p{font-size:14px;color:var(--ink2);line-height:1.8;margin-top:8px;max-width:700px}
+.afterbuy{margin-top:36px}
+.afterbuy h2{font-size:18px;font-weight:650}
+.ab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.ab-grid>div{border:1px solid var(--hair);border-radius:13px;padding:18px;background:var(--paper)}
+.ab-grid .no{font-size:11px;font-weight:650;letter-spacing:.1em;color:var(--acc)}
+.ab-grid h3{font-size:14.5px;margin:7px 0 5px}
+.ab-grid p{font-size:13px;line-height:1.75;color:var(--ink2)}
+@media (max-width:720px){.ab-grid{grid-template-columns:1fr}}
 .rateband{margin-top:36px;border-top:1px solid var(--hair);padding-top:26px}
 .rateband h3{font-size:16px;font-weight:620}
 .rateband .rs{font-size:13px;color:var(--ink2);margin-top:6px;max-width:660px;line-height:1.7}
@@ -1136,6 +1154,15 @@ document.querySelectorAll('[data-wl]').forEach(function(f){{ if(f.__wl) return; 
 }});
 </script>'''
 
+def inventory_html():
+    cards = []
+    for b in load_blocks():
+        cards.append('<a class="inv" href="/blocks/' + b['slug'] + '/"><b>' + esc(b['meta']['title']) + '</b><span>Block \u00b7 ' + str(len(b['meta'].get('uses', []))) + ' parts</span></a>')
+    for t in load_templates():
+        cards.append('<a class="inv" href="/templates/' + t['slug'] + '/"><b>' + esc(t['meta']['title']) + '</b><span>Template \u00b7 ' + str(len(t['meta'].get('uses', [])) + len(t['meta'].get('blocks', []))) + ' parts &amp; blocks</span></a>')
+    return ''.join(cards)
+
+
 def pricing_page():
     body = """
 <div class="wrap pr">
@@ -1172,6 +1199,11 @@ def pricing_page():
       <p class="note">Not on sale yet: the blocks and templates are still open on this site while Pro is being prepared. When sales open, $129 is the price — once, and the code is yours either way.</p>
     </div>
   </div>
+  <div class="inventory">
+    <h2>Everything in Pro, itemized</h2>
+    <p class="rs">The whole composed shelf — every block and template the $129 covers, each one a live page on this site. Nothing here is a render: open any of them and take it apart.</p>
+    <div class="invgrid">__INVENTORY__</div>
+  </div>
   <div class="valueband">
     <h2>What the $129 actually buys back</h2>
     <div class="vb-grid">
@@ -1191,6 +1223,18 @@ def pricing_page():
       <p class="note">Even if the assembly estimates are twice too generous, the cheapest row still clears the price by an order of magnitude.</p>
     </div>
   </div>
+  <div class="founding">
+    <h2>Founding 100</h2>
+    <p>The first 100 licenses are Founding licenses: <b>$99 instead of $129</b>, two blocks that will never be sold separately — <b>Invoice Desk</b> and <b>Kanban Board</b> — and priority support that stays with the license permanently. When the hundredth is gone, the offer closes. The waitlist hears first, in order.</p>
+  </div>
+  <div class="afterbuy">
+    <h2>After checkout</h2>
+    <div class="ab-grid">
+      <div><span class="no">1</span><h3>A key arrives</h3><p>Checkout runs through Lemon Squeezy; your license key lands in your inbox with the receipt. No account to create, nothing to install.</p></div>
+      <div><span class="no">2</span><h3>One download</h3><p>Every block and template in a single zip — or file by file, if you prefer. The parts you already use stay free and untouched; Pro adds the composed work beside them.</p></div>
+      <div><span class="no">3</span><h3>Updates, forever</h3><p>New blocks and templates join your license at no extra cost, delivered to your library and by email. The key exists for updates and support priority — there is no activation, no phone-home, no DRM in the code.</p></div>
+    </div>
+  </div>
   <div class="qa">
     <div><h3>Why charge for blocks and not parts?</h3><p>A single part is an afternoon of work and, honestly, an AI can draft one. A set of blocks that compose without friction — same tokens, same spacing, same voice — is the accumulated discipline of the whole catalog. That is what Pro prices.</p></div>
     <div><h3>What happens to code I already copied?</h3><p>Nothing, ever. Copied code is yours under its license; there is no activation, no telemetry, no kill switch. Pro changes what new downloads cost, not what your files do.</p></div>
@@ -1200,7 +1244,7 @@ def pricing_page():
 """ + FOOTER + """
 </body>
 </html>"""
-    return (head('Pricing — KATA UI', 'KATA UI pricing: every component free forever under MIT; Pro is the blocks and templates, $129 once, lifetime.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form())
+    return (head('Pricing — KATA UI', 'KATA UI pricing: every component free forever under MIT; Pro is the blocks and templates, $129 once, lifetime.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form()).replace('__INVENTORY__', inventory_html())
 
 JA_STYLE = """<style>
 .ja-hero{padding:34px 0 6px}
@@ -1259,8 +1303,23 @@ def ja_page():
     </div>
   </section>
   <section class="ja-sec">
+    <h2>日本の型、和の部品</h2>
+    <p>KATAのJapanジャンルは、海外向けの「和風っぽさ」ではなく、作図の型そのものです。和柄は幾何の構成から描き、落款は印として押し、金継ぎは壊れと修復の作法として部品になっています。</p>
+    <div class="ja-cards">
+      <a class="ja-card" href="/components/wagara/"><h3>和柄（Wagara）</h3><p>青海波・麻の葉・七宝など、連続文様だけを100柄。Canvasに作図で描くので、色はトークンから変わります。<span class="go">部品ページへ →</span></p></a>
+      <a class="ja-card" href="/components/hanko/"><h3>落款（Hanko）</h3><p>送信完了や承認の印に押す、小さな朱の印。サイト内でもウェイトリスト登録の完了印として働いています。<span class="go">部品ページへ →</span></p></a>
+    </div>
+  </section>
+  <section class="ja-sec">
     <h2>料金</h2>
     <p>コンポーネントとアイコンは永久無料（MIT）。有料の Pro は、組み上げ済みのブロックとテンプレートで、$129の買い切り・買い切り後の追加料金なし。販売は近日開始です。</p>
+  </section>
+  <section class="ja-sec">
+    <h2>よくある質問</h2>
+    <p><b>商用利用はできますか。</b><br>はい。コンポーネントとアイコンはMITライセンスで、商用・改変・再配布が自由です。クレジット表記も不要です。</p>
+    <p><b>パーツが有料になることはありますか。</b><br>ありません。無料の線は永久で、有料なのは組み上げ済みのブロックとテンプレートだけです。すでにコピーしたコードの扱いが変わることもありません。</p>
+    <p><b>Proはいくらですか。</b><br>$129の一回払いです（目安として約2万円）。サブスクリプションではなく、購入後の追加課金もありません。販売開始までは全ブロック・全テンプレートをこのサイトで公開しています。</p>
+    <p><b>Reactのプロジェクトでも使えますか。</b><br>使えます。部品は素のHTMLなので、JSXに貼ってclassをclassNameに変えるだけです。手順は英語ドキュメントの React &amp; Next.js ページにあります。</p>
   </section>
   <div class="ja-wl">
     <h2>販売開始の通知</h2>
@@ -1289,13 +1348,18 @@ SC_STYLE = """<style>
 </style>"""
 
 def showcase_page(templates, blocks):
+    def _parts(tp):
+        return len(tp['meta'].get('uses', [])) + len(tp['meta'].get('blocks', []))
     cards = ''.join(
-        f'<a class="sc-card" href="/templates/{esc(tp["slug"])}/"><span class="k">Template — live page</span><h3>{esc(tp["meta"]["title"])}</h3><p>{esc(tp["meta"]["description"])}</p><span class="go">Open the live page →</span></a>'
+        f'<div class="sc-card"><span class="k">Template — live page</span><h3>{esc(tp["meta"]["title"])}</h3><p>{esc(tp["meta"]["description"])}</p><p class="sc-meta">{_parts(tp)} parts &amp; blocks composed — about 5 hours by hand from free parts; minutes from the Pro download.</p><a class="go" href="/templates/{esc(tp["slug"])}/demo/">Open the full-page demo →</a><br><a class="go" href="/templates/{esc(tp["slug"])}/" style="font-weight:500">Parts &amp; code →</a></div>'
         for tp in templates)
+    cards += ('<div class="sc-card"><span class="k">Built with KATA — open shelf</span><h3>Your page here</h3>'
+              '<p>This shelf is first-party for now, and it says so. The first outside builds will not be logos we rented — they will be pages like these, live and take-apart-able. Built something? It joins by being real.</p>'
+              '<a class="go" href="https://github.com/kajisho5/KATA-UI/issues">Get listed — open an issue →</a></div>')
     body = """
 <div class="wrap sc">
   <h1>Showcase</h1>
-  <p class="lead">No mockups. Every page below is assembled from the catalog itself — the same parts, blocks and tokens the copy button hands you — and rendered live. Take any of them apart to see.</p>
+  <p class="lead">No mockups. Every page below is assembled from the catalog itself — the same parts, blocks and tokens the copy button hands you — and rendered live, full-screen. Take any of them apart to see.</p>
   <div class="sc-grid">
     <a class="sc-card" href="/"><span class="k">This site</span><h3>kata-ui.dev itself</h3><p>The landing page's showcase and collage are not screenshots: the dashboard in the hero window, the stat cards and the charts are live parts running on the page.</p><span class="go">See it on the home page →</span></a>
     <a class="sc-card" href="/starter/kata-starter.zip"><span class="k">Starter kit</span><h3>The starter project</h3><p>Tokens, the one-file bundle and a first page, zipped. The fastest honest test of the mold: unzip, open, and everything on screen is a part.</p><span class="go">Download the starter →</span></a>
@@ -1603,6 +1667,58 @@ def templates_index(templates):
     extra = TPL_STYLE + ''.join(f'<link rel="stylesheet" href="/templates/{t["slug"]}/{t["slug"]}.css?v={_v(t["css"])}">' for t in templates)
     return head('Templates — KATA UI', 'Full pages composed from KATA parts and blocks: dashboards, inboxes, landing pages.', extra) + body
 
+
+def template_demo(t, comps, blocks):
+    slug = t['slug']
+    m = t['meta']
+    by_slug = {x['slug']: x for x in comps}
+    blk_by_slug = {x['slug']: x for x in blocks}
+    css_links = '<link rel="stylesheet" href="/tokens.css">'
+    for u in m.get('uses', []):
+        if u in by_slug:
+            css_links += f'\n<link rel="stylesheet" href="/components/{u}/{u}.css?v={_v(by_slug[u]["css"])}">'
+    for u in m.get('blocks', []):
+        if u in blk_by_slug:
+            css_links += f'\n<link rel="stylesheet" href="/blocks/{u}/{u}.css?v={_v(blk_by_slug[u]["css"])}">'
+    css_links += f'\n<link rel="stylesheet" href="/templates/{slug}/{slug}.css?v={_v(t["css"])}">'
+    markup = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', t['preview']).strip()
+    scripts = ''
+    for u in m.get('uses', []):
+        cj = next((x['js'] for x in comps if x['slug'] == u), None)
+        if cj:
+            scripts += f'<script src="/components/{u}/{u}.js?v={_v(cj)}"></script>'
+    for u in m.get('blocks', []):
+        bj = next((x['js'] for x in blocks if x['slug'] == u), None)
+        if bj:
+            scripts += f'<script src="/blocks/{u}/{u}.js?v={_v(bj)}"></script>'
+    if t['js']:
+        scripts += f'<script src="/templates/{slug}/{slug}.js?v={_v(t["js"])}"></script>'
+    badge = (f'<a href="/templates/{slug}/" style="position:fixed;left:14px;bottom:14px;z-index:60;display:inline-flex;align-items:center;gap:8px;'
+             'background:#18181b;color:#f4f4f5;border:1px solid rgba(255,255,255,.2);padding:9px 15px;border-radius:999px;'
+             'font:500 12.5px Inter,system-ui,sans-serif;letter-spacing:.01em;text-decoration:none;box-shadow:0 12px 32px -12px rgba(0,0,0,.5)">'
+             '<span style="width:7px;height:7px;border-radius:50%;background:#eb471f;display:inline-block"></span>'
+             'Built with KATA UI — this page is a template. Get it &rarr;</a>')
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(m['title'])} — live demo · KATA UI</title>
+<meta name="description" content="{esc(m['description'])}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+{css_links}
+<style>html,body{{margin:0;padding:0}}body{{background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font)}}</style>
+</head>
+<body>
+{markup}
+{badge}
+{scripts}
+</body>
+</html>"""
+
+
 def template_detail(templates, idx, comps, blocks):
     t = templates[idx]
     m = t['meta']
@@ -1655,6 +1771,7 @@ def template_detail(templates, idx, comps, blocks):
       <span class="lbl">Preview</span>
       <span class="seg" data-seg="width"><button data-v="desktop" class="on">Desktop</button><button data-v="mobile">Mobile</button></span>
       <span class="seg" data-seg="theme"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></span>
+      <a href="/templates/{slug}/demo/" style="font-size:12.5px;font-weight:600;color:var(--acc);text-decoration:none;margin-left:auto">Open the full-page demo &#8599;</a>
     </div>
     <div class="tplframe">
       <div class="tplbar"><span class="tpldots"><i></i><i></i><i></i></span><span class="tplurl">{esc(m.get('url','example.com'))}</span></div>
@@ -1973,6 +2090,23 @@ DOCS = [
    [('One card, one job', 'The Login block is a Card with two fields and one primary button, and that is the whole page’s ambition. Every element added to a sign-in page — a banner, a testimonial, a “what’s new” — is measured against the only metric that matters here: does the person get in?', None, 'Errors on auth pages are written for someone who is already frustrated: say what failed and what to try, never which half of the credential was wrong. “Email or password did not match” is both kinder and safer.'),
     ('Password rules, stated before typing', 'If the account-creation form rejects passwords, the rules sit in the Field hint before the first keystroke, not in an error after the third attempt. Length is the rule that matters; composition rules mostly manufacture Post-it notes.', None, 'Offer the platform’s help: autocomplete attributes (email, current-password, new-password, one-time-code) and the Input OTP part for codes. The browser and the password manager are part of your interface whether you design for them or not.'),
     ('After the door', 'Sign-in succeeds into the App Shell, not into a celebration. If the session was heading somewhere — a deep link, an invite — it lands there. The welcome-back toast is the most that should mark the occasion.', None, None)]),
+  ('guide-forms-pro', 'Guide: Forms, For Real', 'Validation timing, the submit path, and errors that teach — the unglamorous decisions that make a form trustworthy.',
+   [('Start from the Field', 'Every control on the page is a Field: label, control, hint, error, in that order, always. The order is the accessibility contract — a screen reader meets the label before the control, and the hint is wired to the input with aria-describedby before any error exists. If a form needs a paragraph of instructions above it, the fields are under-labelled; move the words into the hints, where they are read at the moment of need.', None, 'Required is marked in the label, not discovered at submit. Optional fields in a sea of required ones say "optional" — pick one convention and let the mold hold it.'),
+    ('When to validate', 'On blur, for format; on submit, for everything; on input, only to clear an error already shown. Validating on the first keystroke punishes people mid-word, and validating only at submit makes them hunt. The error appears under the field it belongs to and replaces the hint rather than pushing the layout down — the page must not jump while someone is reading it.', None, 'A format the site can fix, it fixes silently: spaces in a card number, a phone number without its dashes. Correction without a scolding is the friendliest validation there is.'),
+    ('The submit path', 'The click disables the button and changes its label to the verb in progress — "Saving…", not a spinner alone. Success moves focus to the confirmation (a Toast for a small save, a new page for a big one) and failure keeps every value exactly where the user left it, with the summary at the top naming how many fields need attention and linking to each. A form that eats input on failure will be abandoned on the second failure, correctly.', None, 'Double-submit is a client bug before it is a server problem: the disabled state is part of the part, not a courtesy.'),
+    ('Errors that teach', 'An error names the field, the problem and the fix in one breath: "Expiry is in the past — enter a future date", never "Invalid input". Errors are written for someone already frustrated, possibly on a phone, possibly in a second language. Short, concrete, and free of blame are not softness; they are what makes the next attempt succeed.', None, None)]),
+  ('guide-table', 'Guide: Data Tables That Survive Real Data', 'Sorting, filtering and pagination wired honestly — and the line where a table stops being the right tool.',
+   [('Sorting is a contract', 'A sortable column sorts the whole dataset, not the visible page, and says so: aria-sort on the header, the direction in the label, a stable order when values tie. One column sorts at a time unless the UI can explain two. Numbers sort as numbers, dates as dates, and names the way the locale expects — a table that sorts "10" before "9" has told the reader it cannot be trusted with their data.', None, 'The default sort is the order the reader would choose: newest first for logs, name for people, status for work queues. If the table needs a manual to open, the default is wrong.'),
+    ('Filtering without a framework', 'A search input, a status select, and the table — three parts and forty lines of script. Debounce the input, filter the rows in the DOM for the sizes a page should carry, and let the count in the footer describe the filtered set, not the total. Filters are state the reader owns: keep them in the URL when the page is shareable, and never reset them on an unrelated action.', None, 'When a filter excludes everything, the empty state says what was excluded and offers the one click that clears it. An empty table with no explanation reads as data loss.'),
+    ('Pagination, honestly', 'The footer counts what is shown out of what there is — "21–40 of 312" — and the page size is a choice the reader can change. Paginate the filtered set, keep the sort across pages, and if the data changes under the reader, say so rather than silently renumbering. Infinite scroll is a reading pattern, not a working pattern: a table someone acts on needs pages they can return to.', None, None),
+    ('Ten thousand rows', 'The honest limit: a few thousand rows in the DOM is where a plain table stops being kind — layout, find-in-page and screen readers all pay. Past that, paginate on the server and let the part be the presentation of one page of data, which it does unchanged. A virtualized grid with cell editing and frozen panes is a different instrument; that is framework territory, and this guide will not pretend otherwise.', None, 'Most internal tables never get near the limit. Build for the data you have, and let the footer count tell you when the day comes.')]),
+  ('ai-prompts', 'AI Prompts', 'Paste-ready prompts that make an assistant build with real KATA parts instead of lookalikes.',
+   [('A new page from parts', 'The catalog is published for machines first in this workflow: registry.json carries every part with its files, and llms.txt indexes the docs. A prompt that names those sources gets real parts; one that does not gets an improvisation.', 'Build a settings page using only KATA UI parts from kata-ui.dev. Fetch the part list from https://kata-ui.dev/registry.json, use each part\u2019s own CSS unmodified, style nothing from scratch, and theme only through the tokens in tokens.css. Sections: profile, notifications, danger zone.', 'The same prompt works for dashboards, checkout and landing pages — change the sections, keep the sources.'),
+    ('Convert a screenshot', 'Models are good at layout and bad at inventing design systems. Anchoring the conversion to the catalog turns a lookalike into the real parts, with names you can verify on their pages.', 'Recreate this screen with KATA UI parts from kata-ui.dev. For every element, name the part you used and where its code came from. If a piece has no KATA part, say so plainly instead of inventing one.', None),
+    ('Restyle, do not rebuild', 'Because parts read tokens and nothing else, a restyle is a token diff. This is the fastest way to feel what the mold buys: the markup does not change at all.', 'Keep this page\u2019s markup exactly as it is. Re-theme it by changing only KATA UI tokens: accent to Ruri (#1E50A2), radius to 10px, dark mode on. Show me the token diff and nothing else.', None),
+    ('Add the validation', 'Point the assistant at the forms guide and the Field contract, and the generated code inherits the decisions — timing, placement, wording — instead of re-deciding them per prompt.', 'Add validation to this form following https://kata-ui.dev/docs/guide-forms-pro/ exactly: validate on blur and submit, errors replace hints, the submit button disables with a progress label, and no input is lost on failure.', None),
+    ('Make it dark', 'Dark mode in KATA is one attribute, which makes it a one-line prompt — and a good test of whether the assistant actually read the docs or is guessing.', 'Give this page a dark theme the KATA UI way: data-theme="dark" on the sections that need it, no color overrides in the parts. If any part looks wrong, name the token responsible instead of patching the part.', None),
+    ('Audit against the mold', 'The mold is written down (KATA.md) and machine-checked (check.py) in the repository, so an assistant can audit foreign code against the same standard the catalog ships by.', 'Audit this code against the KATA UI mold in KATA.md: list every raw color that should be a token, every class used but not defined, and every interactive part missing its keyboard behavior. Do not fix anything yet — report first.', None)]),
   ('why-vanilla', 'Why Vanilla', 'An honest account of what copy-paste gives you, and what it costs.',
    [('What you get', 'No runtime. A KATA page ships the HTML, CSS and JS you can read in the tab next to this one — nothing transpiles, nothing hydrates, and the dependency list is empty, so there is nothing to audit, patch or be broken by. The code is yours in the plainest sense: fork a part, rename its classes, delete the half you do not need. It will still be running, unchanged, in ten years, because nothing underneath it can be deprecated.', None, 'This is also why AI tools are good at KATA: a part is a complete, self-contained answer in one context window. The registry and llms.txt exist so the model copies the mold instead of improvising one.'),
     ('What it costs', 'No components in the framework sense: no props, no reactivity, no tree-shaking. State that spans many parts — a cart, a multi-step wizard with shared data — is yours to wire, and past a certain size a framework earns its keep. KATA’s bet is that most pages are not that size: they are forms, tables, dashboards and marketing sections, and for those the framework was never the point.', None, 'The honest line: if your app is a document with behavior, vanilla wins. If it is a program with a document attached, use the framework — and KATA’s tokens and CSS still drop into it unchanged.'),
@@ -2019,7 +2153,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
- 'November 3, 2026 — Vanilla, stated plainly; a door for React', '<p>Three changes aimed at the first five minutes. The homepage hero now leads with the whole proposition — <b>Vanilla HTML, CSS and JS. No framework. No build step.</b> — and the live mold demo sits directly under the hero, where a first visit meets it. A new docs page, <a href="/docs/react/">React &amp; Next.js</a>, shows the whole integration honestly: paste as JSX, load the CSS once, run a part\u2019s script when it mounts — and where a framework genuinely earns its keep instead. Pricing now draws its arithmetic: the composed shelf\u2019s ≈77 hours of assembly, priced at three hourly rates against $129 once.</p>', None, None),
+ 'November 3, 2026 — Full-page demos, two guides, and the itemized shelf', '<p>Every template now runs full-screen at its own demo address — no site chrome, the real page, one click from its detail page. The showcase cards carry their composition (parts in; hours by hand versus minutes with Pro), and the shelf is openly first-party until outside builds join it. Two new guides go deep where pages actually fail: forms (validation timing, the submit path, errors that teach) and data tables (sorting as a contract, filtering, the honest limit at ten thousand rows) — plus an AI prompt library of six paste-ready prompts that make an assistant fetch real parts instead of improvising them. Pricing now itemizes all 28 Pro artifacts, states the Founding 100 terms, and walks the post-checkout path before asking for anything.</p>', None, None),
+    ('November 3, 2026 — Vanilla, stated plainly; a door for React', '<p>Three changes aimed at the first five minutes. The homepage hero now leads with the whole proposition — <b>Vanilla HTML, CSS and JS. No framework. No build step.</b> — and the live mold demo sits directly under the hero, where a first visit meets it. A new docs page, <a href="/docs/react/">React &amp; Next.js</a>, shows the whole integration honestly: paste as JSX, load the CSS once, run a part\u2019s script when it mounts — and where a framework genuinely earns its keep instead. Pricing now draws its arithmetic: the composed shelf\u2019s ≈77 hours of assembly, priced at three hourly rates against $129 once.</p>', None, None),
     ('November 3, 2026 \u2014 One hundred, patterns only', '<p>Forty-two more patterns join the loom, every one a continuous field: staggered and diagonal checks, stone paving and rough stone walls, houndstooth, twill weave, basket weaves, nested hemp stars and nested seven treasures, abacus beads, crescent moons, linked squares and doubled lattices. The count is back to <b>one hundred</b> \u2014 and this time the hundred are all patterns, no pictures among them.</p>', None, None),
     ('November 3, 2026 \u2014 Patterns, only patterns', '<p>The loom is pruned from one hundred patterns to <b>fifty-eight</b>. The pictorial motifs \u2014 the crane, the rabbit, the butterflies and dragonflies, the flower medallions and gourds \u2014 are retired. What stays is what a wagara is: a continuous field that tiles without a seam or a centre. Tortoiseshell, hemp stars, thunder spirals, linked chains, diamond lattices, stone walls, mist, rain and willow. Fewer patterns, all of them patterns.</p>', None, None),
     ('November 2, 2026 \u2014 One hundred patterns on the loom', '<p>The Wagara loom goes from twenty-two patterns to <b>one hundred</b>. Waves and hemp stars now keep company with thunder spirals, linked manji and scale-weights, tortoiseshell with flowers inside, coins, chains and stone walls, mist, rain, willow and ripples \u2014 and a whole garden: chrysanthemum and plum, double cherry, iris and bellflower, peony and butterflies, cranes, dragonflies and rabbits. All seventy-eight additions are drawn from their constructions like the first twenty-two, and each was checked on contact sheets \u2014 the maple, the tomoe swirl and the quince took more than one pass to read true.</p>', None, None),
@@ -2208,6 +2343,9 @@ def main():
             if f.is_file():
                 shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(template_detail(templates, i, comps, blocks), comps, None, '/templates/' + templates[i]['slug'] + '/', True), encoding='utf-8')
+        demo_dir = dst / 'demo'
+        demo_dir.mkdir(exist_ok=True)
+        (demo_dir / 'index.html').write_text(template_demo(t, comps, blocks), encoding='utf-8')
     (DIST / 'registry.json').write_text(registry_json(comps, blocks, templates), encoding='utf-8')
     (DIST / 'llms.txt').write_text(llms_txt(comps, blocks, n_icons, templates), encoding='utf-8')
     (DIST / 'llms-full.txt').write_text(llms_full(comps, blocks, templates), encoding='utf-8')
@@ -2283,7 +2421,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

@@ -1,0 +1,16 @@
+{
+  "title": "Cookie Consent",
+  "description": "The banner every site owes its visitors: what is stored, two real choices, no dark patterns.",
+  "tags": [
+    "cookie",
+    "consent",
+    "privacy",
+    "banner",
+    "chrome"
+  ],
+  "status": "beta",
+  "uses": [
+    "button"
+  ],
+  "usage": "Accept and Decline are the same size and the same visual weight — anything else is a dark pattern with a stylesheet. The copy says what is actually stored, the settings link goes to a real preferences page, and the banner does not return after either choice. Shown here docked inside a stage; on a real page it fixes to the viewport corner."
+}

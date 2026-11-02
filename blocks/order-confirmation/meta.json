@@ -1,0 +1,16 @@
+{
+  "title": "Order Confirmation",
+  "description": "The page after the payment: what was bought, what it cost, when it arrives, what to do next.",
+  "tags": [
+    "order",
+    "confirmation",
+    "commerce",
+    "receipt"
+  ],
+  "status": "beta",
+  "uses": [
+    "button",
+    "badge"
+  ],
+  "usage": "Pairs with the Checkout template, one screen later. The confirmation number is set big enough to screenshot, the delivery estimate is a range with the honest end emphasized, and the primary action is tracking — not another upsell. Send the same content by email; a confirmation that only exists in a tab is a rumor."
+}

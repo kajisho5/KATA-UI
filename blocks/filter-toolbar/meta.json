@@ -1,0 +1,19 @@
+{
+  "title": "Filter Toolbar",
+  "description": "The working bar above every real list: search, two filters, a sort, and a density switch.",
+  "tags": [
+    "filter",
+    "toolbar",
+    "search",
+    "list",
+    "product"
+  ],
+  "status": "beta",
+  "uses": [
+    "input",
+    "select",
+    "segmented",
+    "button"
+  ],
+  "usage": "Composes the Input search wrap, two Selects, a Segmented view switch and one quiet button — nothing custom but the frame. It sits above data tables, file lists and galleries; the result count belongs at its right end, updated in words (\"128 orders\"), not hidden in a tooltip. On narrow screens it wraps in reading order: search first, always."
+}

@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/components/avatar/avatar.css">
+<link rel="stylesheet" href="/components/badge/badge.css">
+<link rel="stylesheet" href="/components/button/button.css">
+<div class="k-tpl-bl">
+  <div class="k-tpl-bl-grid">
+    <article>
+      <span class="badge teal">Process</span>
+      <h1>One mold, every casting: how we stopped redesigning the button</h1>
+      <p class="stand">For a year, every page we shipped redesigned the same twelve parts. The fix was not a bigger design system — it was a smaller one, with a checklist and the nerve to say no.</p>
+      <div class="k-tpl-bl-by">
+        <span class="k-avatar">MS</span>
+        <div><b>Mara Sato</b><span>Nov 2, 2026 · 6 min read</span></div>
+        <button class="btn btn-sm" type="button">Follow</button>
+      </div>
+      <div class="k-tpl-bl-hero">FIGURE — THE MOLD, PHOTOGRAPHED FROM ABOVE</div>
+      <p class="k-tpl-bl-cap">The master mold for the current catalog. Every part on the site began as a casting from it.</p>
+      <div class="k-tpl-bl-prose">
+        <p>Every team has the drawer: forty-one buttons, each built for one page, each slightly proud of its radius. Ours lived in production. Auditing it took a week and produced the least surprising finding in software — the differences were not decisions. They were weather.</p>
+        <h2 id="bl-s1">The audit nobody wanted</h2>
+        <p>We listed every part on every page and marked the differences worth keeping. Of 214 variations, 11 were deliberate. The rest were the same idea re-typed by different people on different Tuesdays, and each one cost maintenance forever.</p>
+        <blockquote>A design system is not a library of answers. It is a short list of questions you have agreed to stop re-asking.</blockquote>
+        <p>The mold came out of that list: one token file, a page template, and an automated check that fails a part the way a foreman rejects a bad casting — specifically, and before it ships.</p>
+        <h2 id="bl-s2">What the check actually checks</h2>
+        <p>Files first, then tokens, then class coverage: every class used in a preview must be defined by the part itself or a declared dependency. The rule sounds clerical until the first time it catches a part quietly depending on another part’s stylesheet — which was week one.</p>
+        <pre><code>python3 check.py
+125/125 components pass the mold</code></pre>
+        <p>Three rules did most of the work:</p>
+        <ul>
+          <li>Colors come from tokens, never from hex — themes stay possible.</li>
+          <li>Every class a part shows is a class the part defines.</li>
+          <li>A release needs three clean passes in a row, not one lucky one.</li>
+        </ul>
+        <h2 id="bl-s3">What we would not do again</h2>
+        <p>We would not start with the logo, the marketing page, or 2,000 icons. We would start with the button, the input, and the argument about tokens — in that order, because the argument is the system and the rest is inventory.</p>
+      </div>
+      <div class="k-tpl-bl-author">
+        <span class="k-avatar">MS</span>
+        <div><b>Written by Mara Sato</b><p>Design lead at Acme Studio. Owns the tokens, the mold, and strong opinions about border radii. Previously: three design systems that did not survive contact with a roadmap.</p></div>
+      </div>
+      <div class="k-tpl-bl-nav">
+        <a href="/templates/blog-article/"><span>Newer</span><b>RTL is a direction, not a stylesheet</b></a>
+        <a href="/templates/blog-article/"><span>Older</span><b>The QR encoder we wrote from the spec, and the two bugs it caught</b></a>
+      </div>
+    </article>
+    <aside>
+      <nav class="k-tpl-bl-toc" aria-label="Contents">
+        <h4>Contents</h4>
+        <a href="#bl-s1" class="on">The audit nobody wanted</a>
+        <a href="#bl-s2">What the check actually checks</a>
+        <a href="#bl-s3">What we would not do again</a>
+      </nav>
+    </aside>
+  </div>
+</div>

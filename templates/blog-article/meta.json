@@ -1,0 +1,21 @@
+{
+  "title": "Blog Article",
+  "description": "A long-form article page: standfirst, prose rhythm, a contents rail, and the author card that earns the follow.",
+  "tags": [
+    "blog",
+    "article",
+    "content",
+    "reading",
+    "page"
+  ],
+  "status": "beta",
+  "uses": [
+    "avatar",
+    "badge",
+    "button"
+  ],
+  "blocks": [],
+  "url": "acme.studio/blog/the-mold",
+  "usage": "The prose column is set for reading: a 17px body on a 1.85 line height inside a measure near 65 characters, headings that arrive like chapter breaks, and a contents rail that sticks on wide screens. Swap the article, keep the rhythm — the typography is the template. Figures are gradient stand-ins for your images, captions included because images without captions are decorations.",
+  "a11y": "One h1, headings in order, and the contents rail is a nav with real anchor links. The byline gives the date in text, the read time is honest arithmetic, and code blocks scroll horizontally instead of breaking the measure."
+}

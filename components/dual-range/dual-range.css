@@ -1,0 +1,12 @@
+/* KATA Dual Range — two thumbs, one honest track. */
+.k-dr{font-family:var(--k-font);color:var(--k-ink);max-width:340px}
+.k-dr-track{position:relative;height:26px}
+.k-dr-track::before{content:"";position:absolute;left:0;right:0;top:11px;height:4px;border-radius:3px;background:var(--k-zinc-200)}
+.k-dr-fill{position:absolute;top:11px;height:4px;border-radius:3px;background:var(--k-accent)}
+.k-dr input[type=range]{position:absolute;left:0;top:0;width:100%;height:26px;margin:0;background:none;-webkit-appearance:none;appearance:none;pointer-events:none}
+.k-dr input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:19px;height:19px;border-radius:50%;background:var(--k-bg);border:2px solid var(--k-zinc-400);box-shadow:0 1px 4px rgba(16,24,40,.18);pointer-events:auto;cursor:grab}
+.k-dr input[type=range]::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:var(--k-bg);border:2px solid var(--k-zinc-400);box-shadow:0 1px 4px rgba(16,24,40,.18);pointer-events:auto;cursor:grab}
+.k-dr input[type=range]:focus-visible{outline:2px solid var(--k-accent);outline-offset:4px;border-radius:6px}
+.k-dr-out{display:flex;justify-content:space-between;font-size:13px;margin-top:7px}
+.k-dr-out output{font-weight:650;font-variant-numeric:tabular-nums}
+.k-dr-out span{color:var(--k-ink-3)}

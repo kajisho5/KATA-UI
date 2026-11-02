@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/components/input/input.css">
+<link rel="stylesheet" href="/components/select/select.css">
+<link rel="stylesheet" href="/components/segmented/segmented.css">
+<link rel="stylesheet" href="/components/button/button.css">
+<div class="k-ft">
+  <div class="searchwrap grow">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+    <input class="input" type="search" placeholder="Search orders, customers, SKUs…" aria-label="Search">
+  </div>
+  <select class="k-select" aria-label="Status"><option>All statuses</option><option>Open</option><option>Paid</option><option>Overdue</option></select>
+  <select class="k-select" aria-label="Sort"><option>Newest first</option><option>Oldest first</option><option>Total, high to low</option></select>
+  <div class="k-seg" role="radiogroup" aria-label="Density">
+    <label class="k-seg-item"><input type="radio" name="ft-density" checked><span>Comfort</span></label>
+    <label class="k-seg-item"><input type="radio" name="ft-density"><span>Compact</span></label>
+  </div>
+  <button class="btn" type="button">Export</button>
+  <span class="count">128 orders</span>
+</div>

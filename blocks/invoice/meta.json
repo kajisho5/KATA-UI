@@ -1,0 +1,16 @@
+{
+  "title": "Invoice",
+  "description": "A complete invoice document: parties, line items, tax, total, and the button that gets it paid.",
+  "tags": [
+    "invoice",
+    "billing",
+    "document",
+    "finance"
+  ],
+  "status": "beta",
+  "uses": [
+    "badge",
+    "button"
+  ],
+  "usage": "The billing page every freelancer and SaaS already redraws badly. Amounts are tabular, the total is unambiguous, and the status badge says where things stand — Paid, Open, Overdue (the badge turns danger, the words never shout). Print styles are the obvious next step: an invoice that cannot be printed is a screenshot."
+}

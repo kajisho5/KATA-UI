@@ -1,0 +1,394 @@
+[
+ {
+  "family": "Sumi & silk",
+  "family_jp": "墨と白",
+  "colors": [
+   {
+    "kanji": "墨",
+    "romaji": "Sumi",
+    "kana": "すみ",
+    "hex": "#1C1C1C",
+    "note": "Pine-soot ink — the black of calligraphy."
+   },
+   {
+    "kanji": "黒",
+    "romaji": "Kuro",
+    "kana": "くろ",
+    "hex": "#080808",
+    "note": "True black, the formal color."
+   },
+   {
+    "kanji": "消炭",
+    "romaji": "Keshizumi",
+    "kana": "けしずみ",
+    "hex": "#434343",
+    "note": "Charcoal after the fire has died."
+   },
+   {
+    "kanji": "銀鼠",
+    "romaji": "Ginnezu",
+    "kana": "ぎんねず",
+    "hex": "#91989F",
+    "note": "Silver grey — 'mouse' greys were Edo chic."
+   },
+   {
+    "kanji": "利休鼠",
+    "romaji": "Rikyūnezu",
+    "kana": "りきゅうねず",
+    "hex": "#707C74",
+    "note": "The tea master Sen no Rikyū's grey-green."
+   },
+   {
+    "kanji": "胡粉",
+    "romaji": "Gofun",
+    "kana": "ごふん",
+    "hex": "#FFFFFB",
+    "note": "White pigment ground from oyster shells."
+   },
+   {
+    "kanji": "白練",
+    "romaji": "Shironeri",
+    "kana": "しろねり",
+    "hex": "#FCFAF2",
+    "note": "Silk white — cloth bleached, never dyed."
+   },
+   {
+    "kanji": "生成り",
+    "romaji": "Kinari",
+    "kana": "きなり",
+    "hex": "#FBFAF5",
+    "note": "Unbleached ecru, straight off the loom."
+   }
+  ]
+ },
+ {
+  "family": "Vermilion & reds",
+  "family_jp": "朱と紅",
+  "colors": [
+   {
+    "kanji": "朱",
+    "romaji": "Shu",
+    "kana": "しゅ",
+    "hex": "#EB6101",
+    "note": "Vermilion of shrine gates and seal ink."
+   },
+   {
+    "kanji": "茜",
+    "romaji": "Akane",
+    "kana": "あかね",
+    "hex": "#B7282E",
+    "note": "Dyed with akane — madder root."
+   },
+   {
+    "kanji": "紅",
+    "romaji": "Beni",
+    "kana": "べに",
+    "hex": "#C9171E",
+    "note": "Safflower red, the costliest dye of Edo."
+   },
+   {
+    "kanji": "蘇芳",
+    "romaji": "Suō",
+    "kana": "すおう",
+    "hex": "#8E354A",
+    "note": "Sappanwood, traded in from the south."
+   },
+   {
+    "kanji": "桜",
+    "romaji": "Sakura",
+    "kana": "さくら",
+    "hex": "#FEF4F4",
+    "note": "Cherry blossom at first opening."
+   },
+   {
+    "kanji": "撫子",
+    "romaji": "Nadeshiko",
+    "kana": "なでしこ",
+    "hex": "#DC9FB4",
+    "note": "The dianthus — Yamato nadeshiko pink."
+   },
+   {
+    "kanji": "紅梅",
+    "romaji": "Kōbai",
+    "kana": "こうばい",
+    "hex": "#E16B8C",
+    "note": "Red plum blossom in late winter."
+   },
+   {
+    "kanji": "桃",
+    "romaji": "Momo",
+    "kana": "もも",
+    "hex": "#F596AA",
+    "note": "Peach blossom."
+   }
+  ]
+ },
+ {
+  "family": "Persimmon & earth",
+  "family_jp": "柿と土",
+  "colors": [
+   {
+    "kanji": "柿",
+    "romaji": "Kaki",
+    "kana": "かき",
+    "hex": "#ED6D3D",
+    "note": "Persimmon — its tannin dye is kakishibu."
+   },
+   {
+    "kanji": "朽葉",
+    "romaji": "Kuchiba",
+    "kana": "くちば",
+    "hex": "#E2943B",
+    "note": "Fallen leaves, turning."
+   },
+   {
+    "kanji": "琥珀",
+    "romaji": "Kohaku",
+    "kana": "こはく",
+    "hex": "#CA7A2C",
+    "note": "Amber."
+   },
+   {
+    "kanji": "狐",
+    "romaji": "Kitsune",
+    "kana": "きつね",
+    "hex": "#9B6E23",
+    "note": "The fox's coat."
+   },
+   {
+    "kanji": "鳶",
+    "romaji": "Tobi",
+    "kana": "とび",
+    "hex": "#95483F",
+    "note": "The black kite's wing feathers."
+   },
+   {
+    "kanji": "小豆",
+    "romaji": "Azuki",
+    "kana": "あずき",
+    "hex": "#96514D",
+    "note": "Azuki beans."
+   },
+   {
+    "kanji": "桑染",
+    "romaji": "Kuwazome",
+    "kana": "くわぞめ",
+    "hex": "#64363C",
+    "note": "Mulberry-dyed, deep and quiet."
+   }
+  ]
+ },
+ {
+  "family": "Yamabuki & gold",
+  "family_jp": "山吹と金",
+  "colors": [
+   {
+    "kanji": "山吹",
+    "romaji": "Yamabuki",
+    "kana": "やまぶき",
+    "hex": "#FFB11B",
+    "note": "Kerria blossoms — once slang for gold coins."
+   },
+   {
+    "kanji": "梔子",
+    "romaji": "Kuchinashi",
+    "kana": "くちなし",
+    "hex": "#F6C555",
+    "note": "Gardenia fruit dye; shogi-board feet are cut from it."
+   },
+   {
+    "kanji": "鬱金",
+    "romaji": "Ukon",
+    "kana": "うこん",
+    "hex": "#EFBB24",
+    "note": "Turmeric dye — also a preservative wrap."
+   },
+   {
+    "kanji": "玉子",
+    "romaji": "Tamago",
+    "kana": "たまご",
+    "hex": "#F9BF45",
+    "note": "Egg yolk."
+   },
+   {
+    "kanji": "黄金",
+    "romaji": "Kogane",
+    "kana": "こがね",
+    "hex": "#E6B422",
+    "note": "Gold."
+   }
+  ]
+ },
+ {
+  "family": "Greens",
+  "family_jp": "緑",
+  "colors": [
+   {
+    "kanji": "萌黄",
+    "romaji": "Moegi",
+    "kana": "もえぎ",
+    "hex": "#7BA23F",
+    "note": "The yellow-green of sprouting buds."
+   },
+   {
+    "kanji": "若草",
+    "romaji": "Wakakusa",
+    "kana": "わかくさ",
+    "hex": "#C3D825",
+    "note": "Young grass of early spring."
+   },
+   {
+    "kanji": "若竹",
+    "romaji": "Wakatake",
+    "kana": "わかたけ",
+    "hex": "#5DAC81",
+    "note": "Young bamboo."
+   },
+   {
+    "kanji": "常磐",
+    "romaji": "Tokiwa",
+    "kana": "ときわ",
+    "hex": "#1B813E",
+    "note": "Evergreen — the pine that never changes."
+   },
+   {
+    "kanji": "緑青",
+    "romaji": "Rokushō",
+    "kana": "ろくしょう",
+    "hex": "#24936E",
+    "note": "Verdigris, the patina on bronze."
+   },
+   {
+    "kanji": "抹茶",
+    "romaji": "Matcha",
+    "kana": "まっちゃ",
+    "hex": "#C5C56A",
+    "note": "Powdered green tea."
+   },
+   {
+    "kanji": "鶯",
+    "romaji": "Uguisu",
+    "kana": "うぐいす",
+    "hex": "#928C36",
+    "note": "The bush warbler's feathers."
+   },
+   {
+    "kanji": "苔",
+    "romaji": "Koke",
+    "kana": "こけ",
+    "hex": "#838A2D",
+    "note": "Moss in a temple garden."
+   }
+  ]
+ },
+ {
+  "family": "Indigo & blues",
+  "family_jp": "藍と青",
+  "colors": [
+   {
+    "kanji": "浅葱",
+    "romaji": "Asagi",
+    "kana": "あさぎ",
+    "hex": "#33A6B8",
+    "note": "Pale indigo — the Shinsengumi haori."
+   },
+   {
+    "kanji": "青磁",
+    "romaji": "Seiji",
+    "kana": "せいじ",
+    "hex": "#69B0AC",
+    "note": "Celadon glaze."
+   },
+   {
+    "kanji": "水",
+    "romaji": "Mizu",
+    "kana": "みず",
+    "hex": "#81C7D4",
+    "note": "Water."
+   },
+   {
+    "kanji": "空",
+    "romaji": "Sora",
+    "kana": "そら",
+    "hex": "#58B2DC",
+    "note": "Sky."
+   },
+   {
+    "kanji": "藍",
+    "romaji": "Ai",
+    "kana": "あい",
+    "hex": "#165E83",
+    "note": "Indigo — 'Japan Blue'."
+   },
+   {
+    "kanji": "群青",
+    "romaji": "Gunjō",
+    "kana": "ぐんじょう",
+    "hex": "#4C6CB3",
+    "note": "Ultramarine, ground from lapis lazuli."
+   },
+   {
+    "kanji": "瑠璃",
+    "romaji": "Ruri",
+    "kana": "るり",
+    "hex": "#1E50A2",
+    "note": "Lapis — one of the seven treasures."
+   },
+   {
+    "kanji": "紺",
+    "romaji": "Kon",
+    "kana": "こん",
+    "hex": "#223A70",
+    "note": "Deep navy of workwear and uniforms."
+   }
+  ]
+ },
+ {
+  "family": "Purples",
+  "family_jp": "紫",
+  "colors": [
+   {
+    "kanji": "藤",
+    "romaji": "Fuji",
+    "kana": "ふじ",
+    "hex": "#8B81C3",
+    "note": "Wisteria."
+   },
+   {
+    "kanji": "桔梗",
+    "romaji": "Kikyō",
+    "kana": "ききょう",
+    "hex": "#5654A2",
+    "note": "Bellflower."
+   },
+   {
+    "kanji": "江戸紫",
+    "romaji": "Edomurasaki",
+    "kana": "えどむらさき",
+    "hex": "#745399",
+    "note": "Edo's own purple — chic, not courtly."
+   },
+   {
+    "kanji": "紫",
+    "romaji": "Murasaki",
+    "kana": "むらさき",
+    "hex": "#592C63",
+    "note": "Gromwell root — once reserved for the highest rank."
+   },
+   {
+    "kanji": "古代紫",
+    "romaji": "Kodaimurasaki",
+    "kana": "こだいむらさき",
+    "hex": "#895B8A",
+    "note": "Ancient purple, muted with age."
+   },
+   {
+    "kanji": "牡丹",
+    "romaji": "Botan",
+    "kana": "ぼたん",
+    "hex": "#C1328E",
+    "note": "Peony, king of flowers."
+   }
+  ]
+ }
+]

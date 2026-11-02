@@ -474,7 +474,7 @@ def llms_txt(comps, blocks, n_icons, templates=None):
              '- [Design System](https://kata-ui.dev/design-system/): the tokens every part is cast from (tokens.json is downloadable there)',
              f'- [Icons](https://kata-ui.dev/icons/): {n_icons} icons on one mold (24 grid, 1.7 stroke, square caps); click to copy the SVG',
              '- [Registry](https://kata-ui.dev/registry.json): every component and block with its full CSS/JS/HTML, in the shadcn registry format',
-             '- [Themes](https://kata-ui.dev/themes/): accent presets as small CSS files; a theme redefines the five accent tokens only',
+             '- [Themes](https://kata-ui.dev/themes/): accent presets as small CSS files; a theme redefines the five accent tokens only. The page also offers 50 traditional Japanese colors (dentou) as click-to-cast accent sources',
              '- [Getting Started](https://kata-ui.dev/docs/getting-started/): load tokens.css once, then copy parts',
              '- [Skill for AI assistants](https://kata-ui.dev/skill/SKILL.md): a packaged SKILL.md that teaches an assistant to build with KATA correctly',
              '- [CLI](https://kata-ui.dev/docs/cli/): a zero-dependency Node script that installs parts from the registry — node kata-ui.mjs add button',
@@ -1380,6 +1380,9 @@ def template_detail(templates, idx, comps, blocks):
 def load_themes():
     return json.loads((ROOT / 'system' / 'themes.json').read_text(encoding='utf-8'))
 
+def load_dentou():
+    return json.loads((ROOT / 'system' / 'dentou.json').read_text(encoding='utf-8'))
+
 def theme_css(t):
     return ('/* KATA UI theme: ' + t['label'] + ' — load AFTER tokens.css.\n'
             '   A theme moves the accent only. Neutrals, motion and the vermillion core never change. */\n'
@@ -1422,6 +1425,32 @@ BUILDER_STYLE = """<style>
 .thbuild code{font-family:var(--mono);font-size:12.5px;color:var(--ink2);margin-left:auto}
 </style>"""
 
+DENTOU_STYLE = """<style>
+.dentou{margin-top:52px;border-top:1px solid var(--hair);padding-top:34px}
+.dentou .dtk{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:14px;letter-spacing:.4em;color:var(--ink3)}
+.dentou h2{font-size:24px;font-weight:600;letter-spacing:-.02em;margin-top:8px}
+.dtpv{margin-top:18px;border:1px solid var(--hair);border-radius:14px;background:#fff;padding:16px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.dtpv .lbl{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em;width:100%}
+.dtpv .dtstatus{font-size:12.5px;color:var(--ink2)}
+.dtfam{font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:28px 0 10px;display:flex;gap:12px;align-items:baseline}
+.dtfam span{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.25em;color:var(--ink3);font-size:12px;text-transform:none;font-weight:400}
+.dtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px}
+.dtcard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:0;text-align:left;cursor:pointer;overflow:hidden;font:inherit;color:var(--ink);display:flex;flex-direction:column;width:100%}
+.dtcard .dsw{height:58px;display:block;border-bottom:1px solid var(--hair);flex:none}
+.dtcard:hover{border-color:var(--ink3)}
+.dtcard.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+.dtcard .dsw{height:58px;display:block;border-bottom:1px solid var(--hair)}
+.dtcard .dbd{display:block;padding:10px 12px 11px}
+.dtcard .dkj{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:19px;line-height:1.25;display:block}
+.dtcard .drm{font-size:12.5px;font-weight:600;margin-top:3px;display:block}
+.dtcard .drm i{font-style:normal;font-weight:400;color:var(--ink3);font-size:11.5px;margin-left:5px}
+.dtcard .dhx{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-top:5px;display:flex;justify-content:space-between;align-items:center}
+.dtcard .dhx .cp{font-size:10.5px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:2px 7px}
+.dtcard .dnt{font-size:11.5px;color:var(--ink2);line-height:1.6;margin-top:6px;display:block}
+.dtcard.core{cursor:default;background:var(--soft)}
+.dtcard .core-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ink3);border:1px solid var(--hair);border-radius:99px;padding:2px 7px}
+</style>"""
+
 def themes_page(themes):
     import json as _json
     cards = []
@@ -1441,6 +1470,73 @@ def themes_page(themes):
     <div><div class="hb">Make your own</div><div class="hn">Pick any accent — the ink shade, the dark-mode ink and the washes are derived for you, and the code below becomes your theme.</div></div>
     <code id="thhex">#0e9594</code>
   </div>"""
+    dentou = load_dentou()
+    core_card = ('<div class="dtcard core"><span class="dsw" style="background:#eb471f"></span><span class="dbd">'
+                 '<span class="dkj">型の朱</span><span class="drm">Kata vermilion<i>かたのしゅ</i></span>'
+                 '<span class="dhx">#EB471F<span class="core-tag">THE CORE</span></span>'
+                 '<span class="dnt">KATA\u2019s own vermilion \u2014 inside every switch and radio. It is not a theme: no color moves it.</span></span></div>')
+    fams = []
+    for f in dentou:
+        dcards = []
+        if f['family'] == 'Vermilion & reds':
+            dcards.append(core_card)
+        for col in f['colors']:
+            slug = col['romaji'].lower().replace('\u016b', 'u').replace('\u014d', 'o')
+            dcards.append('<button class="dtcard" type="button" data-dentou data-hex="' + col['hex'] + '" data-name="' + col['romaji'] + '" data-slug="' + slug + '" data-kanji="' + col['kanji'] + '">'
+                          '<span class="dsw" style="background:' + col['hex'].lower() + '"></span><span class="dbd">'
+                          '<span class="dkj">' + col['kanji'] + '</span>'
+                          '<span class="drm">' + col['romaji'] + '<i>' + col['kana'] + '</i></span>'
+                          '<span class="dhx">' + col['hex'] + '<span class="cp" data-copy="' + col['hex'] + '">Copy</span></span>'
+                          '<span class="dnt">' + col['note'] + '</span></span></button>')
+        fams.append('<h3 class="dtfam">' + f['family'] + '<span>' + f['family_jp'] + '</span></h3><div class="dtgrid">' + ''.join(dcards) + '</div>')
+    palette = """
+<section class="dentou" id="dentou">
+  <span class="dtk">伝統色</span>
+  <h2>Traditional colors of Japan</h2>
+  <p class="lead" style="margin-top:8px">Fifty colors that began as dyes, pigments and plants \u2014 indigo, safflower, gardenia, pine soot. Click one and it is cast into the same demo and the same CSS as any theme above: the button, the switch and the badge take the color, under its own name (ai.css, yamabuki.css). The hex values follow the common references (NIPPON COLORS and the JIS customary color names); colors older than hex itself are faithful approximations, not measurements.</p>
+  <div class="dtpv" id="dtpv">
+    <span class="lbl">CASTING \u2014 TRADITIONAL COLORS</span>
+    <button class="btn btn-teal btn-md" type="button">Accent button</button>
+    <span class="badge teal"><i></i><span id="dtpvname">Teal</span></span>
+    <span class="dtstatus" id="dtstatus">Pick a color below \u2014 it lands here, in the demo above, and in the CSS.</span>
+  </div>
+""" + ''.join(fams) + """
+</section>
+"""
+    dentou_script = r"""<script>
+function applyDentou(hex,romaji,slug,kanji){
+  var rgb=h2r(hex);var hsl=rgbToHsl(rgb[0],rgb[1],rgb[2]);
+  var ink=hslToHex(hsl[0],hsl[1],hsl[2]*0.84);
+  var dink=hslToHex(hsl[0],Math.max(hsl[1]-8,0),hsl[2]+(100-hsl[2])*0.55);
+  [demo,document.getElementById('dtpv')].forEach(function(el){
+    el.style.setProperty('--k-accent',hex);
+    el.style.setProperty('--k-accent-ink',ink);
+    el.style.setProperty('--k-accent-bg','rgba('+rgb.join(',')+',.08)');
+    el.style.setProperty('--k-accent-bg-strong','rgba('+rgb.join(',')+',.1)');
+    el.style.setProperty('--k-accent-line','rgba('+rgb.join(',')+',.18)');
+  });
+  var css='/* KATA UI theme: '+romaji+' ('+kanji+') \u2014 a traditional color of Japan.\n   Load AFTER tokens.css. A theme moves the accent only.\n   Neutrals, motion and the vermillion core never change. */\n:root{\n  --k-accent:'+hex+';\n  --k-accent-ink:'+ink+';\n  --k-accent-bg:rgba('+rgb.join(',')+',.08);\n  --k-accent-bg-strong:rgba('+rgb.join(',')+',.1);\n  --k-accent-line:rgba('+rgb.join(',')+',.18);\n}\n[data-theme="dark"]{\n  --k-accent-ink:'+dink+';\n}\n';
+  document.getElementById('thcss').textContent=css;
+  document.getElementById('thname').textContent=slug+'.css';
+  if(blobUrl)URL.revokeObjectURL(blobUrl);
+  blobUrl=URL.createObjectURL(new Blob([css],{type:'text/css'}));
+  var dl=document.getElementById('thdl');dl.href=blobUrl;dl.setAttribute('download',slug+'.css');
+  document.getElementById('thhex').textContent=hex;
+  document.getElementById('thcolor').value=hex.toLowerCase();
+  document.getElementById('dtpvname').textContent=romaji;
+  document.getElementById('dtstatus').textContent=kanji+' '+romaji+' \u2014 '+hex.toUpperCase()+' is cast. The theme CSS above is now '+slug+'.css.';
+  document.querySelectorAll('[data-theme-card]').forEach(function(c){c.classList.remove('on');});
+}
+document.querySelectorAll('[data-dentou]').forEach(function(card){
+  card.addEventListener('click',function(){
+    document.querySelectorAll('[data-dentou]').forEach(function(c){c.classList.remove('on');});
+    card.classList.add('on');
+    applyDentou(card.dataset.hex,card.dataset.name,card.dataset.slug,card.dataset.kanji);
+  });
+  var cp=card.querySelector('[data-copy]');
+  if(cp)cp.addEventListener('click',function(e){e.stopPropagation();if(navigator.clipboard)navigator.clipboard.writeText(cp.dataset.copy);cp.textContent='Copied';setTimeout(function(){cp.textContent='Copy';},1400);});
+});
+</script>"""
     script = '<script>var THEMES=' + _json.dumps(themes) + """;
 var CODES={};
 """ + ''.join('CODES["' + t['name'] + '"]=' + _json.dumps(theme_css(t)) + ';\n' for t in themes) + """
@@ -1488,7 +1584,7 @@ applyTheme('teal');
     body = """
 <div class="wrap th">
   <h1>Themes</h1>
-  <p class="lead">A theme moves one thing: the accent. Neutrals stay zinc, motion stays measured, and the vermillion core — the mark inside the Switch and the Radio — never changes. Pick a preset to see the same parts re-cast, then take the CSS.</p>
+  <p class="lead">A theme moves one thing: the accent. Neutrals stay zinc, motion stays measured, and the vermillion core — the mark inside the Switch and the Radio — never changes. Pick a preset to see the same parts re-cast, then take the CSS. Or skip the presets \u2014 <a href="#dentou">fifty traditional colors of Japan</a> wait below, each ready to cast.</p>
   <div class="thgrid">""" + ''.join(cards) + """
   </div>
 """ + demo + builder + """
@@ -1497,11 +1593,11 @@ applyTheme('teal');
     <pre id="thcss"></pre>
   </div>
   <p class="lead" style="margin-top:18px">Making your own is the same move by hand: redefine the five accent tokens after <span style="font-family:var(--mono);font-size:13px">tokens.css</span>. See <a href="/docs/theming/">Theming</a>.</p>
-</div>
-""" + FOOTER + '\n' + script + """
+""" + palette + """</div>
+""" + FOOTER + '\n' + script + dentou_script + """
 </body>
 </html>"""
-    extra = (THEME_STYLE + BUILDER_STYLE + '<link rel="stylesheet" href="/components/button/button.css">'
+    extra = (THEME_STYLE + BUILDER_STYLE + DENTOU_STYLE + '<link rel="stylesheet" href="/components/button/button.css">'
              '<link rel="stylesheet" href="/components/switch/switch.css">'
              '<link rel="stylesheet" href="/components/badge/badge.css">')
     return head('Themes — KATA UI', 'Accent presets for KATA UI: one token family changes, everything else holds.', extra) + body
@@ -1610,7 +1706,8 @@ DOCS = [
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — The zoom pass', '<p>Every one of the 201 pages and all 136 part previews was re-examined at full phone size. The pass caught and fixed a collapsed Accordion Gallery and Speed Dial stage, a Hover Card whose markup invalidly nested blocks inside a paragraph, clipped Radar Chart labels, a nearly invisible Skeleton, label collisions in Steps and List, tables that broke out of their stages, and readouts that shrank instead of stretching. The landing page Questions section now answers questions about this library instead of a generic SaaS. Nothing new was added; everything already here simply holds up better under a magnifying glass.</p>', None, None),
+   [('November 2, 2026 \u2014 Traditional colors of Japan', '<p>The Themes page gains \u4f1d\u7d71\u8272: fifty traditional Japanese colors in seven families \u2014 pine-soot inks, safflower reds, indigo blues, gardenia yellows \u2014 each with its kanji name, its reading and the dye or pigment it came from. Clicking one casts it into the live demo and writes the theme CSS under its own name (ai.css, yamabuki.css), so a button can wear a thousand-year-old color in one click. At the head of the reds sits \u578b\u306e\u6731, KATA\u2019s own vermilion core, labeled as what it is: the one color no theme moves.</p>', None, None),
+    ('November 2, 2026 — The zoom pass', '<p>Every one of the 201 pages and all 136 part previews was re-examined at full phone size. The pass caught and fixed a collapsed Accordion Gallery and Speed Dial stage, a Hover Card whose markup invalidly nested blocks inside a paragraph, clipped Radar Chart labels, a nearly invisible Skeleton, label collisions in Steps and List, tables that broke out of their stages, and readouts that shrank instead of stretching. The landing page Questions section now answers questions about this library instead of a generic SaaS. Nothing new was added; everything already here simply holds up better under a magnifying glass.</p>', None, None),
  ('November 2, 2026 — Ten patterns on the loom', 'The Wagara instrument grows from four patterns to ten, each still drawn from its construction: Kikko (nested tortoiseshell hexagons), Uroko (the triangle scale tiling), Samekomon (dots riding the scale arcs, sharkskin-fine), Yagasuri (the arrow-feather silhouette), Kanoko (staggered shibori fawn-spots) and Hishi (the diamond lattice, studded at its crossings). Same three tones, same tokens — the loom is bigger, the discipline is not.', None, None),
     ('November 2, 2026 — Retina, at last', 'A bug report from a phone: the canvas parts were drawing at 1x and being stretched on retina screens — the shippo circles gave it away, soft where they should be cut. All nine canvas parts (Wagara, Kintsugi Card, Particle Net, Particle Word, Fireworks, Kata Rain, Kaleidoscope, Confetti Cannon, Burst Button) now back their canvases at device pixel ratio, up to 3x, and draw through the transform in CSS pixels as before. Same pictures, drawn at the resolution your screen actually has.', None, None),
     ('November 2, 2026 — v1.0.0', 'The catalog gets a version number and a front door for the sale to come. v1.0.0 is now stamped where machines look: registry.json carries it, the CLI answers --version with it, and the MCP server already spoke it. The pricing page and the landing page both take waitlist emails for the Pro launch — one email on the day, promised in writing next to the form. Three new pages: an honest KATA vs shadcn/ui comparison in the docs (it recommends shadcn twice, for React teams), a Showcase that assembles the evidence — every template is a live page built from the parts it lists — and a Japanese landing at /ja/, one page, for the home market. The README finally counts what is actually in the catalog: 136 parts in eight categories, 21 blocks, 7 templates.', None, None),

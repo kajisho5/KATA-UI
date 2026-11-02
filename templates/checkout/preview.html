@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/components/steps/steps.css">
+<link rel="stylesheet" href="/components/input/input.css">
+<link rel="stylesheet" href="/components/select/select.css">
+<link rel="stylesheet" href="/components/checkbox/checkbox.css">
+<link rel="stylesheet" href="/components/button/button.css">
+<div class="k-tpl-co">
+  <div class="k-tpl-co-head"><h2>Acme Studio — Checkout</h2><span>Secure · TLS everywhere</span></div>
+  <ol class="k-steps" style="margin-bottom:20px">
+    <li data-state="done"><span class="n"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span><span class="t">Cart</span></li>
+    <li data-state="current" aria-current="step"><span class="n"></span><span class="t">Shipping &amp; payment</span></li>
+    <li><span class="n">3</span><span class="t">Done</span></li>
+  </ol>
+  <div class="k-tpl-co-grid">
+    <div>
+      <div class="k-tpl-co-card">
+        <h3>Shipping</h3>
+        <div class="k-tpl-co-form">
+          <div class="field"><label for="co-name">Full name</label><input class="input" id="co-name" value="Ren Aoki" autocomplete="name"></div>
+          <div class="field"><label for="co-mail">Email</label><input class="input" id="co-mail" value="ren@example.com" autocomplete="email"></div>
+          <div class="field full"><label for="co-addr">Address</label><input class="input" id="co-addr" value="1-13-3 Matsuyama" autocomplete="street-address"></div>
+          <div class="field"><label for="co-city">City</label><input class="input" id="co-city" value="Kiyose, Tokyo"></div>
+          <div class="field"><label for="co-ship">Delivery</label><select class="k-select" id="co-ship"><option>Standard — free, 3–5 days</option><option>Express — $12, tomorrow</option></select></div>
+        </div>
+      </div>
+      <div class="k-tpl-co-card">
+        <h3>Payment</h3>
+        <div class="k-tpl-co-form">
+          <div class="field full"><label for="co-card">Card number</label><input class="input" id="co-card" value="4242 4242 4242 4242" inputmode="numeric"></div>
+          <div class="field"><label for="co-exp">Expiry</label><input class="input" id="co-exp" value="12 / 28"></div>
+          <div class="field"><label for="co-cvc">CVC</label><input class="input" id="co-cvc" value="424"></div>
+          <label class="check full"><input type="checkbox" checked>Billing address is the shipping address</label>
+        </div>
+      </div>
+    </div>
+    <aside class="k-tpl-co-sum">
+      <h3>Order summary</h3>
+      <div class="k-tpl-co-item"><span>KATA Pro — lifetime</span><b>$129</b></div>
+      <div class="k-tpl-co-item"><span>Mold poster, A2</span><b>$24</b></div>
+      <div class="k-tpl-co-item"><span>Sticker pack ×2</span><b>$10</b></div>
+      <div class="k-tpl-co-row"><span>Subtotal</span><span>$163</span></div>
+      <div class="k-tpl-co-row"><span>Shipping</span><span>Free</span></div>
+      <div class="k-tpl-co-total"><span>Total</span><span>$163</span></div>
+      <button class="btn btn-pri btn-lg" type="button" style="width:100%;margin-top:15px">Place order — $163</button>
+      <p class="k-tpl-co-note">Demo storefront: no card is charged, no order ships, the poster remains hypothetical.</p>
+    </aside>
+  </div>
+</div>

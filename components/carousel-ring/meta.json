@@ -1,0 +1,15 @@
+{
+  "title": "Carousel Ring",
+  "category": "KATAYABURI",
+  "description": "A merry-go-round of cards in real 3D: eight panels riding a ring that never stops turning.",
+  "tags": [
+    "carousel",
+    "3d",
+    "ring",
+    "cards",
+    "rotate"
+  ],
+  "status": "beta",
+  "usage": "Eight panels on a preserve-3d ring, one spin keyframe, perspective on the stage — the whole illusion is geometry. Hover pauses the ride so a panel can actually be read, which separates a carousel from a rumor. Put the parts, the plans, or the team on the horses.",
+  "a11y": "The ring is a rotating picture of a list: name the list in the figure’s label and keep a static version reachable on the page. Rotation stops on hover and entirely under prefers-reduced-motion, leaving the front panel facing the reader."
+}

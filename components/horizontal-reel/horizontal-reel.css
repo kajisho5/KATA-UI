@@ -1,0 +1,8 @@
+/* KATA Horizontal Reel — down becomes sideways. */
+.k-reel{height:236px;overflow:auto;border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);font-family:var(--k-font);color:var(--k-ink)}
+.k-reel-space{height:290%;position:relative}
+.k-reel-view{position:sticky;top:0;height:236px;overflow:hidden;display:flex;align-items:center}
+.k-reel-strip{display:flex;gap:13px;padding:0 18px;will-change:transform}
+.k-reel-card{flex:none;width:196px;height:148px;border:1px solid var(--k-line);border-radius:13px;background:var(--k-bg-soft);padding:16px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px}
+.k-reel-card b{font-size:14.5px;font-weight:650}
+.k-reel-card span{font-size:12px;color:var(--k-ink-2)}

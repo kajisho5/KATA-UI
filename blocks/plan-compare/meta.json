@@ -1,0 +1,15 @@
+{
+  "title": "Plan Compare",
+  "description": "The feature matrix under the pricing cards: what each plan really includes, row by honest row.",
+  "tags": [
+    "pricing",
+    "compare",
+    "table",
+    "marketing"
+  ],
+  "status": "beta",
+  "uses": [
+    "badge"
+  ],
+  "usage": "Pairs with the Pricing block, below it, for the readers who compare before they buy. The Pro column carries the highlight and the badge; checks are accent, dashes are zinc, and no row is worded to trick anyone — a matrix is a promise in grid form."
+}

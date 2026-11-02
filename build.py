@@ -970,15 +970,15 @@ BLOCK_STYLE = """<style>
 </style>"""
 
 BLOCK_CATS = [('Page chrome', ['app-shell', 'site-header', 'site-footer']),
-              ('Marketing', ['pricing', 'use-cases', 'integrations', 'testimonials', 'logo-cloud', 'faq', 'cta-band']),
-              ('Product', ['login', 'settings', 'stat-cards', 'kanban'])]
+              ('Marketing', ['pricing', 'use-cases', 'integrations', 'testimonials', 'logo-cloud', 'faq', 'cta-band', 'team', 'plan-compare']),
+              ('Product', ['login', 'settings', 'stat-cards', 'kanban', 'roadmap'])]
 
 def blocks_index(blocks):
     def card(b):
         m = b['meta']
         uses = ''.join(f'<span>{esc(u)}</span>' for u in m.get('uses', []))
         return f"""<a class="bcard" href="/blocks/{b['slug']}/">
-  <h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h3>
+  <h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span> <span class="st st-pro">Pro</span></h3>
   <p>{esc(m['description'])}</p>
   <span class="uses">{uses}</span>
 </a>"""
@@ -1049,7 +1049,7 @@ def block_detail(blocks, idx, comps):
 <div class="wrap">
   <main class="detail">
     <p class="crumb"><a href="/blocks/">Blocks</a> / {esc(m['title'])}</p>
-    <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h1>
+    <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span> <span class="st st-pro">Pro</span></h1>
     <p class="desc">{esc(m['description'])}</p>
     <div class="stagebar">
       <span class="lbl">Preview</span>
@@ -1127,7 +1127,7 @@ def templates_index(templates):
         cards.append(f"""<article class="tplcard">
   <div class="tplthumb"><div class="tplscale">{t['preview']}</div></div>
   <div class="tplmeta">
-  <h3><a href="/templates/{t['slug']}/">{esc(m['title'])}</a> <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h3>
+  <h3><a href="/templates/{t['slug']}/">{esc(m['title'])}</a> <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span> <span class="st st-pro">Pro</span></h3>
   <p>{esc(m['description'])}</p>
   <span class="uses">{uses}</span>
   </div>
@@ -1192,7 +1192,7 @@ def template_detail(templates, idx, comps, blocks):
 <div class="wrap">
   <main class="detail">
     <p class="crumb"><a href="/templates/">Templates</a> / {esc(m['title'])}</p>
-    <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h1>
+    <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span> <span class="st st-pro">Pro</span></h1>
     <p class="desc">{esc(m['description'])}</p>
     <div class="stagebar">
       <span class="lbl">Preview</span>
@@ -1452,7 +1452,8 @@ DOCS = [
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — KATAYABURI', 'Every mold deserves a shelf where it is broken on purpose. KATAYABURI (型破り, "breaking the form") is a new seventh category: eight parts with no business case — a word made of a thousand spring-loaded particles, katakana rain, a confetti cannon in the token palette, the catalog itself dropped under gravity, a kaleidoscope that draws alone until you take the pen, a goo cursor with surface tension, a warp tunnel in pure CSS, and jelly buttons. The joke the shelf is built on: every rebel still passes the mold — tokens, class coverage, reduced-motion manners and all. The catalog stands at 117 parts.', None, None),
+   [('November 2, 2026 — More weather, and the Pro line grows teeth', 'Seven more parts: KATAYABURI gains Fireworks (click the sky), Newton\u2019s Cradle in pure CSS, a 3D Carousel Ring and Bounce Letters; Motion gains Stacking Cards, an Accordion Gallery and a Horizontal Reel. Blocks and templates — the Pro line — now wear a Pro pill on their cards and pages, and the line itself grew: Team Grid, Roadmap and Plan Compare blocks, and a full Checkout template composing steps, forms and a sticky summary. The catalog stands at 124 parts, 17 blocks and 5 templates.', None, None),
+    ('November 2, 2026 — KATAYABURI', 'Every mold deserves a shelf where it is broken on purpose. KATAYABURI (型破り, "breaking the form") is a new seventh category: eight parts with no business case — a word made of a thousand spring-loaded particles, katakana rain, a confetti cannon in the token palette, the catalog itself dropped under gravity, a kaleidoscope that draws alone until you take the pen, a goo cursor with surface tension, a warp tunnel in pure CSS, and jelly buttons. The joke the shelf is built on: every rebel still passes the mold — tokens, class coverage, reduced-motion manners and all. The catalog stands at 117 parts.', None, None),
     ('November 2, 2026 — Weather, gravity, light', 'The Motion shelf more than doubled, ten parts to twenty-three. New weather: Meteors seeding a night sky, Sparkles twinkling in the container\u2019s own color. New gravity: a macOS-style Dock whose tiles swell by proximity, and Magnet, a button that leans a third of the way toward the cursor. New light: Glow Cards whose borders warm where the pointer passes, a Tilt Card with a real floating layer, Shine Text, and a Tracing Beam that fills the rail as you read. New voices: Typewriter, Scramble decoding itself, Word Rotate stepping its stack, Blur In sharpening word by word, and Orbit — two rings, two speeds, every glyph upright. Every one honors prefers-reduced-motion, and the showpieces were verified in motion, in screenshots, mid-flight.', None, None),
     ('November 2, 2026 — The machine room', 'The docs grew the pages that explain the machinery: Introduction, Registry, Forms, MCP Server and RTL (24 doc pages in all). The MCP server ships as a single zero-dependency file at /mcp/kata-ui-mcp.mjs — list, search and get, read-only, straight from the registry. A Pricing page states the line in public: parts free forever, Pro is blocks and templates at $129 once, not yet on sale. Blocks are grouped by kind (Page chrome / Marketing / Product) and gained a Kanban board whose cards really drag. And the catalog learned direction: chrome and structural parts now use logical properties throughout, so dir="rtl" mirrors them — verified part by part, with the physical showpieces honestly exempted.', None, None),
     ('November 2, 2026 — The missing sixteen', 'A second gap hunt — the current catalogs of six libraries against our own, example by example — found sixteen genres the mold had never cast. All sixteen are parts now: Button Group and Input Group (the seams were missing even as examples), Collapsible, Descriptions, Result, Bottom Navigation, Calendar (freed from inside the Date Picker), Comparison Slider, Speed Dial, Scrollspy, Navigation Menu, Menubar, Time Picker, Cascader, Transfer — and a QR Code whose encoder is written from the spec, zero-dependency, and verified module-for-module against a reference implementation across versions 1–6. The catalog stands at 96 parts.', None, None),

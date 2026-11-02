@@ -1,0 +1,10 @@
+/* KATA Block: Plan Compare */
+.k-pc{font-family:var(--k-font);color:var(--k-ink);overflow-x:auto}
+.k-pc table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
+.k-pc th,.k-pc td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--k-line)}
+.k-pc thead th{font-size:14px;font-weight:650;border-bottom:2px solid var(--k-line)}
+.k-pc tbody th{font-weight:550;color:var(--k-ink-2)}
+.k-pc td.hot{background:var(--k-accent-bg)}
+.k-pc thead th.hot{background:var(--k-accent-bg);border-radius:10px 10px 0 0}
+.k-pc .y{color:var(--k-accent-ink);font-weight:700}
+.k-pc .n{color:var(--k-zinc-400)}

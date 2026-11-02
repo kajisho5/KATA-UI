@@ -40,6 +40,7 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(253,253,253,.9);back
 .st{font-size:10.5px;font-weight:600;letter-spacing:.05em;border-radius:99px;padding:2.5px 8px;text-transform:uppercase}
 .st-stable{background:rgba(14,149,148,.1);color:#0b7372}
 .st-beta{background:rgba(245,158,11,.12);color:#b45309}
+.st-pro{background:var(--k-ink);color:var(--k-bg)}
 footer.site{margin-top:76px;border-top:1px solid var(--hair);padding:26px 0 42px;color:var(--ink3);font-size:12.5px;display:flex;gap:12px;flex-wrap:wrap}
 /* detail layout */
 .layout{display:grid;grid-template-columns:232px 1fr;gap:clamp(22px,3.5vw,48px);margin-top:34px;padding-bottom:70px}

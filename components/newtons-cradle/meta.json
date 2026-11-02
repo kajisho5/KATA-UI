@@ -1,0 +1,15 @@
+{
+  "title": "Newton's Cradle",
+  "category": "KATAYABURI",
+  "description": "The desk toy, in pure CSS: five steel balls, one endless argument about momentum.",
+  "tags": [
+    "newtons cradle",
+    "physics",
+    "css",
+    "desk toy",
+    "pendulum"
+  ],
+  "status": "beta",
+  "usage": "No script at all — two keyframes and a delay keep the end balls trading blows forever. It belongs wherever a page waits: loading states, \"we are thinking\" panels, the footer of a site with confidence. The middle three balls do nothing, beautifully, which is also a management style.",
+  "a11y": "A silent, looping ornament: aria-hidden, with the page’s real status carried in words beside it. Under prefers-reduced-motion the balls hang still — momentum, conserved at zero."
+}

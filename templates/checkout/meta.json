@@ -1,0 +1,22 @@
+{
+  "title": "Checkout",
+  "description": "A complete checkout page: steps, shipping and payment forms, and a sticky order summary that keeps the total honest.",
+  "tags": [
+    "checkout",
+    "commerce",
+    "payment",
+    "page"
+  ],
+  "status": "beta",
+  "uses": [
+    "steps",
+    "input",
+    "select",
+    "checkbox",
+    "button"
+  ],
+  "blocks": [],
+  "url": "shop.acme.studio/checkout",
+  "usage": "Copy the page and rewire the forms; every field is an ordinary KATA part with its own page. The summary column is sticky on desktop and stacks above the form on mobile (totals first, no surprises). Nothing here processes a payment — connect your provider at the Place order button, where the page ends and liability begins.",
+  "a11y": "Labels are real labels tied to inputs, the steps carry aria-current, and the total appears before the button in reading order. Errors belong under their fields in words, not just in red."
+}

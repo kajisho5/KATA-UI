@@ -1,0 +1,13 @@
+/* KATA Newton's Cradle — KATAYABURI. Momentum, the desk toy. */
+.k-cr{width:100%;border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);padding:20px 0 16px;font-family:var(--k-font)}
+.k-cr-frame{width:236px;margin:0 auto}
+.k-cr-bar{height:7px;border-radius:4px;background:var(--k-ink)}
+.k-cr-row{display:flex;justify-content:center}
+.k-cr-p{width:40px;height:128px;transform-origin:top center;display:flex;flex-direction:column;align-items:center}
+.k-cr-p::before{content:"";width:1.5px;height:92px;background:var(--k-zinc-400)}
+.k-cr-b{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 34% 30%, var(--k-zinc-100), var(--k-zinc-400) 78%);box-shadow:0 3px 7px rgba(16,24,40,.25);flex:none}
+.k-cr-p.end.l{animation:k-cr-l 2.4s ease-in-out infinite}
+.k-cr-p.end.r{animation:k-cr-r 2.4s ease-in-out infinite}
+@keyframes k-cr-l{0%,50%,100%{transform:rotate(0)}25%{transform:rotate(-27deg)}}
+@keyframes k-cr-r{0%,50%,100%{transform:rotate(0)}75%{transform:rotate(27deg)}}
+@media (prefers-reduced-motion:reduce){.k-cr-p.end{animation:none}}

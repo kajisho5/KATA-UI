@@ -1,0 +1,15 @@
+{
+  "title": "Accordion Gallery",
+  "category": "Motion",
+  "description": "Five scenes in a row; the one you touch opens up and tells its caption.",
+  "tags": [
+    "gallery",
+    "accordion",
+    "expand",
+    "panels",
+    "hover"
+  ],
+  "status": "beta",
+  "usage": "A flex row where the hovered (or focused) panel takes three times the room and its caption fades in. The scenes here are gradients, but photographs slot straight in. A staple of landing pages because it shows five things and describes one — exactly the right ratio.",
+  "a11y": "Panels are focusable and expand on focus as well as hover, so the keyboard gets the same gallery. Captions are real text inside each panel, present in the reading order whether or not the panel is open."
+}

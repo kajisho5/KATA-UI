@@ -1,0 +1,15 @@
+{
+  "title": "Team Grid",
+  "description": "The people page in one block: six members with avatars, roles and one honest line each.",
+  "tags": [
+    "team",
+    "people",
+    "about",
+    "marketing"
+  ],
+  "status": "beta",
+  "uses": [
+    "avatar"
+  ],
+  "usage": "Avatars are the Avatar part with initials — swap in photographs by replacing the span with an img inside the same class. Six is the grid’s natural size; for four or eight, the columns adapt. Keep the one-line bios specific: \"Runs the night shift\" beats \"Passionate innovator\" everywhere on Earth."
+}

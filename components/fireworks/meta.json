@@ -1,0 +1,15 @@
+{
+  "title": "Fireworks",
+  "category": "KATAYABURI",
+  "description": "Click the night and it blooms: rockets, bursts and falling sparks on one canvas.",
+  "tags": [
+    "fireworks",
+    "canvas",
+    "celebration",
+    "night",
+    "interactive"
+  ],
+  "status": "beta",
+  "usage": "The sky fires on its own every second or so, and any click launches a rocket at that point. Colors come from the tokens, so the show matches the site throwing it. For launches and milestones — and for the one page a year that gets to be a festival.",
+  "a11y": "A light show, labeled as one: the canvas is aria-hidden behind the words that carry the news. Under prefers-reduced-motion the sky stays dark and quiet, and the announcement does the celebrating."
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Roadmap",
+  "description": "Three honest columns — shipped, building, exploring — instead of a Gantt chart of lies.",
+  "tags": [
+    "roadmap",
+    "product",
+    "planning",
+    "status"
+  ],
+  "status": "beta",
+  "uses": [
+    "badge"
+  ],
+  "usage": "No dates, because roadmap dates are fiction with a deadline. Each item carries a scope badge (Next / Later / Someday is banned — Exploring is the honest third state). Move items between columns as reality instructs; the block’s job is to make the current truth easy to publish."
+}

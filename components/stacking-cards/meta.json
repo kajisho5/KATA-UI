@@ -1,0 +1,15 @@
+{
+  "title": "Stacking Cards",
+  "category": "Motion",
+  "description": "Cards that land on top of each other as you scroll, each sticking a little lower than the last.",
+  "tags": [
+    "stacking",
+    "cards",
+    "sticky",
+    "scroll",
+    "landing"
+  ],
+  "status": "beta",
+  "usage": "The landing-page stack, without a library: each card is position sticky with a slightly deeper top offset, so scrolling deals them onto a pile. Pure CSS — the demo lives in a boxed scroller, but the same rules run a full page section. Four cards is a story; eight is a filing cabinet.",
+  "a11y": "Sticky is layout, not trickery: reading order is document order, and every card is fully reachable by scrolling or by keyboard. Nothing is hidden, shrunk away, or conveyed only by the stacking."
+}

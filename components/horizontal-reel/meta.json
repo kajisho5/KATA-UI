@@ -1,0 +1,15 @@
+{
+  "title": "Horizontal Reel",
+  "category": "Motion",
+  "description": "Scroll down, travel sideways: vertical scrolling drives a horizontal strip of cards.",
+  "tags": [
+    "horizontal",
+    "scroll",
+    "reel",
+    "strip",
+    "cards"
+  ],
+  "status": "beta",
+  "usage": "The page’s scroll becomes the strip’s journey: a tall spacer, a sticky window, and a script that maps scroll fraction to sideways travel. In the wild it runs full-bleed sections; here it is boxed so the trick can be studied. Use it for the one gallery that deserves a journey — not for navigation.",
+  "a11y": "The mapping is one-to-one with the scrollbar, so position is never a mystery, and every card is ordinary content in reading order. Under prefers-reduced-motion the strip becomes a plain horizontally scrollable row — the journey, democratized."
+}

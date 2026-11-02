@@ -1,0 +1,9 @@
+/* KATA Carousel Ring — KATAYABURI. A merry-go-round of cards. */
+.k-ring{position:relative;width:100%;background:var(--k-zinc-950);border-radius:14px;overflow:hidden;height:252px;perspective:950px;font-family:var(--k-font)}
+.k-ring-in{position:absolute;left:50%;top:50%;width:104px;height:128px;margin:-64px 0 0 -52px;transform-style:preserve-3d;animation:k-ring-spin 26s linear infinite}
+.k-ring:hover .k-ring-in{animation-play-state:paused}
+.k-ring-p{position:absolute;inset:0;background:var(--k-zinc-900);border:1px solid var(--k-zinc-700);border-radius:13px;color:var(--k-on-color);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:10px;backface-visibility:hidden}
+.k-ring-p b{font-size:14.5px;font-weight:650}
+.k-ring-p span{font-size:11px;color:var(--k-zinc-400);line-height:1.5}
+@keyframes k-ring-spin{from{transform:rotateY(0)}to{transform:rotateY(-360deg)}}
+@media (prefers-reduced-motion:reduce){.k-ring-in{animation:none}}

@@ -1,7 +1,7 @@
 .k-tpl2{display:grid;grid-template-columns:216px 1fr;background:var(--k-bg);color:var(--k-ink);border:1px solid var(--k-line);border-radius:16px;overflow:hidden;min-height:660px;font-family:var(--k-font);text-align:start}
 .k-tpl2-side{padding:24px 18px;border-inline-end:1px solid var(--k-line);background:var(--k-zinc-50)}
 .k-tpl2-side h2{font-size:19px;font-weight:600;letter-spacing:-.02em}
-.k-tpl2-sub{margin-top:5px;font-size:12.5px;color:var(--k-ink-2);line-height:1.6}
+.k-tpl2-sub{margin-top:5px;font-size:12.5px;color:var(--k-ink-2);line-height:1.6;letter-spacing:.01em}
 .k-tpl2-nav{display:grid;gap:2px;margin-top:18px}
 .k-tpl2-nav a{padding:7px 10px;border-radius:8px;color:var(--k-ink-2);text-decoration:none;font-size:13.5px}
 .k-tpl2-nav a:hover{background:color-mix(in srgb,var(--k-ink) 5%,transparent);color:var(--k-ink)}
@@ -17,7 +17,7 @@
 .k-tpl2-row{display:flex;align-items:center;gap:16px;padding:13px 0;border-top:1px solid var(--k-line)}
 .k-tpl2-row:first-of-type{margin-top:8px}
 .k-tpl2-row b{font-size:13.5px;font-weight:550}
-.k-tpl2-row p{margin-top:2px;font-size:12.5px;color:var(--k-ink-2);line-height:1.55}
+.k-tpl2-row p{margin-top:2px;font-size:12.5px;color:var(--k-ink-2);line-height:1.55;letter-spacing:.01em}
 .k-tpl2-row>:last-child{margin-inline-start:auto;flex:none}
 .k-tpl2-card .k-alert{margin-top:14px}
 @media (max-width:560px){.k-tpl2{grid-template-columns:1fr}.k-tpl2-side{display:none}}

@@ -4,5 +4,5 @@
 .k-result-ic.ok{background:var(--k-success-bg);color:var(--k-success-ink)}
 .k-result-ic.err{background:var(--k-danger-bg);color:var(--k-danger-ink)}
 .k-result h3{font-size:17px;font-weight:600;letter-spacing:-.015em}
-.k-result p{margin-top:8px;font-size:13.5px;line-height:1.8;color:var(--k-ink-2)}
+.k-result p{margin-top:8px;font-size:13.5px;line-height:1.8;color:var(--k-ink-2);letter-spacing:.012em}
 .k-result .acts{margin-top:18px;display:flex;gap:9px;justify-content:center;flex-wrap:wrap}

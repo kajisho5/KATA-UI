@@ -5,7 +5,7 @@
 .k-tour-anchor .k-tour-ring{inset:-5px}
 .k-tour{position:absolute;width:262px;max-width:calc(100% - 24px);background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;box-shadow:0 18px 44px -14px rgba(16,24,40,.28);padding:16px;z-index:5;font-family:var(--k-font)}
 .k-tour h4{margin:0 0 5px;font-size:14px;font-weight:650;color:var(--k-ink)}
-.k-tour p{margin:0;font-size:13px;line-height:1.6;color:var(--k-ink-2)}
+.k-tour p{margin:0;font-size:13px;line-height:1.6;color:var(--k-ink-2);letter-spacing:.01em}
 .k-tour-arrow{position:absolute;top:-6px;left:28px;width:11px;height:11px;background:var(--k-bg);border-left:1px solid var(--k-line);border-top:1px solid var(--k-line);transform:rotate(45deg)}
 .k-tour.flip .k-tour-arrow{top:auto;bottom:-6px;transform:rotate(225deg)}
 .k-tour-ft{display:flex;align-items:center;gap:8px;margin-top:14px}

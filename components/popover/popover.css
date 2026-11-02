@@ -2,5 +2,5 @@
 .kpop{position:absolute;top:calc(100% + 8px);left:50%;transform:translate(-50%,4px);width:272px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:0 18px 44px -14px rgba(16,24,40,.28);padding:16px;opacity:0;pointer-events:none;transition:opacity var(--k-dur-1) var(--k-ease),transform var(--k-dur-1) var(--k-ease);z-index:20;text-align:start}
 .kpop.open{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 .kpop-h{font-size:13.5px;font-weight:600;color:var(--k-ink)}
-.kpop-p{margin-top:6px;font-size:12.5px;line-height:1.75;color:var(--k-ink-2)}
+.kpop-p{margin-top:6px;font-size:12.5px;line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
 .kpop-row{display:flex;gap:8px;margin-top:14px}

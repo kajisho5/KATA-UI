@@ -8,4 +8,4 @@
 .k-timeline li[data-now]::before{background:var(--k-core);border-color:var(--k-core)}
 .k-timeline time{display:block;font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3);margin-bottom:1px}
 .k-timeline b{display:block;font-size:13.5px;font-weight:550;color:var(--k-ink)}
-.k-timeline p{font-size:13px;color:var(--k-ink-2);line-height:1.65}
+.k-timeline p{font-size:13px;color:var(--k-ink-2);line-height:1.65;letter-spacing:.01em}

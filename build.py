@@ -7,7 +7,7 @@ ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
 CATS = ['Form & Input', 'Layout & Navigation', 'Overlays & Dialogs', 'Feedback & Status', 'Display & Media', 'Motion', 'KATAYABURI', 'Japan']
 
-STARTER_HTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>KATA Starter — your first page</title>\n<link rel="stylesheet" href="kata-ui.css">\n<style>\n  body{font-family:var(--k-font);background:var(--k-bg-soft);color:var(--k-ink);margin:0;padding:36px 18px}\n  main{max-width:520px;margin:0 auto;display:grid;gap:14px}\n  h1{font-size:21px;letter-spacing:-.02em}\n  p.lead{color:var(--k-ink-2);font-size:14px;line-height:1.75}\n</style>\n</head>\n<body>\n<main>\n  <h1>It works. This page is KATA parts, unmodified.</h1>\n  <p class="lead">Everything below comes from kata-ui.css and kata-ui.js in this folder. Copy a part from kata-ui.dev, paste it here, and it matches — same mold, same tokens.</p>\n  <div class="k-card">\n    <div class="k-card-h">Create your account</div>\n    <div class="k-card-b" style="display:grid;gap:12px">\n      <span class="field" style="display:grid;gap:6px"><label for="em">Email</label><input class="input" id="em" type="email" placeholder="you@company.com"></span>\n      <label class="switchrow" style="display:flex;align-items:center;gap:10px;font-size:13.5px"><span class="switch"><input type="checkbox" checked><span class="tr"></span></span>Email me product updates</label>\n      <div style="display:flex;gap:9px;align-items:center">\n        <button class="btn btn-pri btn-md">Create account</button>\n        <span class="badge teal"><i></i>Free for 30 days</span>\n      </div>\n    </div>\n  </div>\n  <p class="lead">Next: browse the catalog at kata-ui.dev/components — each part carries its own CSS tab, so you can drop the bundle and keep only what you use.</p>\n</main>\n<script src="kata-ui.js"></script>\n</body>\n</html>\n'
+STARTER_HTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>KATA Starter — your first page</title>\n<link rel="stylesheet" href="kata-ui.css">\n<style>\n  body{font-family:var(--k-font);background:var(--k-bg-soft);color:var(--k-ink);margin:0;padding:36px 18px}\n  main{max-width:520px;margin:0 auto;display:grid;gap:14px}\n  h1{font-size:21px;letter-spacing:-.02em}\n  p.lead{color:var(--k-ink-2);font-size:14px;line-height:1.75;letter-spacing:.012em}\n</style>\n</head>\n<body>\n<main>\n  <h1>It works. This page is KATA parts, unmodified.</h1>\n  <p class="lead">Everything below comes from kata-ui.css and kata-ui.js in this folder. Copy a part from kata-ui.dev, paste it here, and it matches — same mold, same tokens.</p>\n  <div class="k-card">\n    <div class="k-card-h">Create your account</div>\n    <div class="k-card-b" style="display:grid;gap:12px">\n      <span class="field" style="display:grid;gap:6px"><label for="em">Email</label><input class="input" id="em" type="email" placeholder="you@company.com"></span>\n      <label class="switchrow" style="display:flex;align-items:center;gap:10px;font-size:13.5px"><span class="switch"><input type="checkbox" checked><span class="tr"></span></span>Email me product updates</label>\n      <div style="display:flex;gap:9px;align-items:center">\n        <button class="btn btn-pri btn-md">Create account</button>\n        <span class="badge asagi"><i></i>Free for 30 days</span>\n      </div>\n    </div>\n  </div>\n  <p class="lead">Next: browse the catalog at kata-ui.dev/components — each part carries its own CSS tab, so you can drop the bundle and keep only what you use.</p>\n</main>\n<script src="kata-ui.js"></script>\n</body>\n</html>\n'
 STARTER_README = "# KATA Starter\n\nA working first page built only from KATA UI parts.\n\n## Use it\n\n1. Unzip. Open `index.html` in a browser — no server, no build step.\n2. Edit the HTML. Every class on the page comes from `kata-ui.css`.\n3. When you settle, slim down: each part at kata-ui.dev carries just its own\n   CSS/JS, so production pages can load only what they use.\n\n## Files\n\n- `index.html` — the demo page (Card, Input, Switch, Button, Badge)\n- `kata-ui.css` — design tokens + every component and block style\n- `kata-ui.js` — every part's behavior, each in its own scope\n\nMIT licensed. KATA UI — parts, cast from a single mold.\n"
 
 
@@ -245,14 +245,14 @@ LP_STYLE = """<style>
 .step{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:18px}
 .step .no{font-family:var(--mono);font-size:11px;color:var(--acc);font-weight:600;letter-spacing:.08em}
 .step h3{margin-top:8px;font-size:15px;font-weight:600}
-.step p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75}
+.step p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
 .step code{font-family:var(--mono);font-size:12px;background:var(--soft);border-radius:5px;padding:1px 5px}
 .genres{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
 .genre{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);display:block}
 .genre:hover{border-color:var(--ink3)}
 .genre .gn{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
 .genre h3{margin-top:7px;font-size:15.5px;font-weight:600}
-.genre p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75}
+.genre p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
 .showband{margin-top:64px;background:#101013;border-radius:18px;padding:30px 26px}
 .showband h2{font-size:22px;font-weight:600;letter-spacing:-.02em;color:#f4f4f5}
 .showband .sub{margin-top:7px;color:#a1a1aa;font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
@@ -273,7 +273,7 @@ LP_STYLE = """<style>
 .hero2-in{position:relative}
 .hero2 h1{font-size:45px;line-height:1.12;color:#f4f4f5;letter-spacing:-.025em;font-weight:650}
 .hero2 h1 .dim{color:#d4d4d8}
-.hero2-in>p{max-width:62ch;margin:17px auto 0;font-size:15px;line-height:1.85;color:#a1a1aa}
+.hero2-in>p{max-width:62ch;margin:17px auto 0;font-size:15px;line-height:1.85;color:#a1a1aa;letter-spacing:.012em}
 .hero2 .eyebrow{border-color:#3f3f46;color:#d4d4d8;background:rgba(255,255,255,.05)}
 .hero2 .eyebrow{white-space:nowrap}
 .hero2-in p{color:#d4d4d8}
@@ -305,7 +305,7 @@ LP_STYLE = """<style>
 .cmptable tr:last-child td,.cmptable tr:last-child th{border-bottom:none}
 .cmpnote{margin-top:9px;font-size:12px;color:var(--ink3)}
 @media (max-width:720px){.cmptable{font-size:12px}.cmptable th,.cmptable td{padding:9px 9px}}
-.compat{margin-top:20px;border:1px solid var(--hair);border-radius:12px;background:var(--soft);padding:18px;font-size:13.5px;line-height:1.9;color:var(--ink2)}
+.compat{margin-top:20px;border:1px solid var(--hair);border-radius:12px;background:var(--soft);padding:18px;font-size:13.5px;line-height:1.9;color:var(--ink2);letter-spacing:.012em}
 .compat b{color:var(--ink);font-weight:600}
 .compat a{color:var(--ink);font-weight:550}
 @media (max-width:720px){.lp .hero h1{font-size:33px}.browser .shell-side{display:none}}
@@ -748,7 +748,7 @@ DS_STYLE = """<style>
 .ds .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .ds section{margin-top:46px}
 .ds h2{font-size:19px;font-weight:600;letter-spacing:-.015em}
-.ds .note{margin-top:7px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:66ch}
+.ds .note{margin-top:7px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:66ch;letter-spacing:.012em}
 .swatches{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:9px}
 .sw{border:1px solid var(--hair);border-radius:10px;overflow:hidden;background:#fff}
 .sw .fill{height:44px}
@@ -829,7 +829,7 @@ def icons_page():
         if rest:
             groups.append('<h3 style="font-size:15px;font-weight:600;letter-spacing:-.01em;margin:28px 0 0">More marks</h3><div class="icgrid" style="margin-top:12px">' + rest + '</div>')
         brand_section = ('<h2 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin-top:38px">Brand marks</h2>'
-          '<p style="margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:64ch">' + str(len(bmap)) + ' marks, grouped by the job they do on a site: social links, sign-in buttons, integration grids, logo clouds. Brand marks belong to their owners and are here for nominative use only — using one does not imply endorsement, and they are never part of the KATA identity. They are also the one exception to the three-shape mold: a mark keeps its owner’s geometry.</p>'
+          '<p style="margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:64ch;letter-spacing:.012em">' + str(len(bmap)) + ' marks, grouped by the job they do on a site: social links, sign-in buttons, integration grids, logo clouds. Brand marks belong to their owners and are here for nominative use only — using one does not imply endorsement, and they are never part of the KATA identity. They are also the one exception to the three-shape mold: a mark keeps its owner’s geometry.</p>'
           + ''.join(groups))
     script = "<script>var ICONS=__DATA__;\ndocument.querySelectorAll('[data-icon]').forEach(function(b){b.addEventListener('click',function(){var n=b.dataset.icon;var done=function(){document.getElementById('icstat').innerHTML='<b>'+n+'</b> copied.';};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ICONS[n]).then(done,done);}else{done();}});});\n</script>".replace('__DATA__', _json.dumps(data))
     body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 1.7 stroke, square caps and bevel joins — a sharper cut than the usual round line icon. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center — the same vermillion that sits inside the Switch and the Radio. Click any icon to copy its SVG. For anything beyond this set, Lucide is the nearest kin (24 grid, round) and sits comfortably alongside.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>" + brand_section + "\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
@@ -845,16 +845,16 @@ PRICING_STYLE = """<style>
 .pr .price{font-size:34px;font-weight:700;letter-spacing:-.03em;margin:12px 0 2px}
 .pr .per{color:var(--ink3);font-size:13px}
 .pr .tier ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:9px}
-.pr .tier li{font-size:13.5px;color:var(--ink2);display:flex;gap:9px;line-height:1.6}
+.pr .tier li{font-size:13.5px;color:var(--ink2);display:flex;gap:9px;line-height:1.6;letter-spacing:.012em}
 .pr .tier li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-top:7px}
 .pr .tier.pro li::before{background:#eb471f}
 .pr .cta{display:inline-flex;margin-top:22px;padding:10px 18px;border-radius:9px;background:var(--ink);color:#fff;font-weight:550;font-size:14px;text-decoration:none}
 .pr .cta.ghost{background:#fff;color:var(--ink2);border:1px solid var(--hair);cursor:default}
-.pr .note{margin-top:14px;font-size:12.5px;color:var(--ink3);line-height:1.7}
+.pr .note{margin-top:14px;font-size:12.5px;color:var(--ink3);line-height:1.7;letter-spacing:.01em}
 .pr .qa{margin-top:44px;display:grid;gap:0}
 .pr .qa div{border-top:1px solid var(--hair);padding:18px 2px}
 .pr .qa h3{font-size:15px;margin-bottom:6px}
-.pr .qa p{font-size:13.5px;color:var(--ink2);line-height:1.8;max-width:640px}
+.pr .qa p{font-size:13.5px;color:var(--ink2);line-height:1.8;max-width:640px;letter-spacing:.012em}
 @media (max-width:720px){.pr .tiers{grid-template-columns:1fr}}
 </style>"""
 
@@ -1022,7 +1022,7 @@ SC_STYLE = """<style>
 .sc-card:hover{border-color:var(--ink3)}
 .sc-card .k{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
 .sc-card h3{font-size:16px;margin:7px 0 5px}
-.sc-card p{font-size:13px;line-height:1.75;color:var(--ink2)}
+.sc-card p{font-size:13px;line-height:1.75;color:var(--ink2);letter-spacing:.01em}
 .sc-card .go{font-size:12.5px;font-weight:600;margin-top:10px;display:inline-block}
 @media (max-width:720px){.sc-grid{grid-template-columns:1fr}}
 </style>"""
@@ -1040,7 +1040,7 @@ def showcase_page(templates, blocks):
     <a class="sc-card" href="/starter/kata-starter.zip"><span class="k">Starter kit</span><h3>The starter project</h3><p>Tokens, the one-file bundle and a first page, zipped. The fastest honest test of the mold: unzip, open, and everything on screen is a part.</p><span class="go">Download the starter →</span></a>
 """ + cards + """
   </div>
-  <p class="note" style="margin-top:20px;font-size:13px;color:var(--ink3);line-height:1.8">Building something with KATA? The maker reads every issue on the repository — a link there is how a project joins this page.</p>
+  <p class="note" style="margin-top:20px;font-size:13px;color:var(--ink3);line-height:1.8;letter-spacing:.01em">Building something with KATA? The maker reads every issue on the repository — a link there is how a project joins this page.</p>
 </div>
 """ + FOOTER + """
 </body>
@@ -1072,7 +1072,7 @@ def design_system_page(tokens):
     <a href="/components/">Browse components</a>
   </div>
   <section><h2>Color — Zinc</h2><p class="note">The dominant scale. Interfaces are built from zinc first; color is the exception.</p>{swatches('zinc', tokens['color']['zinc'])}</section>
-  <section><h2>Color — Teal (the one accent)</h2><p class="note">A single accent, used sparingly: links, highlights, the core of the mark. If everything is teal, nothing is.</p>{swatches('teal', tokens['color']['teal'])}</section>
+  <section><h2>Color — Asagi (the one accent)</h2><p class="note">A single accent, used sparingly: links, highlights, the core of the mark. If everything is asagi, nothing is.</p>{swatches('asagi', tokens['color']['asagi'])}</section>
   <section><h2>Color — Roles</h2><div class="roles">{roles}</div></section>
   <section><h2>Typography</h2><p class="note">Sans: {esc(tokens['font']['sans'])}<br>Mono: {esc(tokens['font']['mono'])}<br>Tracking: {esc(tokens['font']['tracking'])}<br>Leading: {esc(tokens['font']['leading'])}</p><div class="spec">{specs}</div></section>
   <section><h2>Spacing</h2><p class="note">A 4px base. If a gap is not on this scale, it is a mistake.</p><div class="bars">{bars}</div></section>
@@ -1117,7 +1117,7 @@ BLOCK_STYLE = """<style>
 .bcard{border:1px solid var(--hair);border-radius:14px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);display:block}
 .bcard:hover{border-color:var(--ink3)}
 .bcard h3{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:8px}
-.bcard p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75}
+.bcard p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
 .bcard .uses{margin-top:12px;display:flex;gap:5px;flex-wrap:wrap}
 .bcard .uses span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--hair);border-radius:99px;padding:2px 8px}
 </style>"""
@@ -1261,7 +1261,7 @@ TPL_STYLE = """<style>
 .tplscale{width:1080px;transform:scale(.306);transform-origin:top left;pointer-events:none}
 .tplmeta{padding:16px 18px 18px}
 .tplmeta h3{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:8px}
-.tplmeta p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75}
+.tplmeta p{margin-top:7px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
 .tplmeta .uses{margin-top:12px;display:flex;gap:5px;flex-wrap:wrap}
 .tplmeta .uses span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--hair);border-radius:99px;padding:2px 8px}
 .tplframe{border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:#fff}
@@ -1460,9 +1460,9 @@ def themes_page(themes):
                      '<span class="nm">' + t['label'] + '</span><div class="nt">' + t['note'] + '</div></button>')
     demo = """<div class="thdemo" id="thdemo">
     <span class="lbl">LIVE — THE SAME PARTS, RE-CAST</span>
-    <button class="btn btn-teal btn-md">Accent button</button>
-    <span class="switchrow"><label class="switch teal"><input type="checkbox" checked><span class="tr"></span></label>Notifications</span>
-    <span class="badge teal"><i></i>Live</span>
+    <button class="btn btn-asagi btn-md">Accent button</button>
+    <span class="switchrow"><label class="switch asagi"><input type="checkbox" checked><span class="tr"></span></label>Notifications</span>
+    <span class="badge asagi"><i></i>Live</span>
     <span class="badge">Neutral stays neutral</span>
   </div>"""
     builder = """<div class="thbuild">
@@ -1496,8 +1496,8 @@ def themes_page(themes):
   <p class="lead" style="margin-top:8px">Fifty colors that began as dyes, pigments and plants \u2014 indigo, safflower, gardenia, pine soot. Click one and it is cast into the same demo and the same CSS as any theme above: the button, the switch and the badge take the color, under its own name (ai.css, yamabuki.css). The hex values follow the common references (NIPPON COLORS and the JIS customary color names); colors older than hex itself are faithful approximations, not measurements.</p>
   <div class="dtpv" id="dtpv">
     <span class="lbl">CASTING \u2014 TRADITIONAL COLORS</span>
-    <button class="btn btn-teal btn-md" type="button">Accent button</button>
-    <span class="badge teal"><i></i><span id="dtpvname">Teal</span></span>
+    <button class="btn btn-asagi btn-md" type="button">Accent button</button>
+    <span class="badge asagi"><i></i><span id="dtpvname">Asagi</span></span>
     <span class="dtstatus" id="dtstatus">Pick a color below \u2014 it lands here, in the demo above, and in the CSS.</span>
   </div>
 """ + ''.join(fams) + """
@@ -1579,7 +1579,7 @@ function applyCustom(hex){
   document.querySelectorAll('[data-theme-card]').forEach(function(c){c.classList.remove('on');});
 }
 document.getElementById('thcolor').addEventListener('input',function(){applyCustom(this.value);});
-applyTheme('teal');
+applyTheme('asagi');
 </script>"""
     body = """
 <div class="wrap th">
@@ -1589,7 +1589,7 @@ applyTheme('teal');
   </div>
 """ + demo + builder + """
   <div class="thcode">
-    <div class="bar"><b id="thname">teal.css</b><button id="thcopy" type="button">Copy CSS</button><a id="thdl" href="/themes/teal.css" download>Download</a></div>
+    <div class="bar"><b id="thname">asagi.css</b><button id="thcopy" type="button">Copy CSS</button><a id="thdl" href="/themes/asagi.css" download>Download</a></div>
     <pre id="thcss"></pre>
   </div>
   <p class="lead" style="margin-top:18px">Making your own is the same move by hand: redefine the five accent tokens after <span style="font-family:var(--mono);font-size:13px">tokens.css</span>. See <a href="/docs/theming/">Theming</a>.</p>
@@ -1617,7 +1617,7 @@ DOCS = [
     ('Add parts', 'init writes the design tokens. add writes a part — and everything it depends on — into ./kata by default:', 'node kata-ui.mjs init\nnode kata-ui.mjs add button select\nnode kata-ui.mjs add login', 'Blocks and templates install the same way: add dashboard writes the whole page. Theme presets too — add indigo writes the theme CSS. Pass --dir to choose another folder.'),
     ('Then load the files', 'Link tokens.css first, then the part CSS, and paste the HTML in as it is:', '<link rel="stylesheet" href="kata/tokens.css">\n<link rel="stylesheet" href="kata/components/button/button.css">', 'Nothing phones home and nothing updates itself afterwards: the files are yours, like a copy-paste that typed itself.')]),
   ('theming', 'Theming', 'Change the tokens, not the parts.',
-   [('One surface', 'Parts reference only var(--k-…) tokens. To restyle everything, redefine tokens after tokens.css loads — never edit a part\u2019s CSS. An accent change is five lines:', ':root{ --k-accent:#4f46e5; --k-accent-ink:#4338ca; --k-accent-bg:rgba(79,70,229,.08); --k-accent-bg-strong:rgba(79,70,229,.1); --k-accent-line:rgba(79,70,229,.18); }', 'The Themes page ships five presets in exactly this form, each as a small CSS file you can download or copy.'),
+   [('One surface', 'Parts reference only var(--k-…) tokens. To restyle everything, redefine tokens after tokens.css loads — never edit a part\u2019s CSS. An accent change is five lines:', ':root{ --k-accent:#1e50a2; --k-accent-ink:#223a70; --k-accent-bg:rgba(30,80,162,.08); --k-accent-bg-strong:rgba(30,80,162,.1); --k-accent-line:rgba(30,80,162,.18); }', 'The Themes page ships five presets in exactly this form, each as a small CSS file you can download or copy.'),
     ('Shape and motion are tokens too', 'Radius (--k-radius, --k-radius-lg), durations (--k-dur-1…3) and the easing curve are tokens. Tighten the whole product by tightening the mold; loosen one part and it stops matching its siblings.', None, 'One token is off-limits by design: --k-core, the vermillion at the center of active controls. It is the signature, not a setting.')]),
   ('dark-mode', 'Dark Mode', 'One attribute flips every part.',
    [('The attribute', 'Put data-theme="dark" on the root element — or on any container — and every part inside flips. The tokens carry both themes; parts do not know which one they are in:', '<section data-theme="dark"> …parts… </section>', 'The Light/Dark toggle on every component page is this attribute, applied to the preview stage.'),
@@ -1675,7 +1675,7 @@ DOCS = [
     ('The contract', 'Every part reads color, spacing, radius and motion from the tokens and nothing else. Classes follow one grammar. Interactive parts state their keyboard behavior and their no-JavaScript fallback in their metadata, and the part’s page prints both. If two parts disagree about anything, that is a bug in one of them, and the mold decides which.', None, 'Status is printed on every part: stable means the contract is settled; beta means the shape is right but the edges are still being filed. The catalog counts both, and labels both.')]),
   ('from-tailwind', 'Coming from Tailwind', 'For the largest group of visitors: what changes, what does not.',
    [('The mental shift', 'Tailwind puts the design system in your class attributes; KATA puts it in tokens and part CSS. You will write longer stylesheets and shorter markup. A card stops being eleven utilities and becomes .k-card — which means the design can be retuned in one place, and the HTML reads as structure instead of as styling.', None, 'They coexist fine: Tailwind for layout glue in a page, KATA parts for the components. The tokens are plain CSS variables, so a Tailwind config can point at the same values and the two systems stop arguing.'),
-    ('Rough translations', 'A few mappings to start: bg-zinc-900 text-white becomes a part on a dark section (data-theme="dark" does the whole subtree). rounded-xl is --k-radius-lg. The accent button is .btn-pri or .btn-teal, not a recipe of bg-, hover: and focus: classes — hover and focus are in the part, tested once, everywhere. Arbitrary values like w-[340px] stay inline styles in KATA too; the mold is strict about color, relaxed about one-off geometry.', None, 'What you give up: the utility for the one weird case, answered inline. What you get back: a page whose markup a new hire (or a model) can read at a glance, and parts that look related because they are.')]),
+    ('Rough translations', 'A few mappings to start: bg-zinc-900 text-white becomes a part on a dark section (data-theme="dark" does the whole subtree). rounded-xl is --k-radius-lg. The accent button is .btn-pri or .btn-asagi, not a recipe of bg-, hover: and focus: classes — hover and focus are in the part, tested once, everywhere. Arbitrary values like w-[340px] stay inline styles in KATA too; the mold is strict about color, relaxed about one-off geometry.', None, 'What you give up: the utility for the one weird case, answered inline. What you get back: a page whose markup a new hire (or a model) can read at a glance, and parts that look related because they are.')]),
   ('vs-shadcn', 'KATA vs shadcn/ui', 'The honest comparison, written by the side with more to gain from flattery.',
    [('The short version', 'shadcn/ui and KATA start from the same conviction: you should own the code — copy it into your project, change it, never rent it back from a package. shadcn casts that idea for React. KATA casts it for everywhere else HTML renders: plain files, Astro, Laravel, Django, Rails, WordPress, email templates, the admin page nobody frameworks. If your product is a React app, shadcn is excellent and this page will tell you so twice. If your stack is anything else, the React door is simply not your door.', None, None),
     ('Where shadcn wins', 'The React ecosystem, first: thousands of projects, snippets, and answers already exist, and a team hiring React developers hires people who know it. Its primitives stand on Radix, whose accessibility engineering — focus management, aria patterns, edge cases in dialogs and menus — is deep and battle-tested. It is TypeScript-first in a way KATA, being plain files, does not try to be. And its design language is the current default for a reason: it is tasteful, consistent, and safe to choose in a meeting.', None, None),
@@ -1706,7 +1706,8 @@ DOCS = [
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget. Applied site-wide the same day: every page lead, the docs body, the landing sub-texts and the Japanese page (CJK body +0.04em, headings +0.05em) now follow the table, and an audit of all 164 part stylesheets found their tracking already sitting inside the ramps \u2014 card titles, micro labels, vertical text \u2014 that the table now records explicitly.</p>', None, None),
+   [('November 2, 2026 \u2014 Wa, everywhere', '<p>The color system is now drawn entirely from the traditional palette: the accent is Asagi \u6d45\u8471, warnings are Yamabuki \u5c71\u5439 (token, badge variant and all), danger is Beni \u7d05 with Akane \u832c for ink, success is Wakatake \u82e5\u7af9, and the five theme presets are Asagi, Ruri \u7460\u7483, Edomurasaki \u6c5f\u6238\u7d2b, Suo \u8607\u82b3 and Kaki \u67ff. The type table finished its rounds too: a wider second audit \u2014 every stylesheet, preview and inline style, judged by effective values, inheritance included \u2014 put the standard tracking on every reading paragraph in the catalog, and the sidebar headings were redesigned: larger, darker, aligned with the links they govern, with real air above them. And the pointer parts answer to touch now: Magnet, the Dock, Tilt Card, Spotlight, Follow Frame and the particle stages track a dragging finger and spring home on release \u2014 a phone is where most people meet them first.</p>', None, None),
+ ('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget. Applied site-wide the same day: every page lead, the docs body, the landing sub-texts and the Japanese page (CJK body +0.04em, headings +0.05em) now follow the table, and an audit of all 164 part stylesheets found their tracking already sitting inside the ramps \u2014 card titles, micro labels, vertical text \u2014 that the table now records explicitly.</p>', None, None),
     ('November 2, 2026 \u2014 Traditional colors of Japan', '<p>The Themes page gains \u4f1d\u7d71\u8272: fifty traditional Japanese colors in seven families \u2014 pine-soot inks, safflower reds, indigo blues, gardenia yellows \u2014 each with its kanji name, its reading and the dye or pigment it came from. Clicking one casts it into the live demo and writes the theme CSS under its own name (ai.css, yamabuki.css), so a button can wear a thousand-year-old color in one click. At the head of the reds sits \u578b\u306e\u6731, KATA\u2019s own vermilion core, labeled as what it is: the one color no theme moves.</p>', None, None),
     ('November 2, 2026 — The zoom pass', '<p>Every one of the 201 pages and all 136 part previews was re-examined at full phone size. The pass caught and fixed a collapsed Accordion Gallery and Speed Dial stage, a Hover Card whose markup invalidly nested blocks inside a paragraph, clipped Radar Chart labels, a nearly invisible Skeleton, label collisions in Steps and List, tables that broke out of their stages, and readouts that shrank instead of stretching. The landing page Questions section now answers questions about this library instead of a generic SaaS. Nothing new was added; everything already here simply holds up better under a magnifying glass.</p>', None, None),
  ('November 2, 2026 — Ten patterns on the loom', 'The Wagara instrument grows from four patterns to ten, each still drawn from its construction: Kikko (nested tortoiseshell hexagons), Uroko (the triangle scale tiling), Samekomon (dots riding the scale arcs, sharkskin-fine), Yagasuri (the arrow-feather silhouette), Kanoko (staggered shibori fawn-spots) and Hishi (the diamond lattice, studded at its crossings). Same three tones, same tokens — the loom is bigger, the discipline is not.', None, None),
@@ -1740,7 +1741,7 @@ DOC_STYLE = """<style>
 .dccard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:17px;text-decoration:none;color:var(--ink);display:block}
 .dccard:hover{border-color:var(--ink3)}
 .dccard h3{font-size:15px;font-weight:600}
-.dccard p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7}
+.dccard p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.7;letter-spacing:.01em}
 </style>"""
 
 def docs_index():

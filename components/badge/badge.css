@@ -1,6 +1,6 @@
 .badge{display:inline-flex;align-items:center;gap:6px;height:23px;padding:0 9px;border-radius:99px;font-size:11.5px;font-weight:500;background:var(--k-bg-soft);color:var(--k-ink-2);border:1px solid var(--k-line);font-family:var(--k-font)}
 .badge i{width:6px;height:6px;border-radius:50%;background:currentColor}
 .badge.dark{background:var(--k-ink);color:var(--k-bg);border-color:var(--k-ink)}
-.badge.teal{background:var(--k-accent-bg);color:var(--k-accent-ink);border-color:var(--k-accent-line)}
+.badge.asagi{background:var(--k-accent-bg);color:var(--k-accent-ink);border-color:var(--k-accent-line)}
 .badge.red{background:var(--k-danger-bg);color:var(--k-danger-ink);border-color:var(--k-danger-line)}
-.badge.amber{background:var(--k-amber-bg);color:var(--k-amber-ink);border-color:var(--k-amber-line)}
+.badge.yamabuki{background:var(--k-yamabuki-bg);color:var(--k-yamabuki-ink);border-color:var(--k-yamabuki-line)}

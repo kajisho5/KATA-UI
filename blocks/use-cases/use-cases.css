@@ -11,7 +11,7 @@
 .k-uc-body{display:none;padding:0 17px 17px 41px}
 .k-uc-row.open .k-uc-body{display:block}
 .k-uc-body h4{font-size:15.5px;font-weight:600;letter-spacing:-.01em}
-.k-uc-body p{margin-top:6px;font-size:13px;line-height:1.75;color:var(--k-ink-2)}
+.k-uc-body p{margin-top:6px;font-size:13px;line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
 .k-uc-body ul{list-style:none;margin:11px 0 0;padding:0;display:grid;gap:6px;font-size:13px;color:var(--k-ink-2)}
 .k-uc-body li{display:flex;gap:8px;align-items:center}
 .k-uc-body li svg{color:var(--k-accent);flex:none}

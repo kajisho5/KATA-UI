@@ -4,7 +4,7 @@
 .k-split-h{flex:none;width:9px;margin:0 -1px;cursor:col-resize;display:grid;place-items:center;color:var(--k-ink-3);background:transparent;border-left:1px solid var(--k-line);border-right:1px solid var(--k-line);touch-action:none;z-index:2}
 .k-split-h:hover,.k-split-h:focus-visible{background:var(--k-accent-bg);color:var(--k-accent);outline:none}
 .k-split h5{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;margin-bottom:9px}
-.k-split p{font-size:13px;line-height:1.75;color:var(--k-ink-2)}
+.k-split p{font-size:13px;line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
 .k-split .row{font-size:13px;padding:7px 9px;border-radius:8px;white-space:nowrap}
 .k-split .row.on{background:var(--k-accent-bg);color:var(--k-accent-ink);font-weight:550}
 .k-split-h .dots{width:4px;height:24px;background-image:radial-gradient(circle,currentColor 1.3px,transparent 1.5px);background-size:4px 7px;background-position:center}

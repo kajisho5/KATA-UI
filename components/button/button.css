@@ -7,7 +7,7 @@
 .btn-ghost{background:transparent;color:var(--k-ink-2)}
 .btn-ghost:hover{background:var(--k-bg-soft);color:var(--k-ink)}
 .btn-danger{background:var(--k-danger);color:var(--k-on-color)}
-.btn-teal{background:var(--k-accent);color:var(--k-on-color)}
+.btn-asagi{background:var(--k-accent);color:var(--k-on-color)}
 .btn-sm{height:32px;padding:0 12px;font-size:12.5px;border-radius:7px}
 .btn-md{height:38px;padding:0 16px;font-size:13.5px}
 .btn-lg{height:44px;padding:0 20px;font-size:14px}

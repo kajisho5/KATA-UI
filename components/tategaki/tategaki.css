@@ -7,6 +7,6 @@
 .k-tate-gloss{border-inline-start:1px solid var(--k-line);padding-inline-start:24px;display:flex;flex-direction:column;justify-content:center;gap:13px}
 .k-tate-gloss div b{font-size:14px;font-weight:650}
 .k-tate-gloss div b span{font-family:"Hiragino Mincho ProN","YuMincho",serif;margin-inline-end:8px}
-.k-tate-gloss div p{font-size:12.5px;color:var(--k-ink-2);line-height:1.65}
+.k-tate-gloss div p{font-size:12.5px;color:var(--k-ink-2);line-height:1.65;letter-spacing:.01em}
 .k-tate-gloss .en{font-size:10.5px;font-weight:650;letter-spacing:.18em;color:var(--k-ink-3);text-transform:uppercase}
 @media (prefers-reduced-motion:reduce){.k-tate-ch{animation:none}}

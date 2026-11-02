@@ -5,7 +5,7 @@ document.querySelectorAll('[data-conf]').forEach(function (stage) {
   var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cs = getComputedStyle(stage);
-  var COLORS = ['--k-accent', '--k-on-color', '--k-zinc-400', '--k-amber-ink'].map(function (v) { return cs.getPropertyValue(v).trim(); }).filter(Boolean);
+  var COLORS = ['--k-accent', '--k-on-color', '--k-zinc-400', '--k-yamabuki-ink'].map(function (v) { return cs.getPropertyValue(v).trim(); }).filter(Boolean);
   var pieces = [], raf = null, W = 0, H = 0;
   function size() { W = stage.clientWidth; H = stage.clientHeight; canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
   function burst() {

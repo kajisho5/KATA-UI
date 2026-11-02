@@ -7,7 +7,7 @@
 .k-tick-main{flex:1;padding:19px 20px;min-width:0}
 .k-tick-main .ev{font-size:11px;font-weight:650;letter-spacing:.16em;color:var(--k-accent-ink)}
 .k-tick-main h3{font-size:18.5px;font-weight:650;letter-spacing:-.015em;margin:6px 0 5px}
-.k-tick-main p{font-size:12.5px;color:var(--k-ink-2);line-height:1.7}
+.k-tick-main p{font-size:12.5px;color:var(--k-ink-2);line-height:1.7;letter-spacing:.01em}
 .k-tick-stub{flex:none;width:98px;border-inline-start:2px dashed var(--k-zinc-300);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:14px 8px;text-align:center}
 .k-tick-stub .code{font-size:14px;font-weight:700;letter-spacing:.1em}
 .k-tick-stub .lbl{font-size:10px;letter-spacing:.14em;color:var(--k-ink-3)}

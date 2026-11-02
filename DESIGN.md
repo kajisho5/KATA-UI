@@ -107,7 +107,7 @@ meta.json の契約（v0.2 で拡張）：
 
 ## 6. デザインシステム
 
-- **デザインシステムとして正式化（2026-11-02）**：基盤の正本は `system/tokens.json`（色スケール zinc/teal、タイポ、余白、角丸、高さ、モーション、エレベーション）。公開ページ /design-system/ を生成器が出力し、tokens.json もそのまま配布する。KATA.md §0「KATA の顔」が原則、tokens.json が実数、tokens.css が実行時ファイル。
+- **デザインシステムとして正式化（2026-11-02）**：基盤の正本は `system/tokens.json`（色スケール zinc/asagi、タイポ、余白、角丸、高さ、モーション、エレベーション）。公開ページ /design-system/ を生成器が出力し、tokens.json もそのまま配布する。KATA.md §0「KATA の顔」が原則、tokens.json が実数、tokens.css が実行時ファイル。
 
 - 部品は **tokens.css の `--k-*` 変数だけ**を参照する（サイト側 site.css の変数とは分離済み）。
 - ダークは `[data-theme="dark"]` でトークンを差し替える方式（実装済み）。部品側に色の直書きを入れない。

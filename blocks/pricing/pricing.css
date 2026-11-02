@@ -10,7 +10,7 @@
 .plan-name{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-2)}
 .plan-price{margin-top:10px;font-size:32px;font-weight:600;letter-spacing:-.03em}
 .plan-per{font-size:13px;font-weight:500;color:var(--k-ink-3);letter-spacing:0}
-.plan-desc{margin-top:7px;font-size:13px;line-height:1.7;color:var(--k-ink-2)}
+.plan-desc{margin-top:7px;font-size:13px;line-height:1.7;color:var(--k-ink-2);letter-spacing:.01em}
 .plan-cta{width:100%;justify-content:center;margin-top:16px}
 .plan .k-sep{margin:18px 0 14px}
 .plan-feats{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:13px}

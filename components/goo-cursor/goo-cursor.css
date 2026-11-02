@@ -1,5 +1,5 @@
 /* KATA Goo Cursor — KATAYABURI. Surface tension as a service. */
-.k-goo{position:relative;width:100%;background:var(--k-zinc-950);border-radius:14px;overflow:hidden;height:250px;font-family:var(--k-font)}
+.k-goo{position:relative;width:100%;background:var(--k-zinc-950);border-radius:14px;overflow:hidden;height:250px;font-family:var(--k-font);touch-action:none}
 .k-goo-field{position:absolute;inset:0}
 .k-goo-b{position:absolute;border-radius:50%;background:var(--k-accent);transform:translate(-50%,-50%);pointer-events:none}
 .k-goo p{position:relative;z-index:2;text-align:center;padding-top:104px;font-size:13px;color:var(--k-zinc-400);pointer-events:none}

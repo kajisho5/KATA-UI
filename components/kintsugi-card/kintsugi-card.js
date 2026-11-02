@@ -5,8 +5,8 @@ document.querySelectorAll('[data-kin]').forEach(function (card) {
   var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cs = getComputedStyle(card);
-  var GOLD = cs.getPropertyValue('--k-amber').trim();
-  var GLOW = cs.getPropertyValue('--k-amber').trim();
+  var GOLD = cs.getPropertyValue('--k-yamabuki').trim();
+  var GLOW = cs.getPropertyValue('--k-yamabuki').trim();
   var CRACKS = [
     [[.06, .1], [.2, .3], [.3, .34], [.44, .52], [.52, .6]],
     [[.44, .52], [.5, .72], [.47, .95]],

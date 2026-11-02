@@ -2,5 +2,5 @@
 .kmodal::backdrop{background:rgba(24,24,27,.45);backdrop-filter:blur(3px)}
 .modal-in{padding:26px}
 .modal-in h3{font-size:16.5px;font-weight:600}
-.modal-in p{margin-top:9px;font-size:13.5px;color:var(--k-ink-2);line-height:1.8}
+.modal-in p{margin-top:9px;font-size:13.5px;color:var(--k-ink-2);line-height:1.8;letter-spacing:.012em}
 .modal-in .row{display:flex;gap:9px;justify-content:flex-end;margin-top:22px}

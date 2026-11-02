@@ -1,11 +1,11 @@
 /* KATA Alert */
-.k-alert{display:flex;gap:10px;padding:12px 14px;border:1px solid var(--k-accent-line);border-radius:var(--k-radius-lg);background:var(--k-accent-bg);color:var(--k-ink);font-size:13.5px;line-height:1.65}
+.k-alert{display:flex;gap:10px;padding:12px 14px;border:1px solid var(--k-accent-line);border-radius:var(--k-radius-lg);background:var(--k-accent-bg);color:var(--k-ink);font-size:13.5px;line-height:1.65;letter-spacing:.012em}
 .k-alert svg{flex:none;margin-top:1px;color:var(--k-accent-ink)}
 .k-alert b{font-weight:600}
 .k-alert p{color:var(--k-ink-2)}
 .k-alert[data-tone="success"]{background:var(--k-success-bg);border-color:var(--k-success-line)}
 .k-alert[data-tone="success"] svg{color:var(--k-success-ink)}
-.k-alert[data-tone="warning"]{background:var(--k-amber-bg);border-color:var(--k-amber-line)}
-.k-alert[data-tone="warning"] svg{color:var(--k-amber-ink)}
+.k-alert[data-tone="warning"]{background:var(--k-yamabuki-bg);border-color:var(--k-yamabuki-line)}
+.k-alert[data-tone="warning"] svg{color:var(--k-yamabuki-ink)}
 .k-alert[data-tone="danger"]{background:var(--k-danger-bg);border-color:var(--k-danger-line)}
 .k-alert[data-tone="danger"] svg{color:var(--k-danger-ink)}

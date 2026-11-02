@@ -5,5 +5,5 @@
 .k-goo-ind.moving{transform:scaleY(.86)}
 .k-goo-bar button{position:relative;z-index:1;border:0;background:none;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--k-ink-2);padding:8px 16px;border-radius:99px;cursor:pointer;transition:color .25s}
 .k-goo-bar button[aria-selected="true"]{color:var(--k-bg)}
-.k-goo-panel{padding:16px 3px 2px;font-size:13.5px;line-height:1.75;color:var(--k-ink-2)}
+.k-goo-panel{padding:16px 3px 2px;font-size:13.5px;line-height:1.75;color:var(--k-ink-2);letter-spacing:.012em}
 @media (prefers-reduced-motion:reduce){.k-goo-ind{transition:none}}

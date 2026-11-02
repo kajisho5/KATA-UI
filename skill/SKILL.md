@@ -48,6 +48,6 @@ from memory — class names are the API.
 - The vermilion core color (`--k-core`, #eb471f) appears only at the
   center of active controls, the logo core and chart end points.
   Never use it for surfaces, text or decoration.
-- One accent (teal by default). Zinc carries the neutrals.
+- One accent (asagi by default). Zinc carries the neutrals.
 - Fictional placeholder content in examples: invented people, companies
   and numbers — never a real client's data.

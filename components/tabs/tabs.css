@@ -2,4 +2,4 @@
 .tabs button{position:relative;z-index:1;border:0;background:transparent;font-family:var(--k-font);font-size:13px;font-weight:500;color:var(--k-ink-2);padding:7px 15px;border-radius:8px;cursor:pointer}
 .tabs button.on{color:var(--k-ink)}
 .tabs .thumb{position:absolute;top:3px;bottom:3px;background:var(--k-bg);border-radius:8px;box-shadow:0 1px 3px rgba(16,24,40,.14);transition:left .22s cubic-bezier(.3,.7,.3,1),width .22s cubic-bezier(.3,.7,.3,1)}
-.tabpane{margin-top:14px;font-size:13.5px;color:var(--k-ink-2);line-height:1.8;background:var(--k-bg);border:1px solid var(--k-line);border-radius:10px;padding:16px 18px;width:100%;font-family:var(--k-font)}
+.tabpane{margin-top:14px;font-size:13.5px;color:var(--k-ink-2);line-height:1.8;background:var(--k-bg);border:1px solid var(--k-line);border-radius:10px;padding:16px 18px;width:100%;font-family:var(--k-font);letter-spacing:.012em}

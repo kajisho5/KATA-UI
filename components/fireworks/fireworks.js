@@ -5,7 +5,7 @@ document.querySelectorAll('[data-fw]').forEach(function (stage) {
   var DPR = Math.min(3, window.devicePixelRatio || 1);
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cs = getComputedStyle(stage);
-  var COLORS = ['--k-accent', '--k-on-color', '--k-amber-ink', '--k-on-color'].map(function (v) { return cs.getPropertyValue(v).trim(); }).filter(Boolean);
+  var COLORS = ['--k-accent', '--k-on-color', '--k-yamabuki-ink', '--k-on-color'].map(function (v) { return cs.getPropertyValue(v).trim(); }).filter(Boolean);
   var W, H, rockets = [], sparks = [];
   function size() { W = canvas.clientWidth; H = canvas.clientHeight; canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); }
   function launch(tx, ty) {

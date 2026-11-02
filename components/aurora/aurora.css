@@ -5,7 +5,7 @@
 .k-aurora .b3{width:150px;height:150px;right:28%;top:-50px;background:color-mix(in srgb,var(--k-accent-ink) 45%,transparent);animation:k-aur-c 11s var(--k-ease) infinite alternate}
 .k-aurora-in{position:relative;padding:28px;text-align:left}
 .k-aurora-in h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
-.k-aurora-in p{margin-top:7px;font-size:13.5px;line-height:1.8;color:var(--k-zinc-300);max-width:34ch}
+.k-aurora-in p{margin-top:7px;font-size:13.5px;line-height:1.8;color:var(--k-zinc-300);max-width:34ch;letter-spacing:.012em}
 @keyframes k-aur-a{from{transform:translate(0,0) scale(1)}to{transform:translate(96px,46px) scale(1.22)}}
 @keyframes k-aur-b{from{transform:translate(0,0) scale(1.12)}to{transform:translate(-80px,-42px) scale(.94)}}
 @keyframes k-aur-c{from{transform:translate(0,0) scale(1)}to{transform:translate(-64px,38px) scale(1.18)}}

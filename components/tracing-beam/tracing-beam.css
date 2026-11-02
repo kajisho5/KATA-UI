@@ -7,4 +7,4 @@
 .k-beam-body{height:264px;overflow:auto;padding-inline-end:6px}
 .k-beam-body section{margin-bottom:20px}
 .k-beam-body h4{font-size:14px;font-weight:600;margin-bottom:5px}
-.k-beam-body p{font-size:13px;line-height:1.8;color:var(--k-ink-2)}
+.k-beam-body p{font-size:13px;line-height:1.8;color:var(--k-ink-2);letter-spacing:.01em}

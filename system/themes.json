@@ -1,1 +1,47 @@
-[{"accent":"#0e9594","darkInk":"#2dd4bf","ink":"#0b7372","label":"Teal","name":"teal","note":"The default. KATA's own accent.","rgb":"14,149,148"},{"accent":"#4f46e5","darkInk":"#a5b4fc","ink":"#4338ca","label":"Indigo","name":"indigo","note":"For tools that live next to code.","rgb":"79,70,229"},{"accent":"#7c3aed","darkInk":"#c4b5fd","ink":"#6d28d9","label":"Violet","name":"violet","note":"Creative tools, media, play.","rgb":"124,58,237"},{"accent":"#e11d48","darkInk":"#fda4af","ink":"#be123c","label":"Rose","name":"rose","note":"Commerce and anything with a pulse.","rgb":"225,29,72"},{"accent":"#d97706","darkInk":"#fcd34d","ink":"#b45309","label":"Amber","name":"amber","note":"Warm, editorial, unhurried.","rgb":"217,119,6"}]
+[
+ {
+  "name": "asagi",
+  "label": "Asagi 浅葱",
+  "accent": "#33a6b8",
+  "ink": "#165e83",
+  "darkInk": "#81c7d4",
+  "rgb": "51,166,184",
+  "note": "The default. Pale indigo of happi coats and summer cloth."
+ },
+ {
+  "name": "ruri",
+  "label": "Ruri 瑠璃",
+  "accent": "#1e50a2",
+  "ink": "#223a70",
+  "darkInk": "#58b2dc",
+  "rgb": "30,80,162",
+  "note": "Lapis blue, deep and exact — for tools that live next to code."
+ },
+ {
+  "name": "edomurasaki",
+  "label": "Edomurasaki 江戸紫",
+  "accent": "#745399",
+  "ink": "#592c63",
+  "darkInk": "#8b81c3",
+  "rgb": "116,83,153",
+  "note": "The purple of Edo — creative tools, media, play."
+ },
+ {
+  "name": "suo",
+  "label": "Suo 蘇芳",
+  "accent": "#8e354a",
+  "ink": "#64363c",
+  "darkInk": "#dc9fb4",
+  "rgb": "142,53,74",
+  "note": "Sappanwood rose — commerce and anything with a pulse."
+ },
+ {
+  "name": "kaki",
+  "label": "Kaki 柿",
+  "accent": "#ed6d3d",
+  "ink": "#95483f",
+  "darkInk": "#e2943b",
+  "rgb": "237,109,61",
+  "note": "Persimmon, warm and editorial, unhurried."
+ }
+]

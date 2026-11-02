@@ -1,23 +1,23 @@
 /* KATA UI — design tokens. Components reference ONLY these variables. */
 :root{
   --k-bg:#ffffff; --k-bg-soft:#f7f7f7; --k-ink:#18181b; --k-ink-2:#52525b; --k-ink-3:#a1a1aa;
-  --k-line:#e4e4e7; --k-accent:#0e9594; --k-core:#eb471f; --k-danger:#dc2626; --k-amber:#f59e0b;
+  --k-line:#e4e4e7; --k-accent:#33a6b8; --k-core:#eb471f; --k-danger:#c9171e; --k-yamabuki:#ffb11b;
   --k-ring:0 0 0 3px rgba(24,24,27,.12);
   --k-radius:8px; --k-radius-lg:12px;
   --k-font:"Inter","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
   --k-mono:"Geist Mono",ui-monospace,monospace;
   --k-on-color:#ffffff; --k-knob:#ffffff;
-  --k-accent-ink:#0b7372; --k-danger-ink:#b91c1c; --k-amber-ink:#b45309;
-  --k-accent-bg:rgba(14,149,148,.08); --k-accent-bg-strong:rgba(14,149,148,.1); --k-accent-line:rgba(14,149,148,.18);
-  --k-danger-bg:rgba(220,38,38,.07); --k-danger-line:rgba(220,38,38,.17); --k-danger-ring:rgba(220,38,38,.14); --k-ring-danger:0 0 0 3px rgba(220,38,38,.14);
-  --k-amber-bg:rgba(245,158,11,.08); --k-amber-line:rgba(245,158,11,.18);
+  --k-accent-ink:#165e83; --k-danger-ink:#b7282e; --k-yamabuki-ink:#9b6e23;
+  --k-accent-bg:rgba(51,166,184,.08); --k-accent-bg-strong:rgba(51,166,184,.1); --k-accent-line:rgba(51,166,184,.18);
+  --k-danger-bg:rgba(201,23,30,.07); --k-danger-line:rgba(201,23,30,.17); --k-danger-ring:rgba(201,23,30,.14); --k-ring-danger:0 0 0 3px rgba(201,23,30,.14);
+  --k-yamabuki-bg:rgba(255,177,27,.12); --k-yamabuki-line:rgba(255,177,27,.3);
   --k-track:#d4d4d8; --k-seg:#ececee; --k-border-strong:#c9c9cf;
-  --k-success-bg:#ecfdf5; --k-success-line:#a7f3d0; --k-success-ink:#047857;
-  --k-toast-ink:#f4f4f5; --k-toast-sub:#a1a1aa; --k-success:#34d399;
+  --k-success-bg:rgba(93,172,129,.1); --k-success-line:rgba(93,172,129,.32); --k-success-ink:#1b813e;
+  --k-toast-ink:#f4f4f5; --k-toast-sub:#a1a1aa; --k-success:#5dac81;
 
   /* scales (mirror of system/tokens.json) */
   --k-zinc-50:#fafafa; --k-zinc-100:#f4f4f5; --k-zinc-200:#e4e4e7; --k-zinc-300:#d4d4d8; --k-zinc-400:#a1a1aa; --k-zinc-500:#71717a; --k-zinc-600:#52525b; --k-zinc-700:#3f3f46; --k-zinc-800:#27272a; --k-zinc-900:#18181b; --k-zinc-950:#09090b;
-  --k-teal-50:#effaf9; --k-teal-100:#d7f2f0; --k-teal-200:#b0e5e2; --k-teal-300:#7fd1cd; --k-teal-400:#3fb3ae; --k-teal-500:#0e9594; --k-teal-600:#0b7a78; --k-teal-700:#0b7372; --k-teal-800:#0a5c5b; --k-teal-900:#083f3e;
+  --k-asagi-50:#eef9fa; --k-asagi-100:#d7f0f3; --k-asagi-200:#b0e0e7; --k-asagi-300:#7fc9d4; --k-asagi-400:#4fb0bf; --k-asagi-500:#33a6b8; --k-asagi-600:#29889a; --k-asagi-700:#206b79; --k-asagi-800:#1a5561; --k-asagi-900:#143f47;
   --k-space-1:4px; --k-space-2:8px; --k-space-3:12px; --k-space-4:16px; --k-space-6:24px; --k-space-8:32px; --k-space-12:48px; --k-space-16:64px;
   --k-radius-sm:6px; --k-radius-full:99px;
   --k-text-xs:11px; --k-text-sm:12.5px; --k-text-base:13.5px; --k-text-lg:16.5px; --k-text-xl:19px; --k-text-2xl:24px; --k-text-3xl:30px;
@@ -29,6 +29,6 @@
 [data-theme="dark"]{
   --k-bg:#18181b; --k-bg-soft:#27272a; --k-ink:#f4f4f5; --k-ink-2:#a1a1aa; --k-ink-3:#71717a;
   --k-line:#3f3f46; --k-ring:0 0 0 3px rgba(244,244,245,.18);
-  --k-accent-ink:#2dd4bf; --k-danger-ink:#fca5a5; --k-amber-ink:#fcd34d;
+  --k-accent-ink:#81c7d4; --k-danger-ink:#f596aa; --k-yamabuki-ink:#f6c555;
   --k-track:#52525b; --k-seg:#27272a; --k-border-strong:#52525b;
 }

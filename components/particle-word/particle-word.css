@@ -1,6 +1,6 @@
 /* KATA Particle Word — KATAYABURI. A word, weather included. */
 .k-pw{background:var(--k-zinc-950);border-radius:14px;padding:14px;font-family:var(--k-font)}
-.k-pw canvas{display:block;width:100%;height:230px}
+.k-pw canvas{display:block;width:100%;height:230px;touch-action:none}
 .k-pw-bar{display:flex;gap:8px;justify-content:center;margin-top:10px}
 .k-pw-btn{border:1px solid var(--k-zinc-700);background:none;color:var(--k-zinc-300);font-family:inherit;font-size:12.5px;font-weight:550;padding:6px 13px;border-radius:99px;cursor:pointer}
 .k-pw-btn:hover{color:var(--k-on-color);border-color:var(--k-zinc-500)}

@@ -3,5 +3,5 @@
 .k-stack-card{position:sticky;top:calc(6px + var(--i) * 11px);min-height:196px;border-radius:13px;padding:20px;margin-bottom:14px;border:1px solid var(--k-line)}
 .k-stack-card .n{font-size:11.5px;font-weight:700;letter-spacing:.18em;color:var(--k-ink-3)}
 .k-stack-card h3{font-size:19px;font-weight:650;letter-spacing:-.02em;margin:8px 0 6px}
-.k-stack-card p{font-size:13px;line-height:1.75;color:var(--k-ink-2);max-width:340px}
+.k-stack-card p{font-size:13px;line-height:1.75;color:var(--k-ink-2);max-width:340px;letter-spacing:.01em}
 .k-stack-end{height:70px}

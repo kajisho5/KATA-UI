@@ -9,8 +9,11 @@ document.querySelectorAll('[data-magnet]').forEach(function (zone) {
     zone.classList.add('live');
     inner.style.transform = 'translate(' + (dx * .32).toFixed(1) + 'px,' + (dy * .32).toFixed(1) + 'px)';
   });
-  zone.addEventListener('pointerleave', function () {
+  function home() {
     zone.classList.remove('live');
     inner.style.transform = '';
-  });
+  }
+  zone.addEventListener('pointerleave', home);
+  zone.addEventListener('pointerup', home);
+  zone.addEventListener('pointercancel', home);
 });

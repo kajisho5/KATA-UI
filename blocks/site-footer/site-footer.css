@@ -4,11 +4,11 @@
 .k-ftr .brand{display:flex;align-items:center;gap:9px;font-weight:650;font-size:15px}
 .k-ftr .brand .mk{width:22px;height:22px;border:2.5px solid var(--k-ink);border-radius:7px;display:grid;place-items:center}
 .k-ftr .brand .mk i{width:7px;height:7px;border-radius:2.5px;background:var(--k-core);display:block}
-.k-ftr .tag{margin-top:10px;font-size:12.5px;line-height:1.7;color:var(--k-ink-2);max-width:26ch}
+.k-ftr .tag{margin-top:10px;font-size:12.5px;line-height:1.7;color:var(--k-ink-2);max-width:26ch;letter-spacing:.01em}
 .k-ftr h6{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;margin-bottom:11px}
 .k-ftr .col a{display:block;font-size:13px;color:var(--k-ink-2);text-decoration:none;padding:3.5px 0}
 .k-ftr .col a:hover{color:var(--k-ink)}
-.k-ftr .news p{font-size:12.5px;line-height:1.7;color:var(--k-ink-2);margin-bottom:10px}
+.k-ftr .news p{font-size:12.5px;line-height:1.7;color:var(--k-ink-2);margin-bottom:10px;letter-spacing:.01em}
 .k-ftr .news .row{display:flex;gap:8px}
 .k-ftr-bot{display:flex;align-items:center;gap:16px;border-top:1px solid var(--k-line);margin-top:24px;padding-top:16px;font-size:12px;color:var(--k-ink-3);flex-wrap:wrap}
 .k-ftr-bot .soc{display:flex;gap:7px;margin-inline-start:auto}

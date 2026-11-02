@@ -1,7 +1,7 @@
 {
   "title": "Magnet",
   "category": "Motion",
-  "description": "A button with gravity: it leans toward the cursor, then springs home when the cursor leaves.",
+  "description": "A button with gravity: it leans toward the pointer, then springs home when the pointer leaves.",
   "tags": [
     "magnet",
     "button",
@@ -10,6 +10,6 @@
     "playful"
   ],
   "status": "beta",
-  "usage": "Wrap the one control a hero lives or dies by — the call to action, the play button. The pull is a fraction of the distance (about a third), the return is a spring, and touch devices simply never feel it, which is correct: there is no cursor to lean toward.",
+  "usage": "Wrap the one control a hero lives or dies by — the call to action, the play button. The pull is a fraction of the distance (about a third), the return is a spring, and on touch a dragging finger pulls it the same way — it springs home when the finger lifts.",
   "a11y": "Motion only: the control’s position in the layout, its focus order and its name never change, and keyboard focus does not trigger the pull. Under prefers-reduced-motion the magnet is switched off and the button sits still like its ancestors."
 }

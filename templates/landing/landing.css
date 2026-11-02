@@ -6,6 +6,6 @@
 .k-tpl4-hero{max-width:1080px;margin:0 auto;padding:22px 28px 4px}
 .k-tpl4-heroin{display:grid;gap:16px;justify-items:start;padding:14px 6px}
 .k-tpl4-heroin h1{font-size:41px;font-weight:650;letter-spacing:-.03em;line-height:1.12;max-width:15ch}
-.k-tpl4-heroin p{font-size:15.5px;line-height:1.75;max-width:52ch}
+.k-tpl4-heroin p{font-size:15.5px;line-height:1.75;max-width:52ch;letter-spacing:.012em}
 .k-tpl4-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
 @media (max-width:560px){.k-tpl4-heroin h1{font-size:31px}.k-tpl4-sec{padding:26px 18px}}

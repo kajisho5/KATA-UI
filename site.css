@@ -269,3 +269,39 @@ dialog.kcmd:has(.kcmd-body){width:min(880px,94vw)}
 .kcmd-pv-note{font-size:12.5px;color:var(--ink3);line-height:1.65;display:grid;gap:3px}
 .kcmd-pv-note b{color:var(--ink);font-size:13.5px}
 @media (max-width:719px){.kcmd-pv{display:none}.kcmd-left{flex:1 1 100%}}
+
+.dsfloor{margin-top:26px;border:1px solid var(--hair);border-radius:16px;padding:20px;background:var(--soft)}
+.dsfloor h2{font-size:16px;font-weight:600;letter-spacing:-.015em;margin-bottom:6px}
+.ds-live{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:14px;background:var(--paper);border:1px solid var(--hair);border-radius:12px;padding:14px}
+.ds-casts{margin-top:14px;display:grid;gap:9px}
+.ds-castrow{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--ink2);font-weight:500}
+.ds-castrow>span:first-child{width:52px;flex:none}
+.ds-sws{display:inline-flex;gap:7px}
+.ds-sws button{width:26px;height:26px;border-radius:8px;border:2px solid transparent;cursor:pointer;padding:0}
+.ds-sws button.on{border-color:var(--ink)}
+.ds-btns{display:inline-flex;gap:6px;flex-wrap:wrap}
+.ds-btns button{font:inherit;font-size:12px;font-weight:500;border:1px solid var(--hair);background:var(--paper);color:var(--ink2);border-radius:99px;padding:4px 11px;cursor:pointer}
+.ds-btns button:hover{border-color:var(--ink3);color:var(--ink)}
+.ds-stat{margin-top:12px;font-size:12.5px;color:var(--ink2);min-height:1.2em;letter-spacing:.01em}
+.dsfloor.castflash{animation:copyflash .6s ease-out}
+.box.castable{cursor:pointer;font:inherit}
+.box.castable:hover{border-color:var(--ink3)}
+
+.wrap.dc{max-width:1460px}
+.dcols{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:24px;align-items:start}
+.dcol-l{position:sticky;top:74px}
+.dcol-r .codebox{margin-top:0}
+@media (max-width:1099px){.dcols{grid-template-columns:1fr}.dcol-l{position:static}}
+
+.catsec .cards{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.gcard{overflow:hidden}
+.gstage{display:block;height:148px;margin:-20px -20px 14px;position:relative;overflow:hidden;border-bottom:1px solid var(--hair);background:radial-gradient(circle,#00000010 1px,transparent 1px) 0 0/16px 16px,var(--soft);pointer-events:none}
+.gscale{position:absolute;top:14px;left:14px;width:600px;transform:scale(.53);transform-origin:top left;pointer-events:none}
+html[data-theme="dark"] .gstage{background:radial-gradient(circle,#ffffff14 1px,transparent 1px) 0 0/16px 16px,#131316}
+
+.asm-note{margin-top:10px;color:var(--ink2);font-size:14.5px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
+.asm-switch{display:inline-flex;gap:10px;align-items:center;font-size:13.5px;font-weight:550;margin-top:16px;cursor:pointer}
+.asm-frame{margin-top:16px;border:1px solid var(--hair);border-radius:16px;padding:18px;background:var(--paper);transition:opacity .3s ease,filter .3s ease;overflow:hidden}
+.asmx .asm-parts{display:none;margin-top:16px}
+.asmx:has(.asm-tgl:checked) .asm-frame{opacity:.22;filter:grayscale(.5)}
+.asmx:has(.asm-tgl:checked) .asm-parts{display:grid}

@@ -282,12 +282,16 @@ def head(title, desc, extra=''):
 {HEADER}
 """
 
-def card(c):
+def card(c, gallery=False):
     m = c['meta']
     tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in m.get('tags', []))
     q = esc((m['title'] + ' ' + c['slug'] + ' ' + ' '.join(m.get('tags', [])) + ' ' + m['category']).lower())
-    return f"""<a class="card" data-q="{q}" href="/components/{c['slug']}/">
-  <h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h3>
+    stage = ''
+    if gallery and '<canvas' not in c['preview']:
+        pv_html = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', c['preview']).strip()
+        stage = f'<span class="gstage" aria-hidden="true"><span class="gscale">{pv_html}</span></span>'
+    return f"""<a class="card{' gcard' if gallery else ''}" data-q="{q}" href="/components/{c['slug']}/">
+  {stage}<h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h3>
   <p>{esc(m['description'])}</p>
   <span class="tags">{tags}</span>
 </a>"""
@@ -298,7 +302,7 @@ def catalog_sections(comps):
         group = [c for c in comps if c['meta']['category'] == cat]
         if not group:
             continue
-        cards = '\n'.join(card(c) for c in group)
+        cards = '\n'.join(card(c, gallery=True) for c in group)
         kb = ' kburi' if cat == 'KATAYABURI' else ''
         out.append(f'<section class="catsec{kb}"><h2>{esc(cat)}</h2><div class="cards">\n{cards}\n</div></section>')
     return '\n'.join(out)
@@ -420,6 +424,17 @@ def landing(comps, blocks, n_icons, templates=None):
     wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro opens soon</h2>'
       '<p>The blocks and templates — 21 sections and 7 whole pages — go on sale at $129, once, lifetime. The parts stay free either way. Leave an email and the launch is the only message you will ever get.</p>'
       + waitlist_form(dark=True) + '</div></section>')
+    pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
+    asmx = ''
+    if pr_block:
+        pr_uses = [u for u in pr_block['meta'].get('uses', []) if u in pv]
+        pr_js = f'<script src="/blocks/pricing/pricing.js?v={_v(pr_block["js"])}"></script>' if pr_block.get('js') else ''
+        asmx = ('<section class="lpsec asmx"><h2>Assembled, then taken apart</h2>'
+          '<p class="asm-note">The Pricing block is not drawn \u2014 it is composed: ' + str(len(pr_uses)) + ' parts from this catalog, snapped into one section. Flip the switch and take it apart; every piece is a part you can copy on its own.</p>'
+          '<label class="asm-switch"><span class="switch"><input type="checkbox" class="asm-tgl"><span class="tr"></span></span> Exploded view</label>'
+          '<div class="asm-frame">' + pr_block['preview'] + '</div>'
+          '<div class="showgrid asm-parts">' + ''.join(tile(u, pv[u]['meta']['title']) for u in pr_uses) + '</div>'
+          + pr_js + '</section>')
     mstrip = ('<section class="lpsec"><h2>Motion, on duty</h2><div class="mstrip">'
       + tile('aurora', 'Aurora') + tile('beam-border', 'Beam Border') + tile('spotlight', 'Spotlight') + '</div>'
       '<p class="framecap">Live parts, auto-playing — the Motion line itself, not a video of it.</p></section>')
@@ -482,6 +497,7 @@ def landing(comps, blocks, n_icons, templates=None):
   <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
   </div>
   {mstrip}
+  {asmx}
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">
@@ -518,7 +534,7 @@ def landing(comps, blocks, n_icons, templates=None):
 </body>
 </html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
-             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else ''))
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks, templates=None):
@@ -635,7 +651,7 @@ def components_index(comps):
 {FOOTER}
 </body>
 </html>"""
-    return head('Components — KATA UI', 'All KATA UI components.', '') + body
+    return head('Components — KATA UI', 'All KATA UI components.', '<link rel="stylesheet" href="/kata-ui.css">') + body
 
 def sidebar(comps, active):
     out = []
@@ -841,7 +857,7 @@ def detail(comps, idx):
         links = ''.join(f'<a class="card" href="/blocks/{b["slug"]}/"><h3>{esc(b["meta"]["title"])}</h3><p>{esc(b["meta"]["description"])}</p></a>' for b in used_in_blocks)
         used_in = f'<section class="doc"><h2>Used in these blocks</h2><div class="cards">{links}</div></section>'
     body = f"""
-<div class="wrap">
+<div class="wrap dc">
   <div class="layout">
     {nav_tree(comps, slug, '/components/' + slug + '/')}
     <main class="detail">
@@ -855,14 +871,17 @@ def detail(comps, idx):
         <span class="seg" data-seg="theme"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></span>
         <span class="segx"><button type="button" id="st-calm">Calm</button><button type="button" id="st-focus">Focus first control</button></span>
       </div>
+      <div class="dcols"><div class="dcol-l">
       <div class="{stage_cls}" id="stage">
 {c['preview']}
       </div>
       {deps_html}
+      </div><div class="dcol-r">
       <div class="codebox">
         <div class="codetabs">{tab_btns}</div>
         {panes}
       </div>
+      </div></div>
       {install_html}
       {examples_html}
       <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
@@ -1198,6 +1217,9 @@ def showcase_page(templates, blocks):
 </html>"""
     return head('Showcase — KATA UI', 'Live pages assembled from the KATA UI catalog itself: templates, the starter kit, and this site.', SC_STYLE) + body
 
+DS_CAST_TAG = "<script>" + "\n(function(){\n  var root=document.documentElement;\n  var PRESETS={Asagi:['#33A6B8','#165E83','#81C7D4'],Ruri:['#1E50A2','#223A70','#58B2DC'],Edomurasaki:['#745399','#592C63','#8B81C3'],Suo:['#8E354A','#64363C','#DC9FB4'],Kaki:['#ED6D3D','#95483F','#E2943B']};\n  function load(){try{return JSON.parse(localStorage.getItem('kata-fdeck')||'{}')}catch(e){return{}}}\n  function save(S){try{localStorage.setItem('kata-fdeck',JSON.stringify(S))}catch(e){}}\n  function stat(msg){var el=document.getElementById('ds-stat');if(el)el.textContent=msg;var card=document.getElementById('ds-floor');if(card){card.classList.remove('castflash');void card.offsetWidth;card.classList.add('castflash');}}\n  function castRadius(v){var S=load();S.radius=v;root.style.setProperty('--k-radius',v+'px');root.style.setProperty('--k-radius-sm',Math.max(0,Math.round(v*.75))+'px');root.style.setProperty('--k-radius-lg',Math.round(v*1.5)+'px');var sl=document.getElementById('fd-radius');if(sl){sl.value=v;var o=document.getElementById('fd-rv');if(o)o.textContent=v+'px';}save(S);stat('Cast \\u2014 radius '+v+'px. The parts above re-cast; the deck remembers it.');}\n  function castAccent(name){var p=PRESETS[name];if(!p)return;var S=load();S.accent=p[0];S.accentInk=p[1];S.darkInk=p[2];S.accentName=name;var dark=root.getAttribute('data-theme')==='dark';root.style.setProperty('--k-accent',p[0]);root.style.setProperty('--acc',p[0]);root.style.setProperty('--k-accent-ink',dark?p[2]:p[1]);save(S);document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===name)});stat('Cast \\u2014 accent '+name+'.');}\n  function castMotion(v){var S=load();S.mscale=v;root.style.setProperty('--k-mscale',v);var sl=document.getElementById('fd-motion');if(sl)sl.value=v;save(S);stat('Cast \\u2014 motion '+v+'\\u00d7.');}\n  document.querySelectorAll('[data-cast-radius]').forEach(function(b){b.addEventListener('click',function(){castRadius(+b.dataset.castRadius)})});\n  document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.addEventListener('click',function(){castAccent(b.dataset.castAccent)})});\n  document.querySelectorAll('[data-cast-motion]').forEach(function(b){b.addEventListener('click',function(){castMotion(+b.dataset.castMotion)})});\n  var S0=load();if(S0.accentName)document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===S0.accentName)});\n})();\n" + "</script>\n"
+
+
 def design_system_page(tokens):
     def swatches(scale_name, scale):
         cells = ''.join(
@@ -1212,7 +1234,9 @@ def design_system_page(tokens):
         f'<div class="row"><span style="width:64px">space-{k}</span><span class="bar" style="width:{v}px"></span><span>{v}px</span></div>'
         for k, v in tokens['spacePx'].items())
     radii = ''.join(
-        f'<div class="box" style="border-radius:{v}px">{k} · {v}</div>' for k, v in tokens['radiusPx'].items())
+        (f'<button type="button" class="box castable" data-cast-radius="{v}" style="border-radius:{v}px" title="Cast this radius">{k} · {v}</button>' if k != 'full'
+         else f'<div class="box" style="border-radius:{v}px">{k} · {v}</div>')
+        for k, v in tokens['radiusPx'].items())
     body = f"""
 <div class="wrap ds">
   <h1>Design System</h1>
@@ -1222,6 +1246,21 @@ def design_system_page(tokens):
     <a href="/design-system/tokens.json">tokens.json</a>
     <a href="/components/">Browse components</a>
   </div>
+  <section class="dsfloor" id="ds-floor"><h2>The foundry floor</h2>
+    <p class="note">This page is a casting bench, not a museum. Cast a token and the real parts below \u2014 and every part on the page \u2014 re-cast at once. The Foundry deck (bottom right) remembers it across the site.</p>
+    <div class="ds-live">
+      <button class="btn btn-pri btn-md" type="button">Cast me</button>
+      <span class="switch"><input type="checkbox" checked aria-label="Foundry floor switch"><span class="tr"></span></span>
+      <input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:200px" aria-label="Foundry floor input">
+      <span class="badge asagi"><i></i>Same mold</span>
+    </div>
+    <div class="ds-casts">
+      <div class="ds-castrow"><span>Accent</span><span class="ds-sws"><button type="button" data-cast-accent="Asagi" style="background:#33A6B8" aria-label="Cast Asagi"></button><button type="button" data-cast-accent="Ruri" style="background:#1E50A2" aria-label="Cast Ruri"></button><button type="button" data-cast-accent="Edomurasaki" style="background:#745399" aria-label="Cast Edomurasaki"></button><button type="button" data-cast-accent="Suo" style="background:#8E354A" aria-label="Cast Suo"></button><button type="button" data-cast-accent="Kaki" style="background:#ED6D3D" aria-label="Cast Kaki"></button></span></div>
+      <div class="ds-castrow"><span>Radius</span><span class="ds-btns"><button type="button" data-cast-radius="0">0</button><button type="button" data-cast-radius="4">4</button><button type="button" data-cast-radius="8">8 \u00b7 mold</button><button type="button" data-cast-radius="12">12</button><button type="button" data-cast-radius="16">16</button><button type="button" data-cast-radius="20">20</button></span></div>
+      <div class="ds-castrow"><span>Motion</span><span class="ds-btns"><button type="button" data-cast-motion="0.7">0.7\u00d7</button><button type="button" data-cast-motion="1">1.0\u00d7 \u00b7 mold</button><button type="button" data-cast-motion="1.4">1.4\u00d7</button></span></div>
+    </div>
+    <p class="ds-stat" id="ds-stat" role="status"></p>
+  </section>
   <section><h2>Color — Zinc</h2><p class="note">The dominant scale. Interfaces are built from zinc first; color is the exception.</p>{swatches('zinc', tokens['color']['zinc'])}</section>
   <section><h2>Color — Asagi (the one accent)</h2><p class="note">A single accent, used sparingly: links, highlights, the core of the mark. If everything is asagi, nothing is.</p>{swatches('asagi', tokens['color']['asagi'])}</section>
   <section><h2>Color — Roles</h2><div class="roles">{roles}</div></section>
@@ -1240,7 +1279,8 @@ def design_system_page(tokens):
 {FOOTER}
 </body>
 </html>"""
-    return head('Design System — KATA UI', 'The KATA design system: color, type, spacing, radius and motion tokens.', DS_STYLE) + body
+    ds_links = ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css">' for sl in ('button', 'switch', 'input', 'badge'))
+    return head('Design System — KATA UI', 'The KATA design system: color, type, spacing, radius and motion tokens.', DS_STYLE + ds_links) + body.replace('</body>', DS_CAST_TAG + '</body>', 1)
 
 
 def load_blocks():
@@ -1858,7 +1898,8 @@ DOCS = [
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
- 'November 2, 2026 \u2014 The mark, recast', '<p>The mark itself is recast. The four-quadrant logo gives way to the three shapes and nothing else: an r2-corner frame, a single 45\u00b0 cut, and the vermillion core sitting at the exact center \u2014 the same geometry the hero cast mark assembles, and the same 24-grid, 1.7-stroke discipline as the icon set. It ships everywhere the old mark lived: header, favicon, app icons, the OGP card. Around it, the specimen grows its second layer: component pages gain a <b>Tokens it reads</b> decomposition (every custom property in the part\u2019s CSS, with live values), stage toggles that demo calm (reduced motion) and keyboard focus in place, a wagara backdrop row in the Foundry deck (Seigaiha, Asanoha, Ichimatsu over the whole page), \u2318K search results that preview the highlighted part live from its own page, a KATAYABURI section that breaks its grid once as it scrolls in and re-forms, and a pricing page that shows its arithmetic: 28 assembled artifacts, 87 composed part-instances, roughly 77 hours of assembly behind the $129.</p>', None, None),
+ 'November 2, 2026 \u2014 Galleries, benches, taking things apart', '<p>The specimen stops posing and starts working. The <b>Components catalog is a gallery now</b>: every card carries its part live \u2014 the real preview, cast from the same files you copy \u2014 so the shelf is browsable by eye, not by name. Component pages go <b>two-column</b>: the live stage pinned on the left, the code on the right, on a wider canvas. The <b>Design System page is a casting bench</b> \u2014 a foundry floor with live parts and cast buttons for accent, radius and motion, wired to the same saved state as the Foundry deck; the radius specimens in the token tables cast too. And the landing page gains <b>Assembled, then taken apart</b>: the Pricing block composed live from Button, Badge, Switch and Separator, with a switch that explodes it back into its parts. Nothing here is a screenshot; if it looks cast, it was cast.</p>', None, None),
+    ('November 2, 2026 \u2014 The mark, recast', '<p>The mark itself is recast. The four-quadrant logo gives way to the three shapes and nothing else: an r2-corner frame, a single 45\u00b0 cut, and the vermillion core sitting at the exact center \u2014 the same geometry the hero cast mark assembles, and the same 24-grid, 1.7-stroke discipline as the icon set. It ships everywhere the old mark lived: header, favicon, app icons, the OGP card. Around it, the specimen grows its second layer: component pages gain a <b>Tokens it reads</b> decomposition (every custom property in the part\u2019s CSS, with live values), stage toggles that demo calm (reduced motion) and keyboard focus in place, a wagara backdrop row in the Foundry deck (Seigaiha, Asanoha, Ichimatsu over the whole page), \u2318K search results that preview the highlighted part live from its own page, a KATAYABURI section that breaks its grid once as it scrolls in and re-forms, and a pricing page that shows its arithmetic: 28 assembled artifacts, 87 composed part-instances, roughly 77 hours of assembly behind the $129.</p>', None, None),
     ('November 2, 2026 \u2014 The living specimen', '<p>The site stops describing the mold and starts being it. A <b>Foundry deck</b> now sits on every page (bottom right): turn the radius, cast one of the five traditional-color accents, flip the whole page between washi light and sumi dark, slow the motion \u2014 every part on the page re-casts at once, because they all read the same tokens. The vermillion core is deliberately not on the deck; it never moves. The landing hero opens with a cast mark \u2014 the three shapes (circle, 45\u00b0 line, r2 corner) assembling around the core \u2014 over a live cluster of the real Button, Switch, Input and Badge, and the Motion line auto-plays below it. Component pages carry a <b>Mold verified</b> chip and a button that copies a ready-made prompt for your AI; joining the waitlist stamps a vermillion \u578b; copying code flashes the core color. The site chrome accent is Asagi now, too \u2014 the last of the old teal is gone.</p>', None, None),
     ('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget. Applied site-wide the same day: every page lead, the docs body, the landing sub-texts and the Japanese page (CJK body +0.04em, headings +0.05em) now follow the table, and an audit of all 164 part stylesheets found their tracking already sitting inside the ramps \u2014 card titles, micro labels, vertical text \u2014 that the table now records explicitly.</p>', None, None),
     ('November 2, 2026 \u2014 Traditional colors of Japan', '<p>The Themes page gains \u4f1d\u7d71\u8272: fifty traditional Japanese colors in seven families \u2014 pine-soot inks, safflower reds, indigo blues, gardenia yellows \u2014 each with its kanji name, its reading and the dye or pigment it came from. Clicking one casts it into the live demo and writes the theme CSS under its own name (ai.css, yamabuki.css), so a button can wear a thousand-year-old color in one click. At the head of the reds sits \u578b\u306e\u6731, KATA\u2019s own vermilion core, labeled as what it is: the one color no theme moves.</p>', None, None),

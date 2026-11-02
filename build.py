@@ -1880,19 +1880,23 @@ DENTOU_STYLE = """<style>
 .dtpv .dtstatus{font-size:12.5px;color:var(--ink2)}
 .dtfam{font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:28px 0 10px;display:flex;gap:12px;align-items:baseline}
 .dtfam span{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;letter-spacing:.25em;color:var(--ink3);font-size:13px;text-transform:none;font-weight:400}
-.dtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px}
+.dtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(218px,1fr));gap:12px}
 .dtcard{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:0;text-align:left;cursor:pointer;overflow:hidden;font:inherit;color:var(--ink);display:flex;flex-direction:column;width:100%}
-.dtcard .dsw{height:58px;display:block;border-bottom:1px solid var(--hair);flex:none}
+.dtcard .dsw{height:88px;display:block;border-bottom:1px solid var(--hair);flex:none}
 .dtcard:hover{border-color:var(--ink3)}
 .dtcard.on{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
-.dtcard .dsw{height:58px;display:block;border-bottom:1px solid var(--hair)}
-.dtcard .dbd{display:block;padding:10px 12px 11px}
-.dtcard .dkj{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;font-size:21px;line-height:1.3;display:block;letter-spacing:.06em}
+.dtcard .dsw{height:88px;display:block;border-bottom:1px solid var(--hair)}
+.dtcard .dbd{display:block;padding:13px 15px 14px}
+.dtcard .dkj{font-family:"Yuji Syuku","Hiragino Mincho ProN","Yu Mincho",serif;font-size:27px;line-height:1.3;display:block;letter-spacing:.06em}
 .dtcard .drm{font-size:12.5px;font-weight:600;margin-top:3px;display:flex;flex-wrap:wrap;column-gap:6px;align-items:baseline;letter-spacing:.01em}
 .dtcard .drm i{font-style:normal;font-weight:400;color:var(--ink3);font-size:11.5px;letter-spacing:.05em;white-space:nowrap}
 .dtcard .dhx{font-family:var(--mono);font-size:11.5px;color:var(--ink2);margin-top:5px;display:flex;justify-content:space-between;align-items:center;letter-spacing:.03em}
 .dtcard .dhx .cp{font-size:10.5px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:2px 7px}
-.dtcard .dnt{font-size:11.5px;color:var(--ink2);line-height:1.65;margin-top:6px;display:block;letter-spacing:.01em}
+.dtcard .dnt{font-size:12.5px;color:var(--ink2);line-height:1.65;margin-top:6px;display:block;letter-spacing:.01em}
+.dtcast{margin-left:auto;font:inherit;font-size:11.5px;font-weight:600;letter-spacing:.02em;text-transform:none;color:var(--ink);border:1px solid var(--hair);background:var(--paper);border-radius:8px;padding:6px 12px;cursor:pointer}
+.dtcast:hover{border-color:var(--ink3)}
+.dtmini{border:1px solid var(--k-accent-line);background:var(--k-accent-bg);color:var(--k-accent-ink);border-radius:10px;padding:10px 13px;font-size:12.5px;line-height:1.55;max-width:300px}
+.dtmini b{display:block;font-size:13px}
 .dtcard.core{cursor:default;background:var(--soft)}
 .dtcard .core-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ink3);border:1px solid var(--hair);border-radius:99px;padding:2px 7px}
 </style>"""
@@ -1934,7 +1938,10 @@ def themes_page(themes):
                           '<span class="drm">' + col['romaji'] + '<i>' + col['kana'] + '</i></span>'
                           '<span class="dhx">' + col['hex'] + '<span class="cp" data-copy="' + col['hex'] + '">Copy</span></span>'
                           '<span class="dnt">' + col['note'] + '</span></span></button>')
-        fams.append('<h3 class="dtfam">' + f['family'] + '<span>' + f['family_jp'] + '</span></h3><div class="dtgrid">' + ''.join(dcards) + '</div>')
+        _lead = f['colors'][0]
+        _lslug = _lead['romaji'].lower().replace('\u016b', 'u').replace('\u014d', 'o')
+        _cast = ('<button class="dtcast" type="button" data-cast-family data-hex="' + _lead['hex'] + '" data-name="' + _lead['romaji'] + '" data-slug="' + _lslug + '" data-kanji="' + _lead['kanji'] + '">Cast this theme \u00b7 ' + _lead['romaji'] + '</button>')
+        fams.append('<h3 class="dtfam">' + f['family'] + '<span>' + f['family_jp'] + '</span>' + _cast + '</h3><div class="dtgrid">' + ''.join(dcards) + '</div>')
     palette = """
 <section class="dentou" id="dentou">
   <span class="dtk">伝統色</span>
@@ -1944,6 +1951,8 @@ def themes_page(themes):
     <span class="lbl">CASTING \u2014 TRADITIONAL COLORS</span>
     <button class="btn btn-asagi btn-md" type="button">Accent button</button>
     <span class="badge asagi"><i></i><span id="dtpvname">Asagi</span></span>
+    <label class="switch asagi"><input type="checkbox" checked><span class="tr"></span></label>
+    <div class="dtmini"><b id="dtmininame">Asagi</b>A whole card dyed by one cast \u2014 border, wash and ink all follow the color.</div>
     <span class="dtstatus" id="dtstatus">Pick a color below \u2014 it lands here, in the demo above, and in the CSS.</span>
   </div>
 """ + ''.join(fams) + """
@@ -1970,9 +1979,20 @@ function applyDentou(hex,romaji,slug,kanji){
   document.getElementById('thhex').textContent=hex;
   document.getElementById('thcolor').value=hex.toLowerCase();
   document.getElementById('dtpvname').textContent=romaji;
+  var mn=document.getElementById('dtmininame');if(mn)mn.textContent=romaji;
   document.getElementById('dtstatus').textContent=kanji+' '+romaji+' \u2014 '+hex.toUpperCase()+' is cast. The theme CSS above is now '+slug+'.css.';
   document.querySelectorAll('[data-theme-card]').forEach(function(c){c.classList.remove('on');});
 }
+document.querySelectorAll('[data-cast-family]').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    applyDentou(btn.dataset.hex,btn.dataset.name,btn.dataset.slug,btn.dataset.kanji);
+    document.querySelectorAll('[data-dentou]').forEach(function(c){c.classList.toggle('on',c.dataset.hex.toLowerCase()===btn.dataset.hex.toLowerCase());});
+    var css=document.getElementById('thcss').textContent;
+    if(navigator.clipboard)navigator.clipboard.writeText(css);
+    var t=btn.textContent;btn.textContent='Copied \u2014 '+btn.dataset.slug+'.css';
+    setTimeout(function(){btn.textContent=t;},1600);
+  });
+});
 document.querySelectorAll('[data-dentou]').forEach(function(card){
   card.addEventListener('click',function(){
     document.querySelectorAll('[data-dentou]').forEach(function(c){c.classList.remove('on');});
@@ -2178,6 +2198,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 Traditional colors, shown large', '<p>The fifty traditional colors of Japan get room to breathe: each card is now a full dye-band with its name set large, every family carries a Cast this theme button that casts its lead color and copies the whole token set as a ready theme file, and the casting strip at the top grows a switch and a small card dyed by the cast \u2014 border, wash and ink following the color you picked.</p>', None, None),
+    (
  'November 3, 2026 \u2014 A door for React on the front page; the bench, promoted', '<p>The front page now speaks to React teams directly: framework-free is not framework-hostile \u2014 paste the markup into JSX, load the CSS once, mount the JS parts as islands \u2014 with the field guide one click away. The Design System bench takes the top of its page under its true name, One token, everything moves, and its specimen row grows a full card and a progress bar, so a single cast visibly re-casts a composed surface, not just loose controls.</p>', None, None),
     (
  'November 3, 2026 — Full-page demos, two guides, and the itemized shelf', '<p>Every template now runs full-screen at its own demo address — no site chrome, the real page, one click from its detail page. The showcase cards carry their composition (parts in; hours by hand versus minutes with Pro), and the shelf is openly first-party until outside builds join it. Two new guides go deep where pages actually fail: forms (validation timing, the submit path, errors that teach) and data tables (sorting as a contract, filtering, the honest limit at ten thousand rows) — plus an AI prompt library of six paste-ready prompts that make an assistant fetch real parts instead of improvising them. Pricing now itemizes all 28 Pro artifacts, states the Founding 100 terms, and walks the post-checkout path before asking for anything.</p>', None, None),

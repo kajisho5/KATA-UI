@@ -300,6 +300,7 @@ dialog.kcmd:has(.kcmd-body){width:min(880px,94vw)}
 .gcard{overflow:hidden}
 .gstage{display:block;height:148px;margin:-20px -20px 14px;position:relative;overflow:hidden;border-bottom:1px solid var(--hair);background:radial-gradient(circle,#00000010 1px,transparent 1px) 0 0/16px 16px,var(--soft);pointer-events:none}
 .gscale{position:absolute;top:14px;left:14px;width:600px;transform:scale(.53);transform-origin:top left;pointer-events:none}
+@media (max-width:720px){.gstage{height:190px}.gscale{width:430px;transform:scale(.8)}}
 html[data-theme="dark"] .gstage{background:radial-gradient(circle,#ffffff14 1px,transparent 1px) 0 0/16px 16px,#131316}
 
 .asm-note{margin-top:10px;color:var(--ink2);font-size:14.5px;line-height:1.8;max-width:62ch;letter-spacing:.012em}

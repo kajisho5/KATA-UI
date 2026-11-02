@@ -61,6 +61,7 @@ try:
     _ms = f'Mold Verified — {_ok}/{_ok + _bad} checks passing' if _ok else 'Mold Verified — see check.py'
 except Exception:
     _ms = 'Mold Verified — see check.py'
+MOLD_STATUS = _ms
 FOOTER = FOOTER.replace('__MOLD__', _ms)
 
 
@@ -322,7 +323,8 @@ def catalog_sections(comps):
             continue
         cards = '\n'.join(card(c, gallery=True) for c in group)
         kb = ' kburi' if cat == 'KATAYABURI' else ''
-        out.append(f'<section class="catsec{kb}"><h2>{esc(cat)}</h2><div class="cards">\n{cards}\n</div></section>')
+        _exp = '<p class="expnote">The experimental line \u2014 showpieces. The production shelf carries the same mold without the performance.</p>' if cat in ('Motion', 'KATAYABURI') else ''
+        out.append(f'<section class="catsec{kb}"><h2>{esc(cat)}</h2>{_exp}<div class="cards">\n{cards}\n</div></section>')
     return '\n'.join(out)
 
 LP_STYLE = """<style>
@@ -439,8 +441,8 @@ def landing(comps, blocks, n_icons, templates=None):
       '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks + Templates lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
       '</tbody></table></div>'
       '<p class="cmpnote">From each project’s public pages, November 2026. The honest summary: the others are excellent inside their framework. KATA is for everywhere else.</p></section>')
-    wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro opens soon</h2>'
-      '<p>The blocks and templates — 21 sections and 7 whole pages — go on sale at $129, once, lifetime. The parts stay free either way. Leave an email and the launch is the only message you will ever get.</p>'
+    wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro, in preparation</h2>'
+      '<p>Free is the finished product — all 136 components, MIT, forever. Pro adds the assembled work: 21 blocks and 7 templates, $129 once, lifetime. Sales open soon; leave an email and the launch is the only message you will ever get.</p>'
       + waitlist_form(dark=True) + '</div></section>')
     pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
     asmx = ''
@@ -456,12 +458,12 @@ def landing(comps, blocks, n_icons, templates=None):
     mstrip = ('<section class="lpsec"><h2>Motion, on duty</h2><div class="mstrip">'
       + tile('aurora', 'Aurora') + tile('beam-border', 'Beam Border') + tile('spotlight', 'Spotlight') + '</div>'
       '<p class="framecap">Live parts, auto-playing — the Motion line itself, not a video of it.</p></section>')
-    lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Is it really free?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. Every component — all 136, with the code on its page — is MIT-licensed, free for personal and commercial work. Pro adds the assembled blocks and templates; the parts themselves are never paywalled.</div></details><details class="k-acc"><summary>Which frameworks does it work with?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">All of them, and none. Parts are plain HTML, CSS and JS, so they paste into Astro, Laravel, Rails, WordPress, a static page, or the corner of a legacy app. There is no runtime and no build step unless you bring your own.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files — or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">21 blocks and 7 page templates — whole sections, already assembled — plus every future block. One payment of $129, lifetime. Sales open soon; the waitlist on the pricing page gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes — the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
+    lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Is it really free?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. Every component — all 136, with the code on its page — is MIT-licensed, free for personal and commercial work. Pro adds the assembled blocks and templates; the parts themselves are never paywalled.</div></details><details class="k-acc"><summary>Which frameworks does it work with?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">All of them, and none. Parts are plain HTML, CSS and JS, so they paste into Astro, Laravel, Rails, WordPress, a static page, or the corner of a legacy app. There is no runtime and no build step unless you bring your own.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files — or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">The assembled shelf: 21 blocks and 7 page templates, plus every future block. Free is the finished product — Pro is for people who would rather not compose. One payment of $129, lifetime; sales open soon, and the waitlist gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes — the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
               '<p class="more">Still stuck? <a href="/docs/">Read the docs</a> — or check the <a href="/docs/faq/">full FAQ</a>.</p></section>'
               '<link rel="stylesheet" href="/components/accordion/accordion.css">')
     _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'card', 'tabs', 'toast')]
     _five = [c for c in _five if c]
-    firstfive = ('<section class="lpsec"><h2>First five to copy</h2>'
+    firstfive = ('<section class="lpsec" id="first-five"><h2>First five to copy</h2>'
       '<p class="lpnote">New here? These five cover most first screens \u2014 an action, a field, a surface, a switch of views, a word of feedback. Copy them in order and the mold explains itself.</p>'
       '<div class="cards" style="margin-top:16px">' + ''.join(card(c) for c in _five) + '</div></section>')
     _ch = next((d for d in DOCS if d[0] == 'changelog'), None)
@@ -489,6 +491,26 @@ def landing(comps, blocks, n_icons, templates=None):
                 + tile('aurora', 'Aurora') + tile('converge', 'Converge') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border') + tile('glass-panel', 'Glass Panel') + tile('follow-frame', 'Follow Frame')
                 + tile('text-reveal', 'Text Reveal', True) + tile('reorder', 'Reorder', True) + tile('counter', 'Counter') + tile('marquee', 'Marquee')
                 + '</div></div>' + show_scripts + '</section>')
+    moldlive = ('<section class="lpsec"><h2>The mold, live</h2>'
+      '<p class="lpnote">Four real parts from the catalog, running unmodified. Turn the radius, the accent or the mode in the Foundry deck \u2014 bottom right, on every page \u2014 and watch them re-cast from the same tokens. One change in the mold, every part follows.</p>'
+      '<div class="castlive" data-theme="light" style="margin:18px 0 6px">'
+      '<div class="cl-cap"><span>Live cast</span><a href="#" id="cl-open">Open the Foundry deck</a></div>'
+      '<div class="cl-row">'
+      '<button class="btn btn-pri btn-md" type="button">Cast me</button>'
+      '<span class="switch"><input type="checkbox" checked aria-label="Live cast switch"><span class="tr"></span></span>'
+      '<input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:210px" aria-label="Live cast input">'
+      '<span class="badge asagi"><i></i>Same mold</span>'
+      '</div></div>'
+      "<script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();});</script>"
+      '</section>')
+    trust = ('<section class="lpsec"><p class="trustnote"><b>Public since November 1, 2026 \u2014 early days, on the record.</b> '
+      'No customer logos yet, and this page will not invent any; the changelog above is the track record so far. '
+      'Built something with KATA? <a href="/showcase/">Get it listed</a> \u00b7 <a href="https://github.com/kajisho5/KATA-UI">KATA on GitHub</a></p></section>')
+    labhead = ('<section class="lpsec labsec"><h2>The Lab \u2014 Motion &amp; KATAYABURI</h2>'
+      '<p class="lpnote">Showpieces, cast from the same mold. They prove the tokens can move; the production shelf is everything above this line.</p></section>')
+    allband = ('<section class="lpsec"><div class="allband"><h2>All ' + str(n) + ' parts, one catalog</h2>'
+      '<p class="lpnote" style="margin-left:auto;margin-right:auto">Every part with its live preview, its code and its mold check \u2014 searchable, and filterable by Stable and Beta.</p>'
+      '<a class="allband-cta" href="/components/">Browse the catalog</a></div></section>')
     body = f"""
 <div class="wrap lp">
   <div class="hero2">
@@ -498,28 +520,13 @@ def landing(comps, blocks, n_icons, templates=None):
     <div class="castmark" aria-hidden="true"><i class="cm-ring"></i><i class="cm-slash"></i><i class="cm-corner"></i><i class="cm-core"></i></div>
     <span class="eyebrow"><i></i>Vanilla components — no framework, no build step</span>
     <h1>Parts, cast from a single mold.<br><span class="dim">Copy the code. Own the design.</span></h1>
-    <p>From buttons to app shells — practical components in plain HTML, CSS and JS, each with a live preview and copy-ready code. Every part is cast from a single mold — kata, the Japanese discipline of the form.</p>
+    <p>Practical components in plain HTML, CSS and JS — each with a live preview and copy-ready code, cast from a single mold: kata, the Japanese discipline of the form.</p>
     <div class="cta">
-      <a class="kbtn-primary" href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#f4f4f5;color:#18181b;font-weight:550;font-size:14px;text-decoration:none">Browse components</a>
-      <a href="/blocks/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid #71717a;font-weight:500;font-size:14px;text-decoration:none;background:rgba(255,255,255,.08);color:#f4f4f5">See blocks</a>
+      <a class="kbtn-primary" href="#first-five" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#f4f4f5;color:#18181b;font-weight:550;font-size:14px;text-decoration:none">Copy your first part</a>
+      <a href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid #71717a;font-weight:500;font-size:14px;text-decoration:none;background:rgba(255,255,255,.08);color:#f4f4f5">Browse {n} components</a>
     </div>
-    <div class="stats">
-      <div><b>{n}</b><span>components</span></div>
-      <div><b>{nb}</b><span>blocks</span></div>
-      <div><b>{n_icons}</b><span>icons</span></div>
-      <div><b>0</b><span>dependencies</span></div>
-    </div>
-    <div class="castlive" data-theme="light">
-      <div class="cl-cap"><span>Live cast</span><a href="#" id="cl-open">Open the Foundry deck</a></div>
-      <div class="cl-row">
-        <button class="btn btn-pri btn-md" type="button">Cast me</button>
-        <span class="switch"><input type="checkbox" checked aria-label="Live cast switch"><span class="tr"></span></span>
-        <input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:210px" aria-label="Live cast input">
-        <span class="badge asagi"><i></i>Same mold</span>
-      </div>
-      <p class="cl-note">The real Button, Switch, Input and Badge, unmodified. Turn the radius, the accent or the mode in the Foundry deck — bottom right, on every page — and watch them re-cast. Nothing here is a picture.</p>
-    </div>
-    <script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){{e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();}});</script>
+    <p class="statsline"><span><b>{n}</b> components</span><i>&middot;</i><span><b>{nb}</b> blocks</span><i>&middot;</i><span><b>{n_icons}</b> icons</span><i>&middot;</i><span><b>0</b> dependencies</span></p>
+    <p class="herotrust">This page is built with KATA — every part on it is the real part, unmodified. <span class="fmold">{MOLD_STATUS}</span></p>
   </div>
   <div class="browser" aria-hidden="true">
     <div class="browser-bar"><i></i><i></i><i></i><span class="url">your-app.com</span></div>
@@ -527,8 +534,6 @@ def landing(comps, blocks, n_icons, templates=None):
   </div>
   <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
   </div>
-  {mstrip}
-  {asmx}
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">
@@ -538,6 +543,9 @@ def landing(comps, blocks, n_icons, templates=None):
     </div>
   </section>
   {firstfive}
+  {moldlive}
+  {asmx}
+  {principles}
   <section class="lpsec">
     <h2>Five genres, one mold</h2>
     <div class="genres">
@@ -552,16 +560,16 @@ def landing(comps, blocks, n_icons, templates=None):
       <b>For AI tools</b>, KATA speaks their formats: <a href="/registry.json">registry.json</a> for installers and agents, <a href="/llms.txt">llms.txt</a> for models that read the web.
     </div>
   </section>
-  {principles}
   {compare}
-  {faqsec}
   {fresh}
+  {trust}
+  {faqsec}
   {wlband}
+  {labhead}
+  {mstrip}
   {showcase}
   {collage}
-  <div id="catalog">
-{catalog_sections(comps)}
-  </div>
+  {allband}
 </div>
 {FOOTER}
 </body>
@@ -916,7 +924,7 @@ def detail(comps, idx):
       <p class="crumb"><a href="/components/">Components</a> / {esc(m['category'])} / {esc(m['title'])}</p>
       <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h1>
       <div class="vrow"><span class="vchip"><i></i>Mold verified — passes the mold checks (check.py)</span><button class="aibtn" type="button" data-aiprompt="{slug}" data-title="{esc(m['title'])}">Pass this part to your AI</button></div>
-      <p class="desc">{esc(m['description'])}</p>
+      <p class="desc">{esc(m['description'])}</p>{'<p class="expnote">From the experimental line \u2014 a showpiece. The production shelf carries the same mold without the performance.</p>' if m.get('category') in ('Motion', 'KATAYABURI') else ''}
       <div class="stagebar">
         <span class="lbl">Preview</span>
         <span class="seg" data-seg="width"><button data-v="desktop" class="on">Desktop</button><button data-v="mobile">Mobile</button></span>
@@ -1117,7 +1125,7 @@ def pricing_page():
     body = """
 <div class="wrap pr">
   <h1>Pricing</h1>
-  <p class="lead">The parts are free, forever. What Pro sells is the assembled work — the blocks and templates — for one payment, once.</p>
+  <p class="lead">Free is the finished product — the parts are free, forever. What Pro sells is the assembled work — the blocks and templates — for one payment, once.</p>
   <div class="tiers">
     <div class="tier">
       <h2>Free</h2>
@@ -1980,7 +1988,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
- 'November 2, 2026 \u2014 Relations, freshness, and the map', '<p>The catalog learned to point sideways. Part pages now show what a part is often cast with, computed from the blocks that use it, next to the blocks themselves. The components index filters by Stable and Beta. The homepage gained a First five to copy and a Fresh from the mold strip fed by this changelog. The footer carries the live mold-check count. The Design System page maps every place the vermillion core may appear \u2014 generated from the CSS, so the map cannot lie. The Icons page states the brand-mark rules plainly, and a Contributing doc plus mold-checked issue templates open the door to outside castings.</p>', None, None),
+ 'November 2, 2026 \u2014 The front door, rebuilt', '<p>The homepage was re-sequenced around the first visit. The hero now carries the proposition, the two actions and the record \u2014 136 components, 0 dependencies, Mold Verified \u2014 and nothing that moves. How it works moved up to second place, the first five parts to copy sit under it, and the live re-casting demo moved down into its own section, The mold, live. The full catalog no longer rides on the homepage (307 KB became 98 KB); it lives on its own page, where it belongs. Motion and KATAYABURI now sit at the bottom in a marked experimental zone, The Lab, and their pages and catalog sections say so. The docs index opens with three starting pages and splits browsing by part from browsing by job. Pro is described the way it is: in preparation, behind a finished free product.</p>', None, None),
+    ('November 2, 2026 \u2014 Relations, freshness, and the map', '<p>The catalog learned to point sideways. Part pages now show what a part is often cast with, computed from the blocks that use it, next to the blocks themselves. The components index filters by Stable and Beta. The homepage gained a First five to copy and a Fresh from the mold strip fed by this changelog. The footer carries the live mold-check count. The Design System page maps every place the vermillion core may appear \u2014 generated from the CSS, so the map cannot lie. The Icons page states the brand-mark rules plainly, and a Contributing doc plus mold-checked issue templates open the door to outside castings.</p>', None, None),
     ('November 2, 2026 \u2014 Cards, unnested', '<p>Ten catalog cards were quietly broken in every browser \u2014 Breadcrumbs, Pagination, Sidebar, Bottom Navigation, List and five more \u2014 showing an empty stage and no title. Their previews contain links, and the catalog card is itself a link: HTML forbids an anchor inside an anchor, so the parser closed each card at the first preview link and scattered the rest. The gallery stage is inert by design, so preview links are now cast as spans that keep their classes and their look, and the build asserts no anchor survives into a stage. The check that missed this is also fixed in kind: the catalog is now verified structurally \u2014 every card must arrive in the browser with its title and a populated stage \u2014 not just sampled.</p>', None, None),
     ('November 2, 2026 \u2014 The bundle learns to date itself', '<p>A reader\u2019s phone showed the catalog with several previews stripped bare \u2014 OTP boxes, radios, the calendar \u2014 while everything else wore its styles. The cause sat in the catalog page itself: every other stylesheet on the site carries a content-hash version, but the one file that changes most, the kata-ui.css bundle the gallery previews wear, was linked bare \u2014 so a phone could hold a stale copy indefinitely while the hashed files around it stayed fresh. The bundle and its JS now carry content versions like everything else. The same pass hardens the form controls for iOS Safari, which keeps its native white fields unless told otherwise twice: text inputs, the OTP boxes, checkboxes and the command input now declare \u2011webkit\u2011appearance alongside the standard property.</p>', None, None),
     ('November 2, 2026 \u2014 Two hundred and twenty marks', '<p>The brand shelf grows up. Every hand-drawn approximation among the marks \u2014 Spotify first, after a reader zoomed in and asked when it would be fixed, then the other twenty-one \u2014 is replaced by the owner\u2019s official glyph, drawn from the Simple Icons set, in the brand files and in every inline copy across the blocks and templates. And the shelf itself widens: 164 more marks join, 220 in all, filed under four new jobs \u2014 Languages &amp; runtimes, Data &amp; backend, Productivity &amp; SaaS, Games &amp; 3D. TypeScript to Zig, PostgreSQL to Snowflake, Gmail to Patreon, Steam to Blender: if a site links to it, signs in with it or pays through it, the mark is probably here \u2014 still nominative use only, still the one exception to the three-shape mold.</p>', None, None),
@@ -2034,6 +2043,10 @@ def docs_index():
 <div class="wrap dc">
   <h1>Docs</h1>
   <p class="lead">The short version of everything: how to start, how to theme, how dark mode works, and what the parts promise about accessibility. The long version lives on each part's own page.</p>
+  <h2 class="dch">Start here — three pages</h2>
+  <div class="dcgrid"><a class="dccard" href="/docs/introduction/"><h3>Introduction</h3><p>What KATA is, and what it refuses to be.</p></a><a class="dccard" href="/docs/getting-started/"><h3>Getting Started</h3><p>Tokens in, first part pasted, first screen running.</p></a><a class="dccard" href="/docs/the-mold/"><h3>The Mold</h3><p>Why 136 parts stay consistent: the written standard and the checker.</p></a></div>
+  <div class="dcbrowse"><a href="/components/">Browse by part &rarr; Components</a><a href="/blocks/use-cases/">Browse by job &rarr; Use cases</a></div>
+  <h2 class="dch">Everything</h2>
   <div class="dcgrid">{cards}</div>
 </div>
 {FOOTER}

@@ -139,6 +139,10 @@ body.dopen{overflow:hidden}
 .dnone{padding:6px 8px;font-size:13px;color:var(--ink3)}
 
 .stage>*{min-width:0}
+/* demos are for touching, not selecting: no text selection or iOS callout inside
+   any preview stage or live demo (code blocks stay copyable, inputs stay editable) */
+.stage, .thdemo, #dtpv, .stage *, .thdemo *, #dtpv * {-webkit-touch-callout:none}
+.stage, .thdemo, #dtpv, .stage :not(input):not(textarea), .thdemo :not(input):not(textarea), #dtpv * {-webkit-user-select:none;user-select:none}
 
 .hsearch{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border:1px solid var(--hair);border-radius:9px;background:var(--soft);color:var(--ink3);font:inherit;font-size:13px;cursor:pointer;margin-inline-start:6px}
 .hsearch:hover{border-color:var(--ink3);color:var(--ink2)}

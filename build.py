@@ -534,6 +534,10 @@ def landing(comps, blocks, n_icons, templates=None):
     demoband = ('<section class="lpsec"><h2>Whole pages, not screenshots</h2>'
       '<p class="lpnote">Every template is a real page, running full-screen — no site chrome, nothing flattened into an image. Open one, resize it, break it; then take it apart on its template page.</p>'
       '<div class="genres">' + _demo_cards + '</div></section>') if _demo_cards else ''
+    videoband = ('<section class="lpsec"><h2>Watch one get built</h2>'
+      '<p class="lpnote">A settings page, assembled from catalog parts in one take \u2014 no cuts, nothing written on camera. Each element lands by pasting the part from its page, and the timer is the real one: sixteen seconds of pasting, because the styling was already done inside the parts.</p>'
+      '<div class="vidwrap"><video autoplay muted loop playsinline preload="metadata" poster="/media/build-settings-poster.jpg" aria-label="Screen recording: a settings page assembled from KATA parts in sixteen seconds"><source src="/media/build-settings.webm" type="video/webm"><source src="/media/build-settings.mp4" type="video/mp4"></video></div>'
+      '<p class="lpnote" style="margin-top:12px">The finished page is the <a href="/templates/settings-page/demo/">Settings template, running live</a> \u2014 open it and take it apart.</p></section>')
     reactband = ('<section class="lpsec"><h2>On React? Cast anyway.</h2>'
       '<p class="lpnote">Framework-free is not framework-hostile. The markup pastes into JSX, the CSS loads once at your root, and the few JS parts mount where they land and enhance in place. React keeps the state; the mold keeps the look.</p>'
       '<div class="steps" style="margin-top:16px">'
@@ -575,6 +579,7 @@ def landing(comps, blocks, n_icons, templates=None):
   </div>
   {moldlive}
   {demoband}
+  {videoband}
   {reactband}
   <section class="lpsec">
     <h2>How it works</h2>
@@ -2233,6 +2238,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 Sixteen seconds, one settings page', '<p>The front page now carries the proof as a recording: a settings page assembled from catalog parts in a single take \u2014 twelve pastes, a real on-screen timer, no cuts and no code written on camera. Sixteen seconds, because the styling was already done inside the parts. The finished page is the Settings template, which runs live one click away.</p>', None, None),
+    (
  'November 3, 2026 \u2014 Cast together: compositions on the part pages', '<p>Eleven part pages grow a Cast together section: live compositions \u2014 a subscribe row, a scoped search, feature flags on a card, a rename dialog, a roster \u2014 each copyable as one scene, with the parts in it named. Building them exposed two single-instance assumptions, now fixed in the parts themselves: Modal and Toast each bind every opener and container on the page, not just the first.</p>', None, None),
     (
  'November 3, 2026 \u2014 Traditional colors, shown large', '<p>The fifty traditional colors of Japan get room to breathe: each card is now a full dye-band with its name set large, every family carries a Cast this theme button that casts its lead color and copies the whole token set as a ready theme file, and the casting strip at the top grows a switch and a small card dyed by the cast \u2014 border, wash and ink following the color you picked.</p>', None, None),
@@ -2371,6 +2378,12 @@ def main():
     shutil.copy(ROOT / 'manifest.webmanifest', DIST / 'manifest.webmanifest')
     shutil.copy(ROOT / 'sw.js', DIST / 'sw.js')
     shutil.copy(ROOT / 'site.css', DIST / 'site.css')
+    _md = ROOT / 'media'
+    if _md.exists():
+        (DIST / 'media').mkdir(exist_ok=True)
+        for _f in _md.iterdir():
+            if _f.is_file():
+                shutil.copy(_f, DIST / 'media' / _f.name)
     (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons, templates), comps, None), encoding='utf-8')
     cdir = DIST / 'components'
     cdir.mkdir()

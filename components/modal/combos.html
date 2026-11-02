@@ -1,0 +1,17 @@
+<!-- parts: button, input -->
+<!-- combo: Rename, in place -->
+<!-- note: The everyday dialog: one field, two honest exits. The Modal brings the focus trap and the Escape key; the Input and Buttons are the same ones the rest of the page uses. -->
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+  <span style="font-size:13.5px">Project name: <b>Studio North — Q3 launch</b></span>
+  <button class="btn btn-sec btn-md" type="button" data-modal-open>Rename</button>
+</div>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Rename project</h3>
+    <div class="field"><label for="cb-name">Project name</label><input class="input" id="cb-name" value="Studio North — Q3 launch"><span class="hint">Shown in the sidebar, invoices and shared links.</span></div>
+    <div class="row">
+      <button class="btn btn-sec btn-md" type="button" data-modal-close>Cancel</button>
+      <button class="btn btn-pri btn-md" type="button" data-modal-close>Save name</button>
+    </div>
+  </div>
+</dialog>

@@ -1,0 +1,10 @@
+<!-- parts: select, button -->
+<!-- combo: The scoped search -->
+<!-- note: A search field that knows its scope. Input, Select and Button share heights and the radius token, so the composite reads as one control, not three neighbors. -->
+<div style="display:flex;gap:9px;flex-wrap:wrap;align-items:flex-end;max-width:580px;width:100%">
+  <div class="field" style="flex:1;min-width:200px"><label for="cb-q">Search the catalog</label><span class="searchwrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="color:var(--k-ink-3)"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input class="input" id="cb-q" placeholder="dialog, table, toast…"></span></div>
+  <label style="display:grid;gap:6px;font-size:12.5px;font-weight:550">Scope
+    <span class="k-select"><select><option selected>All parts</option><option>Components</option><option>Blocks</option><option>Templates</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </label>
+  <button class="btn btn-pri btn-md" type="button">Search</button>
+</div>

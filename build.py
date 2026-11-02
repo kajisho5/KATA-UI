@@ -266,10 +266,10 @@ def emit(page, comps, active, current=None, tree=False):
         page = page.replace('<div class="wrap"><footer class="site">', '</div></div><div class="wrap"><footer class="site">', 1)
     return page.replace('</body>', drawer_html(comps, active) + DRAWER_JS + search_html(comps) + FOUNDRY_HTML + FOUNDRY_JS + '</body>', 1)
 
-WA_TOKEN = ''
+WA_TOKEN = 'ea804ab11ad24ba099ed62f14cf32bcf'
 WA_BEACON = ''
 if WA_TOKEN:
-    WA_BEACON = '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;' + WA_TOKEN + '&quot;}"></script>'
+    WA_BEACON = '<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "' + WA_TOKEN + '"}\'></script>'
 
 def head(title, desc, extra=''):
     return f"""<!doctype html>

@@ -10,3 +10,5 @@
 .searchwrap{position:relative;display:block}
 .searchwrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%)}
 .searchwrap .input{padding-inline-start:34px}
+/* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
+@media (max-width:640px){.input{font-size:16px}}

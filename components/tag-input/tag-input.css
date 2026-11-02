@@ -2,3 +2,5 @@
 .k-tags:focus-within{border-color:var(--k-accent);box-shadow:0 0 0 3px var(--k-accent-bg)}
 .k-tags-in{flex:1;min-width:110px;border:none;outline:none;background:transparent;font:inherit;font-size:13.5px;color:var(--k-ink);height:29px}
 .k-tags-in::placeholder{color:var(--k-ink-3)}
+/* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
+@media (max-width:640px){.k-tags-in{font-size:16px}}

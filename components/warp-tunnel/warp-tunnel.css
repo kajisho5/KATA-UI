@@ -3,6 +3,6 @@
 .k-warp-in{position:absolute;inset:0;transform-style:preserve-3d}
 .k-warp-r{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;border:2px solid var(--k-zinc-700);border-radius:50%;opacity:0;animation:k-warp-fly 5s linear infinite}
 .k-warp-r:nth-child(3n){border-color:var(--k-accent)}
-@keyframes k-warp-fly{0%{transform:translateZ(-320px);opacity:0}18%{opacity:.9}100%{transform:translateZ(190px);opacity:0}}
+@keyframes k-warp-fly{0%{transform:scale(.05);opacity:0}14%{opacity:.95}70%{opacity:.8}100%{transform:scale(2.35);opacity:0}}
 .k-warp p{position:relative;z-index:2;text-align:center;padding-top:106px;font-size:14px;font-weight:600;color:var(--k-on-color);letter-spacing:.14em}
 @media (prefers-reduced-motion:reduce){.k-warp-r{animation:none;opacity:.25}.k-warp-r:nth-child(odd){display:none}}

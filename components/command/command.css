@@ -9,3 +9,5 @@
 .kcmd-item.active{background:var(--k-bg-soft)}
 .kcmd-hint{margin-inline-start:auto;font-size:11px;color:var(--k-ink-3)}
 .kcmd-empty{padding:22px 10px;text-align:center;font-size:13px;color:var(--k-ink-3)}
+/* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
+@media (max-width:640px){.kcmd-input{font-size:16px}}

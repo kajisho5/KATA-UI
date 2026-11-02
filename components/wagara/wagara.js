@@ -4,13 +4,22 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
   var ctx = canvas.getContext('2d');
   var DPR = Math.min(3, window.devicePixelRatio || 1);
   var cap = root.querySelector('.k-wag-cap');
-  var cs = getComputedStyle(root);
-  var V = function (n) { return cs.getPropertyValue(n).trim(); };
-  var TONES = [
-    { bg: V('--k-bg'), fg: V('--k-ink'), mid: V('--k-zinc-400'), soft: V('--k-zinc-200'), name: 'Paper' },
-    { bg: V('--k-zinc-950'), fg: V('--k-zinc-200'), mid: V('--k-zinc-500'), soft: V('--k-zinc-800'), name: 'Ink' },
-    { bg: V('--k-zinc-950'), fg: V('--k-accent'), mid: V('--k-zinc-500'), soft: V('--k-zinc-800'), name: 'Night' }
-  ];
+  function tones() {
+    var cs = getComputedStyle(root);
+    var V = function (n) { return cs.getPropertyValue(n).trim(); };
+    return [
+      { bg: V('--k-bg'), fg: V('--k-ink'), mid: V('--k-zinc-400'), soft: V('--k-zinc-200'), name: 'Paper' },
+      { bg: V('--k-zinc-950'), fg: V('--k-zinc-200'), mid: V('--k-zinc-500'), soft: V('--k-zinc-800'), name: 'Ink' },
+      { bg: V('--k-zinc-950'), fg: V('--k-accent'), mid: V('--k-zinc-500'), soft: V('--k-zinc-800'), name: 'Night' }
+    ];
+  }
+  var picked = null;
+  function ambientDark() {
+    var host = root.closest('[data-theme]');
+    if (host) return host.getAttribute('data-theme') === 'dark';
+    return !!(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  function effTone() { return picked !== null ? picked : (ambientDark() ? 1 : 0); }
   var CAPS = {
     seigaiha: 'Seigaiha — blue ocean waves. Concentric arcs, each row offset by half a fan; a wish for calm seas and a long life.',
     asanoha: 'Asanoha — the hemp leaf. Six-fold geometry from a hexagon\u2019s triangles; hemp grows fast and straight, so the pattern guards children.',
@@ -23,7 +32,7 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     kanoko: 'Kanoko — the fawn\u2019s spots. Shibori dots pinched and dyed one by one, named for the dapples down a young deer\u2019s back.',
     hishi: 'Hishi — the diamond. The floating leaf of the water caltrop, squared into a lattice that crosses the whole cloth.'
   };
-  var pattern = 'seigaiha', tone = 0, W, H;
+  var pattern = 'seigaiha', W, H;
   function seigaiha(t) {
     var s = 30;
     var rows = Math.ceil(H / (s * .5)) + 2;
@@ -195,7 +204,10 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     }
   }
   function draw() {
-    var t = TONES[tone];
+    var TONES = tones();
+    var t = TONES[effTone()];
+    var tb = root.querySelector('[data-wag-tone]');
+    if (tb) tb.textContent = 'Tone: ' + t.name;
     W = canvas.clientWidth; H = canvas.clientHeight;
     canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     ctx.fillStyle = t.bg; ctx.fillRect(0, 0, W, H);
@@ -210,7 +222,8 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
       draw();
     });
   });
-  root.querySelector('[data-wag-tone]').addEventListener('click', function () { tone = (tone + 1) % TONES.length; this.textContent = 'Tone: ' + TONES[tone].name; draw(); });
+  root.querySelector('[data-wag-tone]').addEventListener('click', function () { picked = (effTone() + 1) % 3; draw(); });
   window.addEventListener('resize', draw);
+  new MutationObserver(function () { if (picked === null) draw(); }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['data-theme'] });
   draw();
 });

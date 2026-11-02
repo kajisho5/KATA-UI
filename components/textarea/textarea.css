@@ -6,3 +6,5 @@
 .k-textarea:disabled{opacity:.55;resize:none}
 .k-textarea[data-invalid="true"]{border-color:var(--k-danger)}
 .k-textarea[data-invalid="true"]:focus{box-shadow:var(--k-ring-danger)}
+/* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
+@media (max-width:640px){.k-textarea{font-size:16px}}

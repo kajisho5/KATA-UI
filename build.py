@@ -576,7 +576,7 @@ def tree_sections(comps, active, current):
     concepts = ['why-vanilla', 'the-mold', 'anatomy', 'forms', 'from-tailwind', 'vs-shadcn']
     guides = [d[0] for d in DOCS if d[0].startswith('guide-')]
     doc = lambda slugs: ''.join(_nav_link('/docs/' + x + '/', _doc_title(x), current) for x in slugs)
-    return [
+    secs = [
         _sec('Getting Started', doc(gs)),
         _sec('Concepts', doc(concepts)),
         _sec('Guides', doc(guides)),
@@ -585,6 +585,9 @@ def tree_sections(comps, active, current):
         _sec('Templates', ''.join(_nav_link('/templates/' + t['slug'] + '/', t['meta']['title'], current) for t in load_templates())),
         _sec('Resources', ''.join(_nav_link(u, n, current) for u, n in [('/icons/', 'Icons'), ('/themes/', 'Themes'), ('/design-system/', 'Design System'), ('/pricing/', 'Pricing'), ('/skill/SKILL.md', 'AI Skill (SKILL.md)')])),
     ]
+    if secs:
+        secs[0] = secs[0].replace('class="side"', 'class="side sfirst"', 1)
+    return secs
 
 
 def nav_tree(comps, active, current):

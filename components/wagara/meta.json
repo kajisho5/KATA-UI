@@ -1,7 +1,7 @@
 {
   "title": "Wagara",
   "category": "Japan",
-  "description": "Twenty-two classical Japanese patterns, constructed — not pasted: seigaiha waves, asanoha hemp, shippo circles, ichimatsu checks, kikko hexagons, uroko scales, sharkskin dots, arrow feathers, fawn spots, the diamond lattice — and twelve more on the same loom: the sayagata fret, kagome basket lattice, karakusa vines, flowing water, rising waves, snow rings, wickerwork, counting rods, the cypress fence, flower diamonds, linked rings and Bishamon’s tortoiseshell.",
+  "description": "One hundred classical Japanese patterns, drawn on canvas from their constructions — waves and hemp stars, tortoiseshell and fretwork, thunder spirals and linked chains, chrysanthemum, cherry and plum, fans, gourds, coins, cranes and rabbits, mist, rain and willow. No image files: every pattern is geometry, and recolors with its tone.",
   "tags": [
     "wagara",
     "pattern",
@@ -14,6 +14,6 @@
     "karakusa"
   ],
   "status": "beta",
-  "usage": "Each pattern is drawn from its real geometry by the script — seigaiha as concentric arcs on a half-offset grid, asanoha as the true six-fold hemp construction, shippo as equal overlapping circles, kikko as nested hexagons, samekomon as dots riding the scale arcs, yagasuri as the arrow-feather silhouette. Three tones (paper, ink, night) and all colors come from the token set on purpose: the patterns are classical, the palette stays the house’s. Use them as section textures, empty-state skies, and the inside of covers. The second twelve keep the same discipline: sayagata interlocks so no line ever ends, kagome is the true trihexagonal bamboo lattice, karakusa curls are drawn as spirals joined by vine arcs, bishamon works its hexagons with triangles the way the armor is drawn.",
+  "usage": "Patterns are drawn, not tiled from images — each has a period and a logic. The picker wraps the stage; captions under the canvas tell each pattern's story.",
   "a11y": "Pattern is texture: the canvas is aria-hidden and any text over it must pass contrast on the flat tone color alone, pattern removed. Under prefers-reduced-motion nothing changes — patterns were always still."
 }

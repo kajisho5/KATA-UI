@@ -366,6 +366,13 @@ LP_STYLE = """<style>
 .fann{position:absolute;z-index:4;font-family:var(--mono);font-size:11px;font-weight:600;background:rgba(11,11,15,.85);color:#f4f4f5;padding:5px 10px;border-radius:99px;opacity:0;transition:opacity .18s ease;pointer-events:none;white-space:nowrap}
 .browser:hover .fann,.browser:focus-within .fann{opacity:1}
 @media (hover:none){.fann{display:none}}
+.moldface{font-size:29px;font-weight:600;letter-spacing:-.022em;line-height:1.25;margin-top:12px;max-width:26em}
+.lpc{margin-top:16px;border-top:1px solid var(--k-line);padding-top:14px;display:grid;gap:10px}
+.lpc-cap{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--k-ink-2)}
+.lpc-row{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--k-ink-2)}
+.lpc-row>span:first-child{width:52px;flex:none;font-weight:550}
+.lpc-note{font-size:12.5px;color:var(--k-ink-2)}
+.tokcode{font-family:var(--mono);font-size:12px;line-height:1.75;background:var(--soft);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;overflow-x:auto;text-align:left;margin-top:12px;white-space:pre}
 .framecap{max-width:880px;margin:10px auto 0;text-align:right;font-size:12px;color:var(--ink3)}
 .framecap a{color:var(--ink2)}
 .lpsec{margin-top:64px}
@@ -460,10 +467,9 @@ def landing(comps, blocks, n_icons, templates=None):
         return ('<div class="showtile' + (' wide' if wide else '') + '"><div class="cap"><span>' + label.upper() + '</span><a href="/components/' + slug + '/">Open part</a></div>' + c['preview'] + '</div>')
     show_scripts = ''.join(f'<script src="/components/{sl}/{sl}.js?v={_v(pv[sl]["js"])}"></script>' for sl in ('counter', 'spotlight', 'text-reveal', 'follow-frame', 'reorder') if pv.get(sl) and pv[sl]['js'])
     faq_b = next((b for b in blocks if b['slug'] == 'faq'), None)
-    principles = ('<section class="lpsec"><h2>Three rules, cast into every part</h2><div class="steps">'
-      '<div class="step"><span class="no">RULE 1</span><h3>One mold</h3><p>Every part is checked by a program before it ships — tokens only, classes covered, icons on the grid. Two parts built months apart look built on the same day. <a href="/docs/the-mold/" style="color:var(--acc)">How the mold works</a></p></div>'
-      '<div class="step"><span class="no">RULE 2</span><h3>Yours, not rented</h3><p>Copied code has no roadmap and no breaking changes. Nobody can sunset it, reprice it, or deprecate it under you. <a href="/docs/why-vanilla/" style="color:var(--acc)">Why vanilla</a></p></div>'
-      '<div class="step"><span class="no">RULE 3</span><h3>Native first</h3><p>Where the platform has the element — dialog, details, real inputs — the part is the element. Scripts layer behavior on markup; they never generate it.</p></div>'
+    principles = ('<section class="lpsec"><h2>Two more rules, cast into every part</h2><div class="steps">'
+      '<div class="step"><span class="no">OWNERSHIP</span><h3>Yours, not rented</h3><p>Copied code has no roadmap and no breaking changes. Nobody can sunset it, reprice it, or deprecate it under you. <a href="/docs/why-vanilla/" style="color:var(--acc)">Why vanilla</a></p></div>'
+      '<div class="step"><span class="no">PLATFORM</span><h3>Native first</h3><p>Where the platform has the element \u2014 dialog, details, real inputs \u2014 the part is the element. Scripts layer behavior on markup; they never generate it.</p></div>'
       '</div></section>')
     compare = ('<section class="lpsec"><h2>How KATA compares</h2>'
       '<div style="overflow-x:auto"><table class="cmptable"><thead><tr><th></th><th>KATA UI</th><th>shadcn/ui</th><th>MUI</th><th>Flux UI</th></tr></thead><tbody>'
@@ -477,6 +483,9 @@ def landing(comps, blocks, n_icons, templates=None):
     wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro, in preparation</h2>'
       '<p>Free is the finished product — all 136 components, MIT, forever. Pro adds the assembled work: 21 blocks and 7 templates, $129 once, lifetime. Sales open soon; leave an email and the launch is the only message you will ever get.</p>'
       + waitlist_form(dark=True) + '</div></section>')
+    motionband = ''
+    finalcta = ''
+    proband = wlband
     pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
     asmx = ''
     if pr_block:
@@ -524,8 +533,9 @@ def landing(comps, blocks, n_icons, templates=None):
                 + tile('aurora', 'Aurora') + tile('converge', 'Converge') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border') + tile('glass-panel', 'Glass Panel') + tile('follow-frame', 'Follow Frame')
                 + tile('text-reveal', 'Text Reveal', True) + tile('reorder', 'Reorder', True) + tile('counter', 'Counter') + tile('marquee', 'Marquee')
                 + '</div></div>' + show_scripts + '</section>')
-    moldlive = ('<section class="lpsec"><h2>Try it — the mold, live</h2>'
-      '<p class="lpnote">Four real parts from the catalog, running unmodified. Turn the radius, the accent or the mode in the Foundry deck \u2014 bottom right, on every page \u2014 and watch them re-cast from the same tokens. One change in the mold, every part follows.</p>'
+    moldlive = ('<section class="lpsec proof" id="one-mold"><h2>One mold</h2>'
+      '<p class="moldface">Two parts built months apart look built on the same day.</p>'
+      '<p class="lpnote">Both were poured into the same mold: one file of tokens \u2014 color, radius, spacing, motion \u2014 that every part reads and no part overrides. Change the mold and the parts re-cast. Try it: nothing here is a picture.</p>'
       '<div class="castlive" data-theme="light" style="margin:18px 0 6px">'
       '<div class="cl-cap"><span>Live cast</span><span class="livechip"><i></i>LIVE</span><a href="#" id="cl-open">Open the Foundry deck</a></div>'
       '<div class="cl-row">'
@@ -533,8 +543,18 @@ def landing(comps, blocks, n_icons, templates=None):
       '<span class="switch asagi"><input type="checkbox" checked aria-label="Live cast switch"><span class="tr"></span></span>'
       '<input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:210px" aria-label="Live cast input">'
       '<span class="badge asagi"><i></i>Same mold</span>'
+      '</div>'
+      '<div class="k-card" style="margin-top:14px"><div class="k-card-h"><div><h3>Casting notes</h3><p>The same card, whatever the mold says.</p></div><span class="sp"><span class="badge asagi">Live</span></span></div><div class="k-card-b">A composed surface, not loose controls: cast below and the card, its badge and its button move with everything else on the page.</div><div class="k-card-f">Cast from tokens<span class="sp"><button class="btn btn-pri btn-sm" type="button">Open report</button></span></div></div>'
+      '<div class="lpc">'
+      '<div class="lpc-cap">Cast it yourself</div>'
+      '<div class="lpc-row"><span>Accent</span><span class="ds-sws"><button type="button" data-lpc-accent="Asagi" style="background:#33A6B8" aria-label="Cast Asagi"></button><button type="button" data-lpc-accent="Ruri" style="background:#1E50A2" aria-label="Cast Ruri"></button><button type="button" data-lpc-accent="Edomurasaki" style="background:#745399" aria-label="Cast Edomurasaki"></button><button type="button" data-lpc-accent="Suo" style="background:#8E354A" aria-label="Cast Suo"></button><button type="button" data-lpc-accent="Kaki" style="background:#ED6D3D" aria-label="Cast Kaki"></button></span></div>'
+      '<div class="lpc-row"><span>Radius</span><span class="ds-btns"><button type="button" data-lpc-radius="0">0</button><button type="button" data-lpc-radius="4">4</button><button type="button" data-lpc-radius="8">8 \u00b7 mold</button><button type="button" data-lpc-radius="12">12</button><button type="button" data-lpc-radius="16">16</button><button type="button" data-lpc-radius="20">20</button></span></div>'
+      '<div class="lpc-row"><span>Mode</span><span class="ds-btns"><button type="button" data-lpc-mode="light">Light</button><button type="button" data-lpc-mode="dark">Dark</button></span></div>'
+      '<p class="lpc-note">What you set here follows you across the whole site \u2014 the Foundry deck remembers.</p>'
       '</div></div>'
+      '<p class="lpnote" style="margin-top:12px">Scroll on \u2014 the sections below have re-cast too.</p>'
       "<script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();});</script>"
+      '<script>(function(){var root=document.documentElement;var PRESETS={Asagi:["#33A6B8","#165E83","#81C7D4"],Ruri:["#1E50A2","#223A70","#58B2DC"],Edomurasaki:["#745399","#592C63","#8B81C3"],Suo:["#8E354A","#64363C","#DC9FB4"],Kaki:["#ED6D3D","#95483F","#E2943B"]};function load(){try{return JSON.parse(localStorage.getItem("kata-fdeck")||"{}")}catch(e){return{}}}function save(S){try{localStorage.setItem("kata-fdeck",JSON.stringify(S))}catch(e){}}function dark(){return root.getAttribute("data-theme")==="dark"}function mark(){var S=load();document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.classList.toggle("on",b.dataset.lpcAccent===S.accentName)});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcRadius===(S.radius||8))});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.classList.toggle("on",(b.dataset.lpcMode==="dark")===dark())})}function accent(name){var pr=PRESETS[name];if(!pr)return;var S=load();S.accent=pr[0];S.accentInk=pr[1];S.darkInk=pr[2];S.accentName=name;root.style.setProperty("--k-accent",pr[0]);root.style.setProperty("--acc",pr[0]);root.style.setProperty("--k-accent-ink",dark()?pr[2]:pr[1]);save(S);mark()}function radius(v){var S=load();S.radius=v;root.style.setProperty("--k-radius",v+"px");root.style.setProperty("--k-radius-sm",Math.max(0,Math.round(v*.75))+"px");root.style.setProperty("--k-radius-lg",Math.round(v*1.5)+"px");save(S);mark()}function mode(d){var S=load();S.dark=d;if(d)root.setAttribute("data-theme","dark");else root.removeAttribute("data-theme");if(S.accentName&&PRESETS[S.accentName]){var pr=PRESETS[S.accentName];root.style.setProperty("--k-accent-ink",d?pr[2]:pr[1])}save(S);mark()}document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.addEventListener("click",function(){accent(b.dataset.lpcAccent)})});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.addEventListener("click",function(){radius(+b.dataset.lpcRadius)})});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.addEventListener("click",function(){mode(b.dataset.lpcMode==="dark")})});mark();})();</script>'
       '</section>')
     _demo_cards = ''
     if templates:
@@ -595,18 +615,23 @@ def landing(comps, blocks, n_icons, templates=None):
   {moldlive}
   {demoband}
   {videoband}
-  {reactband}
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">
-      <div class="step"><span class="no">STEP 1</span><h3>Take the tokens</h3><p>Load <code>tokens.css</code> once. Every part reads its color, spacing, radius and motion from it — that file is the mold.</p></div>
-      <div class="step"><span class="no">STEP 2</span><h3>Paste the part</h3><p>Copy the HTML, the CSS and the JS from the part's page. No install, no package, nothing phoning home.</p></div>
-      <div class="step"><span class="no">STEP 3</span><h3>Make it yours</h3><p>Adjust the tokens, not the parts. One change in the mold re-casts everything on the page.</p></div>
+      <div class="step"><span class="no">STEP 1</span><h3>Take the tokens</h3><p>Load <code>tokens.css</code> once. Every part reads its color, spacing, radius and motion from it \u2014 that file is the mold.</p><div class="tokcode">&lt;link rel="stylesheet" href="https://kata-ui.dev/tokens.css"&gt;
+:root{{ --k-accent:#33A6B8; --k-radius:8px;
+       --k-dur-2:180ms; --k-space:4px; \u2026 }}</div></div>
+      <div class="step"><span class="no">STEP 2</span><h3>Paste the part</h3><p>Copy the HTML, the CSS and the JS from the part's page. No install, no package, nothing phoning home. About ten seconds a part.</p></div>
+      <div class="step"><span class="no">STEP 3</span><h3>Make it yours</h3><p>Adjust the tokens, not the parts. One change in the mold re-casts everything on the page \u2014 <a href="#one-mold" style="color:var(--acc)">you already did it, above</a>.</p></div>
     </div>
   </section>
   {firstfive}
-  {asmx}
   {principles}
+  {asmx}
+  {reactband}
+  {motionband}
+  {compare}
+  {proband}
   <section class="lpsec">
     <h2>Five genres, one mold</h2>
     <div class="genres">
@@ -621,22 +646,21 @@ def landing(comps, blocks, n_icons, templates=None):
       <b>For AI tools</b>, KATA speaks their formats: <a href="/registry.json">registry.json</a> for installers and agents, <a href="/llms.txt">llms.txt</a> for models that read the web.
     </div>
   </section>
-  {compare}
   {fresh}
   {trust}
   {faqsec}
-  {wlband}
   {labhead}
   {mstrip}
   {showcase}
   {collage}
   {allband}
+  {finalcta}
 </div>
 {FOOTER}
 </body>
 </html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
-             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('card', 'aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks, templates=None):
@@ -2253,6 +2277,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 One mold, second on the page', '<p>The front page is re-sequenced around its proofs. The live-cast panel becomes <b>One mold</b>: the token file\u2019s promise as the headline, five specimens including a composed card, and the casting controls set into the section itself \u2014 accent, radius and mode, writing the same state the Foundry deck keeps, so what you cast here follows you across the site. How it works follows the showcases and shows the real token file in Step 1; the principles shed their first rule to the mold section and stand as two.</p>', None, None),
+    (
  'November 3, 2026 \u2014 The front page, given a louder first three seconds', '<p>The hero headline steps up to 64px, the stats now count all 370 icons and marks, and the App Shell frame names itself LIVE \u2014 hover it and its panels answer with their part names, App Shell, Stat Cards, Data Table. A shared LIVE chip now marks every real, copyable surface on the page. Section headings step up a class, proof sections breathe at 96px, the two sumi panels agree on one black, and the mobile hero \u2014 eyebrow and CTAs \u2014 is measured and fixed at real width.</p>', None, None),
     (
  'November 3, 2026 \u2014 Sixteen seconds, one settings page', '<p>The front page now carries the proof as a recording: a settings page assembled from catalog parts in a single take \u2014 twelve pastes, a real on-screen timer, no cuts and no code written on camera. Sixteen seconds, because the styling was already done inside the parts. The finished page is the Settings template, which runs live one click away.</p>', None, None),

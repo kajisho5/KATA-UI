@@ -1635,6 +1635,21 @@ document.querySelectorAll('[data-wag]').forEach(function (root) {
     });
   });
   root.querySelector('[data-wag-tone]').addEventListener('click', function () { picked = (effTone() + 1) % 3; draw(); });
+  var search = root.querySelector('.k-wag-search'), count = root.querySelector('.k-wag-count'), none = root.querySelector('.k-wag-none');
+  var pbtns = Array.prototype.slice.call(root.querySelectorAll('[data-wag-p]'));
+  function applyFilter() {
+    var q = (search.value || '').trim().toLowerCase(), shown = 0;
+    pbtns.forEach(function (b) {
+      var slug = b.getAttribute('data-wag-p');
+      var hay = (slug + ' ' + b.textContent + ' ' + (CAPS[slug] || '')).toLowerCase();
+      var hit = !q || q.split(/\s+/).every(function (w) { return hay.indexOf(w) !== -1; });
+      b.hidden = !hit;
+      if (hit) shown++;
+    });
+    count.textContent = q ? shown + ' / ' + pbtns.length : pbtns.length + ' patterns';
+    if (none) none.hidden = shown !== 0;
+  }
+  if (search) { search.addEventListener('input', applyFilter); applyFilter(); }
   window.addEventListener('resize', draw);
   new MutationObserver(function () { if (picked === null) draw(); }).observe(document.body, { attributes: true, subtree: true, attributeFilter: ['data-theme'] });
   draw();

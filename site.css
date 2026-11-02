@@ -48,7 +48,7 @@ footer.site{margin-top:76px;border-top:1px solid var(--hair);padding:26px 0 42px
 .side{position:sticky;top:84px;align-self:start;max-height:calc(100vh - 110px);overflow-y:auto;padding-inline-end:4px;scrollbar-width:thin}
 .side h4{font-size:11px;letter-spacing:.14em;color:var(--ink3);font-weight:600;margin:18px 0 8px;text-transform:uppercase}
 .side h4:first-child{margin-top:0}
-.side a{display:block;padding:6.5px 10px;border-radius:7px;color:var(--ink2);text-decoration:none;font-size:13.5px}
+.side a{display:block;padding:6.5px 10px;border-radius:7px;color:var(--ink2);text-decoration:none;font-size:13.5px;letter-spacing:.01em;line-height:1.45}
 .side a:hover{background:var(--soft);color:var(--ink)}
 .side a.on{background:var(--soft);color:var(--ink);font-weight:500}
 .sidenav{position:sticky;top:84px;align-self:start;max-height:calc(100vh - 110px);overflow-y:auto;scrollbar-width:thin;padding-inline-end:4px}

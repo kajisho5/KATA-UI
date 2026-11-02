@@ -2,7 +2,7 @@
 .k-tpl3-rail{padding:16px 12px;border-inline-end:1px solid var(--k-line);background:var(--k-zinc-50);display:flex;flex-direction:column;gap:4px}
 .k-tpl3-compose{width:100%;justify-content:center;margin-bottom:12px}
 .k-tpl3-folders{display:grid;gap:2px}
-.k-tpl3-folders a{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;color:var(--k-ink-2);text-decoration:none;font-size:13.5px}
+.k-tpl3-folders a{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;color:var(--k-ink-2);text-decoration:none;font-size:13.5px;letter-spacing:.01em}
 .k-tpl3-folders a>span:nth-child(2){flex:1}
 .k-tpl3-folders a:hover{background:color-mix(in srgb,var(--k-ink) 5%,transparent);color:var(--k-ink)}
 .k-tpl3-folders a.on{background:color-mix(in srgb,var(--k-ink) 7%,transparent);color:var(--k-ink);font-weight:550}

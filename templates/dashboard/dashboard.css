@@ -5,7 +5,7 @@
 .k-tpl-logo i{width:8px;height:8px;border-radius:2.5px;background:var(--k-core);display:block}
 .k-tpl-navlbl{font-size:10.5px;letter-spacing:.09em;color:var(--k-ink-3);margin:12px 8px 5px;font-weight:600}
 .k-tpl-nav{display:grid;gap:2px}
-.k-tpl-nav a{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;color:var(--k-ink-2);text-decoration:none;font-size:13.5px}
+.k-tpl-nav a{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;color:var(--k-ink-2);text-decoration:none;font-size:13.5px;letter-spacing:.01em}
 .k-tpl-nav a:hover{background:color-mix(in srgb,var(--k-ink) 5%,transparent);color:var(--k-ink)}
 .k-tpl-nav a.on{background:color-mix(in srgb,var(--k-ink) 7%,transparent);color:var(--k-ink);font-weight:550}
 .k-tpl-nav a.on svg{color:var(--k-core)}

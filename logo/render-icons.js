@@ -42,15 +42,15 @@ function startForwarder(upstreamHost, upstreamPort) {
 async function main() {
   const here = __dirname;
   const fav = fs.readFileSync(path.join(here, 'favicon.svg'), 'utf8');
-  const rects = (fav.match(/<rect[^>]*\/>/g) || []).filter(r => !/width="40"/.test(r)).join('');
-  if (!rects) throw new Error('no mark rects found in favicon.svg');
+  const rects = (fav.match(/<g id="mark">([\s\S]*?)<\/g>/) || [])[1] || '';
+  if (!rects) throw new Error('no mark group found in favicon.svg');
   const centered = s => `<g transform="translate(24 24) scale(${s}) translate(-24 -24)">${rects}</g>`;
   const fullbleed = s => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" fill="#18181b"/>${centered(s)}</svg>`;
   const variants = [
-    { id: 'v512', svg: fullbleed(1.16), size: 512, out: 'icon-512.png' },
-    { id: 'v192', svg: fullbleed(1.16), size: 192, out: 'icon-192.png' },
-    { id: 'v180', svg: fullbleed(1.16), size: 180, out: 'apple-touch-icon.png' },
-    { id: 'vmask', svg: fullbleed(0.86), size: 512, out: 'icon-maskable-512.png' },
+    { id: 'v512', svg: fullbleed(1.31), size: 512, out: 'icon-512.png' },
+    { id: 'v192', svg: fullbleed(1.31), size: 192, out: 'icon-192.png' },
+    { id: 'v180', svg: fullbleed(1.31), size: 180, out: 'apple-touch-icon.png' },
+    { id: 'vmask', svg: fullbleed(0.97), size: 512, out: 'icon-maskable-512.png' },
     { id: 'r48', svg: fav, size: 48, out: '/tmp/fav48.png' },
     { id: 'r32', svg: fav, size: 32, out: '/tmp/fav32.png' },
     { id: 'r16', svg: fav, size: 16, out: '/tmp/fav16.png' },

@@ -39,7 +39,7 @@ def esc(s):
     return html.escape(s)
 
 HEADER = """<header class="top"><div class="wrap top-in">
-  <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="16.6" height="16.6" fill="#18181b"/><rect x="32.95" y="7" width="8.05" height="8.05" fill="#18181b"/><rect x="24.4" y="15.55" width="8.05" height="8.05" fill="#18181b"/><rect x="7" y="24.4" width="16.6" height="16.6" fill="#d4d4d8"/><rect x="24.4" y="24.4" width="16.6" height="16.6" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
+  <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="9" width="30" height="30" rx="4" fill="none" stroke="#18181b" stroke-width="3.4"/><path d="M14.5 33.5 L33.5 14.5" stroke="#18181b" stroke-width="3.4" stroke-linecap="square"/><circle cx="24" cy="24" r="4.6" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
   <button class="menubtn" id="menubtn" type="button" aria-label="Open menu">☰<span>Menu</span></button>
   <nav><a href="/docs/">Docs</a><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/design-system/">Design System</a><a href="/pricing/">Pricing</a></nav>
   <button class="hsearch" type="button" data-site-search aria-label="Search the catalog"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span class="hst">Search</span><span class="k-kbd">\u2318K</span></button>
@@ -131,8 +131,13 @@ SEARCH_TMPL = """<dialog class="kcmd" data-site-dialog aria-label="Search KATA U
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg>
     <input class="kcmd-input" data-site-input type="text" placeholder="Search components, blocks, docs\u2026" aria-label="Search KATA UI">
   </div>
-  <ul class="kcmd-list" data-site-list></ul>
-  <div class="kcmd-empty" data-site-empty style="display:none">No results.</div>
+  <div class="kcmd-body">
+    <div class="kcmd-left">
+      <ul class="kcmd-list" data-site-list></ul>
+      <div class="kcmd-empty" data-site-empty style="display:none">No results.</div>
+    </div>
+    <div class="kcmd-pv" data-site-pv><div class="kcmd-pv-note">Highlight a part to see it live.</div></div>
+  </div>
 </dialog>
 <script>
 const KIDX = __KATA_INDEX__;
@@ -140,6 +145,29 @@ const sDlg = document.querySelector('[data-site-dialog]');
 const sIn = sDlg.querySelector('[data-site-input]');
 const sList = sDlg.querySelector('[data-site-list]');
 const sEmpty = sDlg.querySelector('[data-site-empty]');
+const sPv = sDlg.querySelector('[data-site-pv]');
+const sCache = {}, sCssDone = {};
+let sPvSeq = 0;
+function sPreview() {
+  const it = sShown[sAct];
+  if (!it || !sPv) return;
+  const m = it.u.match(/^\/(components|blocks|templates)\/([a-z0-9-]+)\/$/);
+  if (!m) { sPv.innerHTML = '<div class="kcmd-pv-note"><b>' + it.t + '</b><span>' + it.k + ' \u2014 Enter opens the page.</span></div>'; return; }
+  const seq = ++sPvSeq;
+  const show = html => { if (seq === sPvSeq) sPv.innerHTML = '<div class="kcmd-pv-stage">' + html + '</div><p class="kcmd-pv-cap">' + it.t + ' \u2014 live from its page</p>'; };
+  if (sCache[it.u]) { show(sCache[it.u]); return; }
+  sPv.innerHTML = '<div class="kcmd-pv-note">Casting a preview\u2026</div>';
+  fetch(it.u).then(r => r.text()).then(txt => {
+    const doc = new DOMParser().parseFromString(txt, 'text/html');
+    doc.querySelectorAll('link[rel="stylesheet"]').forEach(l => {
+      const href = l.getAttribute('href');
+      if (href && !sCssDone[href] && /\/(components|blocks|templates)\//.test(href)) { sCssDone[href] = 1; const nl = document.createElement('link'); nl.rel = 'stylesheet'; nl.href = href; document.head.appendChild(nl); }
+    });
+    const st = doc.querySelector('#stage') || doc.querySelector('.stage');
+    const html = st ? st.innerHTML : '<div class="kcmd-pv-note">No preview stage on that page.</div>';
+    sCache[it.u] = html; show(html);
+  }).catch(() => { if (seq === sPvSeq) sPv.innerHTML = '<div class="kcmd-pv-note">Preview unavailable.</div>'; });
+}
 let sAct = 0, sShown = [];
 function sRender(q) {
   const query = (q || '').trim().toLowerCase();
@@ -147,10 +175,14 @@ function sRender(q) {
   sAct = 0;
   sList.innerHTML = sShown.map((it, i) => '<li><button type="button" class="kcmd-item' + (i === sAct ? ' active' : '') + '" data-su="' + it.u + '"><span>' + it.t + '</span><span class="kcmd-hint">' + it.k + '</span></button></li>').join('');
   sEmpty.style.display = sShown.length ? 'none' : '';
-  sList.querySelectorAll('[data-su]').forEach(b => b.addEventListener('click', () => { location.href = b.dataset.su; }));
+  sList.querySelectorAll('[data-su]').forEach((b, i) => {
+    b.addEventListener('click', () => { location.href = b.dataset.su; });
+    b.addEventListener('mouseenter', () => { if (sAct !== i) { sAct = i; sList.querySelectorAll('.kcmd-item').forEach((el, j) => el.classList.toggle('active', j === sAct)); sPreview(); } });
+  });
+  sPreview();
 }
 function sOpen() { if (!sDlg.open) { sIn.value = ''; sRender(''); sDlg.showModal(); sIn.focus(); } }
-function sMove(d) { if (!sShown.length) return; sAct = (sAct + d + sShown.length) % sShown.length; sList.querySelectorAll('.kcmd-item').forEach((el, i) => el.classList.toggle('active', i === sAct)); }
+function sMove(d) { if (!sShown.length) return; sAct = (sAct + d + sShown.length) % sShown.length; sList.querySelectorAll('.kcmd-item').forEach((el, i) => el.classList.toggle('active', i === sAct));  sPreview(); }
 document.querySelectorAll('[data-site-search]').forEach(b => b.addEventListener('click', sOpen));
 document.addEventListener('keydown', e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); sOpen(); } });
 sIn.addEventListener('input', () => sRender(sIn.value));
@@ -177,6 +209,7 @@ FOUNDRY_HTML = """<button class="fdeck-fab" id="fdfab" type="button" aria-expand
   <div class="frow"><label>Radius <output id="fd-rv">8px</output></label><input type="range" id="fd-radius" min="0" max="20" step="1" value="8"></div>
   <div class="frow"><label>Accent — a traditional color</label><div class="sws" id="fd-sws"></div></div>
   <div class="frow"><label>Mode</label><div class="fseg"><button type="button" id="fd-light">Light (washi)</button><button type="button" id="fd-dark">Dark (sumi)</button></div></div>
+  <div class="frow"><label>Backdrop \u2014 wagara</label><div class="fseg" id="fd-wgs"><button type="button" data-wg="">None</button><button type="button" data-wg="seigaiha">Seigaiha</button><button type="button" data-wg="asanoha">Asanoha</button><button type="button" data-wg="ichimatsu">Ichimatsu</button></div></div>
   <div class="frow"><label>Motion <output id="fd-mv">1.0&times;</output></label><input type="range" id="fd-motion" min="0.5" max="1.5" step="0.1" value="1"></div>
   <div class="fcore"><i></i><span>The vermillion core — \u578b\u306e\u6731 — is not on the deck. It never moves; that is the point of a mold.</span></div>
   <div class="flog" id="fd-log"></div>
@@ -198,12 +231,15 @@ var sws=document.getElementById('fd-sws');PRESETS.forEach(function(p){var b=docu
 fab.addEventListener('click',function(){var open=deck.classList.toggle('open');fab.setAttribute('aria-expanded',open)});
 document.getElementById('fd-radius').addEventListener('input',function(e){applyRadius(e.target.value)});
 document.getElementById('fd-motion').addEventListener('input',function(e){applyMotion(e.target.value)});
+function applyBg(w,quiet){S.wg=w;if(w)root.setAttribute('data-wg',w);else root.removeAttribute('data-wg');document.querySelectorAll('#fd-wgs button').forEach(function(b){b.classList.toggle('on',b.dataset.wg===w)});if(!quiet)log('Backdrop \u2192 '+(w||'none'));save();}
+document.querySelectorAll('#fd-wgs button').forEach(function(b){b.addEventListener('click',function(){applyBg(b.dataset.wg)})});
 document.getElementById('fd-light').addEventListener('click',function(){applyMode(false)});
 document.getElementById('fd-dark').addEventListener('click',function(){applyMode(true)});
-document.getElementById('fd-reset').addEventListener('click',function(){S={};save();root.removeAttribute('data-theme');['--k-radius','--k-radius-sm','--k-radius-lg','--k-accent','--k-accent-ink','--acc','--k-mscale'].forEach(function(k){root.style.removeProperty(k)});document.getElementById('fd-radius').value=8;document.getElementById('fd-motion').value=1;applyRadius(8,true);applyMotion(1,true);applyMode(false,true);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.remove('on')});log('Reset to the mold');});
+document.getElementById('fd-reset').addEventListener('click',function(){S={};save();root.removeAttribute('data-theme');['--k-radius','--k-radius-sm','--k-radius-lg','--k-accent','--k-accent-ink','--acc','--k-mscale'].forEach(function(k){root.style.removeProperty(k)});document.getElementById('fd-radius').value=8;document.getElementById('fd-motion').value=1;applyRadius(8,true);applyMotion(1,true);applyMode(false,true);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.remove('on')});applyBg('',true);log('Reset to the mold');});
 if(S.radius){document.getElementById('fd-radius').value=S.radius;applyRadius(S.radius,true);}
 if(S.mscale){document.getElementById('fd-motion').value=S.mscale;applyMotion(S.mscale,true);}
 if(S.accentName){var p0=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p0)applyAccent(p0,true);}
+applyBg(S.wg||'',true);
 applyMode(dark(),true);
 })();
 </script>"""
@@ -223,7 +259,7 @@ def head(title, desc, extra=''):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>(function(){{try{{var s=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;if(s.dark||(!("dark" in s)&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))r.setAttribute("data-theme","dark");if(s.radius){{r.style.setProperty("--k-radius",s.radius+"px");r.style.setProperty("--k-radius-sm",Math.max(0,Math.round(s.radius*.75))+"px");r.style.setProperty("--k-radius-lg",Math.round(s.radius*1.5)+"px");}}if(s.accent){{r.style.setProperty("--k-accent",s.accent);r.style.setProperty("--acc",s.accent);r.style.setProperty("--k-accent-ink",(r.getAttribute("data-theme")==="dark"?s.darkInk:s.accentInk)||s.accent);}}}}catch(e){{}}}})();</script>
+<script>(function(){{try{{var s=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;if(s.dark||(!("dark" in s)&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))r.setAttribute("data-theme","dark");if(s.radius){{r.style.setProperty("--k-radius",s.radius+"px");r.style.setProperty("--k-radius-sm",Math.max(0,Math.round(s.radius*.75))+"px");r.style.setProperty("--k-radius-lg",Math.round(s.radius*1.5)+"px");}}if(s.accent){{r.style.setProperty("--k-accent",s.accent);r.style.setProperty("--acc",s.accent);r.style.setProperty("--k-accent-ink",(r.getAttribute("data-theme")==="dark"?s.darkInk:s.accentInk)||s.accent);if(s.wg)r.setAttribute(\"data-wg\",s.wg);}}}}catch(e){{}}}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
@@ -263,7 +299,8 @@ def catalog_sections(comps):
         if not group:
             continue
         cards = '\n'.join(card(c) for c in group)
-        out.append(f'<section class="catsec"><h2>{esc(cat)}</h2><div class="cards">\n{cards}\n</div></section>')
+        kb = ' kburi' if cat == 'KATAYABURI' else ''
+        out.append(f'<section class="catsec{kb}"><h2>{esc(cat)}</h2><div class="cards">\n{cards}\n</div></section>')
     return '\n'.join(out)
 
 LP_STYLE = """<style>
@@ -580,7 +617,7 @@ def llms_full(comps, blocks, templates=None):
     return '\n'.join(out)
 
 
-CATALOG_SCRIPT = "<script>\nconst catq = document.getElementById('catq');\ncatq.addEventListener('input', () => {\n  const q = catq.value.trim().toLowerCase();\n  let any = false;\n  document.querySelectorAll('.catsec').forEach(sec => {\n    let vis = 0;\n    sec.querySelectorAll('.card').forEach(cd => { const hit = !q || (cd.dataset.q || '').includes(q); cd.style.display = hit ? '' : 'none'; if (hit) vis++; });\n    sec.style.display = vis ? '' : 'none';\n    if (vis) any = true;\n  });\n  document.getElementById('catnone').style.display = any ? 'none' : '';\n});\n</script>"
+CATALOG_SCRIPT = "<script>\nconst catq = document.getElementById('catq');\ncatq.addEventListener('input', () => {\n  const q = catq.value.trim().toLowerCase();\n  let any = false;\n  document.querySelectorAll('.catsec').forEach(sec => {\n    let vis = 0;\n    sec.querySelectorAll('.card').forEach(cd => { const hit = !q || (cd.dataset.q || '').includes(q); cd.style.display = hit ? '' : 'none'; if (hit) vis++; });\n    sec.style.display = vis ? '' : 'none';\n    if (vis) any = true;\n  });\n  document.getElementById('catnone').style.display = any ? 'none' : '';\n});\nconst kburi = document.querySelector('.catsec.kburi');\nif (kburi && 'IntersectionObserver' in window) {\n  const io = new IntersectionObserver(es => es.forEach(e => {\n    if (e.isIntersecting) { kburi.classList.add('break'); setTimeout(() => kburi.classList.remove('break'), 900); io.disconnect(); }\n  }), { threshold: 0.35 });\n  io.observe(kburi);\n}\n</script>"
 
 
 def components_index(comps):
@@ -684,6 +721,28 @@ DETAIL_JS = """<script>
     btn.classList.remove('flash'); void btn.offsetWidth; btn.classList.add('flash');
     setTimeout(() => btn.textContent = old, 1800);
   }));
+  document.querySelectorAll('[data-tok]').forEach(chip => {
+    const name = chip.dataset.tok;
+    const val = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    const slot = chip.querySelector('.tokval');
+    if (slot && val) slot.textContent = val;
+    chip.addEventListener('click', () => {
+      if (navigator.clipboard) navigator.clipboard.writeText(name);
+      chip.classList.remove('flash'); void chip.offsetWidth; chip.classList.add('flash');
+    });
+  });
+  const calmBtn = document.getElementById('st-calm');
+  if (calmBtn) calmBtn.addEventListener('click', () => {
+    const st = document.getElementById('stage');
+    const on = st.classList.toggle('calm');
+    calmBtn.classList.toggle('on', on);
+  });
+  const focBtn = document.getElementById('st-focus');
+  if (focBtn) focBtn.addEventListener('click', () => {
+    const st = document.getElementById('stage');
+    const el = st.querySelector('a[href], button, input, select, textarea, [tabindex]');
+    if (el) el.focus();
+  });
 </script>"""
 
 def detail(comps, idx):
@@ -761,6 +820,17 @@ def detail(comps, idx):
         anatomy_html = ('<section class="doc"><h2>Anatomy</h2>'
                         '<p class="anote">The public surface of this part, read from its own source. Class names are the API \u2014 the CSS tab above is the full contract.</p>'
                         f'<table class="anatomy"><tbody>{rows}</tbody></table></section>')
+    toks_used = []
+    for mm in re.finditer(r'var\(--(k-[a-z0-9-]+)\)', c['css']):
+        if mm.group(1) not in toks_used:
+            toks_used.append(mm.group(1))
+    token_html = ''
+    if toks_used:
+        chips = ''.join(f'<button class="tokchip" type="button" data-tok="--{esc(tk)}" title="Copy the token name">--{esc(tk)}<span class="tokval"></span></button>' for tk in toks_used)
+        token_html = ('<section class="doc"><h2>Tokens it reads</h2>'
+                      '<p class="anote">The decomposition view: every custom property this part\u2019s CSS actually reads, with its live value on this page right now. '
+                      'Change one in the Foundry deck and the value \u2014 and the part \u2014 moves. Click a token to copy its name.</p>'
+                      f'<div class="tokrow">{chips}</div></section>')
     siblings = [x for x in comps if x['meta']['category'] == m['category'] and x['slug'] != slug][:4]
     related = ''
     if siblings:
@@ -783,6 +853,7 @@ def detail(comps, idx):
         <span class="lbl">Preview</span>
         <span class="seg" data-seg="width"><button data-v="desktop" class="on">Desktop</button><button data-v="mobile">Mobile</button></span>
         <span class="seg" data-seg="theme"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></span>
+        <span class="segx"><button type="button" id="st-calm">Calm</button><button type="button" id="st-focus">Focus first control</button></span>
       </div>
       <div class="{stage_cls}" id="stage">
 {c['preview']}
@@ -797,6 +868,7 @@ def detail(comps, idx):
       <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
       <section class="doc"><h2>Accessibility</h2><p>{esc(m.get('a11y',''))}</p></section>
       {anatomy_html}
+      {token_html}
       {used_in}
       {related}
       <div class="prevnext">{prev_html}{next_html}</div>
@@ -998,6 +1070,16 @@ def pricing_page():
       __WAITLIST__
       <p class="note">Not on sale yet: the blocks and templates are still open on this site while Pro is being prepared. When sales open, $129 is the price — once, and the code is yours either way.</p>
     </div>
+  </div>
+  <div class="valueband">
+    <h2>What the $129 actually buys back</h2>
+    <div class="vb-grid">
+      <div><b>28</b><span>assembled artifacts \u2014 21 blocks and 7 templates</span></div>
+      <div><b>87</b><span>part-instances, already composed and mold-checked</span></div>
+      <div><b>\u224877 h</b><span>of assembly replaced \u2014 21 blocks \u00d7 ~2 h plus 7 templates \u00d7 ~5 h, states, dark mode and responsive included</span></div>
+      <div><b>$1.68</b><span>per hour of it, once \u2014 and every future block is included</span></div>
+    </div>
+    <p class="note">The arithmetic is shown so you can argue with it. Even at half these estimates, the shelf pays for itself on the first page you ship with it.</p>
   </div>
   <div class="qa">
     <div><h3>Why charge for blocks and not parts?</h3><p>A single part is an afternoon of work and, honestly, an AI can draft one. A set of blocks that compose without friction — same tokens, same spacing, same voice — is the accumulated discipline of the whole catalog. That is what Pro prices.</p></div>
@@ -1776,7 +1858,8 @@ DOCS = [
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
- 'November 2, 2026 \u2014 The living specimen', '<p>The site stops describing the mold and starts being it. A <b>Foundry deck</b> now sits on every page (bottom right): turn the radius, cast one of the five traditional-color accents, flip the whole page between washi light and sumi dark, slow the motion \u2014 every part on the page re-casts at once, because they all read the same tokens. The vermillion core is deliberately not on the deck; it never moves. The landing hero opens with a cast mark \u2014 the three shapes (circle, 45\u00b0 line, r2 corner) assembling around the core \u2014 over a live cluster of the real Button, Switch, Input and Badge, and the Motion line auto-plays below it. Component pages carry a <b>Mold verified</b> chip and a button that copies a ready-made prompt for your AI; joining the waitlist stamps a vermillion \u578b; copying code flashes the core color. The site chrome accent is Asagi now, too \u2014 the last of the old teal is gone.</p>', None, None),
+ 'November 2, 2026 \u2014 The mark, recast', '<p>The mark itself is recast. The four-quadrant logo gives way to the three shapes and nothing else: an r2-corner frame, a single 45\u00b0 cut, and the vermillion core sitting at the exact center \u2014 the same geometry the hero cast mark assembles, and the same 24-grid, 1.7-stroke discipline as the icon set. It ships everywhere the old mark lived: header, favicon, app icons, the OGP card. Around it, the specimen grows its second layer: component pages gain a <b>Tokens it reads</b> decomposition (every custom property in the part\u2019s CSS, with live values), stage toggles that demo calm (reduced motion) and keyboard focus in place, a wagara backdrop row in the Foundry deck (Seigaiha, Asanoha, Ichimatsu over the whole page), \u2318K search results that preview the highlighted part live from its own page, a KATAYABURI section that breaks its grid once as it scrolls in and re-forms, and a pricing page that shows its arithmetic: 28 assembled artifacts, 87 composed part-instances, roughly 77 hours of assembly behind the $129.</p>', None, None),
+    ('November 2, 2026 \u2014 The living specimen', '<p>The site stops describing the mold and starts being it. A <b>Foundry deck</b> now sits on every page (bottom right): turn the radius, cast one of the five traditional-color accents, flip the whole page between washi light and sumi dark, slow the motion \u2014 every part on the page re-casts at once, because they all read the same tokens. The vermillion core is deliberately not on the deck; it never moves. The landing hero opens with a cast mark \u2014 the three shapes (circle, 45\u00b0 line, r2 corner) assembling around the core \u2014 over a live cluster of the real Button, Switch, Input and Badge, and the Motion line auto-plays below it. Component pages carry a <b>Mold verified</b> chip and a button that copies a ready-made prompt for your AI; joining the waitlist stamps a vermillion \u578b; copying code flashes the core color. The site chrome accent is Asagi now, too \u2014 the last of the old teal is gone.</p>', None, None),
     ('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget. Applied site-wide the same day: every page lead, the docs body, the landing sub-texts and the Japanese page (CJK body +0.04em, headings +0.05em) now follow the table, and an audit of all 164 part stylesheets found their tracking already sitting inside the ramps \u2014 card titles, micro labels, vertical text \u2014 that the table now records explicitly.</p>', None, None),
     ('November 2, 2026 \u2014 Traditional colors of Japan', '<p>The Themes page gains \u4f1d\u7d71\u8272: fifty traditional Japanese colors in seven families \u2014 pine-soot inks, safflower reds, indigo blues, gardenia yellows \u2014 each with its kanji name, its reading and the dye or pigment it came from. Clicking one casts it into the live demo and writes the theme CSS under its own name (ai.css, yamabuki.css), so a button can wear a thousand-year-old color in one click. At the head of the reds sits \u578b\u306e\u6731, KATA\u2019s own vermilion core, labeled as what it is: the one color no theme moves.</p>', None, None),
     ('November 2, 2026 — The zoom pass', '<p>Every one of the 201 pages and all 136 part previews was re-examined at full phone size. The pass caught and fixed a collapsed Accordion Gallery and Speed Dial stage, a Hover Card whose markup invalidly nested blocks inside a paragraph, clipped Radar Chart labels, a nearly invisible Skeleton, label collisions in Steps and List, tables that broke out of their stages, and readouts that shrank instead of stretching. The landing page Questions section now answers questions about this library instead of a generic SaaS. Nothing new was added; everything already here simply holds up better under a magnifying glass.</p>', None, None),

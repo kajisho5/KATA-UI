@@ -226,3 +226,46 @@ html[data-theme="dark"] .menubtn{background:#131316;color:var(--ink)}
 footer.site .fprin{color:var(--ink2)}
 .mstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media (max-width:860px){.mstrip{grid-template-columns:1fr}}
+
+.tokrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tokchip{font-family:var(--mono);font-size:11.5px;border:1px solid var(--hair);background:var(--soft);color:var(--ink);border-radius:8px;padding:5px 9px;cursor:pointer;display:inline-flex;gap:7px;align-items:baseline}
+.tokchip .tokval{color:var(--ink3);font-size:11px}
+.tokchip.flash{animation:copyflash .5s ease-out}
+.segx{display:inline-flex;gap:6px;margin-left:8px}
+.segx button{font:inherit;font-size:12px;font-weight:500;border:1px solid var(--hair);background:var(--paper);color:var(--ink2);border-radius:99px;padding:4px 11px;cursor:pointer}
+.segx button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.stage.calm *, .stage.calm *::before, .stage.calm *::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+
+/* wagara backdrops (Foundry deck) */
+html[data-wg="seigaiha"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28'%3E%3Cg fill='none' stroke='%2318181b' stroke-opacity='.055'%3E%3Cpath d='M-28 28a28 28 0 0 1 56 0M0 28a28 28 0 0 1 56 0M28 28a28 28 0 0 1 56 0'/%3E%3Cpath d='M-18 28a18 18 0 0 1 36 0M10 28a18 18 0 0 1 36 0M38 28a18 18 0 0 1 36 0'/%3E%3Cpath d='M-8 28a8 8 0 0 1 16 0M20 28a8 8 0 0 1 16 0M48 28a8 8 0 0 1 16 0'/%3E%3C/g%3C/svg%3E")}
+html[data-theme="dark"][data-wg="seigaiha"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='28'%3E%3Cg fill='none' stroke='%23f4f4f5' stroke-opacity='.07'%3E%3Cpath d='M-28 28a28 28 0 0 1 56 0M0 28a28 28 0 0 1 56 0M28 28a28 28 0 0 1 56 0'/%3E%3Cpath d='M-18 28a18 18 0 0 1 36 0M10 28a18 18 0 0 1 36 0M38 28a18 18 0 0 1 36 0'/%3E%3Cpath d='M-8 28a8 8 0 0 1 16 0M20 28a8 8 0 0 1 16 0M48 28a8 8 0 0 1 16 0'/%3E%3C/g%3C/svg%3E")}
+html[data-wg="asanoha"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='42'%3E%3Cg fill='none' stroke='%2318181b' stroke-opacity='.055'%3E%3Cpath d='M24 2 46 40H2Z M24 2v38 M2 40 24 25l22 15 M24 25 10 40 M24 25l14 15'/%3E%3C/g%3C/svg%3E")}
+html[data-theme="dark"][data-wg="asanoha"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='42'%3E%3Cg fill='none' stroke='%23f4f4f5' stroke-opacity='.07'%3E%3Cpath d='M24 2 46 40H2Z M24 2v38 M2 40 24 25l22 15 M24 25 10 40 M24 25l14 15'/%3E%3C/g%3C/svg%3E")}
+html[data-wg="ichimatsu"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='16' height='16' fill='%2318181b' fill-opacity='.055'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%2318181b' fill-opacity='.055'%3C/svg%3E")}
+html[data-theme="dark"][data-wg="ichimatsu"] body{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Crect width='16' height='16' fill='%23f4f4f5' fill-opacity='.07'/%3E%3Crect x='16' y='16' width='16' height='16' fill='%23f4f4f5' fill-opacity='.07'%3C/svg%3E")}
+
+.valueband{margin-top:34px;border:1px solid var(--hair);border-radius:16px;padding:22px;background:var(--soft)}
+.valueband h2{font-size:17px;font-weight:600;letter-spacing:-.015em}
+.vb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.vb-grid div{display:flex;flex-direction:column;gap:3px}
+.vb-grid b{font-size:23px;font-weight:600;letter-spacing:-.02em}
+.vb-grid span{font-size:12.5px;color:var(--ink2);line-height:1.6;letter-spacing:.01em}
+.valueband .note{margin-top:14px;font-size:12.5px;color:var(--ink3);line-height:1.65;letter-spacing:.01em}
+@media (max-width:720px){.vb-grid{grid-template-columns:1fr 1fr}}
+
+.catsec.kburi.break .card{transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.catsec.kburi.break .card:nth-child(3n){transform:translate(7px,-5px) rotate(1.1deg)}
+.catsec.kburi.break .card:nth-child(4n){transform:translate(-9px,4px) rotate(-1.4deg)}
+.catsec.kburi.break .card:nth-child(5n){transform:translate(4px,8px) rotate(.7deg)}
+.catsec.kburi.break .card:nth-child(7n){transform:translate(-5px,-8px) rotate(-.8deg)}
+html[data-theme="dark"] .logo svg rect, html[data-theme="dark"] .logo svg path{stroke:#f4f4f5}
+
+dialog.kcmd:has(.kcmd-body){width:min(880px,94vw)}
+.kcmd-body{display:flex;min-height:0}
+.kcmd-left{flex:1 1 52%;min-width:0;display:flex;flex-direction:column}
+.kcmd-pv{flex:1 1 48%;border-left:1px solid var(--hair);padding:14px;overflow:auto;max-height:46vh;background:var(--soft)}
+.kcmd-pv-stage{background:var(--paper);border:1px solid var(--hair);border-radius:12px;padding:14px;overflow:hidden}
+.kcmd-pv-cap{margin-top:9px;font-size:11.5px;color:var(--ink3);letter-spacing:.01em}
+.kcmd-pv-note{font-size:12.5px;color:var(--ink3);line-height:1.65;display:grid;gap:3px}
+.kcmd-pv-note b{color:var(--ink);font-size:13.5px}
+@media (max-width:719px){.kcmd-pv{display:none}.kcmd-left{flex:1 1 100%}}

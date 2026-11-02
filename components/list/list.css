@@ -1,4 +1,4 @@
-.k-list{list-style:none;margin:0;padding:0;border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);font-family:var(--k-font);overflow:hidden;text-align:left}
+.k-list{list-style:none;margin:0;padding:0;border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);font-family:var(--k-font);overflow:hidden;text-align:start}
 .k-list li+li{border-top:1px solid var(--k-line)}
 .k-list-row{display:flex;align-items:center;gap:12px;padding:12px 15px;text-decoration:none;color:var(--k-ink)}
 a.k-list-row:hover{background:var(--k-bg-soft)}

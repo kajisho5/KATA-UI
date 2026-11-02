@@ -1,4 +1,4 @@
-.k-int{font-family:var(--k-font);text-align:left;color:var(--k-ink)}
+.k-int{font-family:var(--k-font);text-align:start;color:var(--k-ink)}
 .k-int-h{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:16px}
 .k-int-h h3{font-size:17px;font-weight:600;letter-spacing:-.015em}
 .k-int-h a{font-size:13px;font-weight:550;color:var(--k-accent);text-decoration:none;white-space:nowrap}

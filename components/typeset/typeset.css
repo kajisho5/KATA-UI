@@ -9,10 +9,10 @@
 .k-type a{color:var(--k-accent-ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--k-accent-line)}
 .k-type strong{font-weight:650}
 .k-type code{font-family:var(--k-mono);font-size:.86em;background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:5px;padding:1px 5px;white-space:nowrap}
-.k-type ul,.k-type ol{margin:0 0 14px;padding-left:20px}
+.k-type ul,.k-type ol{margin:0 0 14px;padding-inline-start:20px}
 .k-type li{margin:4px 0}
 .k-type li::marker{color:var(--k-ink-3)}
-.k-type blockquote{margin:18px 0;padding:2px 0 2px 16px;border-left:2px solid var(--k-accent);color:var(--k-ink-2);font-size:15.5px;line-height:1.7}
+.k-type blockquote{margin:18px 0;padding:2px 0 2px 16px;border-inline-start:2px solid var(--k-accent);color:var(--k-ink-2);font-size:15.5px;line-height:1.7}
 .k-type blockquote p{margin:0}
 .k-type hr{border:0;border-top:1px solid var(--k-line);margin:24px 0}
 .k-type .fine{font-size:12.5px;color:var(--k-ink-3);line-height:1.65}

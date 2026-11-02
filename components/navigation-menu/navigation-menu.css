@@ -1,0 +1,16 @@
+/* KATA Navigation Menu — one line on top, the depth underneath. */
+.k-navm{position:relative;font-family:var(--k-font);color:var(--k-ink)}
+.k-navm-bar{display:flex;align-items:center;gap:4px}
+.k-navm-item{position:relative}
+.k-navm-btn{display:flex;align-items:center;gap:6px;padding:8px 12px;border:0;background:none;font-family:inherit;font-size:13.5px;font-weight:550;color:var(--k-ink-2);border-radius:8px;cursor:pointer;text-decoration:none}
+.k-navm-btn:hover,.k-navm-item.open .k-navm-btn{background:var(--k-bg-soft);color:var(--k-ink)}
+.k-navm-btn svg{transition:transform .18s;color:var(--k-ink-3)}
+.k-navm-item.open .k-navm-btn svg{transform:rotate(180deg)}
+.k-navm-panel{position:absolute;inset-inline-start:0;top:calc(100% + 8px);min-width:300px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;box-shadow:0 20px 44px -14px rgba(16,24,40,.22);padding:8px;display:none;z-index:60}
+.k-navm-item.open .k-navm-panel{display:block}
+.k-navm-link{display:flex;gap:11px;padding:9px 10px;border-radius:9px;text-decoration:none;color:var(--k-ink)}
+.k-navm-link:hover{background:var(--k-bg-soft)}
+.k-navm-link .ic{width:32px;height:32px;flex:none;border:1px solid var(--k-line);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--k-ink-2)}
+.k-navm-link b{display:block;font-size:13.5px;font-weight:600}
+.k-navm-link span{font-size:12.5px;color:var(--k-ink-2);line-height:1.55}
+@media (prefers-reduced-motion:reduce){.k-navm-btn svg{transition:none}}

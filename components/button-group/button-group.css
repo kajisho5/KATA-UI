@@ -1,0 +1,11 @@
+/* KATA Button Group — buttons sharing edges: the group owns the radius
+   and the seams, the Button part owns everything else. */
+.k-bgroup{display:inline-flex;font-family:var(--k-font)}
+.k-bgroup .btn{border-radius:0;margin-inline-start:-1px;position:relative}
+.k-bgroup .btn:first-child{border-start-start-radius:var(--k-radius);border-end-start-radius:var(--k-radius);margin-inline-start:0}
+.k-bgroup .btn:last-child{border-start-end-radius:var(--k-radius);border-end-end-radius:var(--k-radius)}
+.k-bgroup .btn:hover,.k-bgroup .btn:focus-visible{z-index:1}
+.k-bgroup.vert{flex-direction:column}
+.k-bgroup.vert .btn{margin-inline-start:0;margin-top:-1px}
+.k-bgroup.vert .btn:first-child{border-radius:var(--k-radius) var(--k-radius) 0 0;margin-top:0}
+.k-bgroup.vert .btn:last-child{border-radius:0 0 var(--k-radius) var(--k-radius)}

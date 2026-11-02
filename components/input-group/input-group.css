@@ -1,0 +1,12 @@
+/* KATA Input Group — addons sharing the input's outline. */
+.k-igroup{display:flex;align-items:stretch;font-family:var(--k-font);max-width:340px}
+.k-igroup .input{border-radius:0;margin-inline-start:-1px;position:relative}
+.k-igroup .input:first-child{border-start-start-radius:var(--k-radius);border-end-start-radius:var(--k-radius);margin-inline-start:0}
+.k-igroup .input:last-child{border-start-end-radius:var(--k-radius);border-end-end-radius:var(--k-radius)}
+.k-igroup .input:focus{z-index:1}
+.k-ig-addon{display:flex;align-items:center;padding:0 11px;background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);font-size:13px;margin-inline-start:-1px;white-space:nowrap}
+.k-ig-addon:first-child{border-start-start-radius:var(--k-radius);border-end-start-radius:var(--k-radius);margin-inline-start:0}
+.k-ig-addon:last-child{border-start-end-radius:var(--k-radius);border-end-end-radius:var(--k-radius)}
+.k-igroup .btn{border-radius:0;margin-inline-start:-1px;position:relative}
+.k-igroup .btn:last-child{border-start-end-radius:var(--k-radius);border-end-end-radius:var(--k-radius)}
+.k-igroup .btn:first-child{border-start-start-radius:var(--k-radius);border-end-start-radius:var(--k-radius);margin-inline-start:0}

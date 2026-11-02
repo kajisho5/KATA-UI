@@ -1,0 +1,14 @@
+{
+  "title": "Bottom Navigation",
+  "category": "Layout & Navigation",
+  "description": "The mobile app tab bar: three to five destinations under the thumb, the current one lit with the core.",
+  "tags": [
+    "mobile",
+    "tabs",
+    "app",
+    "navigation"
+  ],
+  "status": "stable",
+  "usage": "For app-shaped pages on phones: the destinations a thumb can reach, always in the same order. Three to five items; a sixth means the app needs a menu, not a wider bar. The part ships the bar — fixing it to the viewport bottom is the page’s job.",
+  "a11y": "A nav landmark of real links, each with an icon and a text label — the label is what the screen reader reads, so never ship the icon-only variant to production without aria-labels."
+}

@@ -1,5 +1,5 @@
-.k-tree{list-style:none;margin:0;padding:0;font-family:var(--k-font);font-size:13.5px;color:var(--k-ink);text-align:left}
-.k-tree ul{list-style:none;margin:0;padding-left:19px;border-left:1px solid var(--k-line);margin-left:8px}
+.k-tree{list-style:none;margin:0;padding:0;font-family:var(--k-font);font-size:13.5px;color:var(--k-ink);text-align:start}
+.k-tree ul{list-style:none;margin:0;padding-inline-start:19px;border-inline-start:1px solid var(--k-line);margin-inline-start:8px}
 .k-tree-row{display:flex;align-items:center;gap:7px;padding:4.5px 7px;border-radius:8px}
 .k-tree-row:hover{background:var(--k-bg-soft)}
 .k-tree-row .tg{width:20px;height:20px;border:none;background:transparent;color:var(--k-ink-3);display:grid;place-items:center;cursor:pointer;border-radius:5px;padding:0;flex:none}

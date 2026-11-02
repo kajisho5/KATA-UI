@@ -1,19 +1,19 @@
 /* KATA Sidebar — the app sidebar as a part: sections, collapsible groups,
    an icon rail, and the user at the foot. The current page carries the
    vermillion core on its icon, like the app shell and the templates. */
-.k-side{width:230px;flex:none;display:flex;flex-direction:column;background:var(--k-bg);border-right:1px solid var(--k-line);padding:14px 10px;font-family:var(--k-font);color:var(--k-ink);text-align:left}
+.k-side{width:230px;flex:none;display:flex;flex-direction:column;background:var(--k-bg);border-inline-end:1px solid var(--k-line);padding:14px 10px;font-family:var(--k-font);color:var(--k-ink);text-align:start}
 .k-side-brand{display:flex;align-items:center;gap:9px;padding:2px 8px 12px;font-size:14px;font-weight:600}
 .k-side-mark{width:24px;height:24px;border-radius:7px;background:var(--k-ink);color:var(--k-on-color);display:flex;align-items:center;justify-content:center;flex:none}
 .k-side-sec{font-size:10.5px;letter-spacing:.09em;font-weight:600;color:var(--k-ink-3);margin:14px 8px 5px}
 .k-side-nav{display:grid;gap:2px}
-.k-side-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;font-size:13.5px;color:var(--k-ink-2);text-decoration:none;cursor:pointer;background:none;border:0;width:100%;text-align:left;font-family:inherit}
+.k-side-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;font-size:13.5px;color:var(--k-ink-2);text-decoration:none;cursor:pointer;background:none;border:0;width:100%;text-align:start;font-family:inherit}
 .k-side-item:hover{background:var(--k-bg-soft);color:var(--k-ink)}
 .k-side-item.on{background:var(--k-bg-soft);color:var(--k-ink);font-weight:550}
 .k-side-item.on svg{color:var(--k-core)}
 .k-side-item svg{flex:none}
-.k-side-badge{margin-left:auto;font-size:11px;font-weight:600;background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);border-radius:99px;padding:1px 7px}
+.k-side-badge{margin-inline-start:auto;font-size:11px;font-weight:600;background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);border-radius:99px;padding:1px 7px}
 .k-side-item.on .k-side-badge{background:var(--k-bg)}
-.k-side-chev{margin-left:auto;transition:transform .18s}
+.k-side-chev{margin-inline-start:auto;transition:transform .18s}
 .k-side-group.open .k-side-chev{transform:rotate(180deg)}
 .k-side-sub{display:none;gap:2px;margin:2px 0 2px 25px}
 .k-side-group.open .k-side-sub{display:grid}

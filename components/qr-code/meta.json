@@ -1,0 +1,14 @@
+{
+  "title": "QR Code",
+  "category": "Display & Media",
+  "description": "A real QR code, encoded in your page by a zero-dependency script written from the spec — no library, no image service.",
+  "tags": [
+    "qr",
+    "code",
+    "link",
+    "offline"
+  ],
+  "status": "beta",
+  "usage": "Give the element a data-qr with the text (a URL, up to 106 bytes at error level M, versions 1–6). The script encodes it — byte mode, Reed–Solomon, mask by the penalty rules — and draws an SVG. Because the encoder is the part, codes work offline and never phone a generator service.",
+  "a11y": "The SVG is an image of data: give the element an aria-label with the destination in words (\"Link to kata-ui.dev\"), and never make the code the only way to reach it — print the URL beside it for everyone the camera fails."
+}

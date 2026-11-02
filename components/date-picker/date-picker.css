@@ -1,8 +1,8 @@
-.k-dp{position:relative;font-family:var(--k-font);text-align:left}
+.k-dp{position:relative;font-family:var(--k-font);text-align:start}
 .k-dp .wrap-in{position:relative}
 .k-dp .cal-btn{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;border:none;background:transparent;color:var(--k-ink-3);display:grid;place-items:center;cursor:pointer;border-radius:7px}
 .k-dp .cal-btn:hover{background:var(--k-bg-soft);color:var(--k-ink)}
-.k-dp-panel{position:absolute;left:0;top:calc(100% + 8px);z-index:50;width:288px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;box-shadow:0 20px 44px -14px rgba(16,24,40,.22);padding:14px}
+.k-dp-panel{position:absolute;inset-inline-start:0;top:calc(100% + 8px);z-index:50;width:288px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;box-shadow:0 20px 44px -14px rgba(16,24,40,.22);padding:14px}
 .k-dp-panel[hidden]{display:none}
 .k-dp-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .k-dp-h b{font-size:13.5px;font-weight:600;color:var(--k-ink)}

@@ -1,0 +1,11 @@
+/* KATA Scrollspy — the contents list that keeps its place. */
+.k-spy{width:100%;display:grid;grid-template-columns:168px 1fr;gap:22px;font-family:var(--k-font);color:var(--k-ink)}
+.k-spy nav{display:flex;flex-direction:column;gap:2px;align-self:start}
+.k-spy nav a{font-size:13px;color:var(--k-ink-2);text-decoration:none;padding:6px 10px;border-radius:7px;border-inline-start:2px solid var(--k-line)}
+.k-spy nav a:hover{color:var(--k-ink);background:var(--k-bg-soft)}
+.k-spy nav a.on{color:var(--k-ink);font-weight:600;border-inline-start-color:var(--k-core);background:var(--k-bg-soft)}
+.k-spy-body{height:264px;overflow:auto;border:1px solid var(--k-line);border-radius:12px;padding:16px 18px;scroll-behavior:smooth}
+.k-spy-body section{margin-bottom:22px}
+.k-spy-body h4{font-size:14px;font-weight:600;margin-bottom:5px}
+.k-spy-body p{font-size:13px;line-height:1.8;color:var(--k-ink-2)}
+@media (max-width:560px){.k-spy{grid-template-columns:1fr}.k-spy nav{flex-direction:row;flex-wrap:wrap}}

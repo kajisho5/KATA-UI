@@ -1,0 +1,14 @@
+{
+  "title": "Result",
+  "category": "Feedback & Status",
+  "description": "The outcome page as a part: the mark, the verdict and the next action, centered. Success, failure, and the space between.",
+  "tags": [
+    "success",
+    "error",
+    "outcome",
+    "complete"
+  ],
+  "status": "stable",
+  "usage": "For the end of a flow — paid, sent, deleted, failed. One verdict per page, said in the title; the words under it carry the detail (the reference number, the reason), and the buttons carry the way out. Empty State is for \"nothing here yet\"; Result is for \"this just happened\".",
+  "a11y": "The mark is decoration — the verdict lives in the heading text, never in the icon alone. After a submitted flow, move focus to the heading so the outcome is the first thing announced."
+}

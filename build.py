@@ -41,7 +41,7 @@ def esc(s):
 HEADER = """<header class="top"><div class="wrap top-in">
   <a class="logo" href="/"><svg width="27" height="27" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="7" width="16.6" height="16.6" fill="#18181b"/><rect x="32.95" y="7" width="8.05" height="8.05" fill="#18181b"/><rect x="24.4" y="15.55" width="8.05" height="8.05" fill="#18181b"/><rect x="7" y="24.4" width="16.6" height="16.6" fill="#d4d4d8"/><rect x="24.4" y="24.4" width="16.6" height="16.6" fill="#eb471f"/></svg>KATA UI<small>preview</small></a>
   <button class="menubtn" id="menubtn" type="button" aria-label="Open menu">☰<span>Menu</span></button>
-  <nav><a href="/docs/">Docs</a><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/design-system/">Design System</a></nav>
+  <nav><a href="/docs/">Docs</a><a href="/components/">Components</a><a href="/blocks/">Blocks</a><a href="/templates/">Templates</a><a href="/icons/">Icons</a><a href="/themes/">Themes</a><a href="/design-system/">Design System</a><a href="/pricing/">Pricing</a></nav>
   <button class="hsearch" type="button" data-site-search aria-label="Search the catalog"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span class="hst">Search</span><span class="k-kbd">\u2318K</span></button>
   <a class="gh" href="https://github.com/kajisho5/KATA-UI" rel="noopener" aria-label="KATA UI on GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-9.2 9.2c0 4.1 2.7 7.6 6.4 9 .5.1.6-.2.6-.4v-1.4c-2.6.6-3.1-1.2-3.1-1.2-.4-1.1-1-1.3-1-1.3-.9-.6.1-.6.1-.6.9.1 1.4.9 1.4.9.9 1.4 2.2 1 2.7.8.1-.6.3-1.1.6-1.3-2.1-.2-4.2-1-4.2-4.6 0-1 .4-1.8.9-2.5-.1-.2-.4-1.1.1-2.3 0 0 .8-.2 2.5.9a8.6 8.6 0 0 1 4.5 0c1.7-1.1 2.5-.9 2.5-.9.5 1.2.2 2.1.1 2.3.5.7.9 1.5.9 2.5 0 3.6-2.2 4.4-4.2 4.6.3.3.6.9.6 1.8v2.6c0 .2.2.5.6.4a9.2 9.2 0 0 0 6.4-9A9.2 9.2 0 0 0 12 2.8z"/></svg></a>
 </div></header>"""
@@ -562,8 +562,8 @@ def _sec(title, links_html):
 
 
 def tree_sections(comps, active, current):
-    gs = ['getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'cli', 'theming', 'dark-mode', 'accessibility', 'changelog']
-    concepts = ['why-vanilla', 'the-mold', 'anatomy', 'from-tailwind']
+    gs = ['introduction', 'getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'cli', 'registry', 'mcp', 'theming', 'dark-mode', 'accessibility', 'rtl', 'changelog']
+    concepts = ['why-vanilla', 'the-mold', 'anatomy', 'forms', 'from-tailwind']
     guides = [d[0] for d in DOCS if d[0].startswith('guide-')]
     doc = lambda slugs: ''.join(_nav_link('/docs/' + x + '/', _doc_title(x), current) for x in slugs)
     return [
@@ -573,7 +573,7 @@ def tree_sections(comps, active, current):
         sidebar(comps, active),
         _sec('Blocks', ''.join(_nav_link('/blocks/' + b['slug'] + '/', b['meta']['title'], current) for b in _all_blocks())),
         _sec('Templates', ''.join(_nav_link('/templates/' + t['slug'] + '/', t['meta']['title'], current) for t in load_templates())),
-        _sec('Resources', ''.join(_nav_link(u, n, current) for u, n in [('/icons/', 'Icons'), ('/themes/', 'Themes'), ('/design-system/', 'Design System'), ('/skill/SKILL.md', 'AI Skill (SKILL.md)')])),
+        _sec('Resources', ''.join(_nav_link(u, n, current) for u, n in [('/icons/', 'Icons'), ('/themes/', 'Themes'), ('/design-system/', 'Design System'), ('/pricing/', 'Pricing'), ('/skill/SKILL.md', 'AI Skill (SKILL.md)')])),
     ]
 
 
@@ -826,6 +826,74 @@ def icons_page():
     return head('Icons — KATA UI', 'The KATA icon set: 24 grid, 1.7 stroke, square caps, click to copy the SVG.', ICONS_STYLE) + body
 
 
+
+PRICING_STYLE = """<style>
+.pr .tiers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.pr .tier{border:1px solid var(--hair);border-radius:16px;padding:26px;background:#fff}
+.pr .tier.pro{border-color:var(--ink);box-shadow:0 24px 50px -30px rgba(16,24,40,.35)}
+.pr .tier h2{font-size:19px;display:flex;align-items:baseline;gap:10px}
+.pr .price{font-size:34px;font-weight:700;letter-spacing:-.03em;margin:12px 0 2px}
+.pr .per{color:var(--ink3);font-size:13px}
+.pr .tier ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:9px}
+.pr .tier li{font-size:13.5px;color:var(--ink2);display:flex;gap:9px;line-height:1.6}
+.pr .tier li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ink);margin-top:7px}
+.pr .tier.pro li::before{background:#eb471f}
+.pr .cta{display:inline-flex;margin-top:22px;padding:10px 18px;border-radius:9px;background:var(--ink);color:#fff;font-weight:550;font-size:14px;text-decoration:none}
+.pr .cta.ghost{background:#fff;color:var(--ink2);border:1px solid var(--hair);cursor:default}
+.pr .note{margin-top:14px;font-size:12.5px;color:var(--ink3);line-height:1.7}
+.pr .qa{margin-top:44px;display:grid;gap:0}
+.pr .qa div{border-top:1px solid var(--hair);padding:18px 2px}
+.pr .qa h3{font-size:15px;margin-bottom:6px}
+.pr .qa p{font-size:13.5px;color:var(--ink2);line-height:1.8;max-width:640px}
+@media (max-width:720px){.pr .tiers{grid-template-columns:1fr}}
+</style>"""
+
+def pricing_page():
+    body = """
+<div class="wrap pr">
+  <h1>Pricing</h1>
+  <p class="lead">The parts are free, forever. What Pro sells is the assembled work — the blocks and templates — for one payment, once.</p>
+  <div class="tiers">
+    <div class="tier">
+      <h2>Free</h2>
+      <p class="price">$0</p>
+      <p class="per">MIT licensed. No account, no catch.</p>
+      <ul>
+        <li>All 96 components, with live previews and examples</li>
+        <li>150 icons and 56 brand marks</li>
+        <li>5 themes and the full design-token system</li>
+        <li>The CLI, the registry, the MCP server and the AI Skill</li>
+        <li>All documentation and guides</li>
+      </ul>
+      <a class="cta" href="/components/">Browse the parts</a>
+      <p class="note">The parts are the commons: they stay free whatever Pro does. A library nobody can afford to start with helps nobody.</p>
+    </div>
+    <div class="tier pro">
+      <h2>Pro</h2>
+      <p class="price">$129</p>
+      <p class="per">One payment. Lifetime. Every future block and template included.</p>
+      <ul>
+        <li>All blocks — page chrome, marketing and product sections</li>
+        <li>All templates — whole pages, assembled and styled</li>
+        <li>Key-gated downloads of the composed work</li>
+        <li>Every block and template added later, at no extra cost</li>
+        <li>No seats, no per-project fees, no subscription</li>
+      </ul>
+      <span class="cta ghost">Sales open soon</span>
+      <p class="note">Not on sale yet: the blocks and templates are still open on this site while Pro is being prepared. When sales open, $129 is the price — once, and the code is yours either way.</p>
+    </div>
+  </div>
+  <div class="qa">
+    <div><h3>Why charge for blocks and not parts?</h3><p>A single part is an afternoon of work and, honestly, an AI can draft one. A set of blocks that compose without friction — same tokens, same spacing, same voice — is the accumulated discipline of the whole catalog. That is what Pro prices.</p></div>
+    <div><h3>What happens to code I already copied?</h3><p>Nothing, ever. Copied code is yours under its license; there is no activation, no telemetry, no kill switch. Pro changes what new downloads cost, not what your files do.</p></div>
+    <div><h3>Will the parts go paid later?</h3><p>No. The line is permanent: components, icons, themes and the tooling are free; the composed work is Pro. If that line ever moved, the trust the catalog runs on would go with it.</p></div>
+  </div>
+</div>
+""" + FOOTER + """
+</body>
+</html>"""
+    return head('Pricing — KATA UI', 'KATA UI pricing: every component free forever under MIT; Pro is the blocks and templates, $129 once, lifetime.', PRICING_STYLE) + body
+
 def design_system_page(tokens):
     def swatches(scale_name, scale):
         cells = ''.join(
@@ -901,23 +969,35 @@ BLOCK_STYLE = """<style>
 .bcard .uses span{font-family:var(--mono);font-size:10.5px;color:var(--ink2);border:1px solid var(--hair);border-radius:99px;padding:2px 8px}
 </style>"""
 
+BLOCK_CATS = [('Page chrome', ['app-shell', 'site-header', 'site-footer']),
+              ('Marketing', ['pricing', 'use-cases', 'integrations', 'testimonials', 'logo-cloud', 'faq', 'cta-band']),
+              ('Product', ['login', 'settings', 'stat-cards', 'kanban'])]
+
 def blocks_index(blocks):
-    cards = []
-    for b in blocks:
+    def card(b):
         m = b['meta']
         uses = ''.join(f'<span>{esc(u)}</span>' for u in m.get('uses', []))
-        cards.append(f"""<a class="bcard" href="/blocks/{b['slug']}/">
+        return f"""<a class="bcard" href="/blocks/{b['slug']}/">
   <h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','beta'))}">{esc(m.get('status','beta'))}</span></h3>
   <p>{esc(m['description'])}</p>
   <span class="uses">{uses}</span>
-</a>""")
+</a>"""
+    by_slug = {b['slug']: b for b in blocks}
+    seen = set()
+    secs = []
+    for cat, slugs in BLOCK_CATS:
+        group = [by_slug[s] for s in slugs if s in by_slug]
+        seen.update(b['slug'] for b in group)
+        if group:
+            secs.append(f'<section class="catsec"><h2>{esc(cat)}</h2><div class="bcards">' + ''.join(card(b) for b in group) + '</div></section>')
+    rest = [b for b in blocks if b['slug'] not in seen]
+    if rest:
+        secs.append('<section class="catsec"><h2>More blocks</h2><div class="bcards">' + ''.join(card(b) for b in rest) + '</div></section>')
     body = f"""
 <div class="wrap bk">
   <h1>Blocks</h1>
   <p class="lead">Components, composed into whole sections. A block is copied the same way as a component — HTML, CSS and JS — and every part inside it stays a part you already own. Start from a block, then take it apart with the catalog.</p>
-  <div class="bcards">
-{''.join(cards)}
-  </div>
+{''.join(secs)}
 </div>
 {FOOTER}
 </body>
@@ -1274,6 +1354,11 @@ applyTheme('teal');
     return head('Themes — KATA UI', 'Accent presets for KATA UI: one token family changes, everything else holds.', extra) + body
 
 DOCS = [
+  ('introduction', 'Introduction', 'What KATA UI is, how it is made, and where to go next.',
+   [('A library you copy, not a dependency you rent', 'KATA UI is a catalog of interface parts — components, assembled blocks, and whole page templates — written in plain HTML, CSS and JavaScript. You take the code: by copy-paste from any part\u2019s page, or with the CLI. There is no framework to adopt, no build step to configure and no runtime to ship. After the copy, the code is yours; nothing updates itself and nothing phones home.', None, 'The catalog today: 96 parts, 13 blocks, 4 templates, 150 icons and 56 brand marks, 5 themes — every one free under MIT.'),
+    ('Cast from a single mold', 'Every part is built to one written standard (the mold) and machine-checked against it before it ships: the same design tokens, the same spacing rhythm, the same states and focus rings, the same icon geometry. That sameness — not any single part — is the product. It is also why the parts compose: a Modal, a Command palette and a form built months apart sit together like they were made in one afternoon, because in the ways that show, they were.', None, 'The word kata is the Japanese discipline of the form: a pattern practiced until it disappears into the work.'),
+    ('Three ways in', 'Copy-paste from the site is the front door — every part page shows its HTML, CSS and JS with a live preview. The CLI is the same catalog from a terminal. And because AI tools increasingly write the first draft, the whole catalog is published in machine-readable forms (registry.json, llms.txt, an installable Skill) so a model can fetch real parts instead of improvising lookalikes:', 'node kata-ui.mjs add sidebar calendar qr-code', 'Start at Getting Started for the three-step version, or open Components and take what you need.'),
+    ('What it is not', 'Not a framework: there is no KATA way to fetch data, route pages or manage state — your stack keeps those jobs. Not a hosted service: the site is a catalog, not a platform. And not a React library: the parts are deliberately framework-free, which is what lets them drop into Astro, Laravel, Rails, Django, WordPress or a single HTML file unchanged.', None, None)]),
   ('getting-started', 'Getting Started', 'From zero to a working part in three steps.',
    [('Start with the tokens', 'Every part reads its color, spacing, radius and motion from one file. Load it once, before anything else:', '<link rel="stylesheet" href="https://kata-ui.dev/tokens.css">', 'That file is the mold. Parts never hard-code a color, so this one link is what makes the whole catalog look like one product.'),
     ('Copy a part', 'Open the part in Components and copy its three files: the HTML from the preview, the CSS, and the JS when it has one. Paste them into your project as they are. There is no install step and no package to keep updated — the code becomes yours, which is the point.', None, 'If the part says "Uses:" under its preview, it builds on another part (a Modal on Buttons, a Command palette on Kbd). Include that part\u2019s CSS too; the page names it.'),
@@ -1347,8 +1432,29 @@ DOCS = [
     ('Is there a React version?', 'Not today. The parts paste into any stack that renders HTML, including inside React as plain markup for static sections. A native React port, in the shadcn registry format, is the most-requested item on the list and is being considered honestly — the registry file already published is the first step, since it describes every part in that format.', None, None),
     ('Why no npm package?', 'Because the package would become the product, and the product is the code in your repo. The one-file bundle and the starter kit cover the “just give me everything” case without a dependency. If a package ever ships, it will be a mirror of these files, never the source of truth.', None, None),
     ('Who makes this?', 'One person, in the open, with the mold as the second pair of hands. The repository holds the parts, the checker, and the standard they are built to — issues and corrections are welcome there.', None, None)]),
+  ('registry', 'Registry', 'The whole catalog as one machine-readable file — what reads it, and how to mirror it.',
+   [('One file, the whole catalog', 'registry.json, served at /registry.json, describes every part, block, template and theme in the shadcn registry format: its name, its type, its dependencies, and the complete contents of its files. Anything that can read JSON can install KATA UI — the file is the API.', None, 'It is regenerated on every build from the same sources as this site, so it can never drift from the pages you are reading.'),
+    ('An item, up close', 'A trimmed excerpt of one entry. The files carry their full contents (the CSS below is shortened here for print); dependencies name other registry items the installer must bring along:', '{\n  "name": "sidebar",\n  "type": "registry:component",\n  "title": "Sidebar",\n  "dependencies": [],\n  "files": [\n    { "path": "components/sidebar/sidebar.css", "type": "registry:component", "content": "/* KATA Sidebar … */" },\n    { "path": "components/sidebar/sidebar.js", "type": "registry:component", "content": "// KATA Sidebar …" }\n  ]\n}', 'Types are registry:component for parts, registry:block for blocks, registry:page for templates and registry:theme for themes.'),
+    ('Who reads it', 'Three readers ship today. The CLI (node kata-ui.mjs add …) resolves dependencies and writes files into your project. The AI Skill teaches coding models the catalog\u2019s shape, so an assistant asked for "a sidebar" installs this Sidebar instead of inventing one. And your own scripts are welcome to it — a generator, a company-internal installer, an audit that diffs the catalog against your codebase.', None, 'For language models that read prose rather than JSON, llms.txt and llms-full.txt mirror the same catalog as text.'),
+    ('Mirror it', 'The registry is a static file and the parts inside it are complete, so a mirror works offline and forever: download /registry.json once, serve it anywhere, and point the CLI at it:', 'KATA_BASE=https://your-mirror.example node kata-ui.mjs add button', 'Pinning a mirror is also how a team freezes a catalog version while the public one moves on.')]),
+  ('forms', 'Forms', 'How forms compose in KATA: the field wrapper, honest errors, and which part takes which job.',
+   [('The shape of a field', 'Every control wears the same wrapper — the Field part: a label above, the control, then a hint or an error below, in that order, always. The wrapper is what makes a column of different controls read as one form:', '<div class="field" data-field>\n  <label for="email">Email</label>\n  <input class="input" id="email" type="email" autocomplete="email">\n  <p class="hint">The receipt goes here.</p>\n</div>', 'Labels are text, never placeholders doing double duty: a placeholder disappears exactly when the reader needs it most.'),
+    ('Errors that say something', 'An error replaces the hint, in the danger color and in words: what is wrong and how to fix it ("Enter the address the receipt should go to", not "Invalid"). Three wirings make it real rather than decorative: the control carries aria-invalid="true"; the error paragraph has an id the control names in aria-describedby; and on submit, focus moves to a summary at the top listing the problems, each linked to its field.', '<div class="field" data-field>\n  <label for="email">Email</label>\n  <input class="input errb" id="email" type="email" aria-invalid="true" aria-describedby="email-err">\n  <p class="err" id="email-err">Enter the address the receipt should go to.</p>\n</div>', 'Never let color be the only signal: the words carry the error for everyone, the red just helps find them.'),
+    ('Grouping and choosing', 'Choices that belong together get a fieldset with a legend — the Radio and Checkbox groups are built that way — because "how did you hear about us" is the label for the whole set, not for any one option. Which control takes the job: one short line is an Input, a paragraph is a Textarea, one of two-to-five visible options is Radio or Segmented, one of many is a Select or a Combobox, a date is a Date Picker, a time is a Time Picker, several values are a Tag Input, a path down a tree is a Cascader, and assigning many things at once is a Transfer.', None, 'Attached pieces stay attached: money gets an Input Group (the ¥ is part of the control, not a caption), and the form\u2019s actions are a right-aligned row of Buttons — the primary one once, at the end.'),
+    ('Required, honestly', 'Mark required fields in the label text ("Email (required)") or mark the optional ones — pick one convention per form and keep it. Star-only marking fails everyone who cannot see the star\u2019s legend, and there is always a legend nobody reads.', None, None)]),
+  ('mcp', 'MCP Server', 'The catalog as an MCP server, so AI tools can browse and fetch real parts.',
+   [('Why an MCP server', 'Models improvise interfaces when they cannot see real ones. The MCP server gives a connected AI tool the actual catalog — it can list what exists, search it, and fetch a part\u2019s real files (HTML, CSS, JS) with its dependencies, then write them into your project as they are. It is the registry, served over the Model Context Protocol, from one zero-dependency Node file.', None, None),
+    ('Connect it', 'Download the server once, then point your MCP client at it. The configuration most clients accept:', 'curl -fsSL https://kata-ui.dev/mcp/kata-ui-mcp.mjs -o kata-ui-mcp.mjs', '{\n  "mcpServers": {\n    "kata-ui": {\n      "command": "node",\n      "args": ["/path/to/kata-ui-mcp.mjs"]\n    }\n  }\n}'),
+    ('The tools', 'Three, deliberately. list_components returns the catalog (optionally one type: parts, blocks, templates, themes). search_components finds candidates by name, title and description. get_component returns one item complete — every file\u2019s full contents and the dependencies to bring along — which is the difference between a model describing a sidebar and installing this one.', None, 'The server is read-only: it serves the catalog and writes nothing, anywhere.'),
+    ('Point it elsewhere', 'By default the server reads https://kata-ui.dev/registry.json at first use. Set KATA_BASE to a mirror, or pass --registry with a local file path, to serve a pinned or offline copy — the same mirror story as the CLI:', 'node kata-ui-mcp.mjs --registry ./registry.json', None)]),
+  ('rtl', 'RTL', 'Right-to-left is a direction, not a stylesheet: set dir and the catalog follows.',
+   [('One attribute', 'There is no RTL build, no .rtl variant and nothing to download twice. Write direction into the document and the same files lay out right-to-left:', '<html lang="ar" dir="rtl">', 'It works on any container, too — dir="rtl" on a section flips that section only, which is how mixed-direction pages are usually built.'),
+    ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
+    ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 — Structure, and the furniture', 'Every part, block and template page now opens with an Installation section (CLI or manual) and closes with an Anatomy table read from the part\u2019s own source. New part: Sidebar, with sections, collapsible groups and an icon rail. Spotlight was rebuilt as a flashlight — a dark panel, a resting beam, and words that light only where the beam reaches. The site itself grew its furniture: a full favicon set and PWA icons drawn from the new mark, a web manifest and service worker (documents network-first, so deploys are never stale), Open Graph and Twitter cards on every page with a proper social image, and canonical URLs throughout. The comparison table now says what is true: distribution is copy-paste, CLI & registry.', None, None),
+   [('November 2, 2026 — The machine room', 'The docs grew the pages that explain the machinery: Introduction, Registry, Forms, MCP Server and RTL (24 doc pages in all). The MCP server ships as a single zero-dependency file at /mcp/kata-ui-mcp.mjs — list, search and get, read-only, straight from the registry. A Pricing page states the line in public: parts free forever, Pro is blocks and templates at $129 once, not yet on sale. Blocks are grouped by kind (Page chrome / Marketing / Product) and gained a Kanban board whose cards really drag. And the catalog learned direction: chrome and structural parts now use logical properties throughout, so dir="rtl" mirrors them — verified part by part, with the physical showpieces honestly exempted.', None, None),
+    ('November 2, 2026 — The missing sixteen', 'A second gap hunt — the current catalogs of six libraries against our own, example by example — found sixteen genres the mold had never cast. All sixteen are parts now: Button Group and Input Group (the seams were missing even as examples), Collapsible, Descriptions, Result, Bottom Navigation, Calendar (freed from inside the Date Picker), Comparison Slider, Speed Dial, Scrollspy, Navigation Menu, Menubar, Time Picker, Cascader, Transfer — and a QR Code whose encoder is written from the spec, zero-dependency, and verified module-for-module against a reference implementation across versions 1–6. The catalog stands at 96 parts.', None, None),
+    ('November 2, 2026 — Structure, and the furniture', 'Every part, block and template page now opens with an Installation section (CLI or manual) and closes with an Anatomy table read from the part\u2019s own source. New part: Sidebar, with sections, collapsible groups and an icon rail. Spotlight was rebuilt as a flashlight — a dark panel, a resting beam, and words that light only where the beam reaches. The site itself grew its furniture: a full favicon set and PWA icons drawn from the new mark, a web manifest and service worker (documents network-first, so deploys are never stale), Open Graph and Twitter cards on every page with a proper social image, and canonical URLs throughout. The comparison table now says what is true: distribution is copy-paste, CLI & registry.', None, None),
     ('November 2, 2026 — A sharper cut, a new mark', 'The icon set was re-cut on the user’s call: a 1.7 stroke, square caps and bevel joins replace the round 2px line, in all 150 glyphs and every inline copy. The logo changed too — the framed mold mark gave way to a frameless four-part square with a small ichimatsu checker nested in its top-right quarter, a mold inside the mold. New part: Typeset, long-form text as one cast piece. Every chart part gained Examples (two-series lines, a six-axis radar, four-segment donuts and more), the Themes page learned to build a custom theme from any color, and the docs grew per-stack install guides for Plain HTML, Astro and Laravel.', None, None),
    ('November 2, 2026 — CLI, brand marks, wagara', 'The catalog is installable from a terminal now: a zero-dependency Node CLI (node kata-ui.mjs add button) reads registry.json and writes parts, blocks, templates and themes — dependencies included — into your project. Brand marks grew from 12 to 56, grouped by job (social, AI, development, commerce, platforms, cloud) on the Icons page, and the Integrations block grew to 18 tiles. Aurora learned three wagara textures — Seigaiha, Asanoha and Ichimatsu — as drifting line patterns under the wash, in its Examples. The site menu is labeled Menu and lists blocks, templates and docs next to the components.', None, None),
     ('November 2, 2026 — Templates arrive', 'The catalog grows a third shelf: Templates — whole pages composed from parts and blocks, starting with a Dashboard page (sidebar, stat row, revenue chart, sortable orders table). The site navigation, search and registry now carry templates as first-class items (registry:page), and the landing page counts five genres.', None, None),
@@ -1424,6 +1530,12 @@ def main():
         for _f in _cl.iterdir():
             if _f.is_file():
                 shutil.copy(_f, DIST / 'cli' / _f.name)
+    _mc = ROOT / 'mcp'
+    if _mc.exists():
+        (DIST / 'mcp').mkdir(exist_ok=True)
+        for _f in _mc.iterdir():
+            if _f.is_file():
+                shutil.copy(_f, DIST / 'mcp' / _f.name)
     shutil.copy(ROOT / 'tokens.css', DIST / 'tokens.css')
     _sk = ROOT / 'skill'
     if _sk.exists():
@@ -1454,6 +1566,9 @@ def main():
     dsdir = DIST / 'design-system'
     dsdir.mkdir()
     (dsdir / 'index.html').write_text(emit(design_system_page(tokens), comps, None, '/design-system/', True), encoding='utf-8')
+    prdir = DIST / 'pricing'
+    prdir.mkdir()
+    (prdir / 'index.html').write_text(emit(pricing_page(), comps, None, '/pricing/', True), encoding='utf-8')
     shutil.copy(ROOT / 'system' / 'tokens.json', dsdir / 'tokens.json')
     idir = DIST / 'icons'
     idir.mkdir(exist_ok=True)

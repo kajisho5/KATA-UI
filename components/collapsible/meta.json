@@ -1,0 +1,14 @@
+{
+  "title": "Collapsible",
+  "category": "Layout & Navigation",
+  "description": "One disclosure on its own: a trigger row and the region it folds away. The Accordion is this, grouped.",
+  "tags": [
+    "disclosure",
+    "details",
+    "expand",
+    "fold"
+  ],
+  "status": "stable",
+  "usage": "For the single \"show more\" a page needs once — advanced options, a long answer, the fine print. It is a native details element: no script, and it stays exactly as open or closed as the markup says. For a stack of them, use Accordion.",
+  "a11y": "The summary is a real disclosure control: keyboard-operable, with its state announced. Keep the trigger text meaningful on its own (\"Advanced options\", not \"More\")."
+}

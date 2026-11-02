@@ -1,0 +1,14 @@
+{
+  "title": "Cascader",
+  "category": "Form & Input",
+  "description": "A select that walks a tree: pick a branch, then a branch of the branch, until the leaf is the answer.",
+  "tags": [
+    "select",
+    "tree",
+    "nested",
+    "levels"
+  ],
+  "status": "beta",
+  "usage": "For choices that are really addresses — region, category, org chart. The author writes the tree as nested lists in the panel; the script deals it into columns. The trigger shows the whole path, because the leaf alone (\"Central\") rarely says enough.",
+  "a11y": "The trigger is a button with aria-expanded; columns are lists and items are buttons, the chosen path announced in the trigger text. Arrow-key column navigation is the app’s layer; Escape closes from anywhere."
+}

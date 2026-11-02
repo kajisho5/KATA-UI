@@ -1,4 +1,4 @@
-.k-chart{font-family:var(--k-font);text-align:left;margin:0}
+.k-chart{font-family:var(--k-font);text-align:start;margin:0}
 .k-chart figcaption{display:flex;align-items:baseline;justify-content:space-between;font-size:13px;font-weight:600;color:var(--k-ink);margin-bottom:14px}
 .k-chart figcaption span{font-size:12px;font-weight:500;color:var(--k-ink-3)}
 .k-bars{display:flex;gap:10px;align-items:flex-end;height:168px;border-bottom:2px solid var(--k-line);padding:0 2px}

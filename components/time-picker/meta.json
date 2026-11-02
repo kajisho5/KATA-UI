@@ -1,0 +1,14 @@
+{
+  "title": "Time Picker",
+  "category": "Form & Input",
+  "description": "The Date Picker’s other half: an input with two scrolling columns of hours and minutes.",
+  "tags": [
+    "time",
+    "clock",
+    "input",
+    "picker"
+  ],
+  "status": "stable",
+  "usage": "Minutes step by five, the way appointments actually work; type the value directly when you know it — the panel is a courtesy, not a gate. The pick writes HH:MM (24-hour) into the input.",
+  "a11y": "The columns are lists of buttons with plain labels (\"14\", \"05\") under hour and minute headings; the input stays editable by keyboard, Escape closes the panel, and the toggle button is named for what it opens."
+}

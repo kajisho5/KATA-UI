@@ -1,0 +1,14 @@
+{
+  "title": "Speed Dial",
+  "category": "Layout & Navigation",
+  "description": "One floating button that fans out into the few actions a page is really for.",
+  "tags": [
+    "fab",
+    "floating",
+    "actions",
+    "menu"
+  ],
+  "status": "beta",
+  "usage": "For app-shaped pages where one verb (\"add\", \"compose\") has variants: the button rests at the corner, the actions rise with their labels showing. Three to five actions — a sixth is a menu wearing a costume. Fixing it to the viewport is the page’s job; the part is the cluster.",
+  "a11y": "The trigger carries aria-expanded and the actions are ordinary buttons, reachable by keyboard in order when open. Labels are text, not tooltips — the name of each action is visible, not hovered into existence."
+}

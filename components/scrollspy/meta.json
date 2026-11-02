@@ -1,0 +1,15 @@
+{
+  "title": "Scrollspy",
+  "category": "Layout & Navigation",
+  "description": "A contents list that watches the page: the section you are reading is the one it lights.",
+  "tags": [
+    "nav",
+    "anchor",
+    "scroll",
+    "docs",
+    "toc"
+  ],
+  "status": "stable",
+  "usage": "For long pages with a table of contents — docs, guides, policies. The observer marks the section near the top of the viewport; clicking still uses plain anchors, so the back button and deep links keep working. In an app, the scroll container is whatever actually scrolls.",
+  "a11y": "The links are plain anchors to real ids, and the current one carries aria-current=\"location\" — the highlight is the same information for every reader, not a color alone."
+}

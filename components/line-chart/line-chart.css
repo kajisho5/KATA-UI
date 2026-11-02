@@ -1,4 +1,4 @@
-.k-line-chart{font-family:var(--k-font);text-align:left;margin:0}
+.k-line-chart{font-family:var(--k-font);text-align:start;margin:0}
 .k-line-chart figcaption{display:flex;align-items:baseline;justify-content:space-between;font-size:13px;font-weight:600;color:var(--k-ink);margin-bottom:12px}
 .k-line-chart figcaption span{font-size:12px;font-weight:500;color:var(--k-ink-3)}
 .k-line-chart svg{width:100%;height:auto;display:block}

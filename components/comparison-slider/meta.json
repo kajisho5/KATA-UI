@@ -1,0 +1,15 @@
+{
+  "title": "Comparison Slider",
+  "category": "Motion",
+  "description": "Before and after, one image wide: drag the seam and the second state wipes over the first.",
+  "tags": [
+    "before",
+    "after",
+    "image",
+    "compare",
+    "drag"
+  ],
+  "status": "beta",
+  "usage": "For redesigns, retouching and day-versus-night — two states of the same picture, divided by a seam the reader moves. Both layers are the same scene drawn twice here; with photographs, use the same image twice and let a filter be the difference.",
+  "a11y": "The seam is a real slider: arrow keys move it for people who cannot drag, and its label says what it divides (\"Share of the before image shown\"). The pictures themselves still need their own alt text."
+}

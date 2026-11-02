@@ -1,4 +1,4 @@
-.pricing{font-family:var(--k-font);color:var(--k-ink);text-align:left;width:100%}
+.pricing{font-family:var(--k-font);color:var(--k-ink);text-align:start;width:100%}
 .pricing-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .pricing-h{font-size:21px;font-weight:600;letter-spacing:-.02em}
 .pricing-sub{margin-top:5px;font-size:13.5px;color:var(--k-ink-2)}

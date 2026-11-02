@@ -1,0 +1,14 @@
+{
+  "title": "Button Group",
+  "category": "Form & Input",
+  "description": "Buttons joined into one piece: shared edges, one radius, no gaps. For toolbars, paging and split actions.",
+  "tags": [
+    "buttons",
+    "toolbar",
+    "split",
+    "joined"
+  ],
+  "status": "stable",
+  "usage": "Group one size and one weight at a time — the group owns the outer radius and the shared borders, the buttons keep their own colors. A split action is a group of two: the action, then the chevron.",
+  "a11y": "Plain buttons in a row; wrap the group in a labelled container (role=\"group\" with an aria-label) when the grouping itself carries meaning, and keep the tab order left to right."
+}

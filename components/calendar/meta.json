@@ -1,0 +1,14 @@
+{
+  "title": "Calendar",
+  "category": "Form & Input",
+  "description": "One month, standing on its own: a grid of real day buttons with today marked and a selection you can move.",
+  "tags": [
+    "date",
+    "month",
+    "grid",
+    "picker"
+  ],
+  "status": "stable",
+  "usage": "The Date Picker’s other half, unboxed — for booking pages, availability and anywhere the month itself is the interface. It renders one month and reports the pick; ranges, min/max and disabled days are your layer on top of its day buttons.",
+  "a11y": "Days are buttons with full date labels (\"November 14, 2026\"), today carries aria-current, and the month title is a live heading the arrows update. Arrow-key grid navigation is the app’s layer; the tab stop per day is native."
+}

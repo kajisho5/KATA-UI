@@ -1,5 +1,5 @@
-.k-tpl-dash{display:grid;grid-template-columns:228px 1fr;background:var(--k-bg);color:var(--k-ink);border:1px solid var(--k-line);border-radius:16px;overflow:hidden;min-height:660px;font-family:var(--k-font);text-align:left}
-.k-tpl-side{background:var(--k-zinc-50);border-right:1px solid var(--k-line);padding:18px 14px;display:flex;flex-direction:column;gap:4px}
+.k-tpl-dash{display:grid;grid-template-columns:228px 1fr;background:var(--k-bg);color:var(--k-ink);border:1px solid var(--k-line);border-radius:16px;overflow:hidden;min-height:660px;font-family:var(--k-font);text-align:start}
+.k-tpl-side{background:var(--k-zinc-50);border-inline-end:1px solid var(--k-line);padding:18px 14px;display:flex;flex-direction:column;gap:4px}
 .k-tpl-brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14.5px;padding:2px 6px 14px}
 .k-tpl-logo{width:24px;height:24px;border-radius:7px;border:2px solid var(--k-ink);display:grid;place-items:center;flex:none}
 .k-tpl-logo i{width:8px;height:8px;border-radius:2.5px;background:var(--k-core);display:block}
@@ -16,7 +16,7 @@
 .k-tpl-top{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
 .k-tpl-title h2{font-size:20px;font-weight:600;letter-spacing:-.02em}
 .k-tpl-title p{margin-top:3px;font-size:13px;color:var(--k-ink-2)}
-.k-tpl-actions{margin-left:auto;display:flex;align-items:center;gap:9px}
+.k-tpl-actions{margin-inline-start:auto;display:flex;align-items:center;gap:9px}
 .k-tpl-search{display:flex;align-items:center;gap:7px;color:var(--k-ink-3)}
 .k-tpl-search .input{width:210px}
 .k-tpl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}

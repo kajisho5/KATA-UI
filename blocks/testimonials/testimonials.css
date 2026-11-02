@@ -1,4 +1,4 @@
-.k-tst{font-family:var(--k-font);text-align:left;color:var(--k-ink)}
+.k-tst{font-family:var(--k-font);text-align:start;color:var(--k-ink)}
 .k-tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:720px){.k-tst-grid{grid-template-columns:1fr}}
 .k-tst q{font-size:14px;line-height:1.8;color:var(--k-ink);quotes:"“" "”"}

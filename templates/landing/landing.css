@@ -1,4 +1,4 @@
-.k-tpl4{background:var(--k-bg);color:var(--k-ink);border:1px solid var(--k-line);border-radius:16px;overflow:hidden;font-family:var(--k-font);text-align:left}
+.k-tpl4{background:var(--k-bg);color:var(--k-ink);border:1px solid var(--k-line);border-radius:16px;overflow:hidden;font-family:var(--k-font);text-align:start}
 .k-tpl4-sec{max-width:920px;margin:0 auto;padding:36px 28px}
 .k-tpl4-top{padding:18px 28px 4px}
 .k-tpl4-top .k-hdr{margin-inline:auto}

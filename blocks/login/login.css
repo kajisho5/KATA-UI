@@ -1,4 +1,4 @@
-.login-card{max-width:368px;margin:0 auto;background:var(--k-bg);border:1px solid var(--k-line);border-radius:16px;padding:30px 28px;font-family:var(--k-font);color:var(--k-ink);text-align:left}
+.login-card{max-width:368px;margin:0 auto;background:var(--k-bg);border:1px solid var(--k-line);border-radius:16px;padding:30px 28px;font-family:var(--k-font);color:var(--k-ink);text-align:start}
 .login-mark{display:grid;place-items:center;color:var(--k-ink)}
 .login-h{margin-top:14px;text-align:center;font-size:19px;font-weight:600;letter-spacing:-.015em}
 .login-sub{margin-top:5px;text-align:center;font-size:13px;color:var(--k-ink-2)}

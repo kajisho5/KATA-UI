@@ -1,0 +1,16 @@
+{
+  "title": "Kanban",
+  "description": "A three-column board whose cards actually move: drag them between columns and the counts keep up.",
+  "tags": [
+    "board",
+    "tasks",
+    "drag",
+    "project"
+  ],
+  "status": "beta",
+  "uses": [
+    "badge",
+    "avatar"
+  ],
+  "usage": "Columns are lists; cards are articles with draggable=\"true\". The script moves the card in the DOM and recounts — persisting the order (and wiring real drag handles for touch) is the app’s layer."
+}

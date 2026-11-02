@@ -1,0 +1,14 @@
+{
+  "title": "Menubar",
+  "category": "Layout & Navigation",
+  "description": "The desktop menu bar: File, Edit, View — menus that open on click and slide sideways while open, with the shortcuts showing.",
+  "tags": [
+    "menu",
+    "desktop",
+    "app",
+    "commands"
+  ],
+  "status": "beta",
+  "usage": "For editor-shaped and tool-shaped apps — anywhere commands outnumber buttons. Menus carry the shortcuts on the right so the bar doubles as documentation. While one menu is open, moving across the bar switches menus, the way every desktop taught its users to expect.",
+  "a11y": "Buttons carry aria-expanded; menu items are menuitem buttons, Escape closes and returns focus, and clicking away closes. Full arrow-key menu navigation is the app’s layer — the part guarantees the mouse and the basics."
+}

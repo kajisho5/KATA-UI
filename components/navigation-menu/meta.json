@@ -1,0 +1,15 @@
+{
+  "title": "Navigation Menu",
+  "category": "Layout & Navigation",
+  "description": "Site navigation with panels: the top level stays one line, the depth opens underneath it.",
+  "tags": [
+    "nav",
+    "header",
+    "menu",
+    "dropdown",
+    "site"
+  ],
+  "status": "stable",
+  "usage": "For the header of a site with real depth — products with sub-pages, resources with kinds. On wide screens the panel opens under its item; below that, the honest answer is the drawer, not a squeezed panel. One panel open at a time, always.",
+  "a11y": "Buttons carry aria-expanded and the panels are lists of plain links. Hover opens the panel for the mouse; the click is what the keyboard gets, and Escape closes and returns focus to the button."
+}

@@ -240,7 +240,7 @@ LP_STYLE = """<style>
 .framecap a{color:var(--ink2)}
 .lpsec{margin-top:64px}
 .lpsec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
-.lpsec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch}
+.lpsec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .steps{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
 .step{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:18px}
 .step .no{font-family:var(--mono);font-size:11px;color:var(--acc);font-weight:600;letter-spacing:.08em}
@@ -255,7 +255,7 @@ LP_STYLE = """<style>
 .genre p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75}
 .showband{margin-top:64px;background:#101013;border-radius:18px;padding:30px 26px}
 .showband h2{font-size:22px;font-weight:600;letter-spacing:-.02em;color:#f4f4f5}
-.showband .sub{margin-top:7px;color:#a1a1aa;font-size:14px;line-height:1.8;max-width:62ch}
+.showband .sub{margin-top:7px;color:#a1a1aa;font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .showgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
 @media (max-width:720px){.showgrid{grid-template-columns:1fr}}
 .showtile{border:1px solid #26262b;border-radius:14px;padding:16px;background:#17171a;overflow:hidden}
@@ -287,7 +287,7 @@ LP_STYLE = """<style>
 @media (max-width:720px){.hero2{padding:42px 16px 22px}.hero2 h1{font-size:31px}}
 .collage-sec{margin-top:64px}
 .collage-sec h2{font-size:22px;font-weight:600;letter-spacing:-.02em}
-.collage-sec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch}
+.collage-sec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .collage{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
 .collage-cell{border:1px solid var(--hair);border-radius:14px;padding:18px;background:#fff;overflow:hidden;min-width:0}
 .collage-cell.wide{grid-column:1/-1}
@@ -745,7 +745,7 @@ def detail(comps, idx):
 
 DS_STYLE = """<style>
 .ds h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
-.ds .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.ds .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .ds section{margin-top:46px}
 .ds h2{font-size:19px;font-weight:600;letter-spacing:-.015em}
 .ds .note{margin-top:7px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:66ch}
@@ -777,7 +777,7 @@ DS_STYLE = """<style>
 
 ICONS_STYLE = """<style>
 .ic h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
-.ic .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.ic .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .icgrid{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:9px}
 .iccell{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:16px 6px 11px;display:grid;justify-items:center;gap:9px;cursor:pointer;font:inherit;color:var(--ink)}
 .iccell:hover{border-color:var(--ink3)}
@@ -943,23 +943,23 @@ def pricing_page():
 
 JA_STYLE = """<style>
 .ja-hero{padding:34px 0 6px}
-.ja-hero h1{font-size:34px;line-height:1.35;letter-spacing:.01em}
-.ja-hero .lead{margin-top:14px}
+.ja-hero h1{font-size:34px;line-height:1.35;letter-spacing:.05em}
+.ja-hero .lead{margin-top:14px;letter-spacing:.04em}
 .ja-stats{display:flex;gap:15px 34px;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid var(--hair)}
 .ja-stats div b{display:block;font-size:23px;font-weight:650;letter-spacing:-.01em}
 .ja-stats div span{font-size:12px;color:var(--ink3)}
 .ja-sec{margin-top:44px}
-.ja-sec h2{font-size:20px;font-weight:650}
-.ja-sec p{font-size:14px;line-height:1.9;color:var(--ink2);margin-top:9px;max-width:640px}
+.ja-sec h2{font-size:20px;font-weight:650;letter-spacing:.05em}
+.ja-sec p{font-size:14px;line-height:1.9;color:var(--ink2);margin-top:9px;max-width:640px;letter-spacing:.04em}
 .ja-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
 .ja-step{border:1px solid var(--hair);border-radius:13px;padding:17px;background:#fff}
 .ja-step .no{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc)}
-.ja-step h3{font-size:14.5px;margin:7px 0 5px}
-.ja-step p{font-size:13px;line-height:1.8;color:var(--ink2)}
+.ja-step h3{font-size:14.5px;margin:7px 0 5px;letter-spacing:.04em}
+.ja-step p{font-size:13px;line-height:1.8;color:var(--ink2);letter-spacing:.04em}
 .ja-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
 .ja-card{border:1px solid var(--hair);border-radius:13px;padding:19px;background:#fff;text-decoration:none;color:inherit;display:block}
-.ja-card h3{font-size:15.5px}
-.ja-card p{font-size:13px;line-height:1.8;color:var(--ink2);margin-top:6px}
+.ja-card h3{font-size:15.5px;letter-spacing:.04em}
+.ja-card p{font-size:13px;line-height:1.8;color:var(--ink2);margin-top:6px;letter-spacing:.04em}
 .ja-card .go{font-size:12.5px;font-weight:600;color:var(--acc);margin-top:10px;display:inline-block}
 .ja-wl{margin-top:44px;background:#101013;border-radius:16px;padding:26px;color:#f4f4f5}
 .ja-wl h2{color:#f4f4f5}
@@ -1112,7 +1112,7 @@ def load_blocks():
 
 BLOCK_STYLE = """<style>
 .bk h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
-.bk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.bk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .bcards{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(264px,1fr));gap:12px}
 .bcard{border:1px solid var(--hair);border-radius:14px;background:#fff;padding:18px;text-decoration:none;color:var(--ink);display:block}
 .bcard:hover{border-color:var(--ink3)}
@@ -1251,7 +1251,7 @@ def load_templates():
 
 TPL_STYLE = """<style>
 .tk h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
-.tk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.tk .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .tplcards{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
 .tplcard{border:1px solid var(--hair);border-radius:14px;background:#fff;color:var(--ink);display:block;overflow:hidden;position:relative}
 .tplcard .tplmeta h3 a{color:inherit;text-decoration:none}
@@ -1706,7 +1706,7 @@ DOCS = [
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget.</p>', None, None),
+   [('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget. Applied site-wide the same day: every page lead, the docs body, the landing sub-texts and the Japanese page (CJK body +0.04em, headings +0.05em) now follow the table, and an audit of all 164 part stylesheets found their tracking already sitting inside the ramps \u2014 card titles, micro labels, vertical text \u2014 that the table now records explicitly.</p>', None, None),
     ('November 2, 2026 \u2014 Traditional colors of Japan', '<p>The Themes page gains \u4f1d\u7d71\u8272: fifty traditional Japanese colors in seven families \u2014 pine-soot inks, safflower reds, indigo blues, gardenia yellows \u2014 each with its kanji name, its reading and the dye or pigment it came from. Clicking one casts it into the live demo and writes the theme CSS under its own name (ai.css, yamabuki.css), so a button can wear a thousand-year-old color in one click. At the head of the reds sits \u578b\u306e\u6731, KATA\u2019s own vermilion core, labeled as what it is: the one color no theme moves.</p>', None, None),
     ('November 2, 2026 — The zoom pass', '<p>Every one of the 201 pages and all 136 part previews was re-examined at full phone size. The pass caught and fixed a collapsed Accordion Gallery and Speed Dial stage, a Hover Card whose markup invalidly nested blocks inside a paragraph, clipped Radar Chart labels, a nearly invisible Skeleton, label collisions in Steps and List, tables that broke out of their stages, and readouts that shrank instead of stretching. The landing page Questions section now answers questions about this library instead of a generic SaaS. Nothing new was added; everything already here simply holds up better under a magnifying glass.</p>', None, None),
  ('November 2, 2026 — Ten patterns on the loom', 'The Wagara instrument grows from four patterns to ten, each still drawn from its construction: Kikko (nested tortoiseshell hexagons), Uroko (the triangle scale tiling), Samekomon (dots riding the scale arcs, sharkskin-fine), Yagasuri (the arrow-feather silhouette), Kanoko (staggered shibori fawn-spots) and Hishi (the diamond lattice, studded at its crossings). Same three tones, same tokens — the loom is bigger, the discipline is not.', None, None),
@@ -1731,10 +1731,10 @@ DOCS = [
 
 DOC_STYLE = """<style>
 .dc h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
-.dc .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch}
+.dc .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
 .dc section{margin-top:36px;max-width:68ch}
 .dc h2{font-size:18px;font-weight:600;letter-spacing:-.015em}
-.dc p{margin-top:9px;font-size:14px;line-height:1.9;color:var(--ink2)}
+.dc p{margin-top:9px;font-size:14px;line-height:1.9;color:var(--ink2);letter-spacing:.012em}
 .dc pre{margin-top:12px;border:1px solid var(--hair);border-radius:10px;background:var(--soft);padding:13px 15px;font-family:var(--mono);font-size:12px;line-height:1.75;overflow:auto;color:var(--ink)}
 .dcgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .dccard{border:1px solid var(--hair);border-radius:12px;background:#fff;padding:17px;text-decoration:none;color:var(--ink);display:block}

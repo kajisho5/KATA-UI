@@ -63,9 +63,9 @@ footer.site{margin-top:76px;border-top:1px solid var(--hair);padding:26px 0 42px
 .detail .desc{margin-top:10px;color:var(--ink2);font-size:14.5px;line-height:1.8;max-width:66ch;letter-spacing:.012em}
 .stagebar{margin-top:22px;display:flex;align-items:center;gap:8px}
 .stagebar .lbl{font-size:11px;letter-spacing:.12em;color:var(--ink3);font-weight:600;text-transform:uppercase;margin-inline-end:auto}
-.seg{display:inline-flex;background:#ececee;border-radius:9px;padding:3px;gap:2px}
+.seg{display:inline-flex;background:var(--soft);border:1px solid var(--hair);border-radius:9px;padding:3px;gap:2px}
 .seg button{border:0;background:transparent;font:inherit;font-size:12px;font-weight:500;color:var(--ink2);padding:5px 11px;border-radius:7px;cursor:pointer}
-.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(16,24,40,.14)}
+.seg button.on{background:var(--ink);color:var(--paper)}
 .stage{margin-top:10px;border:1px solid var(--hair);border-radius:14px;padding:30px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:radial-gradient(circle,#00000010 1px,transparent 1px) 0 0/18px 18px,var(--soft);transition:max-width .25s}
 .stage.narrow{max-width:420px}
 .stage[data-theme="dark"]{background:radial-gradient(circle,#ffffff14 1px,transparent 1px) 0 0/18px 18px,#1c1c1f;border-color:#3f3f46}
@@ -173,7 +173,7 @@ body.dopen{overflow:hidden}
 @media (max-width:560px){.wl-row{flex-direction:column}.wl-row button{width:100%}}
 
 /* === Foundry (stage A, 2026-11-02): the site recasts itself === */
-html[data-theme="dark"]{--paper:#0c0c0e;--soft:#17171a;--ink:#f4f4f5;--ink2:#a1a1aa;--ink3:#8b8b93;--hair:#26262b}
+html[data-theme="dark"]{--paper:#0c0c0e;--soft:#17171a;--ink:#f4f4f5;--ink2:#a1a1aa;--ink3:#8b8b93;--hair:#2e2e36}
 html[data-theme="dark"] header.top{background:rgba(12,12,14,.86)}
 html[data-theme="dark"] .card, html[data-theme="dark"] .hero .eyebrow, html[data-theme="dark"] .dfilter{background:#131316}
 html[data-theme="dark"] .tier, html[data-theme="dark"] .showtile{background:#131316}
@@ -258,7 +258,6 @@ html[data-theme="dark"][data-wg="ichimatsu"] body{background-image:url("data:ima
 .catsec.kburi.break .card:nth-child(4n){transform:translate(-9px,4px) rotate(-1.4deg)}
 .catsec.kburi.break .card:nth-child(5n){transform:translate(4px,8px) rotate(.7deg)}
 .catsec.kburi.break .card:nth-child(7n){transform:translate(-5px,-8px) rotate(-.8deg)}
-html[data-theme="dark"] .logo svg rect, html[data-theme="dark"] .logo svg path{stroke:#f4f4f5}
 
 dialog.kcmd:has(.kcmd-body){width:min(880px,94vw)}
 .kcmd-body{display:flex;min-height:0}
@@ -309,3 +308,5 @@ html[data-theme="dark"] .gstage{background:radial-gradient(circle,#ffffff14 1px,
 .kin-seam{display:block;width:54px;height:8px;margin-bottom:6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='54' height='8' viewBox='0 0 54 8'%3E%3Cpath d='M0 5 L12 3 L22 6 L32 2 L44 5 L54 4' fill='none' stroke='%23E8A812' stroke-width='1.8' stroke-linejoin='bevel'/%3E%3C/svg%3E") left center no-repeat}
 .kcmd-pv-note::before{content:"";display:block;width:54px;height:8px;margin-bottom:6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='54' height='8' viewBox='0 0 54 8'%3E%3Cpath d='M0 5 L12 3 L22 6 L32 2 L44 5 L54 4' fill='none' stroke='%23E8A812' stroke-width='1.8' stroke-linejoin='bevel'/%3E%3C/svg%3E") left center no-repeat}
 .kin-demo{margin-top:12px;border:1px solid var(--hair);border-radius:12px;padding:12px 14px;font-size:12.5px;color:var(--ink3);background:var(--paper);max-width:340px}
+
+.logo{color:var(--ink)}

@@ -266,6 +266,11 @@ def emit(page, comps, active, current=None, tree=False):
         page = page.replace('<div class="wrap"><footer class="site">', '</div></div><div class="wrap"><footer class="site">', 1)
     return page.replace('</body>', drawer_html(comps, active) + DRAWER_JS + search_html(comps) + FOUNDRY_HTML + FOUNDRY_JS + '</body>', 1)
 
+WA_TOKEN = ''
+WA_BEACON = ''
+if WA_TOKEN:
+    WA_BEACON = '<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;' + WA_TOKEN + '&quot;}"></script>'
+
 def head(title, desc, extra=''):
     return f"""<!doctype html>
 <html lang="en">
@@ -282,6 +287,7 @@ def head(title, desc, extra=''):
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
+{WA_BEACON}
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#18181b">
 <link rel="stylesheet" href="/tokens.css?v={_v((ROOT / 'tokens.css').read_text(encoding='utf-8'))}">
@@ -491,7 +497,7 @@ def landing(comps, blocks, n_icons, templates=None):
                 + tile('aurora', 'Aurora') + tile('converge', 'Converge') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border') + tile('glass-panel', 'Glass Panel') + tile('follow-frame', 'Follow Frame')
                 + tile('text-reveal', 'Text Reveal', True) + tile('reorder', 'Reorder', True) + tile('counter', 'Counter') + tile('marquee', 'Marquee')
                 + '</div></div>' + show_scripts + '</section>')
-    moldlive = ('<section class="lpsec"><h2>The mold, live</h2>'
+    moldlive = ('<section class="lpsec"><h2>Try it — the mold, live</h2>'
       '<p class="lpnote">Four real parts from the catalog, running unmodified. Turn the radius, the accent or the mode in the Foundry deck \u2014 bottom right, on every page \u2014 and watch them re-cast from the same tokens. One change in the mold, every part follows.</p>'
       '<div class="castlive" data-theme="light" style="margin:18px 0 6px">'
       '<div class="cl-cap"><span>Live cast</span><a href="#" id="cl-open">Open the Foundry deck</a></div>'
@@ -518,9 +524,9 @@ def landing(comps, blocks, n_icons, templates=None):
     <span class="hkanji" aria-hidden="true">型</span>
     <div class="hero2-in">
     <div class="castmark" aria-hidden="true"><i class="cm-ring"></i><i class="cm-slash"></i><i class="cm-corner"></i><i class="cm-core"></i></div>
-    <span class="eyebrow"><i></i>Vanilla components — no framework, no build step</span>
+    <span class="eyebrow"><i></i>{n} components &middot; {nb} blocks &middot; {nt} templates — every part free, forever</span>
     <h1>Parts, cast from a single mold.<br><span class="dim">Copy the code. Own the design.</span></h1>
-    <p>Practical components in plain HTML, CSS and JS — each with a live preview and copy-ready code, cast from a single mold: kata, the Japanese discipline of the form.</p>
+    <p><b>Vanilla HTML, CSS and JS. No framework. No build step.</b> Copy a part, paste it, ship it — at this quality. Each part carries a live preview and copy-ready code, cast from a single mold: kata, the Japanese discipline of the form.</p>
     <div class="cta">
       <a class="kbtn-primary" href="#first-five" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#f4f4f5;color:#18181b;font-weight:550;font-size:14px;text-decoration:none">Copy your first part</a>
       <a href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid #71717a;font-weight:500;font-size:14px;text-decoration:none;background:rgba(255,255,255,.08);color:#f4f4f5">Browse {n} components</a>
@@ -534,6 +540,7 @@ def landing(comps, blocks, n_icons, templates=None):
   </div>
   <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
   </div>
+  {moldlive}
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">
@@ -543,7 +550,6 @@ def landing(comps, blocks, n_icons, templates=None):
     </div>
   </section>
   {firstfive}
-  {moldlive}
   {asmx}
   {principles}
   <section class="lpsec">
@@ -629,7 +635,7 @@ def llms_txt(comps, blocks, n_icons, templates=None):
              '- [Getting Started](https://kata-ui.dev/docs/getting-started/): load tokens.css once, then copy parts',
              '- [Skill for AI assistants](https://kata-ui.dev/skill/SKILL.md): a packaged SKILL.md that teaches an assistant to build with KATA correctly',
              '- [CLI](https://kata-ui.dev/docs/cli/): a zero-dependency Node script that installs parts from the registry — node kata-ui.mjs add button',
-             '- [Installation](https://kata-ui.dev/docs/installation/): four ways in, plus per-stack guides for Plain HTML (https://kata-ui.dev/docs/install-html/), Astro (https://kata-ui.dev/docs/install-astro/) and Laravel (https://kata-ui.dev/docs/install-laravel/)',
+             '- [Installation](https://kata-ui.dev/docs/installation/): four ways in, plus per-stack guides for Plain HTML (https://kata-ui.dev/docs/install-html/), Astro (https://kata-ui.dev/docs/install-astro/) Laravel (https://kata-ui.dev/docs/install-laravel/) and React & Next.js (https://kata-ui.dev/docs/react/)',
              '- [Theming](https://kata-ui.dev/docs/theming/) / [Dark Mode](https://kata-ui.dev/docs/dark-mode/): dark mode is data-theme="dark" on any container', '',
              '## Components', '']
     for c in comps:
@@ -727,7 +733,7 @@ def _sec(title, links_html):
 
 
 def tree_sections(comps, active, current):
-    gs = ['introduction', 'getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'cli', 'registry', 'mcp', 'theming', 'dark-mode', 'accessibility', 'rtl', 'changelog']
+    gs = ['introduction', 'getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'react', 'cli', 'registry', 'mcp', 'theming', 'dark-mode', 'accessibility', 'rtl', 'changelog']
     concepts = ['why-vanilla', 'the-mold', 'contributing', 'anatomy', 'forms', 'from-tailwind', 'vs-shadcn']
     guides = [d[0] for d in DOCS if d[0].startswith('guide-')]
     doc = lambda slugs: ''.join(_nav_link('/docs/' + x + '/', _doc_title(x), current) for x in slugs)
@@ -1065,6 +1071,15 @@ def icons_page():
 
 
 PRICING_STYLE = """<style>
+.rateband{margin-top:36px;border-top:1px solid var(--hair);padding-top:26px}
+.rateband h3{font-size:16px;font-weight:620}
+.rateband .rs{font-size:13px;color:var(--ink2);margin-top:6px;max-width:660px;line-height:1.7}
+.rrow{display:grid;grid-template-columns:92px 1fr 84px;gap:12px;align-items:center;margin-top:12px;font-size:13px}
+.rrow .rl{color:var(--ink2)}
+.rrow .rv{text-align:right;font-weight:620;font-variant-numeric:tabular-nums}
+.rtrack{height:14px;background:var(--soft);border-radius:4px;overflow:hidden}
+.rbar{height:100%;background:#a1a1aa;border-radius:4px}
+.rbar.pro{background:#eb471f}
 .pr .tiers{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
 .pr .tier{border:1px solid var(--hair);border-radius:16px;padding:26px;background:var(--paper)}
 .pr .tier.pro{border-color:var(--ink);box-shadow:0 24px 50px -30px rgba(16,24,40,.35)}
@@ -1166,6 +1181,15 @@ def pricing_page():
       <div><b>$1.68</b><span>per hour of it, once \u2014 and every future block is included</span></div>
     </div>
     <p class="note">The arithmetic is shown so you can argue with it. Even at half these estimates, the shelf pays for itself on the first page you ship with it.</p>
+    <div class="rateband">
+      <h3>What &asymp;77 hours costs at your rate</h3>
+      <p class="rs">The same assembly estimates as the shelf above — 21 blocks at ~2 hours, 7 templates at ~5 hours, states, dark mode and responsive included. Priced three ways, and then priced once:</p>
+      <div class="rrow"><span class="rl">$25 / hour</span><div class="rtrack"><div class="rbar" style="width:25%"></div></div><span class="rv">$1,925</span></div>
+      <div class="rrow"><span class="rl">$50 / hour</span><div class="rtrack"><div class="rbar" style="width:50%"></div></div><span class="rv">$3,850</span></div>
+      <div class="rrow"><span class="rl">$100 / hour</span><div class="rtrack"><div class="rbar" style="width:100%"></div></div><span class="rv">$7,700</span></div>
+      <div class="rrow"><span class="rl">Pro, once</span><div class="rtrack"><div class="rbar pro" style="width:2%"></div></div><span class="rv">$129</span></div>
+      <p class="note">Even if the assembly estimates are twice too generous, the cheapest row still clears the price by an order of magnitude.</p>
+    </div>
   </div>
   <div class="qa">
     <div><h3>Why charge for blocks and not parts?</h3><p>A single part is an afternoon of work and, honestly, an AI can draft one. A set of blocks that compose without friction — same tokens, same spacing, same voice — is the accumulated discipline of the whole catalog. That is what Pro prices.</p></div>
@@ -1922,6 +1946,13 @@ DOCS = [
    [('Fetch the parts with the CLI', 'Run the CLI into public/ so the files are served as static assets:', 'curl -fsSL https://kata-ui.dev/cli/kata-ui.mjs -o kata-ui.mjs\nnode kata-ui.mjs init --dir public/kata\nnode kata-ui.mjs add button switch data-table --dir public/kata', 'init writes tokens.css; add writes each part’s CSS and JS next to it, dependencies included.'),
     ('Link them in your layout Blade', 'In resources/views/layouts/app.blade.php, load the tokens first, then the parts — once, for every view:', '<link rel="stylesheet" href="{{ asset(\'kata/tokens.css\') }}">\n<link rel="stylesheet" href="{{ asset(\'kata/button.css\') }}">', 'Serve a part’s JS the same way, with the defer attribute, at the end of the layout.'),
     ('Paste parts into views', 'Copy a part’s HTML into any Blade view. Echoes and directives work inside the markup as usual — a @foreach over your models can stamp out cards, rows and list items from a single pasted part.', None, 'If the project builds front-end assets with Vite instead, the same files can live under resources/ and be imported unchanged; they are plain CSS and JS either way.')]),
+  ('react', 'React & Next.js', 'KATA parts are plain HTML, CSS and JS \u2014 which means they paste into JSX like any other markup. The whole integration, honestly stated.',
+   [('Paste it like markup', 'A KATA part is HTML, CSS and, when it behaves, one plain script. Inside a React component the HTML goes in as JSX: rename class to className, for to htmlFor, and camelCase the SVG attributes \u2014 the same renames as any pasted markup. Nothing else about the part changes, because there was never anything framework-specific in it.', 'export function EmptyState() {\n  return (\n    <div className="k-card">\n      <div className="k-card-h">No projects yet</div>\n      <div className="k-card-b">\n        <p>Your first project is one paste away.</p>\n        <button className="btn btn-pri btn-md" type="button">New project</button>\n      </div>\n    </div>\n  );\n}', 'The CSS is the other half of the part. It is global by design \u2014 import it once, at the app root, and every component shares the same mold.'),
+    ('Load the CSS once', 'Tokens first, then the parts you use \u2014 or the one-file bundle while you are evaluating. Fetch the files with the CLI (add writes each part and its dependencies) or copy them from the part pages:', "import './kata/tokens.css';\nimport './kata/button.css';\nimport './kata/card.css';", 'Do not scope KATA CSS inside a component. The parts expect the tokens on the page, the way a stylesheet expects a document.'),
+    ('The JS parts', 'A part\u2019s script finds its root by a data attribute and initializes what it finds, keeping its state in the DOM. The bundle does this for everything on the page at load, so parts rendered with the page initialize like anywhere else. A part that mounts later \u2014 a dialog opened after client-side navigation \u2014 needs its script run once its markup exists. The per-part files are small, plain and safe to run from an effect:', "useEffect(() => {\n  const s = document.createElement('script');\n  s.src = '/kata/dialog.js';\n  document.body.appendChild(s);\n}, []);", 'Most of the catalog needs no script at all: Accordion is native details, Switch and Rating are real inputs, the charts are SVG. The scripted parts are the overlays, pickers and rich inputs \u2014 and each names its no-JS fallback on its own page.'),
+    ('Next.js, specifically', 'Server Components render KATA markup unchanged \u2014 it is HTML on its way to the browser. Load the CSS in the root layout, the bundle with next/script, and client components use the same parts wherever they render:', "// app/layout.tsx\nimport Script from 'next/script';\n\n<link rel=\"stylesheet\" href=\"/kata/tokens.css\" />\n<link rel=\"stylesheet\" href=\"/kata/kata-ui.css\" />\n<Script src=\"/kata/kata-ui.js\" strategy=\"afterInteractive\" />", 'App Router and Pages Router behave the same here, for the same reason: neither is doing anything to the markup.'),
+    ('Islands are the natural fit', 'Astro\u2019s model \u2014 HTML first, JavaScript only where a part behaves \u2014 is the ground KATA was cast for: static parts ship zero JS and interactive ones carry their own small script. The Astro install guide walks it end to end. The same applies in miniature to islands inside other frameworks: a KATA part is an island that never needed the word.', None, None),
+    ('Honest limits', 'KATA is not a React library, and this page is not a claim that it replaces one. If a screen\u2019s state is the product \u2014 a spreadsheet grid, a shared canvas, a wizard whose every step depends on the last \u2014 a framework earns its keep, and you should use it, with KATA\u2019s tokens and CSS still welcome inside. Where React is ceremony around what is mostly a document \u2014 pages, forms, dashboards, settings, checkout \u2014 the parts paste in and the ceremony becomes optional.', None, 'A fair number of teams will run both: the framework inside the product, KATA on everything around it.')]),
   ('javascript', 'JavaScript', 'What the scripts do — and what still works without them.',
    [('Plain scripts, data hooks', 'A part’s JS is a single plain script: no imports, no framework, no build. It finds its root by a data attribute (data-dp, data-combo, data-tags…) and keeps its state in the DOM — classes and ARIA attributes you can inspect. Copy it next to the HTML and it runs.', None, 'In the one-file bundle each script is wrapped in its own function scope, so parts never collide with each other or with your code.'),
     ('What works with no JavaScript', 'More than you might expect. Accordion is native details. Rating and Segmented are radio inputs. Switch and Checkbox are checkboxes. Marquee, Aurora, Beam Border and the charts are CSS and SVG. These parts are complete with the script tag deleted.', None, 'Parts that do need JS say so by having a JS tab — and the honest ones degrade: Tag Input falls back to a plain text field, Combobox to a text input, the Date Picker to a text input.'),
@@ -1988,7 +2019,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
- 'November 3, 2026 \u2014 One hundred, patterns only', '<p>Forty-two more patterns join the loom, every one a continuous field: staggered and diagonal checks, stone paving and rough stone walls, houndstooth, twill weave, basket weaves, nested hemp stars and nested seven treasures, abacus beads, crescent moons, linked squares and doubled lattices. The count is back to <b>one hundred</b> \u2014 and this time the hundred are all patterns, no pictures among them.</p>', None, None),
+ 'November 3, 2026 — Vanilla, stated plainly; a door for React', '<p>Three changes aimed at the first five minutes. The homepage hero now leads with the whole proposition — <b>Vanilla HTML, CSS and JS. No framework. No build step.</b> — and the live mold demo sits directly under the hero, where a first visit meets it. A new docs page, <a href="/docs/react/">React &amp; Next.js</a>, shows the whole integration honestly: paste as JSX, load the CSS once, run a part\u2019s script when it mounts — and where a framework genuinely earns its keep instead. Pricing now draws its arithmetic: the composed shelf\u2019s ≈77 hours of assembly, priced at three hourly rates against $129 once.</p>', None, None),
+    ('November 3, 2026 \u2014 One hundred, patterns only', '<p>Forty-two more patterns join the loom, every one a continuous field: staggered and diagonal checks, stone paving and rough stone walls, houndstooth, twill weave, basket weaves, nested hemp stars and nested seven treasures, abacus beads, crescent moons, linked squares and doubled lattices. The count is back to <b>one hundred</b> \u2014 and this time the hundred are all patterns, no pictures among them.</p>', None, None),
     ('November 3, 2026 \u2014 Patterns, only patterns', '<p>The loom is pruned from one hundred patterns to <b>fifty-eight</b>. The pictorial motifs \u2014 the crane, the rabbit, the butterflies and dragonflies, the flower medallions and gourds \u2014 are retired. What stays is what a wagara is: a continuous field that tiles without a seam or a centre. Tortoiseshell, hemp stars, thunder spirals, linked chains, diamond lattices, stone walls, mist, rain and willow. Fewer patterns, all of them patterns.</p>', None, None),
     ('November 2, 2026 \u2014 One hundred patterns on the loom', '<p>The Wagara loom goes from twenty-two patterns to <b>one hundred</b>. Waves and hemp stars now keep company with thunder spirals, linked manji and scale-weights, tortoiseshell with flowers inside, coins, chains and stone walls, mist, rain, willow and ripples \u2014 and a whole garden: chrysanthemum and plum, double cherry, iris and bellflower, peony and butterflies, cranes, dragonflies and rabbits. All seventy-eight additions are drawn from their constructions like the first twenty-two, and each was checked on contact sheets \u2014 the maple, the tomoe swirl and the quince took more than one pass to read true.</p>', None, None),
     ('November 2, 2026 \u2014 Twenty-two patterns on the loom', '<p>Wagara doubles its shelf: twelve more classical patterns, each still drawn from its construction, never pasted. Sayagata interlocks its silk fret so no line ever ends; Kagome is the true trihexagonal bamboo lattice; Karakusa curls are drawn as spirals joined by vine arcs; Ryusui flows in phased waves with eddies; Tatewaku stands its paired waves up; Yukwa rounds the snowflake into notched medallions; Ajiro weaves its strips over and under; Sankuzushi lays the counting rods down in alternating blocks; Higaki doubles its diagonal fence; Hanabishi sets a flower inside the diamond; Watsunagi links ring into ring; and Bishamon-kikko works its tortoiseshell hexagons with triangles, the way the guardian armor is drawn. Twenty-two patterns, three tones, the same tokens.</p>', None, None),

@@ -47,8 +47,9 @@ HEADER = """<header class="top"><div class="wrap top-in">
 </div></header>"""
 
 FOOTER = """<div class="wrap"><footer class="site">
-  <span>KATA UI (working title) — a store of UI parts &amp; code.</span>
-  <span style="margin-left:auto">Every part runs on vanilla HTML, CSS &amp; JS</span>
+  <span><b>KATA UI</b> — parts, cast from a single mold.</span>
+  <span class="fprin">One mold · Tokens first · Three shapes only · Flat before fancy · The vermillion core never moves</span>
+  <span style="margin-left:auto"><a href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a> · <a href="/docs/">Docs</a> · <a href="/design-system/">Design System</a> · <a href="/themes/">Themes</a></span>
 </footer></div>"""
 
 
@@ -169,6 +170,45 @@ def search_html(comps):
     items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Templates', '/templates/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/'), ('Pricing', '/pricing/'), ('Showcase', '/showcase/')]]
     return SEARCH_TMPL.replace('__KATA_INDEX__', _json.dumps(items, ensure_ascii=False))
 
+
+FOUNDRY_HTML = """<button class="fdeck-fab" id="fdfab" type="button" aria-expanded="false" aria-controls="fdeck"><span class="fdot"></span>Foundry</button>
+<div class="fdeck" id="fdeck" role="dialog" aria-label="Foundry — recast this page">
+  <h3><span class="fdot"></span>The Foundry<span style="margin-left:auto;font-weight:500;color:var(--ink3);font-size:11.5px">one change recasts everything</span></h3>
+  <div class="frow"><label>Radius <output id="fd-rv">8px</output></label><input type="range" id="fd-radius" min="0" max="20" step="1" value="8"></div>
+  <div class="frow"><label>Accent — a traditional color</label><div class="sws" id="fd-sws"></div></div>
+  <div class="frow"><label>Mode</label><div class="fseg"><button type="button" id="fd-light">Light (washi)</button><button type="button" id="fd-dark">Dark (sumi)</button></div></div>
+  <div class="frow"><label>Motion <output id="fd-mv">1.0&times;</output></label><input type="range" id="fd-motion" min="0.5" max="1.5" step="0.1" value="1"></div>
+  <div class="fcore"><i></i><span>The vermillion core — \u578b\u306e\u6731 — is not on the deck. It never moves; that is the point of a mold.</span></div>
+  <div class="flog" id="fd-log"></div>
+  <button class="freset" id="fd-reset" type="button">Reset to the mold</button>
+</div>"""
+FOUNDRY_JS = """<script>
+(function(){var fab=document.getElementById('fdfab'),deck=document.getElementById('fdeck');if(!fab||!deck)return;
+var PRESETS=[["Asagi","#33A6B8","#165E83","#81C7D4"],["Ruri","#1E50A2","#223A70","#58B2DC"],["Edomurasaki","#745399","#592C63","#8B81C3"],["Suo","#8E354A","#64363C","#DC9FB4"],["Kaki","#ED6D3D","#95483F","#E2943B"]];
+var S={};try{S=JSON.parse(localStorage.getItem('kata-fdeck')||'{}')}catch(e){}
+var root=document.documentElement,logEl=document.getElementById('fd-log');
+function save(){try{localStorage.setItem('kata-fdeck',JSON.stringify(S))}catch(e){}}
+function log(msg){var d=document.createElement('div');var now=new Date();d.textContent=now.toTimeString().slice(0,5)+'  '+msg;logEl.prepend(d);while(logEl.children.length>4)logEl.lastChild.remove();}
+function dark(){return root.getAttribute('data-theme')==='dark'}
+function applyAccent(p,quiet){S.accent=p[1];S.accentInk=p[2];S.darkInk=p[3];S.accentName=p[0];root.style.setProperty('--k-accent',p[1]);root.style.setProperty('--acc',p[1]);root.style.setProperty('--k-accent-ink',dark()?p[3]:p[2]);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.toggle('on',b.dataset.n===p[0])});if(!quiet)log('Accent \u2192 '+p[0]);save();}
+function applyRadius(v,quiet){S.radius=+v;root.style.setProperty('--k-radius',v+'px');root.style.setProperty('--k-radius-sm',Math.max(0,Math.round(v*.75))+'px');root.style.setProperty('--k-radius-lg',Math.round(v*1.5)+'px');document.getElementById('fd-rv').textContent=v+'px';if(!quiet)log('Radius \u2192 '+v+'px');save();}
+function applyMode(d,quiet){S.dark=d;if(d)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');if(S.accent){var p=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p)root.style.setProperty('--k-accent-ink',d?p[3]:p[2]);}document.getElementById('fd-light').classList.toggle('on',!d);document.getElementById('fd-dark').classList.toggle('on',d);if(!quiet)log(d?'Mode \u2192 Dark (sumi)':'Mode \u2192 Light (washi)');save();}
+function applyMotion(v,quiet){S.mscale=+v;root.style.setProperty('--k-mscale',v);document.getElementById('fd-mv').textContent=(+v).toFixed(1)+'\u00d7';if(!quiet)log('Motion \u2192 '+(+v).toFixed(1)+'\u00d7');save();}
+var sws=document.getElementById('fd-sws');PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='sw';b.dataset.n=p[0];b.title=p[0];b.style.background=p[1];b.setAttribute('aria-label','Accent '+p[0]);b.addEventListener('click',function(){applyAccent(p)});sws.appendChild(b);});
+fab.addEventListener('click',function(){var open=deck.classList.toggle('open');fab.setAttribute('aria-expanded',open)});
+document.getElementById('fd-radius').addEventListener('input',function(e){applyRadius(e.target.value)});
+document.getElementById('fd-motion').addEventListener('input',function(e){applyMotion(e.target.value)});
+document.getElementById('fd-light').addEventListener('click',function(){applyMode(false)});
+document.getElementById('fd-dark').addEventListener('click',function(){applyMode(true)});
+document.getElementById('fd-reset').addEventListener('click',function(){S={};save();root.removeAttribute('data-theme');['--k-radius','--k-radius-sm','--k-radius-lg','--k-accent','--k-accent-ink','--acc','--k-mscale'].forEach(function(k){root.style.removeProperty(k)});document.getElementById('fd-radius').value=8;document.getElementById('fd-motion').value=1;applyRadius(8,true);applyMotion(1,true);applyMode(false,true);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.remove('on')});log('Reset to the mold');});
+if(S.radius){document.getElementById('fd-radius').value=S.radius;applyRadius(S.radius,true);}
+if(S.mscale){document.getElementById('fd-motion').value=S.mscale;applyMotion(S.mscale,true);}
+if(S.accentName){var p0=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p0)applyAccent(p0,true);}
+applyMode(dark(),true);
+})();
+</script>"""
+
+
 def emit(page, comps, active, current=None, tree=False):
     if tree:
         import re as _re
@@ -176,13 +216,14 @@ def emit(page, comps, active, current=None, tree=False):
                        lambda m: m.group(0) + '<div class="layout">' + nav_tree(comps, active, current) + '<div class="lmain">',
                        page, count=1)
         page = page.replace('<div class="wrap"><footer class="site">', '</div></div><div class="wrap"><footer class="site">', 1)
-    return page.replace('</body>', drawer_html(comps, active) + DRAWER_JS + search_html(comps) + '</body>', 1)
+    return page.replace('</body>', drawer_html(comps, active) + DRAWER_JS + search_html(comps) + FOUNDRY_HTML + FOUNDRY_JS + '</body>', 1)
 
 def head(title, desc, extra=''):
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>(function(){{try{{var s=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;if(s.dark||(!("dark" in s)&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))r.setAttribute("data-theme","dark");if(s.radius){{r.style.setProperty("--k-radius",s.radius+"px");r.style.setProperty("--k-radius-sm",Math.max(0,Math.round(s.radius*.75))+"px");r.style.setProperty("--k-radius-lg",Math.round(s.radius*1.5)+"px");}}if(s.accent){{r.style.setProperty("--k-accent",s.accent);r.style.setProperty("--acc",s.accent);r.style.setProperty("--k-accent-ink",(r.getAttribute("data-theme")==="dark"?s.darkInk:s.accentInk)||s.accent);}}}}catch(e){{}}}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
@@ -342,6 +383,9 @@ def landing(comps, blocks, n_icons, templates=None):
     wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro opens soon</h2>'
       '<p>The blocks and templates — 21 sections and 7 whole pages — go on sale at $129, once, lifetime. The parts stay free either way. Leave an email and the launch is the only message you will ever get.</p>'
       + waitlist_form(dark=True) + '</div></section>')
+    mstrip = ('<section class="lpsec"><h2>Motion, on duty</h2><div class="mstrip">'
+      + tile('aurora', 'Aurora') + tile('beam-border', 'Beam Border') + tile('spotlight', 'Spotlight') + '</div>'
+      '<p class="framecap">Live parts, auto-playing — the Motion line itself, not a video of it.</p></section>')
     lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Is it really free?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. Every component — all 136, with the code on its page — is MIT-licensed, free for personal and commercial work. Pro adds the assembled blocks and templates; the parts themselves are never paywalled.</div></details><details class="k-acc"><summary>Which frameworks does it work with?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">All of them, and none. Parts are plain HTML, CSS and JS, so they paste into Astro, Laravel, Rails, WordPress, a static page, or the corner of a legacy app. There is no runtime and no build step unless you bring your own.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files — or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">21 blocks and 7 page templates — whole sections, already assembled — plus every future block. One payment of $129, lifetime. Sales open soon; the waitlist on the pricing page gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes — the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
               '<p class="more">Still stuck? <a href="/docs/">Read the docs</a> — or check the <a href="/docs/faq/">full FAQ</a>.</p></section>'
               '<link rel="stylesheet" href="/components/accordion/accordion.css">')
@@ -368,6 +412,7 @@ def landing(comps, blocks, n_icons, templates=None):
     <svg class="hwag" aria-hidden="true" preserveAspectRatio="none"><defs><pattern id="hw" width="56" height="28" patternUnits="userSpaceOnUse"><g fill="none" stroke="rgba(244,244,245,.06)" stroke-width="1"><path d="M-28 28A28 28 0 0 1 28 28"/><path d="M-18.7 28A18.7 18.7 0 0 1 18.7 28"/><path d="M-9.3 28A9.3 9.3 0 0 1 9.3 28"/><path d="M28 28A28 28 0 0 1 84 28"/><path d="M37.3 28A18.7 18.7 0 0 1 74.7 28"/><path d="M46.7 28A9.3 9.3 0 0 1 65.3 28"/><path d="M0 14A28 28 0 0 1 56 14"/><path d="M9.3 14A18.7 18.7 0 0 1 46.7 14"/><path d="M18.7 14A9.3 9.3 0 0 1 37.3 14"/><path d="M-56 14A28 28 0 0 1 0 14"/><path d="M56 14A28 28 0 0 1 112 14"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#hw)"/></svg>
     <span class="hkanji" aria-hidden="true">型</span>
     <div class="hero2-in">
+    <div class="castmark" aria-hidden="true"><i class="cm-ring"></i><i class="cm-slash"></i><i class="cm-corner"></i><i class="cm-core"></i></div>
     <span class="eyebrow"><i></i>Vanilla components — no framework, no build step</span>
     <h1>Parts, cast from a single mold.<br><span class="dim">Copy the code. Own the design.</span></h1>
     <p>From buttons to app shells — practical components in plain HTML, CSS and JS, each with a live preview and copy-ready code. Every part is cast from a single mold — kata, the Japanese discipline of the form.</p>
@@ -381,6 +426,17 @@ def landing(comps, blocks, n_icons, templates=None):
       <div><b>{n_icons}</b><span>icons</span></div>
       <div><b>0</b><span>dependencies</span></div>
     </div>
+    <div class="castlive">
+      <div class="cl-cap"><span>Live cast</span><a href="#" id="cl-open">Open the Foundry deck</a></div>
+      <div class="cl-row">
+        <button class="btn btn-pri btn-md" type="button">Cast me</button>
+        <span class="switch"><input type="checkbox" checked aria-label="Live cast switch"><span class="tr"></span></span>
+        <input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:210px" aria-label="Live cast input">
+        <span class="badge asagi"><i></i>Same mold</span>
+      </div>
+      <p class="cl-note">The real Button, Switch, Input and Badge, unmodified. Turn the radius, the accent or the mode in the Foundry deck — bottom right, on every page — and watch them re-cast. Nothing here is a picture.</p>
+    </div>
+    <script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){{e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();}});</script>
   </div>
   <div class="browser" aria-hidden="true">
     <div class="browser-bar"><i></i><i></i><i></i><span class="url">your-app.com</span></div>
@@ -388,6 +444,7 @@ def landing(comps, blocks, n_icons, templates=None):
   </div>
   <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block.</p>
   </div>
+  {mstrip}
   <section class="lpsec">
     <h2>How it works</h2>
     <div class="steps">
@@ -424,7 +481,7 @@ def landing(comps, blocks, n_icons, templates=None):
 </body>
 </html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
-             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else ''))
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks, templates=None):
@@ -617,7 +674,15 @@ DETAIL_JS = """<script>
     const pre = btn.closest('.pane').querySelector('pre');
     if (navigator.clipboard) navigator.clipboard.writeText(pre.innerText);
     btn.textContent = 'Copied';
+    btn.classList.remove('flash'); void btn.offsetWidth; btn.classList.add('flash');
     setTimeout(() => btn.textContent = 'Copy', 1600);
+  }));
+  document.querySelectorAll('[data-aiprompt]').forEach(btn => btn.addEventListener('click', () => {
+    const txt = 'Add the KATA UI "' + btn.dataset.title + '" component to my project. Its files are in the registry at https://kata-ui.dev/registry.json (slug: ' + btn.dataset.aiprompt + '); the part page is https://kata-ui.dev/components/' + btn.dataset.aiprompt + '/ — take the HTML, CSS and JS from there, load tokens.css first, and keep the part unmodified: adjust tokens, not the part.';
+    if (navigator.clipboard) navigator.clipboard.writeText(txt);
+    const old = btn.textContent; btn.textContent = 'Copied — paste it to your AI';
+    btn.classList.remove('flash'); void btn.offsetWidth; btn.classList.add('flash');
+    setTimeout(() => btn.textContent = old, 1800);
   }));
 </script>"""
 
@@ -712,6 +777,7 @@ def detail(comps, idx):
     <main class="detail">
       <p class="crumb"><a href="/components/">Components</a> / {esc(m['category'])} / {esc(m['title'])}</p>
       <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h1>
+      <div class="vrow"><span class="vchip"><i></i>Mold verified — passes the mold checks (check.py)</span><button class="aibtn" type="button" data-aiprompt="{slug}" data-title="{esc(m['title'])}">Pass this part to your AI</button></div>
       <p class="desc">{esc(m['description'])}</p>
       <div class="stagebar">
         <span class="lbl">Preview</span>
@@ -877,7 +943,7 @@ def waitlist_form(label='Get one email when Pro sales open', button='Notify me',
     <button type="submit">{button}</button>
   </div>
   <p class="wl-note">{note}</p>
-  <p class="wl-done" hidden>{done}</p>
+  <p class="wl-done" hidden>{done}<span class="wl-stamp" aria-hidden="true">\u578b</span></p>
 </form>
 <script>
 document.querySelectorAll('[data-wl]').forEach(function(f){{ if(f.__wl) return; f.__wl = 1;
@@ -1607,7 +1673,7 @@ applyTheme('asagi');
 
 DOCS = [
   ('introduction', 'Introduction', 'What KATA UI is, how it is made, and where to go next.',
-   [('A library you copy, not a dependency you rent', 'KATA UI is a catalog of interface parts — components, assembled blocks, and whole page templates — written in plain HTML, CSS and JavaScript. You take the code: by copy-paste from any part\u2019s page, or with the CLI. There is no framework to adopt, no build step to configure and no runtime to ship. After the copy, the code is yours; nothing updates itself and nothing phones home.', None, 'The catalog today: 96 parts, 13 blocks, 4 templates, 150 icons and 56 brand marks, 5 themes — every one free under MIT.'),
+   [('A library you copy, not a dependency you rent', 'KATA UI is a catalog of interface parts — components, assembled blocks, and whole page templates — written in plain HTML, CSS and JavaScript. You take the code: by copy-paste from any part\u2019s page, or with the CLI. There is no framework to adopt, no build step to configure and no runtime to ship. After the copy, the code is yours; nothing updates itself and nothing phones home.', None, 'The catalog today: 136 parts, 21 blocks, 7 templates, 150 icons and 56 brand marks, 5 accent presets — every one free under MIT.'),
     ('Cast from a single mold', 'Every part is built to one written standard (the mold) and machine-checked against it before it ships: the same design tokens, the same spacing rhythm, the same states and focus rings, the same icon geometry. That sameness — not any single part — is the product. It is also why the parts compose: a Modal, a Command palette and a form built months apart sit together like they were made in one afternoon, because in the ways that show, they were.', None, 'The word kata is the Japanese discipline of the form: a pattern practiced until it disappears into the work.'),
     ('Three ways in', 'Copy-paste from the site is the front door — every part page shows its HTML, CSS and JS with a live preview. The CLI is the same catalog from a terminal. And because AI tools increasingly write the first draft, the whole catalog is published in machine-readable forms (registry.json, llms.txt, an installable Skill) so a model can fetch real parts instead of improvising lookalikes:', 'node kata-ui.mjs add sidebar calendar qr-code', 'Start at Getting Started for the three-step version, or open Components and take what you need.'),
     ('What it is not', 'Not a framework: there is no KATA way to fetch data, route pages or manage state — your stack keeps those jobs. Not a hosted service: the site is a catalog, not a platform. And not a React library: the parts are deliberately framework-free, which is what lets them drop into Astro, Laravel, Rails, Django, WordPress or a single HTML file unchanged.', None, None)]),
@@ -1709,8 +1775,9 @@ DOCS = [
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
-   [('November 2, 2026 \u2014 Wa, everywhere', '<p>The color system is now drawn entirely from the traditional palette: the accent is Asagi \u6d45\u8471, warnings are Yamabuki \u5c71\u5439 (token, badge variant and all), danger is Beni \u7d05 with Akane \u832c for ink, success is Wakatake \u82e5\u7af9, and the five theme presets are Asagi, Ruri \u7460\u7483, Edomurasaki \u6c5f\u6238\u7d2b, Suo \u8607\u82b3 and Kaki \u67ff. The type table finished its rounds too: a wider second audit \u2014 every stylesheet, preview and inline style, judged by effective values, inheritance included \u2014 put the standard tracking on every reading paragraph in the catalog, and the sidebar headings were redesigned: larger, darker, aligned with the links they govern, with real air above them. And the pointer parts answer to touch now: Magnet, the Dock, Tilt Card, Spotlight, Follow Frame and the particle stages track a dragging finger and spring home on release \u2014 a phone is where most people meet them first.</p>', None, None),
- ('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget. Applied site-wide the same day: every page lead, the docs body, the landing sub-texts and the Japanese page (CJK body +0.04em, headings +0.05em) now follow the table, and an audit of all 164 part stylesheets found their tracking already sitting inside the ramps \u2014 card titles, micro labels, vertical text \u2014 that the table now records explicitly.</p>', None, None),
+   [(
+ 'November 2, 2026 \u2014 The living specimen', '<p>The site stops describing the mold and starts being it. A <b>Foundry deck</b> now sits on every page (bottom right): turn the radius, cast one of the five traditional-color accents, flip the whole page between washi light and sumi dark, slow the motion \u2014 every part on the page re-casts at once, because they all read the same tokens. The vermillion core is deliberately not on the deck; it never moves. The landing hero opens with a cast mark \u2014 the three shapes (circle, 45\u00b0 line, r2 corner) assembling around the core \u2014 over a live cluster of the real Button, Switch, Input and Badge, and the Motion line auto-plays below it. Component pages carry a <b>Mold verified</b> chip and a button that copies a ready-made prompt for your AI; joining the waitlist stamps a vermillion \u578b; copying code flashes the core color. The site chrome accent is Asagi now, too \u2014 the last of the old teal is gone.</p>', None, None),
+    ('November 2, 2026 \u2014 Type, templated', '<p>Letter-spacing and line-height are fixed values now, not taste: a tracking table lives in the mold (KATA.md \u00a70.5), as --k-ls-* and --k-lh-* tokens, and on the Design System page. Body text takes +0.012em, CJK display +0.06em, CJK never goes negative, and kana readings wrap as whole words. The table exists because the traditional-colors section shipped with body tracking at zero \u2014 the kind of basic a mold is supposed to make impossible to forget. Applied site-wide the same day: every page lead, the docs body, the landing sub-texts and the Japanese page (CJK body +0.04em, headings +0.05em) now follow the table, and an audit of all 164 part stylesheets found their tracking already sitting inside the ramps \u2014 card titles, micro labels, vertical text \u2014 that the table now records explicitly.</p>', None, None),
     ('November 2, 2026 \u2014 Traditional colors of Japan', '<p>The Themes page gains \u4f1d\u7d71\u8272: fifty traditional Japanese colors in seven families \u2014 pine-soot inks, safflower reds, indigo blues, gardenia yellows \u2014 each with its kanji name, its reading and the dye or pigment it came from. Clicking one casts it into the live demo and writes the theme CSS under its own name (ai.css, yamabuki.css), so a button can wear a thousand-year-old color in one click. At the head of the reds sits \u578b\u306e\u6731, KATA\u2019s own vermilion core, labeled as what it is: the one color no theme moves.</p>', None, None),
     ('November 2, 2026 — The zoom pass', '<p>Every one of the 201 pages and all 136 part previews was re-examined at full phone size. The pass caught and fixed a collapsed Accordion Gallery and Speed Dial stage, a Hover Card whose markup invalidly nested blocks inside a paragraph, clipped Radar Chart labels, a nearly invisible Skeleton, label collisions in Steps and List, tables that broke out of their stages, and readouts that shrank instead of stretching. The landing page Questions section now answers questions about this library instead of a generic SaaS. Nothing new was added; everything already here simply holds up better under a magnifying glass.</p>', None, None),
  ('November 2, 2026 — Ten patterns on the loom', 'The Wagara instrument grows from four patterns to ten, each still drawn from its construction: Kikko (nested tortoiseshell hexagons), Uroko (the triangle scale tiling), Samekomon (dots riding the scale arcs, sharkskin-fine), Yagasuri (the arrow-feather silhouette), Kanoko (staggered shibori fawn-spots) and Hishi (the diamond lattice, studded at its crossings). Same three tones, same tokens — the loom is bigger, the discipline is not.', None, None),

@@ -1,7 +1,7 @@
 /* KATA UI — site chrome. Components use tokens.css (--k-*), not these. */
 :root{
   --paper:#fdfdfd; --soft:#f7f7f7; --ink:#18181b; --ink2:#52525b; --ink3:#a1a1aa;
-  --hair:#e4e4e7; --acc:#0e9594;
+  --hair:#e4e4e7; --acc:#33A6B8;
   --font:"Inter","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
   --mono:"Geist Mono",ui-monospace,monospace;
 }
@@ -171,3 +171,58 @@ body.dopen{overflow:hidden}
 .wl-dark .wl-row button{background:#f4f4f5;color:#18181b}
 .wl-dark .wl-note{color:#a1a1aa}
 @media (max-width:560px){.wl-row{flex-direction:column}.wl-row button{width:100%}}
+
+/* === Foundry (stage A, 2026-11-02): the site recasts itself === */
+html[data-theme="dark"]{--paper:#0c0c0e;--soft:#17171a;--ink:#f4f4f5;--ink2:#a1a1aa;--ink3:#8b8b93;--hair:#26262b}
+html[data-theme="dark"] header.top{background:rgba(12,12,14,.86)}
+html[data-theme="dark"] .card, html[data-theme="dark"] .hero .eyebrow, html[data-theme="dark"] .dfilter{background:#131316}
+html[data-theme="dark"] .tier, html[data-theme="dark"] .showtile{background:#131316}
+html[data-theme="dark"] .menubtn{background:#131316;color:var(--ink)}
+.fdeck-fab{position:fixed;right:16px;bottom:16px;z-index:120;display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px 0 12px;border:1px solid var(--hair);border-radius:99px;background:var(--ink);color:var(--paper);font:inherit;font-size:13px;font-weight:550;cursor:pointer;box-shadow:0 10px 30px -10px rgba(9,9,11,.45)}
+.fdeck-fab .fdot{width:9px;height:9px;border-radius:50%;background:var(--k-core)}
+.fdeck{position:fixed;right:16px;bottom:68px;z-index:120;width:min(320px,calc(100vw - 32px));background:var(--paper);border:1px solid var(--hair);border-radius:16px;box-shadow:0 24px 60px -18px rgba(9,9,11,.35);padding:16px;display:none}
+.fdeck.open{display:block}
+.fdeck h3{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;letter-spacing:.01em}
+.fdeck h3 .fdot{width:8px;height:8px;border-radius:50%;background:var(--k-core)}
+.fdeck .frow{margin-top:13px}
+.fdeck label{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);font-weight:500;letter-spacing:.01em}
+.fdeck label output{font-family:var(--mono);color:var(--ink);font-size:11.5px}
+.fdeck input[type=range]{width:100%;margin-top:7px;accent-color:var(--k-accent)}
+.fdeck .sws{display:flex;gap:7px;margin-top:8px}
+.fdeck .sw{width:30px;height:30px;border-radius:9px;border:2px solid transparent;cursor:pointer;padding:0}
+.fdeck .sw.on{border-color:var(--ink)}
+.fdeck .fseg{display:flex;gap:6px;margin-top:8px}
+.fdeck .fseg button{flex:1;height:32px;border:1px solid var(--hair);background:var(--soft);color:var(--ink2);border-radius:9px;font:inherit;font-size:12.5px;font-weight:500;cursor:pointer}
+.fdeck .fseg button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fdeck .fcore{display:flex;align-items:center;gap:9px;margin-top:14px;padding:10px 11px;border:1px dashed var(--hair);border-radius:11px;font-size:12px;color:var(--ink2);line-height:1.55;letter-spacing:.01em}
+.fdeck .fcore i{width:14px;height:14px;border-radius:50%;background:var(--k-core);flex:none}
+.fdeck .flog{margin-top:13px;border-top:1px solid var(--hair);padding-top:10px;font-size:11.5px;color:var(--ink3);display:grid;gap:3px;font-family:var(--mono)}
+.fdeck .freset{margin-top:10px;background:none;border:0;color:var(--ink3);font:inherit;font-size:12px;cursor:pointer;padding:0;text-decoration:underline}
+@media (max-width:560px){.fdeck{right:8px;bottom:64px}.fdeck-fab{right:10px;bottom:10px}}
+.castmark{position:relative;width:74px;height:74px;margin:0 auto 20px}
+.castmark i{position:absolute;display:block}
+.castmark .cm-core{left:50%;top:50%;width:13px;height:13px;margin:-6.5px;border-radius:50%;background:var(--k-core);animation:cmcore 1s cubic-bezier(.2,.7,.3,1) both}
+.castmark .cm-ring{inset:6px;border:1.6px solid rgba(244,244,245,.85);border-radius:50%;animation:cmin .7s .18s cubic-bezier(.2,.7,.3,1) both}
+.castmark .cm-slash{left:50%;top:2px;width:1.6px;height:70px;background:rgba(244,244,245,.85);animation:cminslash .7s .34s cubic-bezier(.2,.7,.3,1) both}
+.castmark .cm-corner{right:2px;bottom:2px;width:22px;height:22px;border-right:2.6px solid var(--k-core);border-bottom:2.6px solid var(--k-core);border-bottom-right-radius:10px;animation:cmin .7s .5s cubic-bezier(.2,.7,.3,1) both}
+@keyframes cmcore{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes cmin{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+.castmark .cm-slash{transform-origin:center}
+@keyframes cminslash{from{opacity:0;transform:rotate(45deg) scale(.6)}to{opacity:1;transform:rotate(45deg) scale(1)}}
+.castlive{max-width:560px;margin:26px auto 6px;background:#f4f4f5;border-radius:16px;padding:16px 16px 13px;text-align:left;color:#18181b}
+.castlive .cl-cap{font-size:11px;font-weight:600;letter-spacing:.14em;color:#71717a;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.castlive .cl-cap a{color:#165E83;text-decoration:none;letter-spacing:.02em;text-transform:none;font-size:12px;font-weight:500}
+.castlive .cl-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.castlive .cl-note{margin-top:11px;font-size:12.5px;color:#52525b;line-height:1.65;letter-spacing:.01em}
+.wl-stamp{display:inline-grid;place-items:center;width:34px;height:34px;margin-left:10px;border-radius:8px;background:var(--k-core);color:#fff;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:19px;vertical-align:-9px;transform:rotate(-8deg);animation:stampin .38s cubic-bezier(.2,.9,.3,1.2) both}
+@keyframes stampin{from{opacity:0;transform:rotate(-8deg) scale(2.1)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
+.copybtn.flash{animation:copyflash .5s ease-out}
+@keyframes copyflash{0%{background:var(--k-core);color:#fff}100%{}}
+.vrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.vchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:550;color:var(--ink2);border:1px solid var(--hair);border-radius:99px;padding:4px 11px;background:var(--soft)}
+.vchip i{width:7px;height:7px;border-radius:50%;background:var(--k-core)}
+.aibtn{font:inherit;font-size:12.5px;font-weight:550;border:1px solid var(--hair);background:var(--paper);color:var(--ink);border-radius:99px;padding:5px 13px;cursor:pointer}
+.aibtn:hover{border-color:var(--ink3)}
+footer.site .fprin{color:var(--ink2)}
+.mstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.mstrip{grid-template-columns:1fr}}

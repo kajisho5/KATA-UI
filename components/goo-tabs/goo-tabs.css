@@ -1,0 +1,9 @@
+/* KATA Goo Tabs — the indicator travels like liquid. */
+.k-goo-tabs{font-family:var(--k-font);color:var(--k-ink);max-width:520px}
+.k-goo-bar{position:relative;display:inline-flex;background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:99px;padding:4px}
+.k-goo-ind{position:absolute;top:4px;bottom:4px;border-radius:99px;background:var(--k-ink);transition:left .45s cubic-bezier(.6,-0.1,.2,1.25), width .45s cubic-bezier(.6,-0.1,.2,1.25), transform .3s}
+.k-goo-ind.moving{transform:scaleY(.86)}
+.k-goo-bar button{position:relative;z-index:1;border:0;background:none;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--k-ink-2);padding:8px 16px;border-radius:99px;cursor:pointer;transition:color .25s}
+.k-goo-bar button[aria-selected="true"]{color:var(--k-bg)}
+.k-goo-panel{padding:16px 3px 2px;font-size:13.5px;line-height:1.75;color:var(--k-ink-2)}
+@media (prefers-reduced-motion:reduce){.k-goo-ind{transition:none}}

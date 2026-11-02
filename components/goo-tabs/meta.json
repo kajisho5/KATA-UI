@@ -1,0 +1,15 @@
+{
+  "title": "Goo Tabs",
+  "category": "Motion",
+  "description": "Tabs whose indicator travels like liquid: it stretches mid-flight, then settles over the chosen tab.",
+  "tags": [
+    "tabs",
+    "goo",
+    "liquid",
+    "indicator",
+    "navigation"
+  ],
+  "status": "beta",
+  "usage": "A working tab set — buttons, panels, arrow keys — whose indicator refuses to move like a spreadsheet. It slides with an elastic curve and stretches a fifth wider mid-journey, which is all the goo a production interface can defend. The panels are real panels; switch the content, keep the plumbing.",
+  "a11y": "Full tab semantics: role=tablist, aria-selected, one tab stop, arrow-key travel — the liquid never touches the keyboard model. Under prefers-reduced-motion the indicator jumps without stretching, still landing exactly where it belongs."
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Liquid Button",
+  "category": "Motion",
+  "description": "Hover and the button fills with liquid — a rising, rotating wave behind the label.",
+  "tags": [
+    "button",
+    "liquid",
+    "fill",
+    "hover",
+    "wave",
+    "cta"
+  ],
+  "status": "beta",
+  "usage": "The fill is a rotating blob on a rising carrier: hover lifts it past the label line and the rotation reads as a wave. The button stays a button — same size, same name, same keyboard behavior — with the liquid as its one party trick. Dark label on light, light label once filled; both states are token pairs, so themes keep working.",
+  "a11y": "Fill is hover garnish: focus shows the standard focus ring, activation is unchanged, and touch users tap a perfectly good button that simply skips the pour. Under prefers-reduced-motion the fill snaps instead of rising."
+}

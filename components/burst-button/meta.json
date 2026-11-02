@@ -1,0 +1,16 @@
+{
+  "title": "Burst Button",
+  "category": "Motion",
+  "description": "A real call-to-action that answers a click with a burst of sparks — feedback you can see from across the room.",
+  "tags": [
+    "button",
+    "particles",
+    "burst",
+    "click",
+    "feedback",
+    "cta"
+  ],
+  "status": "beta",
+  "usage": "The button is an ordinary primary button; the burst is its click feedback, fired from the exact point of the click, in the token palette. Use it on the one action a page exists for — deploy, purchase, publish. A burst on every button is a fireworks stall; a burst on the button is punctuation.",
+  "a11y": "The click still does its job with the script removed, and the burst is aria-hidden canvas. Under prefers-reduced-motion there is no burst — the button relies on its pressed state like its ancestors, which is sufficient because it is, first, a button."
+}

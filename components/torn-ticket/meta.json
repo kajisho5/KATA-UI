@@ -1,0 +1,16 @@
+{
+  "title": "Torn Ticket",
+  "category": "Display & Media",
+  "description": "A ticket with a real perforation: notched edges, a dashed tear line, and a stub that keeps the code.",
+  "tags": [
+    "ticket",
+    "coupon",
+    "perforation",
+    "stub",
+    "event",
+    "tear"
+  ],
+  "status": "beta",
+  "usage": "For tickets, coupons and boarding-pass moments in interfaces: the notches are cut by CSS masks at the tear line, the line itself is dashed, and the stub carries the code and the barcode. Slightly rotated on the page, it reads as paper; at zero degrees, as policy. The tear is visual — pair it with a real \"use coupon\" action.",
+  "a11y": "Everything on the ticket is ordinary text in reading order — event, seat, code — and the perforation is mask paint that assistive technology never meets. Do not encode the only copy of a code in the barcode stripes; they are decorative, and the digits sit beside them."
+}

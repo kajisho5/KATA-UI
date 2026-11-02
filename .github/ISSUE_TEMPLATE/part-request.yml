@@ -1,0 +1,42 @@
+name: Part request
+description: Propose a new component, block or template — the mold questions come first.
+title: "[Part] "
+labels: ["enhancement"]
+body:
+  - type: input
+    id: part-name
+    attributes:
+      label: Part name
+      description: One or two words, describing the job it does (like the existing catalog names).
+    validations:
+      required: true
+  - type: textarea
+    id: job
+    attributes:
+      label: The job it does
+      description: Which screens does it serve, and what do people use today instead?
+    validations:
+      required: true
+  - type: checkboxes
+    id: mold-check
+    attributes:
+      label: The mold check (required)
+      description: A KATA part is cast from the mold. Confirm this proposal can live inside it.
+      options:
+        - label: It can be built with the existing tokens — no new colors, no raw hex anywhere.
+          required: true
+        - label: It needs no framework and no dependency; plain HTML, CSS and JS are enough.
+          required: true
+        - label: It can carry every state — hover, active, focus-visible, disabled, empty, overflow.
+          required: true
+        - label: Its motion fits 130–220ms with no bounce, and it has a prefers-reduced-motion answer.
+          required: true
+        - label: It does not need a new place for the vermillion core (--k-core).
+          required: true
+  - type: textarea
+    id: token-proposal
+    attributes:
+      label: If it needs a new token, say so here
+      description: New tokens change the mold, not just the part — they are decided as token proposals.
+    validations:
+      required: false

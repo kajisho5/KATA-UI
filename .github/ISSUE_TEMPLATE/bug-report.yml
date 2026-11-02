@@ -1,0 +1,35 @@
+name: Bug report
+description: A part or page that breaks the mold — wrong token, missing state, broken motion.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: The part slug or page URL (for example components/button or /pricing/).
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What breaks
+      description: What you saw, in which theme (light/dark), at which width, and what the mold says should happen instead.
+    validations:
+      required: true
+  - type: checkboxes
+    id: mold-check
+    attributes:
+      label: The mold check (required)
+      options:
+        - label: I reloaded with a hard refresh — this is not a stale cached bundle.
+          required: true
+        - label: I checked the part in both light and dark before filing.
+          required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A screenshot, a measured value, or the computed style — numbers travel further than adjectives.
+    validations:
+      required: false

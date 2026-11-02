@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Contributing guide
+    url: https://kata-ui.dev/docs/contributing/
+    about: How a part is cast — the template, the checker, and the rules a proposal has to meet.

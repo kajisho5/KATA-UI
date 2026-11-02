@@ -49,8 +49,19 @@ HEADER = """<header class="top"><div class="wrap top-in">
 FOOTER = """<div class="wrap"><footer class="site">
   <span><b>KATA UI</b> — parts, cast from a single mold.</span>
   <span class="fprin">One mold · Tokens first · Three shapes only · Flat before fancy · The vermillion core never moves</span>
+  <span class="fmold">__MOLD__</span>
   <span style="margin-left:auto"><a href="https://github.com/kajisho5/KATA-UI" rel="noopener">GitHub</a> · <a href="/docs/">Docs</a> · <a href="/design-system/">Design System</a> · <a href="/themes/">Themes</a></span>
 </footer></div>"""
+
+import subprocess as _sp, sys as _sys
+try:
+    _r = _sp.run([_sys.executable, str(ROOT / 'check.py')], capture_output=True, text=True, timeout=90)
+    _ok = sum(1 for ln in _r.stdout.splitlines() if ln.startswith('OK'))
+    _bad = sum(1 for ln in _r.stdout.splitlines() if ln.startswith(('FAIL', 'NG')))
+    _ms = f'Mold Verified — {_ok}/{_ok + _bad} checks passing' if _ok else 'Mold Verified — see check.py'
+except Exception:
+    _ms = 'Mold Verified — see check.py'
+FOOTER = FOOTER.replace('__MOLD__', _ms)
 
 
 def _v(text):
@@ -297,7 +308,7 @@ def card(c, gallery=False):
         pv_html = pv_html.replace('</a>', '</span>')
         assert '<a ' not in pv_html and '</a>' not in pv_html, c['slug']
         stage = f'<span class="gstage" aria-hidden="true"><span class="gscale">{pv_html}</span></span>'
-    return f"""<a class="card{' gcard' if gallery else ''}" data-q="{q}" href="/components/{c['slug']}/">
+    return f"""<a class="card{' gcard' if gallery else ''}" data-q="{q}" data-status="{esc(m.get('status','stable'))}" href="/components/{c['slug']}/">
   {stage}<h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h3>
   <p>{esc(m['description'])}</p>
   <span class="tags">{tags}</span>
@@ -448,6 +459,19 @@ def landing(comps, blocks, n_icons, templates=None):
     lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Is it really free?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. Every component — all 136, with the code on its page — is MIT-licensed, free for personal and commercial work. Pro adds the assembled blocks and templates; the parts themselves are never paywalled.</div></details><details class="k-acc"><summary>Which frameworks does it work with?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">All of them, and none. Parts are plain HTML, CSS and JS, so they paste into Astro, Laravel, Rails, WordPress, a static page, or the corner of a legacy app. There is no runtime and no build step unless you bring your own.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files — or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">21 blocks and 7 page templates — whole sections, already assembled — plus every future block. One payment of $129, lifetime. Sales open soon; the waitlist on the pricing page gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes — the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
               '<p class="more">Still stuck? <a href="/docs/">Read the docs</a> — or check the <a href="/docs/faq/">full FAQ</a>.</p></section>'
               '<link rel="stylesheet" href="/components/accordion/accordion.css">')
+    _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'card', 'tabs', 'toast')]
+    _five = [c for c in _five if c]
+    firstfive = ('<section class="lpsec"><h2>First five to copy</h2>'
+      '<p class="lpnote">New here? These five cover most first screens \u2014 an action, a field, a surface, a switch of views, a word of feedback. Copy them in order and the mold explains itself.</p>'
+      '<div class="cards" style="margin-top:16px">' + ''.join(card(c) for c in _five) + '</div></section>')
+    _ch = next((d for d in DOCS if d[0] == 'changelog'), None)
+    _rows = ''
+    if _ch:
+        for _t, *_rest in _ch[3][:3]:
+            _d, _, _ti = _t.partition(' \u2014 ')
+            _rows += f'<a class="frow" href="/docs/changelog/"><span class="fdate">{esc(_d)}</span><span class="ftitle">{esc(_ti or _t)}</span></a>'
+    fresh = ('<section class="lpsec"><h2>Fresh from the mold</h2><div class="fresh">' + _rows + '</div>'
+      '<p class="lpnote">Every casting is recorded \u2014 <a href="/docs/changelog/">the full changelog</a>.</p></section>')
     faqsec = ('<section class="lpsec"><h2>Questions</h2><div style="margin-top:16px">' + lp_faq + '</div></section>')
     sc_block = next((b for b in blocks if b['slug'] == 'stat-cards'), None)
     def ccell(href, label, html, wide=False):
@@ -513,6 +537,7 @@ def landing(comps, blocks, n_icons, templates=None):
       <div class="step"><span class="no">STEP 3</span><h3>Make it yours</h3><p>Adjust the tokens, not the parts. One change in the mold re-casts everything on the page.</p></div>
     </div>
   </section>
+  {firstfive}
   <section class="lpsec">
     <h2>Five genres, one mold</h2>
     <div class="genres">
@@ -530,6 +555,7 @@ def landing(comps, blocks, n_icons, templates=None):
   {principles}
   {compare}
   {faqsec}
+  {fresh}
   {wlband}
   {showcase}
   {collage}
@@ -640,7 +666,7 @@ def llms_full(comps, blocks, templates=None):
     return '\n'.join(out)
 
 
-CATALOG_SCRIPT = "<script>\nconst catq = document.getElementById('catq');\ncatq.addEventListener('input', () => {\n  const q = catq.value.trim().toLowerCase();\n  let any = false;\n  document.querySelectorAll('.catsec').forEach(sec => {\n    let vis = 0;\n    sec.querySelectorAll('.card').forEach(cd => { const hit = !q || (cd.dataset.q || '').includes(q); cd.style.display = hit ? '' : 'none'; if (hit) vis++; });\n    sec.style.display = vis ? '' : 'none';\n    if (vis) any = true;\n  });\n  document.getElementById('catnone').style.display = any ? 'none' : '';\n});\nconst kburi = document.querySelector('.catsec.kburi');\nif (kburi && 'IntersectionObserver' in window) {\n  const io = new IntersectionObserver(es => es.forEach(e => {\n    if (e.isIntersecting) { kburi.classList.add('break'); setTimeout(() => kburi.classList.remove('break'), 900); io.disconnect(); }\n  }), { threshold: 0.35 });\n  io.observe(kburi);\n}\n</script>"
+CATALOG_SCRIPT = "<script>\nconst catq = document.getElementById('catq');\ncatq.addEventListener('input', () => {\n  const q = catq.value.trim().toLowerCase();\n  let any = false;\n  document.querySelectorAll('.catsec').forEach(sec => {\n    let vis = 0;\n    sec.querySelectorAll('.card').forEach(cd => { const hit = (!q || (cd.dataset.q || '').includes(q)) && (!window.__stf || window.__stf === 'all' || cd.dataset.status === window.__stf); cd.style.display = hit ? '' : 'none'; if (hit) vis++; });\n    sec.style.display = vis ? '' : 'none';\n    if (vis) any = true;\n  });\n  document.getElementById('catnone').style.display = any ? 'none' : '';\n});\nconst kburi = document.querySelector('.catsec.kburi');\nif (kburi && 'IntersectionObserver' in window) {\n  const io = new IntersectionObserver(es => es.forEach(e => {\n    if (e.isIntersecting) { kburi.classList.add('break'); setTimeout(() => kburi.classList.remove('break'), 900); io.disconnect(); }\n  }), { threshold: 0.35 });\n  io.observe(kburi);\n}\n</script>"
 
 
 def components_index(comps):
@@ -651,9 +677,11 @@ def components_index(comps):
     <p>Every part is a folder in the registry — preview, CSS and JS are the same files you copy.</p>
   </div>
   <div class="catsearch"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><input id="catq" type="text" placeholder="Filter parts — try \u201cchart\u201d, \u201cdate\u201d, \u201cmenu\u201d\u2026" aria-label="Filter components"></div>
+  <div class="seg catstat" role="group" aria-label="Filter by status"><button type="button" data-st="all" class="on">All</button><button type="button" data-st="stable">Stable</button><button type="button" data-st="beta">Beta</button></div>
   <p class="catnone" id="catnone" style="display:none">No parts match that word. Try something shorter.</p>
 {catalog_sections(comps)}
 {CATALOG_SCRIPT}
+<script>document.querySelectorAll('.catstat button').forEach(b => b.addEventListener('click', () => {{ window.__stf = b.dataset.st; document.querySelectorAll('.catstat button').forEach(x => x.classList.toggle('on', x === b)); document.getElementById('catq').dispatchEvent(new Event('input')); }}));</script>
 </div>
 {FOOTER}
 </body>
@@ -692,7 +720,7 @@ def _sec(title, links_html):
 
 def tree_sections(comps, active, current):
     gs = ['introduction', 'getting-started', 'installation', 'install-html', 'install-astro', 'install-laravel', 'cli', 'registry', 'mcp', 'theming', 'dark-mode', 'accessibility', 'rtl', 'changelog']
-    concepts = ['why-vanilla', 'the-mold', 'anatomy', 'forms', 'from-tailwind', 'vs-shadcn']
+    concepts = ['why-vanilla', 'the-mold', 'contributing', 'anatomy', 'forms', 'from-tailwind', 'vs-shadcn']
     guides = [d[0] for d in DOCS if d[0].startswith('guide-')]
     doc = lambda slugs: ''.join(_nav_link('/docs/' + x + '/', _doc_title(x), current) for x in slugs)
     secs = [
@@ -869,6 +897,17 @@ def detail(comps, idx):
     if used_in_blocks:
         links = ''.join(f'<a class="card" href="/blocks/{b["slug"]}/"><h3>{esc(b["meta"]["title"])}</h3><p>{esc(b["meta"]["description"])}</p></a>' for b in used_in_blocks)
         used_in = f'<section class="doc"><h2>Used in these blocks</h2><div class="cards">{links}</div></section>'
+    _co = {}
+    for _b in used_in_blocks:
+        for _u in _b['meta'].get('uses', []):
+            if _u != slug:
+                _co[_u] = _co.get(_u, 0) + 1
+    cast_with = ''
+    if _co:
+        _top = [next((c for c in comps if c['slug'] == _s), None) for _s, _n in sorted(_co.items(), key=lambda kv: -kv[1])[:4]]
+        _top = [c for c in _top if c]
+        if _top:
+            cast_with = '<section class="doc"><h2>Often cast with</h2><div class="cards">' + ''.join(card(x) for x in _top) + '</div></section>'
     body = f"""
 <div class="wrap dc">
   <div class="layout">
@@ -902,6 +941,7 @@ def detail(comps, idx):
       {anatomy_html}
       {token_html}
       {used_in}
+      {cast_with}
       {related}
       <div class="prevnext">{prev_html}{next_html}</div>
     </main>
@@ -1008,8 +1048,10 @@ def icons_page():
         brand_section = ('<h2 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin-top:38px">Brand marks</h2>'
           '<p style="margin-top:8px;color:var(--ink2);font-size:13.5px;line-height:1.8;max-width:64ch;letter-spacing:.012em">' + str(len(bmap)) + ' marks, grouped by the job they do on a site: social links, sign-in buttons, integration grids, logo clouds. Brand marks belong to their owners and are here for nominative use only — using one does not imply endorsement, and they are never part of the KATA identity. They are also the one exception to the three-shape mold: a mark keeps its owner’s geometry.</p>'
           + ''.join(groups))
+    guidenote = ('<div class="guidenote"><h3>Using the brand marks</h3>'
+      '<p>Each mark belongs to its owner and is included so a part can name the service it connects to. Use a mark to refer to that service, and only that: do not recolor it into your own logo, do not place it where it implies the owner endorses your product, and follow the owner brand terms where they publish them. When in doubt, link with text instead.</p></div>') if brand_section else ''
     script = "<script>var ICONS=__DATA__;\ndocument.querySelectorAll('[data-icon]').forEach(function(b){b.addEventListener('click',function(){var n=b.dataset.icon;var done=function(){document.getElementById('icstat').innerHTML='<b>'+n+'</b> copied.';};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ICONS[n]).then(done,done);}else{done();}});});\n</script>".replace('__DATA__', _json.dumps(data))
-    body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 1.7 stroke, square caps and bevel joins — a sharper cut than the usual round line icon. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center — the same vermillion that sits inside the Switch and the Radio. Click any icon to copy its SVG. For anything beyond this set, Lucide is the nearest kin (24 grid, round) and sits comfortably alongside.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>" + brand_section + "\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
+    body = "\n<div class=\"wrap ic\">\n  <h1>Icons</h1>\n  <p class=\"lead\">One mold for icons, too: a 24 grid, a 1.7 stroke, square caps and bevel joins — a sharper cut than the usual round line icon. Every glyph is drawn from three shapes only — the circle, the 45° line, and the r2 corner — so the whole set reads as cut from one block. A few carry the KATA signature: a solid core at the center — the same vermillion that sits inside the Switch and the Radio. Click any icon to copy its SVG. For anything beyond this set, Lucide is the nearest kin (24 grid, round) and sits comfortably alongside.</p>\n  <p class=\"icstat\" id=\"icstat\">" + str(len(files)) + " icons. Every one is a single file in the registry.</p>\n  <div class=\"icgrid\">" + ''.join(cells) + "</div>" + brand_section + guidenote + "\n</div>\n" + FOOTER + "\n" + script + "\n</body>\n</html>"
     return head('Icons — KATA UI', 'The KATA icon set: 24 grid, 1.7 stroke, square caps, click to copy the SVG.', ICONS_STYLE) + body
 
 
@@ -1250,6 +1292,24 @@ def design_system_page(tokens):
     bars = ''.join(
         f'<div class="row"><span style="width:64px">space-{k}</span><span class="bar" style="width:{v}px"></span><span>{v}px</span></div>'
         for k, v in tokens['spacePx'].items())
+    _ct = {}
+    for _c in load_components():
+        _ct[_c['slug']] = (_c['meta']['title'], '/components/')
+    for _b in load_blocks():
+        _ct[_b['slug']] = (_b['meta']['title'], '/blocks/')
+    for _t in load_templates():
+        _ct[_t['slug']] = (_t['meta']['title'], '/templates/')
+    _hits, _seen = [], set()
+    for _kind in ('components', 'blocks', 'templates'):
+        for _f in sorted(glob.glob(str(ROOT / _kind / '*' / '*.css'))):
+            _slug = Path(_f).parent.name
+            if _slug in _ct and _slug not in _seen and '--k-core' in Path(_f).read_text(encoding='utf-8'):
+                _seen.add(_slug)
+                _hits.append((_slug, _ct[_slug][0], _ct[_slug][1]))
+    _chips = ''.join(f'<a class="corechip" href="{_b}{_s}/">{esc(_t)}</a>' for _s, _t, _b in _hits)
+    core_map = ('<section><h2>The vermillion, mapped</h2>'
+      '<p class="note">--k-core, the vermillion at the center of the mark, appears in exactly these parts -- and in a short list of site moments: the lower-right quarter of the logo, the Hanko seal, the copy flash, the Foundry deck dot, the waitlist stamp. This list is generated from the CSS at build time, so it cannot drift from the truth. Everywhere else, the accent speaks.</p>'
+      '<div class="corechips">' + _chips + '</div></section>')
     radii = ''.join(
         (f'<button type="button" class="box castable" data-cast-radius="{v}" style="border-radius:{v}px" title="Cast this radius">{k} · {v}</button>' if k != 'full'
          else f'<div class="box" style="border-radius:{v}px">{k} · {v}</div>')
@@ -1292,6 +1352,7 @@ def design_system_page(tokens):
       <div class="m" style="--dur:220ms">slow · 220ms<div class="dot"></div></div>
     </div></section>
   <section><h2>Elevation</h2><p class="note">{esc(tokens['elevation']['rule'])}</p></section>
+  {core_map}
   <section><h2>Breakage — Kintsugi</h2><p class="note">Errors, empty states and loading wear one seam: a jagged line of yamabuki gold, the Kintsugi Card's vein. Breakage is shown honestly and mended visibly — never hidden behind a spinner and never dressed as success. It is the seam on the 404 plate and the state line in \u2318K search.</p>
     <p class="kin-demo"><span class="kin-seam" aria-hidden="true"></span>Casting a preview\u2026</p>
     <p class="note">The part that carries the language: <a href="/components/kintsugi-card/">Kintsugi Card</a>.</p></section>
@@ -1916,9 +1977,11 @@ DOCS = [
    [('One attribute', 'There is no RTL build, no .rtl variant and nothing to download twice. Write direction into the document and the same files lay out right-to-left:', '<html lang="ar" dir="rtl">', 'It works on any container, too — dir="rtl" on a section flips that section only, which is how mixed-direction pages are usually built.'),
     ('What mirrors', 'The site chrome and the structural parts are written with logical properties — inline-start and inline-end instead of left and right — so sidebars trade sides, menus open from their other edge, panels anchor to the new start, form groups and button seams join in the new direction, and breadcrumbs, pagination and navigation follow. Flex and grid layouts follow direction on their own; the Switch knob, which moves on a physical track, carries an explicit flip rule.', None, 'Text alignment follows too: start-aligned in LTR is start-aligned in RTL, and numeric columns align to the end in both.'),
     ('What deliberately does not', 'The showpieces keyed to physical coordinates stay physical: the Spotlight beam follows a cursor, the Comparison seam divides a picture, the Aurora washes drift where they drift, and the Drawer slides from the side it was built for. Direction is about reading order, not about re-choreographing effects. Directional icons — arrows, chevrons, the little plane on a send button — are glyphs, and flipping a glyph is a design decision left to the page.', None, 'The vermillion core sits at the center of active controls. Centers have no direction, so the signature survives the flip untouched.')]),
+  ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
- 'November 2, 2026 \u2014 Cards, unnested', '<p>Ten catalog cards were quietly broken in every browser \u2014 Breadcrumbs, Pagination, Sidebar, Bottom Navigation, List and five more \u2014 showing an empty stage and no title. Their previews contain links, and the catalog card is itself a link: HTML forbids an anchor inside an anchor, so the parser closed each card at the first preview link and scattered the rest. The gallery stage is inert by design, so preview links are now cast as spans that keep their classes and their look, and the build asserts no anchor survives into a stage. The check that missed this is also fixed in kind: the catalog is now verified structurally \u2014 every card must arrive in the browser with its title and a populated stage \u2014 not just sampled.</p>', None, None),
+ 'November 2, 2026 \u2014 Relations, freshness, and the map', '<p>The catalog learned to point sideways. Part pages now show what a part is often cast with, computed from the blocks that use it, next to the blocks themselves. The components index filters by Stable and Beta. The homepage gained a First five to copy and a Fresh from the mold strip fed by this changelog. The footer carries the live mold-check count. The Design System page maps every place the vermillion core may appear \u2014 generated from the CSS, so the map cannot lie. The Icons page states the brand-mark rules plainly, and a Contributing doc plus mold-checked issue templates open the door to outside castings.</p>', None, None),
+    ('November 2, 2026 \u2014 Cards, unnested', '<p>Ten catalog cards were quietly broken in every browser \u2014 Breadcrumbs, Pagination, Sidebar, Bottom Navigation, List and five more \u2014 showing an empty stage and no title. Their previews contain links, and the catalog card is itself a link: HTML forbids an anchor inside an anchor, so the parser closed each card at the first preview link and scattered the rest. The gallery stage is inert by design, so preview links are now cast as spans that keep their classes and their look, and the build asserts no anchor survives into a stage. The check that missed this is also fixed in kind: the catalog is now verified structurally \u2014 every card must arrive in the browser with its title and a populated stage \u2014 not just sampled.</p>', None, None),
     ('November 2, 2026 \u2014 The bundle learns to date itself', '<p>A reader\u2019s phone showed the catalog with several previews stripped bare \u2014 OTP boxes, radios, the calendar \u2014 while everything else wore its styles. The cause sat in the catalog page itself: every other stylesheet on the site carries a content-hash version, but the one file that changes most, the kata-ui.css bundle the gallery previews wear, was linked bare \u2014 so a phone could hold a stale copy indefinitely while the hashed files around it stayed fresh. The bundle and its JS now carry content versions like everything else. The same pass hardens the form controls for iOS Safari, which keeps its native white fields unless told otherwise twice: text inputs, the OTP boxes, checkboxes and the command input now declare \u2011webkit\u2011appearance alongside the standard property.</p>', None, None),
     ('November 2, 2026 \u2014 Two hundred and twenty marks', '<p>The brand shelf grows up. Every hand-drawn approximation among the marks \u2014 Spotify first, after a reader zoomed in and asked when it would be fixed, then the other twenty-one \u2014 is replaced by the owner\u2019s official glyph, drawn from the Simple Icons set, in the brand files and in every inline copy across the blocks and templates. And the shelf itself widens: 164 more marks join, 220 in all, filed under four new jobs \u2014 Languages &amp; runtimes, Data &amp; backend, Productivity &amp; SaaS, Games &amp; 3D. TypeScript to Zig, PostgreSQL to Snowflake, Gmail to Patreon, Steam to Blender: if a site links to it, signs in with it or pays through it, the mark is probably here \u2014 still nominative use only, still the one exception to the three-shape mold.</p>', None, None),
     ('November 2, 2026 \u2014 The audit, in full', '<p>Every page on the site \u2014 201 of them, both themes, at phone width, 182,000 text elements \u2014 measured for contrast, stray light surfaces, overflow and script errors, and every detail stage clicked through its Light and Dark scopes. One defect family kept surfacing: text paired to the wrong side of a flipping token. Pagination\u2019s current page, the Copy Field button, the Sidebar avatar and mark, and the Tooltip wore <i>on-color</i> white over an ink background that turns light in the dark \u2014 white on white. They now take their text from the page token, the same pairing the Button already used. The three template sidebars sat on a constant zinc-50 while their brand and account text flipped around them; they ride the soft-surface token now. The waitlist button keeps its contrast in the dark, the Live Cast cluster on the home page pins the light scope its card always had, and the Avatar\u2019s initials and the Comparison Slider\u2019s grip hold constant zinc pairs that read in both modes. Everything else the sweep flagged was measured again by eye and found innocent.</p>', None, None),

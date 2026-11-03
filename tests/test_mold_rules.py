@@ -21,6 +21,14 @@ class RulesTest(unittest.TestCase):
     def test_valid_and_aliases(self):
         r=self.inspect('.btn-accent,.btn-asagi{color:var(--k-ink);border:1px solid var(--k-line)}.btn-accent:hover,.btn-asagi:hover{color:var(--k-ink-2)}.btn:focus-visible,input:focus-visible{box-shadow:var(--k-ring)}', '<button type="button" class="btn btn-accent">Go</button><label for="name">Name</label><input id="name">', "(()=>{const x=1;})();")
         self.assertTrue(all(c['status']=='pass' for c in r.values()),r)
+    def test_shared_token_scope(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);d=root/'components'/'sample';d.mkdir(parents=True)
+            (root/'tokens.css').write_text(':root{--k-sample-width:3px;--k-space-1:4px}')
+            (d/'sample.css').write_text('.sample{--sample-width:3px;width:var(--sample-width)}')
+            result={c['id']:c for c in rules.inspect(d,root,{'raw_value_allowlist':[]})}
+            self.assertEqual(result['shared-token-scope']['status'],'fail')
+            self.assertEqual(result['shared-token-scope']['findings'],['--k-sample-width'])
     def test_token_name_is_not_a_named_color(self):
         r=self.inspect('.a{color:var(--k-red)}','')
         self.assertEqual(r['token-values']['status'],'pass')

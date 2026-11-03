@@ -68,7 +68,7 @@ def check_component(d):
     for cls in sorted(used - defined):
         errs.append(f'preview: class .{cls} is not defined in this component or its linked dependencies')
     for label, text in (('css', css), ('preview', prev)):
-        local = DEFINED_TOKENS | set(re.findall(r'@property\s+(--k-[a-z0-9-]+)', css))
+        local = DEFINED_TOKENS | set(re.findall(r'(--k-[a-z0-9-]+)\s*:', css)) | set(re.findall(r'@property\s+(--k-[a-z0-9-]+)', css))
         for v in set(re.findall(r'var\((--k-[a-z0-9-]+)\)', text)):
             if v not in local:
                 errs.append(f'{label}: var({v}) is not defined in tokens.css')
@@ -136,7 +136,7 @@ def check_block(d, comp_slugs):
     for cls in sorted(used - defined):
         errs.append(f'preview: class .{cls} is not defined in this block or its linked components')
     for label, text in (('css', css), ('preview', prev)):
-        local = DEFINED_TOKENS | set(re.findall(r'@property\s+(--k-[a-z0-9-]+)', css))
+        local = DEFINED_TOKENS | set(re.findall(r'(--k-[a-z0-9-]+)\s*:', css)) | set(re.findall(r'@property\s+(--k-[a-z0-9-]+)', css))
         for v in set(re.findall(r'var\((--k-[a-z0-9-]+)\)', text)):
             if v not in local:
                 errs.append(f'{label}: var({v}) is not defined in tokens.css')
@@ -204,7 +204,7 @@ def check_template(d, comp_slugs, block_slugs):
     for cls in sorted(used - defined):
         errs.append(f'preview: class .{cls} is not defined in this template or its linked parts')
     for label, text in (('css', css), ('preview', prev)):
-        local = DEFINED_TOKENS | set(re.findall(r'@property\s+(--k-[a-z0-9-]+)', css))
+        local = DEFINED_TOKENS | set(re.findall(r'(--k-[a-z0-9-]+)\s*:', css)) | set(re.findall(r'@property\s+(--k-[a-z0-9-]+)', css))
         for v in set(re.findall(r'var\((--k-[a-z0-9-]+)\)', text)):
             if v not in local:
                 errs.append(f'{label}: var({v}) is not defined in tokens.css')

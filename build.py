@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """KATA UI — static site generator. Registry (components/) is the source of truth."""
 import glob, hashlib, html, json, re, shutil
-from tools.anatomy import css_surface
+from tools.anatomy import css_surface, aria_surface
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -94,7 +94,7 @@ _summary = MOLD_REPORT['summary']
 _ms = f"Mold Verified {_summary['passed']}/{_summary['total']}"
 MOLD_ITEMS = {item['id']: item for item in MOLD_REPORT['items']}
 MOLD_STATUS = _ms
-FOOTER = FOOTER.replace('__MOLD__', _ms)
+FOOTER = FOOTER.replace('__MOLD__', '<a href="/audit/">' + _ms + '</a>')
 
 
 def _v(text):
@@ -541,8 +541,24 @@ LP_STYLE = """<style>
 @media (max-width:720px){.lp .hero h1{font-size:33px}.browser .shell-side{display:none}}
 </style>"""
 
+def audit_page():
+    rows = []
+    for item in MOLD_REPORT['items']:
+        findings = ''.join('<li>' + esc(check['id']) + ': ' + esc(str(finding)) + '</li>'
+                           for check in item['checks'] if check['status'] == 'fail'
+                           for finding in check['findings'])
+        warnings = ''.join('<li>' + esc(check['id']) + ': ' + esc(str(finding)) + '</li>'
+                           for check in item['checks'] if check['status'] == 'warn'
+                           for finding in check['findings'])
+        verdict = 'Passed' if item['passed'] else 'Failed'
+        rows.append('<section class="doc"><h2><a href="/' + esc(item['id']) + '/">' + esc(item['id']) + '</a> — ' + verdict + '</h2>'
+                    + ('<ul>' + findings + '</ul>' if findings else '<p>No failed static checks.</p>')
+                    + ('<details><summary>Warnings</summary><ul>' + warnings + '</ul></details>' if warnings else '') + '</section>')
+    return head('Audit — KATA UI', 'Current component check results.') + '<main class="wrap dc"><h1>Audit</h1><p>' + MOLD_STATUS + '</p><p>Static checks only. Passing does not certify keyboard, screen-reader or browser behavior. <a href="/mold-results.json">Download JSON</a>.</p>' + ''.join(rows) + '</main>' + plain_footer() + '</body></html>'
+
+
 def plain_footer():
-    return '<div class="wrap"><footer class="site"><b>KATA UI</b><a href="/docs/">Docs</a><a href="/lab/">Lab</a><a href="https://github.com/kajisho5/KATA-UI">GitHub</a></footer></div>'
+    return '<div class="wrap"><footer class="site"><b>KATA UI</b><a href="/audit/">' + MOLD_STATUS + '</a><a href="/docs/">Docs</a><a href="/lab/">Lab</a><a href="https://github.com/kajisho5/KATA-UI">GitHub</a></footer></div>'
 
 
 def landing(comps, blocks, n_icons, templates=None):
@@ -686,7 +702,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '</div>'
       '<div class="proofstrip">'
       '<div><span class="vs">AN AI, WRITING FROM SCRATCH</span><h3>A new dialect per prompt</h3><p>New class names, a new radius, spacing by mood. Screen one and screen ten are cousins, not siblings \u2014 and every state it forgot is yours to find.</p></div>'
-      '<div><span class="vs">AN AI, FETCHING KATA</span><h3>The same part, every time</h3><p>The part arrives already checked: tokens only, classes covered, hover, focus, disabled and dark all finished. The model composes; the mold holds.</p></div>'
+      '<div><span class="vs">AN AI, FETCHING KATA</span><h3>The same part, every time</h3><p>The registry supplies the component source and its current audit result. Review failed checks for the parts you use.</p></div>'
       '</div>'
       '<p class="proofline">Same prompt, two outcomes. Letting your AI fetch a mold-checked part is faster than reviewing its improvisation \u2014 and the result is stable in a way generated code is not: it was finished before your AI touched it.</p>'
       '</section>')
@@ -752,9 +768,9 @@ def landing(comps, blocks, n_icons, templates=None):
 <header class="hero3">
 <p class="hero3-eyebrow">{n} components · {nb} blocks · {nt} templates</p>
 <h1>HTML, CSS and JavaScript<br><span class="dim">for the page you're building.</span></h1>
-<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. No framework or build step required.</p>
+<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. Checks cover tokens, markup and interaction styles. Some components still fail. Read the current audit before using a part.</p>
 <div class="cta"><a class="btn btn-pri btn-lg" href="/components/">Browse components</a><a class="btn btn-ghost btn-lg" href="/docs/getting-started/">Get started</a></div>
-<p class="herotrust">Components are MIT licensed. <span class="fmold">{MOLD_STATUS}</span> · <a href="/mold-results.json">Read the results</a></p>
+<p class="herotrust">Components are MIT licensed. <span class="fmold">{MOLD_STATUS}</span> · <a href="/audit/">Read the results</a></p>
 </header>
 <section class="lpsec"><h2>One mold: shared design tokens</h2><p class="lpnote">Load tokens.css, then the component's CSS and HTML. Add its JavaScript if it has any. Change colors and spacing through the tokens.</p></section>
 <section class="lpsec"><h2>Start with five components</h2><p class="lpnote">Buttons for actions, inputs for text, badges for status, tabs for views and toasts for feedback.</p><div class="cards">{''.join(card(c) for c in _five)}</div></section>
@@ -806,6 +822,9 @@ def registry_json(comps, blocks, templates=None):
                       'description': t['note'], 'categories': ['Themes'],
                       'files': [{'path': 'themes/' + t['name'] + '.css', 'type': 'registry:theme', 'content': theme_css(t)}]})
     for item in items:
+        kind = {'registry:component':'components','registry:block':'blocks','registry:page':'templates'}.get(item['type'])
+        if kind:
+            item['audit'] = MOLD_ITEMS[kind + '/' + item['name']]
         for file in item['files']:
             file['content'] = distribution_header(file['path'], file['content'])
     return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': RELEASE_VERSION,
@@ -1057,10 +1076,7 @@ def detail(comps, idx):
         for mm in re.finditer(r'data-[a-z0-9-]+', src):
             if mm.group(0) not in hooks:
                 hooks.append(mm.group(0))
-    arias = []
-    for mm in re.finditer(r'aria-[a-z]+', c['preview']):
-        if mm.group(0) not in arias:
-            arias.append(mm.group(0))
+    arias = aria_surface(c['preview'])
     rows = ''
     for n in cls_seen[:14]:
         rows += f'<tr><td><code>.{esc(n)}</code></td><td>class</td></tr>'
@@ -2482,6 +2498,9 @@ def main():
             if _f.is_file():
                 shutil.copy(_f, DIST / 'media' / _f.name)
     (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons, templates), comps, None), encoding='utf-8')
+    auditdir = DIST / 'audit'
+    auditdir.mkdir()
+    (auditdir / 'index.html').write_text(emit(audit_page(), comps, None, '/audit/'), encoding='utf-8')
     labdir = DIST / 'lab'
     labdir.mkdir()
     (labdir / 'index.html').write_text(emit(lab_page(comps), comps, None, '/lab/', True), encoding='utf-8')
@@ -2634,7 +2653,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/audit/', '/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

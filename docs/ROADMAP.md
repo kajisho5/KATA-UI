@@ -40,6 +40,7 @@ separate release statuses. The phases below are targets, not shipped features.
 
 ## Phase 0 — Align claims and implementation
 
+- [x] P1 accuracy follow-up: semantic primitive rules, ring/pill classifications, dependency-aware focus evidence and Toast-local colors ([PR #17](https://github.com/kajisho5/KATA-UI/pull/17)).
 - [x] P1: Profile-aware checker and token provenance ([PR #15](https://github.com/kajisho5/KATA-UI/pull/15)).
 - [x] P2: CI ratchet, audit tables, generated audit facts and a checked template ([PR #16](https://github.com/kajisho5/KATA-UI/pull/16)).
 - [ ] P3: Resolve or close [PR #1](https://github.com/kajisho5/KATA-UI/pull/1) and [PR #3](https://github.com/kajisho5/KATA-UI/pull/3) after reviewing their remaining changes.

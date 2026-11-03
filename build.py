@@ -397,6 +397,11 @@ LP_STYLE = """<style>
 .pronums span{font-size:13px;color:var(--ink2)}
 @media (max-width:720px){.pronums{grid-template-columns:1fr}.pronums b{font-size:34px}}
 .probars{margin-top:26px;display:grid;gap:12px;max-width:660px}
+.proster{margin-top:28px;border-top:1px solid var(--hair);padding-top:2px}
+.proster-h{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink3);margin:16px 0 10px}
+.prochips{display:flex;flex-wrap:wrap;gap:8px}
+.prochip{border:1px solid var(--hair);border-radius:8px;padding:7px 12px;font-size:13px;color:var(--ink);text-decoration:none}
+.prochip:hover{border-color:var(--ink3)}
 .probar{display:grid;grid-template-columns:150px 1fr 64px;align-items:center;gap:12px;font-size:13px}
 .probar .track{height:10px;background:var(--soft);border-radius:99px;overflow:hidden}
 .probar .track i{display:block;height:100%;border-radius:99px}
@@ -562,14 +567,19 @@ def landing(comps, blocks, n_icons, templates=None):
       '<div class="motiongrid">' + _mt + '</div></section>')
     finalcta = ('<section class="lpsec finalcta"><h2>Start with one part.</h2>'
       '<p class="sub" style="margin-left:auto;margin-right:auto">Ninety seconds from now it can be on your page \u2014 tokens in, part pasted, shipped.</p>'
-      '<p class="fc-cta"><a class="btn btn-pri btn-lg" href="#first-five">Copy your first part</a><a class="btn btn-ghost btn-lg" href="#pro">Notify me for Pro</a></p></section>')
+      '<p class="fc-cta"><a class="btn btn-pri btn-lg" href="#first-five">Copy your first part</a><a class="btn btn-ghost btn-lg" href="/pricing/">See what Pro adds</a></p></section>')
+    _pro_chips_b = ''.join('<a class="prochip" href="/blocks/' + b['slug'] + '/">' + esc(b['meta']['title']) + '</a>' for b in load_blocks())
+    _pro_chips_t = ''.join('<a class="prochip" href="/templates/' + t['slug'] + '/">' + esc(t['meta']['title']) + '</a>' for t in load_templates())
+    _proster = ('<div class="proster"><p class="proster-h">EVERYTHING IN PRO \u2014 21 BLOCKS</p><div class="prochips">' + _pro_chips_b + '</div>'
+      '<p class="proster-h">7 TEMPLATES</p><div class="prochips">' + _pro_chips_t + '</div>'
+      '<p class="lpnote" style="margin-top:12px">Every one of them is a live page on this site \u2014 open any chip and inspect exactly what you would get.</p></div>')
     proband = ('<section class="lpsec proof" id="pro"><h2>Pro is assembled time.</h2>'
       '<p class="sub">The parts are free. What Pro sells is the hours you do not spend composing them \u2014 21 blocks and 7 templates, assembled, responsive, and checked against the same mold.</p>'
       '<div class="pronums"><div><b>&asymp;77 h</b><span>of assembly, done for you</span></div><div><b>$129</b><span>once \u2014 lifetime, every future block</span></div><div><b>$1.68</b><span>per hour of it</span></div></div>'
       '<div class="probars"><div class="probar"><span>Assemble it yourself</span><div class="track"><i style="width:100%;background:var(--ink)"></i></div><b>&asymp;77 h</b></div><div class="probar"><span>With Pro</span><div class="track"><i style="width:2%;background:var(--acc);min-width:10px"></i></div><b>minutes</b></div></div>'
       '<p class="lpnote" style="margin-top:16px">Founding 100: $99, plus two blocks that will never be sold separately \u2014 Invoice Desk and Kanban Board.</p>'
-      + waitlist_form() +
-      '<p class="lpnote" style="margin-top:14px">Free is the finished product. Pro is for people who would rather not compose. <a href="/pricing/" style="color:var(--acc)">See everything in Pro</a></p></section>')
+      + _proster +
+      '<p class="lpnote" style="margin-top:14px">Free is the finished product. Pro is for people who would rather not compose. <a href="/pricing/" style="color:var(--acc)">Pricing and the launch list</a></p></section>')
     pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
     asmx = ''
     if pr_block:
@@ -2384,6 +2394,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 Pro, itemized', '<p>The Pro band on the front page talked about hours and hourly rates and never named a single thing it sells. It now lists the whole shelf \u2014 all 21 blocks and 7 templates, each a chip linking to its live page, so the offer can be inspected piece by piece before it can be bought. The email form leaves the front page with it: the launch list lives on the pricing page now, next to the terms it belongs with.</p>', None, None),
+    (
  'November 3, 2026 \u2014 Nothing on the front page twice', '<p>The front page was showing some parts three and four times over \u2014 the same line chart in the casting bench, the product screen and the Lab collage, the same ambient tiles in the Motion band and both shelves below it. Each part now holds one stage: the bench casts a Bar Chart and the Donut, the product screen keeps the Line Chart and the Data Table, the collage is Stat Cards, a Kanban board, a Calendar and a Sparkline, and the Lab shelves trade in parts the band is not already showing. The swap surfaced a real defect, too: a tile is a dark panel wherever it sits, but its token scope followed the page around it, so preview text written in part tokens rendered dark-on-dark on the light page. Every tile now carries its dark scope with it. And the two Beams \u2014 two parts that share one class name \u2014 are never loaded on the same page again.</p>', None, None),
     (
  'November 3, 2026 \u2014 The front page, rebuilt around the message', '<p>The hero now leads with the only two sentences that matter \u2014 \u201cVanilla HTML, CSS and JS\u201d and \u201cCopy the code. Own the design\u201d \u2014 with the counts demoted to a footnote line, the pattern backdrop retired, and the casting bench directly underneath: accent, radius, motion and mode re-cast real Buttons, Inputs, a Card and two Charts (the beta parts are labeled, here as everywhere). \u201cThree ways in\u201d shows copy-paste, the one-file CLI (real output, dependencies and all) and the registry side by side, with the honest comparison: an AI improvising drifts; an AI fetching checked parts does not. The showcase is no longer four framed pages but one composed product screen \u2014 sidebar, chart, form and a sortable data table, every control live, every part on the screen named in the manifest below it. The comparison table gained its third column and the two rows that decide it: AI friendliness, and quality without React.</p>', None, None),

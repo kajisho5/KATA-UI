@@ -15,10 +15,10 @@ itself and needs Node 18+.
 ## Usage
 
 ```sh
-npx kataui init            # write the design tokens (kata/tokens.css)
-npx kataui add button      # add a part — and everything it depends on
-npx kataui add data-table  # components, blocks, templates, themes: one verb
-npx kataui list            # every part in the registry
+npx @kajisho5/kataui init            # write the design tokens (kata/tokens.css)
+npx @kajisho5/kataui add button      # add a part — and everything it depends on
+npx @kajisho5/kataui add data-table  # components, blocks, templates, themes: one verb
+npx @kajisho5/kataui list            # every part in the registry
 ```
 
 Files land in `./kata` by default; load `kata/tokens.css` first, then the

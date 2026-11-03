@@ -17,18 +17,18 @@ No framework · No build step · No runtime</p>
   <a href="https://kata-ui.dev/blocks/">Blocks</a> ·
   <a href="https://kata-ui.dev/templates/">Templates</a> ·
   <a href="https://kata-ui.dev/docs/">Docs</a> ·
-  <a href="https://www.npmjs.com/package/kataui">npm</a>
+  <a href="https://www.npmjs.com/package/@kajisho5/kataui">npm</a>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/kataui"><img src="https://img.shields.io/npm/v/kataui" alt="npm"></a>
+  <a href="https://www.npmjs.com/package/@kajisho5/kataui"><img src="https://img.shields.io/npm/v/@kajisho5%2Fkataui" alt="npm"></a>
   <a href="https://github.com/kajisho5/KATA-UI"><img src="https://img.shields.io/github/stars/kajisho5/KATA-UI" alt="GitHub stars"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT"></a>
   <a href="https://kata-ui.dev/docs/why-vanilla/"><img src="https://img.shields.io/badge/vanilla-only-18181b" alt="Vanilla only"></a>
 </p>
 
 ```bash
-npx kataui add button
+npx @kajisho5/kataui add button
 ```
 
 <p align="center">
@@ -37,7 +37,7 @@ npx kataui add button
 
 The screenshots cannot do this library justice, because nothing on the site is a screenshot: every preview on [kata-ui.dev](https://kata-ui.dev) is the part itself, running. The seven templates run full-page at their own demo addresses — a [dashboard](https://kata-ui.dev/templates/dashboard/demo/), an [inbox](https://kata-ui.dev/templates/inbox/demo/), a [checkout](https://kata-ui.dev/templates/checkout/demo/) — each composed only from parts in this catalog, each part named in the manifest under the screen.
 
-`KATA UI` is a copy-paste library for people who ship HTML: parts in plain HTML, CSS and vanilla JS, all reading the same token file, so a button written in January and a data table written in June look like they were cast on the same day — because they were, from the same mold (*kata*, the Japanese discipline of the form). Copy a part from its page and the code is yours: no package to keep updated, no runtime to adopt, nothing that can be sunset under you. A zero-dependency CLI ([`kataui`](https://www.npmjs.com/package/kataui)) installs parts — and their dependencies — from the terminal, and the whole catalog is published as a machine-readable registry, so AI tools fetch real parts instead of improvising lookalikes.
+`KATA UI` is a copy-paste library for people who ship HTML: parts in plain HTML, CSS and vanilla JS, all reading the same token file, so a button written in January and a data table written in June look like they were cast on the same day — because they were, from the same mold (*kata*, the Japanese discipline of the form). Copy a part from its page and the code is yours: no package to keep updated, no runtime to adopt, nothing that can be sunset under you. A zero-dependency CLI ([`@kajisho5/kataui`](https://www.npmjs.com/package/@kajisho5/kataui)) installs parts — and their dependencies — from the terminal, and the whole catalog is published as a machine-readable registry, so AI tools fetch real parts instead of improvising lookalikes.
 
 If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rails templates, WordPress themes, or one island inside a React app.
 
@@ -55,12 +55,12 @@ If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rail
 
 ```bash
 # 1. write the design tokens into ./kata (every part reads them)
-npx kataui init
+npx @kajisho5/kataui init
 
 # 2. add parts — dependencies come along on their own
-npx kataui add button
-npx kataui add data-table        # pulls in badge + button first
-npx kataui add login             # blocks and templates install the same way
+npx @kajisho5/kataui add button
+npx @kajisho5/kataui add data-table        # pulls in badge + button first
+npx @kajisho5/kataui add login             # blocks and templates install the same way
 
 # 3. load the files, tokens first, and paste the example HTML in as it is
 ```
@@ -111,7 +111,7 @@ Parts reference only `var(--k-…)` tokens, so restyling is a token change, not 
 The catalog is published for tools as well as people, all generated from the same source folders as the site:
 
 - **Registry** — [`registry.json`](https://kata-ui.dev/registry.json) in the shadcn registry format: names, files, dependencies.
-- **CLI** — [`kataui`](https://www.npmjs.com/package/kataui) on npm, or the same single file [downloaded directly](https://kata-ui.dev/cli/kata-ui.mjs). Zero dependencies, Node 18+.
+- **CLI** — [`@kajisho5/kataui`](https://www.npmjs.com/package/@kajisho5/kataui) on npm, or the same single file [downloaded directly](https://kata-ui.dev/cli/kata-ui.mjs). Zero dependencies, Node 18+.
 - **MCP server** — a read-only, zero-dependency server (`mcp/kata-ui-mcp.mjs`) that lists, searches and fetches parts from the registry.
 - **AI Skill** — [`skill/SKILL.md`](skill/SKILL.md) teaches coding models the catalog's shape, so an assistant asked for "a sidebar" installs this Sidebar instead of inventing one.
 - **llms.txt** — the catalog as prose for models that read the web: [llms.txt](https://kata-ui.dev/llms.txt) and [llms-full.txt](https://kata-ui.dev/llms-full.txt).

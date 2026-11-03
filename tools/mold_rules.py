@@ -35,9 +35,17 @@ def inspect(directory, root, config):
     css = css_path.read_text() if css_path.exists() else ''
     html_files = sorted(directory.glob('*.html'))
     docs = [(f, Markup(f.read_text())) for f in html_files]
+    token_source = strip_comments((root / 'tokens.css').read_text()) if (root / 'tokens.css').exists() else ''
+    prefixes = {directory.name}
+    first = re.search(r'\.([a-zA-Z][\w-]*)\s*\{', strip_comments(css))
+    if first: prefixes.add(re.sub(r'^k-', '', first[1]))
+    forbidden = sorted({name for name in re.findall(r'(--k-[\w-]+)\s*:', token_source)
+                        if any(name.startswith('--k-' + prefix + '-') for prefix in prefixes)})
+    record('shared-token-scope', forbidden)
     raw = []
     def scan(text, path):
         for prop, value in declarations(text):
+            if prop.startswith('--'): continue  # Component-root custom properties are local definitions.
             relevant = any(x in prop for x in ('radius','shadow','duration','color')) or prop in ('background','border','animation','transition','fill','stroke')
             if not relevant: continue
             # Ignore URL fragments and quoted strings, but retain var() fallbacks.

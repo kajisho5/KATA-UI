@@ -69,8 +69,7 @@
       list.hidden = false;
       input.setAttribute('aria-expanded', 'true');
       const count = visible().length;
-      empty.hidden = items.some(item => !item.hidden);
-      status.textContent = `${count} ${count === 1 ? 'result' : 'results'} available.`;
+      empty.hidden = count !== 0;
     }
     function highlight(item) {
       clearActive();
@@ -87,14 +86,27 @@
       close();
       input.dispatchEvent(new Event('change', { bubbles: true }));
     }
-    function refresh() { filter(); open(); }
-    input.addEventListener('focus', refresh);
-    input.addEventListener('click', () => { if (list.hidden) refresh(); });
+    function showAll() {
+      clearActive();
+      items.forEach(item => { item.hidden = false; });
+      status.textContent = '';
+      open();
+    }
+    function refresh() {
+      filter();
+      open();
+      const count = visible().length;
+      const message = count === 1
+        ? (combo.dataset.comboResultOne || '{count} result available.')
+        : (combo.dataset.comboResultMany || '{count} results available.');
+      status.textContent = message.replaceAll('{count}', String(count));
+    }
+    input.addEventListener('focus', showAll);
+    input.addEventListener('click', showAll);
     input.addEventListener('compositionstart', () => { composing = true; clearActive(); });
     input.addEventListener('compositionend', () => {
       composing = false;
       items.forEach(item => item.setAttribute('aria-selected', 'false'));
-      refresh();
     });
     input.addEventListener('input', event => {
       if (composing || event.isComposing) return;
@@ -103,6 +115,11 @@
     });
     input.addEventListener('keydown', event => {
       if (composing || event.isComposing || event.keyCode === 229 || input.disabled || input.readOnly) return;
+      if (event.altKey && event.key === 'ArrowDown') {
+        event.preventDefault();
+        showAll();
+        return;
+      }
       if (event.key === 'Escape') {
         if (!list.hidden) { event.preventDefault(); event.stopPropagation(); close(); }
         return;
@@ -117,7 +134,7 @@
       if (!arrow && !(boundary && !list.hidden)) return;
       if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
       event.preventDefault();
-      if (list.hidden) refresh();
+      if (list.hidden) showAll();
       const options = visible();
       const index = options.indexOf(active);
       let next;

@@ -8,3 +8,8 @@ class AnatomyTest(unittest.TestCase):
         self.assertEqual(data,['data-size'])
     def test_grouped_selectors(self):
         self.assertEqual(css_surface('.a,.b{color:red}.a:hover{color:blue}')[0],['a','b'])
+
+class AriaTest(unittest.TestCase):
+    def test_svg_decoration_is_not_api(self):
+        from tools.anatomy import aria_surface
+        self.assertEqual(aria_surface('<input aria-expanded="false"><svg aria-hidden="true"><path aria-label="art"></path></svg><div aria-live="polite"></div>'), ['aria-expanded','aria-live'])

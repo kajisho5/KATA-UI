@@ -358,7 +358,7 @@ LP_STYLE = """<style>
 .browser-bar i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
 .browser-bar .url{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:3px 10px;background:var(--paper)}
 .browser .shell{border:0;border-radius:0}
-.livechip{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink2)}
+.livechip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink2)}
 .livechip i{width:7px;height:7px;border-radius:50%;background:var(--acc);flex:none}
 .livechip.on-dark{color:#d4d4d8}
 .browser{position:relative}
@@ -406,18 +406,18 @@ LP_STYLE = """<style>
 .fc-cta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .hero3{text-align:center;padding:76px 0 6px}
 .hero3-eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink2)}
-.hero3 h1{font-size:64px;line-height:1.06;letter-spacing:-.028em;font-weight:650;margin-top:22px}
+.hero3 h1{font-size:64px;line-height:1.06;letter-spacing:-.028em;font-weight:650;margin-top:24px}
 .hero3 h1 .dim{color:var(--ink2)}
-.hero3-sub{max-width:60ch;margin:22px auto 0;font-size:15.5px;line-height:1.85;color:var(--ink2);letter-spacing:.012em}
+.hero3-sub{max-width:60ch;margin:24px auto 0;font-size:15.5px;line-height:1.85;color:var(--ink2);letter-spacing:.012em}
 .hero3 .cta{margin-top:30px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .hero3 .herotrust{margin-top:24px;color:var(--ink3)}
 .hero3 .herotrust .fmold{color:var(--ink2)}
 @media (max-width:720px){.hero3{padding:52px 0 2px}.hero3 h1{font-size:34px}.hero3 .cta{flex-direction:column;align-items:stretch}.hero3 .cta a{justify-content:center}}
 #one-mold .castlive{max-width:920px;margin-left:0}
-.cl-grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin-top:12px}
+.cl-grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;margin-top:12px}
 .cl-grid2 figure{margin:0}
 @media (max-width:760px){.cl-grid2{grid-template-columns:1fr}}
-.speccap{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--k-ink-2);margin-top:7px}
+.speccap{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--k-ink-2);margin-top:8px}
 .term{font-family:var(--mono);font-size:12px;line-height:1.75;background:var(--soft);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;overflow-x:auto;text-align:left;margin-top:12px;white-space:pre;color:var(--ink)}
 .term .dim{color:var(--ink3)}
 .proofstrip{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
@@ -436,7 +436,7 @@ LP_STYLE = """<style>
 .ps-chart figure{margin:0}
 .ps-table{overflow-x:auto}
 .psmani{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;align-items:center}
-.psmani .pm{font-size:12px;font-weight:550;border:1px solid var(--hair);border-radius:99px;padding:4px 11px;color:var(--ink2);text-decoration:none}
+.psmani .pm{font-size:12px;font-weight:550;border:1px solid var(--hair);border-radius:99px;padding:4px 12px;color:var(--ink2);text-decoration:none}
 .psmani .pm:hover{color:var(--ink);border-color:var(--ink3)}
 .psmani .pm i{font-style:normal;font-family:var(--mono);font-size:9.5px;color:var(--k-yamabuki-ink,#8a5a00);margin-left:5px}
 .psmani .lead{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink3);margin-right:2px}

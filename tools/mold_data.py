@@ -16,8 +16,9 @@ def mask_color_data(text, filename, config):
             if not is_color_data(filename,dict(attrs),config):return
             raw=self.get_starttag_text();line,col=self.getpos()
             offset=sum(len(x) for x in text.splitlines(keepends=True)[:line-1])+col
-            for style in re.finditer(r'\bstyle\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+))',raw,re.I):
-                group=next(i for i in (1,2,3) if style[i] is not None)
+            for style in re.finditer(r'(?<!\S)([^\s=<>/]+)\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+))',raw,re.I):
+                if style[1].lower()!='style':continue
+                group=next(i for i in (2,3,4) if style[i] is not None)
                 for decl in re.finditer(r'(?:^|;)\s*([\w-]+)\s*:\s*([^;]+)',style[group]):
                     if 'color' in kinds_for(decl[1],decl[2]):
                         start=offset+style.start(group)+decl.start(2)

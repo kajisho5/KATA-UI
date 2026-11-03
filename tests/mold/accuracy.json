@@ -802,5 +802,25 @@
     "expected": {
       "token-values": "fail"
     }
+  },
+  {
+    "name": "data-style is not inline CSS",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<span data-swatch data-style=\"color:#f00\"></span>",
+    "expected": {
+      "token-values": "pass"
+    },
+    "expected_legacy_hex": 1
+  },
+  {
+    "name": "style text inside a label is not CSS",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<span data-swatch aria-label='style=\"color:#f00\"'></span>",
+    "expected": {
+      "token-values": "pass"
+    },
+    "expected_legacy_hex": 1
   }
 ]

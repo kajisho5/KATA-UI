@@ -1,1 +1,0 @@
-Temporary Cloudflare Pages Git integration verification file. Remove after the preview build test.

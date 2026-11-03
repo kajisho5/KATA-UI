@@ -1,4 +1,7 @@
-<img src="logo/logo.svg" width="64" height="64" alt="KATA UI">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="logo/logo-white.svg">
+  <img src="logo/logo.svg" width="64" height="64" alt="KATA UI">
+</picture>
 
 # KATA UI
 

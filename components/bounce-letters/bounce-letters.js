@@ -1,7 +1,6 @@
 // KATA Bounce Letters — splits the line; the click sends a wave.
 document.querySelectorAll('[data-bounce]').forEach(function (el) {
   var text = el.textContent.trim();
-  el.setAttribute('aria-label', text);
   el.textContent = '';
   var wrap = document.createElement('span');
   wrap.setAttribute('aria-hidden', 'true');

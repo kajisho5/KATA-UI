@@ -1,7 +1,7 @@
 {
   "title": "Button",
   "category": "Form & Input",
-  "description": "Black leads; lines and ghosts support. Hover, disabled and loading states included.",
+  "description": "Buttons for primary actions, secondary actions and destructive actions, with disabled and loading examples.",
   "tags": [
     "action",
     "cta",

@@ -541,6 +541,10 @@ LP_STYLE = """<style>
 @media (max-width:720px){.lp .hero h1{font-size:33px}.browser .shell-side{display:none}}
 </style>"""
 
+def plain_footer():
+    return '<div class="wrap"><footer class="site"><b>KATA UI</b><a href="/docs/">Docs</a><a href="/lab/">Lab</a><a href="https://github.com/kajisho5/KATA-UI">GitHub</a></footer></div>'
+
+
 def landing(comps, blocks, n_icons, templates=None):
     n = len(comps)
     nb = len(blocks)
@@ -745,54 +749,22 @@ def landing(comps, blocks, n_icons, templates=None):
       '<a class="allband-cta" href="/components/">Browse the catalog</a></div></section>')
     body = f"""
 <div class="wrap lp">
-  <header class="hero3">
-    <p class="hero3-eyebrow">{n} components &middot; {nb} blocks &middot; {nt} templates &middot; {n_icons + _nbrands} icons &amp; marks — every part free, forever</p>
-    <h1>Vanilla HTML, CSS and JS.<br><span class="dim">Copy the code. Own the design.</span></h1>
-    <p class="hero3-sub"><b>No framework. No build step.</b> Copy a part, paste it into the page you already have, and ship it — at this quality. Every part is checked against a single mold before it ships: tokens only, classes covered, every state finished.</p>
-    <div class="cta">
-      <a class="btn btn-pri btn-lg" href="#first-five">Copy a part now</a>
-      <a class="btn btn-ghost btn-lg" href="/components/">Open Components</a>
-    </div>
-    <p class="herotrust">This page is built with KATA — every part on it is the real part, unmodified. <span class="fmold">{MOLD_STATUS}</span></p>
-  </header>
-  {moldlive}
-  {threeways}
-  {demoband}
-  {videoband}
-  {firstfive}
-  {principles}
-  {asmx}
-  {reactband}
-  {motionband}
-  {compare}
-  {proband}
-  <section class="lpsec">
-    <h2>Five genres, one mold</h2>
-    <div class="genres">
-      <a class="genre" href="/components/"><span class="gn">{n} PARTS</span><h3>Components</h3><p>The single parts: forms, overlays, feedback, display — and a Motion line other libraries do not carry.</p></a>
-      <a class="genre" href="/blocks/"><span class="gn">{nb} SECTIONS</span><h3>Blocks</h3><p>Whole sections composed from the parts — sign-in, pricing, settings, an app shell. Start here, take apart later.</p></a>
-      <a class="genre" href="/templates/"><span class="gn">{nt} PAGES</span><h3>Templates</h3><p>Whole pages, already assembled — a dashboard, an inbox, a landing. The parts and blocks in their places, ready to take apart.</p></a>
-      <a class="genre" href="/icons/"><span class="gn">{n_icons + _nbrands} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 1.7 stroke cut square, three shapes only. Click to copy the SVG.</p></a>
-      <a class="genre" href="/design-system/"><span class="gn">TOKENS.JSON</span><h3>Design System</h3><p>The foundation every part is cast from — color, type, spacing, radius, motion. Download it, diff it, fork it.</p></a>
-    </div>
-    <div class="compat">
-      <b>Drops into</b> plain HTML, Astro, Laravel, Django, Rails and WordPress themes — anywhere that renders HTML, with no React island required.<br>
-      <b>For AI tools</b>, KATA speaks their formats: <a href="/registry.json">registry.json</a> for installers and agents, <a href="/llms.txt">llms.txt</a> for models that read the web.
-    </div>
-  </section>
-  {fresh}
-  {trust}
-  {faqsec}
-  {labhead}
-  {mstrip}
-  {showcase}
-  {collage}
-  {allband}
-  {finalcta}
-</div>
-{FOOTER}
-</body>
-</html>"""
+<header class="hero3">
+<p class="hero3-eyebrow">{n} components · {nb} blocks · {nt} templates</p>
+<h1>HTML, CSS and JavaScript<br><span class="dim">for the page you're building.</span></h1>
+<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. No framework or build step required.</p>
+<div class="cta"><a class="btn btn-pri btn-lg" href="/components/">Browse components</a><a class="btn btn-ghost btn-lg" href="/docs/getting-started/">Get started</a></div>
+<p class="herotrust">Components are MIT licensed. <span class="fmold">{MOLD_STATUS}</span> · <a href="/mold-results.json">Read the results</a></p>
+</header>
+<section class="lpsec"><h2>One mold: shared design tokens</h2><p class="lpnote">Load tokens.css, then the component's CSS and HTML. Add its JavaScript if it has any. Change colors and spacing through the tokens.</p></section>
+<section class="lpsec"><h2>Start with five components</h2><p class="lpnote">Buttons for actions, inputs for text, badges for status, tabs for views and toasts for feedback.</p><div class="cards">{''.join(card(c) for c in _five)}</div></section>
+<section class="lpsec"><h2>Install from your terminal</h2><div class="term">npx @kajisho5/kataui init<br>npx @kajisho5/kataui add button</div><p class="lpnote">The CLI copies files and includes dependencies. You can also copy code from each component page.</p></section>
+<section class="lpsec"><h2>A page built from these components</h2><p class="lpnote">Try a <a href="/templates/dashboard/demo/">dashboard</a>, <a href="/templates/inbox/demo/">inbox</a> or <a href="/templates/settings-page/demo/">settings page</a>. Each template lists its components.</p><p class="lpnote">For individual controls, see the <a href="/components/">component previews</a>.</p></section>
+<section class="lpsec"><h2>Use the source in your tools</h2><p class="lpnote">The <a href="/registry.json">registry</a>, <a href="/docs/mcp-server/">MCP server</a> and <a href="/skill/SKILL.md">AI skill</a> give assistants the same files you copy here. Check results and Beta labels show what still needs work.</p><p class="lpnote">Works with plain HTML, Astro, Laravel, Django, Rails and WordPress. React projects need <a href="/docs/react/">a few markup changes</a>.</p></section>
+<section class="lpsec"><h2>Components are free. Pro adds layouts.</h2><p class="lpnote">{nb} blocks and {nt} templates. Planned price: $129 once, including future additions. Sales have not opened.</p><a href="/pricing/">See pricing and the full list</a></section>
+<section class="lpsec"><h2>Motion experiments</h2><p class="lpnote">Animated text, backgrounds and KATAYABURI experiments are in the <a href="/lab/">Lab</a>.</p></section>
+<section class="lpsec"><h2>Built something with KATA?</h2><p class="lpnote"><a href="/showcase/">See the showcase</a> or <a href="https://github.com/kajisho5/KATA-UI">report a problem on GitHub</a>.</p></section>
+</div>{plain_footer()}</body></html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
              + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('sidebar', 'select', 'bar-chart', 'calendar', 'sparkline', 'card', 'aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'word-rotate', 'goo-tabs', 'dock', 'jelly-buttons', 'scramble', 'bounce-letters', 'tilt-card', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/kanban/kanban.css?v={_v(kb_block["css"])}">' if kb_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
@@ -1398,86 +1370,23 @@ def inventory_html():
 
 def pricing_page():
     body = """
-<div class="wrap pr">
-  <h1>Pricing</h1>
-  <p class="lead">Free is the finished product — the parts are free, forever. What Pro sells is the assembled work — the blocks and templates — for one payment, once.</p>
-  <div class="tiers">
-    <div class="tier">
-      <h2>Free</h2>
-      <p class="price">$0</p>
-      <p class="per">MIT licensed. No account, no catch.</p>
-      <ul>
-        <li>All 136 components, with live previews and examples</li>
-        <li>150 icons and 220 brand marks</li>
-        <li>5 themes and the full design-token system</li>
-        <li>The CLI, the registry, the MCP server and the AI Skill</li>
-        <li>All documentation and guides</li>
-      </ul>
-      <a class="cta" href="/components/">Browse the parts</a>
-      <p class="note">The parts are the commons: they stay free whatever Pro does. A library nobody can afford to start with helps nobody.</p>
-    </div>
-    <div class="tier pro">
-      <h2>Pro</h2>
-      <p class="price">$129</p>
-      <p class="per">One payment. Lifetime. Every future block and template included.</p>
-      <ul>
-        <li>All blocks — page chrome, marketing and product sections</li>
-        <li>All templates — whole pages, assembled and styled</li>
-        <li>Key-gated downloads of the composed work</li>
-        <li>Every block and template added later, at no extra cost</li>
-        <li>No seats, no per-project fees, no subscription</li>
-      </ul>
-      <span class="cta ghost">Sales open soon</span>
-      __WAITLIST__
-      <p class="note">Not on sale yet: the blocks and templates are still open on this site while Pro is being prepared. When sales open, $129 is the price — once, and the code is yours either way.</p>
-    </div>
-  </div>
-  <div class="inventory">
-    <h2>Everything in Pro, itemized</h2>
-    <p class="rs">The whole composed shelf — every block and template the $129 covers, each one a live page on this site. Nothing here is a render: open any of them and take it apart.</p>
-    <div class="invgrid">__INVENTORY__</div>
-  </div>
-  <div class="valueband">
-    <h2>What the $129 actually buys back</h2>
-    <div class="vb-grid">
-      <div><b>28</b><span>assembled artifacts \u2014 21 blocks and 7 templates</span></div>
-      <div><b>87</b><span>part-instances, already composed and mold-checked</span></div>
-      <div><b>\u224877 h</b><span>of assembly replaced \u2014 21 blocks \u00d7 ~2 h plus 7 templates \u00d7 ~5 h, states, dark mode and responsive included</span></div>
-      <div><b>$1.68</b><span>per hour of it, once \u2014 and every future block is included</span></div>
-    </div>
-    <p class="note">The arithmetic is shown so you can argue with it. Even at half these estimates, the shelf pays for itself on the first page you ship with it.</p>
-    <div class="rateband">
-      <h3>What &asymp;77 hours costs at your rate</h3>
-      <p class="rs">The same assembly estimates as the shelf above — 21 blocks at ~2 hours, 7 templates at ~5 hours, states, dark mode and responsive included. Priced three ways, and then priced once:</p>
-      <div class="rrow"><span class="rl">$25 / hour</span><div class="rtrack"><div class="rbar" style="width:25%"></div></div><span class="rv">$1,925</span></div>
-      <div class="rrow"><span class="rl">$50 / hour</span><div class="rtrack"><div class="rbar" style="width:50%"></div></div><span class="rv">$3,850</span></div>
-      <div class="rrow"><span class="rl">$100 / hour</span><div class="rtrack"><div class="rbar" style="width:100%"></div></div><span class="rv">$7,700</span></div>
-      <div class="rrow"><span class="rl">Pro, once</span><div class="rtrack"><div class="rbar pro" style="width:2%"></div></div><span class="rv">$129</span></div>
-      <p class="note">Even if the assembly estimates are twice too generous, the cheapest row still clears the price by an order of magnitude.</p>
-    </div>
-  </div>
-  <div class="founding">
-    <h2>Founding 100</h2>
-    <p>The first 100 licenses are Founding licenses: <b>$99 instead of $129</b>, two blocks that will never be sold separately — <b>Help Center</b> and <b>Job Board</b> — and priority support that stays with the license permanently. When the hundredth is gone, the offer closes. The waitlist hears first, in order.</p>
-  </div>
-  <div class="afterbuy">
-    <h2>After checkout</h2>
-    <div class="ab-grid">
-      <div><span class="no">1</span><h3>A key arrives</h3><p>Checkout runs through Lemon Squeezy; your license key lands in your inbox with the receipt. No account to create, nothing to install.</p></div>
-      <div><span class="no">2</span><h3>One download</h3><p>Every block and template in a single zip — or file by file, if you prefer. The parts you already use stay free and untouched; Pro adds the composed work beside them.</p></div>
-      <div><span class="no">3</span><h3>Updates, forever</h3><p>New blocks and templates join your license at no extra cost, delivered to your library and by email. The key exists for updates and support priority — there is no activation, no phone-home, no DRM in the code.</p></div>
-    </div>
-  </div>
-  <div class="qa">
-    <div><h3>Why charge for blocks and not parts?</h3><p>A single part is an afternoon of work and, honestly, an AI can draft one. A set of blocks that compose without friction — same tokens, same spacing, same voice — is the accumulated discipline of the whole catalog. That is what Pro prices.</p></div>
-    <div><h3>What happens to code I already copied?</h3><p>Nothing, ever. Copied code is yours under its license; there is no activation, no telemetry, no kill switch. Pro changes what new downloads cost, not what your files do.</p></div>
-    <div><h3>Will the parts go paid later?</h3><p>No. The line is permanent: components, icons, themes and the tooling are free; the composed work is Pro. If that line ever moved, the trust the catalog runs on would go with it.</p></div>
-  </div>
-</div>
-""" + FOOTER + """
-</body>
-</html>"""
-    return (head('Pricing — KATA UI', 'KATA UI pricing: every component free forever under MIT; Pro is the blocks and templates, $129 once, lifetime.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form()).replace('__INVENTORY__', inventory_html())
+<div class="wrap pr"><h1>Pricing</h1>
+<p class="lead">Components are free under MIT. Pro will bundle the blocks and templates for a one-time payment.</p>
+<div class="tiers"><div class="tier"><h2>Free</h2><p class="price">$0</p><p class="per">MIT license. No account required.</p><ul><li>136 HTML, CSS and JavaScript components</li><li>150 icons and 220 brand marks</li><li>Themes and design tokens</li><li>CLI, registry, MCP server and AI skill</li><li>Documentation and examples</li></ul><a class="cta" href="/components/">Browse components</a></div>
+<div class="tier pro"><h2>Pro</h2><p class="price">$129</p><p class="per">Planned price. One payment for lifetime access.</p><ul><li>21 blocks and 7 templates</li><li>Future blocks and templates included</li><li>Unlimited projects and seats</li></ul><p>Sales have not opened. Blocks and templates are currently available on this site.</p>__WAITLIST__</div></div>
+<div class="inventory"><h2>Blocks and templates</h2><p class="rs">Open an item to see its preview, source and component list.</p><div class="invgrid">__INVENTORY__</div></div>
+<div class="valueband"><h2>What you're paying for</h2><p>Pro groups components into page sections and complete layouts, with their styles and responsive structure.</p><p class="note">Our assembly estimate is 77 hours (21 blocks × 2 hours + 7 templates × 5 hours); $129 is about $1.68 per estimated hour. Your time will vary.</p></div>
+<div class="founding"><h2>First 100 licenses</h2><p>The launch offer is $99 for the first 100 licenses, including Help Center and Job Board blocks and priority support. Join the list for the launch email.</p></div>
+<div class="qa"><div><h3>Why charge for blocks?</h3><p>Components handle individual controls. Blocks and templates save you the work of arranging them into layouts. The component source stays free.</p></div><div><h3>What happens to code I've copied?</h3><p>You keep it under the license supplied with it. A later pricing change does not change that license.</p></div><div><h3>What still needs work?</h3><p>See the <a href="/mold-results.json">current check results</a> and each component's status. Test the components you use with your content and supported browsers.</p></div></div>
+</div>""" + plain_footer() + "</body></html>"
+    return (head('Pricing — KATA UI', 'Free MIT components. Pro blocks and templates: planned price $129 once.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form(note='One email when sales open.', done='You are on the list. We will email you when sales open.')).replace('__INVENTORY__', inventory_html())
+
+
+def lab_page(comps):
+    experiments = [c for c in comps if c['meta']['category'] in ('Motion', 'KATAYABURI')]
+    content = ''.join(card(c, True) for c in experiments)
+    return head('Lab — KATA UI', 'Motion and KATAYABURI experiments.', LP_STYLE + '<link rel="stylesheet" href="/kata-ui.css">') + '<div class="wrap"><h1>Lab</h1><p>Animated text, backgrounds and interaction experiments. Check each component before using it in a project.</p><div class="cards">' + content + '</div></div>' + plain_footer() + '<script src="/kata-ui.js"></script></body></html>'
+
 
 JA_STYLE = """<style>
 .ja-hero{padding:34px 0 6px}
@@ -2573,6 +2482,9 @@ def main():
             if _f.is_file():
                 shutil.copy(_f, DIST / 'media' / _f.name)
     (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons, templates), comps, None), encoding='utf-8')
+    labdir = DIST / 'lab'
+    labdir.mkdir()
+    (labdir / 'index.html').write_text(emit(lab_page(comps), comps, None, '/lab/', True), encoding='utf-8')
     cdir = DIST / 'components'
     cdir.mkdir()
     (cdir / 'index.html').write_text(emit(components_index(comps), comps, None, '/components/', True), encoding='utf-8')
@@ -2722,7 +2634,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

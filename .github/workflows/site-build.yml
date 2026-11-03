@@ -1,0 +1,30 @@
+name: Build website
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test generator helpers
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Generate website and current check results
+        run: python3 build.py
+      - name: Check production pages
+        run: |
+          test -s dist/index.html
+          test -s dist/pricing/index.html
+          test -s dist/lab/index.html
+          test -s dist/mold-results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: website
+          path: dist

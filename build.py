@@ -72,9 +72,15 @@ try:
     _r = _sp.run([_sys.executable, str(ROOT / 'check.py')], capture_output=True, text=True, timeout=90)
     _ok = sum(1 for ln in _r.stdout.splitlines() if ln.startswith('OK'))
     _bad = sum(1 for ln in _r.stdout.splitlines() if ln.startswith(('FAIL', 'NG')))
-    _ms = f'Mold Verified — {_ok}/{_ok + _bad} checks passing' if _ok else 'Mold Verified — see check.py'
+    _total = _ok + _bad
+    if _total and _r.returncode == 0:
+        _ms = f'Static mold checks — {_total} catalog items; {_ok} passing'
+    elif _total:
+        _ms = f'Static mold checks — {_ok}/{_total} catalog items passing; {_bad} failing'
+    else:
+        _ms = 'Static mold checks — result unavailable; see check.py'
 except Exception:
-    _ms = 'Mold Verified — see check.py'
+    _ms = 'Static mold checks — result unavailable; see check.py'
 MOLD_STATUS = _ms
 FOOTER = FOOTER.replace('__MOLD__', _ms)
 

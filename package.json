@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test:cli": "node --test cli/test/*.test.mjs",
     "test:browser": "playwright test",
     "test:browser:ui": "playwright test --ui"
   },

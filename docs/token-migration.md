@@ -1,6 +1,376 @@
 # Token migration plan
 
-対象: `main` の `a582ad2e0a298fb83ecb580a181b17f1c2e0a037`。2026-11-03（日本時間）に集計。部品コード・tokens.css・検査器は変更しない、提案のみ。
+対象: `main` の `95d4c11a1402ea212b0e3db483358b237cbece79`。2026-11-03（日本時間）に集計。部品コード・tokens.css・検査器は変更しない、提案のみ。
+
+## 追加調査: 合否の組み合わせと検査の実効範囲
+
+この節は最新main `95d4c11a1402ea212b0e3db483358b237cbece79` でcheck.pyを再実行した結果。下記の試算・検出実験はすべてリポジトリ外の一時ファイルで行い、部品・tokens.css・検査器は変更していない。既存の値別対応表は同じ433所見に対するものとして維持する。
+
+### 失敗パターン（errorのみ。warningを含めない）
+
+| パターン | UI | Lab | 合計 |
+|---|---:|---:|---:|
+|token-valuesのみ|46|31|77|
+|focus-visibleのみ|5|0|5|
+|両方のみ|50|9|59|
+|その他|2|1|3|
+|合格|18|2|20|
+|合計|121|43|164|
+
+「両方のみ」は2検査だけに失敗する対象。他の失敗も伴うものは「その他」へ入れる。以下の一覧はcomponentsだけでなく、check.pyの全対象であるblocks/templatesも含む。
+
+#### token-valuesだけ直せば現行判定に合格する77対象
+
+この「合格」は現在のwarning除外ルールでの試算。JS警告がある対象も注記する。token-valuesの所見をすべて直す以外に変更がなく、他の検査結果が維持されることが条件。JS警告まで解決済みという意味ではない。
+
+| 対象 | 分類 | token-values所見数 | JS警告カテゴリ |
+|---|---|---:|---|
+|`components/accordion`|UI|1|なし|
+|`components/accordion-gallery`|Lab|3|なし|
+|`components/alert-dialog`|UI|3|js-global-bindings, js-single-instance|
+|`components/aspect-ratio`|UI|1|なし|
+|`components/aurora`|Lab|5|なし|
+|`components/badge`|UI|1|なし|
+|`components/bar-chart`|UI|1|なし|
+|`components/beam-border`|Lab|3|なし|
+|`components/blur-in`|Lab|1|なし|
+|`components/bounce-letters`|Lab|1|なし|
+|`components/converge`|Lab|17|なし|
+|`components/dock`|Lab|6|なし|
+|`components/donut-chart`|UI|1|なし|
+|`components/drawer`|UI|2|js-global-bindings, js-single-instance|
+|`components/dual-range`|UI|7|なし|
+|`components/empty-state`|UI|1|なし|
+|`components/fireworks`|Lab|1|なし|
+|`components/follow-frame`|Lab|4|js-global-bindings, js-single-instance|
+|`components/funnel-chart`|UI|1|なし|
+|`components/glass-panel`|UI|3|なし|
+|`components/glow-cards`|Lab|4|なし|
+|`components/goo-cursor`|Lab|1|なし|
+|`components/gravity-playground`|Lab|2|なし|
+|`components/hanko`|UI|6|なし|
+|`components/heatmap`|UI|2|なし|
+|`components/horizontal-reel`|Lab|2|なし|
+|`components/kata-rain`|Lab|1|なし|
+|`components/kbd`|UI|1|なし|
+|`components/kintsugi-card`|UI|1|なし|
+|`components/liquid-button`|Lab|4|なし|
+|`components/magnet`|Lab|4|なし|
+|`components/marquee`|Lab|1|なし|
+|`components/meteors`|Lab|4|なし|
+|`components/newtons-cradle`|Lab|5|なし|
+|`components/noren`|UI|6|なし|
+|`components/orbit`|Lab|9|なし|
+|`components/particle-net`|Lab|1|なし|
+|`components/progress`|UI|1|なし|
+|`components/qr-code`|UI|1|なし|
+|`components/radio`|UI|3|なし|
+|`components/rating`|UI|2|なし|
+|`components/segmented`|UI|4|なし|
+|`components/shine-text`|Lab|2|なし|
+|`components/skeleton`|UI|1|なし|
+|`components/slider`|UI|6|なし|
+|`components/sparkles`|Lab|2|なし|
+|`components/spinner`|UI|3|なし|
+|`components/split-panel`|UI|2|js-global-bindings, js-single-instance|
+|`components/spotlight`|Lab|2|なし|
+|`components/stacking-cards`|Lab|2|なし|
+|`components/stepper`|UI|1|なし|
+|`components/steps`|UI|2|なし|
+|`components/switch`|UI|5|なし|
+|`components/tategaki`|UI|2|なし|
+|`components/text-reveal`|Lab|1|なし|
+|`components/tilt-card`|Lab|4|なし|
+|`components/timeline`|UI|1|なし|
+|`components/toggle`|UI|3|なし|
+|`components/tooltip`|UI|4|なし|
+|`components/torn-ticket`|UI|3|なし|
+|`components/tour`|UI|7|なし|
+|`components/tracing-beam`|Lab|3|なし|
+|`components/typewriter`|Lab|1|なし|
+|`components/warp-tunnel`|Lab|3|なし|
+|`components/word-rotate`|Lab|1|なし|
+|`blocks/cta-band`|UI|2|なし|
+|`blocks/filter-toolbar`|UI|1|なし|
+|`blocks/integrations`|UI|3|なし|
+|`blocks/invoice`|UI|1|なし|
+|`blocks/kanban`|UI|4|なし|
+|`blocks/order-confirmation`|UI|2|なし|
+|`blocks/plan-compare`|UI|1|なし|
+|`blocks/pricing`|UI|1|js-global-bindings, js-single-instance|
+|`blocks/roadmap`|UI|2|なし|
+|`blocks/stat-cards`|UI|1|なし|
+|`blocks/team`|UI|1|なし|
+|`templates/checkout`|UI|3|なし|
+
+77対象のtoken-valuesだけをすべて修正し他の結果が変わらなければ、現行ルールでは20+77=97/164合格になる試算。この77対象のうち5対象にはJS警告があるため、将来JS警告をerrorにする場合は同じ計算を使わず再集計する。
+
+#### focus-visibleのみの対象
+
+| 対象 | 所見数 |
+|---|---:|
+|`components/breadcrumbs`|3|
+|`components/button`|1|
+|`components/field`|2|
+|`components/input-group`|5|
+|`blocks/faq`|1|
+
+#### その他3対象の内訳
+
+|対象|失敗した検査|
+|---|---|
+|`components/carousel-ring`|shared-token-scope, token-values|
+|`components/date-picker`|accessible-label, focus-visible, token-values|
+|`components/toast`|focus-visible, shared-token-scope, token-values|
+
+#### 全164対象の失敗パターン
+
+|対象|パターン|失敗した検査|警告カテゴリ|
+|---|---|---|---|
+|`components/accordion`|token-valuesのみ|token-values|なし|
+|`components/accordion-gallery`|token-valuesのみ|token-values|なし|
+|`components/alert`|合格|なし|なし|
+|`components/alert-dialog`|token-valuesのみ|token-values|js-global-bindings, js-single-instance|
+|`components/aspect-ratio`|token-valuesのみ|token-values|なし|
+|`components/aurora`|token-valuesのみ|token-values|なし|
+|`components/avatar`|両方のみ|focus-visible, token-values|なし|
+|`components/badge`|token-valuesのみ|token-values|なし|
+|`components/bar-chart`|token-valuesのみ|token-values|なし|
+|`components/beam-border`|token-valuesのみ|token-values|なし|
+|`components/blur-in`|token-valuesのみ|token-values|なし|
+|`components/bottom-navigation`|両方のみ|focus-visible, token-values|なし|
+|`components/bounce-letters`|token-valuesのみ|token-values|なし|
+|`components/breadcrumbs`|focus-visibleのみ|focus-visible|なし|
+|`components/burst-button`|両方のみ|focus-visible, token-values|なし|
+|`components/button`|focus-visibleのみ|focus-visible|なし|
+|`components/button-group`|合格|なし|なし|
+|`components/calendar`|両方のみ|focus-visible, token-values|なし|
+|`components/candlestick-chart`|合格|なし|なし|
+|`components/card`|両方のみ|focus-visible, token-values|なし|
+|`components/carousel`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/carousel-ring`|その他|shared-token-scope, token-values|なし|
+|`components/cascader`|両方のみ|focus-visible, token-values|なし|
+|`components/checkbox`|両方のみ|focus-visible, token-values|なし|
+|`components/chip`|両方のみ|focus-visible, token-values|なし|
+|`components/collapsible`|両方のみ|focus-visible, token-values|なし|
+|`components/color-picker`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/combobox`|合格|なし|なし|
+|`components/command`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/comparison-slider`|両方のみ|focus-visible, token-values|なし|
+|`components/confetti-cannon`|両方のみ|focus-visible, token-values|なし|
+|`components/context-menu`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/converge`|token-valuesのみ|token-values|なし|
+|`components/copy-field`|両方のみ|focus-visible, token-values|なし|
+|`components/counter`|合格|なし|なし|
+|`components/data-table`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/date-picker`|その他|accessible-label, focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/descriptions`|合格|なし|なし|
+|`components/dock`|token-valuesのみ|token-values|なし|
+|`components/donut-chart`|token-valuesのみ|token-values|なし|
+|`components/drawer`|token-valuesのみ|token-values|js-global-bindings, js-single-instance|
+|`components/dropdown`|両方のみ|focus-visible, token-values|なし|
+|`components/dual-range`|token-valuesのみ|token-values|なし|
+|`components/empty-state`|token-valuesのみ|token-values|なし|
+|`components/field`|focus-visibleのみ|focus-visible|なし|
+|`components/file-upload`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/fireworks`|token-valuesのみ|token-values|なし|
+|`components/follow-frame`|token-valuesのみ|token-values|js-global-bindings, js-single-instance|
+|`components/funnel-chart`|token-valuesのみ|token-values|なし|
+|`components/gauge`|合格|なし|なし|
+|`components/glass-panel`|token-valuesのみ|token-values|なし|
+|`components/glow-button`|両方のみ|focus-visible, token-values|なし|
+|`components/glow-cards`|token-valuesのみ|token-values|なし|
+|`components/goo-cursor`|token-valuesのみ|token-values|なし|
+|`components/goo-tabs`|両方のみ|focus-visible, token-values|なし|
+|`components/gravity-playground`|token-valuesのみ|token-values|なし|
+|`components/hanko`|token-valuesのみ|token-values|なし|
+|`components/heatmap`|token-valuesのみ|token-values|なし|
+|`components/horizontal-reel`|token-valuesのみ|token-values|なし|
+|`components/hover-card`|両方のみ|focus-visible, token-values|なし|
+|`components/input`|両方のみ|focus-visible, token-values|なし|
+|`components/input-group`|focus-visibleのみ|focus-visible|なし|
+|`components/input-otp`|両方のみ|focus-visible, token-values|js-global-bindings|
+|`components/jelly-buttons`|両方のみ|focus-visible, token-values|なし|
+|`components/kaleidoscope`|両方のみ|focus-visible, token-values|なし|
+|`components/kata-rain`|token-valuesのみ|token-values|なし|
+|`components/kbd`|token-valuesのみ|token-values|なし|
+|`components/kintsugi-card`|token-valuesのみ|token-values|なし|
+|`components/line-chart`|合格|なし|なし|
+|`components/liquid-button`|token-valuesのみ|token-values|なし|
+|`components/list`|両方のみ|focus-visible, token-values|なし|
+|`components/magnet`|token-valuesのみ|token-values|なし|
+|`components/marquee`|token-valuesのみ|token-values|なし|
+|`components/menubar`|両方のみ|focus-visible, token-values|なし|
+|`components/meteors`|token-valuesのみ|token-values|なし|
+|`components/meter`|合格|なし|なし|
+|`components/modal`|両方のみ|focus-visible, token-values|なし|
+|`components/navigation-menu`|両方のみ|focus-visible, token-values|なし|
+|`components/newtons-cradle`|token-valuesのみ|token-values|なし|
+|`components/noren`|token-valuesのみ|token-values|なし|
+|`components/orbit`|token-valuesのみ|token-values|なし|
+|`components/pagination`|両方のみ|focus-visible, token-values|なし|
+|`components/particle-net`|token-valuesのみ|token-values|なし|
+|`components/particle-word`|両方のみ|focus-visible, token-values|なし|
+|`components/popover`|合格|なし|js-global-bindings, js-single-instance|
+|`components/progress`|token-valuesのみ|token-values|なし|
+|`components/qr-code`|token-valuesのみ|token-values|なし|
+|`components/radar-chart`|合格|なし|なし|
+|`components/radio`|token-valuesのみ|token-values|なし|
+|`components/rating`|token-valuesのみ|token-values|なし|
+|`components/reorder`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/result`|合格|なし|なし|
+|`components/scatter-chart`|合格|なし|なし|
+|`components/scramble`|合格|なし|なし|
+|`components/scroll-area`|両方のみ|focus-visible, token-values|なし|
+|`components/scrollspy`|両方のみ|focus-visible, token-values|なし|
+|`components/segmented`|token-valuesのみ|token-values|なし|
+|`components/select`|両方のみ|focus-visible, token-values|なし|
+|`components/separator`|合格|なし|なし|
+|`components/shine-text`|token-valuesのみ|token-values|なし|
+|`components/sidebar`|両方のみ|focus-visible, token-values|なし|
+|`components/skeleton`|token-valuesのみ|token-values|なし|
+|`components/slider`|token-valuesのみ|token-values|なし|
+|`components/sparkles`|token-valuesのみ|token-values|なし|
+|`components/sparkline`|合格|なし|なし|
+|`components/speed-dial`|両方のみ|focus-visible, token-values|なし|
+|`components/spinner`|token-valuesのみ|token-values|なし|
+|`components/split-panel`|token-valuesのみ|token-values|js-global-bindings, js-single-instance|
+|`components/spotlight`|token-valuesのみ|token-values|なし|
+|`components/stacking-cards`|token-valuesのみ|token-values|なし|
+|`components/stat`|合格|なし|なし|
+|`components/stepper`|token-valuesのみ|token-values|なし|
+|`components/steps`|token-valuesのみ|token-values|なし|
+|`components/switch`|token-valuesのみ|token-values|なし|
+|`components/table`|合格|なし|なし|
+|`components/tabs`|両方のみ|focus-visible, token-values|なし|
+|`components/tag-input`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`components/tategaki`|token-valuesのみ|token-values|なし|
+|`components/text-reveal`|token-valuesのみ|token-values|なし|
+|`components/textarea`|両方のみ|focus-visible, token-values|なし|
+|`components/tilt-card`|token-valuesのみ|token-values|なし|
+|`components/time-picker`|両方のみ|focus-visible, token-values|なし|
+|`components/timeline`|token-valuesのみ|token-values|なし|
+|`components/toast`|その他|focus-visible, shared-token-scope, token-values|なし|
+|`components/toggle`|token-valuesのみ|token-values|なし|
+|`components/tooltip`|token-valuesのみ|token-values|なし|
+|`components/torn-ticket`|token-valuesのみ|token-values|なし|
+|`components/tour`|token-valuesのみ|token-values|なし|
+|`components/tracing-beam`|token-valuesのみ|token-values|なし|
+|`components/transfer`|両方のみ|focus-visible, token-values|なし|
+|`components/tree`|両方のみ|focus-visible, token-values|なし|
+|`components/typeset`|両方のみ|focus-visible, token-values|なし|
+|`components/typewriter`|token-valuesのみ|token-values|なし|
+|`components/wagara`|両方のみ|focus-visible, token-values|なし|
+|`components/warp-tunnel`|token-valuesのみ|token-values|なし|
+|`components/word-rotate`|token-valuesのみ|token-values|なし|
+|`blocks/app-shell`|両方のみ|focus-visible, token-values|なし|
+|`blocks/cookie-consent`|両方のみ|focus-visible, token-values|なし|
+|`blocks/cta-band`|token-valuesのみ|token-values|なし|
+|`blocks/faq`|focus-visibleのみ|focus-visible|なし|
+|`blocks/filter-toolbar`|token-valuesのみ|token-values|なし|
+|`blocks/integrations`|token-valuesのみ|token-values|なし|
+|`blocks/invoice`|token-valuesのみ|token-values|なし|
+|`blocks/kanban`|token-valuesのみ|token-values|なし|
+|`blocks/login`|両方のみ|focus-visible, token-values|なし|
+|`blocks/logo-cloud`|合格|なし|なし|
+|`blocks/order-confirmation`|token-valuesのみ|token-values|なし|
+|`blocks/plan-compare`|token-valuesのみ|token-values|なし|
+|`blocks/pricing`|token-valuesのみ|token-values|js-global-bindings, js-single-instance|
+|`blocks/roadmap`|token-valuesのみ|token-values|なし|
+|`blocks/settings`|両方のみ|focus-visible, token-values|なし|
+|`blocks/site-footer`|両方のみ|focus-visible, token-values|なし|
+|`blocks/site-header`|両方のみ|focus-visible, token-values|js-global-bindings, js-single-instance|
+|`blocks/stat-cards`|token-valuesのみ|token-values|なし|
+|`blocks/team`|token-valuesのみ|token-values|なし|
+|`blocks/testimonials`|合格|なし|なし|
+|`blocks/use-cases`|両方のみ|focus-visible, token-values|js-global-bindings|
+|`templates/blog-article`|両方のみ|focus-visible, token-values|なし|
+|`templates/checkout`|token-valuesのみ|token-values|なし|
+|`templates/dashboard`|両方のみ|focus-visible, token-values|なし|
+|`templates/inbox`|両方のみ|focus-visible, token-values|なし|
+|`templates/landing`|両方のみ|focus-visible, token-values|なし|
+|`templates/product-page`|両方のみ|focus-visible, token-values|なし|
+|`templates/settings-page`|両方のみ|focus-visible, token-values|なし|
+
+### token-valuesの検出範囲を実行で確認
+
+根拠: [tools/mold_rules.py](../tools/mold_rules.py) の `scan()`。property名にradius/shadow/duration/colorを含むか、background/border/animation/transition/fill/strokeのいずれかなら検査する。値中のpx/rem/em/ms/s、hexや色関数等を探す。宣言名が`--`で始まる場合は内容ごとスキップする。
+
+調査方法: 一時ディレクトリの`components/sample/sample.css`を下のCSSに差し替え、現行の`inspect()`を呼んでtoken-valuesの結果だけを取り出した。候補以外の失敗はこの表では数えない。これは将来の修正を適用した数字ではない。
+
+| 一時CSS | token-values結果 | 解釈 |
+|---|---|---|
+|`.sample{gap:7px}`|pass|検出しない|
+|`.sample{margin:7px}`|pass|検出しない|
+|`.sample{padding:7px}`|pass|検出しない|
+|`.sample{font-size:14px}`|pass|検出しない|
+|`.sample{font:14px sans-serif}`|pass|検出しない|
+|`.sample{row-gap:7px}`|pass|検出しない|
+|`.sample{column-gap:7px}`|pass|検出しない|
+|`.sample{border-radius:7px}`|fail|検出される|
+|`.sample{box-shadow:0 1px 2px #000}`|fail|検出される|
+|`.sample{transition:opacity .13s}`|fail|検出される|
+|`.sample{animation:spin .13s}`|fail|検出される|
+|`.sample{animation-duration:130ms}`|fail|検出される|
+|`.sample{animation-delay:.13s}`|pass|検出しない|
+|`.sample{transition-delay:.13s}`|pass|検出しない|
+|`.sample{--local-gap:7px;gap:var(--local-gap)}`|pass|検出しない|
+|`.sample{--local-time:.13s;transition:opacity var(--local-time)}`|pass|検出しない|
+|`.sample{transition:opacity var(--k-dur-1)}`|pass|既存共通トークン参照。正常な通過|
+|`.sample{gap:calc(7px + var(--k-space-1))}`|pass|検出しない|
+|`.sample{transition:opacity calc(.13s * 1)}`|fail|検出される|
+
+#### button.cssの7pxと.13sが現在出ない理由
+
+履歴`55968f1`のButtonには`gap:7px;transition:background .13s`があった。現在は[components/button/button.css](../components/button/button.css)の`.btn`内で`--k-btn-gap:7px;gap:var(--k-btn-gap)`になっている。**7pxという数値は残っている**。gap自体が検査対象外、かつローカルcustom property定義もスキップされるため、現検査はどちらの形でも失敗にしない。既存の共通spacingトークンへ移行済みと扱ってはいけない。
+
+`.13s`は現在のButtonから消えており、transitionは`calc(var(--k-dur-1) * var(--k-mscale, 1))`を使う。`tokens.css`の`--k-dur-1:130ms`は共有定義なので、こちらは**共通トークン化済み**。同じ生の`.13s`をtransitionへ再導入した一時実験はfailになった。ただし`--local-time:.13s;transition:opacity var(--local-time)`へ移すとpassになるので、時間の間接参照に検査の穴がある。現Buttonの`--k-btn-spin-duration:700ms`もこの定義スキップの対象。
+
+#### 検査強化案（このPRでは未実装）
+
+1. 対象propertyを明示的な集合へ広げる。gap/row-gap/column-gap、margin/paddingと全logical longhand、font-sizeおよびfont shorthand、transition/animationのdurationとdelayを含める。`animation-delay`/`transition-delay`は現状durationという文字を含まないため検査漏れ。
+2. CSSパーサーで値を単位付きトークンへ分解し、shorthand、calc、var fallback、複数のanimation/transitionを検証する。文字列/コメント/URLを除外し、負値や指数表記・単位の大文字小文字も回帰テストする。単純な正規表現の拡張だけで済ませない。
+3. 使用箇所からvarの定義を辿り、共有トークン終端か、ローカル生値終端かを記録する。ローカル変数名に置き換えるだけの迂回は検出する。循環/未解決/実行時値は不明として別の所見にし、黙って合格させない。
+4. AGENTSは部品ルートのローカル変数を許容しているので、幾何学的なローカル値を全部一律禁止しない。spacing/font/color/timeの標準化対象と、Lab固有の座標・形状・ユーザー選択色を区別する方針を明文化する。例外は範囲/理由を記録し、グローバル専用トークンへの移動で回避させない。
+5. 追加対象の1所見=1宣言というカウント定義を維持し、既存433件と追加違反は別々に集計する。前節のspacing947・font-size533は棚卸し件数で、将来の厳密パーサー/定義解決後の失敗数ではない。新しい合格数を推測して公称しない。
+
+### JS警告の合否への影響
+
+根拠: [check.py](../check.py) の `passed = not any(c['status']=='fail' ...)`。js-single-instance/js-global-bindingsは[tools/mold_rules.py](../tools/mold_rules.py)でseverity=warningとして記録され、発見時status=warn。**今は合否に入らない**。summary.warnings=34は所見総数ではなく、warnになった「対象×検査」レコード数。
+
+|検査|警告のある対象数|警告所見数|
+|---|---:|---:|
+|js-single-instance|16|24|
+|js-global-bindings|18|57|
+
+#### 同じJSONを使った失敗格上げの試算
+
+| 条件 | 合格 | 不合格 | 新たに不合格になる対象 |
+|---|---:|---:|---|
+|現行|20|144|なし|
+|single-instanceのみfail化|19|145|components/popover|
+|global-bindingsのみfail化|19|145|components/popover|
+|両方fail化|19|145|components/popover|
+
+両方の警告は合わせて18対象にある。重複を除いた新規の不合格はPopoverだけで、既に不合格の対象は不合格数を増やさない。Popoverは単一dataセレクターとトップレベルconst（wrap/popBtn/popPanel）の両方に警告がある。
+
+#### 格上げする実装案（未適用）
+
+JSパーサーのASTでProgram直下のbindingとDOM単一取得を調べる。IIFE/モジュールスコープ、明示的な単一ページシェル、querySelectorAllによる複数初期化を区別する。現在のregexは文字列/テンプレート式/正規表現/構文で誤認の余地があるため、先に陽性/陰性のfixtureを整備し、再現できる違反からerrorへ格上げする。根拠のある例外は設定へ理由付きで限定し、全体一括allowlistにしない。IIFE化後は複数配置・二重ロード・IME・focusoutをブラウザーで検証する。上の19/164は現行warningを機械的にfail扱いした試算であり、AST導入後の確定値ではない。
+
+### shared-token-scope: --k-ring-dangerの誤検知
+
+結論: **Carousel Ringの専用トークンとしての判定は誤検知**。実装はdirectory名carousel-ringだけでなく、CSSの最初のクラス`.k-ring`から`ring`を自動で追加し、全グローバルトークンを`startswith("--k-ring-")`で調べる。そのため共有の`--k-ring-danger`がヒットする。
+
+`tokens.css`の`--k-ring-danger`はdanger色のフォーカスshadowで、Inputの`.input.errb:focus`とTextareaの`[data-invalid="true"]:focus`が使っている。Carousel Ringはこれを参照していない。`.k-ring`という部品クラスと「focus ring」という共有役割が衝突している。
+
+修正案: 所有namespaceは完全な部品名を原則にし、button→btnやcombobox→comboの短縮namespaceは明示した設定またはメタデータで所有を宣言する。任意の先頭クラスから短いnamespaceを自動推測しない。共有トークンの用途・複数部品での利用も監査し、danger focusのような実共有を特定する。該当1件だけを理由なくallowlistへ足す方式にはしない。共有名を装った専用値もあるため、単に複数使用箇所があれば無条件合格とはしない。
+
+この誤検知1所見だけを除いた試算はshared-token-scope 3→2所見、該当対象2→1。Carousel Ringにはtoken-valuesが3件残るため、全体の合格数は20/164のまま。このPRでは検査を変更していない。
+
+### 今回の検証と制限
+
+最新mainで実際にcheck.pyを実行し、上記の件数・失敗組み合わせ・JS試算を同じJSONから算出。単一宣言の検出実験も現行inspect()を一時ディレクトリで呼び出して確認。部品コード・検査器・共有トークンは未変更。調査後に再実行したJSONの完全一致を確認する。将来の強化案の実装・ブラウザー/スクリーンリーダー・見た目の検証は今回行わない。
 
 ## 現在の検査結果
 

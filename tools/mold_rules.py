@@ -1,6 +1,7 @@
 """Conservative static checks; runtime selector/cascade coverage is tested separately."""
-import re
+import json, re
 from html.parser import HTMLParser
+from tools.token_values import Values, kinds_for
 
 class Markup(HTMLParser):
     def __init__(self, text):
@@ -36,35 +37,59 @@ def inspect(directory, root, config):
     html_files = sorted(directory.glob('*.html'))
     docs = [(f, Markup(f.read_text())) for f in html_files]
     token_source = strip_comments((root / 'tokens.css').read_text()) if (root / 'tokens.css').exists() else ''
+    meta_path = directory / 'meta.json'
+    try:
+        meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
+    except (ValueError, OSError):
+        meta = {}  # The existing metadata contract reports malformed metadata.
+    profile = 'lab' if meta.get('category') in config['lab_categories'] else 'ui'
     prefixes = {directory.name}
-    first = re.search(r'\.([a-zA-Z][\w-]*)\s*\{', strip_comments(css))
-    if first: prefixes.add(re.sub(r'^k-', '', first[1]))
+    if meta.get('prefix'):
+        if isinstance(meta['prefix'], str):
+            prefixes.add(meta['prefix'].removeprefix('--').removeprefix('k-').strip('-'))
     forbidden = sorted({name for name in re.findall(r'(--k-[\w-]+)\s*:', token_source)
-                        if any(name.startswith('--k-' + prefix + '-') for prefix in prefixes)})
+                        if any(name.startswith('--k-' + prefix + '-') for prefix in prefixes if prefix)})
     record('shared-token-scope', forbidden)
-    raw = []
-    def scan(text, path):
-        for prop, value in declarations(text):
-            if prop.startswith('--'): continue  # Component-root custom properties are local definitions.
-            relevant = any(x in prop for x in ('radius','shadow','duration','color')) or prop in ('background','border','animation','transition','fill','stroke')
-            if not relevant: continue
-            # Ignore URL fragments and quoted strings, but retain var() fallbacks.
-            clean = re.sub(r'url\([^)]*\)|["\'][^"\']*["\']', '', value)
-            clean = re.sub(r'--[\w-]+', '', clean)
-            bad = re.search(r'#[\da-fA-F]{3,8}\b|\b(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch)\s*\(|(?<![\w-])(?:\d*\.)?\d+(?:px|rem|em|ms|s)\b', clean)
-            # Named CSS colors also count, while semantic/currentColor keywords do not.
-            named = re.search(r'\b(?:white|black|red|blue|green|gray|grey|yellow|orange|purple|pink|navy|teal|lime|aqua|fuchsia|silver|maroon|olive)\b', clean, re.I)
-            if not (bad or named): continue
-            if prop == 'border' and re.fullmatch(r'1px\s+solid\s+(?:transparent|currentColor|var\(--[\w-]+\))',value): continue
-            allowed = any(a.get('path')==path and a.get('property')==prop and a.get('value')==value and a.get('reason') for a in config['raw_value_allowlist'])
-            if not allowed: raw.append(f'{path}: {prop}: {value}')
-    for _,body in rules(css): scan(body,str(css_path.relative_to(root)))
-    for f,doc in docs:
+    shared = set(re.findall(r'(--[\w-]+)\s*:', token_source))
+    sources = [(str(css_path.relative_to(root)), declarations(body)) for _, body in rules(css)]
+    dependency_css = []
+    for f, doc in docs:
         for embedded in re.findall(r'<style[^>]*>(.*?)</style>', f.read_text(), re.S | re.I):
-            for _, body in rules(embedded): scan(body, str(f.relative_to(root)))
-        for n in doc.nodes:
-            if 'style' in n['attrs']:scan(n['attrs']['style'],str(f.relative_to(root)))
-    record('token-values',raw)
+            sources.extend((str(f.relative_to(root)), declarations(body)) for _, body in rules(embedded))
+        for node in doc.nodes:
+            attrs = node['attrs']
+            if 'style' in attrs: sources.append((str(f.relative_to(root)), declarations(attrs['style'])))
+            href = attrs.get('href') or ''
+            if node['tag'] == 'link' and href.endswith('.css'):
+                target = root / href.lstrip('/') if href.startswith('/') else (f.parent / href).resolve()
+                if target.is_file() and target.is_relative_to(root):dependency_css.append(target.read_text())
+    local = {}
+    for _, decls in sources:
+        for prop, value in decls:
+            if prop.startswith('--'):local.setdefault(prop, []).append(value)
+    for dep in dependency_css:
+        for _, body in rules(dep):
+            for prop, value in declarations(body):
+                if prop.startswith('--'):local.setdefault(prop, []).append(value)
+    evaluator = Values(shared, local, config, profile)
+    results = {'token-values': [], 'spacing-values': [], 'type-values': []}
+    details = {key: [] for key in results}
+    for path, decls in sources:
+        for prop, value in decls:
+            if not prop.startswith('--'):prop = prop.lower()
+            for kind in kinds_for(prop.lower(), value):
+                if kind not in config['profiles'][profile]['required'] and kind not in ('spacing','type'):continue
+                target = 'spacing-values' if kind == 'spacing' else ('type-values' if kind == 'type' else 'token-values')
+                problems, _ = evaluator.check(value, kind, prop)
+                allowed = any(a.get('path') == path and a.get('property') == prop and a.get('value') == value and a.get('reason') for a in config['raw_value_allowlist'])
+                if problems and not allowed:
+                    results[target].append(f"{path}: {prop}: {value} [{kind}] — " + '; '.join(problems))
+                    details[target].append({'path':path,'property':prop,'value':value,'kind':kind,'reasons':problems})
+    for key in results:
+        record(key, results[key], 'error' if key == 'token-values' else 'warning')
+        checks[-1]['profile'] = profile
+        checks[-1]['details'] = details[key]
+        checks[-1]['by_kind'] = {kind:sum(d['kind'] == kind for d in details[key]) for kind in sorted({d['kind'] for d in details[key]})}
     types=[];labels=[];focus=[]
     related_css=css
     for f,doc in docs:
@@ -99,7 +124,7 @@ def inspect(directory, root, config):
     animated=any(p in ('animation','animation-name') and v not in ('none','initial','inherit') for _,body in rules(css) for p,v in declarations(body))
     record('reduced-motion',['Animation without a local reduced-motion rule'] if animated and not re.search(r'@media\s*\([^)]*prefers-reduced-motion\s*:\s*reduce',css) else [])
     js_path=directory/(directory.name+'.js');js=js_path.read_text() if js_path.exists() else ''
-    record('js-single-instance',re.findall(r'document\s*\.\s*querySelector\s*\(\s*[\'\"]\[data-[^\'\"]+',js),'warning')
+    record('js-single-instance',re.findall(r'document\s*\.\s*querySelector\s*\(\s*[\'\"]\[data-[^\'\"]+',js))
     # Lexical approximation: remove comments/strings before counting block depth.
     clean=re.sub(r'/\*.*?\*/|//[^\n]*|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|`(?:\\.|[^`\\])*`',lambda m:'\n'*m[0].count('\n'),js,flags=re.S)
     depth=0;warnings=[]
@@ -107,5 +132,5 @@ def inspect(directory, root, config):
         if m[0]=='{':depth+=1
         elif m[0]=='}':depth=max(0,depth-1)
         elif depth==0:warnings.append(m[0])
-    record('js-global-bindings',warnings,'warning')
+    record('js-global-bindings',warnings)
     return checks

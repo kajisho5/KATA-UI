@@ -234,9 +234,11 @@ def main():
             checks = [{'id':'legacy-contract','status':'fail' if errors else 'pass','severity':'error','findings':errors}]
             checks += inspect(d, ROOT, CONFIG)
             passed = not any(c['status']=='fail' for c in checks)
-            items.append({'id':f'{kind}/{d.name}','passed':passed,'checks':checks})
+            items.append({'id':f'{kind}/{d.name}','profile':next(c['profile'] for c in checks if c['id']=='token-values'),'passed':passed,'checks':checks})
     passed = sum(i['passed'] for i in items)
-    report = {'schema_version':1,'summary':{'passed':passed,'failed':len(items)-passed,'total':len(items), 'warnings':sum(c['status']=='warn' for i in items for c in i['checks'])},'items':items}
+    report = {'schema_version':2,'summary':{'passed':passed,'failed':len(items)-passed,'total':len(items), 'warnings':sum(c['status']=='warn' for i in items for c in i['checks'])},'items':items}
+    report['summary']['findings'] = {name:sum(len(c['findings']) for i in items for c in i['checks'] if c['id']==name and c['status']!='pass') for name in sorted({c['id'] for i in items for c in i['checks']})}
+    report['summary']['by_profile'] = {profile:{'passed':sum(i['passed'] for i in items if i['profile']==profile),'failed':sum(not i['passed'] for i in items if i['profile']==profile),'total':sum(i['profile']==profile for i in items)} for profile in ('ui','lab')}
     output = json.dumps(report, ensure_ascii=False, indent=2)+'\n'
     if args.json_path == '-': print(output, end='')
     else:

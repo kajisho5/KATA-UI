@@ -2,6 +2,276 @@
 
 対象: `main` の `95d4c11a1402ea212b0e3db483358b237cbece79`。2026-11-03（日本時間）に集計。部品コード・tokens.css・検査器は変更しない、提案のみ。
 
+## A–F適用後の検査結果（最新スナップショット）
+
+この節が現行の検査結果。後半の20/164・433件・JS警告の記述は、PR #14で調査した**変更前の履歴資料**として維持する。今回は部品を修正せず、検査の根拠をKATA.mdへ追記してA–Fを実装した。
+
+| 指標 | 修正前 | 修正後 |
+|---|---:|---:|
+|合格|20|21|
+|不合格|144|143|
+|対象|164|164|
+|warnレコード数（対象×検査）|34|318|
+
+合格数が増えたのはLabの幾何を許可するという決定Aによるもの。JSエラー化と参照追跡で新たな不合格も出ている。数字を合わせるallowlist追加や部品修正はない。
+
+### 種類ごとの検査所見数
+
+「所見」は検査のfindings数。「影響対象」はその検査がfail/warnになった対象数。token-valuesは今回から**宣言×値の種類**単位で、1宣言にduration/easingの両方があれば2件。参照経路の複数理由は同じ所見のreasonsへまとめる。旧433件（1宣言=1件）と単純な増減だけで比較しない。
+
+|検査|修正後severity|修正前所見|修正後所見|修正後の影響対象|
+|---|---|---:|---:|---:|
+|accessible-label|fail|1|1|1|
+|button-type|fail|0|0|0|
+|focus-visible|fail|456|456|66|
+|js-global-bindings|fail|57|57|18|
+|js-single-instance|fail|24|24|16|
+|legacy-contract|fail|0|0|0|
+|reduced-motion|fail|0|0|0|
+|shared-token-scope|fail|3|2|1|
+|spacing-values|warn|0|892|161|
+|token-values|fail|433|464|133|
+|type-values|warn|0|638|157|
+|variant-hover|fail|0|0|0|
+
+JSの旧34レコード（24+57=81所見）はfailへ格上げ済み。新しい318 warnレコードはspacing/typeによるもの。`summary.findings`が実所見数、`summary.warnings`がwarnレコード数。
+
+### token-valuesの値の種類 / profile別
+
+|値の種類|ui所見|lab所見|合計|
+|---|---:|---:|---:|
+|radius|206|0|206|
+|duration|51|57|108|
+|shadow|39|10|49|
+|border|36|0|36|
+|color|20|15|35|
+|easing|0|30|30|
+
+|profile|対象|合格|不合格|
+|---|---:|---:|---:|
+|ui|121|12|109|
+|lab|43|9|34|
+
+### 合否が変わった対象
+
+|対象|修正前→修正後|根拠|
+|---|---|---|
+|components/fireworks|不合格→合格|Labのradius/border幾何を許可（A）|
+|components/goo-cursor|不合格→合格|Labのradius/border幾何を許可（A）|
+|components/gravity-playground|不合格→合格|Labのradius/border幾何を許可（A）|
+|components/horizontal-reel|不合格→合格|Labのradius/border幾何を許可（A）|
+|components/kata-rain|不合格→合格|Labのradius/border幾何を許可（A）|
+|components/meter|合格→不合格|token-values: components/meter/meter.css: background-image: linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px) [color] — raw color: rgba(255,255,255,.5)|
+|components/particle-net|不合格→合格|Labのradius/border幾何を許可（A）|
+|components/popover|合格→不合格|js-single-instance: document.querySelector('[data-popover], js-global-bindings: const wrap|
+|components/radar-chart|合格→不合格|token-values: components/radar-chart/radar-chart.css: border-radius: 50% [radius] — raw radius: 50%|
+|components/result|合格→不合格|token-values: components/result/result.css: border-radius: 50% [radius] — raw radius: 50%|
+|components/scatter-chart|合格→不合格|token-values: components/scatter-chart/scatter-chart.css: border-radius: 50% [radius] — raw radius: 50%|
+|components/stacking-cards|不合格→合格|Labのradius/border幾何を許可（A）|
+|components/table|合格→不合格|token-values: components/table/table.css: border-radius: 50% [radius] — raw radius: 50%|
+
+### 失敗の組み合わせ（修正後）
+
+|失敗した検査の組み合わせ|対象数|
+|---|---:|
+|token-values|71|
+|focus-visible, token-values|46|
+|なし（合格）|21|
+|focus-visible, js-global-bindings, js-single-instance, token-values|8|
+|focus-visible|7|
+|js-global-bindings, js-single-instance, token-values|4|
+|js-global-bindings, js-single-instance|2|
+|focus-visible, js-global-bindings, token-values|2|
+|accessible-label, focus-visible, js-global-bindings, js-single-instance, token-values|1|
+|focus-visible, js-global-bindings, js-single-instance|1|
+|focus-visible, shared-token-scope, token-values|1|
+
+### 全対象ごとの失敗検査（修正後）
+
+|対象|profile|合否|落ちた検査|spacing/typeのwarn所見数|
+|---|---|---|---|---:|
+|components/accordion|ui|不合格|token-values|7|
+|components/accordion-gallery|lab|不合格|token-values|3|
+|components/alert|ui|合格|なし|6|
+|components/alert-dialog|ui|不合格|token-values, js-single-instance, js-global-bindings|7|
+|components/aspect-ratio|ui|不合格|token-values|3|
+|components/aurora|lab|不合格|token-values|5|
+|components/avatar|ui|不合格|token-values, focus-visible|15|
+|components/badge|ui|不合格|token-values|12|
+|components/bar-chart|ui|不合格|token-values|10|
+|components/beam-border|lab|不合格|token-values|8|
+|components/blur-in|lab|不合格|token-values|4|
+|components/bottom-navigation|ui|不合格|token-values, focus-visible|15|
+|components/bounce-letters|lab|不合格|token-values|3|
+|components/breadcrumbs|ui|不合格|focus-visible|3|
+|components/burst-button|lab|不合格|token-values, focus-visible|6|
+|components/button|ui|不合格|token-values, focus-visible|3|
+|components/button-group|ui|合格|なし|3|
+|components/calendar|ui|不合格|token-values, focus-visible|10|
+|components/candlestick-chart|ui|合格|なし|6|
+|components/card|ui|不合格|token-values, focus-visible|29|
+|components/carousel|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|10|
+|components/carousel-ring|lab|不合格|token-values|8|
+|components/cascader|ui|不合格|token-values, focus-visible|7|
+|components/checkbox|ui|不合格|token-values, focus-visible|7|
+|components/chip|ui|不合格|token-values, focus-visible|4|
+|components/collapsible|ui|不合格|token-values, focus-visible|6|
+|components/color-picker|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|5|
+|components/combobox|ui|合格|なし|4|
+|components/command|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|13|
+|components/comparison-slider|lab|不合格|token-values, focus-visible|5|
+|components/confetti-cannon|lab|不合格|focus-visible|2|
+|components/context-menu|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|8|
+|components/converge|lab|不合格|token-values|4|
+|components/copy-field|ui|不合格|token-values, focus-visible|7|
+|components/counter|lab|合格|なし|10|
+|components/data-table|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|12|
+|components/date-picker|ui|不合格|token-values, accessible-label, focus-visible, js-single-instance, js-global-bindings|8|
+|components/descriptions|ui|合格|なし|7|
+|components/dock|lab|不合格|token-values|7|
+|components/donut-chart|ui|不合格|token-values|10|
+|components/drawer|ui|不合格|token-values, js-single-instance, js-global-bindings|7|
+|components/dropdown|ui|不合格|token-values, focus-visible|7|
+|components/dual-range|ui|不合格|token-values|2|
+|components/empty-state|ui|不合格|token-values|7|
+|components/field|ui|不合格|focus-visible|10|
+|components/file-upload|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|10|
+|components/fireworks|lab|合格|なし|1|
+|components/follow-frame|lab|不合格|js-single-instance, js-global-bindings|4|
+|components/funnel-chart|ui|不合格|token-values|7|
+|components/gauge|ui|合格|なし|5|
+|components/glass-panel|ui|不合格|token-values|9|
+|components/glow-button|lab|不合格|token-values, focus-visible|10|
+|components/glow-cards|lab|不合格|token-values|11|
+|components/goo-cursor|lab|合格|なし|2|
+|components/goo-tabs|lab|不合格|token-values, focus-visible|6|
+|components/gravity-playground|lab|合格|なし|4|
+|components/hanko|ui|不合格|token-values|13|
+|components/heatmap|ui|不合格|token-values|8|
+|components/horizontal-reel|lab|合格|なし|8|
+|components/hover-card|ui|不合格|token-values, focus-visible|7|
+|components/input|ui|不合格|token-values, focus-visible|13|
+|components/input-group|ui|不合格|focus-visible|6|
+|components/input-otp|ui|不合格|token-values, focus-visible, js-global-bindings|2|
+|components/jelly-buttons|lab|不合格|token-values, focus-visible|6|
+|components/kaleidoscope|lab|不合格|focus-visible|6|
+|components/kata-rain|lab|合格|なし|1|
+|components/kbd|ui|不合格|token-values|5|
+|components/kintsugi-card|ui|不合格|token-values|10|
+|components/line-chart|ui|合格|なし|6|
+|components/liquid-button|lab|不合格|token-values|7|
+|components/list|ui|不合格|token-values, focus-visible|6|
+|components/magnet|lab|不合格|token-values|4|
+|components/marquee|lab|不合格|token-values|14|
+|components/menubar|ui|不合格|token-values, focus-visible|18|
+|components/meteors|lab|不合格|token-values|5|
+|components/meter|ui|不合格|token-values|9|
+|components/modal|ui|不合格|token-values, focus-visible|9|
+|components/navigation-menu|ui|不合格|token-values, focus-visible|13|
+|components/newtons-cradle|lab|不合格|token-values|1|
+|components/noren|ui|不合格|token-values|5|
+|components/orbit|lab|不合格|token-values|4|
+|components/pagination|ui|不合格|token-values, focus-visible|6|
+|components/particle-net|lab|合格|なし|5|
+|components/particle-word|lab|不合格|focus-visible|7|
+|components/popover|ui|不合格|js-single-instance, js-global-bindings|7|
+|components/progress|ui|不合格|token-values|5|
+|components/qr-code|ui|不合格|token-values|16|
+|components/radar-chart|ui|不合格|token-values|4|
+|components/radio|ui|不合格|token-values|6|
+|components/rating|ui|不合格|token-values|4|
+|components/reorder|lab|不合格|focus-visible, js-single-instance, js-global-bindings|10|
+|components/result|ui|不合格|token-values|8|
+|components/scatter-chart|ui|不合格|token-values|6|
+|components/scramble|lab|合格|なし|3|
+|components/scroll-area|ui|不合格|token-values, focus-visible|5|
+|components/scrollspy|ui|不合格|token-values, focus-visible|10|
+|components/segmented|ui|不合格|token-values|5|
+|components/select|ui|不合格|token-values, focus-visible|8|
+|components/separator|ui|合格|なし|7|
+|components/shine-text|lab|不合格|token-values|4|
+|components/sidebar|ui|不合格|token-values, focus-visible|43|
+|components/skeleton|ui|不合格|token-values|3|
+|components/slider|ui|不合格|token-values|6|
+|components/sparkles|lab|不合格|token-values|8|
+|components/sparkline|ui|合格|なし|19|
+|components/speed-dial|ui|不合格|token-values, focus-visible|6|
+|components/spinner|ui|不合格|token-values|1|
+|components/split-panel|ui|不合格|token-values, js-single-instance, js-global-bindings|9|
+|components/spotlight|lab|不合格|token-values|14|
+|components/stacking-cards|lab|合格|なし|10|
+|components/stat|ui|合格|なし|8|
+|components/stepper|ui|不合格|token-values|8|
+|components/steps|ui|不合格|token-values|3|
+|components/switch|ui|不合格|token-values|10|
+|components/table|ui|不合格|token-values|6|
+|components/tabs|ui|不合格|token-values, focus-visible|9|
+|components/tag-input|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|4|
+|components/tategaki|ui|不合格|token-values|11|
+|components/text-reveal|lab|不合格|token-values|4|
+|components/textarea|ui|不合格|token-values, focus-visible|7|
+|components/tilt-card|lab|不合格|token-values|8|
+|components/time-picker|ui|不合格|token-values, focus-visible|11|
+|components/timeline|ui|不合格|token-values|6|
+|components/toast|ui|不合格|shared-token-scope, token-values, focus-visible|10|
+|components/toggle|ui|不合格|token-values|6|
+|components/tooltip|ui|不合格|token-values|5|
+|components/torn-ticket|ui|不合格|token-values|11|
+|components/tour|ui|不合格|token-values|13|
+|components/tracing-beam|lab|不合格|token-values|7|
+|components/transfer|ui|不合格|token-values, focus-visible|14|
+|components/tree|ui|不合格|token-values, focus-visible|5|
+|components/typeset|ui|不合格|token-values, focus-visible|32|
+|components/typewriter|lab|不合格|token-values|2|
+|components/wagara|ui|不合格|token-values, focus-visible|17|
+|components/warp-tunnel|lab|不合格|token-values|3|
+|components/word-rotate|lab|不合格|token-values|3|
+|blocks/app-shell|ui|不合格|token-values, focus-visible|21|
+|blocks/cookie-consent|ui|不合格|token-values, focus-visible|6|
+|blocks/cta-band|ui|不合格|token-values|5|
+|blocks/faq|ui|不合格|focus-visible|7|
+|blocks/filter-toolbar|ui|不合格|token-values|3|
+|blocks/integrations|ui|不合格|token-values|10|
+|blocks/invoice|ui|不合格|token-values|24|
+|blocks/kanban|ui|不合格|token-values|16|
+|blocks/login|ui|不合格|token-values, focus-visible|12|
+|blocks/logo-cloud|ui|合格|なし|4|
+|blocks/order-confirmation|ui|不合格|token-values|17|
+|blocks/plan-compare|ui|不合格|token-values|3|
+|blocks/pricing|ui|不合格|token-values, js-single-instance, js-global-bindings|19|
+|blocks/roadmap|ui|不合格|token-values|12|
+|blocks/settings|ui|不合格|token-values, focus-visible|17|
+|blocks/site-footer|ui|不合格|token-values, focus-visible|20|
+|blocks/site-header|ui|不合格|token-values, focus-visible, js-single-instance, js-global-bindings|10|
+|blocks/stat-cards|ui|不合格|token-values|3|
+|blocks/team|ui|不合格|token-values|8|
+|blocks/testimonials|ui|合格|なし|9|
+|blocks/use-cases|ui|不合格|token-values, focus-visible, js-global-bindings|20|
+|templates/blog-article|ui|不合格|token-values, focus-visible|50|
+|templates/checkout|ui|不合格|token-values|27|
+|templates/dashboard|ui|不合格|token-values, focus-visible|27|
+|templates/inbox|ui|不合格|token-values, focus-visible|39|
+|templates/landing|ui|不合格|token-values, focus-visible|14|
+|templates/product-page|ui|不合格|token-values, focus-visible|38|
+|templates/settings-page|ui|不合格|token-values, focus-visible|31|
+
+### 実装・検証の根拠
+
+- `check.config.json`: ui/labの必須種類、Motion/KATAYABURI分類、0/100%/1px境界/transparent/currentColor/inherit等の許可値を管理。部品個別のallowlistは空。
+- `tools/token_values.py`: 関数とvarを分解し、使用先の種類を保ってローカル定義を追う。shared-nameのローカル上書き、raw fallback、未解決参照、循環も検出。`calc`内の数値係数だけでは合格せず共有トークンへの到達を確認する。
+- `tools/mold_rules.py`: メタデータからprofile、slug/meta.prefixからnamespaceを決める。先頭クラスを使わないためCarousel Ringの--k-ring-danger誤検知はなくなり、Toastの真の専用グローバル2所見は残る。
+- spacing/typeは新しいwarn検査。Labのspacing警告は参考情報であり、geometryをfailにはしない。
+- JSON schema_version=2。各対象にprofile、各値検査にdetails/by_kind、summaryにfindings/by_profileを追加。部品側のコードは未変更。
+- `tests/mold/cases.json` に86個の陽性/陰性fixture。生値/alias/shared/calc、ui/lab、scope、JS severity、important、inline/embedded CSS等を標準unittestから検証する。
+
+### 検出限界と次の判断
+
+依存CSS・例HTML内を含むローカル変数の候補定義はすべて辿り、どれか1つが違反なら報告する。実際のselector/media/cascadeで使用される定義だけを確定する解析ではないため、条件付き定義では保守的な所見が出る可能性がある。未使用変数自体を名前から型推測してfailにするのではなく、検査対象propertyからの参照を追う。
+
+値パーサーは標準ライブラリの字句/関数解析で、CSS仕様全体のvalidatorではない。未知の値構文は黙ってpassにせず所見にする。CSSの型としてそのトークンが正しいか、色contrast、実ブラウザーの計算済み値までは証明しない。JS検査は今回severity変更のみで、既存の字句的な検出限界は残る。部品修正・JS ASTへの移行・UI状態テストは別PRで行う。
+
+後半の移行表にあるLab radius/border幾何の「旧違反」は決定Aで必須ではなくなった。色/time/shadow/easingの違反まで免除されたわけではない。将来の修正対象は、この節と最新mold-results.jsonを基準に選ぶ。
+
 ## 追加調査: 合否の組み合わせと検査の実効範囲
 
 この節は最新main `95d4c11a1402ea212b0e3db483358b237cbece79` でcheck.pyを再実行した結果。下記の試算・検出実験はすべてリポジトリ外の一時ファイルで行い、部品・tokens.css・検査器は変更していない。既存の値別対応表は同じ433所見に対するものとして維持する。

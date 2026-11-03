@@ -56,3 +56,20 @@ test('primary pages have no automatically detectable serious accessibility viola
     expect(serious, path + ' serious/critical axe violations').toEqual([]);
   }
 });
+
+test('primary pages do not overflow horizontally at supported viewport widths', async ({ page }) => {
+  for (const width of [360, 390, 430, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const path of ['/', '/components/', '/components/button/', '/blocks/', '/templates/', '/docs/', '/pricing/', '/themes/']) {
+      await page.goto(path);
+      const dimensions = await page.evaluate(() => ({
+        viewport: document.documentElement.clientWidth,
+        document: document.documentElement.scrollWidth
+      }));
+      expect(
+        dimensions.document,
+        path + ' horizontal overflow at ' + width + 'px'
+      ).toBeLessThanOrEqual(dimensions.viewport + 1);
+    }
+  }
+});

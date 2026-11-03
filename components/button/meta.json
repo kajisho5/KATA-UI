@@ -9,5 +9,5 @@
   ],
   "status": "stable",
   "usage": "One primary action per view. Use Secondary for the alternative, Ghost for tertiary actions, Danger only for destructive ones.",
-  "a11y": "Real <button> elements. Disabled uses the disabled attribute, not just styling. The loading state keeps the label text so screen readers still announce the action."
+  "a11y": "Native buttons with explicit types, a token-based focus-visible ring, and hover/active/disabled states for every variant. Loading examples use disabled and aria-busy while retaining their text label; decorative spinners stop under reduced motion. btn-asagi remains a deprecated alias of btn-accent."
 }

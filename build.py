@@ -353,7 +353,7 @@ LP_STYLE = """<style>
 .lp .hero p{margin-left:auto;margin-right:auto}
 .lp .cta{justify-content:center}
 .lp .stats{justify-content:center}
-.browser{margin:38px auto 0;max-width:880px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:var(--paper);box-shadow:0 30px 70px -30px rgba(16,24,40,.25);text-align:left}
+.browser{margin:38px auto 0;max-width:880px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--paper);box-shadow:0 18px 44px -24px rgba(16,24,40,.22);text-align:left}
 .browser-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--hair);background:var(--soft)}
 .browser-bar i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
 .browser-bar .url{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:3px 10px;background:var(--paper)}
@@ -379,7 +379,7 @@ LP_STYLE = """<style>
 .sctabs{display:flex;gap:6px;margin-top:18px;overflow-x:auto;padding-bottom:2px}
 .sctab-btn{flex:none;font:inherit;font-size:13.5px;font-weight:550;padding:8px 16px;border-radius:99px;border:1px solid var(--hair);background:var(--paper);color:var(--ink2);cursor:pointer}
 .sctab-btn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.scframe{position:relative;margin-top:14px;border:1px solid var(--hair);border-radius:14px;overflow:hidden;background:var(--paper)}
+.scframe{position:relative;margin-top:14px;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--paper)}
 .scframe iframe{width:100%;height:600px;border:0;display:block}
 @media (max-width:720px){.scframe iframe{height:540px}}
 .framelive{pointer-events:none}
@@ -404,6 +404,48 @@ LP_STYLE = """<style>
 @media (max-width:560px){.probar{grid-template-columns:104px 1fr 52px;font-size:12px}}
 .finalcta{text-align:center}
 .fc-cta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero3{text-align:center;padding:76px 0 6px}
+.hero3-eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink2)}
+.hero3 h1{font-size:64px;line-height:1.06;letter-spacing:-.028em;font-weight:650;margin-top:22px}
+.hero3 h1 .dim{color:var(--ink2)}
+.hero3-sub{max-width:60ch;margin:22px auto 0;font-size:15.5px;line-height:1.85;color:var(--ink2);letter-spacing:.012em}
+.hero3 .cta{margin-top:30px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero3 .herotrust{margin-top:24px;color:var(--ink3)}
+.hero3 .herotrust .fmold{color:var(--ink2)}
+@media (max-width:720px){.hero3{padding:52px 0 2px}.hero3 h1{font-size:34px}.hero3 .cta{flex-direction:column;align-items:stretch}.hero3 .cta a{justify-content:center}}
+#one-mold .castlive{max-width:920px;margin-left:0}
+.cl-grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px 28px;margin-top:12px}
+.cl-grid2 figure{margin:0}
+@media (max-width:760px){.cl-grid2{grid-template-columns:1fr}}
+.speccap{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--k-ink-2);margin-top:7px}
+.term{font-family:var(--mono);font-size:12px;line-height:1.75;background:var(--soft);border:1px solid var(--hair);border-radius:10px;padding:12px 14px;overflow-x:auto;text-align:left;margin-top:12px;white-space:pre;color:var(--ink)}
+.term .dim{color:var(--ink3)}
+.proofstrip{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.proofstrip>div{border:1px solid var(--hair);border-radius:12px;padding:16px 18px}
+.proofstrip h3{font-size:14.5px;font-weight:600;margin-bottom:6px}
+.proofstrip p{font-size:13.5px;color:var(--ink2);line-height:1.75}
+.proofstrip .vs{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink3);display:block;margin-bottom:8px}
+@media (max-width:720px){.proofstrip{grid-template-columns:1fr}}
+.proofline{margin-top:14px;font-size:14.5px;line-height:1.8;max-width:68ch}
+.psframe{max-width:1080px}
+.pscreen{display:grid;grid-template-columns:224px 1fr;min-height:520px}
+.ps-side{border-right:1px solid var(--hair);background:var(--k-bg-soft)}
+.ps-side .k-side{height:100%}
+.ps-main{padding:18px;display:grid;gap:16px;align-content:start;min-width:0}
+.ps-row{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:start}
+.ps-chart figure{margin:0}
+.ps-table{overflow-x:auto}
+.psmani{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.psmani .pm{font-size:12px;font-weight:550;border:1px solid var(--hair);border-radius:99px;padding:4px 11px;color:var(--ink2);text-decoration:none}
+.psmani .pm:hover{color:var(--ink);border-color:var(--ink3)}
+.psmani .pm i{font-style:normal;font-family:var(--mono);font-size:9.5px;color:var(--k-yamabuki-ink,#8a5a00);margin-left:5px}
+.psmani .lead{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--ink3);margin-right:2px}
+.tplrow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.tplrow a{display:block;border:1px solid var(--hair);border-radius:12px;padding:13px 15px;text-decoration:none;color:var(--ink)}
+.tplrow b{font-size:14px;font-weight:600;display:block}
+.tplrow span{font-size:12px;color:var(--ink2)}
+@media (max-width:900px){.pscreen{grid-template-columns:190px 1fr}.ps-row{grid-template-columns:1fr}}
+@media (max-width:720px){.pscreen{grid-template-columns:1fr}.ps-side{display:none}.tplrow{grid-template-columns:1fr 1fr}}
 .framecap{max-width:880px;margin:10px auto 0;text-align:right;font-size:12px;color:var(--ink3)}
 .framecap a{color:var(--ink2)}
 .lpsec{margin-top:64px}
@@ -422,7 +464,7 @@ LP_STYLE = """<style>
 .genre .gn{font-family:var(--mono);font-size:11px;color:var(--ink3);letter-spacing:.06em}
 .genre h3{margin-top:7px;font-size:15.5px;font-weight:600}
 .genre p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
-.showband{margin-top:64px;background:#0b0b0f;border-radius:18px;padding:30px 26px}
+.showband{margin-top:64px;background:#0b0b0f;border-radius:12px;padding:30px 26px}
 .showband h2{font-size:22px;font-weight:600;letter-spacing:-.02em;color:#f4f4f5}
 .showband .sub{margin-top:7px;color:#a1a1aa;font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .showgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
@@ -431,13 +473,8 @@ LP_STYLE = """<style>
 .showtile.wide{grid-column:1/-1}
 .showtile .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:#a1a1aa}
 .showtile .cap a{color:#f4f4f5;text-decoration:none;letter-spacing:0;font-size:12px}
-.hero2{position:relative;border-radius:22px;overflow:hidden;background:#0b0b0f;border:1px solid #26262b;margin-top:24px;padding:58px 26px 30px;text-align:center}
 .hero2 .eyebrow{display:inline-flex;align-items:center;gap:8px}
 .hero2 .stats div{display:flex;flex-direction:column;align-items:center;gap:1px}
-.hero2::before{content:"";position:absolute;inset:0;background:radial-gradient(620px 300px at 50% -60px,rgba(255,255,255,.07),transparent 65%)}
-.hero2 .hwag{position:absolute;inset:0;width:100%;height:100%;-webkit-mask-image:linear-gradient(180deg,#000 25%,transparent 88%);mask-image:linear-gradient(180deg,#000 25%,transparent 88%)}
-.hero2 .hkanji{position:absolute;right:-38px;top:50%;transform:translateY(-54%);font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro","Yu Mincho",YuMincho,"Noto Serif JP",serif;font-size:400px;line-height:1;color:rgba(244,244,245,.05);pointer-events:none;user-select:none}
-@media (max-width:720px){.hero2 .hkanji{font-size:250px;right:-24px}}
 .hero2 .eyebrow i{background:var(--k-core)}
 .hero2-in{position:relative}
 .hero2 h1{font-size:64px;line-height:1.05;color:#f4f4f5;letter-spacing:-.028em;font-weight:650}
@@ -450,7 +487,6 @@ LP_STYLE = """<style>
 .hero2 .stats{border-color:#26262b;display:flex;gap:15px 38px;flex-wrap:wrap;justify-content:center;margin-top:34px;padding-top:22px;border-top:1px solid #26262b}
 .hero2 .stats b{color:#f4f4f5}
 .hero2 .stats span{color:#a1a1aa}
-.hero2 .browser{box-shadow:0 34px 90px -24px rgba(0,0,0,.65);margin-top:40px;text-align:left;position:relative;z-index:1}
 .hero2 .framecap{color:#a1a1aa;position:relative;z-index:1}
 .hero2 .framecap a{color:#e4e4e7}
 @media (max-width:720px){.hero2{padding:42px 16px 22px}.hero2 h1{font-size:34px}}
@@ -504,19 +540,18 @@ def landing(comps, blocks, n_icons, templates=None):
       '</div></section>')
     compare = ('<section class="lpsec"><h2>How KATA compares</h2>'
       '<div class="cmpsum"><div><b>FRAMEWORK</b><span class="k">KATA: none</span><span>shadcn/ui: React</span></div><div><b>RUNTIME</b><span class="k">KATA: none</span><span>shadcn/ui: React</span></div><div><b>DISTRIBUTION</b><span class="k">KATA: copy-paste</span><span>shadcn/ui: CLI + copy</span></div></div>'
-      '<div style="overflow-x:auto"><table class="cmptable"><thead><tr><th></th><th>KATA UI</th><th>shadcn/ui</th><th>MUI</th><th>Flux UI</th></tr></thead><tbody>'
-      '<tr><th>Framework</th><td class="me">None — plain HTML</td><td>React</td><td>React</td><td>Laravel + Livewire</td></tr>'
-      '<tr><th>Distribution</th><td class="me">Copy-paste, CLI & registry</td><td>Copy-paste + CLI</td><td>npm package</td><td>Composer package</td></tr>'
-      '<tr><th>Runtime required</th><td class="me">None</td><td>React</td><td>React</td><td>Livewire + Alpine</td></tr>'
-      '<tr><th>Theming</th><td class="me">CSS tokens</td><td>Tailwind + variables</td><td>Theme object</td><td>Tailwind</td></tr>'
-      '<tr><th>Price</th><td class="me">Parts free (MIT) · Blocks + Templates lifetime</td><td>Free</td><td>Free + paid extras</td><td>One-time, per project tier</td></tr>'
+      '<div style="overflow-x:auto"><table class="cmptable"><thead><tr><th></th><th>KATA UI</th><th>shadcn/ui</th><th>Others</th></tr></thead><tbody>'
+      '<tr><th>Framework</th><td class="me">None \u2014 plain HTML</td><td>React</td><td>React, Laravel, or another stack</td></tr>'
+      '<tr><th>Runtime</th><td class="me">None</td><td>React</td><td>The framework\u2019s runtime</td></tr>'
+      '<tr><th>Distribution</th><td class="me">Copy-paste, CLI &amp; registry</td><td>Copy-paste + CLI</td><td>npm or Composer package</td></tr>'
+      '<tr><th>Theming</th><td class="me">CSS tokens \u2014 one file is the mold</td><td>Tailwind + variables</td><td>Theme object or utility config</td></tr>'
+      '<tr><th>Ownership</th><td class="me">Yours outright \u2014 MIT, no upstream</td><td>Yours, inside a React codebase</td><td>Rented \u2014 a package, their roadmap</td></tr>'
+      '<tr><th>AI friendliness</th><td class="me">Registry + Skill: the AI fetches checked parts</td><td>Files an AI can copy \u2014 React-bound</td><td>APIs the AI must already know</td></tr>'
+      '<tr><th>Quality without React</th><td class="me">The whole shelf, framework-free</td><td>None \u2014 React required</td><td>Partial \u2014 tied to their stack</td></tr>'
       '</tbody></table></div>'
       '<p class="cmpnote">From each project\u2019s public pages, November 2026. The honest summary: the others are excellent inside their framework.</p>'
       '<p class="billboard">KATA is for everywhere else.</p>'
       '<p class="cmpcta"><a class="btn btn-pri btn-md" href="/components/">Browse the catalog</a><a class="btn btn-ghost btn-md" href="/docs/react/">Read the React guide</a></p></section>')
-    wlband = ('<section class="lpsec"><div class="wl-band"><h2>Pro, in preparation</h2>'
-      '<p>Free is the finished product — all 136 components, MIT, forever. Pro adds the assembled work: 21 blocks and 7 templates, $129 once, lifetime. Sales open soon; leave an email and the launch is the only message you will ever get.</p>'
-      + waitlist_form(dark=True) + '</div></section>')
     _mt = ''
     for _slug, _label in [('aurora', 'Aurora'), ('spotlight', 'Spotlight'), ('text-reveal', 'Text Reveal'), ('converge', 'Converge')]:
         _c = pv.get(_slug)
@@ -582,6 +617,8 @@ def landing(comps, blocks, n_icons, templates=None):
                 + tile('aurora', 'Aurora') + tile('converge', 'Converge') + tile('spotlight', 'Spotlight') + tile('beam-border', 'Beam Border') + tile('glass-panel', 'Glass Panel') + tile('follow-frame', 'Follow Frame')
                 + tile('text-reveal', 'Text Reveal', True) + tile('reorder', 'Reorder', True) + tile('counter', 'Counter') + tile('marquee', 'Marquee')
                 + '</div></div>' + show_scripts + '</section>')
+    pv_chart = pv['line-chart']['preview'] if pv.get('line-chart') else ''
+    pv_donut = pv['donut-chart']['preview'] if pv.get('donut-chart') else ''
     moldlive = ('<section class="lpsec proof" id="one-mold"><h2>One mold</h2>'
       '<p class="moldface">Two parts built months apart look built on the same day.</p>'
       '<p class="lpnote">Both were poured into the same mold: one file of tokens \u2014 color, radius, spacing, motion \u2014 that every part reads and no part overrides. Change the mold and the parts re-cast. Try it: nothing here is a picture.</p>'
@@ -593,40 +630,69 @@ def landing(comps, blocks, n_icons, templates=None):
       '<input class="input" type="text" placeholder="Tokens in, parts out" style="max-width:210px" aria-label="Live cast input">'
       '<span class="badge asagi"><i></i>Same mold</span>'
       '</div>'
-      '<div class="k-card" style="margin-top:14px"><div class="k-card-h"><div><h3>Casting notes</h3><p>The same card, whatever the mold says.</p></div><span class="sp"><span class="badge asagi">Live</span></span></div><div class="k-card-b">A composed surface, not loose controls: cast below and the card, its badge and its button move with everything else on the page.</div><div class="k-card-f">Cast from tokens<span class="sp"><button class="btn btn-pri btn-sm" type="button">Open report</button></span></div></div>'
+      '<div class="k-card" style="margin-top:14px"><div class="k-card-h"><div><h3>Casting notes</h3><p>The same card, whatever the mold says.</p></div><span class="sp"><span class="badge asagi">Live</span></span></div><div class="k-card-b">A composed surface, not loose controls: cast below and the card, its badge and its button move with everything else on the page.</div><div class="k-card-f">Cast from tokens<span class="sp"><button class="btn btn-pri btn-sm" type="button">Open report</button></span></div></div><p class="speccap">Card \u00b7 Beta</p>'
+      + '<div class="cl-grid2"><div>' + pv_chart + '<p class="speccap">Line Chart \u00b7 Beta \u2014 it re-casts with everything else</p></div><div>' + pv_donut + '<p class="speccap">Donut Chart \u00b7 Beta</p></div></div>'
       '<div class="lpc">'
       '<div class="lpc-cap">Cast it yourself</div>'
       '<div class="lpc-row"><span>Accent</span><span class="ds-sws"><button type="button" data-lpc-accent="Asagi" style="background:#33A6B8" aria-label="Cast Asagi"></button><button type="button" data-lpc-accent="Ruri" style="background:#1E50A2" aria-label="Cast Ruri"></button><button type="button" data-lpc-accent="Edomurasaki" style="background:#745399" aria-label="Cast Edomurasaki"></button><button type="button" data-lpc-accent="Suo" style="background:#8E354A" aria-label="Cast Suo"></button><button type="button" data-lpc-accent="Kaki" style="background:#ED6D3D" aria-label="Cast Kaki"></button></span></div>'
       '<div class="lpc-row"><span>Radius</span><span class="ds-btns"><button type="button" data-lpc-radius="0">0</button><button type="button" data-lpc-radius="4">4</button><button type="button" data-lpc-radius="8">8 \u00b7 mold</button><button type="button" data-lpc-radius="12">12</button><button type="button" data-lpc-radius="16">16</button><button type="button" data-lpc-radius="20">20</button></span></div>'
+      '<div class="lpc-row"><span>Motion</span><span class="ds-btns"><button type="button" data-lpc-motion="0.7">0.7&times;</button><button type="button" data-lpc-motion="1">1.0&times; \u00b7 mold</button><button type="button" data-lpc-motion="1.4">1.4&times;</button></span></div>'
       '<div class="lpc-row"><span>Mode</span><span class="ds-btns"><button type="button" data-lpc-mode="light">Light</button><button type="button" data-lpc-mode="dark">Dark</button></span></div>'
       '<p class="lpc-note">What you set here follows you across the whole site \u2014 the Foundry deck remembers.</p>'
       '</div></div>'
       '<p class="lpnote" style="margin-top:12px">Scroll on \u2014 the sections below have re-cast too.</p>'
       "<script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();});</script>"
-      '<script>(function(){var root=document.documentElement;var PRESETS={Asagi:["#33A6B8","#165E83","#81C7D4"],Ruri:["#1E50A2","#223A70","#58B2DC"],Edomurasaki:["#745399","#592C63","#8B81C3"],Suo:["#8E354A","#64363C","#DC9FB4"],Kaki:["#ED6D3D","#95483F","#E2943B"]};function load(){try{return JSON.parse(localStorage.getItem("kata-fdeck")||"{}")}catch(e){return{}}}function save(S){try{localStorage.setItem("kata-fdeck",JSON.stringify(S))}catch(e){}}function dark(){return root.getAttribute("data-theme")==="dark"}function mark(){var S=load();document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.classList.toggle("on",b.dataset.lpcAccent===S.accentName)});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcRadius===(S.radius||8))});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.classList.toggle("on",(b.dataset.lpcMode==="dark")===dark())})}function accent(name){var pr=PRESETS[name];if(!pr)return;var S=load();S.accent=pr[0];S.accentInk=pr[1];S.darkInk=pr[2];S.accentName=name;root.style.setProperty("--k-accent",pr[0]);root.style.setProperty("--acc",pr[0]);root.style.setProperty("--k-accent-ink",dark()?pr[2]:pr[1]);save(S);mark()}function radius(v){var S=load();S.radius=v;root.style.setProperty("--k-radius",v+"px");root.style.setProperty("--k-radius-sm",Math.max(0,Math.round(v*.75))+"px");root.style.setProperty("--k-radius-lg",Math.round(v*1.5)+"px");save(S);mark()}function mode(d){var S=load();S.dark=d;if(d)root.setAttribute("data-theme","dark");else root.removeAttribute("data-theme");if(S.accentName&&PRESETS[S.accentName]){var pr=PRESETS[S.accentName];root.style.setProperty("--k-accent-ink",d?pr[2]:pr[1])}save(S);mark()}document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.addEventListener("click",function(){accent(b.dataset.lpcAccent)})});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.addEventListener("click",function(){radius(+b.dataset.lpcRadius)})});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.addEventListener("click",function(){mode(b.dataset.lpcMode==="dark")})});mark();})();</script>'
+      '<script>(function(){var root=document.documentElement;var PRESETS={Asagi:["#33A6B8","#165E83","#81C7D4"],Ruri:["#1E50A2","#223A70","#58B2DC"],Edomurasaki:["#745399","#592C63","#8B81C3"],Suo:["#8E354A","#64363C","#DC9FB4"],Kaki:["#ED6D3D","#95483F","#E2943B"]};function load(){try{return JSON.parse(localStorage.getItem("kata-fdeck")||"{}")}catch(e){return{}}}function save(S){try{localStorage.setItem("kata-fdeck",JSON.stringify(S))}catch(e){}}function dark(){return root.getAttribute("data-theme")==="dark"}function mark(){var S=load();document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.classList.toggle("on",b.dataset.lpcAccent===S.accentName)});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcRadius===(S.radius||8))});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.classList.toggle("on",(b.dataset.lpcMode==="dark")===dark())});document.querySelectorAll("[data-lpc-motion]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcMotion===(S.mscale||1))})}function accent(name){var pr=PRESETS[name];if(!pr)return;var S=load();S.accent=pr[0];S.accentInk=pr[1];S.darkInk=pr[2];S.accentName=name;root.style.setProperty("--k-accent",pr[0]);root.style.setProperty("--acc",pr[0]);root.style.setProperty("--k-accent-ink",dark()?pr[2]:pr[1]);save(S);mark()}function radius(v){var S=load();S.radius=v;root.style.setProperty("--k-radius",v+"px");root.style.setProperty("--k-radius-sm",Math.max(0,Math.round(v*.75))+"px");root.style.setProperty("--k-radius-lg",Math.round(v*1.5)+"px");save(S);mark()}function motion(v){var S=load();S.mscale=v;root.style.setProperty("--k-mscale",v);save(S);mark()}function mode(d){var S=load();S.dark=d;if(d)root.setAttribute("data-theme","dark");else root.removeAttribute("data-theme");if(S.accentName&&PRESETS[S.accentName]){var pr=PRESETS[S.accentName];root.style.setProperty("--k-accent-ink",d?pr[2]:pr[1])}save(S);mark()}document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.addEventListener("click",function(){accent(b.dataset.lpcAccent)})});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.addEventListener("click",function(){radius(+b.dataset.lpcRadius)})});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.addEventListener("click",function(){mode(b.dataset.lpcMode==="dark")})});document.querySelectorAll("[data-lpc-motion]").forEach(function(b){b.addEventListener("click",function(){motion(+b.dataset.lpcMotion)})});mark();})();</script>'
       '</section>')
-    _sc_tabs = [('dashboard', 'Dashboard'), ('inbox', 'Inbox'), ('settings-page', 'Settings'), ('checkout', 'Checkout')]
-    _tmap = {t['slug']: t for t in (templates or [])}
-    _tab_btns = ''
-    _tab_panels = ''
-    for _i, (_slug, _label) in enumerate(_sc_tabs):
-        _t = _tmap.get(_slug)
-        if not _t:
-            continue
-        _on = ' on' if _i == 0 else ''
-        _tab_btns += f'<button type="button" role="tab" class="sctab-btn{_on}" data-sctab="{_slug}" aria-selected="{"true" if _i == 0 else "false"}">{_label}</button>'
-        _nparts = len(_t['meta'].get('uses', []))
-        _src = f' src="/templates/{_slug}/demo/"' if _i == 0 else f' data-src="/templates/{_slug}/demo/"'
-        _hid = '' if _i == 0 else ' hidden'
-        _tab_panels += (f'<div class="sctab-panel" data-panel="{_slug}"{_hid}>'
-          f'<div class="scframe"><span class="livechip on-dark framelive"><i></i>LIVE \u2014 this code is copyable</span><iframe{_src} title="{_label} template, running live" loading="lazy"></iframe></div>'
-          '<p class="sccap">Not a screenshot. This is running on this page, right now \u2014 every control live, every pixel a part you can copy.</p>'
-          f'<p class="scmeta"><span>Parts composed: {_nparts}</span><span>&asymp;5 hours by hand from free parts \u00b7 minutes with Pro</span><a href="/templates/{_slug}/demo/">Open the full page &rarr;</a><a href="/templates/{_slug}/">See the parts</a></p></div>')
-    demoband = ('<section class="lpsec proof"><h2>Whole pages, not screenshots</h2>'
-      '<p class="sub">Every template is a real page, running at full size \u2014 switch between them; each one below is the actual template, embedded live, composed entirely from parts on this site.</p>'
-      f'<div class="sctabs" role="tablist">{_tab_btns}</div>{_tab_panels}'
-      '<script>(function(){var btns=[].slice.call(document.querySelectorAll("[data-sctab]"));btns.forEach(function(b){b.addEventListener("click",function(){btns.forEach(function(x){x.classList.toggle("on",x===b);x.setAttribute("aria-selected",x===b?"true":"false")});document.querySelectorAll("[data-panel]").forEach(function(pn){var on=pn.dataset.panel===b.dataset.sctab;pn.hidden=!on;if(on){var f=pn.querySelector("iframe");if(f&&!f.getAttribute("src")&&f.dataset.src)f.src=f.dataset.src;}});});});})();</script>'
-      '</section>') if _tab_panels else ''
+    threeways = ('<section class="lpsec proof"><h2>Three ways in</h2>'
+      '<p class="sub">However you work, there is a door at your height. All three end at the same place: the real part, in your project, owned by you.</p>'
+      '<div class="steps">'
+      '<div class="step"><span class="no">COPY-PASTE</span><h3>The part\u2019s page</h3><p>Open a part, copy its three files, done. Still the fastest way in for a single part \u2014 about ten seconds.</p><div class="term">&lt;button class="btn btn-pri btn-md"&gt;Save&lt;/button&gt;<br><span class="dim">button.html \u00b7 button.css \u00b7 button.js</span></div><p style="margin-top:10px"><a href="/components/button/" style="color:var(--acc)">Open Button \u2192</a></p></div>'
+      '<div class="step"><span class="no">CLI</span><h3>One file, no install</h3><p>The CLI is a single script. It fetches the part \u2014 and the parts it depends on \u2014 and writes them where they belong:</p><div class="term">$ kata-ui init<br><span class="dim">  + kata/tokens.css</span><br>$ kata-ui add data-table<br><span class="dim">  + kata/components/badge/badge.css<br>  + kata/components/button/button.css</span><br>  + kata/components/data-table/data-table.css<br>  + kata/components/data-table/data-table.js<br><span class="dim">added data-table (component)</span></div><p style="margin-top:10px"><a href="/docs/cli/" style="color:var(--acc)">Get the CLI \u2192</a></p></div>'
+      '<div class="step"><span class="no">REGISTRY &amp; SKILL</span><h3>Let your AI fetch</h3><p>The registry is machine-readable, and the Skill teaches your model the mold \u2014 tokens, heights, states \u2014 so it assembles instead of inventing.</p><div class="term">GET kata-ui.dev/registry.json<br><span class="dim">"Build this form from KATA UI parts \u2014<br> fetch each part from the registry,<br> unmodified."</span></div><p style="margin-top:10px"><a href="/docs/ai-prompts/" style="color:var(--acc)">AI prompts \u2192</a></p></div>'
+      '</div>'
+      '<div class="proofstrip">'
+      '<div><span class="vs">AN AI, WRITING FROM SCRATCH</span><h3>A new dialect per prompt</h3><p>New class names, a new radius, spacing by mood. Screen one and screen ten are cousins, not siblings \u2014 and every state it forgot is yours to find.</p></div>'
+      '<div><span class="vs">AN AI, FETCHING KATA</span><h3>The same part, every time</h3><p>The part arrives already checked: tokens only, classes covered, hover, focus, disabled and dark all finished. The model composes; the mold holds.</p></div>'
+      '</div>'
+      '<p class="proofline">Same prompt, two outcomes. Letting your AI fetch a mold-checked part is faster than reviewing its improvisation \u2014 and the result is stable in a way generated code is not: it was finished before your AI touched it.</p>'
+      '</section>')
+    _nav_m = re.search(r'<nav class="k-side".*?</nav>', pv['sidebar']['preview'], re.S) if pv.get('sidebar') else None
+    _fld_m = re.search(r'<div class="field">.*?</div>', pv['input']['preview'], re.S) if pv.get('input') else None
+    _sel_m = re.search(r'<label style="display:grid;gap:6px;font-size:12\.5px;font-weight:550">.*?</label>', pv['select']['preview'], re.S) if pv.get('select') else None
+    _ps_nav = _nav_m.group(0) if _nav_m else ''
+    _ps_fld = _fld_m.group(0) if _fld_m else ''
+    _ps_sel = _sel_m.group(0) if _sel_m else ''
+    _ps_chart = pv['line-chart']['preview'] if pv.get('line-chart') else ''
+    _ps_table = pv['data-table']['preview'] if pv.get('data-table') else ''
+    _mani = ''
+    for _slug in ('sidebar', 'data-table', 'line-chart', 'input', 'select', 'switch', 'button', 'card'):
+        _c = pv.get(_slug)
+        if _c:
+            _beta = '<i>BETA</i>' if _c['meta'].get('status') == 'beta' else ''
+            _mani += f'<a class="pm" href="/components/{_slug}/">{_c["meta"]["title"]}{_beta}</a>'
+    _tplrow = ''
+    for _slug, _label in [('dashboard', 'Dashboard'), ('inbox', 'Inbox'), ('settings-page', 'Settings'), ('checkout', 'Checkout')]:
+        _t = _tmap.get(_slug) if (_tmap := {t['slug']: t for t in (templates or [])}) else None
+        if _t:
+            _tplrow += f'<a href="/templates/{_slug}/demo/"><b>{_label}</b><span>{len(_t["meta"].get("uses", []))} parts composed \u00b7 open the live page \u2192</span></a>'
+    demoband = ('<section class="lpsec proof"><h2>A product screen, not a poster</h2>'
+      '<p class="sub">Sidebar, chart, form and data table \u2014 one screen, composed entirely from parts on this site, at the density a real product needs. Nothing here is a render: every control is live, and every part on this screen is copyable.</p>'
+      '<div class="browser psframe">'
+      '<span class="livechip on-dark framelive"><i></i>LIVE \u2014 this code is copyable</span>'
+      '<span class="fann" style="left:4%;top:36%">Sidebar</span><span class="fann" style="left:47%;top:15%">Line Chart \u00b7 Beta</span><span class="fann" style="left:76%;top:15%">Form</span><span class="fann" style="left:52%;top:62%">Data Table \u00b7 Beta</span>'
+      '<div class="browser-bar"><i></i><i></i><i></i><span class="url">your-app.com</span></div>'
+      '<div class="pscreen"><div class="ps-side">' + _ps_nav + '</div>'
+      '<div class="ps-main"><div class="ps-row"><div class="ps-chart">' + _ps_chart + '</div>'
+      '<div class="k-card"><div class="k-card-h"><div><h3>Workspace settings</h3><p>Form parts, composed.</p></div></div><div class="k-card-b" style="display:grid;gap:12px">' + _ps_fld + _ps_sel + '</div><div class="k-card-f"><span class="switch asagi"><input type="checkbox" checked aria-label="Email notifications"><span class="tr"></span></span>&nbsp; Notifications<span class="sp"><button class="btn btn-pri btn-sm" type="button">Save</button></span></div></div></div>'
+      '<div class="ps-table">' + _ps_table + '</div>'
+      '</div></div></div>'
+      '<div class="psmani"><span class="lead">ON THIS SCREEN</span>' + _mani + '</div>'
+      '<p class="lpnote" style="margin-top:12px">Prefer whole pages? The templates are this, finished \u2014 each one a real page, running full-screen.</p>'
+      '<div class="tplrow">' + _tplrow + '</div>'
+      f'<script src="/components/sidebar/sidebar.js?v={_v(pv["sidebar"]["js"])}"></script>'
+      f'<script src="/components/data-table/data-table.js?v={_v(pv["data-table"]["js"])}"></script>'
+      '</section>') if _ps_nav else ''
     videoband = ('<section class="lpsec"><h2>Watch one get built</h2>'
       '<p class="lpnote">A settings page, assembled from catalog parts in one take \u2014 no cuts, nothing written on camera. Each element lands by pasting the part from its page, and the timer is the real one: sixteen seconds of pasting, because the styling was already done inside the parts.</p>'
       '<div style="margin-top:14px"><span class="livechip"><i></i>LIVE \u2014 this code is copyable</span></div>'
@@ -650,41 +716,20 @@ def landing(comps, blocks, n_icons, templates=None):
       '<a class="allband-cta" href="/components/">Browse the catalog</a></div></section>')
     body = f"""
 <div class="wrap lp">
-  <div class="hero2">
-    <svg class="hwag" aria-hidden="true" preserveAspectRatio="none"><defs><pattern id="hw" width="56" height="28" patternUnits="userSpaceOnUse"><g fill="none" stroke="rgba(244,244,245,.06)" stroke-width="1"><path d="M-28 28A28 28 0 0 1 28 28"/><path d="M-18.7 28A18.7 18.7 0 0 1 18.7 28"/><path d="M-9.3 28A9.3 9.3 0 0 1 9.3 28"/><path d="M28 28A28 28 0 0 1 84 28"/><path d="M37.3 28A18.7 18.7 0 0 1 74.7 28"/><path d="M46.7 28A9.3 9.3 0 0 1 65.3 28"/><path d="M0 14A28 28 0 0 1 56 14"/><path d="M9.3 14A18.7 18.7 0 0 1 46.7 14"/><path d="M18.7 14A9.3 9.3 0 0 1 37.3 14"/><path d="M-56 14A28 28 0 0 1 0 14"/><path d="M56 14A28 28 0 0 1 112 14"/></g></pattern></defs><rect width="100%" height="100%" fill="url(#hw)"/></svg>
-    <span class="hkanji" aria-hidden="true">型</span>
-    <div class="hero2-in">
-    <div class="castmark" aria-hidden="true"><i class="cm-ring"></i><i class="cm-slash"></i><i class="cm-corner"></i><i class="cm-core"></i></div>
-    <span class="eyebrow"><i></i>{n} components &middot; {nb} blocks &middot; {nt} templates — every part free, forever</span>
-    <h1>Parts, cast from a single mold.<br><span class="dim">Copy the code. Own the design.</span></h1>
-    <p><b>Vanilla HTML, CSS and JS. No framework. No build step.</b> Copy a part, paste it, ship it — at this quality. Each part carries a live preview and copy-ready code, cast from a single mold: kata, the Japanese discipline of the form.</p>
+  <header class="hero3">
+    <p class="hero3-eyebrow">{n} components &middot; {nb} blocks &middot; {nt} templates &middot; {n_icons + _nbrands} icons &amp; marks — every part free, forever</p>
+    <h1>Vanilla HTML, CSS and JS.<br><span class="dim">Copy the code. Own the design.</span></h1>
+    <p class="hero3-sub"><b>No framework. No build step.</b> Copy a part, paste it into the page you already have, and ship it — at this quality. Every part is checked against a single mold before it ships: tokens only, classes covered, every state finished.</p>
     <div class="cta">
-      <a class="kbtn-primary" href="#first-five" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;background:#f4f4f5;color:#18181b;font-weight:550;font-size:14px;text-decoration:none">Copy your first part</a>
-      <a href="/components/" style="display:inline-flex;align-items:center;height:42px;padding:0 20px;border-radius:9px;border:1px solid #71717a;font-weight:500;font-size:14px;text-decoration:none;background:rgba(255,255,255,.08);color:#f4f4f5">Browse {n} components</a>
+      <a class="btn btn-pri btn-lg" href="#first-five">Copy a part now</a>
+      <a class="btn btn-ghost btn-lg" href="/components/">Open Components</a>
     </div>
-    <p class="statsline"><span><b>{n}</b> components</span><i>&middot;</i><span><b>{nb}</b> blocks</span><i>&middot;</i><span><b>{n_icons + _nbrands}</b> icons &amp; marks</span><i>&middot;</i><span><b>0</b> dependencies</span></p>
     <p class="herotrust">This page is built with KATA — every part on it is the real part, unmodified. <span class="fmold">{MOLD_STATUS}</span></p>
-  </div>
-  <div class="browser" aria-hidden="true">
-    <span class="livechip on-dark framelive"><i></i>LIVE \u2014 this code is copyable</span><span class="fann" style="left:5%;top:30%">App Shell \u00b7 Block</span><span class="fann" style="left:36%;top:20%">Stat Cards \u00b7 Block</span><span class="fann" style="left:56%;top:52%">Data Table</span>
-    <div class="browser-bar"><i></i><i></i><i></i><span class="url">your-app.com</span></div>
-{shell_html}
-  </div>
-  <p class="framecap">A working screen built only from KATA parts — the <a href="/blocks/app-shell/">App Shell</a> block. Not a screenshot: hover to take it apart.</p>
-  </div>
+  </header>
   {moldlive}
+  {threeways}
   {demoband}
   {videoband}
-  <section class="lpsec">
-    <h2>How it works</h2>
-    <div class="steps">
-      <div class="step"><span class="no">STEP 1</span><h3>Take the tokens</h3><p>Load <code>tokens.css</code> once. Every part reads its color, spacing, radius and motion from it \u2014 that file is the mold.</p><div class="tokcode">&lt;link rel="stylesheet" href="https://kata-ui.dev/tokens.css"&gt;
-:root{{ --k-accent:#33A6B8; --k-radius:8px;
-       --k-dur-2:180ms; --k-space:4px; \u2026 }}</div></div>
-      <div class="step"><span class="no">STEP 2</span><h3>Paste the part</h3><p>Copy the HTML, the CSS and the JS from the part's page. No install, no package, nothing phoning home. About ten seconds a part.</p></div>
-      <div class="step"><span class="no">STEP 3</span><h3>Make it yours</h3><p>Adjust the tokens, not the parts. One change in the mold re-casts everything on the page \u2014 <a href="#one-mold" style="color:var(--acc)">you already did it, above</a>.</p></div>
-    </div>
-  </section>
   {firstfive}
   {principles}
   {asmx}
@@ -720,7 +765,7 @@ def landing(comps, blocks, n_icons, templates=None):
 </body>
 </html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
-             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('card', 'aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
+             + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('sidebar', 'select', 'card', 'aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
 
 def registry_json(comps, blocks, templates=None):
@@ -2338,6 +2383,8 @@ DOCS = [
   ('contributing', 'Contributing', 'Add a part without breaking the mold.', [('The mold is the application form', 'A contribution to KATA is a part cast from the same mold as every other part. There is no separate review aesthetic: if the part passes the checker and follows the written standard, it belongs. The standard is KATA.md in the repository and the checker is check.py; both are public, so a part can be finished \u2014 really finished \u2014 before a maintainer ever sees it.', None, 'Parts that fail the checker do not ship. That is not gatekeeping; it is the product.'), ('Start from the template', 'Every part is a folder: meta.json, preview.html, the part CSS, and JS only when the part moves. Copy the template folder, name it, and build inside it:', 'cp -r template/ components/my-part\npython3 check.py', 'The preview is the documentation: if the preview cannot show the part honestly, the part is not ready.'), ('What the checker reads', 'Tokens only \u2014 no raw color anywhere, because a hard-coded hex is a part that will not survive a theme. Every class in the preview defined. Icons on the 24 grid, stroke 1.7, three shapes only. All states finished: hover, active, focus-visible, disabled, empty, overflow. Motion between 130 and 220ms with no bounce, and a prefers-reduced-motion answer for anything that moves. The vermillion core appears only where it already lives; a new part does not invent a new place for it.', None, 'The full standard, including the fine-detail rules, is section 0.6 of KATA.md.'), ('Then open the pull request', 'Describe the job the part does and the screens it serves. The issue and pull request templates ask the mold questions up front \u2014 tokens, states, motion \u2014 so review starts from answers instead of questions. One part per pull request keeps the casting inspectable.', None, 'A part that needs a new token starts as a token proposal in an issue: tokens change the mold, not just the part.')]),
   ('changelog', 'Changelog', 'What shipped, newest first.',
    [(
+ 'November 3, 2026 \u2014 The front page, rebuilt around the message', '<p>The hero now leads with the only two sentences that matter \u2014 \u201cVanilla HTML, CSS and JS\u201d and \u201cCopy the code. Own the design\u201d \u2014 with the counts demoted to a footnote line, the pattern backdrop retired, and the casting bench directly underneath: accent, radius, motion and mode re-cast real Buttons, Inputs, a Card and two Charts (the beta parts are labeled, here as everywhere). \u201cThree ways in\u201d shows copy-paste, the one-file CLI (real output, dependencies and all) and the registry side by side, with the honest comparison: an AI improvising drifts; an AI fetching checked parts does not. The showcase is no longer four framed pages but one composed product screen \u2014 sidebar, chart, form and a sortable data table, every control live, every part on the screen named in the manifest below it. The comparison table gained its third column and the two rows that decide it: AI friendliness, and quality without React.</p>', None, None),
+    (
  'November 3, 2026 \u2014 Dark mode, repaired where it was actually broken', '<p>Two honest defects, found by looking. The template demo pages carried no theme script at all, so they rendered light forever \u2014 inside the front page\u2019s new live tabs that meant a white slab in a dark page. Demos now read the same cast state as the rest of the site, fall back to your system preference when no cast exists, and follow live when the mold is re-cast in the parent page. And the casting controls inside the light stage on the front page read the site\u2019s chrome tokens, which do not re-scope \u2014 their pills went black-on-white; they now read the part tokens, like everything else in the stage.</p>', None, None),
     (
  'November 3, 2026 \u2014 Whole pages, a bigger motion shelf, and time priced out loud', '<p>The template cards become four live tabs \u2014 Dashboard, Inbox, Settings, Checkout, each the real template running in the page, loaded only when opened, captioned without apology: not a screenshot. Motion steps up the page as four large live tiles under one argument, <b>Motion, on duty</b>. The comparison now closes on a billboard \u2014 KATA is for everywhere else \u2014 with a two-column summary on phones. Pro states its arithmetic on the page: &asymp;77 hours of assembly, $129 once, $1.68 an hour, the do-it-yourself bar against the minutes bar. The FAQ leads with the two questions that actually block people \u2014 React, and whether free stays free \u2014 and the page ends on an action: Start with one part.</p>', None, None),
@@ -2553,6 +2600,11 @@ def main():
         demo_dir = dst / 'demo'
         demo_dir.mkdir(exist_ok=True)
         (demo_dir / 'index.html').write_text(template_demo(t, comps, blocks), encoding='utf-8')
+    # Guard (added 2026-11-03 after the dark-mode incident): every template demo
+    # must carry the theme script, or it renders light forever inside dark pages.
+    for t in templates:
+        _demo_html = (tpdir / t['slug'] / 'demo' / 'index.html').read_text(encoding='utf-8')
+        assert 'kata-fdeck' in _demo_html, f'template demo {t["slug"]} is missing the theme script'
     (DIST / 'registry.json').write_text(registry_json(comps, blocks, templates), encoding='utf-8')
     (DIST / 'llms.txt').write_text(llms_txt(comps, blocks, n_icons, templates), encoding='utf-8')
     (DIST / 'llms-full.txt').write_text(llms_full(comps, blocks, templates), encoding='utf-8')

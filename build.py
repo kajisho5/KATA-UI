@@ -85,13 +85,13 @@ FOOTER = """<div class="wrap"><footer class="site">
 </footer></div>"""
 
 import subprocess as _sp, sys as _sys
-try:
-    _r = _sp.run([_sys.executable, str(ROOT / 'check.py')], capture_output=True, text=True, timeout=90)
-    _ok = sum(1 for ln in _r.stdout.splitlines() if ln.startswith('OK'))
-    _bad = sum(1 for ln in _r.stdout.splitlines() if ln.startswith(('FAIL', 'NG')))
-    _ms = f'Mold Verified — {_ok}/{_ok + _bad} checks passing' if _ok else 'Mold Verified — see check.py'
-except Exception:
-    _ms = 'Mold Verified — see check.py'
+_r = _sp.run([_sys.executable, str(ROOT / 'check.py'), '--json', '-'], capture_output=True, text=True, timeout=90)
+if _r.returncode not in (0, 1):
+    raise RuntimeError('Mold checker failed: ' + _r.stderr)
+MOLD_REPORT = json.loads(_r.stdout)
+_summary = MOLD_REPORT['summary']
+_ms = f"Mold Verified {_summary['passed']}/{_summary['total']}"
+MOLD_ITEMS = {item['id']: item for item in MOLD_REPORT['items']}
 MOLD_STATUS = _ms
 FOOTER = FOOTER.replace('__MOLD__', _ms)
 
@@ -1163,7 +1163,7 @@ def detail(comps, idx):
     <main class="detail">
       <p class="crumb"><a href="/components/">Components</a> / {esc(m['category'])} / {esc(m['title'])}</p>
       <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h1>
-      <div class="vrow"><span class="vchip"><i></i>Mold verified — passes the mold checks (check.py)</span><button class="aibtn" type="button" data-aiprompt="{slug}" data-title="{esc(m['title'])}">Pass this part to your AI</button></div>
+      <div class="vrow"><span class="vchip"><i></i>{'Mold Verified — passed' if MOLD_ITEMS['components/' + slug]['passed'] else 'Mold check — failed'}</span><button class="aibtn" type="button" data-aiprompt="{slug}" data-title="{esc(m['title'])}">Pass this part to your AI</button></div>
       <p class="desc">{esc(m['description'])}</p>{'<p class="expnote">From the experimental line \u2014 a showpiece. The production shelf carries the same mold without the performance.</p>' if m.get('category') in ('Motion', 'KATAYABURI') else ''}
       <div class="stagebar">
         <span class="lbl">Preview</span>
@@ -2542,6 +2542,7 @@ def main():
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
+    (DIST / 'mold-results.json').write_text(json.dumps(MOLD_REPORT, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     _cl = ROOT / 'cli'
     if _cl.exists():
         (DIST / 'cli').mkdir(exist_ok=True)

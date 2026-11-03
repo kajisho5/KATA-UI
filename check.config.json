@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "raw_value_allowlist": [],
+  "notes": "Exceptions require path, property, value and reason. No blanket exemptions. tokens.css is the token definition source, not a component under test."
+}

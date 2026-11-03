@@ -98,7 +98,7 @@ Prefer no terminal at all? Open the part on [kata-ui.dev](https://kata-ui.dev/co
 `KATA.md` is the production standard and `check.py` is its enforcement. The fine-detail rules (§0.6) are part of it: physically believable motion, dark-mode parity for every part, touch that actually works, 16px inputs so iOS does not zoom, measured spacing rhythm, optical alignment at real width, and a `prefers-reduced-motion` answer for anything that moves. One color is off-limits by design: the vermillion core (`--k-core`) lives only at the center of active controls and in the lower-right quarter of the mark. It is the signature, not a setting.
 
 ```bash
-python3 check.py   # verify every part against the mold (164 checks)
+python3 check.py   # static checks across 164 catalog items (136 components, 21 blocks, 7 templates)
 python3 build.py   # build the site into dist/
 ```
 

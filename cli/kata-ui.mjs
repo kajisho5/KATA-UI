@@ -72,6 +72,10 @@ function safeDestination(relPath) {
 async function ensureSafeParents(parts) {
   if (DRY_RUN) return;
   await mkdir(ROOT, { recursive: true });
+  const rootStat = await lstat(ROOT);
+  if (rootStat.isSymbolicLink() || !rootStat.isDirectory()) {
+    throw new Error('install root must be a real directory, not a symlink or file: ' + ROOT);
+  }
   let current = ROOT;
   for (const part of parts.slice(0, -1)) {
     current = join(current, part);

@@ -2,6 +2,8 @@
 """KATA UI — static site generator. Registry (components/) is the source of truth."""
 import glob, hashlib, html, json, re, shutil
 from tools.anatomy import css_surface, aria_surface
+from tools.mold_publish import label as audit_label, metadata as audit_metadata, summary_block, sync as sync_audit_docs
+from tools.mold_view import audit as render_audit, checks as render_checks
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -91,7 +93,9 @@ if _r.returncode not in (0, 1):
     raise RuntimeError('Mold checker failed: ' + _r.stderr)
 MOLD_REPORT = json.loads(_r.stdout)
 _summary = MOLD_REPORT['summary']
-_ms = f"Mold Verified {_summary['passed']}/{_summary['total']}"
+_ms = audit_label(MOLD_REPORT)
+(ROOT / 'mold-results.json').write_text(json.dumps(MOLD_REPORT, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+sync_audit_docs(ROOT, MOLD_REPORT)
 MOLD_ITEMS = {item['id']: item for item in MOLD_REPORT['items']}
 MOLD_STATUS = _ms
 FOOTER = FOOTER.replace('__MOLD__', '<a href="/audit/">' + _ms + '</a>')
@@ -195,7 +199,7 @@ let sPvSeq = 0;
 function sPreview() {
   const it = sShown[sAct];
   if (!it || !sPv) return;
-  const m = it.u.match(/^\/(components|blocks|templates)\/([a-z0-9-]+)\/$/);
+  const m = it.u.match(/^[/](components|blocks|templates)[/]([a-z0-9-]+)[/]$/);
   if (!m) { sPv.innerHTML = '<div class="kcmd-pv-note"><b>' + it.t + '</b><span>' + it.k + ' \u2014 Enter opens the page.</span></div>'; return; }
   const seq = ++sPvSeq;
   const show = html => { if (seq === sPvSeq) sPv.innerHTML = '<div class="kcmd-pv-stage">' + html + '</div><p class="kcmd-pv-cap">' + it.t + ' \u2014 live from its page</p>'; };
@@ -205,7 +209,7 @@ function sPreview() {
     const doc = new DOMParser().parseFromString(txt, 'text/html');
     doc.querySelectorAll('link[rel="stylesheet"]').forEach(l => {
       const href = l.getAttribute('href');
-      if (href && !sCssDone[href] && /\/(components|blocks|templates)\//.test(href)) { sCssDone[href] = 1; const nl = document.createElement('link'); nl.rel = 'stylesheet'; nl.href = href; document.head.appendChild(nl); }
+      if (href && !sCssDone[href] && /[/](components|blocks|templates)[/]/.test(href)) { sCssDone[href] = 1; const nl = document.createElement('link'); nl.rel = 'stylesheet'; nl.href = href; document.head.appendChild(nl); }
     });
     const st = doc.querySelector('#stage') || doc.querySelector('.stage');
     const html = st ? st.innerHTML : '<div class="kcmd-pv-note">No preview stage on that page.</div>';
@@ -542,19 +546,7 @@ LP_STYLE = """<style>
 </style>"""
 
 def audit_page():
-    rows = []
-    for item in MOLD_REPORT['items']:
-        findings = ''.join('<li>' + esc(check['id']) + ': ' + esc(str(finding)) + '</li>'
-                           for check in item['checks'] if check['status'] == 'fail'
-                           for finding in check['findings'])
-        warnings = ''.join('<li>' + esc(check['id']) + ': ' + esc(str(finding)) + '</li>'
-                           for check in item['checks'] if check['status'] == 'warn'
-                           for finding in check['findings'])
-        verdict = 'Passed' if item['passed'] else 'Failed'
-        rows.append('<section class="doc"><h2><a href="/' + esc(item['id']) + '/">' + esc(item['id']) + '</a> — ' + verdict + '</h2>'
-                    + ('<ul>' + findings + '</ul>' if findings else '<p>No failed static checks.</p>')
-                    + ('<details><summary>Warnings</summary><ul>' + warnings + '</ul></details>' if warnings else '') + '</section>')
-    return head('Audit — KATA UI', 'Current component check results.') + '<main class="wrap dc"><h1>Audit</h1><p>' + MOLD_STATUS + '</p><p>Static checks only. Passing does not certify keyboard, screen-reader or browser behavior. <a href="/mold-results.json">Download JSON</a>.</p>' + ''.join(rows) + '</main>' + plain_footer() + '</body></html>'
+    return head('Audit — KATA UI', 'Current static check results.') + render_audit(MOLD_REPORT, ROOT) + plain_footer() + '</body></html>'
 
 
 def plain_footer():
@@ -612,7 +604,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '<p class="proster-h">7 TEMPLATES</p><div class="prochips">' + _pro_chips_t + '</div>'
       '<p class="lpnote" style="margin-top:12px">Every one of them is a live page on this site \u2014 open any chip and inspect exactly what you would get.</p></div>')
     proband = ('<section class="lpsec proof" id="pro"><h2>Pro is assembled time.</h2>'
-      '<p class="sub">The parts are free. What Pro sells is the hours you do not spend composing them \u2014 21 blocks and 7 templates, assembled, responsive, and checked against the same mold.</p>'
+      '<p class="sub">The parts are free. What Pro sells is the hours you do not spend composing them \u2014 21 blocks and 7 templates, with source files and current static check results.</p>'
       '<div class="pronums"><div><b>&asymp;77 h</b><span>of assembly, done for you</span></div><div><b>$129</b><span>once \u2014 lifetime, every future block</span></div><div><b>$1.68</b><span>per hour of it</span></div></div>'
       '<div class="probars"><div class="probar"><span>Assemble it yourself</span><div class="track"><i style="width:100%;background:var(--ink)"></i></div><b>&asymp;77 h</b></div><div class="probar"><span>With Pro</span><div class="track"><i style="width:2%;background:var(--acc);min-width:10px"></i></div><b>minutes</b></div></div>'
       '<p class="lpnote" style="margin-top:16px">Founding 100: $99, plus two blocks that will never be sold separately \u2014 Help Center and Job Board.</p>'
@@ -702,9 +694,9 @@ def landing(comps, blocks, n_icons, templates=None):
       '</div>'
       '<div class="proofstrip">'
       '<div><span class="vs">AN AI, WRITING FROM SCRATCH</span><h3>A new dialect per prompt</h3><p>New class names, a new radius, spacing by mood. Screen one and screen ten are cousins, not siblings \u2014 and every state it forgot is yours to find.</p></div>'
-      '<div><span class="vs">AN AI, FETCHING KATA</span><h3>The same part, every time</h3><p>The registry supplies the component source and its current audit result. Review failed checks for the parts you use.</p></div>'
+      '<div><span class="vs">AN AI, FETCHING KATA</span><h3>The same part, every time</h3><p>The registry includes each part&#39;s source and current static check results.</p></div>'
       '</div>'
-      '<p class="proofline">Same prompt, two outcomes. Letting your AI fetch a mold-checked part is faster than reviewing its improvisation \u2014 and the result is stable in a way generated code is not: it was finished before your AI touched it.</p>'
+      '<p class="proofline">Same prompt, two outcomes. Letting your AI fetch a mold-checked part is faster than reviewing its improvisation \u2014 and the registry includes source files and their current static check results.</p>'
       '</section>')
     _nav_m = re.search(r'<nav class="k-side".*?</nav>', pv['sidebar']['preview'], re.S) if pv.get('sidebar') else None
     _fld_m = re.search(r'<div class="field">.*?</div>', pv['input']['preview'], re.S) if pv.get('input') else None
@@ -768,9 +760,9 @@ def landing(comps, blocks, n_icons, templates=None):
 <header class="hero3">
 <p class="hero3-eyebrow">{n} components · {nb} blocks · {nt} templates</p>
 <h1>HTML, CSS and JavaScript<br><span class="dim">for the page you're building.</span></h1>
-<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. Checks cover tokens, markup and interaction styles. Some components still fail. Read the current audit before using a part.</p>
+<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. check.py reports token provenance, markup and JavaScript findings. Browser behavior needs separate testing.</p>
 <div class="cta"><a class="btn btn-pri btn-lg" href="/components/">Browse components</a><a class="btn btn-ghost btn-lg" href="/docs/getting-started/">Get started</a></div>
-<p class="herotrust">Components are MIT licensed. <span class="fmold">{MOLD_STATUS}</span> · <a href="/audit/">Read the results</a></p>
+<p class="herotrust">Components are MIT licensed. <a class="fmold" href="/audit/">{MOLD_STATUS}</a> · <a href="/audit/">Read the results</a></p>
 </header>
 <section class="lpsec"><h2>One mold: shared design tokens</h2><p class="lpnote">Load tokens.css, then the component's CSS and HTML. Add its JavaScript if it has any. Change colors and spacing through the tokens.</p></section>
 <section class="lpsec"><h2>Start with five components</h2><p class="lpnote">Buttons for actions, inputs for text, badges for status, tabs for views and toasts for feedback.</p><div class="cards">{''.join(card(c) for c in _five)}</div></section>
@@ -828,14 +820,15 @@ def registry_json(comps, blocks, templates=None):
         for file in item['files']:
             file['content'] = distribution_header(file['path'], file['content'])
     return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': RELEASE_VERSION,
-                       'homepage': 'https://kata-ui.dev', 'items': items}, ensure_ascii=False, indent=1)
+                       'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
-    lines = ['# KATA UI', '',
-             '> Practical UI components in plain HTML, CSS and JavaScript. No framework, no build step. Every part is cast from a single design-token mold; copy the code and own it.', '',
+    lines = ['# KATA UI', '', summary_block(MOLD_REPORT), '',
+             'check.py reports token provenance, markup and JavaScript findings. Browser behavior needs separate testing.', '',
+             '> Practical UI components in plain HTML, CSS and JavaScript. No framework, no build step. Copy the source and read the current audit results.', '',
              'KATA is framework-free: parts drop into plain HTML, Astro, Laravel, Django, Rails and templates unchanged. Components depend on tokens.css (design tokens) being loaded once.', '',
              '## Docs', '',
-             '- [Design System](https://kata-ui.dev/design-system/): the tokens every part is cast from (tokens.json is downloadable there)',
+             '- [Design System](https://kata-ui.dev/design-system/): shared design tokens (tokens.json is downloadable there)',
              f'- [Icons](https://kata-ui.dev/icons/): {n_icons} icons on one mold (24 grid, 1.7 stroke, square caps); click to copy the SVG',
              '- [Registry](https://kata-ui.dev/registry.json): every component and block with its full CSS/JS/HTML, in the shadcn registry format',
              '- [Themes](https://kata-ui.dev/themes/): accent presets as small CSS files; a theme redefines the five accent tokens only. The page also offers 50 traditional Japanese colors (dentou) as click-to-cast accent sources',
@@ -857,7 +850,7 @@ def llms_txt(comps, blocks, n_icons, templates=None):
     return '\n'.join(lines)
 
 def llms_full(comps, blocks, templates=None):
-    out = ['# KATA UI — full text', '',
+    out = ['# KATA UI — full text', '', summary_block(MOLD_REPORT), '',
            'Vanilla UI components: HTML, CSS and JS for every part, plus the design tokens.', '',
            '## Design tokens (tokens.css)', '', '```css', (ROOT / 'tokens.css').read_text(encoding='utf-8').strip(), '```', '']
     for c in comps:
@@ -1167,7 +1160,8 @@ def detail(comps, idx):
         {panes}
       </div>
       </div></div>
-      {install_html}
+      {render_checks(MOLD_ITEMS['components/' + slug])}
+    {install_html}
       {examples_html}
       <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
       <section class="doc"><h2>Accessibility</h2><p>{esc(m.get('a11y',''))}</p></section>
@@ -1747,6 +1741,7 @@ def block_detail(blocks, idx, comps):
       <div class="codetabs">{tab_btns}</div>
       {panes}
     </div>
+    {render_checks(MOLD_ITEMS['blocks/' + slug])}
     {install_html}
     <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
     <div class="prevnext">{prev_html}{next_html}</div>
@@ -1947,6 +1942,7 @@ def template_detail(templates, idx, comps, blocks):
       <div class="codetabs">{tab_btns}</div>
       {panes}
     </div>
+    {render_checks(MOLD_ITEMS['templates/' + slug])}
     {install_html}
     <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
     <div class="prevnext">{prev_html}{next_html}</div>
@@ -2464,6 +2460,7 @@ def main():
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
+    shutil.copy(ROOT / 'docs' / 'ROADMAP.md', DIST / 'ROADMAP.md')
     (DIST / 'mold-results.json').write_text(json.dumps(MOLD_REPORT, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     _cl = ROOT / 'cli'
     if _cl.exists():

@@ -35,19 +35,21 @@ npx @kajisho5/kataui add button
   <img src="https://kata-ui.dev/ogp.png" alt="KATA UI — the four-quadrant mark on an Asanoha lattice">
 </p>
 
-The screenshots cannot do this library justice, because nothing on the site is a screenshot: every preview on [kata-ui.dev](https://kata-ui.dev) is the part itself, running. The seven templates run full-page at their own demo addresses — a [dashboard](https://kata-ui.dev/templates/dashboard/demo/), an [inbox](https://kata-ui.dev/templates/inbox/demo/), a [checkout](https://kata-ui.dev/templates/checkout/demo/) — each composed only from parts in this catalog, each part named in the manifest under the screen.
+Browse component previews and full-page [dashboard](https://kata-ui.dev/templates/dashboard/demo/), [inbox](https://kata-ui.dev/templates/inbox/demo/) and [checkout](https://kata-ui.dev/templates/checkout/demo/) examples. Each template lists its dependencies.
 
 `KATA UI` is a copy-paste library for people who ship HTML: parts in plain HTML, CSS and vanilla JS, all reading the same token file, so a button written in January and a data table written in June look like they were cast on the same day — because they were, from the same mold (*kata*, the Japanese discipline of the form). Copy a part from its page and the code is yours: no package to keep updated, no runtime to adopt, nothing that can be sunset under you. A zero-dependency CLI ([`@kajisho5/kataui`](https://www.npmjs.com/package/@kajisho5/kataui)) installs parts — and their dependencies — from the terminal, and the whole catalog is published as a machine-readable registry, so AI tools fetch real parts instead of improvising lookalikes.
 
 If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rails templates, WordPress themes, or one island inside a React app.
 
-> **THE MOLD**: no part in this repository is hand-waved in. Each one starts from the
-> same template, reads only tokens (a hard-coded color is a defect, not a style),
-> finishes every state — hover, active, focus-visible, disabled, empty, overflow —
-> and keeps its motion between 130 and 220 ms with no bounce. `check.py` enforces
-> all of it, and the site, the CLI, the registry and the MCP server are all
-> generated from these same folders, so none of them can drift from the parts.
-> → [the full standard](KATA.md)
+`check.py` reports token provenance, markup and JavaScript findings.
+Browser behavior needs separate testing. [Read the audit](https://kata-ui.dev/audit/).
+
+<!-- mold-summary:start -->
+[Mold Verified 21 / 164 · UI 12 / 121 · Lab 9 / 43](https://kata-ui.dev/audit/)
+
+164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
+Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
+<!-- mold-summary:end -->
 
 ---
 
@@ -95,16 +97,17 @@ Prefer no terminal at all? Open the part on [kata-ui.dev](https://kata-ui.dev/co
 
 ## The mold
 
-`KATA.md` is the production standard and `check.py` is its enforcement. The fine-detail rules (§0.6) are part of it: physically believable motion, dark-mode parity for every part, touch that actually works, 16px inputs so iOS does not zoom, measured spacing rhythm, optical alignment at real width, and a `prefers-reduced-motion` answer for anything that moves. One color is off-limits by design: the vermillion core (`--k-core`) lives only at the center of active controls and in the lower-right quarter of the mark. It is the signature, not a setting.
+`KATA.md` defines the UI and Lab policies. `check.py` runs static checks.
+Read each part's pass, fail and warning results before using it.
 
 ```bash
-python3 check.py   # verify every part against the mold (164 checks)
-python3 build.py   # build the site into dist/
+python3 check.py --json mold-results.json
+python3 build.py
 ```
 
 ## Theming and dark mode
 
-Parts reference only `var(--k-…)` tokens, so restyling is a token change, not a part change: five lines re-cast the accent for the whole catalog, and the [Themes page](https://kata-ui.dev/themes/) ships presets drawn from traditional Japanese colors (Asagi, Ruri, Edomurasaki, Suo, Kaki) next to all 50 of them. Dark mode is one attribute — `data-theme="dark"` on the root, or on any container — and every part inside flips, because the tokens carry both themes and the parts never know which one they are in.
+Load `tokens.css` before component styles. `data-theme="dark"` selects dark theme values. UI and Lab use different token policies; inspect the audit for literal values and other open findings.
 
 ## Built for machines
 
@@ -138,3 +141,5 @@ Start at [kata-ui.dev/docs](https://kata-ui.dev/docs/): Getting Started, Install
 ## License
 
 MIT. The components, icons and tokens are free to use, including commercially. Blocks and templates will be sold separately as a one-time purchase (Pro, $129 lifetime — [pricing](https://kata-ui.dev/pricing/)); everything in this repository stays MIT.
+
+[Development roadmap](docs/ROADMAP.md)

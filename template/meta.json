@@ -1,13 +1,18 @@
 {
   "title": "Component Name",
-  "category": "Display",
-  "description": "One sentence, in English, saying what it is and when it shines.",
-  "tags": ["tag1", "tag2"],
+  "category": "Form & Input",
+  "description": "A native action button with shared token styles.",
+  "tags": [
+    "tag1",
+    "tag2"
+  ],
   "status": "beta",
   "stage": "row",
-  "keywords": ["vanilla css component name"],
+  "keywords": [
+    "vanilla css component name"
+  ],
   "since": "YYYY-MM-DD",
   "pro": false,
-  "usage": "Where to use it, and what not to use it for. One to three sentences.",
-  "a11y": "Keyboard behavior, focus treatment and aria specifics. Be concrete."
+  "usage": "Use this as the starting point for a UI component. Replace the sample content and implement the required behavior.",
+  "a11y": "Native button with an explicit type, focus-visible ring, disabled style and reduced-motion transition rule. No custom keyboard behavior is implemented."
 }

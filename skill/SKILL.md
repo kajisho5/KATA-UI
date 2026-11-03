@@ -11,6 +11,15 @@ vanilla JS, cast from one design-token mold. There is no framework to
 adopt and no runtime to install; in a terminal, `npx @kajisho5/kataui add <slug>` (see https://kata-ui.dev/docs/cli/) fetches parts and their
 dependencies for you.
 
+<!-- mold-summary:start -->
+[Mold Verified 21 / 164 · UI 12 / 121 · Lab 9 / 43](https://kata-ui.dev/audit/)
+
+164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
+Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
+<!-- mold-summary:end -->
+
+Static checks cover token provenance, markup and JavaScript patterns. Test keyboard, IME and screen-reader behavior separately.
+
 ## Sources of truth (fetch, don't guess)
 
 - Catalog index for models: https://kata-ui.dev/llms.txt
@@ -27,8 +36,8 @@ from memory — class names are the API.
 ## Assembly rules
 
 1. Load `tokens.css` once (or the one-file bundle `kata-ui.css` /
-   `kata-ui.js` from the Installation doc). Every part reads its colors,
-   spacing, radius and motion from the `--k-` tokens.
+   `kata-ui.js` from the Installation doc). UI and Lab have different token policies.
+   Read each part's audit before using it.
 2. A part's page lists the other parts it depends on ("Built from") —
    include their CSS too. Blocks compose parts; templates compose blocks
    and parts. Prefer composing existing parts over writing new markup.

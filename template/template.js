@@ -1,6 +1,8 @@
-// Optional. Delete this file if the component needs no JS.
-// Rules: no imports, no dependencies, hooks are data- attributes (never IDs),
-// and cleanup (Escape to close, focus return) is the component's job.
-document.querySelectorAll('[data-tpl]').forEach(function (el) {
-  // wire behavior here
-});
+// Optional initializer. Delete this file when the component needs no behavior.
+(() => {
+  document.querySelectorAll('[data-tpl]').forEach(root => {
+    if (root.hasAttribute('data-kata-ready')) return;
+    root.setAttribute('data-kata-ready', '');
+    // Add behavior and its keyboard/IME/focus handling before describing it in meta.json.
+  });
+})();

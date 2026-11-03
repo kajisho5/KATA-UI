@@ -34,7 +34,22 @@ async function loadRegistry() {
   return registry;
 }
 
+async function localAudit() {
+  if (registryArg && !/^https?:\/\//.test(registryArg)) return (await loadRegistry()).audit;
+  if (registryArg) return null;
+  try {
+    const report = JSON.parse(await readFile(new URL('../mold-results.json', import.meta.url), 'utf8'));
+    const x = report.summary, p = x.by_profile;
+    return { label: `Mold Verified ${x.passed} / ${x.total} · UI ${p.ui.passed} / ${p.ui.total} · Lab ${p.lab.passed} / ${p.lab.total}`, url: 'https://kata-ui.dev/audit/', updated_at: report.updated_at, summary: x };
+  } catch { return null; }
+}
+
 const TOOLS = [
+  {
+    name: 'get_audit',
+    description: 'Read the catalog static-check summary, profiles and update date. Browser behavior requires separate testing.',
+    inputSchema: { type: 'object', properties: {} }
+  },
   {
     name: 'list_components',
     description: 'List the KATA UI catalog: parts (registry:component), blocks (registry:block), templates (registry:page) and themes (registry:theme). Optionally filter by type.',
@@ -71,6 +86,7 @@ function brief(it) {
 
 async function callTool(name, a) {
   const reg = await loadRegistry();
+  if (name === 'get_audit') return JSON.stringify(reg.audit || { error: 'Audit metadata is unavailable in this registry.' });
   const items = reg.items || [];
   if (name === 'list_components') {
     const out = items.filter(it => !a.type || it.type === a.type).map(brief);
@@ -102,7 +118,9 @@ rl.on('line', async line => {
   const { id, method, params } = msg;
   try {
     if (method === 'initialize') {
+      const audit = await localAudit();
       reply(id, {
+        instructions: audit ? `${audit.label}. ${audit.url}. Updated ${audit.updated_at}. Static checks only.` : 'Use get_audit to read current registry audit metadata.',
         protocolVersion: (params && params.protocolVersion) || '2024-11-05',
         capabilities: { tools: {} },
         serverInfo: { name: 'kata-ui', version: '1.0.0' }

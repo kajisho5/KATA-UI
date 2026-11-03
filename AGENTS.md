@@ -3,7 +3,7 @@
 ## Project
 KATA UI (https://kata-ui.dev) is a framework-free, build-free UI library. Users copy HTML/CSS/vanilla JS into their own projects (like shadcn/ui, but not React).
 - tokens.css is "the mold". Every component must read only tokens.
-- The site claims: "tokens only, classes covered, every state finished" and "Mold Verified 164/164". The code must actually meet these claims.
+- The site claims: a checked-component workflow and a "Mold Verified" count derived from check.py JSON. The code must actually meet these claims.
 - AI integration: registry.json / llms.txt / SKILL.md / MCP. These must stay in sync with component source.
 - Foundry (theme editor) changes radius, colors, motion multiplier, etc. Components must respond to it.
 
@@ -16,7 +16,7 @@ KATA UI (https://kata-ui.dev) is a framework-free, build-free UI library. Users 
 ## Rules
 1. Do not guess. If something is not in the repo, say so in the PR description.
 2. Do not rename existing classes, data attributes, or tokens. If a rename is needed, keep the old name as a deprecated alias and explain why.
-3. Use tokens.css CSS variables for all values. If a token is missing, add it to tokens.css and list it under "New tokens" in the PR description.
+3. Use shared tokens.css variables for shared values. Keep component-specific custom properties on the component root; never add component-prefixed tokens to tokens.css to pass checks. List new shared tokens under "New tokens" in the PR description.
 4. Raw values allowed only: 0, 1px borders, and percentages in layout. Anything else needs a token.
 5. Every interactive element needs :focus-visible. Every color variant needs hover / active / disabled.
 6. JS components: no globals, init all instances with querySelectorAll, safe to load twice (data-kata-ready guard), unique auto-generated IDs (respect existing IDs), ignore keys while IME is composing (e.isComposing / keyCode 229).

@@ -364,7 +364,7 @@ LP_STYLE = """<style>
 .browser-bar i{width:10px;height:10px;border-radius:50%;background:var(--hair);display:block}
 .browser-bar .url{margin-left:8px;font-family:var(--mono);font-size:11px;color:var(--ink3);border:1px solid var(--hair);border-radius:6px;padding:3px 10px;background:var(--paper)}
 .browser .shell{border:0;border-radius:0}
-.livechip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink2)}
+.livechip{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink2)}\n.showtile .livechip{color:#a1a1aa}
 .livechip i{width:7px;height:7px;border-radius:50%;background:var(--acc);flex:none}
 .livechip.on-dark{color:#d4d4d8}
 .browser{position:relative}
@@ -391,7 +391,7 @@ LP_STYLE = """<style>
 .framelive{pointer-events:none}
 .sccap{margin-top:12px;font-size:13.5px;color:var(--ink2)}
 .scmeta{margin-top:6px;font-family:var(--mono);font-size:11.5px;color:var(--ink2);display:flex;gap:14px;flex-wrap:wrap}
-.scmeta a{color:var(--acc)}
+.scmeta a{color:var(--k-accent-ink)}
 .motiongrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
 @media (max-width:720px){.motiongrid{grid-template-columns:1fr}}
 .billboard{font-size:34px;font-weight:650;letter-spacing:-.022em;margin-top:28px;line-height:1.2}
@@ -465,7 +465,7 @@ LP_STYLE = """<style>
 .lpsec .sub{margin-top:7px;color:var(--ink2);font-size:14px;line-height:1.8;max-width:62ch;letter-spacing:.012em}
 .steps{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
 .step{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:18px}
-.step .no{font-family:var(--mono);font-size:11px;color:var(--acc);font-weight:600;letter-spacing:.08em}
+.step .no{font-family:var(--mono);font-size:11px;color:var(--k-accent-ink);font-weight:600;letter-spacing:.08em}
 .step h3{margin-top:8px;font-size:15px;font-weight:600}
 .step p{margin-top:6px;font-size:13px;color:var(--ink2);line-height:1.75;letter-spacing:.01em}
 .step code{font-family:var(--mono);font-size:12px;background:var(--soft);border-radius:5px;padding:1px 5px}
@@ -510,7 +510,7 @@ LP_STYLE = """<style>
 .collage-cell{border:1px solid var(--hair);border-radius:14px;padding:18px;background:var(--paper);overflow:hidden;min-width:0}
 .collage-cell.wide{grid-column:1/-1}
 .collage-cell .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink3)}
-.collage-cell .cap a{color:var(--acc);text-decoration:none;font-family:inherit}
+.collage-cell .cap a{color:var(--k-accent-ink);text-decoration:none;font-family:inherit}
 .collage-cell div.k-dt{overflow-x:auto;max-width:none!important}
 .collage-cell table.k-dt-t{min-width:500px}
 @media (max-width:720px){.collage{grid-template-columns:1fr}}
@@ -546,7 +546,7 @@ def landing(comps, blocks, n_icons, templates=None):
     show_scripts = ''.join(f'<script src="/components/{sl}/{sl}.js?v={_v(pv[sl]["js"])}"></script>' for sl in ('counter', 'spotlight', 'text-reveal', 'follow-frame', 'reorder', 'word-rotate', 'goo-tabs', 'dock', 'jelly-buttons', 'scramble', 'bounce-letters', 'tilt-card', 'marquee') if pv.get(sl) and pv[sl]['js'])
     faq_b = next((b for b in blocks if b['slug'] == 'faq'), None)
     principles = ('<section class="lpsec"><h2>Two more rules, cast into every part</h2><div class="steps">'
-      '<div class="step"><span class="no">OWNERSHIP</span><h3>Yours, not rented</h3><p>Copied code has no roadmap and no breaking changes. Nobody can sunset it, reprice it, or deprecate it under you. <a href="/docs/why-vanilla/" style="color:var(--acc)">Why vanilla</a></p></div>'
+      '<div class="step"><span class="no">OWNERSHIP</span><h3>Yours, not rented</h3><p>Copied code has no roadmap and no breaking changes. Nobody can sunset it, reprice it, or deprecate it under you. <a href="/docs/why-vanilla/" style="color:var(--k-accent-ink)">Why vanilla</a></p></div>'
       '<div class="step"><span class="no">PLATFORM</span><h3>Native first</h3><p>Where the platform has the element \u2014 dialog, details, real inputs \u2014 the part is the element. Scripts layer behavior on markup; they never generate it.</p></div>'
       '</div></section>')
     compare = ('<section class="lpsec"><h2>How KATA compares</h2>'
@@ -585,7 +585,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '<div class="probars"><div class="probar"><span>Assemble it yourself</span><div class="track"><i style="width:100%;background:var(--ink)"></i></div><b>&asymp;77 h</b></div><div class="probar"><span>With Pro</span><div class="track"><i style="width:2%;background:var(--acc);min-width:10px"></i></div><b>minutes</b></div></div>'
       '<p class="lpnote" style="margin-top:16px">Founding 100: $99, plus two blocks that will never be sold separately \u2014 Help Center and Job Board.</p>'
       + _proster +
-      '<p class="lpnote" style="margin-top:14px">Free is the finished product. Pro is for people who would rather not compose. <a href="/pricing/" style="color:var(--acc)">Pricing and the launch list</a></p></section>')
+      '<p class="lpnote" style="margin-top:14px">Free is the finished product. Pro is for people who would rather not compose. <a href="/pricing/" style="color:var(--k-accent-ink)">Pricing and the launch list</a></p></section>')
     pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
     asmx = ''
     if pr_block:
@@ -600,7 +600,7 @@ def landing(comps, blocks, n_icons, templates=None):
     mstrip = ('<section class="lpsec"><h2>The motion shelf</h2><div class="mstrip">'
       + tile('word-rotate', 'Word Rotate') + tile('goo-tabs', 'Goo Tabs') + tile('dock', 'Dock') + '</div>'
       '<p class="framecap">Live parts, auto-playing — the Motion line itself, not a video of it.</p></section>')
-    lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Can I use it with React?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. The parts are plain HTML, CSS and JS: markup pastes into JSX as-is, the CSS loads once, globally, and the JS parts mount as islands where a page needs them. The honest limits are in the open, too \u2014 read the <a href="/docs/react/" style="color:var(--acc)">React guide</a>.</div></details><details class="k-acc"><summary>Will the free parts ever go paid?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">No. All 136 components are MIT \u2014 free for personal and commercial work, forever. Pro only ever adds assembled work on top: blocks and templates. It never reaches back for the parts.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files \u2014 or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">The assembled shelf: 21 blocks and 7 page templates, plus every future block. Free is the finished product \u2014 Pro is for people who would rather not compose. One payment of $129, lifetime; sales open soon, and the waitlist gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes \u2014 the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
+    lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Can I use it with React?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. The parts are plain HTML, CSS and JS: markup pastes into JSX as-is, the CSS loads once, globally, and the JS parts mount as islands where a page needs them. The honest limits are in the open, too \u2014 read the <a href="/docs/react/" style="color:var(--k-accent-ink)">React guide</a>.</div></details><details class="k-acc"><summary>Will the free parts ever go paid?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">No. All 136 components are MIT \u2014 free for personal and commercial work, forever. Pro only ever adds assembled work on top: blocks and templates. It never reaches back for the parts.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files \u2014 or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">The assembled shelf: 21 blocks and 7 page templates, plus every future block. Free is the finished product \u2014 Pro is for people who would rather not compose. One payment of $129, lifetime; sales open soon, and the waitlist gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes \u2014 the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
               '<p class="more">Still stuck? <a href="/docs/">Read the docs</a> — or check the <a href="/docs/faq/">full FAQ</a>.</p></section>'
               '<link rel="stylesheet" href="/components/accordion/accordion.css">')
     _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'card', 'tabs', 'toast')]
@@ -664,9 +664,9 @@ def landing(comps, blocks, n_icons, templates=None):
     threeways = ('<section class="lpsec proof"><h2>Three ways in</h2>'
       '<p class="sub">However you work, there is a door at your height. All three end at the same place: the real part, in your project, owned by you.</p>'
       '<div class="steps">'
-      '<div class="step"><span class="no">COPY-PASTE</span><h3>The part\u2019s page</h3><p>Open a part, copy its three files, done. Still the fastest way in for a single part \u2014 about ten seconds.</p><div class="term" tabindex="0" role="region" aria-label="Code example">&lt;button class="btn btn-pri btn-md"&gt;Save&lt;/button&gt;<br><span class="dim">button.html \u00b7 button.css \u00b7 button.js</span></div><p style="margin-top:10px"><a href="/components/button/" style="color:var(--acc)">Open Button \u2192</a></p></div>'
-      '<div class="step"><span class="no">CLI</span><h3>One file, no install</h3><p>The CLI is a single script. It fetches the part \u2014 and the parts it depends on \u2014 and writes them where they belong:</p><div class="term" tabindex="0" role="region" aria-label="Code example">$ npx @kajisho5/kataui init<br><span class="dim">  + kata/tokens.css</span><br>$ npx @kajisho5/kataui add data-table<br><span class="dim">  + kata/components/badge/badge.css<br>  + kata/components/button/button.css</span><br>  + kata/components/data-table/data-table.css<br>  + kata/components/data-table/data-table.js<br><span class="dim">added data-table (component)</span></div><p style="margin-top:10px"><a href="/docs/cli/" style="color:var(--acc)">Get the CLI \u2192</a></p></div>'
-      '<div class="step"><span class="no">REGISTRY &amp; SKILL</span><h3>Let your AI fetch</h3><p>The registry is machine-readable, and the Skill teaches your model the mold \u2014 tokens, heights, states \u2014 so it assembles instead of inventing.</p><div class="term" tabindex="0" role="region" aria-label="Code example">GET kata-ui.dev/registry.json<br><span class="dim">"Build this form from KATA UI parts \u2014<br> fetch each part from the registry,<br> unmodified."</span></div><p style="margin-top:10px"><a href="/docs/ai-prompts/" style="color:var(--acc)">AI prompts \u2192</a></p></div>'
+      '<div class="step"><span class="no">COPY-PASTE</span><h3>The part\u2019s page</h3><p>Open a part, copy its three files, done. Still the fastest way in for a single part \u2014 about ten seconds.</p><div class="term" tabindex="0" role="region" aria-label="Code example">&lt;button class="btn btn-pri btn-md"&gt;Save&lt;/button&gt;<br><span class="dim">button.html \u00b7 button.css \u00b7 button.js</span></div><p style="margin-top:10px"><a href="/components/button/" style="color:var(--k-accent-ink)">Open Button \u2192</a></p></div>'
+      '<div class="step"><span class="no">CLI</span><h3>One file, no install</h3><p>The CLI is a single script. It fetches the part \u2014 and the parts it depends on \u2014 and writes them where they belong:</p><div class="term" tabindex="0" role="region" aria-label="Code example">$ npx @kajisho5/kataui init<br><span class="dim">  + kata/tokens.css</span><br>$ npx @kajisho5/kataui add data-table<br><span class="dim">  + kata/components/badge/badge.css<br>  + kata/components/button/button.css</span><br>  + kata/components/data-table/data-table.css<br>  + kata/components/data-table/data-table.js<br><span class="dim">added data-table (component)</span></div><p style="margin-top:10px"><a href="/docs/cli/" style="color:var(--k-accent-ink)">Get the CLI \u2192</a></p></div>'
+      '<div class="step"><span class="no">REGISTRY &amp; SKILL</span><h3>Let your AI fetch</h3><p>The registry is machine-readable, and the Skill teaches your model the mold \u2014 tokens, heights, states \u2014 so it assembles instead of inventing.</p><div class="term" tabindex="0" role="region" aria-label="Code example">GET kata-ui.dev/registry.json<br><span class="dim">"Build this form from KATA UI parts \u2014<br> fetch each part from the registry,<br> unmodified."</span></div><p style="margin-top:10px"><a href="/docs/ai-prompts/" style="color:var(--k-accent-ink)">AI prompts \u2192</a></p></div>'
       '</div>'
       '<div class="proofstrip">'
       '<div><span class="vs">AN AI, WRITING FROM SCRATCH</span><h3>A new dialect per prompt</h3><p>New class names, a new radius, spacing by mood. Screen one and screen ten are cousins, not siblings \u2014 and every state it forgot is yours to find.</p></div>'
@@ -1232,7 +1232,7 @@ ICONS_STYLE = """<style>
 .iccell:hover{border-color:var(--ink3)}
 .iccell .nm{font-family:var(--mono);font-size:10.5px;color:var(--ink2)}
 .icstat{margin-top:14px;font-size:13px;color:var(--ink2);min-height:20px}
-.icstat b{color:var(--acc);font-weight:600}
+.icstat b{color:var(--k-accent-ink);font-weight:600}
 </style>"""
 
 BRAND_GENRES = [
@@ -1307,7 +1307,7 @@ PRICING_STYLE = """<style>
 .afterbuy h2{font-size:18px;font-weight:650}
 .ab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
 .ab-grid>div{border:1px solid var(--hair);border-radius:13px;padding:18px;background:var(--paper)}
-.ab-grid .no{font-size:11px;font-weight:650;letter-spacing:.1em;color:var(--acc)}
+.ab-grid .no{font-size:11px;font-weight:650;letter-spacing:.1em;color:var(--k-accent-ink)}
 .ab-grid h3{font-size:14.5px;margin:7px 0 5px}
 .ab-grid p{font-size:13px;line-height:1.75;color:var(--ink2)}
 @media (max-width:720px){.ab-grid{grid-template-columns:1fr}}
@@ -1480,14 +1480,14 @@ JA_STYLE = """<style>
 .ja-sec p{font-size:14px;line-height:1.9;color:var(--ink2);margin-top:9px;max-width:640px;letter-spacing:.04em}
 .ja-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
 .ja-step{border:1px solid var(--hair);border-radius:13px;padding:17px;background:var(--paper)}
-.ja-step .no{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc)}
+.ja-step .no{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--k-accent-ink)}
 .ja-step h3{font-size:14.5px;margin:7px 0 5px;letter-spacing:.04em}
 .ja-step p{font-size:13px;line-height:1.8;color:var(--ink2);letter-spacing:.04em}
 .ja-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
 .ja-card{border:1px solid var(--hair);border-radius:13px;padding:19px;background:var(--paper);text-decoration:none;color:inherit;display:block}
 .ja-card h3{font-size:15.5px;letter-spacing:.04em}
 .ja-card p{font-size:13px;line-height:1.8;color:var(--ink2);margin-top:6px;letter-spacing:.04em}
-.ja-card .go{font-size:12.5px;font-weight:600;color:var(--acc);margin-top:10px;display:inline-block}
+.ja-card .go{font-size:12.5px;font-weight:600;color:var(--k-accent-ink);margin-top:10px;display:inline-block}
 .ja-wl{margin-top:44px;background:#101013;border-radius:16px;padding:26px;color:#f4f4f5}
 .ja-wl h2{color:#f4f4f5}
 .ja-wl p{color:#c9c9ce}
@@ -1562,7 +1562,7 @@ SC_STYLE = """<style>
 .sc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
 .sc-card{border:1px solid var(--hair);border-radius:14px;padding:20px;background:var(--paper);text-decoration:none;color:inherit;display:block}
 .sc-card:hover{border-color:var(--ink3)}
-.sc-card .k{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
+.sc-card .k{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--k-accent-ink);text-transform:uppercase}
 .sc-card h3{font-size:16px;margin:7px 0 5px}
 .sc-card p{font-size:13px;line-height:1.75;color:var(--ink2);letter-spacing:.01em}
 .sc-card .go{font-size:12.5px;font-weight:600;margin-top:10px;display:inline-block}
@@ -1998,7 +1998,7 @@ def template_detail(templates, idx, comps, blocks):
       <span class="lbl">Preview</span>
       <span class="seg" data-seg="width"><button data-v="desktop" class="on">Desktop</button><button data-v="mobile">Mobile</button></span>
       <span class="seg" data-seg="theme"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></span>
-      <a href="/templates/{slug}/demo/" style="font-size:12.5px;font-weight:600;color:var(--acc);text-decoration:none;margin-left:auto">Open the full-page demo &#8599;</a>
+      <a href="/templates/{slug}/demo/" style="font-size:12.5px;font-weight:600;color:var(--k-accent-ink);text-decoration:none;margin-left:auto">Open the full-page demo &#8599;</a>
     </div>
     <div class="tplframe">
       <div class="tplbar"><span class="tpldots"><i></i><i></i><i></i></span><span class="tplurl">{esc(m.get('url','example.com'))}</span></div>

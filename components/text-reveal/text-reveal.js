@@ -1,7 +1,6 @@
 // KATA Text reveal — split into words, rise once when visible.
 document.querySelectorAll('[data-reveal]').forEach(function (el) {
   var words = el.textContent.trim().split(/\s+/);
-  el.setAttribute('aria-label', el.textContent.trim());
   el.textContent = '';
   words.forEach(function (w, i) {
     var outer = document.createElement('span');

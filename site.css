@@ -1,7 +1,7 @@
 /* KATA UI — site chrome. Components use tokens.css (--k-*), not these. */
 :root{
-  --paper:#fdfdfd; --soft:#f7f7f7; --ink:#18181b; --ink2:#52525b; --ink3:#a1a1aa;
-  --hair:#e4e4e7; --acc:#33A6B8;
+  --paper:#fdfdfd; --soft:#f7f7f7; --ink:#18181b; --ink2:#52525b; --ink3:#6b6b73;
+  --hair:#e4e4e7; --acc:#206b79;
   --font:"Inter","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
   --mono:"Geist Mono",ui-monospace,monospace;
 }
@@ -213,7 +213,7 @@ html[data-theme="dark"] .menubtn{background:#131316;color:var(--ink)}
 @keyframes cmqStamp{0%{opacity:0;transform:scale(1.35)}60%{opacity:1}100%{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion: reduce){.castmark i{animation:none}}
 .castlive{max-width:560px;margin:24px auto 8px;background:#f4f4f5;border-radius:12px;padding:16px 16px 12px;text-align:left;color:#18181b}
-.castlive .cl-cap{font-size:11px;font-weight:600;letter-spacing:.14em;color:#71717a;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.castlive .cl-cap{font-size:11px;font-weight:600;letter-spacing:.14em;color:#6b6b73;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
 .castlive .cl-cap a{color:#165E83;text-decoration:none;letter-spacing:.02em;text-transform:none;font-size:12px;font-weight:500}
 .castlive .cl-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:12px}
 .castlive .cl-note{margin-top:11px;font-size:12.5px;color:#52525b;line-height:1.65;letter-spacing:.01em}

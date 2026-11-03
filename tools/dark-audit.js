@@ -15,7 +15,7 @@
  * Usage: node tools/dark-audit.js [baseUrl]   (default http://127.0.0.1:8901)
  * Needs playwright-core; set PW_PATH if it is not resolvable here.
  */
-const pwPath = process.env.PW_PATH || '/home/hatch/workspace/tools/pshot/node_modules/playwright-core';
+const pwPath = process.env.PW_PATH || 'playwright';
 const { chromium } = require(pwPath);
 const BASE = process.argv[2] || 'http://127.0.0.1:8901';
 

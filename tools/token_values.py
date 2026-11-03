@@ -76,6 +76,7 @@ def lex(text):
 def kinds_for(prop, value=""):
     prop=prop.lower()
     if prop.startswith('--'):return []
+    if prop=='color-scheme':return []
     if 'radius' in prop:return ['radius']
     if 'shadow' in prop or (prop in ('filter','backdrop-filter') and 'drop-shadow(' in value):return ['shadow']
     if prop.startswith(('margin','padding','inset')) or prop in ('gap','row-gap','column-gap'):return ['spacing']
@@ -96,6 +97,25 @@ def kinds_for(prop, value=""):
 class Values:
     def __init__(self, shared, local, config, profile):
         self.shared=shared;self.local=local;self.config=config;self.profile=profile
+
+    def scaled_duration(self, expression):
+        """Only a complete time × trusted motion scalar product is controlled motion."""
+        factors=split_top(expression, '*')
+        if len(factors)!=2:return False
+        scalar=self.config['motion_scale_variable']
+        if scalar in self.local:return False
+        scalar_re=r'var\(\s*'+re.escape(scalar)+r'\s*(?:,\s*[-+]?(?:\d*\.\d+|\d+)\s*)?\)'
+        time_re=r'[-+]?(?:\d*\.\d+|\d+)(?:ms|s)'
+        def time_factor(value,seen=()):
+            if re.fullmatch(time_re,value,re.I):return True
+            match=re.fullmatch(r'var\(\s*(--[\w-]+)\s*(?:,\s*(.*?)\s*)?\)',value)
+            if not match:return False
+            name,fallback=match.groups()
+            if name in seen:return False
+            if fallback is not None and not time_factor(fallback,seen):return False
+            if name in self.local:return all(time_factor(v,seen+(name,)) for v in self.local[name])
+            return name in self.shared
+        return any(re.fullmatch(scalar_re, factors[i]) and time_factor(factors[1-i]) for i in (0,1))
 
     def check(self, value, kind, prop, stack=(), arithmetic=False, paint=False):
         if len(stack)>128:return ['variable chain exceeds analysis limit'], False
@@ -123,6 +143,9 @@ class Values:
                         found,used=self.check(fallback,kind,prop,stack,arithmetic,paint);issues+=found;has_token |= used
                 continue
             if token=='function':
+                if low=='calc' and kind in ('duration','easing') and self.scaled_duration(args):
+                    has_token=True
+                    continue
                 if low in self.config['arithmetic_functions']:
                     found,used=self.check(args,kind,prop,stack,True,paint)
                     issues+=found;has_token |= used
@@ -133,7 +156,7 @@ class Values:
                     if kind in ('color','shadow'):
                         found,used=self.check(args,'color',prop,stack,False,True);issues+=found;has_token |= used
                 elif low in self.config['easing_functions']:
-                    if kind=='easing':issues.append('raw easing: '+text+'('+args+')')
+                    if kind=='easing' and low not in self.config['allowed_easing_functions']:issues.append('raw easing: '+text+'('+args+')')
                 elif low in self.config['shadow_functions']:
                     found,used=self.check(args,'shadow',prop,stack,arithmetic,paint);issues+=found;has_token |= used
                 elif prop in ('filter','backdrop-filter') and low in self.config['filter_geometry_functions']:pass
@@ -156,7 +179,7 @@ class Values:
                     continue
                 if kind=='color' and prop.startswith('border'):continue  # Border widths are checked separately.
                 exception=self.config['border_width_exception']
-                if kind=='border' and prop in exception['properties'] and low==exception['value'].lower():continue
+                if kind=='border' and prop in exception['properties'] and unit==exception['unit'] and exception['min']<=number<=exception['max']:continue
                 issues.append('raw '+kind+': '+text)
                 continue
             if token=='ident':

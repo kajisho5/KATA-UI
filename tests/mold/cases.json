@@ -65,7 +65,7 @@
   },
   {
     "name": "ui raw border",
-    "css": ".sample{border:2px solid var(--k-line)}",
+    "css": ".sample{border:4px solid var(--k-line)}",
     "expected": {
       "token-values": "fail"
     },
@@ -73,7 +73,7 @@
   },
   {
     "name": "ui local border",
-    "css": ".sample{--local:2px solid var(--k-line);border:var(--local)}",
+    "css": ".sample{--local:4px solid var(--k-line);border:var(--local)}",
     "expected": {
       "token-values": "fail"
     },
@@ -289,7 +289,7 @@
   },
   {
     "name": "lab raw easing",
-    "css": ".sample{animation:spin var(--k-dur-1) linear}",
+    "css": ".sample{animation:spin var(--k-dur-1) cubic-bezier(.2,.8,.2,1)}",
     "expected": {
       "token-values": "fail"
     },

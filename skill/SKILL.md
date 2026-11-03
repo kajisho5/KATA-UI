@@ -12,7 +12,7 @@ adopt and no runtime to install; in a terminal, `npx @kajisho5/kataui add <slug>
 dependencies for you.
 
 <!-- mold-summary:start -->
-[Mold Verified 21 / 164 · UI 12 / 121 · Lab 9 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 29 / 164 · UI 19 / 121 · Lab 10 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.

@@ -1,0 +1,806 @@
+[
+  {
+    "name": "circle radius permitted",
+    "category": "Form & Input",
+    "css": ".sample{border-radius:50%}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "local circle radius permitted",
+    "category": "Form & Input",
+    "css": ".sample{--round:50%;border-radius:var(--round)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "pill classified 99px",
+    "category": "Form & Input",
+    "css": ".sample{border-radius:99px}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "radius-full"
+    ]
+  },
+  {
+    "name": "pill classified 999px",
+    "category": "Form & Input",
+    "css": ".sample{border-radius:999px}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "radius-full"
+    ]
+  },
+  {
+    "name": "pill classified 9999px",
+    "category": "Form & Input",
+    "css": ".sample{border-radius:9999px}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "radius-full"
+    ]
+  },
+  {
+    "name": "local pill classified",
+    "category": "Form & Input",
+    "css": ".sample{--round:999px;border-radius:var(--round)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "radius-full"
+    ]
+  },
+  {
+    "name": "shared full radius permitted",
+    "category": "Form & Input",
+    "css": ".sample{border-radius:var(--k-radius-full)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "mixed circle and raw radius fails",
+    "category": "Form & Input",
+    "css": ".sample{border-radius:50% 8px}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "scheme is not paint",
+    "category": "Form & Input",
+    "css": ".sample{color-scheme:light dark}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "scheme cannot excuse raw paint",
+    "category": "Form & Input",
+    "css": ".sample{color-scheme:dark;color:#fff}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "color primitives",
+    "category": "Form & Input",
+    "css": ".sample{color:currentColor;background:transparent;border-color:inherit}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "raw color fails",
+    "category": "Form & Input",
+    "css": ".sample{color:rgba(0,0,0,.2)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Form & Input standard easing linear",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:linear}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing ease",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:ease}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing ease-in",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:ease-in}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing ease-out",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:ease-out}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing ease-in-out",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:ease-in-out}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing step-start",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:step-start}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing step-end",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:step-end}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing steps(4, end)",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:steps(4, end)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input standard easing linear(0, .5 50%, 1)",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:linear(0, .5 50%, 1)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "UI easing remains outside required kinds",
+    "category": "Form & Input",
+    "css": ".sample{transition-timing-function:cubic-bezier(.2,.8,.2,1)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing linear",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:linear}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing ease",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:ease}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing ease-in",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:ease-in}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing ease-out",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:ease-out}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing ease-in-out",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:ease-in-out}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing step-start",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:step-start}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing step-end",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:step-end}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing steps(4, end)",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:steps(4, end)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion standard easing linear(0, .5 50%, 1)",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:linear(0, .5 50%, 1)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion custom bezier fails",
+    "category": "Motion",
+    "css": ".sample{transition-timing-function:cubic-bezier(.2,.8,.2,1)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "border geometry 1px",
+    "category": "Form & Input",
+    "css": ".sample{border:1px solid var(--k-line)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "border geometry 2px",
+    "category": "Form & Input",
+    "css": ".sample{border:2px solid var(--k-line)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "border geometry 3px",
+    "category": "Form & Input",
+    "css": ".sample{border:3px solid var(--k-line)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "large border width still fails",
+    "category": "Form & Input",
+    "css": ".sample{border:4px solid var(--k-line)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "fractional border inside range",
+    "category": "Form & Input",
+    "css": ".sample{border:1.5px solid var(--k-line)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "border raw paint still fails",
+    "category": "Form & Input",
+    "css": ".sample{border:2px solid #fff}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "color"
+    ]
+  },
+  {
+    "name": "Form & Input scaled calc(.13s * var(--k-mscale))",
+    "category": "Form & Input",
+    "css": ".sample{animation-duration:calc(.13s * var(--k-mscale))}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input scaled calc(var(--k-mscale, 1) * 130ms)",
+    "category": "Form & Input",
+    "css": ".sample{animation-duration:calc(var(--k-mscale, 1) * 130ms)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input local scaled duration",
+    "category": "Form & Input",
+    "css": ".sample{--time:130ms;animation-duration:calc(var(--time) * var(--k-mscale))}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input uncontrolled 130ms",
+    "category": "Form & Input",
+    "css": ".sample{animation-duration:130ms}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Form & Input uncontrolled calc(.13s + var(--k-mscale))",
+    "category": "Form & Input",
+    "css": ".sample{animation-duration:calc(.13s + var(--k-mscale))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Form & Input uncontrolled calc(.13s * var(--k-mscale) + 1s)",
+    "category": "Form & Input",
+    "css": ".sample{animation-duration:calc(.13s * var(--k-mscale) + 1s)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Form & Input uncontrolled calc(.13s * var(--wrong))",
+    "category": "Form & Input",
+    "css": ".sample{animation-duration:calc(.13s * var(--wrong))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Motion scaled calc(.13s * var(--k-mscale))",
+    "category": "Motion",
+    "css": ".sample{animation-duration:calc(.13s * var(--k-mscale))}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion scaled calc(var(--k-mscale, 1) * 130ms)",
+    "category": "Motion",
+    "css": ".sample{animation-duration:calc(var(--k-mscale, 1) * 130ms)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion local scaled duration",
+    "category": "Motion",
+    "css": ".sample{--time:130ms;animation-duration:calc(var(--time) * var(--k-mscale))}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion uncontrolled 130ms",
+    "category": "Motion",
+    "css": ".sample{animation-duration:130ms}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Motion uncontrolled calc(.13s + var(--k-mscale))",
+    "category": "Motion",
+    "css": ".sample{animation-duration:calc(.13s + var(--k-mscale))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Motion uncontrolled calc(.13s * var(--k-mscale) + 1s)",
+    "category": "Motion",
+    "css": ".sample{animation-duration:calc(.13s * var(--k-mscale) + 1s)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Motion uncontrolled calc(.13s * var(--wrong))",
+    "category": "Motion",
+    "css": ".sample{animation-duration:calc(.13s * var(--wrong))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "local motion override rejected",
+    "category": "Form & Input",
+    "css": ".sample{--k-mscale:1;transition-duration:calc(.13s * var(--k-mscale))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "cyclic scaled duration rejected",
+    "category": "Form & Input",
+    "css": ".sample{--a:var(--b);--b:var(--a);animation-duration:calc(var(--a) * var(--k-mscale))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "marked inline data-swatch",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "pass"
+    },
+    "html": "<span data-swatch style=\"background:#f00;color:rgba(0,0,0,.2)\"></span>",
+    "expected_legacy_hex": 0
+  },
+  {
+    "name": "marked examples data-swatch",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "pass"
+    },
+    "files": {
+      "components/sample/examples.html": "<span data-swatch style=\"color:#f00\"></span>"
+    },
+    "expected_legacy_hex": 0
+  },
+  {
+    "name": "marked inline aria-label=\"Red\"",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "pass"
+    },
+    "html": "<span aria-label=\"Red\" style=\"background:#f00;color:rgba(0,0,0,.2)\"></span>",
+    "expected_legacy_hex": 0
+  },
+  {
+    "name": "marked examples aria-label=\"Red\"",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "pass"
+    },
+    "files": {
+      "components/sample/examples.html": "<span aria-label=\"Red\" style=\"color:#f00\"></span>"
+    },
+    "expected_legacy_hex": 0
+  },
+  {
+    "name": "unmarked inline paint",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "fail"
+    },
+    "html": "<span style=\"color:#f00\"></span>",
+    "expected_legacy_hex": 1
+  },
+  {
+    "name": "marker cannot excuse CSS",
+    "category": "Form & Input",
+    "css": ".sample{color:#f00}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "html": "<span data-swatch class=\"sample\"></span>"
+  },
+  {
+    "name": "marker cannot excuse radius",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "fail"
+    },
+    "html": "<span data-swatch style=\"color:#f00;border-radius:8px\"></span>",
+    "expected_kinds": [
+      "radius"
+    ],
+    "expected_legacy_hex": 0
+  },
+  {
+    "name": "marker cannot excuse shadow",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "fail"
+    },
+    "html": "<span data-swatch style=\"box-shadow:0 2px 3px #f00\"></span>",
+    "expected_legacy_hex": 1
+  },
+  {
+    "name": "marker cannot excuse embedded paint",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "fail"
+    },
+    "html": "<style>.sample{color:#f00}</style><span data-swatch></span>",
+    "expected_legacy_hex": 1
+  },
+  {
+    "name": "marker cannot excuse combos",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "fail"
+    },
+    "files": {
+      "components/sample/combos.html": "<span data-swatch style=\"color:#f00\"></span>"
+    }
+  },
+  {
+    "name": "marker cannot excuse SVG attribute",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "token-values": "pass"
+    },
+    "html": "<svg data-swatch fill=\"#f00\"></svg>",
+    "expected_legacy_hex": 1
+  },
+  {
+    "name": "ring shadow classified",
+    "category": "Form & Input",
+    "css": ".sample{box-shadow:0 0 0 3px var(--k-accent)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "shadow-ring"
+    ]
+  },
+  {
+    "name": "local ring shadow classified",
+    "category": "Form & Input",
+    "css": ".sample{--ring:0 0 0 3px var(--k-accent);box-shadow:var(--ring)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "shadow-ring"
+    ]
+  },
+  {
+    "name": "shared ring permitted",
+    "category": "Form & Input",
+    "css": ".sample{box-shadow:var(--k-ring)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "blurred shadow is not ring",
+    "category": "Form & Input",
+    "css": ".sample{box-shadow:0 1px 2px var(--k-ink)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "shadow"
+    ]
+  },
+  {
+    "name": "focus metadata dependency",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "pass"
+    },
+    "html": "<button type=\"button\" class=\"btn\">A</button>",
+    "meta": {
+      "deps": [
+        "button"
+      ]
+    },
+    "files": {
+      "components/button/button.css": ".btn:focus-visible{box-shadow:var(--k-ring)}"
+    }
+  },
+  {
+    "name": "focus parts dependency",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "pass"
+    },
+    "html": "<!-- parts: button --><button type=\"button\" class=\"btn\">A</button>",
+    "files": {
+      "components/button/button.css": ".btn:focus-visible{box-shadow:var(--k-ring)}"
+    }
+  },
+  {
+    "name": "focus missing dependency",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "html": "<button type=\"button\" class=\"btn\">A</button>",
+    "expected_focus_count": 1
+  },
+  {
+    "name": "focus unrelated dependency",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "html": "<button type=\"button\" class=\"btn\">A</button>",
+    "meta": {
+      "deps": [
+        "other"
+      ]
+    },
+    "files": {
+      "components/other/other.css": ".other:focus-visible{box-shadow:var(--k-ring)}"
+    }
+  },
+  {
+    "name": "focus deduplicates class order",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "html": "<button type=\"button\" class=\"btn\">A</button><button type=\"button\" class=\"btn\">A</button><button type=\"button\" class=\"btn\">A</button><button type=\"button\" class=\"b a\">X</button><button type=\"button\" class=\"a b\">Y</button>",
+    "expected_focus_count": 2,
+    "expected_focus_occurrences": [
+      2,
+      3
+    ]
+  },
+  {
+    "name": "focus keeps file and tag separate",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "html": "<button type=\"button\" class=\"btn\">A</button><a href=\"#\" class=\"btn\">A</a>",
+    "files": {
+      "components/sample/examples.html": "<button type=\"button\" class=\"btn\">A</button>"
+    },
+    "expected_focus_count": 3
+  },
+  {
+    "name": "bare focus without shared ring",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "html": "<button type=\"button\">Go</button><a href=\"#\">Link</a><summary>Title</summary>",
+    "expected_focus_count": 3
+  },
+  {
+    "name": "bare global shared ring",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "pass"
+    },
+    "html": "<button type=\"button\">Go</button><a href=\"#\">Link</a><summary>Title</summary>",
+    "shared_extra": ":where(a, button, input, select, textarea, summary, [tabindex]):focus-visible{box-shadow:var(--k-ring)}"
+  },
+  {
+    "name": "classless role deduplication",
+    "category": "Form & Input",
+    "css": "",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "html": "<span role=\"button\" tabindex=\"0\">A</span><span role=\"button\" tabindex=\"0\">A</span><span role=\"button\" tabindex=\"0\">A</span>",
+    "expected_focus_count": 1,
+    "expected_focus_occurrences": [
+      3
+    ]
+  },
+  {
+    "name": "ancestor focus selector is unrelated",
+    "category": "Form & Input",
+    "css": ".parent .other:focus-visible{box-shadow:var(--k-ring)}",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "html": "<button type=\"button\" class=\"parent\">A</button>"
+  },
+  {
+    "name": "border below allowed range",
+    "category": "Form & Input",
+    "css": ".sample{border:.5px solid var(--k-line)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "dependency ancestor must match",
+    "category": "Form & Input",
+    "css": "",
+    "meta": {
+      "deps": [
+        "other"
+      ]
+    },
+    "files": {
+      "components/other/other.css": ".other input:focus-visible{box-shadow:var(--k-ring)}"
+    },
+    "html": "<input aria-label=\"Name\">",
+    "expected": {
+      "focus-visible": "fail"
+    }
+  },
+  {
+    "name": "dependency ancestor matches",
+    "category": "Form & Input",
+    "css": "",
+    "meta": {
+      "deps": [
+        "other"
+      ]
+    },
+    "files": {
+      "components/other/other.css": ".other input:focus-visible{box-shadow:var(--k-ring)}"
+    },
+    "html": "<label class=\"other\">Name<input></label>",
+    "expected": {
+      "focus-visible": "pass"
+    }
+  },
+  {
+    "name": "Form & Input scaled shorthand without fallback",
+    "category": "Form & Input",
+    "css": ".sample{animation:spin calc(.13s * var(--k-mscale)) linear infinite}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Form & Input uncontrolled shorthand fails",
+    "category": "Form & Input",
+    "css": ".sample{animation:spin calc(.13s * var(--k-mscale) + 1s) linear infinite}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Motion scaled shorthand without fallback",
+    "category": "Motion",
+    "css": ".sample{animation:spin calc(.13s * var(--k-mscale)) linear infinite}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Motion uncontrolled shorthand fails",
+    "category": "Motion",
+    "css": ".sample{animation:spin calc(.13s * var(--k-mscale) + 1s) linear infinite}",
+    "expected": {
+      "token-values": "fail"
+    }
+  }
+]

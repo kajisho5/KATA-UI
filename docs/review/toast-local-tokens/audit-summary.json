@@ -1,0 +1,85 @@
+{
+  "before": {
+    "passed": 21,
+    "failed": 143,
+    "total": 164,
+    "warnings": 318,
+    "findings": {
+      "accessible-label": 1,
+      "button-type": 0,
+      "focus-visible": 456,
+      "js-global-bindings": 57,
+      "js-single-instance": 24,
+      "legacy-contract": 0,
+      "reduced-motion": 0,
+      "shared-token-scope": 2,
+      "spacing-values": 892,
+      "token-values": 464,
+      "type-values": 638,
+      "variant-hover": 0
+    },
+    "by_profile": {
+      "ui": {
+        "passed": 12,
+        "failed": 109,
+        "total": 121
+      },
+      "lab": {
+        "passed": 9,
+        "failed": 34,
+        "total": 43
+      }
+    }
+  },
+  "after": {
+    "passed": 29,
+    "failed": 135,
+    "total": 164,
+    "warnings": 318,
+    "findings": {
+      "accessible-label": 1,
+      "button-type": 0,
+      "focus-visible": 132,
+      "js-global-bindings": 57,
+      "js-single-instance": 24,
+      "legacy-contract": 0,
+      "reduced-motion": 0,
+      "shared-token-scope": 0,
+      "spacing-values": 892,
+      "token-values": 358,
+      "type-values": 638,
+      "variant-hover": 0
+    },
+    "by_profile": {
+      "ui": {
+        "passed": 19,
+        "failed": 102,
+        "total": 121
+      },
+      "lab": {
+        "passed": 10,
+        "failed": 33,
+        "total": 43
+      }
+    }
+  },
+  "token_by_kind": {
+    "duration": 107,
+    "easing": 10,
+    "radius": 157,
+    "shadow": 37,
+    "color": 23,
+    "radius-full": 11,
+    "shadow-ring": 12,
+    "border": 1
+  },
+  "rule_effects": {
+    "circle": 38,
+    "color-scheme": 4,
+    "standard-easing": 20,
+    "border-width": 35,
+    "scaled-duration": 1,
+    "marked-inline-data": 8,
+    "focus-visible": 324
+  }
+}

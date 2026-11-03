@@ -35,7 +35,9 @@
       "revert",
       "revert-layer"
     ],
-    "radius": [],
+    "radius": [
+      "50%"
+    ],
     "duration": [
       "none",
       "auto"
@@ -59,7 +61,15 @@
       "inset",
       "outset"
     ],
-    "easing": [],
+    "easing": [
+      "linear",
+      "ease",
+      "ease-in",
+      "ease-out",
+      "ease-in-out",
+      "step-start",
+      "step-end"
+    ],
     "spacing": [
       "auto"
     ],
@@ -68,7 +78,6 @@
     ]
   },
   "border_width_exception": {
-    "value": "1px",
     "properties": [
       "border",
       "border-top",
@@ -92,7 +101,10 @@
       "border-inline-end-width",
       "border-block-start-width",
       "border-block-end-width"
-    ]
+    ],
+    "unit": "px",
+    "min": 1,
+    "max": 3
   },
   "arithmetic_functions": [
     "calc",
@@ -265,5 +277,24 @@
     "padding-box",
     "content-box",
     "text"
+  ],
+  "pill_radius_min_px": 99,
+  "allowed_easing_functions": [
+    "steps",
+    "linear"
+  ],
+  "motion_scale_variable": "--k-mscale",
+  "inline_color_data": {
+    "files": [
+      "preview.html",
+      "examples.html"
+    ],
+    "attributes": [
+      "data-swatch",
+      "aria-label"
+    ]
+  },
+  "global_focus_ring_tokens": [
+    "var(--k-ring)"
   ]
 }

@@ -37,15 +37,14 @@ npx @kajisho5/kataui add button
 
 Browse component previews and full-page [dashboard](https://kata-ui.dev/templates/dashboard/demo/), [inbox](https://kata-ui.dev/templates/inbox/demo/) and [checkout](https://kata-ui.dev/templates/checkout/demo/) examples. Each template lists its dependencies.
 
-`KATA UI` is a copy-paste library for people who ship HTML: parts in plain HTML, CSS and vanilla JS, all reading the same token file, so a button written in January and a data table written in June look like they were cast on the same day — because they were, from the same mold (*kata*, the Japanese discipline of the form). Copy a part from its page and the code is yours: no package to keep updated, no runtime to adopt, nothing that can be sunset under you. A zero-dependency CLI ([`@kajisho5/kataui`](https://www.npmjs.com/package/@kajisho5/kataui)) installs parts — and their dependencies — from the terminal, and the whole catalog is published as a machine-readable registry, so AI tools fetch real parts instead of improvising lookalikes.
+Copy a button, form or table into your project. Edit the files yourself. No framework, no build step.
+
+A zero-dependency CLI ([`@kajisho5/kataui`](https://www.npmjs.com/package/@kajisho5/kataui)) installs parts and their dependencies. AI tools can fetch the source from the registry.
 
 If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rails templates, WordPress themes, or one island inside a React app.
 
-`check.py` reports token provenance, markup and JavaScript findings.
-Browser behavior needs separate testing. [Read the audit](https://kata-ui.dev/audit/).
-
 <!-- mold-summary:start -->
-[Mold Verified 21 / 164 · UI 12 / 121 · Lab 9 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 29 / 164 · UI 19 / 121 · Lab 10 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.

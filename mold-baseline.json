@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 21,
+    "passed": 29,
     "total": 164
   },
   "items": [
@@ -37,7 +37,7 @@
     },
     {
       "id": "components/avatar",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -222,7 +222,7 @@
     },
     {
       "id": "components/empty-state",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -442,7 +442,7 @@
     },
     {
       "id": "components/radar-chart",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -462,12 +462,12 @@
     },
     {
       "id": "components/result",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/scatter-chart",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -522,7 +522,7 @@
     },
     {
       "id": "components/sparkles",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -577,7 +577,7 @@
     },
     {
       "id": "components/table",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -617,7 +617,7 @@
     },
     {
       "id": "components/timeline",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

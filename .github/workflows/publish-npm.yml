@@ -27,12 +27,12 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          if npm view "kataui@$VERSION" version >/dev/null 2>&1; then
+          if npm view "@kajisho5/kataui@$VERSION" version >/dev/null 2>&1; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "kataui@$VERSION is already on npm — nothing to do."
+            echo "@kajisho5/kataui@$VERSION is already on npm — nothing to do."
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
-            echo "kataui@$VERSION is not on npm yet — publishing."
+            echo "@kajisho5/kataui@$VERSION is not on npm yet — publishing."
           fi
 
       - name: Publish
@@ -46,4 +46,4 @@ jobs:
         if: steps.check.outputs.exists == 'false'
         run: |
           sleep 20
-          npm view "kataui@${{ steps.check.outputs.version }}" version dist.tarball
+          npm view "@kajisho5/kataui@${{ steps.check.outputs.version }}" version dist.tarball

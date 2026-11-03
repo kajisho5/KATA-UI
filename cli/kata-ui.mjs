@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// kata-ui — install KATA UI parts from the registry into your project.
+// kataui — install KATA UI parts from the registry into your project.
 //
 //   node kata-ui.mjs init                 write the design tokens (kata/tokens.css)
 //   node kata-ui.mjs add button select    write parts + what they depend on
@@ -24,7 +24,7 @@ for (let i = 0; i < argv.length; i++) {
 }
 const VERSION = '1.0.0';
 const cmd = rest[0];
-if (cmd === 'version' || cmd === '--version' || cmd === '-v') { console.log('kata-ui ' + VERSION); process.exit(0); }
+if (cmd === 'version' || cmd === '--version' || cmd === '-v') { console.log('kataui ' + VERSION); process.exit(0); }
 const positional = rest.slice(1);
 
 const KIND = {
@@ -61,7 +61,7 @@ async function addOne(items, name, seen) {
   if (seen.has(name)) return;
   const item = items.find((i) => i.name === name) || items.find((i) => i.name === 'theme-' + name);
   if (!item) {
-    console.error('  ! unknown part: ' + name + '  (run "kata-ui list")');
+    console.error('  ! unknown part: ' + name + '  (run "kataui list")');
     process.exitCode = 1;
     return;
   }
@@ -78,11 +78,11 @@ async function addOne(items, name, seen) {
 
 function usage() {
   console.log([
-    'kata-ui — install KATA UI parts from the registry',
+    'kataui — install KATA UI parts from the registry',
     '',
-    '  kata-ui init              write the design tokens',
-    '  kata-ui add <name...>     add parts (components, blocks, templates, themes)',
-    '  kata-ui list              list every part',
+    '  kataui init              write the design tokens',
+    '  kataui add <name...>     add parts (components, blocks, templates, themes)',
+    '  kataui list              list every part',
     '',
     'Options: --dir <folder> (default kata), --base <url>',
     'Docs: https://kata-ui.dev/docs/cli/',
@@ -92,7 +92,7 @@ function usage() {
 try {
   if (cmd === 'init') {
     await ensureTokens();
-    console.log('ready. Load kata/tokens.css first, then add parts:  kata-ui add button');
+    console.log('ready. Load kata/tokens.css first, then add parts:  kataui add button');
   } else if (cmd === 'add') {
     if (!positional.length) { console.error('add needs at least one name'); process.exit(1); }
     const items = await loadRegistry();

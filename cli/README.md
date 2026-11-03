@@ -31,6 +31,13 @@ that typed itself.
 - `--dir <folder>` — write somewhere other than `./kata`
 - `--base <url>` — read a mirrored registry instead of https://kata-ui.dev
   (the `KATA_BASE` environment variable works too)
+- `--dry-run` — list planned files without writing anything
+- `--force` — explicitly allow overwriting existing files (default: stop safely)
+- `--backup` — when used with `--force`, save replaced files as `.bak`
+
+The CLI rejects registry paths that escape the output directory and refuses to
+write through symlinks. It stages the complete file set before applying changes
+and rolls back already-replaced files if a later replacement fails.
 
 ## Links
 

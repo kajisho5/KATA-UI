@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """KATA UI — static site generator. Registry (components/) is the source of truth."""
 import glob, hashlib, html, json, re, shutil
+from tools.anatomy import css_surface
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -1079,11 +1080,7 @@ def detail(comps, idx):
         <li>Copy the CSS tab into your stylesheet.</li>
         <li>Copy the HTML where it belongs.{js_step}</li>
       </ol></section>'''
-    cls_seen = []
-    for mm in re.finditer(r'\.([a-zA-Z][\w-]*)', c['css']):
-        if mm.group(1) not in cls_seen:
-            cls_seen.append(mm.group(1))
-    hooks = []
+    cls_seen, hooks = css_surface(c['css'])
     for src in (c['preview'], c['js'] or ''):
         for mm in re.finditer(r'data-[a-z0-9-]+', src):
             if mm.group(0) not in hooks:
@@ -1097,7 +1094,7 @@ def detail(comps, idx):
         rows += f'<tr><td><code>.{esc(n)}</code></td><td>class</td></tr>'
     if len(cls_seen) > 14:
         rows += f'<tr><td><code>+{len(cls_seen) - 14} more</code></td><td>classes \u2014 see the CSS tab</td></tr>'
-    for h in hooks[:10]:
+    for h in hooks:
         rows += f'<tr><td><code>{esc(h)}</code></td><td>data hook</td></tr>'
     for a in arias[:8]:
         rows += f'<tr><td><code>{esc(a)}</code></td><td>ARIA</td></tr>'

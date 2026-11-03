@@ -1,17 +1,19 @@
 <!-- parts: switch -->
 <!-- combo: Preferences, in two questions -->
 <!-- note: A Select for the choice, a Switch for the commitment. Side by side they cover most of a settings page — and they were cast to sit at the same heights. -->
-<div style="display:grid;gap:16px;max-width:460px;width:100%">
-  <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap">
-    <label style="display:grid;gap:6px;font-size:12.5px;font-weight:550">Plan
+<div class="k-select-examples">
+  <div class="k-select-examples">
+    <div class="field"><label>Plan
       <span class="k-select"><select><option>Starter</option><option selected>Studio</option><option>Scale</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
-    </label>
+    </label></div>
     <span class="switchrow" style="padding-bottom:8px"><label class="switch asagi"><input type="checkbox" checked><span class="tr"></span></label>Auto-renew</span>
   </div>
-  <div style="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap">
-    <label style="display:grid;gap:6px;font-size:12.5px;font-weight:550">Region
+  <div class="k-select-examples">
+    <div class="field"><label>Region
       <span class="k-select"><select><option selected>Tokyo</option><option>Osaka</option><option>Remote</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
-    </label>
+    </label></div>
     <span class="switchrow" style="padding-bottom:8px"><label class="switch asagi"><input type="checkbox"><span class="tr"></span></label>Email invoices</span>
   </div>
 </div>
+
+<link rel="stylesheet" href="/components/input/input.css">

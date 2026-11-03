@@ -1,11 +1,7 @@
-/* Component styles. Colors ONLY via var(--k-*) tokens (see tokens.css and KATA.md).
-   Allowed literals: black/white alpha for shadows and scrims. Nothing else. */
-.tpl{
-  font-family:var(--k-font);
-  color:var(--k-ink);
-  background:var(--k-bg);
-  border:1px solid var(--k-line);
-  border-radius:var(--k-radius);
-  padding:10px 14px;
-}
-.tpl:focus-visible{ box-shadow:var(--k-ring); outline:0; }
+/* UI starting point. Keep values on shared tokens; add states with behavior. */
+.tpl{display:inline-flex;align-items:center;gap:var(--k-space-2);font-family:var(--k-font);font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink);background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius);padding-block:var(--k-space-2);padding-inline:var(--k-space-3);cursor:pointer;transition:background-color calc(var(--k-dur-1) * var(--k-mscale, 1)) var(--k-ease)}
+.tpl:hover:not(:disabled){background:var(--k-bg-soft)}
+.tpl:active:not(:disabled){background:var(--k-seg)}
+.tpl:focus-visible{outline:0;box-shadow:var(--k-ring)}
+.tpl:disabled{color:var(--k-ink-3);cursor:not-allowed}
+@media(prefers-reduced-motion:reduce){.tpl{transition:none}}

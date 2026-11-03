@@ -1,0 +1,829 @@
+{
+  "schema_version": 1,
+  "summary": {
+    "passed": 21,
+    "total": 164
+  },
+  "items": [
+    {
+      "id": "components/accordion",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/accordion-gallery",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/alert",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/alert-dialog",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/aspect-ratio",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/aurora",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/avatar",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/badge",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/bar-chart",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/beam-border",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/blur-in",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/bottom-navigation",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/bounce-letters",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/breadcrumbs",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/burst-button",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/button",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/button-group",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/calendar",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/candlestick-chart",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/card",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/carousel",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/carousel-ring",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/cascader",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/checkbox",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/chip",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/collapsible",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/color-picker",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/combobox",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/command",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/comparison-slider",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/confetti-cannon",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/context-menu",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/converge",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/copy-field",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/counter",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/data-table",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/date-picker",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/descriptions",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/dock",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/donut-chart",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/drawer",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/dropdown",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/dual-range",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/empty-state",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/field",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/file-upload",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/fireworks",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/follow-frame",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/funnel-chart",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/gauge",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/glass-panel",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/glow-button",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/glow-cards",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/goo-cursor",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/goo-tabs",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/gravity-playground",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/hanko",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/heatmap",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/horizontal-reel",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/hover-card",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/input",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/input-group",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/input-otp",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/jelly-buttons",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/kaleidoscope",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/kata-rain",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/kbd",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/kintsugi-card",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/line-chart",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/liquid-button",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/list",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/magnet",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/marquee",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/menubar",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/meteors",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/meter",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/modal",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/navigation-menu",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/newtons-cradle",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/noren",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/orbit",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/pagination",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/particle-net",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/particle-word",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/popover",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/progress",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/qr-code",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/radar-chart",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/radio",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/rating",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/reorder",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/result",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/scatter-chart",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/scramble",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/scroll-area",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/scrollspy",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/segmented",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/select",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/separator",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/shine-text",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/sidebar",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/skeleton",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/slider",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/sparkles",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/sparkline",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/speed-dial",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/spinner",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/split-panel",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/spotlight",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/stacking-cards",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/stat",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "components/stepper",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/steps",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/switch",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/table",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tabs",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tag-input",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tategaki",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/text-reveal",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/textarea",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tilt-card",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/time-picker",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/timeline",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/toast",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/toggle",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tooltip",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/torn-ticket",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tour",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tracing-beam",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/transfer",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/tree",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/typeset",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/typewriter",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/wagara",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "components/warp-tunnel",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "components/word-rotate",
+      "passed": false,
+      "profile": "lab"
+    },
+    {
+      "id": "blocks/app-shell",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/cookie-consent",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/cta-band",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/faq",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/filter-toolbar",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/integrations",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/invoice",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/kanban",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/login",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/logo-cloud",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/order-confirmation",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/plan-compare",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/pricing",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/roadmap",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/settings",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/site-footer",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/site-header",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/stat-cards",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/team",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/testimonials",
+      "passed": true,
+      "profile": "ui"
+    },
+    {
+      "id": "blocks/use-cases",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "templates/blog-article",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "templates/checkout",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "templates/dashboard",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "templates/inbox",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "templates/landing",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "templates/product-page",
+      "passed": false,
+      "profile": "ui"
+    },
+    {
+      "id": "templates/settings-page",
+      "passed": false,
+      "profile": "ui"
+    }
+  ]
+}

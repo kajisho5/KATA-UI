@@ -1,0 +1,46 @@
+name: Mold ratchet
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  mold:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run the complete checker
+        shell: bash
+        run: |
+          result=0
+          python3 -W error::SyntaxWarning check.py --json /tmp/mold-results.json || result=$?
+          if [ "$result" -gt 1 ]; then exit "$result"; fi
+          test -s /tmp/mold-results.json
+      - name: Enforce committed and trusted base baselines
+        env:
+          MOLD_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python3 -W error::SyntaxWarning -m tools.mold_ratchet --report /tmp/mold-results.json --reference-ref "$MOLD_BASE_SHA"
+      - name: Run regression tests
+        run: python3 -W error::SyntaxWarning -m unittest discover -s tests -p 'test_*.py'
+      - name: Verify the UI template and remove its temporary target
+        run: python3 -W error::SyntaxWarning -m tools.verify_template --json /tmp/mold-template-result.json
+      - name: Build the website
+        run: python3 -W error::SyntaxWarning build.py
+      - name: Verify generated audit surfaces
+        run: python3 -W error::SyntaxWarning -m tools.mold_publish --check
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mold-audit
+          path: |
+            /tmp/mold-results.json
+            /tmp/mold-template-result.json
+            mold-baseline.json
+            dist/mold-results.json

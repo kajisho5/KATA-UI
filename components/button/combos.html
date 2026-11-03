@@ -2,6 +2,8 @@
 <!-- combo: The subscribe row -->
 <!-- note: One field, one action. The Button holds the Input's height and radius without a wrapper framework — both read the same tokens, so the row agrees by construction. -->
 <div style="display:flex;gap:var(--k-space-2);flex-wrap:wrap;align-items:flex-end;max-width:520px;width:100%">
-  <div class="field" style="flex:1;min-width:220px"><label for="cb-sub">Email for the changelog</label><input class="input" id="cb-sub" type="email" placeholder="you@example.com"><span class="hint">One email a month. The list is never rented out.</span></div>
+  <div class="field" style="flex:1;min-width:220px"><label>Email for the changelog<input class="input" type="email" placeholder="you@example.com"></label><span class="hint">One email a month. The list is never rented out.</span></div>
   <button class="btn btn-pri btn-md" type="button">Subscribe</button>
 </div>
+
+<link rel="stylesheet" href="/components/input/input.css">

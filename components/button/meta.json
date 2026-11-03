@@ -9,5 +9,5 @@
   ],
   "status": "stable",
   "usage": "One primary action per view. Use Secondary for the alternative, Ghost for tertiary actions, Danger only for destructive ones.",
-  "a11y": "Native buttons with explicit types, a token-based focus-visible ring, and hover/active/disabled states for every variant. Loading examples use disabled and aria-busy while retaining their text label; decorative spinners stop under reduced motion. btn-asagi remains a deprecated alias of btn-accent."
+  "a11y": "Native buttons with explicit types and a focus-visible ring using --k-ring. Each color variant has hover and pressed styles; disabled examples use the native disabled attribute. Loading examples retain their text and use disabled with aria-busy. Decorative spinners are aria-hidden and stop with prefers-reduced-motion. btn-asagi is a deprecated alias of btn-accent. No JavaScript is required."
 }

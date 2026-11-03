@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 20,
-    "failed": 144,
+    "passed": 22,
+    "failed": 142,
     "total": 164,
     "warnings": 34
   },
@@ -1065,7 +1065,7 @@
     },
     {
       "id": "components/button",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -1099,11 +1099,9 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "combos.html: <input> input"
-          ]
+          "findings": []
         },
         {
           "id": "variant-hover",
@@ -1650,11 +1648,9 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> input"
-          ]
+          "findings": []
         },
         {
           "id": "variant-hover",
@@ -2731,7 +2727,6 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "preview.html: <input> input",
             "preview.html: <button> cal-btn",
             "preview.html: <button> k-dp-nav",
             "preview.html: <button> k-dp-nav"
@@ -3275,7 +3270,7 @@
     },
     {
       "id": "components/field",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -3309,12 +3304,9 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <input> input",
-            "preview.html: <input> input"
-          ]
+          "findings": []
         },
         {
           "id": "variant-hover",
@@ -4464,17 +4456,8 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "combos.html: <input> input",
             "combos.html: <select> ",
-            "combos.html: <button> btn btn-pri btn-md",
-            "examples.html: <input> input",
-            "examples.html: <input> input errb",
-            "examples.html: <input> input",
-            "examples.html: <input> input",
-            "examples.html: <input> input",
-            "preview.html: <input> input",
-            "preview.html: <input> input errb",
-            "preview.html: <input> input"
+            "combos.html: <button> btn btn-pri btn-md"
           ]
         },
         {
@@ -4544,9 +4527,7 @@
           "findings": [
             "examples.html: <input> input",
             "examples.html: <button> btn btn-sec btn-md",
-            "examples.html: <input> input",
-            "preview.html: <input> input",
-            "preview.html: <input> input"
+            "examples.html: <input> input"
           ]
         },
         {
@@ -8856,7 +8837,6 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "preview.html: <input> input",
             "preview.html: <button> k-tp-btn"
           ]
         },
@@ -9426,7 +9406,6 @@
           "severity": "error",
           "findings": [
             "preview.html: <input> ",
-            "preview.html: <input> input",
             "preview.html: <input> ",
             "preview.html: <input> ",
             "preview.html: <input> ",
@@ -9434,7 +9413,6 @@
             "preview.html: <input> ",
             "preview.html: <input> ",
             "preview.html: <input> ",
-            "preview.html: <input> input",
             "preview.html: <input> ",
             "preview.html: <input> ",
             "preview.html: <input> "
@@ -11087,7 +11065,6 @@
             "preview.html: <a> ",
             "preview.html: <a> ",
             "preview.html: <a> ",
-            "preview.html: <input> input",
             "preview.html: <a> ",
             "preview.html: <a> ",
             "preview.html: <a> ",
@@ -11695,7 +11672,6 @@
             "preview.html: <a> ",
             "preview.html: <a> ",
             "preview.html: <a> ",
-            "preview.html: <input> input",
             "preview.html: <button> k-dt-sort"
           ]
         },
@@ -11771,7 +11747,6 @@
             "preview.html: <a> ",
             "preview.html: <a> ",
             "preview.html: <a> ",
-            "preview.html: <input> input",
             "preview.html: <textarea> k-textarea"
           ]
         },

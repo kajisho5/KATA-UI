@@ -12,3 +12,5 @@
 .searchwrap .input{padding-inline-start:34px}
 /* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
 @media (max-width:640px){.input{font-size:16px}}
+
+.input:focus-visible{outline:none;border-color:var(--k-ink);box-shadow:var(--k-ring)}

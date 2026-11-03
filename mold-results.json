@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 19,
-    "failed": 145,
+    "passed": 20,
+    "failed": 144,
     "total": 164,
     "warnings": 34
   },
@@ -239,13 +239,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-danger btn-md",
-            "preview.html: <button> btn btn-sec btn-md",
-            "preview.html: <button> btn btn-danger btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -1411,12 +1407,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-sm",
-            "preview.html: <button> btn btn-pri btn-sm"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -2104,17 +2097,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-md",
-            "preview.html: <button> kcmd-item active",
-            "preview.html: <button> kcmd-item",
-            "preview.html: <button> kcmd-item",
-            "preview.html: <button> kcmd-item",
-            "preview.html: <button> kcmd-item",
-            "preview.html: <button> kcmd-item"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -2643,12 +2628,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-sm",
-            "preview.html: <button> btn btn-sec btn-sm"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -3026,14 +3008,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-pri btn-md",
-            "preview.html: <button> btn btn-ghost btn-sm",
-            "preview.html: <button> btn btn-sec btn-md",
-            "preview.html: <button> btn btn-pri btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -3107,11 +3084,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -4050,13 +4025,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> gt-0",
-            "preview.html: <button> gt-1",
-            "preview.html: <button> gt-2"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -5639,13 +5610,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-pri btn-md",
-            "preview.html: <button> btn btn-sec btn-md",
-            "preview.html: <button> btn btn-pri btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -6217,7 +6184,7 @@
     },
     {
       "id": "components/popover",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -6239,13 +6206,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-pri btn-md",
-            "preview.html: <button> btn btn-sec btn-sm",
-            "preview.html: <button> btn btn-sec btn-sm"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -7812,11 +7775,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -8442,13 +8403,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> on",
-            "preview.html: <button> ",
-            "preview.html: <button> "
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -9028,11 +8985,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -9056,11 +9011,9 @@
         },
         {
           "id": "reduced-motion",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "Animation without a local reduced-motion rule"
-          ]
+          "findings": []
         },
         {
           "id": "js-single-instance",
@@ -10065,11 +10018,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-pri btn-sm"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -10624,12 +10575,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-pri btn-lg login-cta",
-            "preview.html: <button> btn btn-sec btn-lg login-cta"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -10901,13 +10849,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-lg plan-cta",
-            "preview.html: <button> btn btn-pri btn-lg plan-cta",
-            "preview.html: <button> btn btn-sec btn-lg plan-cta"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -11046,13 +10990,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-sm",
-            "preview.html: <button> btn btn-sec btn-md",
-            "preview.html: <button> btn btn-pri btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -11124,11 +11064,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-pri btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -11506,11 +11444,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-pri btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -11738,12 +11674,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-sm",
-            "preview.html: <button> btn btn-sec btn-sm"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",
@@ -11894,14 +11827,9 @@
         },
         {
           "id": "button-type",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <button> btn btn-sec btn-lg plan-cta",
-            "preview.html: <button> btn btn-pri btn-lg plan-cta",
-            "preview.html: <button> btn btn-sec btn-lg plan-cta",
-            "preview.html: <button> btn btn-pri btn-md"
-          ]
+          "findings": []
         },
         {
           "id": "accessible-label",

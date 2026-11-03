@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """KATA UI — 型検品 (mold check). Verifies every component in the registry conforms to KATA.md.
-Usage: python3 check.py [slug ...]   (no args = all components)
+Usage: python3 check.py [slug ...] [--json PATH|-]   (no args = all components)
 Exit code 0 = all pass, 1 = violations found."""
-import json, re, sys
+import argparse, json, re, sys
+from tools.mold_rules import inspect
 from pathlib import Path
 
 ROOT = Path(__file__).parent
 CATS = {'Form & Input', 'Layout & Navigation', 'Overlays & Dialogs', 'Feedback & Status', 'Display & Media', 'Motion', 'KATAYABURI', 'Japan'}
 REQUIRED_META = ['title', 'category', 'description', 'tags', 'status', 'usage', 'a11y']
-ALLOWED_RGBA = {(0, 0, 0), (255, 255, 255), (16, 24, 40), (24, 24, 27), (244, 244, 245)}
+CONFIG = json.loads((ROOT / 'check.config.json').read_text())
 HEX = re.compile(r'#[0-9a-fA-F]{3,8}\b')
 RGBA = re.compile(r'rgba?\((\d+),\s*(\d+),\s*(\d+)')
 
@@ -38,12 +39,6 @@ def check_component(d):
     if meta.get('status') not in ('stable', 'beta'):
         errs.append('meta.status must be stable or beta')
     css = css_f.read_text(encoding='utf-8')
-    for m in HEX.finditer(css):
-        if m.group(0).lower() not in ('#000', '#000000', '#fff', '#ffffff'):
-            errs.append(f'css: raw hex color {m.group(0)} — use a --k- token (only achromatic #000/#fff allowed, e.g. for masks)')
-    for m in RGBA.finditer(css):
-        if tuple(int(x) for x in m.groups()) not in ALLOWED_RGBA:
-            errs.append(f'css: raw rgba color {m.group(0)}...) — hue must come from a --k- token')
     prev = prev_f.read_text(encoding='utf-8')
     ex_f = d / 'examples.html'
     if ex_f.exists():
@@ -112,12 +107,6 @@ def check_block(d, comp_slugs):
         if u not in comp_slugs:
             errs.append(f'meta.uses: unknown component {u}')
     css = css_f.read_text(encoding='utf-8')
-    for m in HEX.finditer(css):
-        if m.group(0).lower() not in ('#000', '#000000', '#fff', '#ffffff'):
-            errs.append(f'css: raw hex color {m.group(0)} — use a --k- token')
-    for m in RGBA.finditer(css):
-        if tuple(int(x) for x in m.groups()) not in ALLOWED_RGBA:
-            errs.append(f'css: raw rgba color {m.group(0)}...) — hue must come from a --k- token')
     prev = prev_f.read_text(encoding='utf-8')
     for m in HEX.finditer(prev):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
@@ -185,12 +174,6 @@ def check_template(d, comp_slugs, block_slugs):
         if u not in block_slugs:
             errs.append(f'meta.blocks: unknown block {u}')
     css = css_f.read_text(encoding='utf-8')
-    for m in HEX.finditer(css):
-        if m.group(0).lower() not in ('#000', '#000000', '#fff', '#ffffff'):
-            errs.append(f'css: raw hex color {m.group(0)} — use a --k- token')
-    for m in RGBA.finditer(css):
-        if tuple(int(x) for x in m.groups()) not in ALLOWED_RGBA:
-            errs.append(f'css: raw rgba color {m.group(0)}...) — hue must come from a --k- token')
     prev = prev_f.read_text(encoding='utf-8')
     for m in HEX.finditer(prev):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
@@ -234,59 +217,37 @@ def check_template(d, comp_slugs, block_slugs):
 
 
 def main():
-    args = sys.argv[1:]
-    dirs = [ROOT / 'components' / a for a in args] if args else sorted((ROOT / 'components').iterdir())
-    bad = 0
-    for d in dirs:
-        if not d.is_dir():
-            continue
-        errs = check_component(d)
-        if errs:
-            bad += 1
-            print(f'NG  {d.name}')
-            for e in errs:
-                print(f'    - {e}')
-        else:
-            print(f'OK  {d.name}')
-    print(f'\n{len(dirs) - bad}/{len(dirs)} components pass the mold')
-    bdir = ROOT / 'blocks'
-    if bdir.exists() and not args:
-        comp_slugs = {d.name for d in (ROOT / 'components').iterdir() if d.is_dir()}
-        bdirs = sorted(bdir.iterdir())
-        bbad = 0
-        for d in bdirs:
-            if not d.is_dir():
-                continue
-            errs = check_block(d, comp_slugs)
-            if errs:
-                bbad += 1
-                print(f'NG  block:{d.name}')
-                for e in errs:
-                    print(f'    - {e}')
-            else:
-                print(f'OK  block:{d.name}')
-        print(f'{len(bdirs) - bbad}/{len(bdirs)} blocks pass the mold')
-        bad += bbad
-    tdir = ROOT / 'templates'
-    if tdir.exists() and not args:
-        comp_slugs = {d.name for d in (ROOT / 'components').iterdir() if d.is_dir()}
-        block_slugs = {d.name for d in (ROOT / 'blocks').iterdir() if d.is_dir()} if (ROOT / 'blocks').exists() else set()
-        tdirs = sorted(tdir.iterdir())
-        tbad = 0
-        for d in tdirs:
-            if not d.is_dir():
-                continue
-            errs = check_template(d, comp_slugs, block_slugs)
-            if errs:
-                tbad += 1
-                print(f'NG  template:{d.name}')
-                for e in errs:
-                    print(f'    - {e}')
-            else:
-                print(f'OK  template:{d.name}')
-        print(f'{len(tdirs) - tbad}/{len(tdirs)} templates pass the mold')
-        bad += tbad
-    sys.exit(1 if bad else 0)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('slugs', nargs='*')
+    parser.add_argument('--json', dest='json_path', help='Write structured report; use - for stdout')
+    args = parser.parse_args()
+    comp_slugs = {p.name for p in (ROOT / 'components').iterdir() if p.is_dir()}
+    block_slugs = {p.name for p in (ROOT / 'blocks').iterdir() if p.is_dir()}
+    items = []
+    for kind in ('components','blocks','templates'):
+        if args.slugs and kind != 'components': continue
+        dirs = [ROOT/kind/name for name in args.slugs] if args.slugs else sorted(p for p in (ROOT/kind).iterdir() if p.is_dir())
+        for d in dirs:
+            if kind == 'components': errors = check_component(d)
+            elif kind == 'blocks': errors = check_block(d, comp_slugs)
+            else: errors = check_template(d, comp_slugs, block_slugs)
+            checks = [{'id':'legacy-contract','status':'fail' if errors else 'pass','severity':'error','findings':errors}]
+            checks += inspect(d, ROOT, CONFIG)
+            passed = not any(c['status']=='fail' for c in checks)
+            items.append({'id':f'{kind}/{d.name}','passed':passed,'checks':checks})
+    passed = sum(i['passed'] for i in items)
+    report = {'schema_version':1,'summary':{'passed':passed,'failed':len(items)-passed,'total':len(items), 'warnings':sum(c['status']=='warn' for i in items for c in i['checks'])},'items':items}
+    output = json.dumps(report, ensure_ascii=False, indent=2)+'\n'
+    if args.json_path == '-': print(output, end='')
+    else:
+        for item in items:
+            print(('OK  ' if item['passed'] else 'NG  ')+item['id'])
+            for check in item['checks']:
+                if check['status'] != 'pass':
+                    for finding in check['findings']:print(f"    {check['status'].upper()} [{check['id']}] {finding}")
+        print(f'Mold Verified {passed}/{len(items)}; failed {len(items)-passed}')
+        if args.json_path: Path(args.json_path).write_text(output)
+    return 1 if report['summary']['failed'] else 0
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())

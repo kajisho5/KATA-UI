@@ -123,6 +123,8 @@ async function commitFiles(files) {
   }
   // Stage every output first. A failed download or staging write cannot leave a partial install.
   const staged = [];
+  const originals = new Map();
+  const committed = [];
   try {
     for (const file of files.values()) {
       const dest = safeDestination(file.path);
@@ -130,18 +132,31 @@ async function commitFiles(files) {
       await assertNoSymlinkPath(dest);
       const temp = dest + '.kataui-' + randomUUID() + '.tmp';
       await writeFile(temp, file.content, { flag: 'wx' });
-      staged.push({ dest, temp, existed: await exists(dest) });
+      staged.push({ dest, temp });
     }
-    // Recheck immediately before replacing to reduce race-window surprises.
+    // Recheck and snapshot every destination before the first replacement.
     for (const entry of staged) {
       await assertNoSymlinkPath(entry.dest);
       if (await exists(entry.dest)) {
         if (!FORCE) throw new Error('file appeared during install: ' + entry.dest);
+        const previous = await readFile(entry.dest);
+        originals.set(entry.dest, previous);
         if (BACKUP) await copyFile(entry.dest, entry.dest + '.bak');
+      } else {
+        originals.set(entry.dest, null);
       }
     }
-    for (const entry of staged) await rename(entry.temp, entry.dest);
+    for (const entry of staged) {
+      await rename(entry.temp, entry.dest);
+      committed.push(entry.dest);
+    }
   } catch (e) {
+    // Roll back destinations already replaced so a failed batch does not leave a partial install.
+    for (const dest of committed.reverse()) {
+      const previous = originals.get(dest);
+      if (previous === null) await rm(dest, { force: true }).catch(() => {});
+      else await writeFile(dest, previous).catch(() => {});
+    }
     await Promise.all(staged.map(x => rm(x.temp, { force: true }).catch(() => {})));
     throw e;
   }

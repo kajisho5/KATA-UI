@@ -1,0 +1,716 @@
+[
+  {
+    "name": "ui raw radius",
+    "css": ".sample{border-radius:8px}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui local radius",
+    "css": ".sample{--local:8px;border-radius:var(--local)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui raw duration",
+    "css": ".sample{transition:opacity .13s}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui local duration",
+    "css": ".sample{--local:opacity .13s;transition:var(--local)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui raw shadow",
+    "css": ".sample{box-shadow:0 1px 2px #000}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui local shadow",
+    "css": ".sample{--local:0 1px 2px #000;box-shadow:var(--local)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui raw color",
+    "css": ".sample{color:rebeccapurple}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui local color",
+    "css": ".sample{--local:rebeccapurple;color:var(--local)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui raw border",
+    "css": ".sample{border:2px solid var(--k-line)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui local border",
+    "css": ".sample{--local:2px solid var(--k-line);border:var(--local)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui shared radius",
+    "css": ".sample{border-radius:var(--k-radius)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui alias shared radius",
+    "css": ".sample{--local:var(--k-radius);border-radius:var(--local)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui shared duration",
+    "css": ".sample{transition:opacity var(--k-dur-1)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui alias shared duration",
+    "css": ".sample{--local:opacity var(--k-dur-1);transition:var(--local)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui shared shadow",
+    "css": ".sample{box-shadow:var(--k-shadow-overlay)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui alias shared shadow",
+    "css": ".sample{--local:var(--k-shadow-overlay);box-shadow:var(--local)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui shared color",
+    "css": ".sample{color:var(--k-ink)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui alias shared color",
+    "css": ".sample{--local:var(--k-ink);color:var(--local)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui shared border",
+    "css": ".sample{border:1px dashed var(--k-line)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui alias shared border",
+    "css": ".sample{--local:1px dashed var(--k-line);border:var(--local)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui calc shared",
+    "css": ".sample{--x:calc(var(--k-space-1) * 2);border-radius:var(--x)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui calc hides raw",
+    "css": ".sample{--x:calc(4px * 2);border-radius:var(--x)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui alias chain raw",
+    "css": ".sample{--x:var(--y);--y:8px;border-radius:var(--x)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui alias chain shared",
+    "css": ".sample{--x:var(--y);--y:var(--k-radius);border-radius:var(--x)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "override shared name locally",
+    "css": ".sample{--k-radius:8px;border-radius:var(--k-radius)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "cycle",
+    "css": ".sample{--x:var(--y);--y:var(--x);border-radius:var(--x)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "unresolved",
+    "css": ".sample{border-radius:var(--missing)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "raw fallback",
+    "css": ".sample{border-radius:var(--k-radius, 8px)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "token fallback",
+    "css": ".sample{border-radius:var(--missing, var(--k-radius))}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "two definitions one bad",
+    "css": ".sample{--x:var(--k-radius)}.other{--x:8px}.sample{border-radius:var(--x)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "lab raw geometry",
+    "css": ".sample{border-radius:13px;border:3px solid var(--k-line);width:999px;left:17px}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "lab alias geometry",
+    "css": ".sample{--shape:13px;border-radius:var(--shape)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "KATAYABURI"
+  },
+  {
+    "name": "lab raw border color",
+    "css": ".sample{border:3px solid red}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "lab local border color",
+    "css": ".sample{--b:3px solid red;border:var(--b)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "lab raw shadow",
+    "css": ".sample{box-shadow:0 1px 2px #000}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "lab raw time",
+    "css": ".sample{animation:spin 8s var(--k-ease)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "lab raw easing",
+    "css": ".sample{animation:spin var(--k-dur-1) linear}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "lab local raw easing",
+    "css": ".sample{--curve:cubic-bezier(.2,.3,.4,1);transition:opacity var(--k-dur-1) var(--curve)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "lab shared motion",
+    "css": ".sample{--curve:var(--k-ease);animation:spin var(--k-dur-1) var(--curve)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "KATAYABURI"
+  },
+  {
+    "name": "ui raw easing outside A",
+    "css": ".sample{transition:opacity var(--k-dur-1) cubic-bezier(.2,.3,.4,1)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "delay raw",
+    "css": ".sample{animation-delay:-.13s;transition-delay:150ms}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "Foundry calc",
+    "css": ".sample{transition:opacity calc(var(--k-dur-1) * var(--k-mscale, 1))}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "Foundry not color",
+    "css": ".sample{color:var(--k-mscale,1)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "warn gap",
+    "css": ".sample{gap:7px}",
+    "expected": {
+      "spacing-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared gap",
+    "css": ".sample{--space:var(--k-space-2);gap:var(--space)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "warn row-gap",
+    "css": ".sample{row-gap:7px}",
+    "expected": {
+      "spacing-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared row-gap",
+    "css": ".sample{--space:var(--k-space-2);row-gap:var(--space)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "warn column-gap",
+    "css": ".sample{column-gap:7px}",
+    "expected": {
+      "spacing-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared column-gap",
+    "css": ".sample{--space:var(--k-space-2);column-gap:var(--space)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "warn margin",
+    "css": ".sample{margin:7px}",
+    "expected": {
+      "spacing-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared margin",
+    "css": ".sample{--space:var(--k-space-2);margin:var(--space)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "warn padding-inline",
+    "css": ".sample{padding-inline:7px}",
+    "expected": {
+      "spacing-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared padding-inline",
+    "css": ".sample{--space:var(--k-space-2);padding-inline:var(--space)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "warn inset-block-start",
+    "css": ".sample{inset-block-start:7px}",
+    "expected": {
+      "spacing-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared inset-block-start",
+    "css": ".sample{--space:var(--k-space-2);inset-block-start:var(--space)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "lab spacing stays warning",
+    "css": ".sample{gap:7px;left:17px}",
+    "expected": {
+      "spacing-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "warn font-size",
+    "css": ".sample{font-size:1.7}",
+    "expected": {
+      "type-values": "warn"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared font-size",
+    "css": ".sample{font-size:var(--k-text-base)}",
+    "expected": {
+      "type-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "warn line-height",
+    "css": ".sample{line-height:1.7}",
+    "expected": {
+      "type-values": "warn"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shared line-height",
+    "css": ".sample{line-height:var(--k-text-base)}",
+    "expected": {
+      "type-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "font shorthand raw",
+    "css": ".sample{font:500 14px/1.7 sans-serif}",
+    "expected": {
+      "type-values": "warn"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "font shorthand shared",
+    "css": ".sample{font:500 var(--k-text-base)/var(--k-lh-body) var(--k-font)}",
+    "expected": {
+      "type-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "allowed primitives",
+    "css": ".sample{border-radius:0;border:1px solid currentColor;color:transparent;gap:100%;font-size:inherit;box-shadow:none}",
+    "expected": {
+      "token-values": "pass",
+      "spacing-values": "pass",
+      "type-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "1px is not radius",
+    "css": ".sample{border-radius:1px}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "URL fragment not color",
+    "css": ".sample{background:url(\"/a.svg#fff\")}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "named color in comment",
+    "css": "/*color:red;*/.sample{color:var(--k-ink)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "paint shared colors",
+    "css": ".sample{background:linear-gradient(90deg,var(--k-ink) 0%,var(--k-bg) 100%)}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "paint raw color",
+    "css": ".sample{background:linear-gradient(90deg,var(--k-ink),#fff)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "shadow filter raw",
+    "css": ".sample{filter:drop-shadow(0 1px 2px #000)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "shadow filter shared",
+    "css": ".sample{filter:drop-shadow(var(--k-shadow-overlay))}",
+    "expected": {
+      "token-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "js globals fail",
+    "css": "",
+    "expected": {
+      "js-global-bindings": "fail"
+    },
+    "category": "Form & Input",
+    "js": "const x=1;let y=2;"
+  },
+  {
+    "name": "js single fail",
+    "css": "",
+    "expected": {
+      "js-single-instance": "fail"
+    },
+    "category": "Form & Input",
+    "js": "(()=>{const x=document.querySelector(\"[data-one]\");})();"
+  },
+  {
+    "name": "js multiple guarded scope",
+    "css": "",
+    "expected": {
+      "js-single-instance": "pass",
+      "js-global-bindings": "pass"
+    },
+    "category": "Form & Input",
+    "js": "(()=>{document.querySelectorAll(\"[data-one]\").forEach(el=>{if(el.hasAttribute(\"data-kata-ready\"))return;el.setAttribute(\"data-kata-ready\",\"\");});})();"
+  },
+  {
+    "name": "slug namespace fail",
+    "css": ".sample{}",
+    "expected": {
+      "shared-token-scope": "fail"
+    },
+    "category": "Form & Input",
+    "shared_extra": ":root{--k-sample-width:4px}"
+  },
+  {
+    "name": "prefix namespace fail",
+    "css": ".sample{}",
+    "expected": {
+      "shared-token-scope": "fail"
+    },
+    "category": "Form & Input",
+    "prefix": "short",
+    "shared_extra": ":root{--k-short-width:4px}"
+  },
+  {
+    "name": "class does not own ring",
+    "css": ".k-ring{}",
+    "expected": {
+      "shared-token-scope": "pass"
+    },
+    "category": "KATAYABURI",
+    "slug": "carousel-ring"
+  },
+  {
+    "name": "important is declaration priority",
+    "category": "Form & Input",
+    "css": ".sample{transition:none!important;color:var(--k-ink)!important;--x:var(--k-radius)!important;border-radius:var(--x)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "collapse is layout not border paint",
+    "category": "Form & Input",
+    "css": ".sample{border-collapse:collapse;border-spacing:0}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "explicit k prefix",
+    "category": "Form & Input",
+    "prefix": "k-short",
+    "css": ".sample{}",
+    "shared_extra": ":root{--k-short-size:4px}",
+    "expected": {
+      "shared-token-scope": "fail"
+    }
+  },
+  {
+    "name": "explicit custom property prefix",
+    "category": "Form & Input",
+    "prefix": "--k-short-",
+    "css": ".sample{}",
+    "shared_extra": ":root{--k-short-size:4px}",
+    "expected": {
+      "shared-token-scope": "fail"
+    }
+  },
+  {
+    "name": "inline local provenance",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<div style=\"--local:8px;border-radius:var(--local)\"></div>",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "embedded style local provenance",
+    "category": "Form & Input",
+    "css": ".sample{color:var(--local)}",
+    "html": "<style>.sample{--local:#fff}</style>",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "border keyword has width failure only",
+    "category": "Form & Input",
+    "css": ".sample{border:medium solid var(--k-line)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "expected_kinds": [
+      "border"
+    ]
+  },
+  {
+    "name": "background geometry is not raw color",
+    "category": "Form & Input",
+    "css": ".sample{background:var(--k-bg) url(\"image.svg\") 4px center/cover no-repeat}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "background raw color still fails",
+    "category": "Form & Input",
+    "css": ".sample{background:red center/cover no-repeat}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "CSS property and unit case",
+    "category": "Form & Input",
+    "css": ".sample{BORDER:1PX dashed currentColor;COLOR:var(--k-ink)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  }
+]

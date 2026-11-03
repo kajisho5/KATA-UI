@@ -144,3 +144,63 @@ components/<slug>/
 
 ## Brand marks (exception)
 `icons/brands/` holds third-party brand marks (social / AI services). They do NOT follow the three-shape mold — a mark keeps its owner's geometry — and they are provided for nominative use only (social links, sign-in, integration grids). Trademarks belong to their owners; never use a brand mark as part of KATA's own identity.
+
+## Mold definition: checker profiles and token provenance
+
+This section defines the current checker policy. It supersedes earlier blanket
+statements about token-only geometry where they conflict with the profiles below.
+A passing static check is not a browser or accessibility certification.
+
+**A. Profiles.** A component whose `meta.category` is `Motion` or `KATAYABURI`
+uses the `lab` profile. Every other component, block and template uses `ui`.
+In `ui`, radius, duration (including delay), shadow, color and border values must
+come from shared `tokens.css` tokens, except the primitives configured below.
+In `lab`, color, duration, shadow and easing must come from those tokens. Lab
+radius, border geometry, dimensions and positions may use local literal geometry.
+A raw border color still fails in Lab; permission for border geometry does not
+permit arbitrary colors. UI easing is not a token-required kind under this policy.
+
+**B. Local variables are not a bypass.** The checker follows local custom
+properties, both `--k-*` and other `--*` names, from their use to the final value.
+A local alias is valid for a token-required kind only when it reaches a shared
+token, an arithmetic expression derived from shared tokens, or a configured
+primitive. Moving `8px` into `--local-radius` does not make a UI radius valid.
+A local override of a shared token name is checked before that shared definition.
+Cycles, unresolved values without a valid fallback and unsupported value syntax
+are findings, not silent passes. Raw fallbacks are checked too. The consuming
+property and profile determine the value kind: the same local geometry may pass
+as a Lab radius and fail as a UI radius.
+
+**C. Advisory checks.** `spacing-values` covers gap (including row/column gap),
+margin, padding and inset, including their logical longhands. `type-values`
+covers font-size and line-height, including sizes/leading in font shorthands.
+Both currently report `warn`, never `fail`, with finding counts in JSON. They
+also report literal spacing in Lab as nonblocking migration advice; Lab geometry
+remains permitted. A later decision is required before either check becomes an
+error. Font families and weights in a shorthand are outside the type-value check.
+
+**D. JavaScript errors.** `js-single-instance` and `js-global-bindings` are
+errors. The existing detectors report hard-coded `document.querySelector` data
+roots and top-level `const`/`let` bindings. Their lexical limitations must be
+reported; they do not prove initialization, keyboard or IME correctness. Test
+multiple instances and repeated loading in a browser as well.
+
+**E. Namespace ownership.** Component token namespaces come only from the folder
+slug and an optional string `meta.prefix`. Prefixes may be written as `short`,
+`k-short` or `--k-short-`; they identify the same namespace. Do not infer ownership
+from the first CSS class. In particular, Carousel Ring's `.k-ring` does not own
+the shared danger focus token `--k-ring-danger`. Genuine component-specific global
+namespaces still fail `shared-token-scope`.
+
+**F. Configuration, not hidden exceptions.** Primitive allowances live in
+`check.config.json`: zero, a 1px border width on the configured border properties,
+100%, transparent, currentColor, inherit and the other explicitly listed keywords.
+Grammar allowances for arithmetic, gradients, border styles, font weights and
+Foundry's external numeric `--k-mscale` also live there. A border width exception
+does not exempt its color. New exceptions need an explicit path, property, value
+and reason; do not add blanket exemptions to reach a target score.
+
+JSON includes each item's profile, per-kind findings and reasons, advisory
+finding counts, and the exact pass/fail summary. Publish those measured results,
+even when a stricter policy reduces the score. Keep checker changes separate from
+component repairs so the effect of each is reviewable.

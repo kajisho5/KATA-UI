@@ -1,5 +1,269 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "profiles": {
+    "ui": {
+      "required": [
+        "radius",
+        "duration",
+        "shadow",
+        "color",
+        "border"
+      ]
+    },
+    "lab": {
+      "required": [
+        "color",
+        "duration",
+        "shadow",
+        "easing"
+      ]
+    }
+  },
+  "lab_categories": [
+    "Motion",
+    "KATAYABURI"
+  ],
+  "allowed_values": {
+    "global": [
+      "0",
+      "100%",
+      "transparent",
+      "currentColor",
+      "inherit",
+      "initial",
+      "unset",
+      "revert",
+      "revert-layer"
+    ],
+    "radius": [],
+    "duration": [
+      "none",
+      "auto"
+    ],
+    "shadow": [
+      "none",
+      "inset"
+    ],
+    "color": [
+      "none"
+    ],
+    "border": [
+      "none",
+      "hidden",
+      "solid",
+      "dashed",
+      "dotted",
+      "double",
+      "groove",
+      "ridge",
+      "inset",
+      "outset"
+    ],
+    "easing": [],
+    "spacing": [
+      "auto"
+    ],
+    "type": [
+      "normal"
+    ]
+  },
+  "border_width_exception": {
+    "value": "1px",
+    "properties": [
+      "border",
+      "border-top",
+      "border-right",
+      "border-bottom",
+      "border-left",
+      "border-inline",
+      "border-inline-start",
+      "border-inline-end",
+      "border-block",
+      "border-block-start",
+      "border-block-end",
+      "border-width",
+      "border-top-width",
+      "border-right-width",
+      "border-bottom-width",
+      "border-left-width",
+      "border-inline-width",
+      "border-block-width",
+      "border-inline-start-width",
+      "border-inline-end-width",
+      "border-block-start-width",
+      "border-block-end-width"
+    ]
+  },
+  "arithmetic_functions": [
+    "calc",
+    "min",
+    "max",
+    "clamp"
+  ],
+  "color_functions": [
+    "rgb",
+    "rgba",
+    "hsl",
+    "hsla",
+    "hwb",
+    "lab",
+    "lch",
+    "oklab",
+    "oklch",
+    "color",
+    "device-cmyk"
+  ],
+  "paint_functions": [
+    "linear-gradient",
+    "radial-gradient",
+    "conic-gradient",
+    "repeating-linear-gradient",
+    "repeating-radial-gradient",
+    "repeating-conic-gradient",
+    "color-mix"
+  ],
+  "paint_keywords": [
+    "in",
+    "srgb",
+    "srgb-linear",
+    "oklab",
+    "oklch",
+    "hsl",
+    "hwb",
+    "lab",
+    "lch",
+    "xyz",
+    "xyz-d50",
+    "xyz-d65",
+    "shorter",
+    "longer",
+    "increasing",
+    "decreasing",
+    "hue",
+    "circle",
+    "ellipse",
+    "at",
+    "to",
+    "from",
+    "center",
+    "left",
+    "right",
+    "top",
+    "bottom",
+    "closest-side",
+    "farthest-side",
+    "closest-corner",
+    "farthest-corner"
+  ],
+  "easing_keywords": [
+    "linear",
+    "ease",
+    "ease-in",
+    "ease-out",
+    "ease-in-out",
+    "step-start",
+    "step-end"
+  ],
+  "easing_functions": [
+    "cubic-bezier",
+    "steps",
+    "linear"
+  ],
+  "animation_keywords": [
+    "none",
+    "infinite",
+    "normal",
+    "reverse",
+    "alternate",
+    "alternate-reverse",
+    "forwards",
+    "backwards",
+    "both",
+    "running",
+    "paused"
+  ],
+  "external_numeric_variables": [
+    "--k-mscale"
+  ],
   "raw_value_allowlist": [],
-  "notes": "Exceptions require path, property, value and reason. No blanket exemptions. tokens.css is the token definition source, not a component under test."
+  "notes": "Allowed primitives and grammar exceptions are explicit here. UI token kinds are errors; Lab geometry remains permitted. Spacing/type are warnings in both profiles. No component-specific global token exceptions.",
+  "font_size_keywords": [
+    "xx-small",
+    "x-small",
+    "small",
+    "medium",
+    "large",
+    "x-large",
+    "xx-large",
+    "xxx-large",
+    "smaller",
+    "larger"
+  ],
+  "font_weight_numbers": [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900"
+  ],
+  "shadow_functions": [
+    "drop-shadow"
+  ],
+  "filter_geometry_functions": [
+    "blur",
+    "brightness",
+    "contrast",
+    "grayscale",
+    "hue-rotate",
+    "invert",
+    "opacity",
+    "saturate",
+    "sepia"
+  ],
+  "paint_geometry_units": [
+    "",
+    "%",
+    "deg",
+    "rad",
+    "grad",
+    "turn",
+    "px",
+    "em",
+    "rem",
+    "vh",
+    "vw",
+    "vmin",
+    "vmax"
+  ],
+  "border_width_keywords": [
+    "thin",
+    "medium",
+    "thick"
+  ],
+  "background_keywords": [
+    "center",
+    "left",
+    "right",
+    "top",
+    "bottom",
+    "cover",
+    "contain",
+    "repeat",
+    "no-repeat",
+    "repeat-x",
+    "repeat-y",
+    "space",
+    "round",
+    "scroll",
+    "fixed",
+    "local",
+    "border-box",
+    "padding-box",
+    "content-box",
+    "text"
+  ]
 }

@@ -1,3 +1,5 @@
+<img src="logo/logo.svg" width="64" height="64" alt="KATA UI">
+
 # KATA UI
 
 **Every part is cast from a single mold — kata, the Japanese discipline of the form.**

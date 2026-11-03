@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://kata-ui.dev/logo/logo.svg" width="64" height="64" alt="KATA UI">
+</p>
+
 # kataui
 
 The CLI for [KATA UI](https://kata-ui.dev) — a copy-paste library of vanilla

@@ -577,7 +577,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '<p class="sub">The parts are free. What Pro sells is the hours you do not spend composing them \u2014 21 blocks and 7 templates, assembled, responsive, and checked against the same mold.</p>'
       '<div class="pronums"><div><b>&asymp;77 h</b><span>of assembly, done for you</span></div><div><b>$129</b><span>once \u2014 lifetime, every future block</span></div><div><b>$1.68</b><span>per hour of it</span></div></div>'
       '<div class="probars"><div class="probar"><span>Assemble it yourself</span><div class="track"><i style="width:100%;background:var(--ink)"></i></div><b>&asymp;77 h</b></div><div class="probar"><span>With Pro</span><div class="track"><i style="width:2%;background:var(--acc);min-width:10px"></i></div><b>minutes</b></div></div>'
-      '<p class="lpnote" style="margin-top:16px">Founding 100: $99, plus two blocks that will never be sold separately \u2014 Invoice Desk and Kanban Board.</p>'
+      '<p class="lpnote" style="margin-top:16px">Founding 100: $99, plus two blocks that will never be sold separately \u2014 Help Center and Job Board.</p>'
       + _proster +
       '<p class="lpnote" style="margin-top:14px">Free is the finished product. Pro is for people who would rather not compose. <a href="/pricing/" style="color:var(--acc)">Pricing and the launch list</a></p></section>')
     pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
@@ -1441,7 +1441,7 @@ def pricing_page():
   </div>
   <div class="founding">
     <h2>Founding 100</h2>
-    <p>The first 100 licenses are Founding licenses: <b>$99 instead of $129</b>, two blocks that will never be sold separately — <b>Invoice Desk</b> and <b>Kanban Board</b> — and priority support that stays with the license permanently. When the hundredth is gone, the offer closes. The waitlist hears first, in order.</p>
+    <p>The first 100 licenses are Founding licenses: <b>$99 instead of $129</b>, two blocks that will never be sold separately — <b>Help Center</b> and <b>Job Board</b> — and priority support that stays with the license permanently. When the hundredth is gone, the offer closes. The waitlist hears first, in order.</p>
   </div>
   <div class="afterbuy">
     <h2>After checkout</h2>

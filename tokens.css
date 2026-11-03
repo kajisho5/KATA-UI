@@ -15,6 +15,24 @@
   --k-success-bg:rgba(93,172,129,.1); --k-success-line:rgba(93,172,129,.32); --k-success-ink:#1b813e;
   --k-toast-ink:#f4f4f5; --k-toast-sub:#a1a1aa; --k-success:#5dac81;
 
+  /* Button geometry, state and motion; durations scale at the consumer. */
+  --k-btn-gap:7px; --k-btn-weight:500; --k-btn-press:.5px;
+  --k-btn-height-sm:32px; --k-btn-height-md:38px; --k-btn-height-lg:44px;
+  --k-btn-pad-lg:20px; --k-btn-text-lg:14px; --k-btn-disabled-opacity:.45;
+  --k-btn-shadow:0 1px 2px rgba(16,24,40,.05);
+  --k-btn-inset:inset 0 0 0 1px currentColor;
+  --k-btn-spinner-size:14px; --k-btn-spinner-border:2px;
+  --k-btn-spinner-track:color-mix(in srgb,currentColor 35%,transparent);
+  --k-btn-spin-duration:700ms; --k-btn-spin-turn:360deg;
+
+  /* Combobox geometry and elevation. Radius stays on the shared Foundry tokens. */
+  --k-combo-focus-width:2px; --k-combo-sr-size:1px; --k-combo-width:300px; --k-combo-input-end:34px; --k-combo-input-size:16px;
+  --k-combo-chevron-end:11px; --k-combo-chevron-bottom:11px;
+  --k-combo-icon:15px; --k-combo-check-icon:14px;
+  --k-combo-gap:6px; --k-combo-popup-padding:5px; --k-combo-option-inline:10px;
+  --k-combo-z:50; --k-combo-max-height:238px;
+  --k-combo-shadow:0 20px 44px -14px rgba(16,24,40,.22);
+
   /* scales (mirror of system/tokens.json) */
   --k-zinc-50:#fafafa; --k-zinc-100:#f4f4f5; --k-zinc-200:#e4e4e7; --k-zinc-300:#d4d4d8; --k-zinc-400:#a1a1aa; --k-zinc-500:#71717a; --k-zinc-600:#52525b; --k-zinc-700:#3f3f46; --k-zinc-800:#27272a; --k-zinc-900:#18181b; --k-zinc-950:#09090b;
   --k-asagi-50:#eef9fa; --k-asagi-100:#d7f0f3; --k-asagi-200:#b0e0e7; --k-asagi-300:#7fc9d4; --k-asagi-400:#4fb0bf; --k-asagi-500:#33a6b8; --k-asagi-600:#29889a; --k-asagi-700:#206b79; --k-asagi-800:#1a5561; --k-asagi-900:#143f47;

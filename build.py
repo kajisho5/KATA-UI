@@ -1,10 +1,28 @@
 #!/usr/bin/env python3
 """KATA UI — static site generator. Registry (components/) is the source of truth."""
 import glob, hashlib, html, json, re, shutil
+from tools.anatomy import css_surface
 from pathlib import Path
 
 ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
+RELEASE_VERSION = json.loads((ROOT / 'cli' / 'package.json').read_text())['version']
+
+
+def distribution_header(path, content):
+    parts = Path(path).parts
+    if len(parts) < 3 or parts[0] not in ('components', 'blocks', 'templates'):
+        return content
+    kind, name = parts[:2]
+    meta = json.loads((ROOT / kind / name / 'meta.json').read_text())
+    version = meta.get('version', RELEASE_VERSION)
+    stamp = f'KATA {name} {version} — kata-ui.dev/{kind}/{name}'
+    if Path(path).suffix in ('.css', '.js'):
+        return f'/* {stamp} */\n' + content
+    if Path(path).suffix == '.html':
+        return f'<!-- {stamp} -->\n' + content
+    return content
+
 CATS = ['Form & Input', 'Layout & Navigation', 'Overlays & Dialogs', 'Feedback & Status', 'Display & Media', 'Motion', 'KATAYABURI', 'Japan']
 
 STARTER_HTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>KATA Starter — your first page</title>\n<link rel="stylesheet" href="kata-ui.css">\n<style>\n  body{font-family:var(--k-font);background:var(--k-bg-soft);color:var(--k-ink);margin:0;padding:36px 18px}\n  main{max-width:520px;margin:0 auto;display:grid;gap:14px}\n  h1{font-size:21px;letter-spacing:-.02em}\n  p.lead{color:var(--k-ink-2);font-size:14px;line-height:1.75;letter-spacing:.012em}\n</style>\n</head>\n<body>\n<main>\n  <h1>It works. This page is KATA parts, unmodified.</h1>\n  <p class="lead">Everything below comes from kata-ui.css and kata-ui.js in this folder. Copy a part from kata-ui.dev, paste it here, and it matches — same mold, same tokens.</p>\n  <div class="k-card">\n    <div class="k-card-h">Create your account</div>\n    <div class="k-card-b" style="display:grid;gap:12px">\n      <span class="field" style="display:grid;gap:6px"><label for="em">Email</label><input class="input" id="em" type="email" placeholder="you@company.com"></span>\n      <label class="switchrow" style="display:flex;align-items:center;gap:10px;font-size:13.5px"><span class="switch"><input type="checkbox" checked><span class="tr"></span></span>Email me product updates</label>\n      <div style="display:flex;gap:9px;align-items:center">\n        <button class="btn btn-pri btn-md">Create account</button>\n        <span class="badge asagi"><i></i>Free for 30 days</span>\n      </div>\n    </div>\n  </div>\n  <p class="lead">Next: browse the catalog at kata-ui.dev/components — each part carries its own CSS tab, so you can drop the bundle and keep only what you use.</p>\n</main>\n<script src="kata-ui.js"></script>\n</body>\n</html>\n'
@@ -68,13 +86,13 @@ FOOTER = """<div class="wrap"><footer class="site">
 </footer></div>"""
 
 import subprocess as _sp, sys as _sys
-try:
-    _r = _sp.run([_sys.executable, str(ROOT / 'check.py')], capture_output=True, text=True, timeout=90)
-    _ok = sum(1 for ln in _r.stdout.splitlines() if ln.startswith('OK'))
-    _bad = sum(1 for ln in _r.stdout.splitlines() if ln.startswith(('FAIL', 'NG')))
-    _ms = f'Mold Verified — {_ok}/{_ok + _bad} checks passing' if _ok else 'Mold Verified — see check.py'
-except Exception:
-    _ms = 'Mold Verified — see check.py'
+_r = _sp.run([_sys.executable, str(ROOT / 'check.py'), '--json', '-'], capture_output=True, text=True, timeout=90)
+if _r.returncode not in (0, 1):
+    raise RuntimeError('Mold checker failed: ' + _r.stderr)
+MOLD_REPORT = json.loads(_r.stdout)
+_summary = MOLD_REPORT['summary']
+_ms = f"Mold Verified {_summary['passed']}/{_summary['total']}"
+MOLD_ITEMS = {item['id']: item for item in MOLD_REPORT['items']}
 MOLD_STATUS = _ms
 FOOTER = FOOTER.replace('__MOLD__', _ms)
 
@@ -291,7 +309,7 @@ def head(title, desc, extra=''):
 <head>
 <meta charset="utf-8">
 <script>(function(){{try{{var s=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;if(s.dark||(!("dark" in s)&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))r.setAttribute("data-theme","dark");if(s.radius){{r.style.setProperty("--k-radius",s.radius+"px");r.style.setProperty("--k-radius-sm",Math.max(0,Math.round(s.radius*.75))+"px");r.style.setProperty("--k-radius-lg",Math.round(s.radius*1.5)+"px");}}if(s.accent){{r.style.setProperty("--k-accent",s.accent);r.style.setProperty("--acc",s.accent);r.style.setProperty("--k-accent-ink",(r.getAttribute("data-theme")==="dark"?s.darkInk:s.accentInk)||s.accent);if(s.wg)r.setAttribute(\"data-wg\",s.wg);}}}}catch(e){{}}}})();</script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -523,6 +541,10 @@ LP_STYLE = """<style>
 @media (max-width:720px){.lp .hero h1{font-size:33px}.browser .shell-side{display:none}}
 </style>"""
 
+def plain_footer():
+    return '<div class="wrap"><footer class="site"><b>KATA UI</b><a href="/docs/">Docs</a><a href="/lab/">Lab</a><a href="https://github.com/kajisho5/KATA-UI">GitHub</a></footer></div>'
+
+
 def landing(comps, blocks, n_icons, templates=None):
     n = len(comps)
     nb = len(blocks)
@@ -597,10 +619,10 @@ def landing(comps, blocks, n_icons, templates=None):
     lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Can I use it with React?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. The parts are plain HTML, CSS and JS: markup pastes into JSX as-is, the CSS loads once, globally, and the JS parts mount as islands where a page needs them. The honest limits are in the open, too \u2014 read the <a href="/docs/react/" style="color:var(--acc)">React guide</a>.</div></details><details class="k-acc"><summary>Will the free parts ever go paid?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">No. All 136 components are MIT \u2014 free for personal and commercial work, forever. Pro only ever adds assembled work on top: blocks and templates. It never reaches back for the parts.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files \u2014 or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">The assembled shelf: 21 blocks and 7 page templates, plus every future block. Free is the finished product \u2014 Pro is for people who would rather not compose. One payment of $129, lifetime; sales open soon, and the waitlist gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes \u2014 the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
               '<p class="more">Still stuck? <a href="/docs/">Read the docs</a> — or check the <a href="/docs/faq/">full FAQ</a>.</p></section>'
               '<link rel="stylesheet" href="/components/accordion/accordion.css">')
-    _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'card', 'tabs', 'toast')]
+    _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'badge', 'tabs', 'toast')]
     _five = [c for c in _five if c]
     firstfive = ('<section class="lpsec" id="first-five"><h2>First five to copy</h2>'
-      '<p class="lpnote">New here? These five cover most first screens \u2014 an action, a field, a surface, a switch of views, a word of feedback. Copy them in order and the mold explains itself.</p>'
+      '<p class="lpnote">New here? These five cover most first screens \u2014 an action, a field, a status, a switch of views, a word of feedback. Copy them in order and the mold explains itself.</p>'
       '<div class="cards" style="margin-top:16px">' + ''.join(card(c) for c in _five) + '</div></section>')
     _ch = next((d for d in DOCS if d[0] == 'changelog'), None)
     _rows = ''
@@ -727,54 +749,22 @@ def landing(comps, blocks, n_icons, templates=None):
       '<a class="allband-cta" href="/components/">Browse the catalog</a></div></section>')
     body = f"""
 <div class="wrap lp">
-  <header class="hero3">
-    <p class="hero3-eyebrow">{n} components &middot; {nb} blocks &middot; {nt} templates &middot; {n_icons + _nbrands} icons &amp; marks — every part free, forever</p>
-    <h1>Vanilla HTML, CSS and JS.<br><span class="dim">Copy the code. Own the design.</span></h1>
-    <p class="hero3-sub"><b>No framework. No build step.</b> Copy a part, paste it into the page you already have, and ship it — at this quality. Every part is checked against a single mold before it ships: tokens only, classes covered, every state finished.</p>
-    <div class="cta">
-      <a class="btn btn-pri btn-lg" href="#first-five">Copy a part now</a>
-      <a class="btn btn-ghost btn-lg" href="/components/">Open Components</a>
-    </div>
-    <p class="herotrust">This page is built with KATA — every part on it is the real part, unmodified. <span class="fmold">{MOLD_STATUS}</span></p>
-  </header>
-  {moldlive}
-  {threeways}
-  {demoband}
-  {videoband}
-  {firstfive}
-  {principles}
-  {asmx}
-  {reactband}
-  {motionband}
-  {compare}
-  {proband}
-  <section class="lpsec">
-    <h2>Five genres, one mold</h2>
-    <div class="genres">
-      <a class="genre" href="/components/"><span class="gn">{n} PARTS</span><h3>Components</h3><p>The single parts: forms, overlays, feedback, display — and a Motion line other libraries do not carry.</p></a>
-      <a class="genre" href="/blocks/"><span class="gn">{nb} SECTIONS</span><h3>Blocks</h3><p>Whole sections composed from the parts — sign-in, pricing, settings, an app shell. Start here, take apart later.</p></a>
-      <a class="genre" href="/templates/"><span class="gn">{nt} PAGES</span><h3>Templates</h3><p>Whole pages, already assembled — a dashboard, an inbox, a landing. The parts and blocks in their places, ready to take apart.</p></a>
-      <a class="genre" href="/icons/"><span class="gn">{n_icons + _nbrands} GLYPHS</span><h3>Icons</h3><p>One mold: a 24 grid, a 1.7 stroke cut square, three shapes only. Click to copy the SVG.</p></a>
-      <a class="genre" href="/design-system/"><span class="gn">TOKENS.JSON</span><h3>Design System</h3><p>The foundation every part is cast from — color, type, spacing, radius, motion. Download it, diff it, fork it.</p></a>
-    </div>
-    <div class="compat">
-      <b>Drops into</b> plain HTML, Astro, Laravel, Django, Rails and WordPress themes — anywhere that renders HTML, with no React island required.<br>
-      <b>For AI tools</b>, KATA speaks their formats: <a href="/registry.json">registry.json</a> for installers and agents, <a href="/llms.txt">llms.txt</a> for models that read the web.
-    </div>
-  </section>
-  {fresh}
-  {trust}
-  {faqsec}
-  {labhead}
-  {mstrip}
-  {showcase}
-  {collage}
-  {allband}
-  {finalcta}
-</div>
-{FOOTER}
-</body>
-</html>"""
+<header class="hero3">
+<p class="hero3-eyebrow">{n} components · {nb} blocks · {nt} templates</p>
+<h1>HTML, CSS and JavaScript<br><span class="dim">for the page you're building.</span></h1>
+<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. No framework or build step required.</p>
+<div class="cta"><a class="btn btn-pri btn-lg" href="/components/">Browse components</a><a class="btn btn-ghost btn-lg" href="/docs/getting-started/">Get started</a></div>
+<p class="herotrust">Components are MIT licensed. <span class="fmold">{MOLD_STATUS}</span> · <a href="/mold-results.json">Read the results</a></p>
+</header>
+<section class="lpsec"><h2>One mold: shared design tokens</h2><p class="lpnote">Load tokens.css, then the component's CSS and HTML. Add its JavaScript if it has any. Change colors and spacing through the tokens.</p></section>
+<section class="lpsec"><h2>Start with five components</h2><p class="lpnote">Buttons for actions, inputs for text, badges for status, tabs for views and toasts for feedback.</p><div class="cards">{''.join(card(c) for c in _five)}</div></section>
+<section class="lpsec"><h2>Install from your terminal</h2><div class="term">npx @kajisho5/kataui init<br>npx @kajisho5/kataui add button</div><p class="lpnote">The CLI copies files and includes dependencies. You can also copy code from each component page.</p></section>
+<section class="lpsec"><h2>A page built from these components</h2><p class="lpnote">Try a <a href="/templates/dashboard/demo/">dashboard</a>, <a href="/templates/inbox/demo/">inbox</a> or <a href="/templates/settings-page/demo/">settings page</a>. Each template lists its components.</p><p class="lpnote">For individual controls, see the <a href="/components/">component previews</a>.</p></section>
+<section class="lpsec"><h2>Use the source in your tools</h2><p class="lpnote">The <a href="/registry.json">registry</a>, <a href="/docs/mcp-server/">MCP server</a> and <a href="/skill/SKILL.md">AI skill</a> give assistants the same files you copy here. Check results and Beta labels show what still needs work.</p><p class="lpnote">Works with plain HTML, Astro, Laravel, Django, Rails and WordPress. React projects need <a href="/docs/react/">a few markup changes</a>.</p></section>
+<section class="lpsec"><h2>Components are free. Pro adds layouts.</h2><p class="lpnote">{nb} blocks and {nt} templates. Planned price: $129 once, including future additions. Sales have not opened.</p><a href="/pricing/">See pricing and the full list</a></section>
+<section class="lpsec"><h2>Motion experiments</h2><p class="lpnote">Animated text, backgrounds and KATAYABURI experiments are in the <a href="/lab/">Lab</a>.</p></section>
+<section class="lpsec"><h2>Built something with KATA?</h2><p class="lpnote"><a href="/showcase/">See the showcase</a> or <a href="https://github.com/kajisho5/KATA-UI">report a problem on GitHub</a>.</p></section>
+</div>{plain_footer()}</body></html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
              + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('sidebar', 'select', 'bar-chart', 'calendar', 'sparkline', 'card', 'aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'word-rotate', 'goo-tabs', 'dock', 'jelly-buttons', 'scramble', 'bounce-letters', 'tilt-card', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/kanban/kanban.css?v={_v(kb_block["css"])}">' if kb_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
     return head('KATA UI — UI Components & Code', 'Vanilla UI components with live previews and copy-ready code. No framework, no build step.', LP_STYLE + extra) + body
@@ -815,7 +805,10 @@ def registry_json(comps, blocks, templates=None):
         items.append({'name': 'theme-' + t['name'], 'type': 'registry:theme', 'title': 'Theme: ' + t['label'],
                       'description': t['note'], 'categories': ['Themes'],
                       'files': [{'path': 'themes/' + t['name'] + '.css', 'type': 'registry:theme', 'content': theme_css(t)}]})
-    return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': '1.0.0',
+    for item in items:
+        for file in item['files']:
+            file['content'] = distribution_header(file['path'], file['content'])
+    return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': RELEASE_VERSION,
                        'homepage': 'https://kata-ui.dev', 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
@@ -1059,11 +1052,7 @@ def detail(comps, idx):
         <li>Copy the CSS tab into your stylesheet.</li>
         <li>Copy the HTML where it belongs.{js_step}</li>
       </ol></section>'''
-    cls_seen = []
-    for mm in re.finditer(r'\.([a-zA-Z][\w-]*)', c['css']):
-        if mm.group(1) not in cls_seen:
-            cls_seen.append(mm.group(1))
-    hooks = []
+    cls_seen, hooks = css_surface(c['css'])
     for src in (c['preview'], c['js'] or ''):
         for mm in re.finditer(r'data-[a-z0-9-]+', src):
             if mm.group(0) not in hooks:
@@ -1077,7 +1066,7 @@ def detail(comps, idx):
         rows += f'<tr><td><code>.{esc(n)}</code></td><td>class</td></tr>'
     if len(cls_seen) > 14:
         rows += f'<tr><td><code>+{len(cls_seen) - 14} more</code></td><td>classes \u2014 see the CSS tab</td></tr>'
-    for h in hooks[:10]:
+    for h in hooks:
         rows += f'<tr><td><code>{esc(h)}</code></td><td>data hook</td></tr>'
     for a in arias[:8]:
         rows += f'<tr><td><code>{esc(a)}</code></td><td>ARIA</td></tr>'
@@ -1143,7 +1132,7 @@ def detail(comps, idx):
     <main class="detail">
       <p class="crumb"><a href="/components/">Components</a> / {esc(m['category'])} / {esc(m['title'])}</p>
       <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h1>
-      <div class="vrow"><span class="vchip"><i></i>Mold verified — passes the mold checks (check.py)</span><button class="aibtn" type="button" data-aiprompt="{slug}" data-title="{esc(m['title'])}">Pass this part to your AI</button></div>
+      <div class="vrow"><span class="vchip"><i></i>{'Mold Verified — passed' if MOLD_ITEMS['components/' + slug]['passed'] else 'Mold check — failed'}</span><button class="aibtn" type="button" data-aiprompt="{slug}" data-title="{esc(m['title'])}">Pass this part to your AI</button></div>
       <p class="desc">{esc(m['description'])}</p>{'<p class="expnote">From the experimental line \u2014 a showpiece. The production shelf carries the same mold without the performance.</p>' if m.get('category') in ('Motion', 'KATAYABURI') else ''}
       <div class="stagebar">
         <span class="lbl">Preview</span>
@@ -1373,7 +1362,7 @@ document.querySelectorAll('[data-wl]').forEach(function(f){{ if(f.__wl) return; 
 def inventory_html():
     cards = []
     for b in load_blocks():
-        cards.append('<a class="inv" href="/blocks/' + b['slug'] + '/"><b>' + esc(b['meta']['title']) + '</b><span>Block \u00b7 ' + str(len(b['meta'].get('uses', []))) + ' parts</span></a>')
+        cards.append('<a class="inv" href="/blocks/' + b['slug'] + '/"><b>' + esc(b['meta']['title']) + '</b><span>Block \u00b7 ' + str(len(b['meta'].get('uses', []))) + (' part' if len(b['meta'].get('uses', [])) == 1 else ' parts') + '</span></a>')
     for t in load_templates():
         cards.append('<a class="inv" href="/templates/' + t['slug'] + '/"><b>' + esc(t['meta']['title']) + '</b><span>Template \u00b7 ' + str(len(t['meta'].get('uses', [])) + len(t['meta'].get('blocks', []))) + ' parts &amp; blocks</span></a>')
     return ''.join(cards)
@@ -1381,86 +1370,23 @@ def inventory_html():
 
 def pricing_page():
     body = """
-<div class="wrap pr">
-  <h1>Pricing</h1>
-  <p class="lead">Free is the finished product — the parts are free, forever. What Pro sells is the assembled work — the blocks and templates — for one payment, once.</p>
-  <div class="tiers">
-    <div class="tier">
-      <h2>Free</h2>
-      <p class="price">$0</p>
-      <p class="per">MIT licensed. No account, no catch.</p>
-      <ul>
-        <li>All 136 components, with live previews and examples</li>
-        <li>150 icons and 220 brand marks</li>
-        <li>5 themes and the full design-token system</li>
-        <li>The CLI, the registry, the MCP server and the AI Skill</li>
-        <li>All documentation and guides</li>
-      </ul>
-      <a class="cta" href="/components/">Browse the parts</a>
-      <p class="note">The parts are the commons: they stay free whatever Pro does. A library nobody can afford to start with helps nobody.</p>
-    </div>
-    <div class="tier pro">
-      <h2>Pro</h2>
-      <p class="price">$129</p>
-      <p class="per">One payment. Lifetime. Every future block and template included.</p>
-      <ul>
-        <li>All blocks — page chrome, marketing and product sections</li>
-        <li>All templates — whole pages, assembled and styled</li>
-        <li>Key-gated downloads of the composed work</li>
-        <li>Every block and template added later, at no extra cost</li>
-        <li>No seats, no per-project fees, no subscription</li>
-      </ul>
-      <span class="cta ghost">Sales open soon</span>
-      __WAITLIST__
-      <p class="note">Not on sale yet: the blocks and templates are still open on this site while Pro is being prepared. When sales open, $129 is the price — once, and the code is yours either way.</p>
-    </div>
-  </div>
-  <div class="inventory">
-    <h2>Everything in Pro, itemized</h2>
-    <p class="rs">The whole composed shelf — every block and template the $129 covers, each one a live page on this site. Nothing here is a render: open any of them and take it apart.</p>
-    <div class="invgrid">__INVENTORY__</div>
-  </div>
-  <div class="valueband">
-    <h2>What the $129 actually buys back</h2>
-    <div class="vb-grid">
-      <div><b>28</b><span>assembled artifacts \u2014 21 blocks and 7 templates</span></div>
-      <div><b>87</b><span>part-instances, already composed and mold-checked</span></div>
-      <div><b>\u224877 h</b><span>of assembly replaced \u2014 21 blocks \u00d7 ~2 h plus 7 templates \u00d7 ~5 h, states, dark mode and responsive included</span></div>
-      <div><b>$1.68</b><span>per hour of it, once \u2014 and every future block is included</span></div>
-    </div>
-    <p class="note">The arithmetic is shown so you can argue with it. Even at half these estimates, the shelf pays for itself on the first page you ship with it.</p>
-    <div class="rateband">
-      <h3>What &asymp;77 hours costs at your rate</h3>
-      <p class="rs">The same assembly estimates as the shelf above — 21 blocks at ~2 hours, 7 templates at ~5 hours, states, dark mode and responsive included. Priced three ways, and then priced once:</p>
-      <div class="rrow"><span class="rl">$25 / hour</span><div class="rtrack"><div class="rbar" style="width:25%"></div></div><span class="rv">$1,925</span></div>
-      <div class="rrow"><span class="rl">$50 / hour</span><div class="rtrack"><div class="rbar" style="width:50%"></div></div><span class="rv">$3,850</span></div>
-      <div class="rrow"><span class="rl">$100 / hour</span><div class="rtrack"><div class="rbar" style="width:100%"></div></div><span class="rv">$7,700</span></div>
-      <div class="rrow"><span class="rl">Pro, once</span><div class="rtrack"><div class="rbar pro" style="width:2%"></div></div><span class="rv">$129</span></div>
-      <p class="note">Even if the assembly estimates are twice too generous, the cheapest row still clears the price by an order of magnitude.</p>
-    </div>
-  </div>
-  <div class="founding">
-    <h2>Founding 100</h2>
-    <p>The first 100 licenses are Founding licenses: <b>$99 instead of $129</b>, two blocks that will never be sold separately — <b>Help Center</b> and <b>Job Board</b> — and priority support that stays with the license permanently. When the hundredth is gone, the offer closes. The waitlist hears first, in order.</p>
-  </div>
-  <div class="afterbuy">
-    <h2>After checkout</h2>
-    <div class="ab-grid">
-      <div><span class="no">1</span><h3>A key arrives</h3><p>Checkout runs through Lemon Squeezy; your license key lands in your inbox with the receipt. No account to create, nothing to install.</p></div>
-      <div><span class="no">2</span><h3>One download</h3><p>Every block and template in a single zip — or file by file, if you prefer. The parts you already use stay free and untouched; Pro adds the composed work beside them.</p></div>
-      <div><span class="no">3</span><h3>Updates, forever</h3><p>New blocks and templates join your license at no extra cost, delivered to your library and by email. The key exists for updates and support priority — there is no activation, no phone-home, no DRM in the code.</p></div>
-    </div>
-  </div>
-  <div class="qa">
-    <div><h3>Why charge for blocks and not parts?</h3><p>A single part is an afternoon of work and, honestly, an AI can draft one. A set of blocks that compose without friction — same tokens, same spacing, same voice — is the accumulated discipline of the whole catalog. That is what Pro prices.</p></div>
-    <div><h3>What happens to code I already copied?</h3><p>Nothing, ever. Copied code is yours under its license; there is no activation, no telemetry, no kill switch. Pro changes what new downloads cost, not what your files do.</p></div>
-    <div><h3>Will the parts go paid later?</h3><p>No. The line is permanent: components, icons, themes and the tooling are free; the composed work is Pro. If that line ever moved, the trust the catalog runs on would go with it.</p></div>
-  </div>
-</div>
-""" + FOOTER + """
-</body>
-</html>"""
-    return (head('Pricing — KATA UI', 'KATA UI pricing: every component free forever under MIT; Pro is the blocks and templates, $129 once, lifetime.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form()).replace('__INVENTORY__', inventory_html())
+<div class="wrap pr"><h1>Pricing</h1>
+<p class="lead">Components are free under MIT. Pro will bundle the blocks and templates for a one-time payment.</p>
+<div class="tiers"><div class="tier"><h2>Free</h2><p class="price">$0</p><p class="per">MIT license. No account required.</p><ul><li>136 HTML, CSS and JavaScript components</li><li>150 icons and 220 brand marks</li><li>Themes and design tokens</li><li>CLI, registry, MCP server and AI skill</li><li>Documentation and examples</li></ul><a class="cta" href="/components/">Browse components</a></div>
+<div class="tier pro"><h2>Pro</h2><p class="price">$129</p><p class="per">Planned price. One payment for lifetime access.</p><ul><li>21 blocks and 7 templates</li><li>Future blocks and templates included</li><li>Unlimited projects and seats</li></ul><p>Sales have not opened. Blocks and templates are currently available on this site.</p>__WAITLIST__</div></div>
+<div class="inventory"><h2>Blocks and templates</h2><p class="rs">Open an item to see its preview, source and component list.</p><div class="invgrid">__INVENTORY__</div></div>
+<div class="valueband"><h2>What you're paying for</h2><p>Pro groups components into page sections and complete layouts, with their styles and responsive structure.</p><p class="note">Our assembly estimate is 77 hours (21 blocks × 2 hours + 7 templates × 5 hours); $129 is about $1.68 per estimated hour. Your time will vary.</p></div>
+<div class="founding"><h2>First 100 licenses</h2><p>The launch offer is $99 for the first 100 licenses, including Help Center and Job Board blocks and priority support. Join the list for the launch email.</p></div>
+<div class="qa"><div><h3>Why charge for blocks?</h3><p>Components handle individual controls. Blocks and templates save you the work of arranging them into layouts. The component source stays free.</p></div><div><h3>What happens to code I've copied?</h3><p>You keep it under the license supplied with it. A later pricing change does not change that license.</p></div><div><h3>What still needs work?</h3><p>See the <a href="/mold-results.json">current check results</a> and each component's status. Test the components you use with your content and supported browsers.</p></div></div>
+</div>""" + plain_footer() + "</body></html>"
+    return (head('Pricing — KATA UI', 'Free MIT components. Pro blocks and templates: planned price $129 once.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form(note='One email when sales open.', done='You are on the list. We will email you when sales open.')).replace('__INVENTORY__', inventory_html())
+
+
+def lab_page(comps):
+    experiments = [c for c in comps if c['meta']['category'] in ('Motion', 'KATAYABURI')]
+    content = ''.join(card(c, True) for c in experiments)
+    return head('Lab — KATA UI', 'Motion and KATAYABURI experiments.', LP_STYLE + '<link rel="stylesheet" href="/kata-ui.css">') + '<div class="wrap"><h1>Lab</h1><p>Animated text, backgrounds and interaction experiments. Check each component before using it in a project.</p><div class="cards">' + content + '</div></div>' + plain_footer() + '<script src="/kata-ui.js"></script></body></html>'
+
 
 JA_STYLE = """<style>
 .ja-hero{padding:34px 0 6px}
@@ -2106,7 +2032,7 @@ def themes_page(themes):
                      '<span class="nm">' + t['label'] + '</span><div class="nt">' + t['note'] + '</div></button>')
     demo = """<div class="thdemo" id="thdemo">
     <span class="lbl">LIVE — THE SAME PARTS, RE-CAST</span>
-    <button class="btn btn-asagi btn-md">Accent button</button>
+    <button class="btn btn-accent btn-md">Accent button</button>
     <span class="switchrow"><label class="switch asagi"><input type="checkbox" checked><span class="tr"></span></label>Notifications</span>
     <span class="badge asagi"><i></i>Live</span>
     <span class="badge">Neutral stays neutral</span>
@@ -2145,7 +2071,7 @@ def themes_page(themes):
   <p class="lead" style="margin-top:8px">Fifty colors that began as dyes, pigments and plants \u2014 indigo, safflower, gardenia, pine soot. Click one and it is cast into the same demo and the same CSS as any theme above: the button, the switch and the badge take the color, under its own name (ai.css, yamabuki.css). The hex values follow the common references (NIPPON COLORS and the JIS customary color names); colors older than hex itself are faithful approximations, not measurements.</p>
   <div class="dtpv" id="dtpv">
     <span class="lbl">CASTING \u2014 TRADITIONAL COLORS</span>
-    <button class="btn btn-asagi btn-md" type="button">Accent button</button>
+    <button class="btn btn-accent btn-md" type="button">Accent button</button>
     <span class="badge asagi"><i></i><span id="dtpvname">Asagi</span></span>
     <label class="switch asagi"><input type="checkbox" checked><span class="tr"></span></label>
     <div class="dtmini"><b id="dtmininame">Asagi</b>A whole card dyed by one cast \u2014 border, wash and ink all follow the color.</div>
@@ -2361,7 +2287,7 @@ DOCS = [
     ('The contract', 'Every part reads color, spacing, radius and motion from the tokens and nothing else. Classes follow one grammar. Interactive parts state their keyboard behavior and their no-JavaScript fallback in their metadata, and the part’s page prints both. If two parts disagree about anything, that is a bug in one of them, and the mold decides which.', None, 'Status is printed on every part: stable means the contract is settled; beta means the shape is right but the edges are still being filed. The catalog counts both, and labels both.')]),
   ('from-tailwind', 'Coming from Tailwind', 'For the largest group of visitors: what changes, what does not.',
    [('The mental shift', 'Tailwind puts the design system in your class attributes; KATA puts it in tokens and part CSS. You will write longer stylesheets and shorter markup. A card stops being eleven utilities and becomes .k-card — which means the design can be retuned in one place, and the HTML reads as structure instead of as styling.', None, 'They coexist fine: Tailwind for layout glue in a page, KATA parts for the components. The tokens are plain CSS variables, so a Tailwind config can point at the same values and the two systems stop arguing.'),
-    ('Rough translations', 'A few mappings to start: bg-zinc-900 text-white becomes a part on a dark section (data-theme="dark" does the whole subtree). rounded-xl is --k-radius-lg. The accent button is .btn-pri or .btn-asagi, not a recipe of bg-, hover: and focus: classes — hover and focus are in the part, tested once, everywhere. Arbitrary values like w-[340px] stay inline styles in KATA too; the mold is strict about color, relaxed about one-off geometry.', None, 'What you give up: the utility for the one weird case, answered inline. What you get back: a page whose markup a new hire (or a model) can read at a glance, and parts that look related because they are.')]),
+    ('Rough translations', 'A few mappings to start: bg-zinc-900 text-white becomes a part on a dark section (data-theme="dark" does the whole subtree). rounded-xl is --k-radius-lg. The accent button is .btn-pri or .btn-accent, not a recipe of bg-, hover: and focus: classes — hover and focus are in the part, tested once, everywhere. Arbitrary values like w-[340px] stay inline styles in KATA too; the mold is strict about color, relaxed about one-off geometry.', None, 'What you give up: the utility for the one weird case, answered inline. What you get back: a page whose markup a new hire (or a model) can read at a glance, and parts that look related because they are.')]),
   ('vs-shadcn', 'KATA vs shadcn/ui', 'The honest comparison, written by the side with more to gain from flattery.',
    [('The short version', 'shadcn/ui and KATA start from the same conviction: you should own the code — copy it into your project, change it, never rent it back from a package. shadcn casts that idea for React. KATA casts it for everywhere else HTML renders: plain files, Astro, Laravel, Django, Rails, WordPress, email templates, the admin page nobody frameworks. If your product is a React app, shadcn is excellent and this page will tell you so twice. If your stack is anything else, the React door is simply not your door.', None, None),
     ('Where shadcn wins', 'The React ecosystem, first: thousands of projects, snippets, and answers already exist, and a team hiring React developers hires people who know it. Its primitives stand on Radix, whose accessibility engineering — focus management, aria patterns, edge cases in dialogs and menus — is deep and battle-tested. It is TypeScript-first in a way KATA, being plain files, does not try to be. And its design language is the current default for a reason: it is tasteful, consistent, and safe to choose in a meeting.', None, None),
@@ -2522,6 +2448,7 @@ def main():
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
+    (DIST / 'mold-results.json').write_text(json.dumps(MOLD_REPORT, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     _cl = ROOT / 'cli'
     if _cl.exists():
         (DIST / 'cli').mkdir(exist_ok=True)
@@ -2555,6 +2482,9 @@ def main():
             if _f.is_file():
                 shutil.copy(_f, DIST / 'media' / _f.name)
     (DIST / 'index.html').write_text(emit(landing(comps, blocks, n_icons, templates), comps, None), encoding='utf-8')
+    labdir = DIST / 'lab'
+    labdir.mkdir()
+    (labdir / 'index.html').write_text(emit(lab_page(comps), comps, None, '/lab/', True), encoding='utf-8')
     cdir = DIST / 'components'
     cdir.mkdir()
     (cdir / 'index.html').write_text(emit(components_index(comps), comps, None, '/components/', True), encoding='utf-8')
@@ -2564,7 +2494,10 @@ def main():
         dst.mkdir()
         for f in src.iterdir():
             if f.is_file():
-                shutil.copy(f, dst / f.name)
+                if f.suffix in ('.css', '.js', '.html'):
+                    (dst / f.name).write_text(distribution_header(f.relative_to(ROOT), f.read_text()), encoding='utf-8')
+                else:
+                    shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(detail(comps, i), comps, comps[i]['slug']), encoding='utf-8')
     tokens = json.loads((ROOT / 'system' / 'tokens.json').read_text(encoding='utf-8'))
     dsdir = DIST / 'design-system'
@@ -2599,7 +2532,10 @@ def main():
         dst.mkdir(exist_ok=True)
         for f in src.iterdir():
             if f.is_file():
-                shutil.copy(f, dst / f.name)
+                if f.suffix in ('.css', '.js', '.html'):
+                    (dst / f.name).write_text(distribution_header(f.relative_to(ROOT), f.read_text()), encoding='utf-8')
+                else:
+                    shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(block_detail(blocks, i, comps), comps, None, '/blocks/' + blocks[i]['slug'] + '/', True), encoding='utf-8')
     tpdir = DIST / 'templates'
     tpdir.mkdir(exist_ok=True)
@@ -2610,7 +2546,10 @@ def main():
         dst.mkdir(exist_ok=True)
         for f in src.iterdir():
             if f.is_file():
-                shutil.copy(f, dst / f.name)
+                if f.suffix in ('.css', '.js', '.html'):
+                    (dst / f.name).write_text(distribution_header(f.relative_to(ROOT), f.read_text()), encoding='utf-8')
+                else:
+                    shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(template_detail(templates, i, comps, blocks), comps, None, '/templates/' + templates[i]['slug'] + '/', True), encoding='utf-8')
         demo_dir = dst / 'demo'
         demo_dir.mkdir(exist_ok=True)
@@ -2641,25 +2580,25 @@ def main():
     _css = ['/* KATA UI full bundle - tokens + every component and block. For production, per-part copies are leaner; this is the fast start. */\n' + (_base / 'tokens.css').read_text(encoding='utf-8')]
     for _c in comps:
         if _c.get('css'):
-            _css.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n' + _c['css'])
+            _css.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n' + distribution_header(f"components/{_c['slug']}/{_c['slug']}.css", _c['css']))
     for _b in blocks:
         if _b.get('css'):
-            _css.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n' + _b['css'])
+            _css.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n' + distribution_header(f"blocks/{_b['slug']}/{_b['slug']}.css", _b['css']))
     for _t in templates:
         if _t.get('css'):
-            _css.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n' + _t['css'])
+            _css.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n' + distribution_header(f"templates/{_t['slug']}/{_t['slug']}.css", _t['css']))
     bundle_css = '\n'.join(_css)
     (DIST / 'kata-ui.css').write_text(bundle_css, encoding='utf-8')
     _js = ['/* KATA UI behavior bundle - each part in its own scope. Load at the end of <body>. Parts whose markup is absent stay inert. */']
     for _c in comps:
         if _c.get('js'):
-            _js.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n(function(){\n' + _c['js'] + '\n})();')
+            _js.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n(function(){\n' + distribution_header(f"components/{_c['slug']}/{_c['slug']}.js", _c['js']) + '\n})();')
     for _b in blocks:
         if _b.get('js'):
-            _js.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n(function(){\n' + _b['js'] + '\n})();')
+            _js.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n(function(){\n' + distribution_header(f"blocks/{_b['slug']}/{_b['slug']}.js", _b['js']) + '\n})();')
     for _t in templates:
         if _t.get('js'):
-            _js.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n(function(){\n' + _t['js'] + '\n})();')
+            _js.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n(function(){\n' + distribution_header(f"templates/{_t['slug']}/{_t['slug']}.js", _t['js']) + '\n})();')
     bundle_js = '\n'.join(_js)
     (DIST / 'kata-ui.js').write_text(bundle_js, encoding='utf-8')
     import zipfile as _zf
@@ -2695,7 +2634,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

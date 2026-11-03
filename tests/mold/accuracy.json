@@ -822,5 +822,25 @@
       "token-values": "pass"
     },
     "expected_legacy_hex": 1
+  },
+  {
+    "name": "class focus evidence in tokens CSS",
+    "category": "Form & Input",
+    "css": "",
+    "shared_extra": ".target:focus-visible{box-shadow:var(--k-ring)}",
+    "html": "<button type=\"button\" class=\"target\">Go</button>",
+    "expected": {
+      "focus-visible": "pass"
+    }
+  },
+  {
+    "name": "unrelated token CSS focus evidence",
+    "category": "Form & Input",
+    "css": "",
+    "shared_extra": ".other:focus-visible{box-shadow:var(--k-ring)}",
+    "html": "<button type=\"button\" class=\"target\">Go</button>",
+    "expected": {
+      "focus-visible": "fail"
+    }
   }
 ]

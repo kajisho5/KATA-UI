@@ -181,7 +181,7 @@ def inspect(directory, root, config):
         checks[-1]['by_kind'] = {kind:sum(d['kind'] == kind for d in details[key]) for kind in sorted({d['kind'] for d in details[key]})}
     types=[];labels=[];focus=[]
     focus_details={}
-    candidates=rules(css+'\n'+'\n'.join(dependency_css)) + [(sel,body) for sel,body in rules(token_source) if any(t in dict(declarations(body)).get('box-shadow','') for t in config['global_focus_ring_tokens'])]
+    candidates=rules(css+'\n'+'\n'.join(dependency_css)) + rules(token_source)
     for f,doc in docs:
         ids={n['attrs']['id'] for n in doc.nodes if n['attrs'].get('id')}
         fors={n['attrs'].get('for') for n in doc.nodes if n['tag']=='label' and n['attrs'].get('for')}

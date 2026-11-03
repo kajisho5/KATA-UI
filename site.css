@@ -1,7 +1,7 @@
 /* KATA UI — site chrome. Components use tokens.css (--k-*), not these. */
 :root{
   --paper:#fdfdfd; --soft:#f7f7f7; --ink:#18181b; --ink2:#52525b; --ink3:#71717a;
-  --hair:#e4e4e7; --acc:#33A6B8;
+  --hair:#e4e4e7; --acc:#206b79;
   --font:"Inter","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
   --mono:"Geist Mono",ui-monospace,monospace;
 }

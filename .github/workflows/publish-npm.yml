@@ -1,0 +1,49 @@
+name: Publish kataui to npm
+
+# Manual only: press "Run workflow" when cli/package.json carries a version
+# that is not on npm yet. The run checks first and skips a version that
+# already exists, so re-running is safe.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # for npm provenance
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Check whether this version is already on npm
+        id: check
+        working-directory: cli
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if npm view "kataui@$VERSION" version >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "kataui@$VERSION is already on npm — nothing to do."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "kataui@$VERSION is not on npm yet — publishing."
+          fi
+
+      - name: Publish
+        if: steps.check.outputs.exists == 'false'
+        working-directory: cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
+
+      - name: Confirm
+        if: steps.check.outputs.exists == 'false'
+        run: |
+          sleep 20
+          npm view "kataui@${{ steps.check.outputs.version }}" version dist.tarball

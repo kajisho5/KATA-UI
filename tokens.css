@@ -15,6 +15,16 @@
   --k-success-bg:rgba(93,172,129,.1); --k-success-line:rgba(93,172,129,.32); --k-success-ink:#1b813e;
   --k-toast-ink:#f4f4f5; --k-toast-sub:#a1a1aa; --k-success:#5dac81;
 
+  /* Button geometry, state and motion; durations scale at the consumer. */
+  --k-btn-gap:7px; --k-btn-weight:500; --k-btn-press:.5px;
+  --k-btn-height-sm:32px; --k-btn-height-md:38px; --k-btn-height-lg:44px;
+  --k-btn-pad-lg:20px; --k-btn-text-lg:14px; --k-btn-disabled-opacity:.45;
+  --k-btn-shadow:0 1px 2px rgba(16,24,40,.05);
+  --k-btn-inset:inset 0 0 0 1px currentColor;
+  --k-btn-spinner-size:14px; --k-btn-spinner-border:2px;
+  --k-btn-spinner-track:color-mix(in srgb,currentColor 35%,transparent);
+  --k-btn-spin-duration:700ms; --k-btn-spin-turn:360deg;
+
   /* Combobox geometry and elevation. Radius stays on the shared Foundry tokens. */
   --k-combo-focus-width:2px; --k-combo-sr-size:1px; --k-combo-width:300px; --k-combo-input-end:34px; --k-combo-input-size:16px;
   --k-combo-chevron-end:11px; --k-combo-chevron-bottom:11px;

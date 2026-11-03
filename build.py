@@ -5,6 +5,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
+RELEASE_VERSION = json.loads((ROOT / 'cli' / 'package.json').read_text())['version']
+
+
+def distribution_header(path, content):
+    parts = Path(path).parts
+    if len(parts) < 3 or parts[0] not in ('components', 'blocks', 'templates'):
+        return content
+    kind, name = parts[:2]
+    meta = json.loads((ROOT / kind / name / 'meta.json').read_text())
+    version = meta.get('version', RELEASE_VERSION)
+    stamp = f'KATA {name} {version} — kata-ui.dev/{kind}/{name}'
+    if Path(path).suffix in ('.css', '.js'):
+        return f'/* {stamp} */\n' + content
+    if Path(path).suffix == '.html':
+        return f'<!-- {stamp} -->\n' + content
+    return content
+
 CATS = ['Form & Input', 'Layout & Navigation', 'Overlays & Dialogs', 'Feedback & Status', 'Display & Media', 'Motion', 'KATAYABURI', 'Japan']
 
 STARTER_HTML = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>KATA Starter — your first page</title>\n<link rel="stylesheet" href="kata-ui.css">\n<style>\n  body{font-family:var(--k-font);background:var(--k-bg-soft);color:var(--k-ink);margin:0;padding:36px 18px}\n  main{max-width:520px;margin:0 auto;display:grid;gap:14px}\n  h1{font-size:21px;letter-spacing:-.02em}\n  p.lead{color:var(--k-ink-2);font-size:14px;line-height:1.75;letter-spacing:.012em}\n</style>\n</head>\n<body>\n<main>\n  <h1>It works. This page is KATA parts, unmodified.</h1>\n  <p class="lead">Everything below comes from kata-ui.css and kata-ui.js in this folder. Copy a part from kata-ui.dev, paste it here, and it matches — same mold, same tokens.</p>\n  <div class="k-card">\n    <div class="k-card-h">Create your account</div>\n    <div class="k-card-b" style="display:grid;gap:12px">\n      <span class="field" style="display:grid;gap:6px"><label for="em">Email</label><input class="input" id="em" type="email" placeholder="you@company.com"></span>\n      <label class="switchrow" style="display:flex;align-items:center;gap:10px;font-size:13.5px"><span class="switch"><input type="checkbox" checked><span class="tr"></span></span>Email me product updates</label>\n      <div style="display:flex;gap:9px;align-items:center">\n        <button class="btn btn-pri btn-md">Create account</button>\n        <span class="badge asagi"><i></i>Free for 30 days</span>\n      </div>\n    </div>\n  </div>\n  <p class="lead">Next: browse the catalog at kata-ui.dev/components — each part carries its own CSS tab, so you can drop the bundle and keep only what you use.</p>\n</main>\n<script src="kata-ui.js"></script>\n</body>\n</html>\n'
@@ -291,7 +308,7 @@ def head(title, desc, extra=''):
 <head>
 <meta charset="utf-8">
 <script>(function(){{try{{var s=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;if(s.dark||(!("dark" in s)&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))r.setAttribute("data-theme","dark");if(s.radius){{r.style.setProperty("--k-radius",s.radius+"px");r.style.setProperty("--k-radius-sm",Math.max(0,Math.round(s.radius*.75))+"px");r.style.setProperty("--k-radius-lg",Math.round(s.radius*1.5)+"px");}}if(s.accent){{r.style.setProperty("--k-accent",s.accent);r.style.setProperty("--acc",s.accent);r.style.setProperty("--k-accent-ink",(r.getAttribute("data-theme")==="dark"?s.darkInk:s.accentInk)||s.accent);if(s.wg)r.setAttribute(\"data-wg\",s.wg);}}}}catch(e){{}}}})();</script>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -597,10 +614,10 @@ def landing(comps, blocks, n_icons, templates=None):
     lp_faq = ('<section class="k-faqb" style="max-width:640px"><div class="acc">' + '<details class="k-acc" open><summary>Can I use it with React?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes. The parts are plain HTML, CSS and JS: markup pastes into JSX as-is, the CSS loads once, globally, and the JS parts mount as islands where a page needs them. The honest limits are in the open, too \u2014 read the <a href="/docs/react/" style="color:var(--acc)">React guide</a>.</div></details><details class="k-acc"><summary>Will the free parts ever go paid?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">No. All 136 components are MIT \u2014 free for personal and commercial work, forever. Pro only ever adds assembled work on top: blocks and templates. It never reaches back for the parts.</div></details><details class="k-acc"><summary>How do I install a part?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Open its page and copy the three files \u2014 or take the starter kit and pull parts with the CLI. The registry is machine-readable JSON, so your AI tools can fetch parts for you, too.</div></details><details class="k-acc"><summary>What does Pro add?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">The assembled shelf: 21 blocks and 7 page templates, plus every future block. Free is the finished product \u2014 Pro is for people who would rather not compose. One payment of $129, lifetime; sales open soon, and the waitlist gets exactly one email when they do.</div></details><details class="k-acc"><summary>Can I use it in client work?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="k-acc-body">Yes \u2014 the MIT license covers components in client projects, and the Pro license covers blocks and templates the same way. Ship it, invoice it, keep the code.</div></details>' + '</div>'
               '<p class="more">Still stuck? <a href="/docs/">Read the docs</a> — or check the <a href="/docs/faq/">full FAQ</a>.</p></section>'
               '<link rel="stylesheet" href="/components/accordion/accordion.css">')
-    _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'card', 'tabs', 'toast')]
+    _five = [next((c for c in comps if c['slug'] == sl), None) for sl in ('button', 'input', 'badge', 'tabs', 'toast')]
     _five = [c for c in _five if c]
     firstfive = ('<section class="lpsec" id="first-five"><h2>First five to copy</h2>'
-      '<p class="lpnote">New here? These five cover most first screens \u2014 an action, a field, a surface, a switch of views, a word of feedback. Copy them in order and the mold explains itself.</p>'
+      '<p class="lpnote">New here? These five cover most first screens \u2014 an action, a field, a status, a switch of views, a word of feedback. Copy them in order and the mold explains itself.</p>'
       '<div class="cards" style="margin-top:16px">' + ''.join(card(c) for c in _five) + '</div></section>')
     _ch = next((d for d in DOCS if d[0] == 'changelog'), None)
     _rows = ''
@@ -815,7 +832,10 @@ def registry_json(comps, blocks, templates=None):
         items.append({'name': 'theme-' + t['name'], 'type': 'registry:theme', 'title': 'Theme: ' + t['label'],
                       'description': t['note'], 'categories': ['Themes'],
                       'files': [{'path': 'themes/' + t['name'] + '.css', 'type': 'registry:theme', 'content': theme_css(t)}]})
-    return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': '1.0.0',
+    for item in items:
+        for file in item['files']:
+            file['content'] = distribution_header(file['path'], file['content'])
+    return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': RELEASE_VERSION,
                        'homepage': 'https://kata-ui.dev', 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
@@ -1373,7 +1393,7 @@ document.querySelectorAll('[data-wl]').forEach(function(f){{ if(f.__wl) return; 
 def inventory_html():
     cards = []
     for b in load_blocks():
-        cards.append('<a class="inv" href="/blocks/' + b['slug'] + '/"><b>' + esc(b['meta']['title']) + '</b><span>Block \u00b7 ' + str(len(b['meta'].get('uses', []))) + ' parts</span></a>')
+        cards.append('<a class="inv" href="/blocks/' + b['slug'] + '/"><b>' + esc(b['meta']['title']) + '</b><span>Block \u00b7 ' + str(len(b['meta'].get('uses', []))) + (' part' if len(b['meta'].get('uses', [])) == 1 else ' parts') + '</span></a>')
     for t in load_templates():
         cards.append('<a class="inv" href="/templates/' + t['slug'] + '/"><b>' + esc(t['meta']['title']) + '</b><span>Template \u00b7 ' + str(len(t['meta'].get('uses', [])) + len(t['meta'].get('blocks', []))) + ' parts &amp; blocks</span></a>')
     return ''.join(cards)
@@ -2564,7 +2584,10 @@ def main():
         dst.mkdir()
         for f in src.iterdir():
             if f.is_file():
-                shutil.copy(f, dst / f.name)
+                if f.suffix in ('.css', '.js', '.html'):
+                    (dst / f.name).write_text(distribution_header(f.relative_to(ROOT), f.read_text()), encoding='utf-8')
+                else:
+                    shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(detail(comps, i), comps, comps[i]['slug']), encoding='utf-8')
     tokens = json.loads((ROOT / 'system' / 'tokens.json').read_text(encoding='utf-8'))
     dsdir = DIST / 'design-system'
@@ -2599,7 +2622,10 @@ def main():
         dst.mkdir(exist_ok=True)
         for f in src.iterdir():
             if f.is_file():
-                shutil.copy(f, dst / f.name)
+                if f.suffix in ('.css', '.js', '.html'):
+                    (dst / f.name).write_text(distribution_header(f.relative_to(ROOT), f.read_text()), encoding='utf-8')
+                else:
+                    shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(block_detail(blocks, i, comps), comps, None, '/blocks/' + blocks[i]['slug'] + '/', True), encoding='utf-8')
     tpdir = DIST / 'templates'
     tpdir.mkdir(exist_ok=True)
@@ -2610,7 +2636,10 @@ def main():
         dst.mkdir(exist_ok=True)
         for f in src.iterdir():
             if f.is_file():
-                shutil.copy(f, dst / f.name)
+                if f.suffix in ('.css', '.js', '.html'):
+                    (dst / f.name).write_text(distribution_header(f.relative_to(ROOT), f.read_text()), encoding='utf-8')
+                else:
+                    shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(template_detail(templates, i, comps, blocks), comps, None, '/templates/' + templates[i]['slug'] + '/', True), encoding='utf-8')
         demo_dir = dst / 'demo'
         demo_dir.mkdir(exist_ok=True)
@@ -2641,25 +2670,25 @@ def main():
     _css = ['/* KATA UI full bundle - tokens + every component and block. For production, per-part copies are leaner; this is the fast start. */\n' + (_base / 'tokens.css').read_text(encoding='utf-8')]
     for _c in comps:
         if _c.get('css'):
-            _css.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n' + _c['css'])
+            _css.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n' + distribution_header(f"components/{_c['slug']}/{_c['slug']}.css", _c['css']))
     for _b in blocks:
         if _b.get('css'):
-            _css.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n' + _b['css'])
+            _css.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n' + distribution_header(f"blocks/{_b['slug']}/{_b['slug']}.css", _b['css']))
     for _t in templates:
         if _t.get('css'):
-            _css.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n' + _t['css'])
+            _css.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n' + distribution_header(f"templates/{_t['slug']}/{_t['slug']}.css", _t['css']))
     bundle_css = '\n'.join(_css)
     (DIST / 'kata-ui.css').write_text(bundle_css, encoding='utf-8')
     _js = ['/* KATA UI behavior bundle - each part in its own scope. Load at the end of <body>. Parts whose markup is absent stay inert. */']
     for _c in comps:
         if _c.get('js'):
-            _js.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n(function(){\n' + _c['js'] + '\n})();')
+            _js.append('\n/* ===== component: ' + _c['slug'] + ' ===== */\n(function(){\n' + distribution_header(f"components/{_c['slug']}/{_c['slug']}.js", _c['js']) + '\n})();')
     for _b in blocks:
         if _b.get('js'):
-            _js.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n(function(){\n' + _b['js'] + '\n})();')
+            _js.append('\n/* ===== block: ' + _b['slug'] + ' ===== */\n(function(){\n' + distribution_header(f"blocks/{_b['slug']}/{_b['slug']}.js", _b['js']) + '\n})();')
     for _t in templates:
         if _t.get('js'):
-            _js.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n(function(){\n' + _t['js'] + '\n})();')
+            _js.append('\n/* ===== template: ' + _t['slug'] + ' ===== */\n(function(){\n' + distribution_header(f"templates/{_t['slug']}/{_t['slug']}.js", _t['js']) + '\n})();')
     bundle_js = '\n'.join(_js)
     (DIST / 'kata-ui.js').write_text(bundle_js, encoding='utf-8')
     import zipfile as _zf

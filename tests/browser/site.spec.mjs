@@ -38,6 +38,7 @@ test('homepage navigation and catalog search are operable', async ({ page }) => 
     await expect(dialog.locator('[data-site-list]')).toContainText(/button/i);
     await page.keyboard.press('Escape');
   }
+  await page.setViewportSize({ width: 390, height: 844 });
   const menu = page.locator('#menubtn');
   if (await menu.count()) {
     await menu.click();

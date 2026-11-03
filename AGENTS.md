@@ -31,3 +31,7 @@ KATA UI (https://kata-ui.dev) is a framework-free, build-free UI library. Users 
 - What you verified (commands you ran and results)
 - What you could NOT verify, and what I should check by hand in a browser / screen reader
 - Write the PR description in Japanese. Code comments and site copy in English.
+
+## Audit ratchet
+
+- check.py の合格数が変わる PR では、mold-baseline.json と docs/ROADMAP.md 冒頭の数字、該当項目のチェックボックスを同じ PR で更新する。

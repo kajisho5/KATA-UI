@@ -9,3 +9,10 @@
 .k-select[data-size="lg"] select{height:44px;font-size:14px}
 /* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
 @media (max-width:640px){.k-select select,.k-select[data-size="sm"] select,.k-select[data-size="lg"] select{font-size:16px}}
+
+.k-select-examples{display:flex;gap:var(--k-space-3);flex-wrap:wrap;align-items:flex-end}
+:root{color-scheme:light}
+[data-theme="dark"]{color-scheme:dark}
+[data-theme="light"]{color-scheme:light}
+.k-select select{color-scheme:inherit}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){color-scheme:dark}}

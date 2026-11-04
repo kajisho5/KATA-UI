@@ -44,8 +44,9 @@ separate release statuses. The phases below are targets, not shipped features.
 - [x] P1: Profile-aware checker and token provenance ([PR #15](https://github.com/kajisho5/KATA-UI/pull/15)).
 - [x] P2: CI ratchet, audit tables, generated audit facts and a checked template ([PR #16](https://github.com/kajisho5/KATA-UI/pull/16)).
 - [ ] P3: Resolve or close [PR #1](https://github.com/kajisho5/KATA-UI/pull/1) and [PR #3](https://github.com/kajisho5/KATA-UI/pull/3) after reviewing their remaining changes.
-- [ ] P4: Replace the open UI radius literals listed in the snapshot. Keep Lab geometry under its own policy.
-- [ ] P5: Replace duration, shadow, border, color and easing literals. One value kind per PR.
+- [x] P4: Replace UI radius literals with the Foundry-linked shared scale; keep Lab geometry unchanged ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
+- [x] P5 (shadow/rings): Normalize all remaining elevation/ring findings and four backdrops ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
+- [ ] P5 remaining: Replace duration, border, color and easing literals. One remaining value kind per PR.
 - [ ] P6: Rebuild JS-failing components using the Combobox initialization pattern. Three components per PR; test repeated loading, generated IDs, IME and focus departure.
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.

@@ -1,0 +1,64 @@
+{
+  "before_ref": "origin/main",
+  "browser": "154.0.8037.57",
+  "viewport": [
+    800,
+    400
+  ],
+  "reduced_motion": "reduce",
+  "facts": {
+    "before": {
+      "light": {
+        "colors": {
+          "color": "rgb(244, 244, 245)",
+          "background": "rgb(24, 24, 27)",
+          "sub": "rgb(161, 161, 170)"
+        },
+        "contrast": {
+          "color": 16.118381484528566,
+          "sub": 6.912758604004126
+        },
+        "sha256": "db3d26b01be6e80bf117189debe6a7bb753bb006da15ecdce00681562276f1c9"
+      },
+      "dark": {
+        "colors": {
+          "color": "rgb(244, 244, 245)",
+          "background": "rgb(244, 244, 245)",
+          "sub": "rgb(161, 161, 170)"
+        },
+        "contrast": {
+          "color": 1.0,
+          "sub": 2.331685859128974
+        },
+        "sha256": "f3383044cf79c6644964176a43b1f5b66aa8a14b5da57113eb098e4b535e13a2"
+      }
+    },
+    "after": {
+      "light": {
+        "colors": {
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(24, 24, 27)",
+          "sub": "rgb(247, 247, 247)"
+        },
+        "contrast": {
+          "color": 17.71676507806213,
+          "sub": 16.53751793170972
+        },
+        "sha256": "e6c4e29be012c8916d033bce44765162c63022c0a2835ffe61b59e3c04c65197"
+      },
+      "dark": {
+        "colors": {
+          "color": "rgb(24, 24, 27)",
+          "background": "rgb(244, 244, 245)",
+          "sub": "rgb(39, 39, 42)"
+        },
+        "contrast": {
+          "color": 16.118381484528566,
+          "sub": 13.550818000872297
+        },
+        "sha256": "1fc317d8b76ab36edc9dc3593c9bb8c19f7fb01d3cbd7bca22cb5af86be40eaf"
+      }
+    }
+  },
+  "errors": []
+}

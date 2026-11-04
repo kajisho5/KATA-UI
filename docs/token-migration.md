@@ -2530,7 +2530,9 @@ Audit: **29 / 164 → 53 / 164**. Radius 157 → 0; radius-full 11 → 0; shadow
 
 Full target/declaration mapping, pixel measurements, the 4.5:1 dark contrast list, screenshots and scale assertions are recorded in [the review evidence](review/shared-shape/README.md). Colors in shadows follow the shadow migration; unrelated paint, duration and easing are untouched.
 
-### Confirmed shadow mapping ledger
+### Historical initial shadow mapping ledger
+
+Lab rows in this initial ledger are superseded by the regression correction below.
 
 | Observed shadow | Shared replacement | Targets |
 |---|---|---|
@@ -2574,3 +2576,22 @@ Full target/declaration mapping, pixel measurements, the 4.5:1 dark contrast lis
 | `0 4px 12px rgba(16,24,40,.1)` | `var(--k-shadow-sm)` | `components/orbit` |
 | `0 6px 18px rgba(16,24,40,.28)` | `var(--k-shadow-sm)` | `components/speed-dial` |
 | `inset 0 0 0 1px currentColor` | `var(--k-ring-inset)` | `components/button` |
+
+
+## PR #19 regression correction: effect geometry and ring semantics
+
+Lab shadow geometry is restored to 9efb97d. The corrected rule checks paint
+provenance in box-shadow/text-shadow/drop-shadow, including local aliases and
+fallbacks; it does not force glow geometry through UI elevation stages. Literal
+rgba/hex/named paint still fails. KATA.md and tests/mold/lab-shadows.json document
+and test both outcomes. Glass Panel / Torn Ticket remain UI; Glow Button is Lab.
+
+Seven Lab components restore ten declarations. Palette-based color-mix preserves
+alpha and fixed light/neutral intent. Selected/offset rings are separate shared
+tokens; Input OTP / Tag Input retain focus rings. Both Drawer edges showed >=8px
+of shadow, so no edge token or Drawer change is made.
+
+The score remains 53/164 (UI 42/121, Lab 11/43). A rule-only change on the initial
+PR source adds zero passes. On restored sources the old rule would pass 52/164;
+the corrected rule retains Tracing Beam's pass, without hiding other Lab issues.
+[Full geometry, fixtures, edge measurements and three-way images](review/shape-regressions/README.md).

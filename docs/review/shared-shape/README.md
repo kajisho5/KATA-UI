@@ -1,5 +1,7 @@
 # Shared shape / elevation migration review
 
+**Historical initial PR #19 snapshot.** Lab shadow normalization and ring assignments below are superseded by [the regression correction](../shape-regressions/README.md).
+
 Baseline: `9efb97d059d8820a6d56de8d9c34a041926ed949` (main after PR #18). After: worktree in this PR.
 Browser plugin not available; Python Playwright/Chromium used. Desktop 900×600, mobile 360×760, DPR 1, reduced motion. External resources on the generated Foundry page are disabled for deterministic capture.
 

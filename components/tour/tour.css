@@ -1,7 +1,7 @@
 /* KATA Tour — a ring on the target, a card beside it, an exit on every step */
 .k-tour-stage{position:relative;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg-soft);padding:18px;min-height:196px;overflow:hidden}
 .k-tour-anchor{position:relative;display:inline-flex}
-.k-tour-ring{position:absolute;border:2px solid var(--k-accent);border-radius:var(--k-radius-lg);box-shadow:var(--k-ring);pointer-events:none;transition:top var(--k-dur-2) var(--k-ease),left var(--k-dur-2) var(--k-ease),width var(--k-dur-2) var(--k-ease),height var(--k-dur-2) var(--k-ease)}
+.k-tour-ring{position:absolute;border:2px solid var(--k-accent);border-radius:var(--k-radius-lg);box-shadow:var(--k-ring-offset);pointer-events:none;transition:top var(--k-dur-2) var(--k-ease),left var(--k-dur-2) var(--k-ease),width var(--k-dur-2) var(--k-ease),height var(--k-dur-2) var(--k-ease)}
 .k-tour-anchor .k-tour-ring{inset:-5px}
 .k-tour{position:absolute;width:262px;max-width:calc(100% - 24px);background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);box-shadow:var(--k-shadow-pop);padding:16px;z-index:5;font-family:var(--k-font)}
 .k-tour h4{margin:0 0 5px;font-size:14px;font-weight:650;color:var(--k-ink)}

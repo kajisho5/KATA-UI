@@ -20,8 +20,8 @@
 .k-tpl-pd-sw label{cursor:pointer}
 .k-tpl-pd-sw input{position:absolute;opacity:0}
 .k-tpl-pd-sw i{display:block;width:26px;height:26px;border-radius:50%;border:2px solid var(--k-bg);box-shadow:var(--k-ring-line)}
-.k-tpl-pd-sw input:checked + i{box-shadow:var(--k-ring)}
-.k-tpl-pd-sw input:focus-visible + i{box-shadow:var(--k-ring)}
+.k-tpl-pd-sw input:checked + i{box-shadow:var(--k-ring-selected)}
+.k-tpl-pd-sw input:focus-visible + i{box-shadow:var(--k-ring-offset)}
 .k-tpl-pd-buy{display:flex;gap:10px;margin-top:20px}
 .k-tpl-pd-qty{display:inline-flex;align-items:center;border:1px solid var(--k-line);border-radius:var(--k-radius-md);overflow:hidden}
 .k-tpl-pd-qty button{width:36px;height:100%;min-height:40px;border:0;background:var(--k-bg);font-size:16px;cursor:pointer;color:var(--k-ink)}

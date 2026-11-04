@@ -45,6 +45,7 @@ separate release statuses. The phases below are targets, not shipped features.
 - [x] P2: CI ratchet, audit tables, generated audit facts and a checked template ([PR #16](https://github.com/kajisho5/KATA-UI/pull/16)).
 - [ ] P3: Resolve or close [PR #1](https://github.com/kajisho5/KATA-UI/pull/1) and [PR #3](https://github.com/kajisho5/KATA-UI/pull/3) after reviewing their remaining changes.
 - [x] P4: Replace UI radius literals with the Foundry-linked shared scale; keep Lab geometry unchanged ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
+- [x] PR #19 regression correction: preserve Lab glow geometry with token paint, separate selected/offset rings, and measure both Drawer edges ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [x] P5 (shadow/rings): Normalize all remaining elevation/ring findings and four backdrops ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [ ] P5 remaining: Replace duration, border, color and easing literals. One remaining value kind per PR.
 - [ ] P6: Rebuild JS-failing components using the Combobox initialization pattern. Three components per PR; test repeated loading, generated IDs, IME and focus departure.

@@ -3,7 +3,7 @@
 .k-met-in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:230px;padding:28px 22px;gap:9px}
 .k-met-in h3{font-size:21px;font-weight:650;letter-spacing:-.02em}
 .k-met-in p{font-size:13px;line-height:1.75;color:var(--k-zinc-400);max-width:340px;letter-spacing:.01em}
-.k-meteor{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--k-on-color);box-shadow:var(--k-shadow-sm);animation-name:k-met-fall;animation-timing-function:linear;animation-iteration-count:infinite;opacity:0;z-index:1}
+.k-meteor{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--k-on-color);box-shadow:0 0 10px 2px color-mix(in srgb,var(--k-zinc-50) 30%,transparent);animation-name:k-met-fall;animation-timing-function:linear;animation-iteration-count:infinite;opacity:0;z-index:1}
 .k-meteor::before{content:"";position:absolute;left:2px;top:50%;width:86px;height:2px;transform:translateY(-50%) rotate(-45deg);transform-origin:left center;background:linear-gradient(to right, rgba(255,255,255,.75), transparent);border-radius:2px}
 @keyframes k-met-fall{0%{transform:translate3d(0,0,0);opacity:0}6%{opacity:1}92%{opacity:1}100%{transform:translate3d(-330px,330px,0);opacity:0}}
 @media (prefers-reduced-motion:reduce){.k-meteor{display:none}}

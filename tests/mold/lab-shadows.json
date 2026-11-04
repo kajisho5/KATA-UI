@@ -1,0 +1,275 @@
+[
+  {
+    "name": "Lab token paint free geometry box-shadow",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 12px 80px -20px var(--k-accent)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab raw rgba paint box-shadow",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 12px 80px rgba(0,0,0,.3)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab raw hex paint box-shadow",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 12px 80px #fff}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab token paint free geometry text-shadow",
+    "category": "Motion",
+    "css": ".sample{text-shadow:-12px 3px 80px var(--k-accent)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab raw rgba paint text-shadow",
+    "category": "Motion",
+    "css": ".sample{text-shadow:0 12px 80px rgba(0,0,0,.3)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab raw hex paint text-shadow",
+    "category": "Motion",
+    "css": ".sample{text-shadow:0 12px 80px #fff}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab token-only mix glow",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab mix with raw paint",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 0 46px color-mix(in srgb,var(--k-accent) 45%,#fff)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab named raw paint",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 0 46px red}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab multiple token shadows",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 1px 10px var(--k-ink),inset 0 0 0 6px var(--k-accent)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab one raw shadow among several",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 1px 10px var(--k-ink),inset 0 0 0 6px rgba(0,0,0,.3)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab geometry local and token paint",
+    "category": "Motion",
+    "css": ".sample{--offset:12px;--paint:var(--k-accent);box-shadow:0 var(--offset) 80px var(--paint)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab raw local paint cannot escape",
+    "category": "Motion",
+    "css": ".sample{--paint:#fff;box-shadow:0 0 80px var(--paint)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab overridden k paint cannot escape",
+    "category": "Motion",
+    "css": ".sample{--k-accent:rgba(0,0,0,.3);box-shadow:0 0 80px var(--k-accent)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab raw shared fallback fails",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 0 80px var(--k-accent,#fff)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab cyclic local paint fails",
+    "category": "Motion",
+    "css": ".sample{--a:var(--b);--b:var(--a);box-shadow:0 0 80px var(--a)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab unknown paint fails",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 0 80px var(--missing)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab non k global is not mold paint",
+    "category": "Motion",
+    "css": ".sample{box-shadow:0 0 80px var(--other)}",
+    "expected": {
+      "token-values": "fail"
+    },
+    "shared_extra": ":root{--other:red}"
+  },
+  {
+    "name": "UI glow geometry still needs shared shadow",
+    "category": "Form & Input",
+    "css": ".sample{box-shadow:0 0 80px var(--k-accent)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab filter blur(3px) drop-shadow(0 0 24px var(--k-accent))",
+    "category": "Motion",
+    "css": ".sample{filter:blur(3px) drop-shadow(0 0 24px var(--k-accent))}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab filter drop-shadow(0 0 24px rgba(255,255,255,.3))",
+    "category": "Motion",
+    "css": ".sample{filter:drop-shadow(0 0 24px rgba(255,255,255,.3))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab filter drop-shadow(0 0 24px color-mix(in srgb,var(--k-zinc-50) 30%,transparent))",
+    "category": "Motion",
+    "css": ".sample{filter:drop-shadow(0 0 24px color-mix(in srgb,var(--k-zinc-50) 30%,transparent))}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab filter drop-shadow(0 0 24px color-mix(in srgb,var(--k-zinc-50) 30%,white))",
+    "category": "Motion",
+    "css": ".sample{filter:drop-shadow(0 0 24px color-mix(in srgb,var(--k-zinc-50) 30%,white))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab text shadow raw paint fail",
+    "category": "KATAYABURI",
+    "css": ".sample{text-shadow:0 3px 8px #fff}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab shared shadow alias passes",
+    "category": "Motion",
+    "css": ".sample{box-shadow:var(--k-shadow-pop)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab configured primitives preserved",
+    "category": "Motion",
+    "css": ".sample{box-shadow:none;text-shadow:0 0 8px currentColor}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Raw paint hidden in filter geometry still fails",
+    "category": "Motion",
+    "css": ".sample{filter:blur(#fff) drop-shadow(0 0 24px var(--k-accent))}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Lab filter alias retains token color",
+    "category": "Motion",
+    "css": ".sample{--filter:drop-shadow(0 0 30px var(--k-accent));filter:var(--filter)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Lab filter alias cannot hide raw color",
+    "category": "Motion",
+    "css": ".sample{--filter:drop-shadow(0 0 30px #fff);filter:var(--filter)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "UI filter alias still checks geometry",
+    "category": "Form & Input",
+    "css": ".sample{--filter:drop-shadow(0 0 30px var(--k-accent));filter:var(--filter)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Semantic selected ring is a shared UI token",
+    "category": "Form & Input",
+    "css": ".sample{box-shadow:var(--k-ring-selected)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Raw selected UI ring still fails",
+    "category": "Form & Input",
+    "css": ".sample{box-shadow:0 0 0 2px var(--k-ink)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  },
+  {
+    "name": "Semantic offset ring is a shared UI token",
+    "category": "Form & Input",
+    "css": ".sample{box-shadow:var(--k-ring-offset)}",
+    "expected": {
+      "token-values": "pass"
+    }
+  },
+  {
+    "name": "Nested filter fallback cannot hide raw paint",
+    "category": "Motion",
+    "css": ".sample{--filter:var(--missing,drop-shadow(0 0 30px #fff));filter:var(--filter)}",
+    "expected": {
+      "token-values": "fail"
+    }
+  }
+]

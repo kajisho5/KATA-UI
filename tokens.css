@@ -10,6 +10,8 @@
   --k-radius-full:999px;
   --k-ring-inset:inset 0 0 0 1px currentColor;
   --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
   --k-shadow-overlay:var(--k-shadow-pop);
   --k-shadow-xs:0 1px 2px rgba(16,24,40,.05);
   --k-shadow-sm:0 1px 4px rgba(16,24,40,.18);
@@ -54,6 +56,8 @@
   /* shape-tokens:dark:start */
   --k-ring-inset:inset 0 0 0 1px currentColor;
   --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
   --k-shadow-overlay:var(--k-shadow-pop);
   --k-shadow-xs:0 1px 2px rgba(0,0,0,.25);
   --k-shadow-sm:0 1px 4px rgba(0,0,0,.35);
@@ -70,6 +74,8 @@
   /* shape-tokens:light:start */
   --k-ring-inset:inset 0 0 0 1px currentColor;
   --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
   --k-shadow-overlay:var(--k-shadow-pop);
   --k-shadow-xs:0 1px 2px rgba(16,24,40,.05);
   --k-shadow-sm:0 1px 4px rgba(16,24,40,.18);

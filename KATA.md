@@ -155,8 +155,9 @@ A passing static check is not a browser or accessibility certification.
 uses the `lab` profile. Every other component, block and template uses `ui`.
 In `ui`, radius, duration (including delay), shadow, color and border values must
 come from shared `tokens.css` tokens, except the primitives configured below.
-In `lab`, color, duration, shadow and easing must come from those tokens. Lab
-radius, border geometry, dimensions and positions may use local literal geometry.
+In `lab`, color, duration and easing must come from those tokens. Shadow paint
+must use shared tokens, while glow offsets, blur and spread remain effect geometry.
+Lab radius, border geometry, dimensions and positions may use local literal geometry.
 A raw border color still fails in Lab; permission for border geometry does not
 permit arbitrary colors. UI easing is not a token-required kind under this policy.
 
@@ -241,7 +242,7 @@ not exceptions for individual components. `check.config.json` is the policy sour
   does not excuse stylesheet paint, unmarked elements, SVG attributes, shadows,
   radius, duration or local-variable definitions. Label validity remains a
   separate accessible-name check. Legacy hex scanning uses the same boundary.
-- **Shadow:** hand-built zero-offset, zero-blur ring shadows with literal pixel
+- **UI shadow:** hand-built zero-offset, zero-blur ring shadows with literal pixel
   spread are reported as `shadow-ring`, including local aliases. Use an existing
   shared `--k-ring` family token. Blurred elevation shadows remain `shadow` errors;
   neither subtype is an allowance.
@@ -265,3 +266,26 @@ Foundry changes the base only. Lab radius geometry remains outside this mapping.
 Four semantic elevation levels and theme-aware backdrops replace repeated shadow
 recipes. This is a foundation-value migration; no checker rule or allowlist is
 changed to obtain a higher score. Canonical values live in system/tokens.json.
+
+
+### Lab shadow paint versus glow geometry
+
+Glow geometry is part of the effect; only its color must come from the mold.
+For the Lab profile (Motion / KATAYABURI), box-shadow, text-shadow and filter
+drop-shadow offsets, blur and spread are effect geometry. Shared --k-* paint
+and token-only color-mix expressions are valid without normalizing that geometry
+to UI elevation tiers. Raw rgba/hex/named paint still fails, including raw paint
+inside mixes, local aliases, overrides and fallbacks. Existing configured
+no-paint/inheritance primitives remain valid; unresolved/cyclic variables fail.
+UI shadow geometry still requires shared shadow tokens. This profile distinction
+restores artistic glows rather than exchanging the effect for a UI drop shadow;
+it is not a component-specific score exception. tests/mold/lab-shadows.json covers
+both accepted and rejected paint provenance for all three shadow properties.
+
+Filter aliases that resolve to drop-shadow are inspected as shadows too; wrapping a raw paint value in a local filter variable must not bypass this rule.
+
+
+Selection and focus are separate states. --k-ring-selected marks the persistent
+selection; --k-ring-offset separates a colored swatch/spotlight from its surface.
+The existing --k-ring remains the transient text-field focus treatment. Semantic
+ring tokens resolve ink, background and accent through the active theme/Foundry.

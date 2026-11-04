@@ -1,11 +1,11 @@
 /* KATA Glow Button — a ring of light, on duty. */
 @property --k-ga{syntax:"<angle>";initial-value:0deg;inherits:false}
 .k-glowbtn{display:inline-block;padding:2px;border-radius:13px;background:conic-gradient(from var(--k-ga), var(--k-accent) 0 14%, transparent 30%, var(--k-zinc-300) 50%, transparent 70%, var(--k-accent) 88% 100%);animation:k-ga-spin 3.6s linear infinite;transition:box-shadow .3s;font-family:var(--k-font)}
-.k-glowbtn:hover,.k-glowbtn:focus-within{box-shadow:var(--k-shadow-sm)}
+.k-glowbtn:hover,.k-glowbtn:focus-within{box-shadow:0 0 26px -6px var(--k-accent)}
 .k-glowbtn button{display:block;border:0;background:var(--k-zinc-950);color:var(--k-on-color);font-family:inherit;font-size:14.5px;font-weight:650;padding:12px 26px;border-radius:11px;cursor:pointer}
 @keyframes k-ga-spin{to{--k-ga:360deg}}
 .k-glowfield{display:flex;align-items:center;gap:9px;max-width:330px;padding:2px;border-radius:11px;background:var(--k-line);transition:background .3s, box-shadow .3s;font-family:var(--k-font);color:var(--k-ink-3)}
-.k-glowfield:focus-within{background:conic-gradient(from var(--k-ga), var(--k-accent), var(--k-line) 40%, var(--k-accent));animation:k-ga-spin 3.6s linear infinite;box-shadow:var(--k-shadow-sm)}
+.k-glowfield:focus-within{background:conic-gradient(from var(--k-ga), var(--k-accent), var(--k-line) 40%, var(--k-accent));animation:k-ga-spin 3.6s linear infinite;box-shadow:0 0 18px -4px var(--k-accent-bg)}
 .k-glowfield .in{flex:1;display:flex;align-items:center;gap:9px;background:var(--k-bg);border-radius:9.5px;padding:0 12px}
 .k-glowfield input{flex:1;border:0;background:none;font-family:inherit;font-size:13.5px;height:38px;color:var(--k-ink);outline:none;min-width:0}
 @media (prefers-reduced-motion:reduce){.k-glowbtn,.k-glowfield:focus-within{animation:none}}

@@ -219,6 +219,132 @@
             "ratio": 17.71676507806213
           }
         ],
+        ".btn-accent / hover": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              22,
+              94,
+              131
+            ],
+            "ratio": 7.0875674015308485
+          }
+        ],
+        ".btn-accent / active": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 2.8816913073545507
+          }
+        ],
+        ".btn-accent / focus": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 2.8816913073545507
+          }
+        ],
+        ".btn-danger / hover": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              183,
+              40,
+              46
+            ],
+            "ratio": 6.256658847368193
+          }
+        ],
+        ".btn-danger / active": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          }
+        ],
+        ".btn-danger / focus": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          }
+        ],
         "accent-hover": [
           {
             "element": "button.btn btn-pri btn-md",
@@ -1409,6 +1535,132 @@
             ],
             "ratio": 5.79341125754401
           }
+        ],
+        ".menu a:not(.danger) / hover": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        ".menu a:not(.danger) / active": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        ".menu a:not(.danger) / focus": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        ".menu a.danger / hover": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.40779550528886
+          }
+        ],
+        ".menu a.danger / active": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.40779550528886
+          }
+        ],
+        ".menu a.danger / focus": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 5.79341125754401
+          }
         ]
       },
       "popover": {
@@ -1587,6 +1839,132 @@
               255
             ],
             "ratio": 7.729820868495424
+          }
+        ],
+        ".tabs button.on / hover": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 15.016530798610969
+          }
+        ],
+        ".tabs button.on / active": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 15.016530798610969
+          }
+        ],
+        ".tabs button.on / focus": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 15.016530798610969
+          }
+        ],
+        ".tabs button:not(.on) / hover": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
+          }
+        ],
+        ".tabs button:not(.on) / active": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
+          }
+        ],
+        ".tabs button:not(.on) / focus": [
+          {
+            "element": "button.",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
           }
         ]
       },
@@ -2962,6 +3340,132 @@
             ],
             "ratio": 7.729820868495424
           }
+        ],
+        "a.k-page[aria-current=\"page\"] / hover": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / active": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / focus": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / hover": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / active": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / focus": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          }
         ]
       },
       "breadcrumbs": {
@@ -4747,6 +5251,246 @@
             ],
             "ratio": 2.562908108464821
           }
+        ],
+        ".k-ctx button:not(.danger) / hover": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 2.392318158214085
+          }
+        ],
+        ".k-ctx button:not(.danger) / active": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 2.392318158214085
+          }
+        ],
+        ".k-ctx button:not(.danger) / focus": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 2.392318158214085
+          }
+        ],
+        ".k-ctx button.danger / hover": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.40779550528886
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 2.392318158214085
+          }
+        ],
+        ".k-ctx button.danger / active": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.40779550528886
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 2.392318158214085
+          }
+        ],
+        ".k-ctx button.danger / focus": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.40779550528886
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 2.392318158214085
+          }
         ]
       },
       "hover-card": {
@@ -5513,6 +6257,132 @@
               245
             ],
             "ratio": 16.118381484528566
+          }
+        ],
+        ".btn-accent / hover": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              129,
+              199,
+              212
+            ],
+            "ratio": 1.899852754506443
+          }
+        ],
+        ".btn-accent / active": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 2.8816913073545507
+          }
+        ],
+        ".btn-accent / focus": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 2.8816913073545507
+          }
+        ],
+        ".btn-danger / hover": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              245,
+              150,
+              170
+            ],
+            "ratio": 2.1372980041501193
+          }
+        ],
+        ".btn-danger / active": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          }
+        ],
+        ".btn-danger / focus": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
           }
         ],
         "accent-hover": [
@@ -6705,6 +7575,132 @@
             ],
             "ratio": 3.0580886269711782
           }
+        ],
+        ".menu a:not(.danger) / hover": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".menu a:not(.danger) / active": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".menu a:not(.danger) / focus": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        ".menu a.danger / hover": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 2.570953073321923
+          }
+        ],
+        ".menu a.danger / active": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 2.570953073321923
+          }
+        ],
+        ".menu a.danger / focus": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 3.0580886269711782
+          }
         ]
       },
       "popover": {
@@ -6883,6 +7879,132 @@
               27
             ],
             "ratio": 6.912758604004126
+          }
+        ],
+        ".tabs button.on / hover": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".tabs button.on / active": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".tabs button.on / focus": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".tabs button:not(.on) / hover": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          }
+        ],
+        ".tabs button:not(.on) / active": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          }
+        ],
+        ".tabs button:not(.on) / focus": [
+          {
+            "element": "button.",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
           }
         ]
       },
@@ -8243,6 +9365,132 @@
             "element": "a.k-page",
             "index": 17,
             "text": "Next \u2192",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / hover": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / active": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / focus": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / hover": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / active": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / focus": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
             "kind": "text",
             "disabled": false,
             "opacity": "1",
@@ -10042,6 +11290,246 @@
               27
             ],
             "ratio": 3.665869633200011
+          }
+        ],
+        ".k-ctx button:not(.danger) / hover": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 3.0819181356452896
+          }
+        ],
+        ".k-ctx button:not(.danger) / active": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 3.0819181356452896
+          }
+        ],
+        ".k-ctx button:not(.danger) / focus": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 3.0819181356452896
+          }
+        ],
+        ".k-ctx button.danger / hover": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 2.570953073321923
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 3.0819181356452896
+          }
+        ],
+        ".k-ctx button.danger / active": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 2.570953073321923
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 3.0819181356452896
+          }
+        ],
+        ".k-ctx button.danger / focus": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              201,
+              23,
+              30
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 2.570953073321923
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 3.0819181356452896
           }
         ]
       },

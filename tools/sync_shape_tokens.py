@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 import re
+from tools.color_roles import relative_css
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -30,6 +31,10 @@ def sync(root=ROOT,check=False):
         if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing/duplicate shape adapter region: '+mode)
         content='\n'.join('  '+name+':'+value+';' for name,value in values(tokens,mode).items())
         new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+content+'\n  '+end,new,flags=re.S)
+    if 'contrast' in tokens:
+        start='/* relative-color-roles:start */';end='/* relative-color-roles:end */'
+        if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing relative color adapter region')
+        new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+relative_css(tokens['contrast'])+'\n'+end,new,flags=re.S)
     if old!=new:
         if check:raise ValueError('tokens.css shape adapter is stale; run python3 -m tools.sync_shape_tokens')
         path.write_text(new)

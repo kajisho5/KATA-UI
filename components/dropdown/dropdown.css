@@ -3,6 +3,6 @@
 .menu.open{opacity:1;transform:none;pointer-events:auto}
 .menu a{display:flex;gap:9px;align-items:center;padding:8px 10px;border-radius:var(--k-radius-md);color:var(--k-ink);text-decoration:none;font-size:13.5px;font-family:var(--k-font)}
 .menu a:hover{background:var(--k-bg-soft)}
-.menu a.danger{color:var(--k-danger)}
+.menu a.danger{color:var(--k-danger-ink)}
 .menu hr{border:0;border-top:1px solid var(--k-line);margin:5px 4px}
 .menu .mh{display:block;font-size:11px;color:var(--k-ink-3);padding:6px 10px 3px;letter-spacing:.06em}

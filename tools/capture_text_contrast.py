@@ -58,14 +58,16 @@ def extra_state(page,slug):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--phase',choices=('before','after','proposal'),required=True);parser.add_argument('--ref');parser.add_argument('--limit',type=int,default=40);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--phase',choices=('before','after','proposal'),required=True);parser.add_argument('--ref');parser.add_argument('--only',nargs='+');parser.add_argument('--limit',type=int,default=40);args=parser.parse_args()
     out=ROOT/'docs/review/text-contrast';out.mkdir(parents=True,exist_ok=True);source=RoleProposal() if args.phase=='proposal' else Source(args.ref);errors=[];facts={}
     slugs=(CORE+MORE)[:args.limit]
+    if args.only and (out/(args.phase+'.json')).exists():facts=json.loads((out/(args.phase+'.json')).read_text())['facts']
     with sync_playwright() as p:
         browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
         for theme in ('light','dark'):
-            facts[theme]={}
+            facts.setdefault(theme,{})
             for slug in slugs:
+                if args.only and slug not in args.only:continue
                 page=browser.new_page(viewport={'width':900,'height':600},reduced_motion='reduce');page.on('pageerror',lambda e:errors.append(str(e)))
                 page.set_content(content(source,'components/'+slug,theme));js=source.read('components/'+slug+'/'+slug+'.js')
                 if js:page.add_script_tag(content=js)
@@ -74,6 +76,30 @@ def main():
                 page.evaluate('() => new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))')
                 facts[theme][slug]={'default':rows(page)}
                 page.screenshot(path=str(out/f'{args.phase}-{theme}-{slug}.png'))
+                if slug in ('button','dropdown','context-menu','tabs','pagination'):
+                    selectors={'button':['.btn-accent','.btn-danger'], 'dropdown':['.menu a:not(.danger)','.menu a.danger'], 'context-menu':['.k-ctx button:not(.danger)','.k-ctx button.danger'], 'tabs':['.tabs button.on','.tabs button:not(.on)'], 'pagination':['a.k-page[aria-current="page"]','a.k-page:not([aria-current]):not(.disabled)']}
+                    for selector in selectors[slug]:
+                        candidates=page.locator(selector)
+                        if slug=='pagination':candidates=candidates.filter(has_text=re.compile(r'^\d+$'))
+                        target=candidates.first
+                        if not target.count():continue
+                        for state in ('hover','active','focus'):
+                            print(theme,slug,selector,state,flush=True)
+                            if slug=='dropdown' and not page.locator('.menu').evaluate('(e)=>e.classList.contains("open")'):open_state(page,slug)
+                            if slug=='context-menu' and page.locator('.k-ctx').evaluate('(e)=>e.hidden'):extra_state(page,slug)
+                            page.mouse.move(895,595)
+                            if state=='focus':
+                                # Keyboard Tab gives :focus-visible, unlike a synthetic click.
+                                target.evaluate('(e)=>{e.setAttribute("data-contrast-target","")}')
+                                page.keyboard.press('Tab');target.focus()
+                            else:
+                                target.hover()
+                                if state=='active':page.mouse.down()
+                            key=selector+' / '+state
+                            indices=target.evaluate('(e)=>[...document.body.querySelectorAll("*")].flatMap((node,i)=>e.contains(node)?[i]:[])')
+                            facts[theme][slug][key]=[row for row in rows(page) if row['index'] in indices]
+                            if state=='active':page.mouse.up()
+                            target.evaluate('(e)=>e.blur()')
                 if slug=='button':
                     for name in ('accent','danger'):
                         page.locator('.btn-'+name).hover();facts[theme][slug][name+'-hover']=rows(page)

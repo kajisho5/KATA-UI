@@ -2595,3 +2595,9 @@ The score remains 53/164 (UI 42/121, Lab 11/43). A rule-only change on the initi
 PR source adds zero passes. On restored sources the old rule would pass 52/164;
 the corrected rule retains Tracing Beam's pass, without hiding other Lab issues.
 [Full geometry, fixtures, edge measurements and three-way images](review/shape-regressions/README.md).
+
+## Shared text roles — PR #20
+
+Danger foreground now uses danger-ink; full accent surfaces use on-accent and neutral-surface accent text uses accent-ink. JSON generates adaptive relative-color roles, and Foundry exports static WCAG-safe roles. Default accent, core and dark canvas are unchanged. Mold remains **53 / 164** (UI 42 / 121, Lab 11 / 43), with **137 token-values findings**, no new finding, and unchanged checker rules / baseline identities.
+
+[Complete token/usage tables, before/after 40-part × 2-theme measurements, states, custom palettes and screenshots](review/text-contrast/README.md). All measured eligible samples meet 4.5:1; disabled samples are listed separately. This does not certify unmeasured states or browsers.

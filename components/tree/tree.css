@@ -6,6 +6,6 @@
 .k-tree-row .tg svg{transition:transform .15s var(--k-ease)}
 .k-tree-row .tg[aria-expanded="false"] svg{transform:rotate(-90deg)}
 .k-tree-row .fi{color:var(--k-ink-3);display:grid;place-items:center;flex:none}
-.k-tree-row .fi.fold{color:var(--k-accent)}
+.k-tree-row .fi.fold{color:var(--k-accent-ink)}
 .k-tree-row .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .k-tree-row.sel{background:var(--k-accent-bg);color:var(--k-accent-ink);font-weight:550}

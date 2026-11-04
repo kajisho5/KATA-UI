@@ -2,5 +2,5 @@
 .k-chip[data-on]{background:var(--k-ink);border-color:var(--k-ink);color:var(--k-bg)}
 .k-chip-x{width:19px;height:19px;border-radius:50%;border:none;background:var(--k-bg-soft);color:var(--k-ink-2);display:grid;place-items:center;cursor:pointer;padding:0}
 .k-chip[data-on] .k-chip-x{background:rgba(255,255,255,.16);color:var(--k-bg)}
-.k-chip-x:hover{color:var(--k-danger)}
+.k-chip-x:hover{color:var(--k-danger-ink)}
 .k-chips{display:flex;flex-wrap:wrap;gap:8px}

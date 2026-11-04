@@ -11,12 +11,12 @@
 .btn-ghost:hover:not(:disabled){background:var(--k-bg-soft);color:var(--k-ink)}
 .btn-ghost:active:not(:disabled){background:var(--k-seg);color:var(--k-ink)}
 .btn-danger{background:var(--k-danger);color:var(--k-on-color)}
-.btn-danger:hover:not(:disabled){background:var(--k-danger-ink)}
-.btn-danger:active:not(:disabled){background:var(--k-danger);box-shadow:var(--k-btn-inset)}
+.btn-danger:hover:not(:disabled){background:var(--k-danger-bg);color:var(--k-danger-ink)}
+.btn-danger:active:not(:disabled){background:var(--k-danger);color:var(--k-on-color);box-shadow:var(--k-btn-inset)}
 /* Deprecated: .btn-asagi is retained as an alias for .btn-accent. */
-.btn-accent,.btn-asagi{background:var(--k-accent);color:var(--k-on-color)}
-.btn-accent:hover:not(:disabled),.btn-asagi:hover:not(:disabled){background:var(--k-accent-ink)}
-.btn-accent:active:not(:disabled),.btn-asagi:active:not(:disabled){background:var(--k-accent);box-shadow:var(--k-btn-inset)}
+.btn-accent,.btn-asagi{background:var(--k-accent);color:var(--k-on-accent)}
+.btn-accent:hover:not(:disabled),.btn-asagi:hover:not(:disabled){background:var(--k-accent-hover);color:var(--k-on-accent)}
+.btn-accent:active:not(:disabled),.btn-asagi:active:not(:disabled){background:var(--k-accent);box-shadow:var(--k-btn-inset);color:var(--k-on-accent)}
 .btn-sm{height:var(--k-btn-height-sm);padding:0 var(--k-space-3);font-size:var(--k-text-sm);border-radius:var(--k-radius-sm)}
 .btn-md{height:var(--k-btn-height-md);padding:0 var(--k-space-4);font-size:var(--k-text-base)}
 .btn-lg{height:var(--k-btn-height-lg);padding:0 var(--k-btn-pad-lg);font-size:var(--k-btn-text-lg)}

@@ -112,16 +112,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
+              24,
+              24,
+              27
             ],
             "background": [
               51,
               166,
               184
             ],
-            "ratio": 2.8816913073545507
+            "ratio": 6.148044043734327
           },
           {
             "element": "button.btn btn-danger btn-md",
@@ -219,6 +219,132 @@
             "ratio": 17.71676507806213
           }
         ],
+        ".btn-accent / hover": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              71,
+              175,
+              191
+            ],
+            "ratio": 6.877669350653486
+          }
+        ],
+        ".btn-accent / active": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 6.148044043734327
+          }
+        ],
+        ".btn-accent / focus": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 6.148044043734327
+          }
+        ],
+        ".btn-danger / hover": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              250.9764705882353,
+              238.9764705882353,
+              238.9764705882353
+            ],
+            "ratio": 5.568705915012665
+          }
+        ],
+        ".btn-danger / active": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          }
+        ],
+        ".btn-danger / focus": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          }
+        ],
         "accent-hover": [
           {
             "element": "button.btn btn-pri btn-md",
@@ -285,16 +411,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
+              24,
+              24,
+              27
             ],
             "background": [
-              22,
-              94,
-              131
+              71,
+              175,
+              191
             ],
-            "ratio": 7.0875674015308485
+            "ratio": 6.877669350653486
           },
           {
             "element": "button.btn btn-danger btn-md",
@@ -458,16 +584,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
+              24,
+              24,
+              27
             ],
             "background": [
               51,
               166,
               184
             ],
-            "ratio": 2.8816913073545507
+            "ratio": 6.148044043734327
           },
           {
             "element": "button.btn btn-danger btn-md",
@@ -477,16 +603,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
-            ],
-            "background": [
               183,
               40,
               46
             ],
-            "ratio": 6.256658847368193
+            "background": [
+              250.9764705882353,
+              238.9764705882353,
+              238.9764705882353
+            ],
+            "ratio": 5.568705915012665
           },
           {
             "element": "button.btn btn-pri btn-md",
@@ -671,16 +797,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              183,
+              40,
+              46
             ],
             "background": [
               255,
               255,
               255
             ],
-            "ratio": 5.79341125754401
+            "ratio": 6.256658847368193
           },
           {
             "element": "label.",
@@ -888,16 +1014,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              22,
-              94,
-              131
+              0,
+              108,
+              125
             ],
             "background": [
               239.00000000000003,
               248.0196078431373,
               249.03921568627453
             ],
-            "ratio": 6.570484425104236
+            "ratio": 5.657372858334568
           },
           {
             "element": "div.k-card-b",
@@ -1006,16 +1132,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              22,
-              94,
-              131
+              0,
+              108,
+              125
             ],
             "background": [
               239.00000000000003,
               248.0196078431373,
               249.03921568627453
             ],
-            "ratio": 6.570484425104236
+            "ratio": 5.657372858334568
           },
           {
             "element": "span.badge red",
@@ -1398,16 +1524,142 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              183,
+              40,
+              46
             ],
             "background": [
               255,
               255,
               255
             ],
-            "ratio": 5.79341125754401
+            "ratio": 6.256658847368193
+          }
+        ],
+        ".menu a:not(.danger) / hover": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        ".menu a:not(.danger) / active": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        ".menu a:not(.danger) / focus": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        ".menu a.danger / hover": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.840208831863075
+          }
+        ],
+        ".menu a.danger / active": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.840208831863075
+          }
+        ],
+        ".menu a.danger / focus": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 6.256658847368193
           }
         ]
       },
@@ -1587,6 +1839,132 @@
               255
             ],
             "ratio": 7.729820868495424
+          }
+        ],
+        ".tabs button.on / hover": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 15.016530798610969
+          }
+        ],
+        ".tabs button.on / active": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 15.016530798610969
+          }
+        ],
+        ".tabs button.on / focus": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 15.016530798610969
+          }
+        ],
+        ".tabs button:not(.on) / hover": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
+          }
+        ],
+        ".tabs button:not(.on) / active": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
+          }
+        ],
+        ".tabs button:not(.on) / focus": [
+          {
+            "element": "button.",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
           }
         ]
       },
@@ -1836,16 +2214,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              183,
+              40,
+              46
             ],
             "background": [
               255,
               255,
               255
             ],
-            "ratio": 5.79341125754401
+            "ratio": 6.256658847368193
           },
           {
             "element": "input.input",
@@ -1874,16 +2252,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              183,
+              40,
+              46
             ],
             "background": [
               255,
               255,
               255
             ],
-            "ratio": 5.79341125754401
+            "ratio": 6.256658847368193
           }
         ]
       },
@@ -2095,16 +2473,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              22,
-              94,
-              131
+              0,
+              108,
+              125
             ],
             "background": [
               255,
               255,
               255
             ],
-            "ratio": 7.0875674015308485
+            "ratio": 6.1025959206046485
           },
           {
             "element": "label.k-radio",
@@ -2548,16 +2926,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              22,
-              94,
-              131
+              0,
+              108,
+              125
             ],
             "background": [
               233.99607843137255,
               246.02745098039216,
               247.96470588235294
             ],
-            "ratio": 6.425731515580265
+            "ratio": 5.532736510613086
           },
           {
             "element": "span.badge asagi",
@@ -2567,16 +2945,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              22,
-              94,
-              131
+              0,
+              108,
+              125
             ],
             "background": [
               239.00000000000003,
               248.0196078431373,
               249.03921568627453
             ],
-            "ratio": 6.570484425104236
+            "ratio": 5.657372858334568
           },
           {
             "element": "td.",
@@ -2643,16 +3021,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              22,
-              94,
-              131
+              0,
+              108,
+              125
             ],
             "background": [
               233.99607843137255,
               246.02745098039216,
               247.96470588235294
             ],
-            "ratio": 6.425731515580265
+            "ratio": 5.532736510613086
           },
           {
             "element": "span.badge yamabuki",
@@ -2738,16 +3116,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              22,
-              94,
-              131
+              0,
+              108,
+              125
             ],
             "background": [
               233.99607843137255,
               246.02745098039216,
               247.96470588235294
             ],
-            "ratio": 6.425731515580265
+            "ratio": 5.532736510613086
           },
           {
             "element": "span.badge",
@@ -2947,6 +3325,132 @@
             "element": "a.k-page",
             "index": 17,
             "text": "Next \u2192",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / hover": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / active": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / focus": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / hover": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / active": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / focus": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
             "kind": "text",
             "disabled": false,
             "opacity": "1",
@@ -4717,16 +5221,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              183,
+              40,
+              46
             ],
             "background": [
               255,
               255,
               255
             ],
-            "ratio": 5.79341125754401
+            "ratio": 6.256658847368193
           },
           {
             "element": "span.hint",
@@ -4746,6 +5250,246 @@
               255
             ],
             "ratio": 4.832895561154151
+          }
+        ],
+        ".k-ctx button:not(.danger) / hover": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 4.511212777982448
+          }
+        ],
+        ".k-ctx button:not(.danger) / active": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 4.511212777982448
+          }
+        ],
+        ".k-ctx button:not(.danger) / focus": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 4.511212777982448
+          }
+        ],
+        ".k-ctx button.danger / hover": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.840208831863075
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 4.511212777982448
+          }
+        ],
+        ".k-ctx button.danger / active": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.840208831863075
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 4.511212777982448
+          }
+        ],
+        ".k-ctx button.danger / focus": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 5.840208831863075
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 4.511212777982448
           }
         ]
       },
@@ -4778,16 +5522,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              51,
-              166,
-              184
+              0,
+              108,
+              125
             ],
             "background": [
               255,
               255,
               255
             ],
-            "ratio": 2.8816913073545507
+            "ratio": 6.1025959206046485
           },
           {
             "element": "span.k-avatar",
@@ -5408,16 +6152,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
+              24,
+              24,
+              27
             ],
             "background": [
               51,
               166,
               184
             ],
-            "ratio": 2.8816913073545507
+            "ratio": 6.148044043734327
           },
           {
             "element": "button.btn btn-danger btn-md",
@@ -5515,6 +6259,132 @@
             "ratio": 16.118381484528566
           }
         ],
+        ".btn-accent / hover": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              71,
+              175,
+              191
+            ],
+            "ratio": 6.877669350653486
+          }
+        ],
+        ".btn-accent / active": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 6.148044043734327
+          }
+        ],
+        ".btn-accent / focus": [
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 6.148044043734327
+          }
+        ],
+        ".btn-danger / hover": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              242,
+              139,
+              144
+            ],
+            "background": [
+              36.28235294117647,
+              24.28235294117647,
+              27.070588235294117
+            ],
+            "ratio": 7.242287269044573
+          }
+        ],
+        ".btn-danger / active": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          }
+        ],
+        ".btn-danger / focus": [
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          }
+        ],
         "accent-hover": [
           {
             "element": "button.btn btn-pri btn-md",
@@ -5581,16 +6451,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
+              24,
+              24,
+              27
             ],
             "background": [
-              129,
-              199,
-              212
+              71,
+              175,
+              191
             ],
-            "ratio": 1.899852754506443
+            "ratio": 6.877669350653486
           },
           {
             "element": "button.btn btn-danger btn-md",
@@ -5754,16 +6624,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
+              24,
+              24,
+              27
             ],
             "background": [
               51,
               166,
               184
             ],
-            "ratio": 2.8816913073545507
+            "ratio": 6.148044043734327
           },
           {
             "element": "button.btn btn-danger btn-md",
@@ -5773,16 +6643,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              255,
-              255,
-              255
+              242,
+              139,
+              144
             ],
             "background": [
-              245,
-              150,
-              170
+              36.28235294117647,
+              24.28235294117647,
+              27.070588235294117
             ],
-            "ratio": 2.1372980041501193
+            "ratio": 7.242287269044573
           },
           {
             "element": "button.btn btn-pri btn-md",
@@ -5967,16 +6837,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              242,
+              139,
+              144
             ],
             "background": [
               24,
               24,
               27
             ],
-            "ratio": 3.0580886269711782
+            "ratio": 7.484253317438049
           },
           {
             "element": "label.",
@@ -6184,16 +7054,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              129,
-              199,
-              212
+              93,
+              201,
+              220
             ],
             "background": [
               26.11764705882353,
               35.13725490196079,
               38.92156862745098
             ],
-            "ratio": 8.402774569284672
+            "ratio": 8.250783354565213
           },
           {
             "element": "div.k-card-b",
@@ -6302,16 +7172,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              129,
-              199,
-              212
+              93,
+              201,
+              220
             ],
             "background": [
               26.11764705882353,
               35.13725490196079,
               38.92156862745098
             ],
-            "ratio": 8.402774569284672
+            "ratio": 8.250783354565213
           },
           {
             "element": "span.badge red",
@@ -6321,16 +7191,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              245,
-              150,
-              170
+              242,
+              139,
+              144
             ],
             "background": [
               36.28235294117647,
               24.28235294117647,
               27.070588235294117
             ],
-            "ratio": 8.021334274213451
+            "ratio": 7.242287269044573
           },
           {
             "element": "span.badge yamabuki",
@@ -6694,16 +7564,142 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              242,
+              139,
+              144
             ],
             "background": [
               24,
               24,
               27
             ],
-            "ratio": 3.0580886269711782
+            "ratio": 7.484253317438049
+          }
+        ],
+        ".menu a:not(.danger) / hover": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".menu a:not(.danger) / active": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".menu a:not(.danger) / focus": [
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        ".menu a.danger / hover": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              242,
+              139,
+              144
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 6.292055729936337
+          }
+        ],
+        ".menu a.danger / active": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              242,
+              139,
+              144
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 6.292055729936337
+          }
+        ],
+        ".menu a.danger / focus": [
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              242,
+              139,
+              144
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 7.484253317438049
           }
         ]
       },
@@ -6883,6 +7879,132 @@
               27
             ],
             "ratio": 6.912758604004126
+          }
+        ],
+        ".tabs button.on / hover": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".tabs button.on / active": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".tabs button.on / focus": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        ".tabs button:not(.on) / hover": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          }
+        ],
+        ".tabs button:not(.on) / active": [
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          }
+        ],
+        ".tabs button:not(.on) / focus": [
+          {
+            "element": "button.",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
           }
         ]
       },
@@ -7132,16 +8254,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              242,
+              139,
+              144
             ],
             "background": [
               24,
               24,
               27
             ],
-            "ratio": 3.0580886269711782
+            "ratio": 7.484253317438049
           },
           {
             "element": "input.input",
@@ -7170,16 +8292,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              242,
+              139,
+              144
             ],
             "background": [
               24,
               24,
               27
             ],
-            "ratio": 3.0580886269711782
+            "ratio": 7.484253317438049
           }
         ]
       },
@@ -7391,16 +8513,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              129,
-              199,
-              212
+              93,
+              201,
+              220
             ],
             "background": [
               24,
               24,
               27
             ],
-            "ratio": 9.32533589039363
+            "ratio": 9.156657185763267
           },
           {
             "element": "label.k-radio",
@@ -7844,16 +8966,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              129,
-              199,
-              212
+              93,
+              201,
+              220
             ],
             "background": [
               26.54901960784314,
               38.58039215686274,
               43.21176470588235
             ],
-            "ratio": 8.095990269404227
+            "ratio": 7.9495482358523955
           },
           {
             "element": "span.badge asagi",
@@ -7863,16 +8985,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              129,
-              199,
-              212
+              93,
+              201,
+              220
             ],
             "background": [
               26.11764705882353,
               35.13725490196079,
               38.92156862745098
             ],
-            "ratio": 8.402774569284672
+            "ratio": 8.250783354565213
           },
           {
             "element": "td.",
@@ -7939,16 +9061,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              129,
-              199,
-              212
+              93,
+              201,
+              220
             ],
             "background": [
               26.54901960784314,
               38.58039215686274,
               43.21176470588235
             ],
-            "ratio": 8.095990269404227
+            "ratio": 7.9495482358523955
           },
           {
             "element": "span.badge yamabuki",
@@ -8034,16 +9156,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              129,
-              199,
-              212
+              93,
+              201,
+              220
             ],
             "background": [
               26.54901960784314,
               38.58039215686274,
               43.21176470588235
             ],
-            "ratio": 8.095990269404227
+            "ratio": 7.9495482358523955
           },
           {
             "element": "span.badge",
@@ -8243,6 +9365,132 @@
             "element": "a.k-page",
             "index": 17,
             "text": "Next \u2192",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / hover": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / active": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page[aria-current=\"page\"] / focus": [
+          {
+            "element": "a.k-page",
+            "index": 6,
+            "text": "2",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / hover": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / active": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          }
+        ],
+        "a.k-page:not([aria-current]):not(.disabled) / focus": [
+          {
+            "element": "a.k-page",
+            "index": 5,
+            "text": "1",
             "kind": "text",
             "disabled": false,
             "opacity": "1",
@@ -10013,16 +11261,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              201,
-              23,
-              30
+              242,
+              139,
+              144
             ],
             "background": [
               24,
               24,
               27
             ],
-            "ratio": 3.0580886269711782
+            "ratio": 7.484253317438049
           },
           {
             "element": "span.hint",
@@ -10042,6 +11290,246 @@
               27
             ],
             "ratio": 5.6033747235814975
+          }
+        ],
+        ".k-ctx button:not(.danger) / hover": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 4.710790046930188
+          }
+        ],
+        ".k-ctx button:not(.danger) / active": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 4.710790046930188
+          }
+        ],
+        ".k-ctx button:not(.danger) / focus": [
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "Open preview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "span.hint",
+            "index": 8,
+            "text": "\u23ce",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 4.710790046930188
+          }
+        ],
+        ".k-ctx button.danger / hover": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              242,
+              139,
+              144
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 6.292055729936337
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 4.710790046930188
+          }
+        ],
+        ".k-ctx button.danger / active": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              242,
+              139,
+              144
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 6.292055729936337
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 4.710790046930188
+          }
+        ],
+        ".k-ctx button.danger / focus": [
+          {
+            "element": "button.danger",
+            "index": 23,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              242,
+              139,
+              144
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 6.292055729936337
+          },
+          {
+            "element": "span.hint",
+            "index": 27,
+            "text": "\u232b",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 4.710790046930188
           }
         ]
       },
@@ -10074,16 +11562,16 @@
             "disabled": false,
             "opacity": "1",
             "foreground": [
-              51,
-              166,
-              184
+              93,
+              201,
+              220
             ],
             "background": [
               24,
               24,
               27
             ],
-            "ratio": 6.148044043734327
+            "ratio": 9.156657185763267
           },
           {
             "element": "span.k-avatar",

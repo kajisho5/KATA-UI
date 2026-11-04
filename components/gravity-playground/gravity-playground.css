@@ -1,5 +1,5 @@
 /* KATA Gravity Playground — KATAYABURI. The catalog, dropped. */
 .k-grav{position:relative;width:100%;background:var(--k-zinc-950);border-radius:14px;overflow:hidden;height:264px;font-family:var(--k-font);touch-action:none}
 .k-grav-chip{position:absolute;left:0;top:0;padding:8px 14px;border-radius:99px;background:var(--k-zinc-800);color:var(--k-on-color);font-size:13px;font-weight:600;white-space:nowrap;cursor:grab;border:1px solid var(--k-zinc-700);user-select:none;-webkit-user-select:none}
-.k-grav-chip.hot{background:var(--k-accent);border-color:var(--k-accent)}
+.k-grav-chip.hot{background:var(--k-accent);border-color:var(--k-accent);color:var(--k-on-accent)}
 .k-grav-chip:active{cursor:grabbing}

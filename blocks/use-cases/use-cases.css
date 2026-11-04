@@ -14,7 +14,7 @@
 .k-uc-body p{margin-top:6px;font-size:13px;line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
 .k-uc-body ul{list-style:none;margin:11px 0 0;padding:0;display:grid;gap:6px;font-size:13px;color:var(--k-ink-2)}
 .k-uc-body li{display:flex;gap:8px;align-items:center}
-.k-uc-body li svg{color:var(--k-accent);flex:none}
+.k-uc-body li svg{color:var(--k-accent-ink);flex:none}
 .k-uc-stage{position:relative;border-radius:var(--k-radius-xl);overflow:hidden;min-height:320px}
 .k-uc-stage .k-aurora{position:absolute;inset:0;border-radius:var(--k-radius-xl)}
 .k-uc-scene{position:absolute;inset:0;display:grid;place-items:center;padding:22px;animation:k-uc-in .45s var(--k-ease)}

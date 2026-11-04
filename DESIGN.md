@@ -236,15 +236,12 @@ outside this migration. Only the four named UI backdrops change independent
 paint declarations; colors within normalized shadows follow the shadow scale.
 
 
-### Shared text-contrast follow-up (partial, role decision pending)
+### Shared text-contrast roles
 
-Semantic light/dark text values now use the same canonical JSON → generated CSS
-adapter → component / Foundry / design-system path as shape tokens. Muted text
-uses #71717a in light and #90909a in dark. Light yellow-ink changes to #876019;
-dark yellow-ink remains #f6c555. These fix measured placeholder/note/badge failures.
-The light exceptions are necessary because the previous light values already
-failed 4.5:1. Core vermilion and all component CSS are unchanged.
-
-Danger/accent role coupling remains a decision, not a completed contrast claim.
-The diagnostic proposal and measurements live in docs/text-contrast.md. Do not
-change the dark canvas or mix text/surface roles silently to make the numbers pass.
+Shared JSON owns text/surface roles. Muted text uses #71717a in light and #90909a
+in dark. Danger text uses danger-ink; strong danger surfaces use white on-color.
+Accent foreground uses accent-ink; full accent surfaces use adaptive on-accent.
+Foundry and exported themes share WCAG luminance-based role math. Core vermilion,
+dark canvas and default accent hue are unchanged. Measurements and limits:
+docs/review/text-contrast/README.md. Mold checks remain independent of this
+browser-based preview measurement; do not claim complete WCAG conformance.

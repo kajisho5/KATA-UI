@@ -7,6 +7,6 @@
 .k-hm-grid .l1{background:color-mix(in srgb,var(--k-accent) 26%,var(--k-bg))}
 .k-hm-grid .l2{background:color-mix(in srgb,var(--k-accent) 52%,var(--k-bg))}
 .k-hm-grid .l3{background:color-mix(in srgb,var(--k-accent) 78%,var(--k-bg))}
-.k-hm-grid .l4{background:var(--k-accent)}
+.k-hm-grid .l4{background:var(--k-accent);color:var(--k-on-accent)}
 .k-hm-leg{display:flex;align-items:center;gap:4px;margin-top:11px;font-size:11px;color:var(--k-ink-3)}
 .k-hm-leg i{width:11px;height:11px;border-radius:var(--k-radius-xs);display:block}

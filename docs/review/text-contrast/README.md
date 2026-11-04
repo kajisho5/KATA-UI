@@ -1,144 +1,192 @@
-# Shared text contrast — decision pending
+# Shared text contrast — PR #20
 
-PR #19 was corrected, passed Checks and merged. This follow-up is based on main ee7d179. The current app changes only shared token values for muted text and light yellow text; the role correction below is a diagnostic proposal, not applied component code.
+Approved role separation is applied. Default accent remains #33a6b8; core #eb471f and dark canvas #18181b are unchanged. Checker rules are unchanged: Mold Verified **53 / 164**, UI **42 / 121**, Lab **11 / 43**. Baseline identities are unchanged.
 
-## Causes
+## Token roles
 
-| Text | Foreground token | Background | Original dark contrast |
-|---|---|---|---:|
-| Accent button | --k-on-color (#fff) | --k-accent (#33a6b8) | 2.88:1 |
-| Input error / Dropdown danger | --k-danger (#c9171e) | --k-bg (#18181b) | 3.06:1 |
-| Placeholder / hint / card note / menu heading | --k-ink-3 (#71717a) | --k-bg (#18181b) | 3.67:1 |
-| Card footer | --k-ink-3 (#71717a) | --k-bg-soft (#27272a) | 3.08:1 |
-
-Input errors and danger actions consume a paint token also used as the filled danger-button background. The existing --k-danger-ink is already the intended bright dark-theme text color, but these consumers do not use it. --k-on-color is also used on fixed dark Lab surfaces, so changing it globally to dark text would break those surfaces. Core vermilion is unrelated and unchanged.
-
-## Safe value changes already applied
-
-| Existing token | Light before → after | Dark before → after | Reason |
+| Token | Light | Dark | Role |
 |---|---|---|---|
-| --k-ink-3 | #a1a1aa → #71717a | #71717a → #90909a | Placeholders/hints/notes; light was already 2.56:1 (footer 2.39:1), so a light correction is necessary too |
-| --k-yamabuki-ink | #9b6e23 → #876019 | #f6c555 (unchanged) | Light Badge text was already 4.20:1 |
+| --k-ink-3 | #71717a | #90909a | Muted text, hints and placeholders |
+| --k-yamabuki-ink | #876019 | #f6c555 (unchanged) | Text on yellow tint |
+| --k-danger-ink | #b7282e (unchanged) | #f28b90 | Danger text on bg / bg-soft |
+| --k-on-accent | var(--k-ink) fallback; adaptive relative color | same | Text on full accent surfaces |
+| --k-accent-ink | #165e83 fallback; OKLCH L ≤ .48 | #81c7d4 fallback; OKLCH L ≥ .78 | Accent foreground on neutral surfaces |
+| --k-accent-hover | 90% accent + 10% contrast surface | same | Hover surface moves away from chosen text |
+| --k-accent-contrast-surface | var(--k-bg) fallback; adaptive white/black | same | Hover companion surface |
+| --k-accent-luminance | relative linear-sRGB WCAG luminance carrier | same | Internal generated color math; no component API |
+| --k-on-color | #fff (unchanged) | #fff (unchanged) | Strong danger and fixed dark Lab surfaces |
 
-All values are canonical in system/tokens.json, generated into tokens.css, and rendered on design-system. Mode switches use those same semantic definitions. No component CSS or JS is changed in the applied patch.
+Only the light ink-3 and yellow-ink values change from main: their previous values failed 4.5:1 on neutral surfaces (ink-3: 2.56 on white / 2.39 on bg-soft; yellow-ink: 4.20 on its preview tint). Danger-ink light is retained. The accent default hue and luminance are retained in both modes. Danger fill remains the existing strong surface with white text. Danger hover uses the existing thin danger-bg surface with danger-ink; active restores strong danger + white explicitly. Accent hover no longer misuses accent-ink as a fill.
 
-## Why danger needs a decision
+The relative-color block is gated by `@supports (color: oklch(from red l c h))`. A neutral linear-sRGB carrier computes Y = .2126 R + .7152 G + .0722 B exactly; OKLCH L alone cannot express WCAG Y=.179 for all hues. Below Y=.179, on-accent is white; above it, it uses ink-like channels, darkened near the crossover to retain 4.6:1 headroom. Foreground accent-ink retains hue/chroma and clamps OKLCH lightness. Static exports use the smallest sRGB black/white mix satisfying both neutral surfaces. This is shared role math, not component-specific paint.
 
-At the current #18181b background, a danger text color needs relative luminance ≥0.2167 for 4.5:1. A background carrying white text needs luminance ≤0.1833. These intervals do not overlap. One --k-danger value cannot satisfy both roles on the existing background.
-
-A pure token-only alternative would require changing the basic dark background to black: #e12b32 would give 4.59:1 as text on black and 4.57:1 with white text on it. That changes the theme and still requires resolving existing hover-role conflicts. It is not silently applied.
-
-## Accent alternatives
-
-| Candidate | Pair | Contrast |
-|---|---|---:|
-| Dark text on current accent | #18181b / #33a6b8 | 6.15:1 |
-| Darkened accent with white text | #fff / #247c8c | 4.84:1 |
-| Current white text on accent | #fff / #33a6b8 | 2.88:1 |
-
-The role proposal uses a separate common --k-on-accent (light white / dark ink), keeps generic --k-on-color white for other filled/dark surfaces, and darkens the light accent because its original white-text pair was already below 4.5:1. It also separates the danger hover surface from danger-ink text. Current body background and core stay unchanged.
-
-The exact generic role patch is [shared-role-proposal.patch](shared-role-proposal.patch). It maps all color:var(--k-danger) text uses to --k-danger-ink, all danger-ink background uses to a common hover surface, and accent-surface text to --k-on-accent. It contains no per-component RGB values. It is **not applied**. Its default-color preview passes the 12 core components and the two button hover states. Foundry custom-palette behavior still needs implementation/verification if this option is selected.
-
-## Core 12: before / safe values / proposed roles
-
-Eligible minima exclude actual disabled controls, which are listed separately. All numbers are from actual rendered computed colors and ancestor alpha composition; no Mold checker or allowlist is changed.
-
-| Component | Light before | Light safe changes | Light role proposal | Dark before | Dark safe changes | Dark role proposal |
-|---|---:|---:|---:|---:|---:|---:|
-| button | 2.88:1 | 2.88:1 | 4.84:1 | 2.88:1 | 2.88:1 | 5.79:1 |
-| input | 2.56:1 | 4.83:1 | 4.83:1 | 3.06:1 | 3.06:1 | 5.60:1 |
-| select | 17.72:1 | 17.72:1 | 17.72:1 | 16.12:1 | 16.12:1 | 16.12:1 |
-| card | 2.39:1 | 4.51:1 | 4.51:1 | 3.08:1 | 4.71:1 | 4.71:1 |
-| badge | 4.20:1 | 5.26:1 | 5.26:1 | 5.81:1 | 5.81:1 | 5.81:1 |
-| modal | 7.73:1 | 7.73:1 | 7.73:1 | 6.91:1 | 6.91:1 | 6.91:1 |
-| drawer | 7.73:1 | 7.73:1 | 7.73:1 | 6.91:1 | 6.91:1 | 6.91:1 |
-| dropdown | 2.56:1 | 4.83:1 | 4.83:1 | 3.06:1 | 3.06:1 | 5.60:1 |
-| popover | 7.73:1 | 7.73:1 | 7.73:1 | 6.91:1 | 6.91:1 | 6.91:1 |
-| tabs | 6.55:1 | 6.55:1 | 6.55:1 | 5.81:1 | 5.81:1 | 5.81:1 |
-| toast | 16.54:1 | 16.54:1 | 16.54:1 | 13.55:1 | 13.55:1 | 13.55:1 |
-| tooltip | 16.54:1 | 16.54:1 | 16.54:1 | 13.55:1 | 13.55:1 | 13.55:1 |
-
-## Button hover pairs
-
-| Theme | State | Text | Before | Safe changes | Role proposal |
-|---|---|---|---:|---:|
-| light | accent-hover | Accent | 7.09:1 | 7.09:1 | 7.09:1 |
-| light | danger-hover | Delete | 6.26:1 | 6.26:1 | 6.26:1 |
-| dark | accent-hover | Accent | 1.90:1 | 1.90:1 | 9.33:1 |
-| dark | danger-hover | Delete | 2.14:1 | 2.14:1 | 6.26:1 |
-
-## Remaining visible text below 4.5:1 after safe values (40 components)
-
-| Theme | Component | Text | Contrast |
-|---|---|---|---:|
-| light | button | Accent | 2.88:1 |
-| light | hover-card | Aoi Kimura | 2.88:1 |
-| dark | button | Accent | 2.88:1 |
-| dark | input | Please enter your full name | 3.06:1 |
-| dark | dropdown | Delete | 3.06:1 |
-| dark | field | Required | 3.06:1 |
-| dark | field | That address is missing its domain. | 3.06:1 |
-| dark | context-menu | Delete | 3.06:1 |
-
-## Disabled controls (excluded from threshold, numbers retained)
-
-| Theme | Component | Text | Before | Safe changes |
-|---|---|---|---:|---:|
-| light | button | Disabled | 2.92:1 | 2.92:1 |
-| light | button | Saving… | 2.92:1 | 2.92:1 |
-| light | select | Availability | 17.72:1 | 17.72:1 |
-| light | select | Locked | 3.38:1 | 3.38:1 |
-| light | radio | Lifetime (sold out) | 2.56:1 | 4.83:1 |
-| dark | button | Disabled | 4.19:1 | 4.19:1 |
-| dark | button | Saving… | 4.19:1 | 4.19:1 |
-| dark | select | Availability | 16.12:1 | 16.12:1 |
-| dark | select | Locked | 4.88:1 | 4.88:1 |
-| dark | radio | Lifetime (sold out) | 3.67:1 | 5.60:1 |
-
-## Actual safe-patch visual changes
-
-| Component | Light changed pixels | Dark changed pixels |
+| Danger foreground | On bg | On bg-soft |
 |---|---:|---:|
-| input | 2041 | 2048 |
-| select | 54 | 54 |
-| card | 1553 | 1560 |
-| badge | 233 | 0 |
-| dropdown | 160 | 160 |
-| field | 1619 | 1649 |
-| textarea | 699 | 702 |
-| radio | 609 | 617 |
-| accordion | 84 | 84 |
-| alert | 84 | 0 |
-| table | 1209 | 940 |
-| pagination | 16 | 16 |
-| breadcrumbs | 45 | 45 |
-| tag-input | 331 | 333 |
-| file-upload | 1289 | 1284 |
-| dual-range | 585 | 588 |
-| command | 2370 | 2376 |
-| context-menu | 1011 | 1028 |
-| navigation-menu | 1739 | 1753 |
-| menubar | 1634 | 1643 |
-| collapsible | 26 | 26 |
+| light #b7282e | 6.26 | 5.84 |
+| dark #f28b90 | 7.48 | 6.29 |
 
-| Theme | Before (40) | Safe changes (40) | Diagnostic role proposal (12) |
-|---|---|---|---|
-| Light | ![](before-light-overview.png) | ![](after-light-overview.png) | ![](proposal-light-overview.png) |
-| Dark | ![](before-dark-overview.png) | ![](after-dark-overview.png) | ![](proposal-dark-overview.png) |
+## 40 parts × two themes
 
-## Method and limits
+Each cell is the minimum eligible rendered text contrast in the default/open preview. Disabled controls and their associated labels are exempt; their measured minimum is listed separately. All normal text uses 4.5:1, including placeholders.
 
-The luminance function is reused from capture_toast_tokens.py. The computed-color method is the same as PR #19. Fully transparent ancestor content is excluded because it is not painted. checkbox/radio/range/file/color internal values are excluded because those values are not rendered as text. Native disabled controls and their associated labels are marked as disabled; a CSS class named disabled is not an exemption. A regression test covers these distinctions.
+| Part | Light before → after | Dark before → after | Disabled minimum (light / dark, after) |
+|---|---:|---:|---:|
+| button | 2.88 → 5.79 | 2.88 → 5.79 | 2.92 / 4.19 |
+| input | 2.56 → 4.83 | 3.06 → 5.60 | — / — |
+| select | 17.72 → 17.72 | 16.12 → 16.12 | 3.38 / 4.88 |
+| card | 2.39 → 4.51 | 3.08 → 4.71 | — / — |
+| badge | 4.20 → 5.26 | 5.81 → 5.81 | — / — |
+| modal | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| drawer | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| dropdown | 2.56 → 4.83 | 3.06 → 5.60 | — / — |
+| popover | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| tabs | 6.55 → 6.55 | 5.81 → 5.81 | — / — |
+| toast | 16.54 → 16.54 | 13.55 → 13.55 | — / — |
+| tooltip | 16.54 → 16.54 | 13.55 → 13.55 | — / — |
+| field | 2.56 → 4.83 | 3.06 → 5.60 | — / — |
+| textarea | 2.56 → 4.83 | 3.67 → 5.60 | — / — |
+| checkbox | 17.72 → 17.72 | 16.12 → 16.12 | — / — |
+| radio | 7.09 → 6.10 | 9.33 → 9.16 | 4.83 / 5.60 |
+| switch | 17.72 → 17.72 | 16.12 → 16.12 | — / — |
+| accordion | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| alert | 7.08 → 7.08 | 5.43 → 5.43 | — / — |
+| table | 2.39 → 4.51 | 3.08 → 4.71 | — / — |
+| pagination | 2.56 → 4.83 | 3.67 → 5.60 | — / — |
+| breadcrumbs | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| combobox | 17.72 → 17.72 | 16.12 → 16.12 | — / — |
+| input-otp | 17.72 → 17.72 | 16.12 → 16.12 | — / — |
+| tag-input | 2.56 → 4.83 | 3.67 → 5.60 | — / — |
+| file-upload | 2.56 → 4.83 | 3.67 → 5.60 | — / — |
+| slider | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| dual-range | 2.56 → 4.83 | 3.67 → 5.60 | — / — |
+| segmented | 6.55 → 6.55 | 5.81 → 5.81 | — / — |
+| toggle | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| button-group | 17.72 → 17.72 | 16.12 → 16.12 | — / — |
+| input-group | 7.22 → 7.22 | 5.81 → 5.81 | — / — |
+| alert-dialog | 5.79 → 5.79 | 5.79 → 5.79 | — / — |
+| command | 2.39 → 4.51 | 3.08 → 4.71 | — / — |
+| context-menu | 2.56 → 4.83 | 3.06 → 5.60 | — / — |
+| hover-card | 2.88 → 6.09 | 6.09 → 6.09 | — / — |
+| navigation-menu | 2.56 → 4.83 | 3.67 → 5.60 | — / — |
+| menubar | 2.56 → 4.83 | 3.67 → 5.60 | — / — |
+| copy-field | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
+| collapsible | 7.73 → 7.73 | 6.91 → 6.91 | — / — |
 
-Forty components are rendered in both themes, with real preview CSS/JS, opened popups, and extra accent/danger hover snapshots. No page errors. This is not a full interaction/screen-reader/gradient-image contrast audit. Native Select option popups and Firefox/Safari are not verified.
+light: 247 eligible text samples, 0 below 4.5:1.
 
-## Reproduce
+dark: 247 eligible text samples, 0 below 4.5:1.
 
+## Hover / active / focus
+
+Values are scoped to the interacted element and its descendants, including hints. Actual mouse-down is used for :active; keyboard focus is used for :focus-visible. Menus are reopened between states.
+
+| Part / target / state | Light before → after | Dark before → after |
+|---|---:|---:|
+| button `.btn-accent / hover` | 7.09 → 6.88 | 1.90 → 6.88 |
+| button `.btn-accent / active` | 2.88 → 6.15 | 2.88 → 6.15 |
+| button `.btn-accent / focus` | 2.88 → 6.15 | 2.88 → 6.15 |
+| button `.btn-danger / hover` | 6.26 → 5.57 | 2.14 → 7.24 |
+| button `.btn-danger / active` | 5.79 → 5.79 | 5.79 → 5.79 |
+| button `.btn-danger / focus` | 5.79 → 5.79 | 5.79 → 5.79 |
+| dropdown `.menu a:not(.danger) / hover` | 16.54 → 16.54 | 13.55 → 13.55 |
+| dropdown `.menu a:not(.danger) / active` | 16.54 → 16.54 | 13.55 → 13.55 |
+| dropdown `.menu a:not(.danger) / focus` | 17.72 → 17.72 | 16.12 → 16.12 |
+| dropdown `.menu a.danger / hover` | 5.41 → 5.84 | 2.57 → 6.29 |
+| dropdown `.menu a.danger / active` | 5.41 → 5.84 | 2.57 → 6.29 |
+| dropdown `.menu a.danger / focus` | 5.79 → 6.26 | 3.06 → 7.48 |
+| context-menu `.k-ctx button:not(.danger) / hover` | 2.39 → 4.51 | 3.08 → 4.71 |
+| context-menu `.k-ctx button:not(.danger) / active` | 2.39 → 4.51 | 3.08 → 4.71 |
+| context-menu `.k-ctx button:not(.danger) / focus` | 2.39 → 4.51 | 3.08 → 4.71 |
+| context-menu `.k-ctx button.danger / hover` | 2.39 → 4.51 | 2.57 → 4.71 |
+| context-menu `.k-ctx button.danger / active` | 2.39 → 4.51 | 2.57 → 4.71 |
+| context-menu `.k-ctx button.danger / focus` | 2.39 → 4.51 | 2.57 → 4.71 |
+| tabs `.tabs button.on / hover` | 15.02 → 15.02 | 13.55 → 13.55 |
+| tabs `.tabs button.on / active` | 15.02 → 15.02 | 13.55 → 13.55 |
+| tabs `.tabs button.on / focus` | 15.02 → 15.02 | 13.55 → 13.55 |
+| tabs `.tabs button:not(.on) / hover` | 6.55 → 6.55 | 5.81 → 5.81 |
+| tabs `.tabs button:not(.on) / active` | 6.55 → 6.55 | 5.81 → 5.81 |
+| tabs `.tabs button:not(.on) / focus` | 6.55 → 6.55 | 5.81 → 5.81 |
+| pagination `a.k-page[aria-current="page"] / hover` | 16.54 → 16.54 | 13.55 → 13.55 |
+| pagination `a.k-page[aria-current="page"] / active` | 16.54 → 16.54 | 13.55 → 13.55 |
+| pagination `a.k-page[aria-current="page"] / focus` | 17.72 → 17.72 | 16.12 → 16.12 |
+| pagination `a.k-page:not([aria-current]):not(.disabled) / hover` | 16.54 → 16.54 | 13.55 → 13.55 |
+| pagination `a.k-page:not([aria-current]):not(.disabled) / active` | 16.54 → 16.54 | 13.55 → 13.55 |
+| pagination `a.k-page:not([aria-current]):not(.disabled) / focus` | 7.73 → 7.73 | 6.91 → 6.91 |
+
+## Foundry custom colors
+
+| Mode | Accent | Text | Default | Hover | Active | Focus |
+|---|---|---|---:|---:|---:|---:|
+| light | #1f3a5f | white | 11.48 | 12.56 | 11.48 | 11.48 |
+| light | #ffd166 | #18181b | 12.29 | 12.76 | 12.29 | 12.29 |
+| dark | #1f3a5f | white | 11.48 | 12.56 | 11.48 | 11.48 |
+| dark | #ffd166 | #18181b | 12.29 | 12.76 | 12.29 | 12.29 |
+
+The same four palette/theme combinations pass when (a) editing --k-accent directly without Foundry JS, and (b) loading downloaded CSS after removing the entire relative-color block. Browser exports match Python-generated preset exports byte-for-byte. Themes custom color exports use the same function. The legacy Foundry runtime calculates static roles when relative colors are unsupported; plain CSS retains the requested static var(--k-ink) fallback, so unsupported browsers editing CSS manually must use the exported static theme.
+
+![Dark custom accent](custom-dark-1f3a5f.png)
+![Bright custom accent](custom-dark-ffd166.png)
+
+## Replacements
+
+The approved nine-file patch is applied, then refined by decisions B–F. No component-specific color literal or token is added.
+
+| File | Old → new |
+|---|---|
+| blocks/faq/faq.css | accent foreground → accent-ink |
+| blocks/integrations/integrations.css | accent foreground → accent-ink |
+| blocks/testimonials/testimonials.css | accent foreground → accent-ink |
+| blocks/use-cases/use-cases.css | accent foreground → accent-ink |
+| components/bar-chart/bar-chart.css | full accent surface text → on-accent |
+| components/burst-button/burst-button.css | full accent surface text → on-accent |
+| components/button/button.css | full accent surface text → on-accent; danger-ink hover fill → danger-bg + danger-ink; accent-ink hover fill → accent-hover + on-accent; active roles explicit |
+| components/card/examples.html | accent foreground → accent-ink |
+| components/chip/chip.css | danger foreground → danger-ink |
+| components/combobox/combobox.css | accent foreground → accent-ink |
+| components/context-menu/context-menu.css | danger foreground → danger-ink |
+| components/copy-field/copy-field.css | full accent surface text → on-accent |
+| components/dropdown/dropdown.css | danger foreground → danger-ink |
+| components/dual-range/dual-range.css | full accent surface text → on-accent |
+| components/field/field.css | danger foreground → danger-ink |
+| components/file-upload/file-upload.css | danger foreground → danger-ink |
+| components/funnel-chart/funnel-chart.css | full accent surface text → on-accent |
+| components/goo-cursor/goo-cursor.css | full accent surface text → on-accent |
+| components/gravity-playground/gravity-playground.css | full accent surface text → on-accent |
+| components/heatmap/heatmap.css | full accent surface text → on-accent |
+| components/hover-card/hover-card.css | accent foreground → accent-ink |
+| components/input/input.css | danger foreground → danger-ink |
+| components/jelly-buttons/jelly-buttons.css | full accent surface text → on-accent |
+| components/liquid-button/liquid-button.css | full accent surface text → on-accent |
+| components/progress/progress.css | full accent surface text → on-accent |
+| components/rating/rating.css | accent foreground → accent-ink |
+| components/split-panel/split-panel.css | accent foreground → accent-ink |
+| components/switch/switch.css | full accent surface text → on-accent |
+| components/tracing-beam/tracing-beam.css | full accent surface text → on-accent |
+| components/tree/tree.css | accent foreground → accent-ink |
+| templates/inbox/inbox.css | full accent surface text → on-accent |
+
+`system/tokens.json` owns values, role descriptions and contrast configuration. `tools/sync_shape_tokens.py` and `tools/color_roles.py` generate tokens.css. `build.py` regenerates registry, bundles, llms and design-system metadata; the same event-based helper in `system/color-roles.js` drives Foundry and Themes exports. Existing API names and on-color are preserved.
+
+## Visual evidence
+
+Each row is before / after, ordered Button, Input, Card, Table, Command, Navigation Menu. Full individual PNGs and before.json / after.json are adjacent.
+
+![Light before and after](comparison-light.png)
+![Dark before and after](comparison-dark.png)
+
+Historical `proposal-*.png`, `proposal.json` and `shared-role-proposal.patch` record the earlier diagnostic discussion; their rejected light-accent darkening is not the implemented result. Use `after.json` and `custom-accents.json` for current measurements.
+
+## Verification and limits
+
+- Chromium 154, real preview CSS/JS, 40 default/open previews × 2 themes; 60 element/state measurements; 24 custom palette/state/export/manual-CSS measurements. No page errors.
+- Alpha-composited computed foreground/background colors use the same WCAG calculation as Toast. Non-painted zero-opacity ancestors and non-text input values are excluded. CSS-only `.disabled` does not create an exemption.
+- Mold rules unchanged; 53/164, token-values 137; no added token-values finding. Baseline checked without changing identities. 28 unit tests pass; warning-as-error build and template verification pass.
+- Not verified: Firefox/Safari relative color behavior, screen readers, all hidden/interactive states beyond those listed, native select popups, and text over gradients/images. This is measured preview coverage, not a whole-library WCAG conformance claim.
+
+Reproduce:
 ```sh
-python3 -m tools.capture_text_contrast --phase before --ref ee7d179 --limit 40
+python3 -m tools.capture_text_contrast --phase before --ref ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a --limit 40
 python3 -m tools.capture_text_contrast --phase after --limit 40
-python3 -m tools.capture_text_contrast --phase proposal --limit 12
+python3 -m http.server 8765 --bind 127.0.0.1 --directory dist
+python3 -m tools.capture_custom_accents
 ```
-
-The production goal is not complete until the danger/accent decision is applied. Do not merge this draft as if all 12 already meet the target.

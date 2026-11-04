@@ -1,0 +1,48 @@
+{
+  "before_ref": "6140cbf",
+  "browser": "154.0.8037.57",
+  "viewport": [
+    800,
+    400
+  ],
+  "reduced_motion": "reduce",
+  "facts": {
+    "before": {
+      "light": {
+        "colors": {
+          "color": "rgb(244, 244, 245)",
+          "background": "rgb(24, 24, 27)",
+          "sub": "rgb(161, 161, 170)"
+        },
+        "sha256": "db3d26b01be6e80bf117189debe6a7bb753bb006da15ecdce00681562276f1c9"
+      },
+      "dark": {
+        "colors": {
+          "color": "rgb(244, 244, 245)",
+          "background": "rgb(244, 244, 245)",
+          "sub": "rgb(161, 161, 170)"
+        },
+        "sha256": "f3383044cf79c6644964176a43b1f5b66aa8a14b5da57113eb098e4b535e13a2"
+      }
+    },
+    "after": {
+      "light": {
+        "colors": {
+          "color": "rgb(244, 244, 245)",
+          "background": "rgb(24, 24, 27)",
+          "sub": "rgb(161, 161, 170)"
+        },
+        "sha256": "db3d26b01be6e80bf117189debe6a7bb753bb006da15ecdce00681562276f1c9"
+      },
+      "dark": {
+        "colors": {
+          "color": "rgb(244, 244, 245)",
+          "background": "rgb(244, 244, 245)",
+          "sub": "rgb(161, 161, 170)"
+        },
+        "sha256": "f3383044cf79c6644964176a43b1f5b66aa8a14b5da57113eb098e4b535e13a2"
+      }
+    }
+  },
+  "errors": []
+}

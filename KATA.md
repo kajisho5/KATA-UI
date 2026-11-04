@@ -204,3 +204,54 @@ JSON includes each item's profile, per-kind findings and reasons, advisory
 finding counts, and the exact pass/fail summary. Publish those measured results,
 even when a stricter policy reduces the score. Keep checker changes separate from
 component repairs so the effect of each is reviewable.
+
+
+## Static audit precision — geometry, motion and focus evidence
+
+These rules refine the profile contract above. They describe semantic categories,
+not exceptions for individual components. `check.config.json` is the policy source;
+`tests/mold/accuracy.json` contains passing and failing examples.
+
+- **Radius:** `50%` is circular geometry and is allowed. Other UI radius literals
+  remain errors. Pixel radii of at least 99px are reported as `radius-full` and
+  must use the existing shared `--k-radius-full`. This subtype does not remove
+  the Lab profile's geometry permission. A shared token remains the provenance
+  terminal; raw local aliases do not become shared tokens.
+- **Color:** `color-scheme` selects browser rendering behavior; it is not a paint
+  color. `transparent`, `currentColor` and `inherit` are permitted primitives.
+  Literal paint colors still fail.
+- **Easing:** CSS standard timing keywords and `steps(...)` / `linear(...)` are
+  language primitives. Custom `cubic-bezier(...)` curves require shared tokens
+  where the profile checks easing. UI retains its existing required kinds;
+  this revision does not add easing to UI's required kinds.
+- **Border:** border width is geometry, not mold. Widths from 1px through 3px,
+  including fractional widths, are allowed. Border paint is still checked
+  independently, so `2px solid #fff` fails. Wider widths and other units still
+  require tokens in the UI profile. Lab geometry remains allowed.
+- **Duration:** a complete `calc(<time> * var(--k-mscale))` product, in either
+  order, is controlled by Foundry's motion multiplier in both profiles. The time
+  factor may resolve through local aliases, but cycles and unknown variables
+  fail. An overridden local multiplier is not trusted. Merely mentioning the
+  multiplier, adding an uncontrolled time, or multiplying by another variable
+  does not establish control. This is a motion policy, not a general exemption
+  for raw values inside `calc()`.
+- **Inline data colors:** in `preview.html` and `examples.html` only, inline
+  color-property declarations on elements carrying `data-swatch` or `aria-label`
+  describe sample data. The exception applies to those declarations only. It
+  does not excuse stylesheet paint, unmarked elements, SVG attributes, shadows,
+  radius, duration or local-variable definitions. Label validity remains a
+  separate accessible-name check. Legacy hex scanning uses the same boundary.
+- **Shadow:** hand-built zero-offset, zero-blur ring shadows with literal pixel
+  spread are reported as `shadow-ring`, including local aliases. Use an existing
+  shared `--k-ring` family token. Blurred elevation shadows remain `shadow` errors;
+  neither subtype is an allowance.
+- **Focus:** inspect own CSS, declared dependency CSS and `tokens.css` together.
+  Read metadata dependencies, stylesheet links and the builder's `parts:` combo
+  declarations, including transitive dependencies. Count missing evidence once
+  per file, tag and normalized class set (or role); retain occurrence counts in
+  JSON. Ancestor classes alone do not match the focused element. A global shared
+  `box-shadow: var(--k-ring)` focus rule can cover bare controls. The current
+  `:where(:focus-visible)` outline-only safety net is present, but does not meet
+  that shared-ring contract; adding/measuring it remains P7. This static evidence
+  check does not establish computed cascade, contrast, clipping or visible focus
+  in a browser. It must not be presented as browser accessibility verification.

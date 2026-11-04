@@ -760,7 +760,7 @@ def landing(comps, blocks, n_icons, templates=None):
 <header class="hero3">
 <p class="hero3-eyebrow">{n} components · {nb} blocks · {nt} templates</p>
 <h1>HTML, CSS and JavaScript<br><span class="dim">for the page you're building.</span></h1>
-<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. check.py reports token provenance, markup and JavaScript findings. Browser behavior needs separate testing.</p>
+<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. No framework, no build step.</p>
 <div class="cta"><a class="btn btn-pri btn-lg" href="/components/">Browse components</a><a class="btn btn-ghost btn-lg" href="/docs/getting-started/">Get started</a></div>
 <p class="herotrust">Components are MIT licensed. <a class="fmold" href="/audit/">{MOLD_STATUS}</a> · <a href="/audit/">Read the results</a></p>
 </header>
@@ -824,8 +824,7 @@ def registry_json(comps, blocks, templates=None):
 
 def llms_txt(comps, blocks, n_icons, templates=None):
     lines = ['# KATA UI', '', summary_block(MOLD_REPORT), '',
-             'check.py reports token provenance, markup and JavaScript findings. Browser behavior needs separate testing.', '',
-             '> Practical UI components in plain HTML, CSS and JavaScript. No framework, no build step. Copy the source and read the current audit results.', '',
+             'Copy a button, form or table into your project. Edit the files yourself. No framework, no build step.', '',
              'KATA is framework-free: parts drop into plain HTML, Astro, Laravel, Django, Rails and templates unchanged. Components depend on tokens.css (design tokens) being loaded once.', '',
              '## Docs', '',
              '- [Design System](https://kata-ui.dev/design-system/): shared design tokens (tokens.json is downloadable there)',

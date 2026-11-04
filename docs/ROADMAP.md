@@ -1,25 +1,27 @@
 # Roadmap
 
 <!-- mold-snapshot:start -->
-[Mold Verified 21 / 164 · UI 12 / 121 · Lab 9 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 29 / 164 · UI 19 / 121 · Lab 10 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 
 | Remaining check findings | Count |
 |---|---:|
-| token-values: radius | 206 |
-| token-values: duration | 108 |
-| token-values: shadow | 49 |
-| token-values: border | 36 |
-| token-values: color | 35 |
-| token-values: easing | 30 |
+| token-values: radius | 157 |
+| token-values: radius-full | 11 |
+| token-values: duration | 107 |
+| token-values: shadow | 37 |
+| token-values: shadow-ring | 12 |
+| token-values: border | 1 |
+| token-values: color | 23 |
+| token-values: easing | 10 |
 | spacing-values (warn) | 892 |
 | type-values (warn) | 638 |
-| focus-visible | 456 |
+| focus-visible | 132 |
 | js-single-instance | 24 |
 | js-global-bindings | 57 |
-| shared-token-scope | 2 |
+| shared-token-scope | 0 |
 | accessible-label | 1 |
 <!-- mold-snapshot:end -->
 
@@ -38,6 +40,7 @@ separate release statuses. The phases below are targets, not shipped features.
 
 ## Phase 0 — Align claims and implementation
 
+- [x] P1 accuracy follow-up: semantic primitive rules, ring/pill classifications, dependency-aware focus evidence and Toast-local colors ([PR #17](https://github.com/kajisho5/KATA-UI/pull/17)).
 - [x] P1: Profile-aware checker and token provenance ([PR #15](https://github.com/kajisho5/KATA-UI/pull/15)).
 - [x] P2: CI ratchet, audit tables, generated audit facts and a checked template ([PR #16](https://github.com/kajisho5/KATA-UI/pull/16)).
 - [ ] P3: Resolve or close [PR #1](https://github.com/kajisho5/KATA-UI/pull/1) and [PR #3](https://github.com/kajisho5/KATA-UI/pull/3) after reviewing their remaining changes.

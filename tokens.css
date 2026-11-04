@@ -13,7 +13,7 @@
   --k-yamabuki-bg:rgba(255,177,27,.12); --k-yamabuki-line:rgba(255,177,27,.3);
   --k-track:#d4d4d8; --k-seg:#ececee; --k-border-strong:#c9c9cf;
   --k-success-bg:rgba(93,172,129,.1); --k-success-line:rgba(93,172,129,.32); --k-success-ink:#1b813e;
-  --k-toast-ink:#f4f4f5; --k-toast-sub:#a1a1aa; --k-success:#5dac81;
+  --k-success:#5dac81;
 
   --k-shadow-overlay:0 18px 44px -14px rgba(16,24,40,.28);
   --k-z-overlay:50;

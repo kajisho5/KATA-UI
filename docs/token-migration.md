@@ -2382,3 +2382,113 @@ python3 build.py
 ```
 
 433所見の種類別・値別・UI/Lab別・ファイル別の合計が一致することを確認。補足のspacing/font-sizeは独立した表として合計する。部品・トークン・検査器を変更せず、再実行のJSONが変更前と一致することも確認する。設計案の実装・見た目・contrast・実機動作・スクリーンリーダーはこの資料だけでは検証していない。
+
+## Accuracy revision after PR #16
+
+Snapshot: 2026-11-04 (Asia/Tokyo). This section supersedes the older measured counts above. Findings count property/kind records, not individual numeric tokens. Warning counts are findings, not the number of warning checks.
+
+Before: **21 / 164**. After: **29 / 164**. UI 19 / 121; Lab 10 / 43.
+
+### Rule changes and measured effects
+
+Token reductions are sequential marginal changes in radius → color-scheme → easing → border → scaled duration → marked data colors order. Classification changes alone remove no findings. No per-component allowlist entries were added.
+
+| Rule | Change and reason | Findings removed |
+|---|---|---:|
+| radius | Permit circular 50%; keep pixel radii checked | 38 |
+| radius-full | Classify UI pixel radii ≥99px; require shared full-radius token | 0 (11 reclassified) |
+| color | Ignore browser color-scheme behavior; retain paint checks | 4 |
+| easing | Permit standard CSS timing functions/keywords; custom curves still require tokens | 20 |
+| border | Permit 1–3px geometry, including fractions; retain paint checks | 35 |
+| duration | A complete product controlled by the trusted motion multiplier follows Foundry | 1 |
+| inline data colors | Only marked inline color declarations in preview/examples represent sample data | 8 |
+| shadow-ring | Classify literal ring constructions, including local aliases | 0 (12 reclassified) |
+| focus-visible | Read dependency evidence; deduplicate file/tag/classes; reject unrelated ancestor evidence | 324 (456 → 132) |
+| shared-token-scope | Move two Toast-only colors from global tokens onto its root | 2 |
+
+All previously passing targets remain passing. The changed focus count includes deduplication, not newly implemented keyboard behavior. tokens.css already contains an outline-only safety net; it does not implement the shared --k-ring rule planned for P7.
+
+### Current check findings
+
+| Check | Before | After |
+|---|---:|---:|
+| accessible-label | 1 | 1 |
+| button-type | 0 | 0 |
+| focus-visible | 456 | 132 |
+| js-global-bindings | 57 | 57 |
+| js-single-instance | 24 | 24 |
+| legacy-contract | 0 | 0 |
+| reduced-motion | 0 | 0 |
+| shared-token-scope | 2 | 0 |
+| spacing-values | 892 | 892 |
+| token-values | 464 | 358 |
+| type-values | 638 | 638 |
+| variant-hover | 0 | 0 |
+
+| token-values kind | Findings |
+|---|---:|
+| border | 1 |
+| color | 23 |
+| duration | 107 |
+| easing | 10 |
+| radius | 157 |
+| radius-full | 11 |
+| shadow | 37 |
+| shadow-ring | 12 |
+
+### Shared token proposals — no token additions in this revision
+
+Each count below is the number of current token-values findings that the stated replacement can remove. Exact matches preserve the default value. Near matches require design review and are counted separately. Counts across overlapping proposals must not be summed. Local aliases are expanded before matching. Lab geometry is outside the radius count.
+
+| Shared token proposal | Default value | Exact findings removed | Targets |
+|---|---|---:|---|
+| `--k-shadow-popover` | `0 20px 44px -14px rgba(16,24,40,.22)` | 4 | `components/cascader`, `components/date-picker`, `components/navigation-menu`, `components/time-picker` |
+| `--k-shadow-modal` | `0 30px 80px -20px rgba(0,0,0,.4)` | 2 | `components/alert-dialog`, `components/modal` |
+| `--k-shadow-xs` | `0 1px 2px rgba(16,24,40,.05)` | 2 | `blocks/kanban`, `components/button` |
+| `--k-backdrop` | `rgba(24,24,27,.45)` | 4 | `components/alert-dialog`, `components/command`, `components/drawer`, `components/modal` |
+
+The existing `--k-shadow-overlay` has different geometry/opacity. Do not alias all overlay shadows to it just to clear findings. Toast’s black .45 shadow also differs from the proposed zinc .22 popover shadow. Those variants require screenshots before normalization.
+
+#### Radius scale linked to Foundry
+
+At the current 8px base, define the following six shared levels. These are proposals, including updates/aliases for existing names. Do not add them in this PR. A zero base makes every level zero, including full. Full preserves the existing 99px default; it is not a guarantee of a pill on arbitrarily large boxes.
+
+| Level | Proposed shared definition | Observed UI literals | Findings removable after agreed normalization | Exact-default subset |
+|---|---|---|---:|---:|
+| xs | `--k-radius-xs: calc(var(--k-radius) * 0.25)` | 2px, 2.5px, 3px | 10 | 2 |
+| sm | `--k-radius-sm: calc(var(--k-radius) * 0.75)` | 4px, 5px, 6px | 11 | 5 |
+| md | `--k-radius-md: var(--k-radius)` | 7px, 8px, 9px | 41 | 22 |
+| lg | `--k-radius-lg: calc(var(--k-radius) * 1.5)` | 10px, 11px, 12px, 13px | 35 | 12 |
+| xl | `--k-radius-xl: calc(var(--k-radius) * 2)` | 14px, 16px, 18px | 59 | 12 |
+| full | `--k-radius-full: calc(var(--k-radius) * 12.375)` | 99px | 11 | 11 |
+
+Mixed-corner declarations requiring more than one scale token: **1**: `components/hanko` `9px 11px 10px 12px`.
+
+The scale covers all current UI radius findings only after the visual normalization is reviewed. The existing --k-radius-sm (6px), --k-radius-lg (12px) and --k-radius-full (99px) can be made relative to the base; --k-radius-md should alias --k-radius, not replace the Foundry base.
+
+#### UI motion tiers
+
+Use aliases of the existing 130ms / 180ms / 220ms shared tokens, then multiply by `var(--k-mscale, 1)` at use sites. These tiers stay within KATA.md’s 130–220ms UI interval. Keep artistic animation cycles and stagger delays out of this automatic mapping.
+
+| Proposal | Definition | Candidate findings removed | Exact-duration subset |
+|---|---|---:|---:|
+| `--k-duration-fast` | `var(--k-dur-1)` (130ms) | 22 | 7 |
+| `--k-duration-base` | `var(--k-dur-2)` (180ms) | 9 | 8 |
+| `--k-duration-slow` | `var(--k-dur-3)` (220ms) | 3 | 1 |
+
+Candidate counts assume replacing every raw time in that declaration and verifying the resulting interaction. For example, 120ms → 130ms changes timing; preserve it only through a reviewed policy decision. Durations outside these bands are not claimed as solved.
+
+#### Custom easing
+
+UI does not currently fail easing; these counts refer to the Lab-required easing findings. Keep the existing `--k-ease` as the default. Do not silently replace spring curves with that non-overshooting curve.
+
+| Shared proposal | Curve | Exact findings removed | Optional near-match findings |
+|---|---|---:|---:|
+| `--k-ease-spring` | `cubic-bezier(.3,2.3,.4,1)` | 1 | 2 |
+| `--k-ease-bounce` | `cubic-bezier(.6,-0.1,.2,1.25)` | 1 | 0 |
+
+A declaration with two copies of the same curve is one finding; replace both to remove it. The spring near-match count is conditional on visual review. Cubic-bezier values in other curves remain open.
+
+### Remaining limitations
+
+Static selector matching is conservative and does not model the full CSS cascade, every pseudo-class or visual ring clipping. P7 must measure computed focus in a browser. Local-variable provenance merges possible definitions conservatively; it does not execute selectors or keyframes. This revision does not validate all CSS grammar or establish screen-reader behavior. Toast screenshots prove pixel equality in Chromium light/dark, not accessibility: its pre-existing dark text/background contrast problem remains open.

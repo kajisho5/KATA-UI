@@ -6,6 +6,7 @@ import argparse, json, re, sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from tools.mold_rules import inspect
+from tools.mold_data import mask_color_data
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -17,6 +18,11 @@ RGBA = re.compile(r'rgba?\((\d+),\s*(\d+),\s*(\d+)')
 
 TOKENS_CSS = (ROOT / 'tokens.css').read_text(encoding='utf-8')
 DEFINED_TOKENS = set(re.findall(r'(--k-[a-z0-9-]+)\s*:', TOKENS_CSS))
+
+def preview_hex(directory):
+    text='\n'.join(mask_color_data(path.read_text(encoding='utf-8'),path.name,CONFIG)
+                   for path in (directory/'preview.html',directory/'examples.html') if path.exists())
+    return HEX.finditer(text)
 
 def check_component(d):
     slug = d.name
@@ -45,7 +51,7 @@ def check_component(d):
     ex_f = d / 'examples.html'
     if ex_f.exists():
         prev += '\n' + ex_f.read_text(encoding='utf-8')
-    for m in HEX.finditer(prev):
+    for m in preview_hex(d):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
     # the stroke rule binds icon glyphs (24-grid SVGs) only; chart/diagram SVGs use their own geometry
     for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
@@ -110,7 +116,7 @@ def check_block(d, comp_slugs):
             errs.append(f'meta.uses: unknown component {u}')
     css = css_f.read_text(encoding='utf-8')
     prev = prev_f.read_text(encoding='utf-8')
-    for m in HEX.finditer(prev):
+    for m in preview_hex(d):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
     # the stroke rule binds icon glyphs (24-grid SVGs) only; chart/diagram SVGs use their own geometry
     for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
@@ -177,7 +183,7 @@ def check_template(d, comp_slugs, block_slugs):
             errs.append(f'meta.blocks: unknown block {u}')
     css = css_f.read_text(encoding='utf-8')
     prev = prev_f.read_text(encoding='utf-8')
-    for m in HEX.finditer(prev):
+    for m in preview_hex(d):
         errs.append(f'preview: raw hex color {m.group(0)} — use currentColor / a --k- token')
     for svg_m in re.finditer(r'<svg\b[^>]*>.*?</svg>', prev, re.S):
         if 'viewBox="0 0 24 24"' not in svg_m.group(0).split('>', 1)[0]:

@@ -1,5 +1,5 @@
 .statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;font-family:var(--k-font);width:100%}
-.statcard{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:12px;padding:16px;text-align:start}
+.statcard{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:16px;text-align:start}
 
 .statcard .badge{white-space:nowrap;flex:none}
 .statcard .k-stat{min-width:0}

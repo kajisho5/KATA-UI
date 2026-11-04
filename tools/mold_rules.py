@@ -1,7 +1,7 @@
 """Conservative static checks; runtime selector/cascade coverage is tested separately."""
 import json, re
 from html.parser import HTMLParser
-from tools.token_values import Values, kinds_for, split_top
+from tools.token_values import Values, kinds_for, split_top, lex, NUMBER
 from tools.mold_data import is_color_data
 
 class Markup(HTMLParser):
@@ -105,6 +105,51 @@ def focus_matches(node, selector, body, config):
     return False
 
 
+def contains_drop_shadow(value, local, seen=()):
+    for token,name,args in lex(value):
+        if token!='function':continue
+        if name.lower()=='drop-shadow':return True
+        if name.lower()=='var':
+            parts=split_top(args);variable=parts[0]
+            if any(contains_drop_shadow(part,local,seen) for part in parts[1:]):return True
+            if variable not in seen and any(contains_drop_shadow(v,local,seen+(variable,)) for v in local.get(variable,[])):return True
+    return False
+
+
+def lab_shadow_issues(value, evaluator, prop, stack=(), mixing=False):
+    """Lab owns glow geometry; shared-token paint provenance remains mandatory."""
+    if len(stack)>128:return ['variable chain exceeds analysis limit']
+    issues=[];value=re.sub(r'\s*!important\s*$','',value,flags=re.I).strip()
+    allowed={v.lower() for v in evaluator.config['allowed_values']['global']+evaluator.config['allowed_values']['shadow']}
+    for token,text,args in lex(value):
+        if token=='ident' and NUMBER.fullmatch(text):token='number'
+        low=text.lower()
+        if token=='function' and low=='var':
+            parts=split_top(args);name=parts[0]
+            if name in stack:issues.append('cycle: '+' -> '.join(stack+(name,)));continue
+            if name in evaluator.local:
+                for definition in evaluator.local[name]:
+                    issues.extend(name+' -> '+v for v in lab_shadow_issues(definition,evaluator,prop,stack+(name,),mixing))
+            elif not (name.startswith('--k-') and name in evaluator.shared):issues.append('unresolved shared paint/geometry variable: '+name)
+            if len(parts)>1:issues.extend(lab_shadow_issues(','.join(parts[1:]),evaluator,prop,stack,mixing))
+        elif token=='function':
+            if low=='color-mix':issues.extend(lab_shadow_issues(args,evaluator,prop,stack,True))
+            elif low in evaluator.config['shadow_functions'] or low in evaluator.config['arithmetic_functions']:
+                issues.extend(lab_shadow_issues(args,evaluator,prop,stack,mixing))
+            elif prop in ('filter','backdrop-filter') and low in evaluator.config['filter_geometry_functions']:
+                issues.extend(lab_shadow_issues(args,evaluator,prop,stack,mixing))
+            else:issues.append('raw/unsupported shadow paint: '+text+'('+args+')')
+        elif token=='number':
+            if mixing and not re.fullmatch(r'[-+]?(?:\d*\.\d+|\d+)%',text):issues.append('invalid color-mix weight: '+text)
+        elif token=='ident':
+            if low in allowed:continue
+            if mixing and low in evaluator.config['paint_keywords']:continue
+            issues.append('raw shadow color/unsupported keyword: '+text)
+        elif token=='color':issues.append('raw shadow color: '+text)
+        elif token not in ('operator',):issues.append('unresolved shadow syntax: '+text)
+    return list(dict.fromkeys(issues))
+
+
 def finding_kind(value, kind, evaluator, config, seen=()):
     expanded=value
     for name in re.findall(r'var\(\s*(--[\w-]+)',value):
@@ -164,12 +209,15 @@ def inspect(directory, root, config):
     for path, decls, color_data in sources:
         for prop, value in decls:
             if not prop.startswith('--'):prop = prop.lower()
-            for kind in kinds_for(prop.lower(), value):
+            kinds=kinds_for(prop.lower(),value)
+            if prop in ('filter','backdrop-filter') and contains_drop_shadow(value,local):kinds=['shadow']
+            for kind in kinds:
                 if kind=='color' and color_data:continue
                 if kind not in config['profiles'][profile]['required'] and kind not in ('spacing','type'):continue
                 target = 'spacing-values' if kind == 'spacing' else ('type-values' if kind == 'type' else 'token-values')
                 problems, _ = evaluator.check(value, kind, prop)
-                reported_kind = finding_kind(value,kind,evaluator,config)
+                if profile=='lab' and kind=='shadow':problems=lab_shadow_issues(value,evaluator,prop)
+                reported_kind = 'shadow' if profile=='lab' and kind=='shadow' else finding_kind(value,kind,evaluator,config)
                 allowed = any(a.get('path') == path and a.get('property') == prop and a.get('value') == value and a.get('reason') for a in config['raw_value_allowlist'])
                 if problems and not allowed:
                     results[target].append(f"{path}: {prop}: {value} [{reported_kind}] — " + '; '.join(problems))

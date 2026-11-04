@@ -1,5 +1,5 @@
-.kdrawer{border:0;padding:0;margin:0 0 0 auto;inset:0 0 0 auto;position:fixed;height:100dvh;max-height:100dvh;width:min(360px,92vw);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);box-shadow:-24px 0 60px -24px rgba(0,0,0,.35)}
-.kdrawer::backdrop{background:rgba(24,24,27,.45);backdrop-filter:blur(3px)}
+.kdrawer{border:0;padding:0;margin:0 0 0 auto;inset:0 0 0 auto;position:fixed;height:100dvh;max-height:100dvh;width:min(360px,92vw);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);box-shadow:var(--k-shadow-modal)}
+.kdrawer::backdrop{background:var(--k-backdrop);backdrop-filter:blur(3px)}
 .kdrawer[open]{animation:kdrawer-in var(--k-dur-2) var(--k-ease)}
 @keyframes kdrawer-in{from{transform:translateX(36px);opacity:.4}to{transform:none;opacity:1}}
 @media (prefers-reduced-motion:reduce){.kdrawer[open]{animation:none}}

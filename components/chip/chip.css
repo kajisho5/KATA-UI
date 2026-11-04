@@ -1,4 +1,4 @@
-.k-chip{display:inline-flex;align-items:center;gap:7px;height:29px;padding:0 7px 0 12px;border:1px solid var(--k-line);border-radius:99px;background:var(--k-bg);font-family:var(--k-font);font-size:12.5px;font-weight:500;color:var(--k-ink)}
+.k-chip{display:inline-flex;align-items:center;gap:7px;height:29px;padding:0 7px 0 12px;border:1px solid var(--k-line);border-radius:var(--k-radius-full);background:var(--k-bg);font-family:var(--k-font);font-size:12.5px;font-weight:500;color:var(--k-ink)}
 .k-chip[data-on]{background:var(--k-ink);border-color:var(--k-ink);color:var(--k-bg)}
 .k-chip-x{width:19px;height:19px;border-radius:50%;border:none;background:var(--k-bg-soft);color:var(--k-ink-2);display:grid;place-items:center;cursor:pointer;padding:0}
 .k-chip[data-on] .k-chip-x{background:rgba(255,255,255,.16);color:var(--k-bg)}

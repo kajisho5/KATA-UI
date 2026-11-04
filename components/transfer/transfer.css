@@ -5,7 +5,7 @@
 .k-xfer-h .cnt{margin-inline-start:auto;color:var(--k-ink-3);font-weight:500}
 .k-xfer-filter{margin:9px 10px 4px}
 .k-xfer-list{padding:5px;overflow:auto;display:flex;flex-direction:column;gap:1px}
-.k-xfer-it{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;font-size:13px;cursor:pointer}
+.k-xfer-it{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:var(--k-radius-md);font-size:13px;cursor:pointer}
 .k-xfer-it:hover{background:var(--k-bg-soft)}
 .k-xfer input[type=checkbox]{accent-color:var(--k-ink);width:15px;height:15px;flex:none;cursor:pointer}
 .k-xfer-acts{display:flex;flex-direction:column;gap:8px;justify-content:center}

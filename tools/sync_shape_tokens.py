@@ -1,0 +1,37 @@
+"""Generate the radius/elevation CSS adapter from canonical system/tokens.json."""
+import argparse
+import json
+from pathlib import Path
+import re
+
+ROOT=Path(__file__).resolve().parents[1]
+
+
+def values(tokens,mode):
+    result={}
+    if mode=='root':
+        radii=tokens['radiusPx'];base=radii['md']
+        result['--k-radius']=f'{base:g}px'
+        for name,value in radii.items():
+            result['--k-radius-'+name]=(f'{value:g}px' if name=='full' else 'var(--k-radius)' if name=='md' else f'calc(var(--k-radius) * {value/base:g})')
+    for name,value in tokens['elevation']['rings'].items():result['--k-ring-'+name]=value
+    for name,target in tokens['elevation']['aliases'].items():result['--k-shadow-'+name]='var(--k-shadow-'+target+')'
+    theme='light' if mode=='root' else mode
+    for name,pair in tokens['elevation']['shadows'].items():result['--k-shadow-'+name]=pair[theme]
+    result['--k-backdrop']=tokens['elevation']['backdrop'][theme]
+    return result
+
+
+def sync(root=ROOT,check=False):
+    tokens=json.loads((root/'system/tokens.json').read_text());path=root/'tokens.css';old=path.read_text();new=old
+    for mode in ('root','dark','light'):
+        start=f'/* shape-tokens:{mode}:start */';end=f'/* shape-tokens:{mode}:end */'
+        if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing/duplicate shape adapter region: '+mode)
+        content='\n'.join('  '+name+':'+value+';' for name,value in values(tokens,mode).items())
+        new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+content+'\n  '+end,new,flags=re.S)
+    if old!=new:
+        if check:raise ValueError('tokens.css shape adapter is stale; run python3 -m tools.sync_shape_tokens')
+        path.write_text(new)
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');args=parser.parse_args();sync(check=args.check)

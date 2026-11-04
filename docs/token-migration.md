@@ -2492,3 +2492,106 @@ A declaration with two copies of the same curve is one finding; replace both to 
 ### Remaining limitations
 
 Static selector matching is conservative and does not model the full CSS cascade, every pseudo-class or visual ring clipping. P7 must measure computed focus in a browser. Local-variable provenance merges possible definitions conservatively; it does not execute selectors or keyframes. This revision does not validate all CSS grammar or establish screen-reader behavior. Toast screenshots prove pixel equality in Chromium light/dark, not accessibility: its pre-existing dark text/background contrast problem remains open.
+
+
+## Confirmed shared shape migration
+
+This approved implementation supersedes the earlier radius/shadow proposals;
+it does not change checker rules. Canonical values are in `system/tokens.json`;
+`tools/sync_shape_tokens.py` generates the radius/elevation adapter in `tokens.css`.
+Build renders and publishes the same JSON on `/design-system/`. Foundry modifies
+the base only and preserves a saved zero.
+
+| Observed UI radius | Shared stage | At base 8px | Runtime definition |
+|---|---|---:|---|
+| 2–3px (including 2.5px) | xs | 3px | calc(var(--k-radius) * .375) |
+| 4–6px | sm | 6px | calc(var(--k-radius) * .75) |
+| 7–9px | md | 8px | var(--k-radius) |
+| 10–13px | lg | 12px | calc(var(--k-radius) * 1.5) |
+| 14–18px | xl | 16px | calc(var(--k-radius) * 2) |
+| ≥99px | full | 999px | 999px (fixed pill) |
+
+There were no out-of-table radius literals in the failing findings. Mixed corner
+values are mapped per corner, preserving zeros. Circles (50%) and Lab geometry
+are unchanged. Existing sm/lg/full names are retained; full was actually 99px
+in main and is updated to the requested 999px. The earlier full-relative proposal
+is not implemented: full is explicitly fixed in the approved contract.
+
+The elevation tiers are xs (0 1px 2px), sm (0 1px 4px), pop
+(0 20px 44px -14px), and modal (0 30px 80px -20px). Light values use the most
+frequent matching existing recipes; ties favor the documented tiny-shadow
+recipe. Dark variants retain geometry with stronger black opacity.
+The existing --k-shadow-overlay name is retained as an alias of --k-shadow-pop.
+Two shared rings (--k-ring-inset / --k-ring-line) supplement existing focus rings.
+Backdrops use color-mix with zinc-900 at 45% in light and zinc-950 at 70% in dark.
+Only Modal / Drawer / Command / Alert Dialog backdrop paint changes here.
+
+Audit: **29 / 164 → 53 / 164**. Radius 157 → 0; radius-full 11 → 0; shadow 37 → 0; shadow-ring 12 → 0. Duration remains 107; easing remains 10; independent backdrop replacements reduce color findings 23 → 19. Spacing/type warning findings remain 892 / 638.
+
+Full target/declaration mapping, pixel measurements, the 4.5:1 dark contrast list, screenshots and scale assertions are recorded in [the review evidence](review/shared-shape/README.md). Colors in shadows follow the shadow migration; unrelated paint, duration and easing are untouched.
+
+### Historical initial shadow mapping ledger
+
+Lab rows in this initial ledger are superseded by the regression correction below.
+
+| Observed shadow | Shared replacement | Targets |
+|---|---|---|
+| `-24px 0 60px -24px rgba(0,0,0,.35)` | `var(--k-shadow-modal)` | `components/drawer` |
+| `0 0 0 1px rgba(24,24,27,.25)` | `var(--k-ring-line)` | `components/comparison-slider` |
+| `0 0 0 1px var(--k-line)` | `var(--k-ring-line)` | `templates/product-page` |
+| `0 0 0 2px var(--k-accent)` | `var(--k-ring)` | `templates/product-page` |
+| `0 0 0 2px var(--k-bg),0 0 0 4px var(--k-accent)` | `var(--k-ring)` | `components/color-picker` |
+| `0 0 0 2px var(--k-ink)` | `var(--k-ring)` | `templates/product-page` |
+| `0 0 0 3px var(--k-accent-bg)` | `var(--k-ring)` | `components/input-otp`, `components/tag-input` |
+| `0 0 0 4px var(--k-accent-bg)` | `var(--k-ring)` | `components/tracing-beam` |
+| `0 0 0 5px var(--k-accent-bg-strong)` | `var(--k-ring)` | `components/tour` |
+| `0 0 10px 2px rgba(255,255,255,.3)` | `var(--k-shadow-sm)` | `components/meteors` |
+| `0 0 18px -4px var(--k-accent-bg)` | `var(--k-shadow-sm)` | `components/glow-button` |
+| `0 0 26px -6px var(--k-accent)` | `var(--k-shadow-sm)` | `components/glow-button` |
+| `0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent)` | `var(--k-shadow-pop)` | `components/converge` |
+| `0 12px 26px -10px rgba(16,24,40,.4)` | `var(--k-shadow-pop)` | `components/orbit` |
+| `0 14px 28px -14px rgba(16,24,40,.28)` | `var(--k-shadow-pop)` | `components/torn-ticket` |
+| `0 14px 34px -12px rgba(16,24,40,.25)` | `var(--k-shadow-pop)` | `blocks/cookie-consent` |
+| `0 16px 40px -12px rgba(16,24,40,.18)` | `var(--k-shadow-pop)` | `components/hover-card` |
+| `0 16px 40px -14px rgba(16,24,40,.25)` | `var(--k-shadow-pop)` | `components/dropdown` |
+| `0 18px 40px -12px rgba(16,24,40,.25)` | `var(--k-shadow-pop)` | `components/menubar` |
+| `0 18px 40px -18px rgba(0,0,0,.45)` | `var(--k-shadow-pop)` | `components/glass-panel` |
+| `0 18px 44px -14px rgba(16,24,40,.28)` | `var(--k-shadow-pop)` | `components/tour` |
+| `0 1px 2px rgba(16,24,40,.04)` | `var(--k-shadow-xs)` | `components/input` |
+| `0 1px 2px rgba(16,24,40,.05)` | `var(--k-shadow-xs)` | `blocks/kanban`, `components/button` |
+| `0 1px 2px rgba(16,24,40,.09)` | `var(--k-shadow-xs)` | `components/segmented` |
+| `0 1px 2px rgba(16,24,40,.18)` | `var(--k-shadow-xs)` | `components/slider` |
+| `0 1px 3px rgba(0,0,0,.3),inset 0 0 0 1px rgba(0,0,0,.08)` | `var(--k-shadow-xs),var(--k-ring-inset)` | `components/switch` |
+| `0 1px 3px rgba(16,24,40,.14)` | `var(--k-shadow-xs)` | `components/tabs` |
+| `0 1px 4px rgba(16,24,40,.18)` | `var(--k-shadow-sm)` | `components/dual-range` |
+| `0 20px 44px -12px rgba(16,24,40,.28)` | `var(--k-shadow-pop)` | `components/context-menu` |
+| `0 20px 44px -14px rgba(0,0,0,.45)` | `var(--k-shadow-pop)` | `components/toast` |
+| `0 20px 44px -14px rgba(16,24,40,.22)` | `var(--k-shadow-pop)` | `components/cascader`, `components/date-picker`, `components/navigation-menu`, `components/time-picker` |
+| `0 2px 10px rgba(16,24,40,.3)` | `var(--k-shadow-sm)` | `components/comparison-slider` |
+| `0 2px 8px rgba(16,24,40,.08)` | `var(--k-shadow-sm)` | `components/speed-dial` |
+| `0 2px 8px rgba(16,24,40,.1)` | `var(--k-shadow-sm)` | `components/speed-dial` |
+| `0 30px 80px -20px rgba(0,0,0,.4)` | `var(--k-shadow-modal)` | `components/alert-dialog`, `components/modal` |
+| `0 30px 80px -20px rgba(0,0,0,.45)` | `var(--k-shadow-modal)` | `components/command` |
+| `0 3px 7px rgba(16,24,40,.25)` | `var(--k-shadow-sm)` | `components/newtons-cradle` |
+| `0 4px 12px rgba(16,24,40,.1)` | `var(--k-shadow-sm)` | `components/orbit` |
+| `0 6px 18px rgba(16,24,40,.28)` | `var(--k-shadow-sm)` | `components/speed-dial` |
+| `inset 0 0 0 1px currentColor` | `var(--k-ring-inset)` | `components/button` |
+
+
+## PR #19 regression correction: effect geometry and ring semantics
+
+Lab shadow geometry is restored to 9efb97d. The corrected rule checks paint
+provenance in box-shadow/text-shadow/drop-shadow, including local aliases and
+fallbacks; it does not force glow geometry through UI elevation stages. Literal
+rgba/hex/named paint still fails. KATA.md and tests/mold/lab-shadows.json document
+and test both outcomes. Glass Panel / Torn Ticket remain UI; Glow Button is Lab.
+
+Seven Lab components restore ten declarations. Palette-based color-mix preserves
+alpha and fixed light/neutral intent. Selected/offset rings are separate shared
+tokens; Input OTP / Tag Input retain focus rings. Both Drawer edges showed >=8px
+of shadow, so no edge token or Drawer change is made.
+
+The score remains 53/164 (UI 42/121, Lab 11/43). A rule-only change on the initial
+PR source adds zero passes. On restored sources the old rule would pass 52/164;
+the corrected rule retains Tracing Beam's pass, without hiding other Lab issues.
+[Full geometry, fixtures, edge measurements and three-way images](review/shape-regressions/README.md).

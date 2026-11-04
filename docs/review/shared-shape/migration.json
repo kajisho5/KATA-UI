@@ -1,0 +1,2012 @@
+[
+  {
+    "target": "components/alert-dialog",
+    "profile": "ui",
+    "path": "components/alert-dialog/alert-dialog.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/alert-dialog",
+    "profile": "ui",
+    "path": "components/alert-dialog/alert-dialog.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 30px 80px -20px rgba(0,0,0,.4)",
+    "after": "var(--k-shadow-modal)",
+    "declarations": 1
+  },
+  {
+    "target": "components/aspect-ratio",
+    "profile": "ui",
+    "path": "components/aspect-ratio/aspect-ratio.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/badge",
+    "profile": "ui",
+    "path": "components/badge/badge.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "components/bar-chart",
+    "profile": "ui",
+    "path": "components/bar-chart/bar-chart.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "5px 5px 0 0",
+    "after": "var(--k-radius-sm) var(--k-radius-sm) 0 0",
+    "declarations": 1
+  },
+  {
+    "target": "components/bottom-navigation",
+    "profile": "ui",
+    "path": "components/bottom-navigation/bottom-navigation.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/bottom-navigation",
+    "profile": "ui",
+    "path": "components/bottom-navigation/examples.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "18px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/bottom-navigation",
+    "profile": "ui",
+    "path": "components/bottom-navigation/preview.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "18px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/button",
+    "profile": "ui",
+    "path": "components/button/button.css",
+    "property": "--k-btn-shadow",
+    "kind": "shadow",
+    "before": "0 1px 2px rgba(16,24,40,.05)",
+    "after": "var(--k-shadow-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "components/button",
+    "profile": "ui",
+    "path": "components/button/button.css",
+    "property": "--k-btn-inset",
+    "kind": "shadow-ring",
+    "before": "inset 0 0 0 1px currentColor",
+    "after": "var(--k-ring-inset)",
+    "declarations": 1
+  },
+  {
+    "target": "components/calendar",
+    "profile": "ui",
+    "path": "components/calendar/calendar.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 2
+  },
+  {
+    "target": "components/card",
+    "profile": "ui",
+    "path": "components/card/card.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/carousel",
+    "profile": "ui",
+    "path": "components/carousel/carousel.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/carousel",
+    "profile": "ui",
+    "path": "components/carousel/carousel.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "components/cascader",
+    "profile": "ui",
+    "path": "components/cascader/cascader.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/cascader",
+    "profile": "ui",
+    "path": "components/cascader/cascader.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 20px 44px -14px rgba(16,24,40,.22)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/cascader",
+    "profile": "ui",
+    "path": "components/cascader/cascader.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/checkbox",
+    "profile": "ui",
+    "path": "components/checkbox/checkbox.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "5px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/chip",
+    "profile": "ui",
+    "path": "components/chip/chip.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "components/color-picker",
+    "profile": "ui",
+    "path": "components/color-picker/color-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "10px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 2
+  },
+  {
+    "target": "components/color-picker",
+    "profile": "ui",
+    "path": "components/color-picker/color-picker.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 2px var(--k-bg),0 0 0 4px var(--k-accent)",
+    "after": "var(--k-ring)",
+    "declarations": 1
+  },
+  {
+    "target": "components/color-picker",
+    "profile": "ui",
+    "path": "components/color-picker/color-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "6px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/command",
+    "profile": "ui",
+    "path": "components/command/command.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/command",
+    "profile": "ui",
+    "path": "components/command/command.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 30px 80px -20px rgba(0,0,0,.45)",
+    "after": "var(--k-shadow-modal)",
+    "declarations": 1
+  },
+  {
+    "target": "components/command",
+    "profile": "ui",
+    "path": "components/command/command.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/comparison-slider",
+    "profile": "lab",
+    "path": "components/comparison-slider/comparison-slider.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 1px rgba(24,24,27,.25)",
+    "after": "var(--k-ring-line)",
+    "declarations": 1
+  },
+  {
+    "target": "components/comparison-slider",
+    "profile": "lab",
+    "path": "components/comparison-slider/comparison-slider.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 2px 10px rgba(16,24,40,.3)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/context-menu",
+    "profile": "ui",
+    "path": "components/context-menu/context-menu.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/context-menu",
+    "profile": "ui",
+    "path": "components/context-menu/context-menu.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/context-menu",
+    "profile": "ui",
+    "path": "components/context-menu/context-menu.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 20px 44px -12px rgba(16,24,40,.28)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/context-menu",
+    "profile": "ui",
+    "path": "components/context-menu/context-menu.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/converge",
+    "profile": "lab",
+    "path": "components/converge/converge.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/data-table",
+    "profile": "ui",
+    "path": "components/data-table/data-table.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/date-picker",
+    "profile": "ui",
+    "path": "components/date-picker/date-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/date-picker",
+    "profile": "ui",
+    "path": "components/date-picker/date-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/date-picker",
+    "profile": "ui",
+    "path": "components/date-picker/date-picker.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 20px 44px -14px rgba(16,24,40,.22)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/date-picker",
+    "profile": "ui",
+    "path": "components/date-picker/date-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/date-picker",
+    "profile": "ui",
+    "path": "components/date-picker/date-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/donut-chart",
+    "profile": "ui",
+    "path": "components/donut-chart/donut-chart.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "3px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "components/drawer",
+    "profile": "ui",
+    "path": "components/drawer/drawer.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "-24px 0 60px -24px rgba(0,0,0,.35)",
+    "after": "var(--k-shadow-modal)",
+    "declarations": 1
+  },
+  {
+    "target": "components/dropdown",
+    "profile": "ui",
+    "path": "components/dropdown/dropdown.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/dropdown",
+    "profile": "ui",
+    "path": "components/dropdown/dropdown.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 16px 40px -14px rgba(16,24,40,.25)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/dropdown",
+    "profile": "ui",
+    "path": "components/dropdown/dropdown.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/dual-range",
+    "profile": "ui",
+    "path": "components/dual-range/dual-range.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "3px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 2
+  },
+  {
+    "target": "components/dual-range",
+    "profile": "ui",
+    "path": "components/dual-range/dual-range.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 1px 4px rgba(16,24,40,.18)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 2
+  },
+  {
+    "target": "components/dual-range",
+    "profile": "ui",
+    "path": "components/dual-range/dual-range.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "6px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/file-upload",
+    "profile": "ui",
+    "path": "components/file-upload/file-upload.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/file-upload",
+    "profile": "ui",
+    "path": "components/file-upload/file-upload.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/file-upload",
+    "profile": "ui",
+    "path": "components/file-upload/file-upload.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/funnel-chart",
+    "profile": "ui",
+    "path": "components/funnel-chart/funnel-chart.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/glass-panel",
+    "profile": "ui",
+    "path": "components/glass-panel/glass-panel.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/glass-panel",
+    "profile": "ui",
+    "path": "components/glass-panel/glass-panel.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 18px 40px -18px rgba(0,0,0,.45)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/glow-button",
+    "profile": "lab",
+    "path": "components/glow-button/glow-button.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 0 26px -6px var(--k-accent)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/glow-button",
+    "profile": "lab",
+    "path": "components/glow-button/glow-button.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 0 18px -4px var(--k-accent-bg)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/hanko",
+    "profile": "ui",
+    "path": "components/hanko/hanko.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/hanko",
+    "profile": "ui",
+    "path": "components/hanko/hanko.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/hanko",
+    "profile": "ui",
+    "path": "components/hanko/hanko.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px 11px 10px 12px",
+    "after": "var(--k-radius-md) var(--k-radius-lg) var(--k-radius-lg) var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/heatmap",
+    "profile": "ui",
+    "path": "components/heatmap/heatmap.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "3px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 2
+  },
+  {
+    "target": "components/hover-card",
+    "profile": "ui",
+    "path": "components/hover-card/hover-card.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/hover-card",
+    "profile": "ui",
+    "path": "components/hover-card/hover-card.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 16px 40px -12px rgba(16,24,40,.18)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/input",
+    "profile": "ui",
+    "path": "components/input/input.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 1px 2px rgba(16,24,40,.04)",
+    "after": "var(--k-shadow-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "components/input-otp",
+    "profile": "ui",
+    "path": "components/input-otp/input-otp.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "10px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/input-otp",
+    "profile": "ui",
+    "path": "components/input-otp/input-otp.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 3px var(--k-accent-bg)",
+    "after": "var(--k-ring)",
+    "declarations": 1
+  },
+  {
+    "target": "components/input-otp",
+    "profile": "ui",
+    "path": "components/input-otp/input-otp.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "2px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "components/kbd",
+    "profile": "ui",
+    "path": "components/kbd/kbd.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "6px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/kintsugi-card",
+    "profile": "ui",
+    "path": "components/kintsugi-card/kintsugi-card.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/list",
+    "profile": "ui",
+    "path": "components/list/list.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/menubar",
+    "profile": "ui",
+    "path": "components/menubar/menubar.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 2
+  },
+  {
+    "target": "components/menubar",
+    "profile": "ui",
+    "path": "components/menubar/menubar.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/menubar",
+    "profile": "ui",
+    "path": "components/menubar/menubar.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 18px 40px -12px rgba(16,24,40,.25)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/menubar",
+    "profile": "ui",
+    "path": "components/menubar/preview.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/meteors",
+    "profile": "lab",
+    "path": "components/meteors/meteors.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 0 10px 2px rgba(255,255,255,.3)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/modal",
+    "profile": "ui",
+    "path": "components/modal/modal.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/modal",
+    "profile": "ui",
+    "path": "components/modal/modal.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 30px 80px -20px rgba(0,0,0,.4)",
+    "after": "var(--k-shadow-modal)",
+    "declarations": 1
+  },
+  {
+    "target": "components/navigation-menu",
+    "profile": "ui",
+    "path": "components/navigation-menu/navigation-menu.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 2
+  },
+  {
+    "target": "components/navigation-menu",
+    "profile": "ui",
+    "path": "components/navigation-menu/navigation-menu.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/navigation-menu",
+    "profile": "ui",
+    "path": "components/navigation-menu/navigation-menu.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 20px 44px -14px rgba(16,24,40,.22)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/navigation-menu",
+    "profile": "ui",
+    "path": "components/navigation-menu/navigation-menu.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/navigation-menu",
+    "profile": "ui",
+    "path": "components/navigation-menu/preview.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/newtons-cradle",
+    "profile": "lab",
+    "path": "components/newtons-cradle/newtons-cradle.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 3px 7px rgba(16,24,40,.25)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/noren",
+    "profile": "ui",
+    "path": "components/noren/noren.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/noren",
+    "profile": "ui",
+    "path": "components/noren/noren.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "4px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/orbit",
+    "profile": "lab",
+    "path": "components/orbit/orbit.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 12px 26px -10px rgba(16,24,40,.4)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/orbit",
+    "profile": "lab",
+    "path": "components/orbit/orbit.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 4px 12px rgba(16,24,40,.1)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/qr-code",
+    "profile": "ui",
+    "path": "components/qr-code/examples.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/rating",
+    "profile": "ui",
+    "path": "components/rating/rating.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "6px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/scroll-area",
+    "profile": "ui",
+    "path": "components/scroll-area/scroll-area.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "components/scroll-area",
+    "profile": "ui",
+    "path": "components/scroll-area/scroll-area.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/scrollspy",
+    "profile": "ui",
+    "path": "components/scrollspy/scrollspy.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/scrollspy",
+    "profile": "ui",
+    "path": "components/scrollspy/scrollspy.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/segmented",
+    "profile": "ui",
+    "path": "components/segmented/segmented.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/segmented",
+    "profile": "ui",
+    "path": "components/segmented/segmented.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/segmented",
+    "profile": "ui",
+    "path": "components/segmented/segmented.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 1px 2px rgba(16,24,40,.09)",
+    "after": "var(--k-shadow-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "components/sidebar",
+    "profile": "ui",
+    "path": "components/sidebar/sidebar.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/sidebar",
+    "profile": "ui",
+    "path": "components/sidebar/sidebar.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/sidebar",
+    "profile": "ui",
+    "path": "components/sidebar/sidebar.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "components/sidebar",
+    "profile": "ui",
+    "path": "components/sidebar/examples.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 2
+  },
+  {
+    "target": "components/sidebar",
+    "profile": "ui",
+    "path": "components/sidebar/examples.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/sidebar",
+    "profile": "ui",
+    "path": "components/sidebar/preview.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/slider",
+    "profile": "ui",
+    "path": "components/slider/slider.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 1px 2px rgba(16,24,40,.18)",
+    "after": "var(--k-shadow-xs)",
+    "declarations": 2
+  },
+  {
+    "target": "components/speed-dial",
+    "profile": "ui",
+    "path": "components/speed-dial/speed-dial.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/speed-dial",
+    "profile": "ui",
+    "path": "components/speed-dial/speed-dial.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 2px 8px rgba(16,24,40,.08)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/speed-dial",
+    "profile": "ui",
+    "path": "components/speed-dial/speed-dial.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 2px 8px rgba(16,24,40,.1)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/speed-dial",
+    "profile": "ui",
+    "path": "components/speed-dial/speed-dial.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 6px 18px rgba(16,24,40,.28)",
+    "after": "var(--k-shadow-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/speed-dial",
+    "profile": "ui",
+    "path": "components/speed-dial/preview.html",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/split-panel",
+    "profile": "ui",
+    "path": "components/split-panel/split-panel.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/split-panel",
+    "profile": "ui",
+    "path": "components/split-panel/split-panel.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/steps",
+    "profile": "ui",
+    "path": "components/steps/steps.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "2px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "components/switch",
+    "profile": "ui",
+    "path": "components/switch/switch.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "components/switch",
+    "profile": "ui",
+    "path": "components/switch/switch.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 1px 3px rgba(0,0,0,.3),inset 0 0 0 1px rgba(0,0,0,.08)",
+    "after": "var(--k-shadow-xs),var(--k-ring-inset)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tabs",
+    "profile": "ui",
+    "path": "components/tabs/tabs.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "10px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 2
+  },
+  {
+    "target": "components/tabs",
+    "profile": "ui",
+    "path": "components/tabs/tabs.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 2
+  },
+  {
+    "target": "components/tabs",
+    "profile": "ui",
+    "path": "components/tabs/tabs.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 1px 3px rgba(16,24,40,.14)",
+    "after": "var(--k-shadow-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tag-input",
+    "profile": "ui",
+    "path": "components/tag-input/tag-input.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 3px var(--k-accent-bg)",
+    "after": "var(--k-ring)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tategaki",
+    "profile": "ui",
+    "path": "components/tategaki/tategaki.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/time-picker",
+    "profile": "ui",
+    "path": "components/time-picker/time-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/time-picker",
+    "profile": "ui",
+    "path": "components/time-picker/time-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/time-picker",
+    "profile": "ui",
+    "path": "components/time-picker/time-picker.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 20px 44px -14px rgba(16,24,40,.22)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/time-picker",
+    "profile": "ui",
+    "path": "components/time-picker/time-picker.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/toast",
+    "profile": "ui",
+    "path": "components/toast/toast.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/toast",
+    "profile": "ui",
+    "path": "components/toast/toast.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 20px 44px -14px rgba(0,0,0,.45)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/toggle",
+    "profile": "ui",
+    "path": "components/toggle/toggle.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/toggle",
+    "profile": "ui",
+    "path": "components/toggle/toggle.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tooltip",
+    "profile": "ui",
+    "path": "components/tooltip/tooltip.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "6px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/torn-ticket",
+    "profile": "ui",
+    "path": "components/torn-ticket/torn-ticket.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "13px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/torn-ticket",
+    "profile": "ui",
+    "path": "components/torn-ticket/torn-ticket.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 14px 28px -14px rgba(16,24,40,.28)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tour",
+    "profile": "ui",
+    "path": "components/tour/tour.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 2
+  },
+  {
+    "target": "components/tour",
+    "profile": "ui",
+    "path": "components/tour/tour.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "10px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tour",
+    "profile": "ui",
+    "path": "components/tour/tour.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 5px var(--k-accent-bg-strong)",
+    "after": "var(--k-ring)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tour",
+    "profile": "ui",
+    "path": "components/tour/tour.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 18px 44px -14px rgba(16,24,40,.28)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tour",
+    "profile": "ui",
+    "path": "components/tour/tour.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tracing-beam",
+    "profile": "lab",
+    "path": "components/tracing-beam/tracing-beam.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 4px var(--k-accent-bg)",
+    "after": "var(--k-ring)",
+    "declarations": 1
+  },
+  {
+    "target": "components/transfer",
+    "profile": "ui",
+    "path": "components/transfer/transfer.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tree",
+    "profile": "ui",
+    "path": "components/tree/tree.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "components/tree",
+    "profile": "ui",
+    "path": "components/tree/tree.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "5px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/typeset",
+    "profile": "ui",
+    "path": "components/typeset/typeset.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "5px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "components/wagara",
+    "profile": "ui",
+    "path": "components/wagara/wagara.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "components/wagara",
+    "profile": "ui",
+    "path": "components/wagara/wagara.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 3
+  },
+  {
+    "target": "blocks/app-shell",
+    "profile": "ui",
+    "path": "blocks/app-shell/app-shell.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/app-shell",
+    "profile": "ui",
+    "path": "blocks/app-shell/app-shell.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/cookie-consent",
+    "profile": "ui",
+    "path": "blocks/cookie-consent/cookie-consent.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/cookie-consent",
+    "profile": "ui",
+    "path": "blocks/cookie-consent/cookie-consent.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "13px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/cookie-consent",
+    "profile": "ui",
+    "path": "blocks/cookie-consent/cookie-consent.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 14px 34px -12px rgba(16,24,40,.25)",
+    "after": "var(--k-shadow-pop)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/cta-band",
+    "profile": "ui",
+    "path": "blocks/cta-band/cta-band.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 2
+  },
+  {
+    "target": "blocks/filter-toolbar",
+    "profile": "ui",
+    "path": "blocks/filter-toolbar/filter-toolbar.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "13px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/integrations",
+    "profile": "ui",
+    "path": "blocks/integrations/integrations.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "13px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/integrations",
+    "profile": "ui",
+    "path": "blocks/integrations/integrations.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "10px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/invoice",
+    "profile": "ui",
+    "path": "blocks/invoice/invoice.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/kanban",
+    "profile": "ui",
+    "path": "blocks/kanban/kanban.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/kanban",
+    "profile": "ui",
+    "path": "blocks/kanban/kanban.css",
+    "property": "border-radius",
+    "kind": "radius-full",
+    "before": "99px",
+    "after": "var(--k-radius-full)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/kanban",
+    "profile": "ui",
+    "path": "blocks/kanban/kanban.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/kanban",
+    "profile": "ui",
+    "path": "blocks/kanban/kanban.css",
+    "property": "box-shadow",
+    "kind": "shadow",
+    "before": "0 1px 2px rgba(16,24,40,.05)",
+    "after": "var(--k-shadow-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/login",
+    "profile": "ui",
+    "path": "blocks/login/login.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/order-confirmation",
+    "profile": "ui",
+    "path": "blocks/order-confirmation/order-confirmation.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/order-confirmation",
+    "profile": "ui",
+    "path": "blocks/order-confirmation/order-confirmation.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/plan-compare",
+    "profile": "ui",
+    "path": "blocks/plan-compare/plan-compare.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "10px 10px 0 0",
+    "after": "var(--k-radius-lg) var(--k-radius-lg) 0 0",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/pricing",
+    "profile": "ui",
+    "path": "blocks/pricing/pricing.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/roadmap",
+    "profile": "ui",
+    "path": "blocks/roadmap/roadmap.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/roadmap",
+    "profile": "ui",
+    "path": "blocks/roadmap/roadmap.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/settings",
+    "profile": "ui",
+    "path": "blocks/settings/settings.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-footer",
+    "profile": "ui",
+    "path": "blocks/site-footer/site-footer.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-footer",
+    "profile": "ui",
+    "path": "blocks/site-footer/site-footer.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-footer",
+    "profile": "ui",
+    "path": "blocks/site-footer/site-footer.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "2.5px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-footer",
+    "profile": "ui",
+    "path": "blocks/site-footer/site-footer.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-header",
+    "profile": "ui",
+    "path": "blocks/site-header/site-header.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-header",
+    "profile": "ui",
+    "path": "blocks/site-header/site-header.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-header",
+    "profile": "ui",
+    "path": "blocks/site-header/site-header.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "2.5px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/site-header",
+    "profile": "ui",
+    "path": "blocks/site-header/site-header.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/stat-cards",
+    "profile": "ui",
+    "path": "blocks/stat-cards/stat-cards.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/team",
+    "profile": "ui",
+    "path": "blocks/team/team.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "blocks/use-cases",
+    "profile": "ui",
+    "path": "blocks/use-cases/use-cases.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 3
+  },
+  {
+    "target": "templates/blog-article",
+    "profile": "ui",
+    "path": "templates/blog-article/blog-article.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/blog-article",
+    "profile": "ui",
+    "path": "templates/blog-article/blog-article.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "13px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 2
+  },
+  {
+    "target": "templates/blog-article",
+    "profile": "ui",
+    "path": "templates/blog-article/blog-article.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "5px",
+    "after": "var(--k-radius-sm)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/blog-article",
+    "profile": "ui",
+    "path": "templates/blog-article/blog-article.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "11px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/blog-article",
+    "profile": "ui",
+    "path": "templates/blog-article/blog-article.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/checkout",
+    "profile": "ui",
+    "path": "templates/checkout/checkout.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/checkout",
+    "profile": "ui",
+    "path": "templates/checkout/checkout.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 2
+  },
+  {
+    "target": "templates/dashboard",
+    "profile": "ui",
+    "path": "templates/dashboard/dashboard.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/dashboard",
+    "profile": "ui",
+    "path": "templates/dashboard/dashboard.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "7px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/dashboard",
+    "profile": "ui",
+    "path": "templates/dashboard/dashboard.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "2.5px",
+    "after": "var(--k-radius-xs)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/dashboard",
+    "profile": "ui",
+    "path": "templates/dashboard/dashboard.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/dashboard",
+    "profile": "ui",
+    "path": "templates/dashboard/dashboard.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/inbox",
+    "profile": "ui",
+    "path": "templates/inbox/inbox.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/inbox",
+    "profile": "ui",
+    "path": "templates/inbox/inbox.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/landing",
+    "profile": "ui",
+    "path": "templates/landing/landing.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "14px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "10px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 1px var(--k-line)",
+    "after": "var(--k-ring-line)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 2px var(--k-accent)",
+    "after": "var(--k-ring)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "box-shadow",
+    "kind": "shadow-ring",
+    "before": "0 0 0 2px var(--k-ink)",
+    "after": "var(--k-ring)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "9px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/product-page",
+    "profile": "ui",
+    "path": "templates/product-page/product-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/settings-page",
+    "profile": "ui",
+    "path": "templates/settings-page/settings-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "16px",
+    "after": "var(--k-radius-xl)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/settings-page",
+    "profile": "ui",
+    "path": "templates/settings-page/settings-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "8px",
+    "after": "var(--k-radius-md)",
+    "declarations": 1
+  },
+  {
+    "target": "templates/settings-page",
+    "profile": "ui",
+    "path": "templates/settings-page/settings-page.css",
+    "property": "border-radius",
+    "kind": "radius",
+    "before": "12px",
+    "after": "var(--k-radius-lg)",
+    "declarations": 1
+  },
+  {
+    "target": "components/modal",
+    "profile": "ui",
+    "path": "components/modal/modal.css",
+    "property": "background",
+    "kind": "backdrop",
+    "before": "rgba(24,24,27,.45)",
+    "after": "var(--k-backdrop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/drawer",
+    "profile": "ui",
+    "path": "components/drawer/drawer.css",
+    "property": "background",
+    "kind": "backdrop",
+    "before": "rgba(24,24,27,.45)",
+    "after": "var(--k-backdrop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/command",
+    "profile": "ui",
+    "path": "components/command/command.css",
+    "property": "background",
+    "kind": "backdrop",
+    "before": "rgba(24,24,27,.45)",
+    "after": "var(--k-backdrop)",
+    "declarations": 1
+  },
+  {
+    "target": "components/alert-dialog",
+    "profile": "ui",
+    "path": "components/alert-dialog/alert-dialog.css",
+    "property": "background",
+    "kind": "backdrop",
+    "before": "rgba(24,24,27,.45)",
+    "after": "var(--k-backdrop)",
+    "declarations": 1
+  }
+]

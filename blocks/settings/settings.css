@@ -1,4 +1,4 @@
-.settings-card{background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;padding:24px;font-family:var(--k-font);color:var(--k-ink);text-align:start;width:100%}
+.settings-card{background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:24px;font-family:var(--k-font);color:var(--k-ink);text-align:start;width:100%}
 .settings-h{font-size:15px;font-weight:600}
 .settings-avatar{display:flex;align-items:center;gap:14px;margin-top:16px}
 .settings-note{margin-top:5px;font-size:12px;color:var(--k-ink-3)}

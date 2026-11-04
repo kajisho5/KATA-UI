@@ -1,0 +1,1003 @@
+{
+  "before_ref": "9efb97d",
+  "initial19_ref": "0a486dd",
+  "geometry": [
+    {
+      "target": "comparison-slider",
+      "theme": "light",
+      "element": "div.seam",
+      "before": "rgba(24, 24, 27, 0.25) 0px 0px 0px 1px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 0px 0px 1px",
+      "same_geometry": true
+    },
+    {
+      "target": "comparison-slider",
+      "theme": "light",
+      "element": "div.grip",
+      "before": "rgba(16, 24, 40, 0.3) 0px 2px 10px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.3) 0px 2px 10px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "converge",
+      "theme": "light",
+      "element": "div.k-converge-tile",
+      "before": "color(srgb 0.2 0.65098 0.721569 / 0.45) 0px 0px 46px 0px",
+      "restored": "color(srgb 0.2 0.65098 0.721569 / 0.45) 0px 0px 46px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "glow-button",
+      "theme": "light",
+      "element": "span.k-glowbtn",
+      "before": "rgb(51, 166, 184) 0px 0px 26px -6px",
+      "restored": "rgb(51, 166, 184) 0px 0px 26px -6px",
+      "same_geometry": true
+    },
+    {
+      "target": "glow-button",
+      "theme": "light",
+      "element": "label.k-glowfield",
+      "before": "rgba(51, 166, 184, 0.08) 0px 0px 18px -4px",
+      "restored": "rgba(51, 166, 184, 0.08) 0px 0px 18px -4px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "light",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "light",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "light",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "light",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "light",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "light",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "light",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "light",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "light",
+      "element": "span.core",
+      "before": "rgba(16, 24, 40, 0.4) 0px 12px 26px -10px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.4) 0px 12px 26px -10px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "light",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "light",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "tracing-beam",
+      "theme": "light",
+      "element": "div.k-beam-dot",
+      "before": "rgba(51, 166, 184, 0.08) 0px 0px 0px 4px",
+      "restored": "rgba(51, 166, 184, 0.08) 0px 0px 0px 4px",
+      "same_geometry": true
+    },
+    {
+      "target": "comparison-slider",
+      "theme": "dark",
+      "element": "div.seam",
+      "before": "rgba(24, 24, 27, 0.25) 0px 0px 0px 1px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 0px 0px 1px",
+      "same_geometry": true
+    },
+    {
+      "target": "comparison-slider",
+      "theme": "dark",
+      "element": "div.grip",
+      "before": "rgba(16, 24, 40, 0.3) 0px 2px 10px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.3) 0px 2px 10px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "converge",
+      "theme": "dark",
+      "element": "div.k-converge-tile",
+      "before": "color(srgb 0.2 0.65098 0.721569 / 0.45) 0px 0px 46px 0px",
+      "restored": "color(srgb 0.2 0.65098 0.721569 / 0.45) 0px 0px 46px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "glow-button",
+      "theme": "dark",
+      "element": "span.k-glowbtn",
+      "before": "rgb(51, 166, 184) 0px 0px 26px -6px",
+      "restored": "rgb(51, 166, 184) 0px 0px 26px -6px",
+      "same_geometry": true
+    },
+    {
+      "target": "glow-button",
+      "theme": "dark",
+      "element": "label.k-glowfield",
+      "before": "rgba(51, 166, 184, 0.08) 0px 0px 18px -4px",
+      "restored": "rgba(51, 166, 184, 0.08) 0px 0px 18px -4px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "meteors",
+      "theme": "dark",
+      "element": "span.k-meteor",
+      "before": "rgba(255, 255, 255, 0.3) 0px 0px 10px 2px",
+      "restored": "color(srgb 0.980392 0.980392 0.980392 / 0.3) 0px 0px 10px 2px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "dark",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "dark",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "dark",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "dark",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "newtons-cradle",
+      "theme": "dark",
+      "element": "span.k-cr-b",
+      "before": "rgba(16, 24, 40, 0.25) 0px 3px 7px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.25) 0px 3px 7px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "dark",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "dark",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "dark",
+      "element": "span.core",
+      "before": "rgba(16, 24, 40, 0.4) 0px 12px 26px -10px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.4) 0px 12px 26px -10px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "dark",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "orbit",
+      "theme": "dark",
+      "element": "span.chip",
+      "before": "rgba(16, 24, 40, 0.1) 0px 4px 12px 0px",
+      "restored": "color(srgb 0.0941176 0.0941176 0.105882 / 0.1) 0px 4px 12px 0px",
+      "same_geometry": true
+    },
+    {
+      "target": "tracing-beam",
+      "theme": "dark",
+      "element": "div.k-beam-dot",
+      "before": "rgba(51, 166, 184, 0.08) 0px 0px 0px 4px",
+      "restored": "rgba(51, 166, 184, 0.08) 0px 0px 0px 4px",
+      "same_geometry": true
+    }
+  ],
+  "pixel_diffs_from_before19": {
+    "light": {
+      "comparison-slider": {
+        "changed_pixels": 784,
+        "bounds": [
+          294,
+          173,
+          344,
+          223
+        ]
+      },
+      "converge": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "glow-button": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "meteors": {
+        "changed_pixels": 1251,
+        "bounds": [
+          204,
+          124,
+          993,
+          265
+        ]
+      },
+      "newtons-cradle": {
+        "changed_pixels": 2111,
+        "bounds": [
+          421,
+          145,
+          645,
+          195
+        ]
+      },
+      "orbit": {
+        "changed_pixels": 2609,
+        "bounds": [
+          407,
+          85,
+          684,
+          249
+        ]
+      },
+      "tracing-beam": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "color-picker": {
+        "changed_pixels": 1789,
+        "bounds": [
+          28,
+          28,
+          318,
+          110
+        ]
+      },
+      "tour": {
+        "changed_pixels": 32287,
+        "bounds": [
+          32,
+          32,
+          1068,
+          370
+        ]
+      },
+      "product-page": {
+        "changed_pixels": 1979,
+        "bounds": [
+          56,
+          107,
+          809,
+          482
+        ]
+      }
+    },
+    "dark": {
+      "comparison-slider": {
+        "changed_pixels": 783,
+        "bounds": [
+          294,
+          173,
+          344,
+          223
+        ]
+      },
+      "converge": {
+        "changed_pixels": 111,
+        "bounds": [
+          167,
+          110,
+          231,
+          157
+        ]
+      },
+      "glow-button": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "meteors": {
+        "changed_pixels": 1251,
+        "bounds": [
+          204,
+          124,
+          993,
+          265
+        ]
+      },
+      "newtons-cradle": {
+        "changed_pixels": 2114,
+        "bounds": [
+          421,
+          145,
+          645,
+          195
+        ]
+      },
+      "orbit": {
+        "changed_pixels": 2602,
+        "bounds": [
+          407,
+          85,
+          685,
+          249
+        ]
+      },
+      "tracing-beam": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "color-picker": {
+        "changed_pixels": 1789,
+        "bounds": [
+          28,
+          28,
+          318,
+          110
+        ]
+      },
+      "tour": {
+        "changed_pixels": 23685,
+        "bounds": [
+          32,
+          32,
+          1068,
+          370
+        ]
+      },
+      "product-page": {
+        "changed_pixels": 1837,
+        "bounds": [
+          56,
+          107,
+          809,
+          482
+        ]
+      }
+    }
+  },
+  "rings_follow_foundry_accent": {
+    "light": "rgb(255, 255, 255) 0px 0px 0px 2px, rgb(116, 83, 153) 0px 0px 0px 4px",
+    "dark": "rgb(24, 24, 27) 0px 0px 0px 2px, rgb(116, 83, 153) 0px 0px 0px 4px"
+  },
+  "errors": [],
+  "drawer_edges": {
+    "light": {
+      "right": {
+        "visible_width_at_delta2": 64,
+        "at8": 16,
+        "profile": [
+          19,
+          19,
+          18,
+          18,
+          18,
+          17,
+          17,
+          16,
+          15,
+          15,
+          15,
+          14,
+          14,
+          13,
+          13,
+          12,
+          12,
+          12,
+          11,
+          11,
+          11,
+          10,
+          9,
+          9,
+          9,
+          9,
+          8,
+          8,
+          8,
+          8,
+          7,
+          7,
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          5,
+          5,
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "left": {
+        "visible_width_at_delta2": 64,
+        "at8": 16,
+        "profile": [
+          19,
+          19,
+          18,
+          18,
+          18,
+          17,
+          17,
+          16,
+          15,
+          15,
+          15,
+          14,
+          14,
+          13,
+          13,
+          12,
+          12,
+          12,
+          11,
+          11,
+          11,
+          10,
+          9,
+          9,
+          9,
+          9,
+          8,
+          8,
+          8,
+          8,
+          7,
+          7,
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          5,
+          5,
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "dark": {
+      "right": {
+        "visible_width_at_delta2": 33,
+        "at8": 3,
+        "profile": [
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "left": {
+        "visible_width_at_delta2": 33,
+        "at8": 3,
+        "profile": [
+          4,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "method": "Seeded JS randomness; paused CSS/SMIL at identical animation progress; actual preview sources; left Drawer positioned only in harness."
+}

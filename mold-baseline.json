@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 29,
+    "passed": 53,
     "total": 164
   },
   "items": [
@@ -27,7 +27,7 @@
     },
     {
       "id": "components/aspect-ratio",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -42,12 +42,12 @@
     },
     {
       "id": "components/badge",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/bar-chart",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -202,7 +202,7 @@
     },
     {
       "id": "components/donut-chart",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -217,7 +217,7 @@
     },
     {
       "id": "components/dual-range",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -247,7 +247,7 @@
     },
     {
       "id": "components/funnel-chart",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -257,7 +257,7 @@
     },
     {
       "id": "components/glass-panel",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -292,7 +292,7 @@
     },
     {
       "id": "components/heatmap",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -337,12 +337,12 @@
     },
     {
       "id": "components/kbd",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/kintsugi-card",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -437,7 +437,7 @@
     },
     {
       "id": "components/qr-code",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -517,7 +517,7 @@
     },
     {
       "id": "components/slider",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -567,7 +567,7 @@
     },
     {
       "id": "components/steps",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -637,17 +637,17 @@
     },
     {
       "id": "components/torn-ticket",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/tour",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/tracing-beam",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -697,7 +697,7 @@
     },
     {
       "id": "blocks/cta-band",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -717,12 +717,12 @@
     },
     {
       "id": "blocks/invoice",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "blocks/kanban",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -737,12 +737,12 @@
     },
     {
       "id": "blocks/order-confirmation",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "blocks/plan-compare",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -752,7 +752,7 @@
     },
     {
       "id": "blocks/roadmap",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -772,12 +772,12 @@
     },
     {
       "id": "blocks/stat-cards",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "blocks/team",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

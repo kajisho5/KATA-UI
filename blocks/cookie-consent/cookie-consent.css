@@ -1,6 +1,6 @@
 /* KATA Block: Cookie Consent */
-.k-cc-stage{position:relative;border:1px dashed var(--k-zinc-300);border-radius:14px;min-height:218px;background:var(--k-bg-soft);font-family:var(--k-font)}
-.k-cc{position:absolute;left:14px;bottom:14px;max-width:380px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:13px;box-shadow:0 14px 34px -12px rgba(16,24,40,.25);padding:17px}
+.k-cc-stage{position:relative;border:1px dashed var(--k-zinc-300);border-radius:var(--k-radius-xl);min-height:218px;background:var(--k-bg-soft);font-family:var(--k-font)}
+.k-cc{position:absolute;left:14px;bottom:14px;max-width:380px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-pop);padding:17px}
 .k-cc h3{font-size:14px;font-weight:650;color:var(--k-ink)}
 .k-cc p{font-size:12.5px;line-height:1.7;color:var(--k-ink-2);margin:6px 0 13px;letter-spacing:.01em}
 .k-cc p a{color:var(--k-accent-ink);font-weight:550}

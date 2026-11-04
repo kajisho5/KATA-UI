@@ -1,0 +1,109 @@
+{
+  "before": {
+    "passed": 53,
+    "failed": 111,
+    "total": 164,
+    "warnings": 318,
+    "findings": {
+      "accessible-label": 1,
+      "button-type": 0,
+      "focus-visible": 132,
+      "js-global-bindings": 57,
+      "js-single-instance": 24,
+      "legacy-contract": 0,
+      "reduced-motion": 0,
+      "shared-token-scope": 0,
+      "spacing-values": 892,
+      "token-values": 137,
+      "type-values": 638,
+      "variant-hover": 0
+    },
+    "by_profile": {
+      "ui": {
+        "passed": 42,
+        "failed": 79,
+        "total": 121
+      },
+      "lab": {
+        "passed": 11,
+        "failed": 32,
+        "total": 43
+      }
+    }
+  },
+  "rule_only": {
+    "passed": 53,
+    "failed": 111,
+    "total": 164,
+    "warnings": 318,
+    "findings": {
+      "accessible-label": 1,
+      "button-type": 0,
+      "focus-visible": 132,
+      "js-global-bindings": 57,
+      "js-single-instance": 24,
+      "legacy-contract": 0,
+      "reduced-motion": 0,
+      "shared-token-scope": 0,
+      "spacing-values": 892,
+      "token-values": 137,
+      "type-values": 638,
+      "variant-hover": 0
+    },
+    "by_profile": {
+      "ui": {
+        "passed": 42,
+        "failed": 79,
+        "total": 121
+      },
+      "lab": {
+        "passed": 11,
+        "failed": 32,
+        "total": 43
+      }
+    }
+  },
+  "after": {
+    "passed": 53,
+    "failed": 111,
+    "total": 164,
+    "warnings": 318,
+    "findings": {
+      "accessible-label": 1,
+      "button-type": 0,
+      "focus-visible": 132,
+      "js-global-bindings": 57,
+      "js-single-instance": 24,
+      "legacy-contract": 0,
+      "reduced-motion": 0,
+      "shared-token-scope": 0,
+      "spacing-values": 892,
+      "token-values": 137,
+      "type-values": 638,
+      "variant-hover": 0
+    },
+    "by_profile": {
+      "ui": {
+        "passed": 42,
+        "failed": 79,
+        "total": 121
+      },
+      "lab": {
+        "passed": 11,
+        "failed": 32,
+        "total": 43
+      }
+    }
+  },
+  "counterfactual_old_rules_on_restored_sources": {
+    "passed": 52,
+    "flips": [
+      {
+        "id": "components/tracing-beam",
+        "old": false,
+        "new": true
+      }
+    ],
+    "lab_token_findings": 92
+  }
+}

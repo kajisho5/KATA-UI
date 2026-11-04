@@ -1,13 +1,13 @@
-.k-hdr{font-family:var(--k-font);text-align:start;color:var(--k-ink);border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);overflow:hidden}
+.k-hdr{font-family:var(--k-font);text-align:start;color:var(--k-ink);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);overflow:hidden}
 .k-hdr-in{display:flex;align-items:center;gap:26px;padding:13px 18px}
 .k-hdr .brand{display:flex;align-items:center;gap:9px;font-weight:650;font-size:15px;letter-spacing:-.01em;color:var(--k-ink);text-decoration:none}
-.k-hdr .brand .mk{width:22px;height:22px;border:2.5px solid var(--k-ink);border-radius:7px;display:grid;place-items:center}
-.k-hdr .brand .mk i{width:7px;height:7px;border-radius:2.5px;background:var(--k-core);display:block}
+.k-hdr .brand .mk{width:22px;height:22px;border:2.5px solid var(--k-ink);border-radius:var(--k-radius-md);display:grid;place-items:center}
+.k-hdr .brand .mk i{width:7px;height:7px;border-radius:var(--k-radius-xs);background:var(--k-core);display:block}
 .k-hdr nav{display:flex;gap:20px}
 .k-hdr nav a{font-size:13.5px;color:var(--k-ink-2);text-decoration:none;font-weight:500}
 .k-hdr nav a:hover{color:var(--k-ink)}
 .k-hdr .acts{margin-inline-start:auto;display:flex;gap:9px;align-items:center}
-.k-hdr .burger{display:none;width:36px;height:36px;border:1px solid var(--k-line);background:var(--k-bg);border-radius:9px;color:var(--k-ink);place-items:center;cursor:pointer;margin-inline-start:auto}
+.k-hdr .burger{display:none;width:36px;height:36px;border:1px solid var(--k-line);background:var(--k-bg);border-radius:var(--k-radius-md);color:var(--k-ink);place-items:center;cursor:pointer;margin-inline-start:auto}
 .k-hdr .panel{display:none;border-top:1px solid var(--k-line);padding:10px 18px 14px}
 .k-hdr .panel a{display:block;padding:8px 0;font-size:14px;color:var(--k-ink-2);text-decoration:none;font-weight:500}
 @media (max-width:640px){.k-hdr nav,.k-hdr .acts{display:none}.k-hdr .burger{display:grid}.k-hdr .panel.open{display:block}}

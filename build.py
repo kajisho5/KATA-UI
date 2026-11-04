@@ -1539,6 +1539,7 @@ def design_system_page(tokens):
     elevation_rows+=''.join(f'<div class="row"><b>--k-ring-{name}</b><code>{esc(value)}</code></div>' for name,value in tokens['elevation']['rings'].items())
     elevation_rows+=f'<div class="row"><b>--k-backdrop</b><code>{esc(tokens["elevation"]["backdrop"]["light"])}</code><small>Dark: {esc(tokens["elevation"]["backdrop"]["dark"])}</small></div>'
     roles = ''.join(f'<div><b>--{k}</b> — {esc(v)}</div>' for k, v in tokens['color']['roles'].items())
+    semantic_rows=''.join(f'<div><b>{esc(name)}</b> — light: <code>{esc(tokens["semanticColors"]["light"].get(name,"inherited"))}</code>; dark: <code>{esc(tokens["semanticColors"]["dark"].get(name,"inherited"))}</code></div>' for name in sorted(set(tokens.get('semanticColors',{}).get('light',{})) | set(tokens.get('semanticColors',{}).get('dark',{}))))
     specs = ''.join(
         f'<div class="row"><span class="tag">{k} · {v}px</span><span class="sample" style="font-size:{v}px">Design, cast in a mold</span></div>'
         for k, v in tokens['typeScalePx'].items())
@@ -1597,7 +1598,7 @@ def design_system_page(tokens):
   </div>
   <section><h2>Color — Zinc</h2><p class="note">The dominant scale. Interfaces are built from zinc first; color is the exception.</p>{swatches('zinc', tokens['color']['zinc'])}</section>
   <section><h2>Color — Asagi (the one accent)</h2><p class="note">A single accent, used sparingly: links, highlights, the core of the mark. If everything is asagi, nothing is.</p>{swatches('asagi', tokens['color']['asagi'])}</section>
-  <section><h2>Color — Roles</h2><div class="roles">{roles}</div></section>
+  <section><h2>Color — Roles</h2><div class="roles">{roles}</div><div class="roles">{semantic_rows}</div></section>
   <section><h2>Typography</h2><p class="note">Sans: {esc(tokens['font']['sans'])}<br>Mono: {esc(tokens['font']['mono'])}<br>Tracking: {esc(tokens['font']['tracking'])}<br>Leading: {esc(tokens['font']['leading'])}</p><div class="spec">{specs}</div></section>
   <section><h2>Spacing</h2><p class="note">A 4px base. If a gap is not on this scale, it is a mistake.</p><div class="bars">{bars}</div></section>
   <section><h2>Radius</h2><p class="note">xs / sm / md / lg / xl follow --k-radius. Full stays 999px for pills; circular geometry stays circular.</p><div class="radii">{radii}</div></section>

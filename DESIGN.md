@@ -234,3 +234,17 @@ normalized to pop. These are approved visual changes, not checker exceptions.
 The audit rules are unchanged. Artistic Lab geometry, duration and easing are
 outside this migration. Only the four named UI backdrops change independent
 paint declarations; colors within normalized shadows follow the shadow scale.
+
+
+### Shared text-contrast follow-up (partial, role decision pending)
+
+Semantic light/dark text values now use the same canonical JSON → generated CSS
+adapter → component / Foundry / design-system path as shape tokens. Muted text
+uses #71717a in light and #90909a in dark. Light yellow-ink changes to #876019;
+dark yellow-ink remains #f6c555. These fix measured placeholder/note/badge failures.
+The light exceptions are necessary because the previous light values already
+failed 4.5:1. Core vermilion and all component CSS are unchanged.
+
+Danger/accent role coupling remains a decision, not a completed contrast claim.
+The diagnostic proposal and measurements live in docs/text-contrast.md. Do not
+change the dark canvas or mix text/surface roles silently to make the numbers pass.

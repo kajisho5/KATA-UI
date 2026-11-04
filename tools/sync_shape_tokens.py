@@ -1,4 +1,4 @@
-"""Generate the radius/elevation CSS adapter from canonical system/tokens.json."""
+"""Generate the radius/elevation/semantic-color CSS adapter from canonical system/tokens.json."""
 import argparse
 import json
 from pathlib import Path
@@ -19,6 +19,7 @@ def values(tokens,mode):
     theme='light' if mode=='root' else mode
     for name,pair in tokens['elevation']['shadows'].items():result['--k-shadow-'+name]=pair[theme]
     result['--k-backdrop']=tokens['elevation']['backdrop'][theme]
+    result.update(tokens.get('semanticColors',{}).get(theme,{}))
     return result
 
 

@@ -1,0 +1,3398 @@
+{
+  "ref": "worktree",
+  "phase": "proposal",
+  "targets": [
+    "button",
+    "input",
+    "select",
+    "card",
+    "badge",
+    "modal",
+    "drawer",
+    "dropdown",
+    "popover",
+    "tabs",
+    "toast",
+    "tooltip"
+  ],
+  "facts": {
+    "light": {
+      "button": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Primary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Secondary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "text": "Ghost",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              36,
+              124,
+              140
+            ],
+            "ratio": 4.842320001610385
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "text": "Disabled",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              151.05,
+              151.05,
+              152.4
+            ],
+            "ratio": 2.9155701883438456
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "text": "Saving\u2026",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              151.05,
+              151.05,
+              152.4
+            ],
+            "ratio": 2.9155701883438456
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "text": "Small",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "text": "Large",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "accent-hover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Primary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Secondary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "text": "Ghost",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              22,
+              94,
+              131
+            ],
+            "ratio": 7.0875674015308485
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "text": "Disabled",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              151.05,
+              151.05,
+              152.4
+            ],
+            "ratio": 2.9155701883438456
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "text": "Saving\u2026",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              151.05,
+              151.05,
+              152.4
+            ],
+            "ratio": 2.9155701883438456
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "text": "Small",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "text": "Large",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "danger-hover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Primary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Secondary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "text": "Ghost",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              36,
+              124,
+              140
+            ],
+            "ratio": 4.842320001610385
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              183,
+              40,
+              46
+            ],
+            "ratio": 6.256658847368193
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "text": "Disabled",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              151.05,
+              151.05,
+              152.4
+            ],
+            "ratio": 2.9155701883438456
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "text": "Saving\u2026",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              151.05,
+              151.05,
+              152.4
+            ],
+            "ratio": 2.9155701883438456
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "text": "Small",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "text": "Large",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      },
+      "input": {
+        "default": [
+          {
+            "element": "label.",
+            "index": 1,
+            "text": "Email",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "input.input",
+            "index": 2,
+            "text": "you@example.com",
+            "kind": "placeholder",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.hint",
+            "index": 3,
+            "text": "Used for invoice delivery",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "label.",
+            "index": 5,
+            "text": "Full name",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "input.input errb",
+            "index": 6,
+            "text": "tanaka",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.err",
+            "index": 7,
+            "text": "Please enter your full name",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 6.256658847368193
+          },
+          {
+            "element": "label.",
+            "index": 9,
+            "text": "Search",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "input.input",
+            "index": 14,
+            "text": "Search components\u2026",
+            "kind": "placeholder",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          }
+        ]
+      },
+      "select": {
+        "default": [
+          {
+            "element": "label.",
+            "index": 2,
+            "text": "Plan",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "select.",
+            "index": 4,
+            "text": "Studio",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "label.",
+            "index": 11,
+            "text": "Region",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "select.",
+            "index": 13,
+            "text": "Tokyo",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "label.",
+            "index": 20,
+            "text": "Availability",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "select.",
+            "index": 22,
+            "text": "Locked",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.5",
+            "foreground": [
+              139.5,
+              139.5,
+              141
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 3.3799478776128646
+          }
+        ]
+      },
+      "card": {
+        "default": [
+          {
+            "element": "h3.",
+            "index": 3,
+            "text": "Usage this month",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "Across all projects in this workspace.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.badge asagi",
+            "index": 6,
+            "text": "On track",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              22,
+              94,
+              131
+            ],
+            "background": [
+              239.00000000000003,
+              248.0196078431373,
+              249.03921568627453
+            ],
+            "ratio": 6.570484425104236
+          },
+          {
+            "element": "div.k-card-b",
+            "index": 7,
+            "text": "Build minutes are at 62% with nine days left. The deploy queue cleared twice as fast since the cache change, and nothing is waiting on review.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "div.k-card-f",
+            "index": 8,
+            "text": "Updated 2 hours ago",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 4.511212777982448
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 10,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-sm",
+            "index": 11,
+            "text": "Open report",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      },
+      "badge": {
+        "default": [
+          {
+            "element": "span.badge",
+            "index": 0,
+            "text": "Draft",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 7.215315587151727
+          },
+          {
+            "element": "span.badge asagi",
+            "index": 2,
+            "text": "Live",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              22,
+              94,
+              131
+            ],
+            "background": [
+              239.00000000000003,
+              248.0196078431373,
+              249.03921568627453
+            ],
+            "ratio": 6.570484425104236
+          },
+          {
+            "element": "span.badge red",
+            "index": 4,
+            "text": "Needs action",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              250.9764705882353,
+              238.9764705882353,
+              238.9764705882353
+            ],
+            "ratio": 5.568705915012665
+          },
+          {
+            "element": "span.badge yamabuki",
+            "index": 6,
+            "text": "In review",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              135,
+              96,
+              25
+            ],
+            "background": [
+              255,
+              246.00392156862745,
+              227.0392156862745
+            ],
+            "ratio": 5.257602198498295
+          },
+          {
+            "element": "span.badge dark",
+            "index": 8,
+            "text": "Pro",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.badge",
+            "index": 9,
+            "text": "3 left",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 7.215315587151727
+          }
+        ]
+      },
+      "modal": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Open modal",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "h3.",
+            "index": 3,
+            "text": "Send this estimate?",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "Once sent, it can't be undone. Check the recipient and the amount first.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 6,
+            "text": "Cancel",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 7,
+            "text": "Send",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      },
+      "drawer": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Open drawer",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "div.kdrawer-title",
+            "index": 3,
+            "text": "Invoice INV-1042",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "div.kdrawer-body",
+            "index": 7,
+            "text": "Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 9,
+            "text": "Close",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 10,
+            "text": "Send reminder",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      },
+      "dropdown": {
+        "default": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Actions",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "span.mh",
+            "index": 5,
+            "text": "Project",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "a.",
+            "index": 7,
+            "text": "Duplicate",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "a.",
+            "index": 8,
+            "text": "Copy share link",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              183,
+              40,
+              46
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 6.256658847368193
+          }
+        ]
+      },
+      "popover": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 1,
+            "text": "Share",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              82,
+              82,
+              91
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "div.kpop-h",
+            "index": 3,
+            "text": "Share this page",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "p.kpop-p",
+            "index": 4,
+            "text": "Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 6,
+            "text": "Copy link",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 7,
+            "text": "Permissions",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      },
+      "tabs": {
+        "default": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 15.016530798610969
+          },
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
+          },
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "History",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              236,
+              236,
+              238
+            ],
+            "ratio": 6.551709221636509
+          },
+          {
+            "element": "div.tabpane",
+            "index": 5,
+            "text": "Overview panel \u2014 the essentials of the project live here.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          }
+        ]
+      },
+      "toast": {
+        "default": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 0,
+            "text": "Show toast",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "b.",
+            "index": 6,
+            "text": "Saved",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "small.",
+            "index": 7,
+            "text": "Your draft is synced automatically.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              247,
+              247,
+              247
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.53751793170972
+          }
+        ]
+      },
+      "tooltip": {
+        "default": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "Copy",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "\"Copy link\"",
+            "kind": "::after",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "text": "Settings",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "text": "Save",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      }
+    },
+    "dark": {
+      "button": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Primary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Secondary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "text": "Ghost",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 6.148044043734327
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "text": "Disabled",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              123,
+              123,
+              125.1
+            ],
+            "ratio": 4.194671467484093
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "text": "Saving\u2026",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              123,
+              123,
+              125.1
+            ],
+            "ratio": 4.194671467484093
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "text": "Small",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "text": "Large",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "accent-hover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Primary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Secondary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "text": "Ghost",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              129,
+              199,
+              212
+            ],
+            "ratio": 9.32533589039363
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              201,
+              23,
+              30
+            ],
+            "ratio": 5.79341125754401
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "text": "Disabled",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              123,
+              123,
+              125.1
+            ],
+            "ratio": 4.194671467484093
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "text": "Saving\u2026",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              123,
+              123,
+              125.1
+            ],
+            "ratio": 4.194671467484093
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "text": "Small",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "text": "Large",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "danger-hover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Primary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Secondary",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "text": "Ghost",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "text": "Accent",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              51,
+              166,
+              184
+            ],
+            "ratio": 6.148044043734327
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              183,
+              40,
+              46
+            ],
+            "ratio": 6.256658847368193
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "text": "Disabled",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              123,
+              123,
+              125.1
+            ],
+            "ratio": 4.194671467484093
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "text": "Saving\u2026",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.45",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              123,
+              123,
+              125.1
+            ],
+            "ratio": 4.194671467484093
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "text": "Small",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "text": "Large",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      },
+      "input": {
+        "default": [
+          {
+            "element": "label.",
+            "index": 1,
+            "text": "Email",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "input.input",
+            "index": 2,
+            "text": "you@example.com",
+            "kind": "placeholder",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.hint",
+            "index": 3,
+            "text": "Used for invoice delivery",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "label.",
+            "index": 5,
+            "text": "Full name",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "input.input errb",
+            "index": 6,
+            "text": "tanaka",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.err",
+            "index": 7,
+            "text": "Please enter your full name",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              245,
+              150,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 8.289328415438758
+          },
+          {
+            "element": "label.",
+            "index": 9,
+            "text": "Search",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "input.input",
+            "index": 14,
+            "text": "Search components\u2026",
+            "kind": "placeholder",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          }
+        ]
+      },
+      "select": {
+        "default": [
+          {
+            "element": "label.",
+            "index": 2,
+            "text": "Plan",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "select.",
+            "index": 4,
+            "text": "Studio",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "label.",
+            "index": 11,
+            "text": "Region",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "select.",
+            "index": 13,
+            "text": "Tokyo",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "label.",
+            "index": 20,
+            "text": "Availability",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "select.",
+            "index": 22,
+            "text": "Locked",
+            "kind": "text",
+            "disabled": true,
+            "opacity": "0.5",
+            "foreground": [
+              134,
+              134,
+              136
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 4.875670703099483
+          }
+        ]
+      },
+      "card": {
+        "default": [
+          {
+            "element": "h3.",
+            "index": 3,
+            "text": "Usage this month",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "Across all projects in this workspace.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.badge asagi",
+            "index": 6,
+            "text": "On track",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              129,
+              199,
+              212
+            ],
+            "background": [
+              26.11764705882353,
+              35.13725490196079,
+              38.92156862745098
+            ],
+            "ratio": 8.402774569284672
+          },
+          {
+            "element": "div.k-card-b",
+            "index": 7,
+            "text": "Build minutes are at 62% with nine days left. The deploy queue cleared twice as fast since the cache change, and nothing is waiting on review.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "div.k-card-f",
+            "index": 8,
+            "text": "Updated 2 hours ago",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 4.710790046930188
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 10,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-sm",
+            "index": 11,
+            "text": "Open report",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      },
+      "badge": {
+        "default": [
+          {
+            "element": "span.badge",
+            "index": 0,
+            "text": "Draft",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          },
+          {
+            "element": "span.badge asagi",
+            "index": 2,
+            "text": "Live",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              129,
+              199,
+              212
+            ],
+            "background": [
+              26.11764705882353,
+              35.13725490196079,
+              38.92156862745098
+            ],
+            "ratio": 8.402774569284672
+          },
+          {
+            "element": "span.badge red",
+            "index": 4,
+            "text": "Needs action",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              245,
+              150,
+              170
+            ],
+            "background": [
+              36.28235294117647,
+              24.28235294117647,
+              27.070588235294117
+            ],
+            "ratio": 8.021334274213451
+          },
+          {
+            "element": "span.badge yamabuki",
+            "index": 6,
+            "text": "In review",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              246,
+              197,
+              85
+            ],
+            "background": [
+              52.08235294117647,
+              43.08627450980392,
+              26.75686274509804
+            ],
+            "ratio": 8.639799687502911
+          },
+          {
+            "element": "span.badge dark",
+            "index": 8,
+            "text": "Pro",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.badge",
+            "index": 9,
+            "text": "3 left",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          }
+        ]
+      },
+      "modal": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Open modal",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "h3.",
+            "index": 3,
+            "text": "Send this estimate?",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "Once sent, it can't be undone. Check the recipient and the amount first.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 6,
+            "text": "Cancel",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 7,
+            "text": "Send",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      },
+      "drawer": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "text": "Open drawer",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "div.kdrawer-title",
+            "index": 3,
+            "text": "Invoice INV-1042",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "div.kdrawer-body",
+            "index": 7,
+            "text": "Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 9,
+            "text": "Close",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 10,
+            "text": "Send reminder",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      },
+      "dropdown": {
+        "default": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "text": "Actions",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "span.mh",
+            "index": 5,
+            "text": "Project",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "a.",
+            "index": 6,
+            "text": "Edit",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "a.",
+            "index": 7,
+            "text": "Duplicate",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "a.",
+            "index": 8,
+            "text": "Copy share link",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "a.danger",
+            "index": 10,
+            "text": "Delete",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              245,
+              150,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 8.289328415438758
+          }
+        ]
+      },
+      "popover": {
+        "default": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 1,
+            "text": "Share",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              161,
+              161,
+              170
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "div.kpop-h",
+            "index": 3,
+            "text": "Share this page",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "p.kpop-p",
+            "index": 4,
+            "text": "Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 6,
+            "text": "Copy link",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 7,
+            "text": "Permissions",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      },
+      "tabs": {
+        "default": [
+          {
+            "element": "button.on",
+            "index": 2,
+            "text": "Overview",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "button.",
+            "index": 3,
+            "text": "Details",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          },
+          {
+            "element": "button.",
+            "index": 4,
+            "text": "History",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 5.811596767128121
+          },
+          {
+            "element": "div.tabpane",
+            "index": 5,
+            "text": "Overview panel \u2014 the essentials of the project live here.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          }
+        ]
+      },
+      "toast": {
+        "default": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 0,
+            "text": "Show toast",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "b.",
+            "index": 6,
+            "text": "Saved",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "small.",
+            "index": 7,
+            "text": "Your draft is synced automatically.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              39,
+              39,
+              42
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 13.550818000872297
+          }
+        ]
+      },
+      "tooltip": {
+        "default": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "Copy",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "\"Copy link\"",
+            "kind": "::after",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "text": "Settings",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "text": "Save",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      }
+    }
+  },
+  "errors": [],
+  "method": "Computed colors + ancestor alpha/opacity composition; same WCAG luminance function as Toast; fully transparent ancestor content excluded as unpainted."
+}

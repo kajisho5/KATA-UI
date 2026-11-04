@@ -3,7 +3,7 @@
 <!-- mold-snapshot:start -->
 [Mold Verified 53 / 164 · UI 42 / 121 · Lab 11 / 43](https://kata-ui.dev/audit/)
 
-164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
+164 parts. Static checks only. Updated 2026-11-05 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 
 | Remaining check findings | Count |
@@ -47,6 +47,7 @@ separate release statuses. The phases below are targets, not shipped features.
 - [x] P4: Replace UI radius literals with the Foundry-linked shared scale; keep Lab geometry unchanged ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [x] PR #19 regression correction: preserve Lab glow geometry with token paint, separate selected/offset rings, and measure both Drawer edges ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [x] P5 (shadow/rings): Normalize all remaining elevation/ring findings and four backdrops ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
+- [ ] Shared text contrast: muted/placeholder and light yellow text values implemented in [draft PR #20](https://github.com/kajisho5/KATA-UI/pull/20); danger/accent role separation awaits a design decision. No full-contrast completion claim.
 - [ ] P5 remaining: Replace duration, border, color and easing literals. One remaining value kind per PR.
 - [ ] P6: Rebuild JS-failing components using the Combobox initialization pattern. Three components per PR; test repeated loading, generated IDs, IME and focus departure.
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.

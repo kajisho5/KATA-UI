@@ -46,7 +46,7 @@ If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rail
 <!-- mold-summary:start -->
 [Mold Verified 53 / 164 · UI 42 / 121 · Lab 11 / 43](https://kata-ui.dev/audit/)
 
-164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
+164 parts. Static checks only. Updated 2026-11-05 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 <!-- mold-summary:end -->
 

@@ -1,14 +1,14 @@
 /* KATA Template: Checkout */
-.k-tpl-co{background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:16px;padding:26px;font-family:var(--k-font);color:var(--k-ink)}
+.k-tpl-co{background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:26px;font-family:var(--k-font);color:var(--k-ink)}
 .k-tpl-co-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:18px}
 .k-tpl-co-head h2{font-size:19px;font-weight:650;letter-spacing:-.02em}
 .k-tpl-co-head span{font-size:12.5px;color:var(--k-ink-3)}
 .k-tpl-co-grid{display:grid;grid-template-columns:1fr 320px;gap:22px;align-items:start}
-.k-tpl-co-card{background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;padding:20px;margin-bottom:16px}
+.k-tpl-co-card{background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:20px;margin-bottom:16px}
 .k-tpl-co-card h3{font-size:14.5px;font-weight:650;margin-bottom:14px}
 .k-tpl-co-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .k-tpl-co-form .full{grid-column:1/-1}
-.k-tpl-co-sum{position:sticky;top:16px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;padding:20px}
+.k-tpl-co-sum{position:sticky;top:16px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:20px}
 .k-tpl-co-sum h3{font-size:14.5px;font-weight:650;margin-bottom:13px}
 .k-tpl-co-item{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:8px 0;border-bottom:1px solid var(--k-line)}
 .k-tpl-co-item span{color:var(--k-ink-2)}

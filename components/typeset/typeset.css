@@ -8,7 +8,7 @@
 .k-type .lead{font-size:17px;line-height:1.65;color:var(--k-ink-2);margin-bottom:18px}
 .k-type a{color:var(--k-accent-ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--k-accent-line)}
 .k-type strong{font-weight:650}
-.k-type code{font-family:var(--k-mono);font-size:.86em;background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:5px;padding:1px 5px;white-space:nowrap}
+.k-type code{font-family:var(--k-mono);font-size:.86em;background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-sm);padding:1px 5px;white-space:nowrap}
 .k-type ul,.k-type ol{margin:0 0 14px;padding-inline-start:20px}
 .k-type li{margin:4px 0}
 .k-type li::marker{color:var(--k-ink-3)}

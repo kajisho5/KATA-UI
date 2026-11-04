@@ -1,6 +1,6 @@
 /* KATA Noren — the shop curtain, as a divider. */
-.k-nor{font-family:var(--k-font);background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:14px;padding:0 26px 22px;overflow:hidden}
-.k-nor-bar{height:7px;border-radius:4px;background:var(--k-zinc-800);margin:0 -6px}
+.k-nor{font-family:var(--k-font);background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:0 26px 22px;overflow:hidden}
+.k-nor-bar{height:7px;border-radius:var(--k-radius-sm);background:var(--k-zinc-800);margin:0 -6px}
 .k-nor-row{display:flex;gap:5px;justify-content:center}
 .k-nor-p{width:76px;height:148px;transform-origin:top center;display:flex;align-items:center;justify-content:center;color:var(--k-on-color);transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .k-nor-p.c1{background:linear-gradient(180deg,color-mix(in srgb,var(--k-asagi-900) 82%,var(--k-on-color)),var(--k-asagi-900) 68%);animation:k-nor-sway 5.2s ease-in-out infinite alternate}

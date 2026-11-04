@@ -2,8 +2,8 @@
   "updated_at": "2026-11-04",
   "schema_version": 2,
   "summary": {
-    "passed": 29,
-    "failed": 135,
+    "passed": 53,
+    "failed": 111,
     "total": 164,
     "warnings": 318,
     "findings": {
@@ -16,19 +16,19 @@
       "reduced-motion": 0,
       "shared-token-scope": 0,
       "spacing-values": 892,
-      "token-values": 358,
+      "token-values": 137,
       "type-values": 638,
       "variant-hover": 0
     },
     "by_profile": {
       "ui": {
-        "passed": 19,
-        "failed": 102,
+        "passed": 42,
+        "failed": 79,
         "total": 121
       },
       "lab": {
-        "passed": 10,
-        "failed": 33,
+        "passed": 11,
+        "failed": 32,
         "total": 43
       }
     }
@@ -557,51 +557,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/alert-dialog/alert-dialog.css: border-radius: 16px [radius] — raw radius: 16px",
-            "components/alert-dialog/alert-dialog.css: box-shadow: 0 30px 80px -20px rgba(0,0,0,.4) [shadow] — raw shadow: 30px; raw shadow: 80px; raw shadow: -20px; raw color: rgba(0,0,0,.4)",
-            "components/alert-dialog/alert-dialog.css: background: rgba(24,24,27,.45) [color] — raw color: rgba(24,24,27,.45)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/alert-dialog/alert-dialog.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "components/alert-dialog/alert-dialog.css",
-              "property": "box-shadow",
-              "value": "0 30px 80px -20px rgba(0,0,0,.4)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 30px",
-                "raw shadow: 80px",
-                "raw shadow: -20px",
-                "raw color: rgba(0,0,0,.4)"
-              ]
-            },
-            {
-              "path": "components/alert-dialog/alert-dialog.css",
-              "property": "background",
-              "value": "rgba(24,24,27,.45)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(24,24,27,.45)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1,
-            "radius": 1,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -752,7 +713,7 @@
     {
       "id": "components/aspect-ratio",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -768,26 +729,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/aspect-ratio/aspect-ratio.css: border-radius: 12px [radius] — raw radius: 12px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/aspect-ratio/aspect-ratio.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -1331,7 +1278,7 @@
     {
       "id": "components/badge",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -1347,26 +1294,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/badge/badge.css: border-radius: 99px [radius-full] — raw radius: 99px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/badge/badge.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius-full": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -1562,7 +1495,7 @@
     {
       "id": "components/bar-chart",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -1578,26 +1511,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/bar-chart/bar-chart.css: border-radius: 5px 5px 0 0 [radius] — raw radius: 5px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/bar-chart/bar-chart.css",
-              "property": "border-radius",
-              "value": "5px 5px 0 0",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 5px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -2139,46 +2058,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/bottom-navigation/bottom-navigation.css: border-radius: 9px [radius] — raw radius: 9px",
-            "components/bottom-navigation/examples.html: border-radius: 18px [radius] — raw radius: 18px",
-            "components/bottom-navigation/preview.html: border-radius: 18px [radius] — raw radius: 18px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/bottom-navigation/bottom-navigation.css",
-              "property": "border-radius",
-              "value": "9px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px"
-              ]
-            },
-            {
-              "path": "components/bottom-navigation/examples.html",
-              "property": "border-radius",
-              "value": "18px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 18px"
-              ]
-            },
-            {
-              "path": "components/bottom-navigation/preview.html",
-              "property": "border-radius",
-              "value": "18px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 18px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 3
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -2932,49 +2817,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/button/button.css: box-shadow: var(--k-btn-shadow) [shadow] — --k-btn-shadow -> raw shadow: 1px; --k-btn-shadow -> raw shadow: 2px; --k-btn-shadow -> raw color: rgba(16,24,40,.05)",
-            "components/button/button.css: box-shadow: var(--k-btn-inset) [shadow-ring] — --k-btn-inset -> raw shadow: 1px",
-            "components/button/button.css: box-shadow: var(--k-btn-inset) [shadow-ring] — --k-btn-inset -> raw shadow: 1px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/button/button.css",
-              "property": "box-shadow",
-              "value": "var(--k-btn-shadow)",
-              "kind": "shadow",
-              "reasons": [
-                "--k-btn-shadow -> raw shadow: 1px",
-                "--k-btn-shadow -> raw shadow: 2px",
-                "--k-btn-shadow -> raw color: rgba(16,24,40,.05)"
-              ]
-            },
-            {
-              "path": "components/button/button.css",
-              "property": "box-shadow",
-              "value": "var(--k-btn-inset)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "--k-btn-inset -> raw shadow: 1px"
-              ]
-            },
-            {
-              "path": "components/button/button.css",
-              "property": "box-shadow",
-              "value": "var(--k-btn-inset)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "--k-btn-inset -> raw shadow: 1px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "shadow": 1,
-            "shadow-ring": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -3228,36 +3076,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/calendar/calendar.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/calendar/calendar.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/calendar/calendar.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/calendar/calendar.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -3643,26 +3467,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/card/card.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/card/card.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -4066,30 +3876,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/carousel/carousel.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/carousel/carousel.css: border-radius: 99px [radius-full] — raw radius: 99px",
             "components/carousel/carousel.css: transition: width .18s var(--k-ease),background .18s [duration] — raw duration: .18s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/carousel/carousel.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/carousel/carousel.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
             {
               "path": "components/carousel/carousel.css",
               "property": "transition",
@@ -4101,9 +3891,7 @@
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 1,
-            "radius-full": 1
+            "duration": 1
           }
         },
         {
@@ -4512,50 +4300,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/cascader/cascader.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/cascader/cascader.css: box-shadow: 0 20px 44px -14px rgba(16,24,40,.22) [shadow] — raw shadow: 20px; raw shadow: 44px; raw shadow: -14px; raw color: rgba(16,24,40,.22)",
-            "components/cascader/cascader.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/cascader/cascader.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/cascader/cascader.css",
-              "property": "box-shadow",
-              "value": "0 20px 44px -14px rgba(16,24,40,.22)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 20px",
-                "raw shadow: 44px",
-                "raw shadow: -14px",
-                "raw color: rgba(16,24,40,.22)"
-              ]
-            },
-            {
-              "path": "components/cascader/cascader.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -4730,21 +4480,11 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/checkbox/checkbox.css: border-radius: 5px [radius] — raw radius: 5px",
             "components/checkbox/checkbox.css: transition: background .13s,border-color .13s [duration] — raw duration: .13s",
             "components/checkbox/checkbox.css: transition: transform .13s [duration] — raw duration: .13s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/checkbox/checkbox.css",
-              "property": "border-radius",
-              "value": "5px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 5px"
-              ]
-            },
             {
               "path": "components/checkbox/checkbox.css",
               "property": "transition",
@@ -4765,8 +4505,7 @@
             }
           ],
           "by_kind": {
-            "duration": 2,
-            "radius": 1
+            "duration": 2
           }
         },
         {
@@ -4932,20 +4671,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/chip/chip.css: border-radius: 99px [radius-full] — raw radius: 99px",
             "components/chip/chip.css: background: rgba(255,255,255,.16) [color] — raw color: rgba(255,255,255,.16)"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/chip/chip.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
             {
               "path": "components/chip/chip.css",
               "property": "background",
@@ -4957,8 +4686,7 @@
             }
           ],
           "by_kind": {
-            "color": 1,
-            "radius-full": 1
+            "color": 1
           }
         },
         {
@@ -5292,25 +5020,12 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/color-picker/color-picker.css: border-radius: 10px [radius] — raw radius: 10px",
             "components/color-picker/color-picker.css: transition: transform .12s var(--k-ease) [duration] — raw duration: .12s",
             "components/color-picker/color-picker.css: color: #fff [color] — raw color: #fff",
-            "components/color-picker/color-picker.css: box-shadow: 0 0 0 2px var(--k-bg),0 0 0 4px var(--k-accent) [shadow-ring] — raw shadow: 2px; raw shadow: 4px",
-            "components/color-picker/color-picker.css: border-radius: 10px [radius] — raw radius: 10px",
-            "components/color-picker/color-picker.css: border-radius: 6px [radius] — raw radius: 6px",
             "components/color-picker/preview.html: background: hsl(175 84% 32%) [color] — raw color: hsl(175 84% 32%)"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/color-picker/color-picker.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
-            },
             {
               "path": "components/color-picker/color-picker.css",
               "property": "transition",
@@ -5330,34 +5045,6 @@
               ]
             },
             {
-              "path": "components/color-picker/color-picker.css",
-              "property": "box-shadow",
-              "value": "0 0 0 2px var(--k-bg),0 0 0 4px var(--k-accent)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 2px",
-                "raw shadow: 4px"
-              ]
-            },
-            {
-              "path": "components/color-picker/color-picker.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
-            },
-            {
-              "path": "components/color-picker/color-picker.css",
-              "property": "border-radius",
-              "value": "6px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 6px"
-              ]
-            },
-            {
               "path": "components/color-picker/preview.html",
               "property": "background",
               "value": "hsl(175 84% 32%)",
@@ -5369,9 +5056,7 @@
           ],
           "by_kind": {
             "color": 2,
-            "duration": 1,
-            "radius": 3,
-            "shadow-ring": 1
+            "duration": 1
           }
         },
         {
@@ -5682,61 +5367,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/command/command.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/command/command.css: box-shadow: 0 30px 80px -20px rgba(0,0,0,.45) [shadow] — raw shadow: 30px; raw shadow: 80px; raw shadow: -20px; raw color: rgba(0,0,0,.45)",
-            "components/command/command.css: background: rgba(24,24,27,.45) [color] — raw color: rgba(24,24,27,.45)",
-            "components/command/command.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/command/command.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/command/command.css",
-              "property": "box-shadow",
-              "value": "0 30px 80px -20px rgba(0,0,0,.45)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 30px",
-                "raw shadow: 80px",
-                "raw shadow: -20px",
-                "raw color: rgba(0,0,0,.45)"
-              ]
-            },
-            {
-              "path": "components/command/command.css",
-              "property": "background",
-              "value": "rgba(24,24,27,.45)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(24,24,27,.45)"
-              ]
-            },
-            {
-              "path": "components/command/command.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1,
-            "radius": 2,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -5997,9 +5633,7 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/comparison-slider/comparison-slider.css: background: rgba(24,24,27,.72) [color] — raw color: rgba(24,24,27,.72)",
-            "components/comparison-slider/comparison-slider.css: box-shadow: 0 0 0 1px rgba(24,24,27,.25) [shadow-ring] — raw shadow: 1px; raw color: rgba(24,24,27,.25)",
-            "components/comparison-slider/comparison-slider.css: box-shadow: 0 2px 10px rgba(16,24,40,.3) [shadow] — raw shadow: 2px; raw shadow: 10px; raw color: rgba(16,24,40,.3)"
+            "components/comparison-slider/comparison-slider.css: background: rgba(24,24,27,.72) [color] — raw color: rgba(24,24,27,.72)"
           ],
           "profile": "lab",
           "details": [
@@ -6011,33 +5645,10 @@
               "reasons": [
                 "raw color: rgba(24,24,27,.72)"
               ]
-            },
-            {
-              "path": "components/comparison-slider/comparison-slider.css",
-              "property": "box-shadow",
-              "value": "0 0 0 1px rgba(24,24,27,.25)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw color: rgba(24,24,27,.25)"
-              ]
-            },
-            {
-              "path": "components/comparison-slider/comparison-slider.css",
-              "property": "box-shadow",
-              "value": "0 2px 10px rgba(16,24,40,.3)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 2px",
-                "raw shadow: 10px",
-                "raw color: rgba(16,24,40,.3)"
-              ]
             }
           ],
           "by_kind": {
-            "color": 1,
-            "shadow": 1,
-            "shadow-ring": 1
+            "color": 1
           }
         },
         {
@@ -6317,60 +5928,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/context-menu/context-menu.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/context-menu/context-menu.css: border-radius: 12px [radius] — raw radius: 12px",
-            "components/context-menu/context-menu.css: box-shadow: 0 20px 44px -12px rgba(16,24,40,.28) [shadow] — raw shadow: 20px; raw shadow: 44px; raw shadow: -12px; raw color: rgba(16,24,40,.28)",
-            "components/context-menu/context-menu.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/context-menu/context-menu.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/context-menu/context-menu.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            },
-            {
-              "path": "components/context-menu/context-menu.css",
-              "property": "box-shadow",
-              "value": "0 20px 44px -12px rgba(16,24,40,.28)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 20px",
-                "raw shadow: 44px",
-                "raw shadow: -12px",
-                "raw color: rgba(16,24,40,.28)"
-              ]
-            },
-            {
-              "path": "components/context-menu/context-menu.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 3,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -6574,7 +6137,6 @@
             "components/converge/converge.css: animation-delay: .5s [duration] — raw duration: .5s",
             "components/converge/converge.css: animation-delay: 1.1s [duration] — raw duration: 1.1s",
             "components/converge/converge.css: animation-delay: 1.6s [duration] — raw duration: 1.6s",
-            "components/converge/converge.css: box-shadow: 0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent) [shadow] — raw shadow: 46px",
             "components/converge/preview.html: color: hsl(335 85% 72%) [color] — raw color: hsl(335 85% 72%)",
             "components/converge/preview.html: color: hsl(32 95% 64%) [color] — raw color: hsl(32 95% 64%)",
             "components/converge/preview.html: color: hsl(205 90% 66%) [color] — raw color: hsl(205 90% 66%)"
@@ -6691,15 +6253,6 @@
               ]
             },
             {
-              "path": "components/converge/converge.css",
-              "property": "box-shadow",
-              "value": "0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 46px"
-              ]
-            },
-            {
               "path": "components/converge/preview.html",
               "property": "color",
               "value": "hsl(335 85% 72%)",
@@ -6729,8 +6282,7 @@
           ],
           "by_kind": {
             "color": 10,
-            "duration": 5,
-            "shadow": 1
+            "duration": 5
           }
         },
         {
@@ -7254,20 +6806,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/data-table/data-table.css: border-radius: 14px [radius] — raw radius: 14px",
             "components/data-table/data-table.css: transition: transform .15s var(--k-ease),opacity .15s [duration] — raw duration: .15s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/data-table/data-table.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
             {
               "path": "components/data-table/data-table.css",
               "property": "transition",
@@ -7279,8 +6821,7 @@
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 1
+            "duration": 1
           }
         },
         {
@@ -7517,70 +7058,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/date-picker/date-picker.css: border-radius: 7px [radius] — raw radius: 7px",
-            "components/date-picker/date-picker.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/date-picker/date-picker.css: box-shadow: 0 20px 44px -14px rgba(16,24,40,.22) [shadow] — raw shadow: 20px; raw shadow: 44px; raw shadow: -14px; raw color: rgba(16,24,40,.22)",
-            "components/date-picker/date-picker.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/date-picker/date-picker.css: border-radius: 9px [radius] — raw radius: 9px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/date-picker/date-picker.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "components/date-picker/date-picker.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/date-picker/date-picker.css",
-              "property": "box-shadow",
-              "value": "0 20px 44px -14px rgba(16,24,40,.22)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 20px",
-                "raw shadow: 44px",
-                "raw shadow: -14px",
-                "raw color: rgba(16,24,40,.22)"
-              ]
-            },
-            {
-              "path": "components/date-picker/date-picker.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/date-picker/date-picker.css",
-              "property": "border-radius",
-              "value": "9px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 4,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -8134,7 +7617,7 @@
     {
       "id": "components/donut-chart",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -8150,26 +7633,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/donut-chart/donut-chart.css: border-radius: 3px [radius] — raw radius: 3px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/donut-chart/donut-chart.css",
-              "property": "border-radius",
-              "value": "3px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 3px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -8361,39 +7830,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/drawer/drawer.css: box-shadow: -24px 0 60px -24px rgba(0,0,0,.35) [shadow] — raw shadow: -24px; raw shadow: 60px; raw color: rgba(0,0,0,.35)",
-            "components/drawer/drawer.css: background: rgba(24,24,27,.45) [color] — raw color: rgba(24,24,27,.45)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/drawer/drawer.css",
-              "property": "box-shadow",
-              "value": "-24px 0 60px -24px rgba(0,0,0,.35)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: -24px",
-                "raw shadow: 60px",
-                "raw color: rgba(0,0,0,.35)"
-              ]
-            },
-            {
-              "path": "components/drawer/drawer.css",
-              "property": "background",
-              "value": "rgba(24,24,27,.45)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(24,24,27,.45)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -8565,34 +8007,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/dropdown/dropdown.css: border-radius: 11px [radius] — raw radius: 11px",
-            "components/dropdown/dropdown.css: box-shadow: 0 16px 40px -14px rgba(16,24,40,.25) [shadow] — raw shadow: 16px; raw shadow: 40px; raw shadow: -14px; raw color: rgba(16,24,40,.25)",
-            "components/dropdown/dropdown.css: transition: opacity .15s,transform .15s [duration] — raw duration: .15s",
-            "components/dropdown/dropdown.css: border-radius: 7px [radius] — raw radius: 7px"
+            "components/dropdown/dropdown.css: transition: opacity .15s,transform .15s [duration] — raw duration: .15s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/dropdown/dropdown.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            },
-            {
-              "path": "components/dropdown/dropdown.css",
-              "property": "box-shadow",
-              "value": "0 16px 40px -14px rgba(16,24,40,.25)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 16px",
-                "raw shadow: 40px",
-                "raw shadow: -14px",
-                "raw color: rgba(16,24,40,.25)"
-              ]
-            },
             {
               "path": "components/dropdown/dropdown.css",
               "property": "transition",
@@ -8601,21 +8019,10 @@
               "reasons": [
                 "raw duration: .15s"
               ]
-            },
-            {
-              "path": "components/dropdown/dropdown.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 2,
-            "shadow": 1
+            "duration": 1
           }
         },
         {
@@ -8782,7 +8189,7 @@
     {
       "id": "components/dual-range",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -8798,71 +8205,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/dual-range/dual-range.css: border-radius: 3px [radius] — raw radius: 3px",
-            "components/dual-range/dual-range.css: border-radius: 3px [radius] — raw radius: 3px",
-            "components/dual-range/dual-range.css: box-shadow: 0 1px 4px rgba(16,24,40,.18) [shadow] — raw shadow: 1px; raw shadow: 4px; raw color: rgba(16,24,40,.18)",
-            "components/dual-range/dual-range.css: box-shadow: 0 1px 4px rgba(16,24,40,.18) [shadow] — raw shadow: 1px; raw shadow: 4px; raw color: rgba(16,24,40,.18)",
-            "components/dual-range/dual-range.css: border-radius: 6px [radius] — raw radius: 6px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/dual-range/dual-range.css",
-              "property": "border-radius",
-              "value": "3px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 3px"
-              ]
-            },
-            {
-              "path": "components/dual-range/dual-range.css",
-              "property": "border-radius",
-              "value": "3px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 3px"
-              ]
-            },
-            {
-              "path": "components/dual-range/dual-range.css",
-              "property": "box-shadow",
-              "value": "0 1px 4px rgba(16,24,40,.18)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 4px",
-                "raw color: rgba(16,24,40,.18)"
-              ]
-            },
-            {
-              "path": "components/dual-range/dual-range.css",
-              "property": "box-shadow",
-              "value": "0 1px 4px rgba(16,24,40,.18)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 4px",
-                "raw color: rgba(16,24,40,.18)"
-              ]
-            },
-            {
-              "path": "components/dual-range/dual-range.css",
-              "property": "border-radius",
-              "value": "6px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 6px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 3,
-            "shadow": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -9351,22 +8699,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/file-upload/file-upload.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/file-upload/file-upload.css: transition: border-color .15s,background .15s [duration] — raw duration: .15s",
-            "components/file-upload/file-upload.css: border-radius: 11px [radius] — raw radius: 11px",
-            "components/file-upload/file-upload.css: border-radius: 7px [radius] — raw radius: 7px"
+            "components/file-upload/file-upload.css: transition: border-color .15s,background .15s [duration] — raw duration: .15s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/file-upload/file-upload.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
             {
               "path": "components/file-upload/file-upload.css",
               "property": "transition",
@@ -9375,29 +8711,10 @@
               "reasons": [
                 "raw duration: .15s"
               ]
-            },
-            {
-              "path": "components/file-upload/file-upload.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            },
-            {
-              "path": "components/file-upload/file-upload.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 3
+            "duration": 1
           }
         },
         {
@@ -9849,7 +9166,7 @@
     {
       "id": "components/funnel-chart",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -9865,26 +9182,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/funnel-chart/funnel-chart.css: border-radius: 7px [radius] — raw radius: 7px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/funnel-chart/funnel-chart.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -10177,7 +9480,7 @@
     {
       "id": "components/glass-panel",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -10193,40 +9496,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/glass-panel/glass-panel.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/glass-panel/glass-panel.css: box-shadow: 0 18px 40px -18px rgba(0,0,0,.45) [shadow] — raw shadow: 18px; raw shadow: 40px; raw shadow: -18px; raw color: rgba(0,0,0,.45)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/glass-panel/glass-panel.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/glass-panel/glass-panel.css",
-              "property": "box-shadow",
-              "value": "0 18px 40px -18px rgba(0,0,0,.45)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 18px",
-                "raw shadow: 40px",
-                "raw shadow: -18px",
-                "raw color: rgba(0,0,0,.45)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -10413,10 +9688,8 @@
           "findings": [
             "components/glow-button/glow-button.css: animation: k-ga-spin 3.6s linear infinite [duration] — raw duration: 3.6s",
             "components/glow-button/glow-button.css: transition: box-shadow .3s [duration] — raw duration: .3s",
-            "components/glow-button/glow-button.css: box-shadow: 0 0 26px -6px var(--k-accent) [shadow] — raw shadow: 26px; raw shadow: -6px",
             "components/glow-button/glow-button.css: transition: background .3s, box-shadow .3s [duration] — raw duration: .3s",
-            "components/glow-button/glow-button.css: animation: k-ga-spin 3.6s linear infinite [duration] — raw duration: 3.6s",
-            "components/glow-button/glow-button.css: box-shadow: 0 0 18px -4px var(--k-accent-bg) [shadow] — raw shadow: 18px; raw shadow: -4px"
+            "components/glow-button/glow-button.css: animation: k-ga-spin 3.6s linear infinite [duration] — raw duration: 3.6s"
           ],
           "profile": "lab",
           "details": [
@@ -10440,16 +9713,6 @@
             },
             {
               "path": "components/glow-button/glow-button.css",
-              "property": "box-shadow",
-              "value": "0 0 26px -6px var(--k-accent)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 26px",
-                "raw shadow: -6px"
-              ]
-            },
-            {
-              "path": "components/glow-button/glow-button.css",
               "property": "transition",
               "value": "background .3s, box-shadow .3s",
               "kind": "duration",
@@ -10465,21 +9728,10 @@
               "reasons": [
                 "raw duration: 3.6s"
               ]
-            },
-            {
-              "path": "components/glow-button/glow-button.css",
-              "property": "box-shadow",
-              "value": "0 0 18px -4px var(--k-accent-bg)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 18px",
-                "raw shadow: -4px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 4,
-            "shadow": 2
+            "duration": 4
           }
         },
         {
@@ -11373,44 +10625,11 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/hanko/hanko.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/hanko/hanko.css: border-radius: 12px [radius] — raw radius: 12px",
-            "components/hanko/hanko.css: border-radius: 9px 11px 10px 12px [radius] — raw radius: 9px; raw radius: 11px; raw radius: 10px; raw radius: 12px",
             "components/hanko/hanko.css: animation: k-seal-in .5s cubic-bezier(.2,1.6,.4,1) [duration] — raw duration: .5s",
             "components/hanko/hanko.css: animation: k-seal-ring .55s ease-out [duration] — raw duration: .55s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/hanko/hanko.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/hanko/hanko.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            },
-            {
-              "path": "components/hanko/hanko.css",
-              "property": "border-radius",
-              "value": "9px 11px 10px 12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px",
-                "raw radius: 11px",
-                "raw radius: 10px",
-                "raw radius: 12px"
-              ]
-            },
             {
               "path": "components/hanko/hanko.css",
               "property": "animation",
@@ -11431,8 +10650,7 @@
             }
           ],
           "by_kind": {
-            "duration": 2,
-            "radius": 3
+            "duration": 2
           }
         },
         {
@@ -11639,7 +10857,7 @@
     {
       "id": "components/heatmap",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -11655,36 +10873,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/heatmap/heatmap.css: border-radius: 3px [radius] — raw radius: 3px",
-            "components/heatmap/heatmap.css: border-radius: 3px [radius] — raw radius: 3px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/heatmap/heatmap.css",
-              "property": "border-radius",
-              "value": "3px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 3px"
-              ]
-            },
-            {
-              "path": "components/heatmap/heatmap.css",
-              "property": "border-radius",
-              "value": "3px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 3px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -12036,33 +11230,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/hover-card/hover-card.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/hover-card/hover-card.css: box-shadow: 0 16px 40px -12px rgba(16,24,40,.18) [shadow] — raw shadow: 16px; raw shadow: 40px; raw shadow: -12px; raw color: rgba(16,24,40,.18)",
             "components/hover-card/hover-card.css: transition: opacity .16s var(--k-ease),transform .16s var(--k-ease) [duration] — raw duration: .16s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/hover-card/hover-card.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/hover-card/hover-card.css",
-              "property": "box-shadow",
-              "value": "0 16px 40px -12px rgba(16,24,40,.18)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 16px",
-                "raw shadow: 40px",
-                "raw shadow: -12px",
-                "raw color: rgba(16,24,40,.18)"
-              ]
-            },
             {
               "path": "components/hover-card/hover-card.css",
               "property": "transition",
@@ -12074,9 +11245,7 @@
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 1,
-            "shadow": 1
+            "duration": 1
           }
         },
         {
@@ -12248,28 +11417,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/input/input.css: box-shadow: 0 1px 2px rgba(16,24,40,.04) [shadow] — raw shadow: 1px; raw shadow: 2px; raw color: rgba(16,24,40,.04)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/input/input.css",
-              "property": "box-shadow",
-              "value": "0 1px 2px rgba(16,24,40,.04)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 2px",
-                "raw color: rgba(16,24,40,.04)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -12704,22 +11857,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/input-otp/input-otp.css: border-radius: 10px [radius] — raw radius: 10px",
-            "components/input-otp/input-otp.css: transition: border-color .13s, box-shadow .13s [duration] — raw duration: .13s",
-            "components/input-otp/input-otp.css: box-shadow: 0 0 0 3px var(--k-accent-bg) [shadow-ring] — raw shadow: 3px",
-            "components/input-otp/input-otp.css: border-radius: 2px [radius] — raw radius: 2px"
+            "components/input-otp/input-otp.css: transition: border-color .13s, box-shadow .13s [duration] — raw duration: .13s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/input-otp/input-otp.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
-            },
             {
               "path": "components/input-otp/input-otp.css",
               "property": "transition",
@@ -12728,30 +11869,10 @@
               "reasons": [
                 "raw duration: .13s"
               ]
-            },
-            {
-              "path": "components/input-otp/input-otp.css",
-              "property": "box-shadow",
-              "value": "0 0 0 3px var(--k-accent-bg)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 3px"
-              ]
-            },
-            {
-              "path": "components/input-otp/input-otp.css",
-              "property": "border-radius",
-              "value": "2px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 2px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 2,
-            "shadow-ring": 1
+            "duration": 1
           }
         },
         {
@@ -13356,7 +12477,7 @@
     {
       "id": "components/kbd",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13372,26 +12493,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/kbd/kbd.css: border-radius: 6px [radius] — raw radius: 6px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/kbd/kbd.css",
-              "property": "border-radius",
-              "value": "6px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 6px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -13517,7 +12624,7 @@
     {
       "id": "components/kintsugi-card",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13533,26 +12640,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/kintsugi-card/kintsugi-card.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/kintsugi-card/kintsugi-card.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -14105,26 +13198,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/list/list.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/list/list.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -14709,70 +13788,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/menubar/menubar.css: border-radius: 7px [radius] — raw radius: 7px",
-            "components/menubar/menubar.css: border-radius: 11px [radius] — raw radius: 11px",
-            "components/menubar/menubar.css: box-shadow: 0 18px 40px -12px rgba(16,24,40,.25) [shadow] — raw shadow: 18px; raw shadow: 40px; raw shadow: -12px; raw color: rgba(16,24,40,.25)",
-            "components/menubar/menubar.css: border-radius: 7px [radius] — raw radius: 7px",
-            "components/menubar/preview.html: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/menubar/menubar.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "components/menubar/menubar.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            },
-            {
-              "path": "components/menubar/menubar.css",
-              "property": "box-shadow",
-              "value": "0 18px 40px -12px rgba(16,24,40,.25)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 18px",
-                "raw shadow: 40px",
-                "raw shadow: -12px",
-                "raw color: rgba(16,24,40,.25)"
-              ]
-            },
-            {
-              "path": "components/menubar/menubar.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "components/menubar/preview.html",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 4,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -15068,22 +14089,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/meteors/meteors.css: box-shadow: 0 0 10px 2px rgba(255,255,255,.3) [shadow] — raw shadow: 10px; raw shadow: 2px; raw color: rgba(255,255,255,.3)",
             "components/meteors/meteors.css: background: linear-gradient(to right, rgba(255,255,255,.75), transparent) [color] — raw color: rgba(255,255,255,.75)"
           ],
           "profile": "lab",
           "details": [
-            {
-              "path": "components/meteors/meteors.css",
-              "property": "box-shadow",
-              "value": "0 0 10px 2px rgba(255,255,255,.3)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 10px",
-                "raw shadow: 2px",
-                "raw color: rgba(255,255,255,.3)"
-              ]
-            },
             {
               "path": "components/meteors/meteors.css",
               "property": "background",
@@ -15095,8 +14104,7 @@
             }
           ],
           "by_kind": {
-            "color": 1,
-            "shadow": 1
+            "color": 1
           }
         },
         {
@@ -15441,51 +14449,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/modal/modal.css: border-radius: 16px [radius] — raw radius: 16px",
-            "components/modal/modal.css: box-shadow: 0 30px 80px -20px rgba(0,0,0,.4) [shadow] — raw shadow: 30px; raw shadow: 80px; raw shadow: -20px; raw color: rgba(0,0,0,.4)",
-            "components/modal/modal.css: background: rgba(24,24,27,.45) [color] — raw color: rgba(24,24,27,.45)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/modal/modal.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "components/modal/modal.css",
-              "property": "box-shadow",
-              "value": "0 30px 80px -20px rgba(0,0,0,.4)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 30px",
-                "raw shadow: 80px",
-                "raw shadow: -20px",
-                "raw color: rgba(0,0,0,.4)"
-              ]
-            },
-            {
-              "path": "components/modal/modal.css",
-              "property": "background",
-              "value": "rgba(24,24,27,.45)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(24,24,27,.45)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1,
-            "radius": 1,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -15679,25 +14648,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/navigation-menu/navigation-menu.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/navigation-menu/navigation-menu.css: transition: transform .18s [duration] — raw duration: .18s",
-            "components/navigation-menu/navigation-menu.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/navigation-menu/navigation-menu.css: box-shadow: 0 20px 44px -14px rgba(16,24,40,.22) [shadow] — raw shadow: 20px; raw shadow: 44px; raw shadow: -14px; raw color: rgba(16,24,40,.22)",
-            "components/navigation-menu/navigation-menu.css: border-radius: 9px [radius] — raw radius: 9px",
-            "components/navigation-menu/navigation-menu.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/navigation-menu/preview.html: border-radius: 14px [radius] — raw radius: 14px"
+            "components/navigation-menu/navigation-menu.css: transition: transform .18s [duration] — raw duration: .18s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/navigation-menu/navigation-menu.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
             {
               "path": "components/navigation-menu/navigation-menu.css",
               "property": "transition",
@@ -15706,60 +14660,10 @@
               "reasons": [
                 "raw duration: .18s"
               ]
-            },
-            {
-              "path": "components/navigation-menu/navigation-menu.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/navigation-menu/navigation-menu.css",
-              "property": "box-shadow",
-              "value": "0 20px 44px -14px rgba(16,24,40,.22)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 20px",
-                "raw shadow: 44px",
-                "raw shadow: -14px",
-                "raw color: rgba(16,24,40,.22)"
-              ]
-            },
-            {
-              "path": "components/navigation-menu/navigation-menu.css",
-              "property": "border-radius",
-              "value": "9px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px"
-              ]
-            },
-            {
-              "path": "components/navigation-menu/navigation-menu.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/navigation-menu/preview.html",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 5,
-            "shadow": 1
+            "duration": 1
           }
         },
         {
@@ -16012,23 +14916,11 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/newtons-cradle/newtons-cradle.css: box-shadow: 0 3px 7px rgba(16,24,40,.25) [shadow] — raw shadow: 3px; raw shadow: 7px; raw color: rgba(16,24,40,.25)",
             "components/newtons-cradle/newtons-cradle.css: animation: k-cr-l 2.4s ease-in-out infinite [duration] — raw duration: 2.4s",
             "components/newtons-cradle/newtons-cradle.css: animation: k-cr-r 2.4s ease-in-out infinite [duration] — raw duration: 2.4s"
           ],
           "profile": "lab",
           "details": [
-            {
-              "path": "components/newtons-cradle/newtons-cradle.css",
-              "property": "box-shadow",
-              "value": "0 3px 7px rgba(16,24,40,.25)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 3px",
-                "raw shadow: 7px",
-                "raw color: rgba(16,24,40,.25)"
-              ]
-            },
             {
               "path": "components/newtons-cradle/newtons-cradle.css",
               "property": "animation",
@@ -16049,8 +14941,7 @@
             }
           ],
           "by_kind": {
-            "duration": 2,
-            "shadow": 1
+            "duration": 2
           }
         },
         {
@@ -16153,8 +15044,6 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/noren/noren.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/noren/noren.css: border-radius: 4px [radius] — raw radius: 4px",
             "components/noren/noren.css: transition: transform .5s cubic-bezier(.4,0,.2,1) [duration] — raw duration: .5s",
             "components/noren/noren.css: animation: k-nor-sway 5.2s ease-in-out infinite alternate [duration] — raw duration: 5.2s",
             "components/noren/noren.css: animation: k-nor-sway 6.4s ease-in-out infinite alternate-reverse [duration] — raw duration: 6.4s",
@@ -16162,24 +15051,6 @@
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/noren/noren.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/noren/noren.css",
-              "property": "border-radius",
-              "value": "4px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 4px"
-              ]
-            },
             {
               "path": "components/noren/noren.css",
               "property": "transition",
@@ -16218,8 +15089,7 @@
             }
           ],
           "by_kind": {
-            "duration": 4,
-            "radius": 2
+            "duration": 4
           }
         },
         {
@@ -16366,27 +15236,13 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/orbit/orbit.css: box-shadow: 0 12px 26px -10px rgba(16,24,40,.4) [shadow] — raw shadow: 12px; raw shadow: 26px; raw shadow: -10px; raw color: rgba(16,24,40,.4)",
             "components/orbit/orbit.css: animation-duration: 16s [duration] — raw duration: 16s",
             "components/orbit/orbit.css: animation-duration: 26s [duration] — raw duration: 26s",
-            "components/orbit/orbit.css: box-shadow: 0 4px 12px rgba(16,24,40,.1) [shadow] — raw shadow: 4px; raw shadow: 12px; raw color: rgba(16,24,40,.1)",
             "components/orbit/orbit.css: animation-duration: 16s [duration] — raw duration: 16s",
             "components/orbit/orbit.css: animation-duration: 26s [duration] — raw duration: 26s"
           ],
           "profile": "lab",
           "details": [
-            {
-              "path": "components/orbit/orbit.css",
-              "property": "box-shadow",
-              "value": "0 12px 26px -10px rgba(16,24,40,.4)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 12px",
-                "raw shadow: 26px",
-                "raw shadow: -10px",
-                "raw color: rgba(16,24,40,.4)"
-              ]
-            },
             {
               "path": "components/orbit/orbit.css",
               "property": "animation-duration",
@@ -16403,17 +15259,6 @@
               "kind": "duration",
               "reasons": [
                 "raw duration: 26s"
-              ]
-            },
-            {
-              "path": "components/orbit/orbit.css",
-              "property": "box-shadow",
-              "value": "0 4px 12px rgba(16,24,40,.1)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 4px",
-                "raw shadow: 12px",
-                "raw color: rgba(16,24,40,.1)"
               ]
             },
             {
@@ -16436,8 +15281,7 @@
             }
           ],
           "by_kind": {
-            "duration": 4,
-            "shadow": 2
+            "duration": 4
           }
         },
         {
@@ -17396,7 +16240,7 @@
     {
       "id": "components/qr-code",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -17412,26 +16256,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/qr-code/examples.html: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/qr-code/examples.html",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -18004,8 +16834,7 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/rating/rating.css: transition: fill .12s [duration] — raw duration: .12s",
-            "components/rating/rating.css: border-radius: 6px [radius] — raw radius: 6px"
+            "components/rating/rating.css: transition: fill .12s [duration] — raw duration: .12s"
           ],
           "profile": "ui",
           "details": [
@@ -18017,20 +16846,10 @@
               "reasons": [
                 "raw duration: .12s"
               ]
-            },
-            {
-              "path": "components/rating/rating.css",
-              "property": "border-radius",
-              "value": "6px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 6px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 1
+            "duration": 1
           }
         },
         {
@@ -18841,37 +17660,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/scroll-area/scroll-area.css: border-radius: 99px [radius-full] — raw radius: 99px",
-            "components/scroll-area/scroll-area.css: border-radius: 9px [radius] — raw radius: 9px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/scroll-area/scroll-area.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
-            {
-              "path": "components/scroll-area/scroll-area.css",
-              "property": "border-radius",
-              "value": "9px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1,
-            "radius-full": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -19023,36 +17817,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/scrollspy/scrollspy.css: border-radius: 7px [radius] — raw radius: 7px",
-            "components/scrollspy/scrollspy.css: border-radius: 12px [radius] — raw radius: 12px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/scrollspy/scrollspy.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "components/scrollspy/scrollspy.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -19265,31 +18035,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/segmented/segmented.css: border-radius: 11px [radius] — raw radius: 11px",
-            "components/segmented/segmented.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/segmented/segmented.css: transition: background .15s,color .15s [duration] — raw duration: .15s",
-            "components/segmented/segmented.css: box-shadow: 0 1px 2px rgba(16,24,40,.09) [shadow] — raw shadow: 1px; raw shadow: 2px; raw color: rgba(16,24,40,.09)"
+            "components/segmented/segmented.css: transition: background .15s,color .15s [duration] — raw duration: .15s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/segmented/segmented.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            },
-            {
-              "path": "components/segmented/segmented.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
             {
               "path": "components/segmented/segmented.css",
               "property": "transition",
@@ -19298,23 +18047,10 @@
               "reasons": [
                 "raw duration: .15s"
               ]
-            },
-            {
-              "path": "components/segmented/segmented.css",
-              "property": "box-shadow",
-              "value": "0 1px 2px rgba(16,24,40,.09)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 2px",
-                "raw color: rgba(16,24,40,.09)"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 2,
-            "shadow": 1
+            "duration": 1
           }
         },
         {
@@ -19970,44 +18706,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/sidebar/sidebar.css: border-radius: 7px [radius] — raw radius: 7px",
-            "components/sidebar/sidebar.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/sidebar/sidebar.css: border-radius: 99px [radius-full] — raw radius: 99px",
-            "components/sidebar/sidebar.css: transition: transform .18s [duration] — raw duration: .18s",
-            "components/sidebar/examples.html: border-radius: 14px [radius] — raw radius: 14px",
-            "components/sidebar/examples.html: border-radius: 14px [radius] — raw radius: 14px",
-            "components/sidebar/examples.html: border-radius: 12px [radius] — raw radius: 12px",
-            "components/sidebar/preview.html: border-radius: 14px [radius] — raw radius: 14px"
+            "components/sidebar/sidebar.css: transition: transform .18s [duration] — raw duration: .18s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/sidebar/sidebar.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "components/sidebar/sidebar.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/sidebar/sidebar.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
             {
               "path": "components/sidebar/sidebar.css",
               "property": "transition",
@@ -20016,48 +18718,10 @@
               "reasons": [
                 "raw duration: .18s"
               ]
-            },
-            {
-              "path": "components/sidebar/examples.html",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/sidebar/examples.html",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/sidebar/examples.html",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            },
-            {
-              "path": "components/sidebar/preview.html",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 6,
-            "radius-full": 1
+            "duration": 1
           }
         },
         {
@@ -20752,7 +19416,7 @@
     {
       "id": "components/slider",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -20768,40 +19432,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/slider/slider.css: box-shadow: 0 1px 2px rgba(16,24,40,.18) [shadow] — raw shadow: 1px; raw shadow: 2px; raw color: rgba(16,24,40,.18)",
-            "components/slider/slider.css: box-shadow: 0 1px 2px rgba(16,24,40,.18) [shadow] — raw shadow: 1px; raw shadow: 2px; raw color: rgba(16,24,40,.18)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/slider/slider.css",
-              "property": "box-shadow",
-              "value": "0 1px 2px rgba(16,24,40,.18)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 2px",
-                "raw color: rgba(16,24,40,.18)"
-              ]
-            },
-            {
-              "path": "components/slider/slider.css",
-              "property": "box-shadow",
-              "value": "0 1px 2px rgba(16,24,40,.18)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 2px",
-                "raw color: rgba(16,24,40,.18)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "shadow": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -21423,12 +20059,7 @@
           "severity": "error",
           "findings": [
             "components/speed-dial/speed-dial.css: transition: opacity .18s,transform .18s [duration] — raw duration: .18s",
-            "components/speed-dial/speed-dial.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/speed-dial/speed-dial.css: box-shadow: 0 2px 8px rgba(16,24,40,.08) [shadow] — raw shadow: 2px; raw shadow: 8px; raw color: rgba(16,24,40,.08)",
-            "components/speed-dial/speed-dial.css: box-shadow: 0 2px 8px rgba(16,24,40,.1) [shadow] — raw shadow: 2px; raw shadow: 8px; raw color: rgba(16,24,40,.1)",
-            "components/speed-dial/speed-dial.css: box-shadow: 0 6px 18px rgba(16,24,40,.28) [shadow] — raw shadow: 6px; raw shadow: 18px; raw color: rgba(16,24,40,.28)",
-            "components/speed-dial/speed-dial.css: transition: transform .2s [duration] — raw duration: .2s",
-            "components/speed-dial/preview.html: border-radius: 14px [radius] — raw radius: 14px"
+            "components/speed-dial/speed-dial.css: transition: transform .2s [duration] — raw duration: .2s"
           ],
           "profile": "ui",
           "details": [
@@ -21443,69 +20074,16 @@
             },
             {
               "path": "components/speed-dial/speed-dial.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/speed-dial/speed-dial.css",
-              "property": "box-shadow",
-              "value": "0 2px 8px rgba(16,24,40,.08)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 2px",
-                "raw shadow: 8px",
-                "raw color: rgba(16,24,40,.08)"
-              ]
-            },
-            {
-              "path": "components/speed-dial/speed-dial.css",
-              "property": "box-shadow",
-              "value": "0 2px 8px rgba(16,24,40,.1)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 2px",
-                "raw shadow: 8px",
-                "raw color: rgba(16,24,40,.1)"
-              ]
-            },
-            {
-              "path": "components/speed-dial/speed-dial.css",
-              "property": "box-shadow",
-              "value": "0 6px 18px rgba(16,24,40,.28)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 6px",
-                "raw shadow: 18px",
-                "raw color: rgba(16,24,40,.28)"
-              ]
-            },
-            {
-              "path": "components/speed-dial/speed-dial.css",
               "property": "transition",
               "value": "transform .2s",
               "kind": "duration",
               "reasons": [
                 "raw duration: .2s"
               ]
-            },
-            {
-              "path": "components/speed-dial/preview.html",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 2,
-            "radius": 2,
-            "shadow": 3
+            "duration": 2
           }
         },
         {
@@ -21802,36 +20380,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/split-panel/split-panel.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/split-panel/split-panel.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/split-panel/split-panel.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/split-panel/split-panel.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22834,7 +21388,7 @@
     {
       "id": "components/steps",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -22850,26 +21404,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/steps/steps.css: border-radius: 2px [radius] — raw radius: 2px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/steps/steps.css",
-              "property": "border-radius",
-              "value": "2px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 2px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22994,22 +21534,11 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/switch/switch.css: border-radius: 99px [radius-full] — raw radius: 99px",
             "components/switch/switch.css: transition: background .18s [duration] — raw duration: .18s",
-            "components/switch/switch.css: box-shadow: 0 1px 3px rgba(0,0,0,.3),inset 0 0 0 1px rgba(0,0,0,.08) [shadow-ring] — raw shadow: 1px; raw shadow: 3px; raw color: rgba(0,0,0,.3); raw color: rgba(0,0,0,.08)",
             "components/switch/switch.css: transition: transform .18s [duration] — raw duration: .18s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/switch/switch.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
             {
               "path": "components/switch/switch.css",
               "property": "transition",
@@ -23017,18 +21546,6 @@
               "kind": "duration",
               "reasons": [
                 "raw duration: .18s"
-              ]
-            },
-            {
-              "path": "components/switch/switch.css",
-              "property": "box-shadow",
-              "value": "0 1px 3px rgba(0,0,0,.3),inset 0 0 0 1px rgba(0,0,0,.08)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 3px",
-                "raw color: rgba(0,0,0,.3)",
-                "raw color: rgba(0,0,0,.08)"
               ]
             },
             {
@@ -23042,9 +21559,7 @@
             }
           ],
           "by_kind": {
-            "duration": 2,
-            "radius-full": 1,
-            "shadow-ring": 1
+            "duration": 2
           }
         },
         {
@@ -23399,53 +21914,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/tabs/tabs.css: border-radius: 10px [radius] — raw radius: 10px",
-            "components/tabs/tabs.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/tabs/tabs.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/tabs/tabs.css: box-shadow: 0 1px 3px rgba(16,24,40,.14) [shadow] — raw shadow: 1px; raw shadow: 3px; raw color: rgba(16,24,40,.14)",
-            "components/tabs/tabs.css: transition: left .22s cubic-bezier(.3,.7,.3,1),width .22s cubic-bezier(.3,.7,.3,1) [duration] — raw duration: .22s",
-            "components/tabs/tabs.css: border-radius: 10px [radius] — raw radius: 10px"
+            "components/tabs/tabs.css: transition: left .22s cubic-bezier(.3,.7,.3,1),width .22s cubic-bezier(.3,.7,.3,1) [duration] — raw duration: .22s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/tabs/tabs.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
-            },
-            {
-              "path": "components/tabs/tabs.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/tabs/tabs.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/tabs/tabs.css",
-              "property": "box-shadow",
-              "value": "0 1px 3px rgba(16,24,40,.14)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 3px",
-                "raw color: rgba(16,24,40,.14)"
-              ]
-            },
             {
               "path": "components/tabs/tabs.css",
               "property": "transition",
@@ -23454,21 +21926,10 @@
               "reasons": [
                 "raw duration: .22s"
               ]
-            },
-            {
-              "path": "components/tabs/tabs.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 4,
-            "shadow": 1
+            "duration": 1
           }
         },
         {
@@ -23686,8 +22147,7 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/tag-input/tag-input.css: transition: border-color .13s, box-shadow .13s [duration] — raw duration: .13s",
-            "components/tag-input/tag-input.css: box-shadow: 0 0 0 3px var(--k-accent-bg) [shadow-ring] — raw shadow: 3px"
+            "components/tag-input/tag-input.css: transition: border-color .13s, box-shadow .13s [duration] — raw duration: .13s"
           ],
           "profile": "ui",
           "details": [
@@ -23699,20 +22159,10 @@
               "reasons": [
                 "raw duration: .13s"
               ]
-            },
-            {
-              "path": "components/tag-input/tag-input.css",
-              "property": "box-shadow",
-              "value": "0 0 0 3px var(--k-accent-bg)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 3px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "shadow-ring": 1
+            "duration": 1
           }
         },
         {
@@ -23871,7 +22321,6 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/tategaki/tategaki.css: border-radius: 14px [radius] — raw radius: 14px",
             "components/tategaki/tategaki.css: animation: k-tate-in 1s cubic-bezier(.2,.7,.2,1) both [duration] — raw duration: 1s",
             "components/tategaki/tategaki.css: animation-delay: .05s [duration] — raw duration: .05s",
             "components/tategaki/tategaki.css: animation-delay: .22s [duration] — raw duration: .22s",
@@ -23879,15 +22328,6 @@
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/tategaki/tategaki.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
             {
               "path": "components/tategaki/tategaki.css",
               "property": "animation",
@@ -23926,8 +22366,7 @@
             }
           ],
           "by_kind": {
-            "duration": 4,
-            "radius": 1
+            "duration": 4
           }
         },
         {
@@ -24708,60 +23147,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/time-picker/time-picker.css: border-radius: 7px [radius] — raw radius: 7px",
-            "components/time-picker/time-picker.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/time-picker/time-picker.css: box-shadow: 0 20px 44px -14px rgba(16,24,40,.22) [shadow] — raw shadow: 20px; raw shadow: 44px; raw shadow: -14px; raw color: rgba(16,24,40,.22)",
-            "components/time-picker/time-picker.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/time-picker/time-picker.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "components/time-picker/time-picker.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/time-picker/time-picker.css",
-              "property": "box-shadow",
-              "value": "0 20px 44px -14px rgba(16,24,40,.22)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 20px",
-                "raw shadow: 44px",
-                "raw shadow: -14px",
-                "raw color: rgba(16,24,40,.22)"
-              ]
-            },
-            {
-              "path": "components/time-picker/time-picker.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 3,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -25141,33 +23532,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/toast/toast.css: border-radius: 12px [radius] — raw radius: 12px",
-            "components/toast/toast.css: box-shadow: 0 20px 44px -14px rgba(0,0,0,.45) [shadow] — raw shadow: 20px; raw shadow: 44px; raw shadow: -14px; raw color: rgba(0,0,0,.45)",
             "components/toast/toast.css: animation: k-tin .3s cubic-bezier(.3,1.2,.4,1) [duration] — raw duration: .3s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/toast/toast.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            },
-            {
-              "path": "components/toast/toast.css",
-              "property": "box-shadow",
-              "value": "0 20px 44px -14px rgba(0,0,0,.45)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 20px",
-                "raw shadow: 44px",
-                "raw shadow: -14px",
-                "raw color: rgba(0,0,0,.45)"
-              ]
-            },
             {
               "path": "components/toast/toast.css",
               "property": "animation",
@@ -25179,9 +23547,7 @@
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 1,
-            "shadow": 1
+            "duration": 1
           }
         },
         {
@@ -25378,21 +23744,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/toggle/toggle.css: border-radius: 9px [radius] — raw radius: 9px",
-            "components/toggle/toggle.css: transition: background .13s,border-color .13s,color .13s [duration] — raw duration: .13s",
-            "components/toggle/toggle.css: border-radius: 12px [radius] — raw radius: 12px"
+            "components/toggle/toggle.css: transition: background .13s,border-color .13s,color .13s [duration] — raw duration: .13s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/toggle/toggle.css",
-              "property": "border-radius",
-              "value": "9px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px"
-              ]
-            },
             {
               "path": "components/toggle/toggle.css",
               "property": "transition",
@@ -25401,20 +23756,10 @@
               "reasons": [
                 "raw duration: .13s"
               ]
-            },
-            {
-              "path": "components/toggle/toggle.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 2
+            "duration": 1
           }
         },
         {
@@ -25570,22 +23915,12 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/tooltip/tooltip.css: border-radius: 6px [radius] — raw radius: 6px",
             "components/tooltip/tooltip.css: transition: opacity .15s,transform .15s [duration] — raw duration: .15s",
             "components/tooltip/tooltip.css: border: 5px solid transparent [border] — raw border: 5px",
             "components/tooltip/tooltip.css: transition: opacity .15s [duration] — raw duration: .15s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/tooltip/tooltip.css",
-              "property": "border-radius",
-              "value": "6px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 6px"
-              ]
-            },
             {
               "path": "components/tooltip/tooltip.css",
               "property": "transition",
@@ -25616,8 +23951,7 @@
           ],
           "by_kind": {
             "border": 1,
-            "duration": 2,
-            "radius": 1
+            "duration": 2
           }
         },
         {
@@ -25745,7 +24079,7 @@
     {
       "id": "components/torn-ticket",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -25761,40 +24095,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/torn-ticket/torn-ticket.css: border-radius: 13px [radius] — raw radius: 13px",
-            "components/torn-ticket/torn-ticket.css: box-shadow: 0 14px 28px -14px rgba(16,24,40,.28) [shadow] — raw shadow: 14px; raw shadow: 28px; raw shadow: -14px; raw color: rgba(16,24,40,.28)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/torn-ticket/torn-ticket.css",
-              "property": "border-radius",
-              "value": "13px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 13px"
-              ]
-            },
-            {
-              "path": "components/torn-ticket/torn-ticket.css",
-              "property": "box-shadow",
-              "value": "0 14px 28px -14px rgba(16,24,40,.28)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 14px",
-                "raw shadow: 28px",
-                "raw shadow: -14px",
-                "raw color: rgba(16,24,40,.28)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -25984,7 +24290,7 @@
     {
       "id": "components/tour",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -26000,82 +24306,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tour/tour.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/tour/tour.css: border-radius: 10px [radius] — raw radius: 10px",
-            "components/tour/tour.css: box-shadow: 0 0 0 5px var(--k-accent-bg-strong) [shadow-ring] — raw shadow: 5px",
-            "components/tour/tour.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/tour/tour.css: box-shadow: 0 18px 44px -14px rgba(16,24,40,.28) [shadow] — raw shadow: 18px; raw shadow: 44px; raw shadow: -14px; raw color: rgba(16,24,40,.28)",
-            "components/tour/tour.css: border-radius: 99px [radius-full] — raw radius: 99px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tour/tour.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/tour/tour.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
-            },
-            {
-              "path": "components/tour/tour.css",
-              "property": "box-shadow",
-              "value": "0 0 0 5px var(--k-accent-bg-strong)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 5px"
-              ]
-            },
-            {
-              "path": "components/tour/tour.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/tour/tour.css",
-              "property": "box-shadow",
-              "value": "0 18px 44px -14px rgba(16,24,40,.28)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 18px",
-                "raw shadow: 44px",
-                "raw shadow: -14px",
-                "raw color: rgba(16,24,40,.28)"
-              ]
-            },
-            {
-              "path": "components/tour/tour.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 3,
-            "radius-full": 1,
-            "shadow": 1,
-            "shadow-ring": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -26281,7 +24517,7 @@
     {
       "id": "components/tracing-beam",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -26297,26 +24533,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tracing-beam/tracing-beam.css: box-shadow: 0 0 0 4px var(--k-accent-bg) [shadow-ring] — raw shadow: 4px"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/tracing-beam/tracing-beam.css",
-              "property": "box-shadow",
-              "value": "0 0 0 4px var(--k-accent-bg)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 4px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "shadow-ring": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -26478,26 +24700,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/transfer/transfer.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/transfer/transfer.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -26752,30 +24960,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/tree/tree.css: border-radius: 8px [radius] — raw radius: 8px",
-            "components/tree/tree.css: border-radius: 5px [radius] — raw radius: 5px",
             "components/tree/tree.css: transition: transform .15s var(--k-ease) [duration] — raw duration: .15s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/tree/tree.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "components/tree/tree.css",
-              "property": "border-radius",
-              "value": "5px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 5px"
-              ]
-            },
             {
               "path": "components/tree/tree.css",
               "property": "transition",
@@ -26787,8 +24975,7 @@
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 2
+            "duration": 1
           }
         },
         {
@@ -26941,26 +25128,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/typeset/typeset.css: border-radius: 5px [radius] — raw radius: 5px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "border-radius",
-              "value": "5px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 5px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -27516,57 +25689,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/wagara/wagara.css: border-radius: 14px [radius] — raw radius: 14px",
-            "components/wagara/wagara.css: border-radius: 99px [radius-full] — raw radius: 99px",
-            "components/wagara/wagara.css: border-radius: 99px [radius-full] — raw radius: 99px",
-            "components/wagara/wagara.css: border-radius: 99px [radius-full] — raw radius: 99px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/wagara/wagara.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "components/wagara/wagara.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
-            {
-              "path": "components/wagara/wagara.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
-            {
-              "path": "components/wagara/wagara.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1,
-            "radius-full": 3
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -28253,36 +26381,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/app-shell/app-shell.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/app-shell/app-shell.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/app-shell/app-shell.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/app-shell/app-shell.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -28600,50 +26704,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/cookie-consent/cookie-consent.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/cookie-consent/cookie-consent.css: border-radius: 13px [radius] — raw radius: 13px",
-            "blocks/cookie-consent/cookie-consent.css: box-shadow: 0 14px 34px -12px rgba(16,24,40,.25) [shadow] — raw shadow: 14px; raw shadow: 34px; raw shadow: -12px; raw color: rgba(16,24,40,.25)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/cookie-consent/cookie-consent.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/cookie-consent/cookie-consent.css",
-              "property": "border-radius",
-              "value": "13px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 13px"
-              ]
-            },
-            {
-              "path": "blocks/cookie-consent/cookie-consent.css",
-              "property": "box-shadow",
-              "value": "0 14px 34px -12px rgba(16,24,40,.25)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 14px",
-                "raw shadow: 34px",
-                "raw shadow: -12px",
-                "raw color: rgba(16,24,40,.25)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -28789,7 +26855,7 @@
     {
       "id": "blocks/cta-band",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -28805,36 +26871,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/cta-band/cta-band.css: border-radius: 16px [radius] — raw radius: 16px",
-            "blocks/cta-band/cta-band.css: border-radius: 16px [radius] — raw radius: 16px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/cta-band/cta-band.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "blocks/cta-band/cta-band.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -29155,26 +27197,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/filter-toolbar/filter-toolbar.css: border-radius: 13px [radius] — raw radius: 13px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/filter-toolbar/filter-toolbar.css",
-              "property": "border-radius",
-              "value": "13px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 13px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -29315,21 +27343,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "blocks/integrations/integrations.css: border-radius: 13px [radius] — raw radius: 13px",
-            "blocks/integrations/integrations.css: transition: border-color .14s [duration] — raw duration: .14s",
-            "blocks/integrations/integrations.css: border-radius: 10px [radius] — raw radius: 10px"
+            "blocks/integrations/integrations.css: transition: border-color .14s [duration] — raw duration: .14s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "blocks/integrations/integrations.css",
-              "property": "border-radius",
-              "value": "13px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 13px"
-              ]
-            },
             {
               "path": "blocks/integrations/integrations.css",
               "property": "transition",
@@ -29338,20 +27355,10 @@
               "reasons": [
                 "raw duration: .14s"
               ]
-            },
-            {
-              "path": "blocks/integrations/integrations.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
             }
           ],
           "by_kind": {
-            "duration": 1,
-            "radius": 2
+            "duration": 1
           }
         },
         {
@@ -29528,7 +27535,7 @@
     {
       "id": "blocks/invoice",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -29544,26 +27551,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/invoice/invoice.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/invoice/invoice.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -29882,7 +27875,7 @@
     {
       "id": "blocks/kanban",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -29898,60 +27891,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/kanban/kanban.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/kanban/kanban.css: border-radius: 99px [radius-full] — raw radius: 99px",
-            "blocks/kanban/kanban.css: border-radius: 11px [radius] — raw radius: 11px",
-            "blocks/kanban/kanban.css: box-shadow: 0 1px 2px rgba(16,24,40,.05) [shadow] — raw shadow: 1px; raw shadow: 2px; raw color: rgba(16,24,40,.05)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/kanban/kanban.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/kanban/kanban.css",
-              "property": "border-radius",
-              "value": "99px",
-              "kind": "radius-full",
-              "reasons": [
-                "raw radius: 99px"
-              ]
-            },
-            {
-              "path": "blocks/kanban/kanban.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            },
-            {
-              "path": "blocks/kanban/kanban.css",
-              "property": "box-shadow",
-              "value": "0 1px 2px rgba(16,24,40,.05)",
-              "kind": "shadow",
-              "reasons": [
-                "raw shadow: 1px",
-                "raw shadow: 2px",
-                "raw color: rgba(16,24,40,.05)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2,
-            "radius-full": 1,
-            "shadow": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -30207,26 +28152,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/login/login.css: border-radius: 16px [radius] — raw radius: 16px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/login/login.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -30583,7 +28514,7 @@
     {
       "id": "blocks/order-confirmation",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -30599,36 +28530,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/order-confirmation/order-confirmation.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/order-confirmation/order-confirmation.css: border-radius: 11px [radius] — raw radius: 11px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/order-confirmation/order-confirmation.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/order-confirmation/order-confirmation.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -30875,7 +28782,7 @@
     {
       "id": "blocks/plan-compare",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -30891,26 +28798,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/plan-compare/plan-compare.css: border-radius: 10px 10px 0 0 [radius] — raw radius: 10px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/plan-compare/plan-compare.css",
-              "property": "border-radius",
-              "value": "10px 10px 0 0",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -31033,26 +28926,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/pricing/pricing.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/pricing/pricing.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -31324,7 +29203,7 @@
     {
       "id": "blocks/roadmap",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -31340,36 +29219,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/roadmap/roadmap.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/roadmap/roadmap.css: border-radius: 11px [radius] — raw radius: 11px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/roadmap/roadmap.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/roadmap/roadmap.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -31582,26 +29437,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/settings/settings.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/settings/settings.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -31879,56 +29720,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/site-footer/site-footer.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/site-footer/site-footer.css: border-radius: 7px [radius] — raw radius: 7px",
-            "blocks/site-footer/site-footer.css: border-radius: 2.5px [radius] — raw radius: 2.5px",
-            "blocks/site-footer/site-footer.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/site-footer/site-footer.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/site-footer/site-footer.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "blocks/site-footer/site-footer.css",
-              "property": "border-radius",
-              "value": "2.5px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 2.5px"
-              ]
-            },
-            {
-              "path": "blocks/site-footer/site-footer.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 4
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -32236,56 +30033,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/site-header/site-header.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/site-header/site-header.css: border-radius: 7px [radius] — raw radius: 7px",
-            "blocks/site-header/site-header.css: border-radius: 2.5px [radius] — raw radius: 2.5px",
-            "blocks/site-header/site-header.css: border-radius: 9px [radius] — raw radius: 9px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/site-header/site-header.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/site-header/site-header.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "blocks/site-header/site-header.css",
-              "property": "border-radius",
-              "value": "2.5px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 2.5px"
-              ]
-            },
-            {
-              "path": "blocks/site-header/site-header.css",
-              "property": "border-radius",
-              "value": "9px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 4
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -32493,7 +30246,7 @@
     {
       "id": "blocks/stat-cards",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -32509,26 +30262,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/stat-cards/stat-cards.css: border-radius: 12px [radius] — raw radius: 12px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/stat-cards/stat-cards.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -32630,7 +30369,7 @@
     {
       "id": "blocks/team",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -32646,26 +30385,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/team/team.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/team/team.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -33028,23 +30753,11 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "blocks/use-cases/use-cases.css: border-radius: 14px [radius] — raw radius: 14px",
             "blocks/use-cases/use-cases.css: transition: transform .2s var(--k-ease) [duration] — raw duration: .2s",
-            "blocks/use-cases/use-cases.css: border-radius: 14px [radius] — raw radius: 14px",
-            "blocks/use-cases/use-cases.css: border-radius: 14px [radius] — raw radius: 14px",
             "blocks/use-cases/use-cases.css: animation: k-uc-in .45s var(--k-ease) [duration] — raw duration: .45s"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "blocks/use-cases/use-cases.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
             {
               "path": "blocks/use-cases/use-cases.css",
               "property": "transition",
@@ -33052,24 +30765,6 @@
               "kind": "duration",
               "reasons": [
                 "raw duration: .2s"
-              ]
-            },
-            {
-              "path": "blocks/use-cases/use-cases.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "blocks/use-cases/use-cases.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
               ]
             },
             {
@@ -33083,8 +30778,7 @@
             }
           ],
           "by_kind": {
-            "duration": 2,
-            "radius": 3
+            "duration": 2
           }
         },
         {
@@ -33399,76 +31093,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/blog-article/blog-article.css: border-radius: 16px [radius] — raw radius: 16px",
-            "templates/blog-article/blog-article.css: border-radius: 13px [radius] — raw radius: 13px",
-            "templates/blog-article/blog-article.css: border-radius: 5px [radius] — raw radius: 5px",
-            "templates/blog-article/blog-article.css: border-radius: 11px [radius] — raw radius: 11px",
-            "templates/blog-article/blog-article.css: border-radius: 13px [radius] — raw radius: 13px",
-            "templates/blog-article/blog-article.css: border-radius: 12px [radius] — raw radius: 12px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "border-radius",
-              "value": "13px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 13px"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "border-radius",
-              "value": "5px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 5px"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "border-radius",
-              "value": "11px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 11px"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "border-radius",
-              "value": "13px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 13px"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 6
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -34084,46 +31714,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/checkout/checkout.css: border-radius: 16px [radius] — raw radius: 16px",
-            "templates/checkout/checkout.css: border-radius: 14px [radius] — raw radius: 14px",
-            "templates/checkout/checkout.css: border-radius: 14px [radius] — raw radius: 14px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/checkout/checkout.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "templates/checkout/checkout.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "templates/checkout/checkout.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 3
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -34501,66 +32097,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/dashboard/dashboard.css: border-radius: 16px [radius] — raw radius: 16px",
-            "templates/dashboard/dashboard.css: border-radius: 7px [radius] — raw radius: 7px",
-            "templates/dashboard/dashboard.css: border-radius: 2.5px [radius] — raw radius: 2.5px",
-            "templates/dashboard/dashboard.css: border-radius: 8px [radius] — raw radius: 8px",
-            "templates/dashboard/dashboard.css: border-radius: 12px [radius] — raw radius: 12px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/dashboard/dashboard.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "templates/dashboard/dashboard.css",
-              "property": "border-radius",
-              "value": "7px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 7px"
-              ]
-            },
-            {
-              "path": "templates/dashboard/dashboard.css",
-              "property": "border-radius",
-              "value": "2.5px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 2.5px"
-              ]
-            },
-            {
-              "path": "templates/dashboard/dashboard.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "templates/dashboard/dashboard.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 5
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -34963,36 +32505,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/inbox/inbox.css: border-radius: 16px [radius] — raw radius: 16px",
-            "templates/inbox/inbox.css: border-radius: 8px [radius] — raw radius: 8px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/inbox/inbox.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "templates/inbox/inbox.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -35510,26 +33028,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/landing/landing.css: border-radius: 16px [radius] — raw radius: 16px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/landing/landing.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -35798,97 +33302,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/product-page/product-page.css: border-radius: 16px [radius] — raw radius: 16px",
-            "templates/product-page/product-page.css: border-radius: 14px [radius] — raw radius: 14px",
-            "templates/product-page/product-page.css: border-radius: 10px [radius] — raw radius: 10px",
-            "templates/product-page/product-page.css: box-shadow: 0 0 0 1px var(--k-line) [shadow-ring] — raw shadow: 1px",
-            "templates/product-page/product-page.css: box-shadow: 0 0 0 2px var(--k-accent) [shadow-ring] — raw shadow: 2px",
-            "templates/product-page/product-page.css: box-shadow: 0 0 0 2px var(--k-ink) [shadow-ring] — raw shadow: 2px",
-            "templates/product-page/product-page.css: border-radius: 9px [radius] — raw radius: 9px",
-            "templates/product-page/product-page.css: border-radius: 12px [radius] — raw radius: 12px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "border-radius",
-              "value": "14px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 14px"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "border-radius",
-              "value": "10px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 10px"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "box-shadow",
-              "value": "0 0 0 1px var(--k-line)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 1px"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "box-shadow",
-              "value": "0 0 0 2px var(--k-accent)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 2px"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "box-shadow",
-              "value": "0 0 0 2px var(--k-ink)",
-              "kind": "shadow-ring",
-              "reasons": [
-                "raw shadow: 2px"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "border-radius",
-              "value": "9px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 9px"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 5,
-            "shadow-ring": 3
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -36372,46 +33791,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/settings-page/settings-page.css: border-radius: 16px [radius] — raw radius: 16px",
-            "templates/settings-page/settings-page.css: border-radius: 8px [radius] — raw radius: 8px",
-            "templates/settings-page/settings-page.css: border-radius: 12px [radius] — raw radius: 12px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/settings-page/settings-page.css",
-              "property": "border-radius",
-              "value": "16px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 16px"
-              ]
-            },
-            {
-              "path": "templates/settings-page/settings-page.css",
-              "property": "border-radius",
-              "value": "8px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 8px"
-              ]
-            },
-            {
-              "path": "templates/settings-page/settings-page.css",
-              "property": "border-radius",
-              "value": "12px",
-              "kind": "radius",
-              "reasons": [
-                "raw radius: 12px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "radius": 3
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",

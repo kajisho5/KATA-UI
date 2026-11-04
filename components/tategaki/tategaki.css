@@ -1,5 +1,5 @@
 /* KATA Tategaki — vertical text, set properly. */
-.k-tate{display:flex;gap:34px;align-items:stretch;background:var(--k-bg);border:1px solid var(--k-line);border-radius:14px;padding:26px;font-family:var(--k-font);color:var(--k-ink)}
+.k-tate{display:flex;gap:34px;align-items:stretch;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:26px;font-family:var(--k-font);color:var(--k-ink)}
 .k-tate-v{writing-mode:vertical-rl;font-family:"Hiragino Mincho ProN","YuMincho",serif;font-size:44px;font-weight:600;letter-spacing:.32em;line-height:1;display:flex}
 .k-tate-ch{animation:k-tate-in 1s cubic-bezier(.2,.7,.2,1) both}
 .k-tate-ch.d1{animation-delay:.05s}.k-tate-ch.d2{animation-delay:.22s}.k-tate-ch.d3{animation-delay:.39s}

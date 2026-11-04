@@ -205,3 +205,32 @@ Cue / beUI に共通する型を採用する：
 - 配布：AI プロンプトが現行の主力。React ソースと **MCP サーバー**（Cursor / Claude Desktop から直接参照）は "actively rolling out"。
 - 機械可読ページ /llms.txt と /llms-full.txt を公式に用意（AI に読ませる前提のサイト構成）。KATA の Phase 2 計画（llms.txt / registry.json）と同方向。
 - Cue+ Founding Lifetime $129 は **50名限定**、売り切れ後に $249。希少性で初期価格を正当化する型。
+
+
+## Shared shape and elevation migration
+
+The approved migration keeps `system/tokens.json` as the canonical foundation
+source. `tools/sync_shape_tokens.py` generates marked radius/elevation regions in
+`tokens.css`; `build.py` runs that adapter and renders/publishes the same JSON on
+`/design-system/`. Run `python3 -m tools.sync_shape_tokens --check` to detect drift.
+Component files consume the shared variables. No component namespace is added to
+the global token file.
+
+At the 8px base, xs/sm/md/lg/xl are 3/6/8/12/16px. Their coefficients are
+.375/.75/1/1.5/2. Foundry controls only `--k-radius`, including persisted zero.
+Full is explicitly fixed at 999px; circular 50% geometry and Lab geometry remain
+fixed. This replaces the previous independent 6px/12px scale entries and the
+99px full default while retaining every existing token name.
+
+Elevation uses xs/sm/pop/modal, with a preserved overlay alias to pop. Defaults
+come from the most frequent matching existing shadow geometries; dark variants
+use stronger black opacity without changing the four geometries. Inset and line
+rings preserve separate decorative roles. Backdrops mix a zinc palette token
+with transparency and have a darker dark-mode recipe.
+
+Intentional drift resolved: static radius values now derive from the base;
+Foundry no longer rounds/overrides sm and lg; the previous overlay geometry is
+normalized to pop. These are approved visual changes, not checker exceptions.
+The audit rules are unchanged. Artistic Lab geometry, duration and easing are
+outside this migration. Only the four named UI backdrops change independent
+paint declarations; colors within normalized shadows follow the shadow scale.

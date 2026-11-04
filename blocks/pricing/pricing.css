@@ -4,7 +4,7 @@
 .pricing-sub{margin-top:5px;font-size:13.5px;color:var(--k-ink-2)}
 .pricing-grid{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:760px){.pricing-grid{grid-template-columns:1fr}}
-.plan{position:relative;border:1px solid var(--k-line);border-radius:14px;background:var(--k-bg);padding:22px 20px}
+.plan{position:relative;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);padding:22px 20px}
 .plan-hot{border-color:var(--k-ink)}
 .plan-badge{position:absolute;top:-11px;left:20px}
 .plan-name{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-2)}

@@ -1,20 +1,20 @@
 # Roadmap
 
 <!-- mold-snapshot:start -->
-[Mold Verified 29 / 164 · UI 19 / 121 · Lab 10 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 53 / 164 · UI 42 / 121 · Lab 11 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-04 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 
 | Remaining check findings | Count |
 |---|---:|
-| token-values: radius | 157 |
-| token-values: radius-full | 11 |
+| token-values: radius | 0 |
+| token-values: radius-full | 0 |
 | token-values: duration | 107 |
-| token-values: shadow | 37 |
-| token-values: shadow-ring | 12 |
+| token-values: shadow | 0 |
+| token-values: shadow-ring | 0 |
 | token-values: border | 1 |
-| token-values: color | 23 |
+| token-values: color | 19 |
 | token-values: easing | 10 |
 | spacing-values (warn) | 892 |
 | type-values (warn) | 638 |

@@ -1,9 +1,9 @@
 /* KATA Block: Roadmap */
 .k-rm{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;font-family:var(--k-font);color:var(--k-ink)}
-.k-rm-col{background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:14px;padding:15px}
+.k-rm-col{background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:15px}
 .k-rm-col h3{font-size:13px;font-weight:650;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .k-rm-dot{width:8px;height:8px;border-radius:50%}
-.k-rm-i{background:var(--k-bg);border:1px solid var(--k-line);border-radius:11px;padding:12px 13px;margin-bottom:9px}
+.k-rm-i{background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:12px 13px;margin-bottom:9px}
 .k-rm-i:last-child{margin-bottom:0}
 .k-rm-t{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .k-rm-t h4{font-size:13.5px;font-weight:600}

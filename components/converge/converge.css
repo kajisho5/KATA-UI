@@ -18,7 +18,7 @@
 .k-converge .sp2{left:67%;top:28%;animation-delay:.5s}
 .k-converge .sp3{left:65%;top:64%;animation-delay:1.1s}
 .k-converge .sp4{left:46%;top:60%;animation-delay:1.6s}
-.k-converge-tile{position:absolute;left:58%;top:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;border-radius:16px;background:var(--k-bg);display:grid;place-items:center;color:var(--k-ink);box-shadow:0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent)}
+.k-converge-tile{position:absolute;left:58%;top:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;border-radius:16px;background:var(--k-bg);display:grid;place-items:center;color:var(--k-ink);box-shadow:var(--k-shadow-pop)}
 @keyframes k-conv-tw{from{opacity:.15;transform:scale(.55) rotate(0deg)}to{opacity:1;transform:scale(1.05) rotate(18deg)}}
 @keyframes k-conv-pulse{from{transform:translate(-50%,-50%) scale(.94);opacity:.75}to{transform:translate(-50%,-50%) scale(1.1);opacity:1}}
 @media (prefers-reduced-motion:reduce){.k-converge .glow,.k-converge .spark{animation:none}.k-converge .dot{display:none}}

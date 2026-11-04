@@ -10,7 +10,7 @@ KATA UI の全コンポーネントは、この「型」から鋳造する。新
 型から鋳造された部品は、並べたときに「KATA のものだ」と分かる顔を持つ。制作時はこの署名を守る。
 
 - **色**： zinc ニュートラルが支配色。主役は #18181B の黒、白地、境界は影よりヘアライン。ティール（#0E9594 系）は「一点だけ」差す UI アクセント。色数を増やさない。唯一の例外：朱色（#EB471F、判子の朱）は「芯」にだけ使う。ロゴマークの右下の1/4と、部品のアクティブ状態の芯（スイッチのツマミの中心、ラジオの点）がそれで、2026-11-02 に KATA の視覚的署名として決定。トークン名は --k-core。面や文字には使わない。
-- **形**： 角丸は小さく（部品 8px、カード 12px)。面で構成するタイル感。丸みで柔らかくしない。
+- **形**： 角丸は共通の 3 / 6 / 8 / 12 / 16px 段階（基準 8px、Foundry 連動）。面で構成するタイル感。丸みで柔らかくしない。
 - **質感**： フラット。影は浮かせるためでなく、境界と最小の奥行きのため（ring shadow が基本）。プレビューはドット地のステージ。
 - **文字**： Inter。数字は等幅（Geist Mono）。字間と行間は「文字の型」（次節）で固定する。場当たりで決めない。
 - **寸法**： 高さは 32 / 38 / 44 の3段。余白は4の倍数。部品同士の寸法を揃えることが「型」の見た目を作る。
@@ -255,3 +255,13 @@ not exceptions for individual components. `check.config.json` is the policy sour
   that shared-ring contract; adding/measuring it remains P7. This static evidence
   check does not establish computed cascade, contrast, clipping or visible focus
   in a browser. It must not be presented as browser accessibility verification.
+
+
+### Shared shape scale (approved value migration)
+
+The 3/6/8/12/16px scale maps existing UI corner values to shared tokens; each
+level follows the 8px base. The fixed 999px full token preserves pill intent.
+Foundry changes the base only. Lab radius geometry remains outside this mapping.
+Four semantic elevation levels and theme-aware backdrops replace repeated shadow
+recipes. This is a foundation-value migration; no checker rule or allowlist is
+changed to obtain a higher score. Canonical values live in system/tokens.json.

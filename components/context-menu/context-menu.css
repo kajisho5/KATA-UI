@@ -1,7 +1,7 @@
-.k-ctx-zone{border:1.5px dashed var(--k-border-strong);border-radius:14px;min-height:168px;display:grid;place-items:center;font-family:var(--k-font);color:var(--k-ink-3);font-size:13px;text-align:center;padding:16px}
-.k-ctx{position:fixed;z-index:90;width:224px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:12px;box-shadow:0 20px 44px -12px rgba(16,24,40,.28);padding:5px;font-family:var(--k-font);text-align:start}
+.k-ctx-zone{border:1.5px dashed var(--k-border-strong);border-radius:var(--k-radius-xl);min-height:168px;display:grid;place-items:center;font-family:var(--k-font);color:var(--k-ink-3);font-size:13px;text-align:center;padding:16px}
+.k-ctx{position:fixed;z-index:90;width:224px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-pop);padding:5px;font-family:var(--k-font);text-align:start}
 .k-ctx[hidden]{display:none}
-.k-ctx button{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;border:none;background:transparent;border-radius:8px;font:inherit;font-size:13px;color:var(--k-ink);cursor:pointer}
+.k-ctx button{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;border:none;background:transparent;border-radius:var(--k-radius-md);font:inherit;font-size:13px;color:var(--k-ink);cursor:pointer}
 .k-ctx button:hover,.k-ctx button:focus-visible{background:var(--k-bg-soft);outline:none}
 .k-ctx button .hint{margin-inline-start:auto;font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3)}
 .k-ctx button.danger{color:var(--k-danger)}

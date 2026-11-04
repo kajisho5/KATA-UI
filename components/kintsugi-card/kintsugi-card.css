@@ -1,5 +1,5 @@
 /* KATA Kintsugi Card — the break, gilded. */
-.k-kin{position:relative;width:100%;background:var(--k-zinc-950);color:var(--k-on-color);border-radius:14px;overflow:hidden;font-family:var(--k-font);padding:22px}
+.k-kin{position:relative;width:100%;background:var(--k-zinc-950);color:var(--k-on-color);border-radius:var(--k-radius-xl);overflow:hidden;font-family:var(--k-font);padding:22px}
 .k-kin canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .k-kin-in{position:relative;z-index:1;pointer-events:none}
 .k-kin .k-kin-tag{font-size:11px;font-weight:650;letter-spacing:.16em;color:var(--k-yamabuki)}

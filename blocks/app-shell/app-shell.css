@@ -1,8 +1,8 @@
-.shell{display:grid;grid-template-columns:216px 1fr;border:1px solid var(--k-line);border-radius:14px;overflow:hidden;background:var(--k-bg);font-family:var(--k-font);color:var(--k-ink);text-align:start;width:100%}
+.shell{display:grid;grid-template-columns:216px 1fr;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);overflow:hidden;background:var(--k-bg);font-family:var(--k-font);color:var(--k-ink);text-align:start;width:100%}
 .shell-side{border-inline-end:1px solid var(--k-line);background:var(--k-bg-soft);padding:16px 12px;display:flex;flex-direction:column}
 .shell-brand{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;padding:2px 8px 14px}
 .shell-nav{display:grid;gap:2px}
-.shell-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:8px;font-size:13.5px;letter-spacing:.01em;color:var(--k-ink-2);text-decoration:none;cursor:pointer}
+.shell-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--k-radius-md);font-size:13.5px;letter-spacing:.01em;color:var(--k-ink-2);text-decoration:none;cursor:pointer}
 .shell-item:hover{background:var(--k-bg)}
 .shell-item.on{background:var(--k-bg);color:var(--k-ink);font-weight:550;border:1px solid var(--k-line)}
 .shell-item.on svg{color:var(--k-core)}

@@ -1,5 +1,5 @@
 .k-tags{display:flex;flex-wrap:wrap;gap:7px;align-items:center;border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);padding:7px 9px;font-family:var(--k-font);transition:border-color .13s, box-shadow .13s;text-align:start}
-.k-tags:focus-within{border-color:var(--k-accent);box-shadow:0 0 0 3px var(--k-accent-bg)}
+.k-tags:focus-within{border-color:var(--k-accent);box-shadow:var(--k-ring)}
 .k-tags-in{flex:1;min-width:110px;border:none;outline:none;background:transparent;font:inherit;font-size:13.5px;color:var(--k-ink);height:29px}
 .k-tags-in::placeholder{color:var(--k-ink-3)}
 /* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */

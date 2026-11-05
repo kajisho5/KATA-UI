@@ -5,7 +5,7 @@
 Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-blocks`
 on main `9c003f3f61139d1e82247ee40e6f06211a08280c` (after #30).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
-come from that JSON. The counts become main's only when the T1 batch 6 PR is merged.
+come from that JSON. The counts become main's only when #31 is merged.
 
 **Mold Verified 112 / 164 · UI 77 / 121 · Lab 35 / 43**.
 52 targets fail at least one check. The JSON reports 318 warning-bearing
@@ -33,9 +33,9 @@ type-values has 638. token-values has no remaining findings.
 
 ### Remaining JS failures
 
-None. js-single-instance and js-global-bindings reach 0 with the T1 batch 6 PR
+None. js-single-instance and js-global-bindings reach 0 with #31
 (Pricing, Site Header, Use Cases). #27 took main to 103, #29 to 106, #30 to 109,
-and batch 6 takes this branch to 112. Evidence: docs/review/tag-otp-table/,
+and #31 takes this branch to 112. Evidence: docs/review/tag-otp-table/,
 docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
@@ -89,7 +89,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| T1 batch 6 PR | Pricing, Site Header, Use Cases blocks; empties T1. Must be merged before T2. |
+| [#31](https://github.com/kajisho5/KATA-UI/pull/31) | T1 batch 6: Pricing, Site Header, Use Cases blocks; empties T1. Must be merged before T2. |
 
 ### npm and environment
 
@@ -141,14 +141,14 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the
-T1 batch 6 PR (Pricing, Site Header, Use Cases) must be merged before T2 starts.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #31
+(T1 batch 6: Pricing, Site Header, Use Cases) must be merged before T2 starts.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
 ### T1 — done
 
-JS multi-instance batches 1–6 (#24, #26, #27, #29, #30 and the batch 6 PR) left no
+JS multi-instance batches 1–6 (#24, #26, #27, #29, #30 and #31) left no
 js-single-instance or js-global-bindings findings. For new JS parts, reuse the
 pattern in tools/verify_blocks_instances.py and the Common rules kept in KATA.md
 contract items 11, 12 and 14. Follow-up found during T1, for T4 or a separate PR:

@@ -4,7 +4,7 @@ from functools import partial
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
-SPECS={'alert-dialog':('data-alert-dialog','data-alert-open','data-alert-close'),'drawer':('data-drawer','data-drawer-open','data-drawer-close'),'popover':('data-popover','data-popover-btn','data-popover-panel')}
+SPECS={'modal':('data-modal','data-modal-open','data-modal-close'),'alert-dialog':('data-alert-dialog','data-alert-open','data-alert-close'),'drawer':('data-drawer','data-drawer-open','data-drawer-close'),'popover':('data-popover','data-popover-btn','data-popover-panel')}
 
 
 def run(output=ROOT/'docs/review/overlay-instances'):
@@ -95,6 +95,6 @@ def run(output=ROOT/'docs/review/overlay-instances'):
    browser.close()
  finally:server.shutdown();server.server_close()
  assert not errors,errors
- (output/'results.json').write_text(json.dumps({'facts':facts,'errors':errors},indent=2)+'\n');print('3 overlays + Combobox, normal/zero/reduce, triple instances; null focusout/native cancel/autofocus verified; no console errors')
+ (output/'results.json').write_text(json.dumps({'facts':facts,'errors':errors},indent=2)+'\n');print('4 overlays + Combobox, normal/zero/reduce, triple instances; null focusout/native cancel/autofocus verified; no console errors')
 
 if __name__=='__main__':run()

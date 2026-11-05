@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="../logo/favicon.svg"><title>modal multi-instance</title><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/button/button.css"><link rel="stylesheet" href="../components/modal/modal.css"><style>body{font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink);padding:var(--k-space-8)}section{margin-block:var(--k-space-8);min-block-size:calc(var(--k-space-16) * 6);display:grid;justify-items:center;align-content:start}</style></head><body><h1>modal — three independent instances</h1><section><h2>Instance 1</h2><button type="button" class="btn btn-pri btn-md" data-modal-open>Open modal</button>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Send this estimate?</h3>
+    <p>Once sent, it can't be undone. Check the recipient and the amount first.</p>
+    <div class="row">
+      <button type="button" class="btn btn-sec btn-md" data-modal-close>Cancel</button>
+      <button type="button" class="btn btn-pri btn-md" data-modal-close>Send</button>
+    </div>
+  </div>
+</dialog>
+</section><section><h2>Instance 2</h2><button type="button" class="btn btn-pri btn-md" data-modal-open>Open modal</button>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Send this estimate?</h3>
+    <p>Once sent, it can't be undone. Check the recipient and the amount first.</p>
+    <div class="row">
+      <button type="button" class="btn btn-sec btn-md" data-modal-close>Cancel</button>
+      <button type="button" class="btn btn-pri btn-md" data-modal-close>Send</button>
+    </div>
+  </div>
+</dialog>
+</section><section dir="rtl"><h2>Instance 3</h2><button type="button" class="btn btn-pri btn-md" data-modal-open>Open modal</button>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Send this estimate?</h3>
+    <p>Once sent, it can't be undone. Check the recipient and the amount first.</p>
+    <div class="row">
+      <button type="button" class="btn btn-sec btn-md" data-modal-close>Cancel</button>
+      <button type="button" class="btn btn-pri btn-md" data-modal-close>Send</button>
+    </div>
+  </div>
+</dialog>
+</section><button type="button" data-outside>Outside the components</button><script src="../components/modal/modal.js"></script><script src="../components/modal/modal.js"></script></body></html>

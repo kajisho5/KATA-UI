@@ -105,7 +105,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| This PR (fix/t4-field) | T4 Field: wrapped label, field.js links hint/error with generated IDs, alert only on later errors, controls fit the field. |
+| [#46](https://github.com/kajisho5/KATA-UI/pull/46) | T4 Field: wrapped label, field.js links hint/error with generated IDs, alert only on later errors, controls fit the field. |
 
 ### npm and environment
 
@@ -157,7 +157,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the T4 Field PR must be merged before Textarea.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #46 (T4 Field) must be merged before Textarea.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -239,7 +239,7 @@ aria-invalid, `:focus-visible` (the last #12 remainder), the disabled state was
 indistinguishable and is now muted, the search icon is RTL-aware. Beta until a
 screen-reader and real IME pass. #12 has no remaining Button/Input work; the
 owner may close it.
-Field (this PR): the label wraps its control; new field.js links the hint and the
+Field ([#46](https://github.com/kajisho5/KATA-UI/pull/46)): the label wraps its control; new field.js links the hint and the
 error (while data-invalid) with generated IDs, keeps author IDs, syncs
 aria-invalid and sets role="alert" only when data-invalid is added after load.
 The old a11y text claimed this without code. Controls in a Field use

@@ -18,8 +18,8 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 | token-values: border | 0 |
 | token-values: color | 0 |
 | token-values: easing | 0 |
-| spacing-values (warn) | 140 |
-| type-values (warn) | 121 |
+| spacing-values (UI fail, Lab warn) | 128 |
+| type-values (UI fail, Lab warn) | 119 |
 | focus-visible | 0 |
 | js-single-instance | 0 |
 | js-global-bindings | 0 |
@@ -72,6 +72,7 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Spacing: 762 raw declarations in UI parts replaced with tokens; UI spacing findings 763 → 12 ([PR #39](https://github.com/kajisho5/KATA-UI/pull/39)).
   - [x] Font size: 433 raw declarations in UI parts replaced with text tokens; UI font-size findings 435 → 2 ([PR #40](https://github.com/kajisho5/KATA-UI/pull/40)).
   - [x] Line height: 84 raw declarations in UI parts replaced with leading tokens; UI line-height findings 84 → 0 ([PR #41](https://github.com/kajisho5/KATA-UI/pull/41)).
+  - [ ] Promotion (mold v5): spacing-values and type-values fail for UI parts at 0 UI findings; 164 / 164 before and after (owner review).
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and
 individual passing-target regressions; claims stay within test coverage; at

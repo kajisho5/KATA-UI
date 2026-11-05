@@ -202,13 +202,28 @@ are findings, not silent passes. Raw fallbacks are checked too. The consuming
 property and profile determine the value kind: the same local geometry may pass
 as a Lab radius and fail as a UI radius.
 
-**C. Advisory checks.** `spacing-values` covers gap (including row/column gap),
-margin, padding and inset, including their logical longhands. `type-values`
+**C. Spacing and type checks.** `spacing-values` covers gap (including row/column
+gap), margin, padding and inset, including their logical longhands. `type-values`
 covers font-size and line-height, including sizes/leading in font shorthands.
-Both currently report `warn`, never `fail`, with finding counts in JSON. They
-also report literal spacing in Lab as nonblocking migration advice; Lab geometry
-remains permitted. A later decision is required before either check becomes an
-error. Font families and weights in a shorthand are outside the type-value check.
+Font families and weights in a shorthand are outside the type-value check.
+Since mold v5 (T3) both **fail** for `ui` parts and stay `warn` for `lab` parts,
+where literal spacing is nonblocking migration advice and geometry is permitted.
+Rationale: the v4 scales cover every UI value (4px spacing grid with 1px and 2px
+steps; text steps plus 15px; the §0.5 leading table), and #39–#41 replaced 762
+spacing values, 433 font sizes and 84 line heights in UI parts, so a raw value
+in a UI part is now a regression, not legacy. The promotion was made at 0 UI
+findings, so the pass count did not drop (164 / 164 before and after).
+Grammar, not exceptions:
+- A negated token, `calc(var(--k-space-2) * -1)`, is a token. `-1` is a number in
+  CSS syntax; an earlier lexer read it as an identifier and reported it. A raw
+  negative length (`-4px`) still fails.
+- `env(safe-area-inset-top|right|bottom|left)` is device geometry (notch, home
+  indicator) that no token can express; it is accepted in spacing only
+  (`environment_spacing_variables`). Other `env()` names and raw fallbacks fail.
+- Relative sizes that must follow the surrounding text use a shared em token
+  (`--k-text-code`, inline code), not a raw `em` literal.
+Fixtures: tests/mold/cases.json (UI raw spacing/type fail, Lab warns, negated
+token, raw negative, safe-area with token and raw fallback, other `env()`).
 
 **D. JavaScript errors.** `js-single-instance` and `js-global-bindings` are
 errors. The existing detectors report hard-coded `document.querySelector` data

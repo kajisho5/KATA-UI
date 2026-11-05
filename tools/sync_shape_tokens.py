@@ -50,6 +50,8 @@ def scale_css(tokens):
     kebab=lambda name:re.sub(r'([A-Z])',lambda m:'-'+m[1].lower(),name)
     rows=[' '.join(f'--k-space-{k}:{_num(v,"px")};' for k,v in tokens['spacePx'].items()),
       ' '.join(f'--k-text-{k}:{_num(v,"px")};' for k,v in tokens['typeScalePx'].items()),
+      # Relative sizes follow the surrounding text (inline code in prose); they are not px steps.
+      ' '.join(f'--k-text-{k}:{_num(v,"em")};' for k,v in font.get('relativeSizeEm',{}).items()),
       '/* type tracking & leading — the table in KATA.md §0.5 */',
       ' '.join(f'--k-ls-{kebab(k)}:{_num(v.replace("em",""),"em")};' for k,v in font['trackingScale'].items()),
       ' '.join(f'--k-lh-{k}:{_num(v)};' for k,v in font['leadingScale'].items())]

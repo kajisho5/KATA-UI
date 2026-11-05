@@ -15,6 +15,7 @@ def declarations(text):
 
 # Newest first. The v2 notes stay in tools/mold_release.changelog_html.
 RELEASES=[
+    {'version':5,'date':'2026-11-06','summary':'Spacing and type checks become errors for UI parts (T3). Added --k-text-code (.86em), a relative size for inline code that follows the surrounding text, generated from system/tokens.json. No existing value changes; parts that use --k-text-code require mold v5.'},
     {'version':4,'date':'2026-11-06','summary':'Complete spacing, text and leading scales for T3. Added --k-space-px (1px), --k-space-0-5 (2px), --k-space-5 (20px), --k-space-7 (28px), --k-space-10 (40px), --k-text-md (14px) and --k-text-display (44px) from tokens.json, --k-text-lead (15px), --k-lh-tight (1), --k-lh-card (1.35) and --k-lh-small (1.6). The scales are now generated from system/tokens.json. No existing value changes; parts that use a new token require mold v4.'},
     {'version':3,'date':'2026-11-06','summary':'Focus visibility. --k-ring is a 2px page-colored gap plus a 2px ink ring, and the tokens.css focus floor is a 2px ink outline with a 2px offset; both replace sub-3:1 values (a 12% tint and the #33a6b8 accent, 2.88:1 on white). Parts that use --k-ring require mold v3. Measured with tools/verify_focus_ring.py.'},
 ]

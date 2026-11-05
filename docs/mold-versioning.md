@@ -1,4 +1,8 @@
-# Mold compatibility (v2–v4)
+# Mold compatibility (v2–v5)
+
+## v5 — spacing and type checks enforced for UI (2026-11-06)
+
+After T3 replaced raw spacing, font sizes and line heights in UI parts, `spacing-values` and `type-values` fail for UI parts (Lab parts keep warnings). v5 adds `--k-text-code` `.86em`, generated from `system/tokens.json` (`font.relativeSizeEm`): inline code in prose (Typeset, Blog Article) is sized relative to the surrounding text, which no px step expresses. No existing token changes value or meaning. Rationale: KATA.md profile item C.
 
 ## v4 — complete spacing, text and leading scales (2026-11-06)
 

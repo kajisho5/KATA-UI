@@ -198,7 +198,7 @@
     "--k-mscale"
   ],
   "raw_value_allowlist": [],
-  "notes": "Allowed primitives and grammar exceptions are explicit here. UI token kinds are errors; Lab geometry remains permitted. Spacing/type are warnings in both profiles. No component-specific global token exceptions.",
+  "notes": "Allowed primitives and grammar exceptions are explicit here. UI token kinds are errors; Lab geometry remains permitted. Spacing/type are errors in UI and warnings in Lab (T3). Spacing may use env() only with the configured safe-area insets. No component-specific global token exceptions.",
   "font_size_keywords": [
     "xx-small",
     "x-small",
@@ -299,5 +299,11 @@
   ],
   "global_focus_outline_tokens": [
     "var(--k-ink)"
+  ],
+  "environment_spacing_variables": [
+    "safe-area-inset-top",
+    "safe-area-inset-right",
+    "safe-area-inset-bottom",
+    "safe-area-inset-left"
   ]
 }

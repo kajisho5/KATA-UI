@@ -108,7 +108,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| This PR (fix/t4-checkbox) | T4 Checkbox: unchecked boundary 1.65:1 → 4.83:1 (WCAG 1.4.11), mixed/invalid/disabled/hover states, browser test; beta. |
+| [#49](https://github.com/kajisho5/KATA-UI/pull/49) | T4 Checkbox: unchecked boundary 1.65:1 → 4.83:1 (WCAG 1.4.11), mixed/invalid/disabled/hover states, browser test; beta. |
 
 ### npm and environment
 
@@ -160,7 +160,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the T4 Checkbox PR must be merged before Radio.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #49 (T4 Checkbox) must be merged before Radio.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -264,7 +264,7 @@ set color-scheme on :root (every page that loaded it, including the one-file
 bundle, changed scrollbars and native controls); it is now scoped to the select,
 and site.css sets the site's own color-scheme. Disabled no longer reacts to
 hover; aria-invalid draws the danger border.
-Checkbox (this PR, `.check`): the unchecked border used --k-border-strong,
+Checkbox ([#49](https://github.com/kajisho5/KATA-UI/pull/49), `.check`): the unchecked border used --k-border-strong,
 1.65:1 (light) and 2.29:1 (dark) against the page, below WCAG 1.4.11's 3:1; it
 now uses --k-ink-3 (4.83:1 / 5.6:1). The token itself is unchanged because other
 parts use it for hover borders. Adds hover, indeterminate, aria-invalid and

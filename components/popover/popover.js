@@ -8,6 +8,18 @@
     element.id = id;
     return id;
   }
+  const instances = [];
+  // Keep the centred panel inside the viewport with a margin of one --k-space-4 on each side.
+  function fit(panel) {
+    panel.style.setProperty('--kpop-shift', '0px');
+    const margin = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--k-space-4')) || 16;
+    const rect = panel.getBoundingClientRect();
+    const view = document.documentElement.clientWidth;
+    let shift = 0;
+    if (rect.left < margin) shift = margin - rect.left;
+    else if (rect.right > view - margin) shift = view - margin - rect.right;
+    panel.style.setProperty('--kpop-shift', `${Math.round(shift)}px`);
+  }
   document.querySelectorAll('[data-popover]').forEach(wrap => {
     if (wrap.hasAttribute('data-kata-ready')) return;
     const trigger = wrap.querySelector('[data-popover-btn]');
@@ -47,6 +59,7 @@
       composing = false;
       panel.hidden = false;
       panel.inert = false;
+      fit(panel);
       void panel.offsetWidth;
       panel.classList.add('open');
       trigger.setAttribute('aria-expanded', 'true');
@@ -62,8 +75,12 @@
       if (!event.relatedTarget) return;
       if (!wrap.contains(event.relatedTarget)) close();
     });
-    document.addEventListener('click', event => { if (!wrap.contains(event.target)) close(); });
+    instances.push({ wrap, close, panel, isOpen: () => open });
     panel.addEventListener('transitionend', event => { if (event.target === panel && event.propertyName === 'opacity' && !open) finish(); });
     panel.addEventListener('transitioncancel', event => { if (event.target === panel && !open) finish(); });
   });
+  // One outside-press and one resize listener per script load, shared by its instances.
+  if (!instances.length) return;
+  document.addEventListener('pointerdown', event => { instances.forEach(instance => { if (!instance.wrap.contains(event.target)) instance.close(); }); });
+  window.addEventListener('resize', () => instances.forEach(instance => { if (instance.isOpen()) fit(instance.panel); }));
 })();

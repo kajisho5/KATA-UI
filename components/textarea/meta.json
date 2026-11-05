@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For text longer than a line. Set rows for the expected length; keep the hint short and put character counts outside the field.",
-  "a11y": "Pair with a <label>. Use aria-describedby for hints and errors, aria-invalid for the error state."
+  "a11y": "Samples wrap the textarea in its <label> (no fixed IDs, so a sample can be pasted twice). For hints and errors add aria-describedby with IDs unique in your page, or place it in a Field, whose script links them. aria-invalid=\"true\" (and the original data-invalid=\"true\") draws the danger border. Keyboard focus shows --k-ring via :focus-visible. Disabled is dimmed with a not-allowed cursor and skipped by Tab; read-only gets a soft background and stays focusable. Text measures at least 5.74:1 (value, read-only, placeholder) in light and dark. The field is border-box, so width 100% fits its container and the 92px minimum height is the rendered height; 16px or more below 640px so iOS Safari does not zoom. No JavaScript. Beta until a screen reader and real IME input (Japanese conversion) are checked by hand. Checked in Chromium only."
 }

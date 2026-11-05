@@ -2,8 +2,8 @@
 
 ## Status
 
-Snapshot: 2026-11-05 (Asia/Tokyo), main `1ec074ee3198580444fa92945e1c3f9b03d42bac`
-(after #31; #32, the T2 measurement, changes no counts).
+Snapshot: 2026-11-05 (Asia/Tokyo), main `69b5a86551f2e6b9926ca5d5c1e557b4cc6fc27a`
+(after #32; neither #32 nor #33 changes counts).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -40,7 +40,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #31
+### Merged work, PR #11 through #32
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -67,13 +67,14 @@ Missing number #12 is open, not silently assumed merged.
 | #29 | 47298c5 | File Upload, Color Picker and Carousel instances and keyboard behavior. |
 | #30 | 9c003f3 | Split Panel, Reorder and Follow Frame instances, stacked split and pausable autoplay. |
 | #31 | 1ec074e | Pricing, Site Header and Use Cases block instances; JS findings reach 0. |
+| #32 | 69b5a86 | Focus-ring visibility measurement and baseline (T2 step 1). |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29, #30 and #31 were squash-merged the same way after green CI. The owner then asked the
+#29–#32 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -90,7 +91,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#32](https://github.com/kajisho5/KATA-UI/pull/32) | Focus-ring visibility tool and baseline (T2 step 1). No counts change. |
+| [#33](https://github.com/kajisho5/KATA-UI/pull/33) | Closed Dropdown / collapsed Speed Dial items leave the Tab order. No counts change. |
 
 ### npm and environment
 
@@ -168,8 +169,10 @@ white) are both below 3:1, so applying `var(--k-ring)` everywhere as written
 below would make focus weak everywhere in light. Choose a ring that reaches 3:1
 in both themes (for example a 2px ink or darker-accent outline plus offset);
 that is a `--k-ring` value/meaning change with a moldVersion bump. Then do steps
-2–5 and use the tool for before/after numbers. Also fix the 10 no-change stops:
-Dropdown items and Speed Dial actions are tabbable while their menus are closed.
+2–5 and use the tool for before/after numbers. The closed Dropdown items and
+collapsed Speed Dial actions (7 of the 10 no-change stops) are fixed by #33
+(visibility:hidden after the fade-out). Rating, Comparison Slider
+and Magnet remain.
 
 
 1. First add a Playwright focus-ring test, tests/focus-ring.spec (using the runner's required extension). For every part test page, Tab through focusable controls in light/dark, compare before/after screenshots and check ring pixels outside the control are not clipped by overflow:hidden.

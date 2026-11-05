@@ -46,7 +46,7 @@ def split_panel(page, root, index, facts):
     handle=root.locator('[data-split-h]');pane=root.locator('.k-split-a');now=lambda:handle.get_attribute('aria-valuenow')
     assert handle.get_attribute('role')=='separator' and handle.get_attribute('aria-controls')==pane.get_attribute('id')
     assert now()=='38' and abs(pane.evaluate('e=>e.getBoundingClientRect().width/e.parentElement.getBoundingClientRect().width*100')-38)<1.5
-    kfocus(page,handle);assert handle.evaluate('e=>getComputedStyle(e).boxShadow')!='none'
+    kfocus(page,handle);assert handle.evaluate('e=>getComputedStyle(e).outlineStyle')=='solid'  # inner ring: .k-split clips overflow
     handle.evaluate('e=>e.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",keyCode:229,bubbles:true}))');assert now()=='38'
     forward='ArrowLeft' if index==2 else 'ArrowRight'
     before=center(handle)[0];page.keyboard.press(forward);after=center(handle)[0]

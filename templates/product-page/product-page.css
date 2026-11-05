@@ -32,3 +32,5 @@
 .k-tpl-pd-feats div{border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:14px;font-size:12.5px;line-height:1.65;color:var(--k-ink-2);letter-spacing:.01em}
 .k-tpl-pd-feats b{display:block;color:var(--k-ink);font-size:13px;margin-bottom:3px}
 @media (max-width:820px){.k-tpl-pd-grid{grid-template-columns:1fr}.k-tpl-pd-feats{grid-template-columns:1fr}}
+/* The quantity pill clips overflow, so its buttons draw the ring inside. */
+.k-tpl-pd-qty button:focus-visible{outline:2px solid var(--k-ink);outline-offset:-2px}

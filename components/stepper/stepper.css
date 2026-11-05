@@ -3,5 +3,5 @@
 .k-stepper button{width:37px;border:0;background:transparent;color:var(--k-ink);font-family:var(--k-font);font-size:16px;cursor:pointer;transition:background var(--k-dur-fast)}
 .k-stepper button:hover:not(:disabled){background:var(--k-bg-soft)}
 .k-stepper button:disabled{opacity:.35;cursor:not-allowed}
-.k-stepper button:focus-visible{outline:none;box-shadow:inset var(--k-ring)}
+.k-stepper button:focus-visible{outline:2px solid var(--k-ink);outline-offset:-2px;box-shadow:none}
 .k-stepper output{display:flex;align-items:center;justify-content:center;min-width:46px;padding:0 6px;border-inline-start:1px solid var(--k-line);border-inline-end:1px solid var(--k-line);font-family:var(--k-mono);font-size:13.5px;color:var(--k-ink)}

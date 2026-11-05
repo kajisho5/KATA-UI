@@ -2,13 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-ring-components` on main
-`0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef` (after #34). Counts become main's when #35 merges.
+Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-ring-clipping` on main
+`9b3ecf97faa8a21b0996240f564696339afa1e7b` (after #35). Counts become main's when the clipped-ring PR merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
-**Mold Verified 116 / 164 · UI 78 / 121 · Lab 38 / 43**.
-48 targets fail at least one check. The JSON reports 318 warning-bearing
+**Mold Verified 120 / 164 · UI 81 / 121 · Lab 39 / 43**.
+44 targets fail at least one check. The JSON reports 318 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -16,7 +16,7 @@ not browser or screen-reader certification.
 |---|---:|---|
 | accessible-label | 0 | fail |
 | button-type | 0 | fail |
-| focus-visible | 99 | fail |
+| focus-visible | 93 | fail |
 | js-global-bindings | 0 | fail |
 | js-single-instance | 0 | fail |
 | legacy-contract | 0 | fail |
@@ -27,7 +27,7 @@ not browser or screen-reader certification.
 | type-values | 638 | warn |
 | variant-hover | 0 | fail |
 
-Focus-visible fails for **48 parts**, with 99 findings; parts and
+Focus-visible fails for **44 parts**, with 93 findings; parts and
 findings are different units. spacing-values has 891 warning findings;
 type-values has 638. token-values has no remaining findings.
 
@@ -40,7 +40,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #34
+### Merged work, PR #11 through #35
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -70,13 +70,14 @@ Missing number #12 is open, not silently assumed merged.
 | #32 | 69b5a86 | Focus-ring visibility measurement and baseline (T2 step 1). |
 | #33 | 4dddb8a | Closed Dropdown menus and collapsed Speed Dial actions leave the Tab order. |
 | #34 | 0b8f5f6 | Mold v3: --k-ring and the focus floor become a 2px ink ring. |
+| #35 | 9b3ecf9 | Part-owned weak focus rings replaced; 112 → 116. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#34 were squash-merged the same way after green CI. The owner then asked the
+#29–#35 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -93,7 +94,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#35](https://github.com/kajisho5/KATA-UI/pull/35) | Part-owned weak focus rings replaced (T2 step 3, part 1); 112 → 116. |
+| Clipped-ring PR | Clipped rings drawn inside; Navigation Menu panel visible again (T2 step 3, part 2); 116 → 120. |
 
 ### npm and environment
 
@@ -145,8 +146,8 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #35 (T2 step 3, part 1) must be merged
-before the clipped-ring PR.**
+PR. Do not start while the previous task's PR is open. **Current blocker: the clipped-ring PR (T2 step 3, part 2) must be merged
+before step 4.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -172,11 +173,15 @@ shadows and forced colors cannot remove it). Below 3:1: light 380 → 20, dark
 rings (Toggle, Dual Range, Rating, Wagara, Use Cases, Confetti Cannon,
 Kaleidoscope, Particle Word, selected Chip, Comparison Slider, Glow Button, error
 Input/Textarea): below 3:1 is now 1 per theme, Rating, which the tool cannot see
-(1px input, ring on its label). docs/review/focus-ring-components/. **Next, step 3
-part 2:** the 52 clipped stops in 9 parts (Time Picker, Wagara, Navigation Menu,
-List, Stepper, Product Page, Split Panel, Comparison Slider, Inbox). Then step 4
-(checker rule, owner review; it should also accept `:has()` focus rules such as
-Comparison Slider and Glow Button) and step 5. `--k-ring-danger` is now unused.
+(1px input, ring on its label). docs/review/focus-ring-components/. Step 3 part 2 (clipped-ring PR)
+drew clipped rings inside their controls and made Navigation Menu's open panel
+visible again (a scrolling bar had clipped it completely): clipped stops 52 → 0
+(docs/review/focus-ring-clipping/). **Next, step 4 (owner review required):**
+replace the static focus-visible rule with detection of cancelled rings, accept
+`:has()`-based focus rules (Comparison Slider, Glow Button), add the Playwright
+visibility test to CI, explain the change in KATA.md with passing/failing
+fixtures, and report before/after counts. Then step 5. `--k-ring-danger` is unused.
+Navigation Menu and Dropdown do not return focus on Escape (T4).
 
 1. First add a Playwright focus-ring test, tests/focus-ring.spec (using the runner's required extension). For every part test page, Tab through focusable controls in light/dark, compare before/after screenshots and check ring pixels outside the control are not clipped by overflow:hidden.
 2. Add the shared --k-ring focus rule in canonical tokens.json and generate CSS; do not hand-edit tokens.css. Targets are a[href], button, input, select, textarea, summary and tabindex other than -1. Use outline:none and box-shadow:var(--k-ring). Keep the whole selector, including :focus-visible, inside :where for actual zero specificity; e.g. :where(:is(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible).

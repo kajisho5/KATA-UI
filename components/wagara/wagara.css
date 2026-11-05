@@ -21,3 +21,6 @@
 .k-wag-bar::-webkit-scrollbar-thumb{background:var(--k-zinc-300);border-radius:var(--k-radius-full)}
 @media (pointer:coarse){.k-wag-btn{padding:10px 14px}}
 @media (max-width:640px){.k-wag-search{font-size:16px}.k-wag-bar{max-height:196px}}
+/* The filter bar clips overflow, so buttons draw their focus ring inside. */
+.k-wag-btn:focus-visible{outline:2px solid var(--k-ink);outline-offset:-2px}
+.k-wag-btn.on:focus-visible{outline-color:var(--k-bg)}

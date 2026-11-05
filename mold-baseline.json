@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 116,
+    "passed": 120,
     "total": 164
   },
   "items": [
@@ -152,7 +152,7 @@
     },
     {
       "id": "components/comparison-slider",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -357,7 +357,7 @@
     },
     {
       "id": "components/list",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -672,7 +672,7 @@
     },
     {
       "id": "components/wagara",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -817,7 +817,7 @@
     },
     {
       "id": "templates/product-page",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

@@ -11,5 +11,5 @@
   ],
   "status": "stable",
   "usage": "For the header of a site with real depth — products with sub-pages, resources with kinds. On wide screens the panel opens under its item; below that, the honest answer is the drawer, not a squeezed panel. One panel open at a time, always.",
-  "a11y": "Buttons carry aria-expanded and the panels are lists of plain links. Hover opens the panel for the mouse; the click is what the keyboard gets, and Escape closes and returns focus to the button."
+  "a11y": "Buttons carry aria-expanded and the panels are lists of plain links. Hover opens the panel for the mouse; the click is what the keyboard gets, and Escape or an outside click closes it. Not yet implemented: returning focus to the button after Escape. Items wrap onto a second line on narrow screens instead of scrolling, because a scrolling bar clipped the open panel."
 }

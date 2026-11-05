@@ -7,8 +7,8 @@
     "list",
     "admin"
   ],
-  "status": "stable",
-  "usage": "Left-align text, right-align numbers. Keep row actions at the far right.",
-  "a11y": "Real <table> with <th> headers so screen readers can navigate by row and column.",
+  "status": "beta",
+  "usage": "Left-align text, right-align numbers with .num on the th and td (end-aligned, tabular digits). Keep row actions at the far right. Put the header row in <thead> with scope=\"col\".",
+  "a11y": "Real <table> with a <thead> of scope=\"col\" headers so screen readers can navigate by row and column. The scrolling wrapper is a named region with tabindex=\"0\", so keyboard users can scroll a table wider than the screen with the arrow keys; give each region its own aria-label. Avatar initials are aria-hidden so the owner cell reads as the name. Header text (ink-3 on bg-soft) measures 4.51:1 light and 4.71:1 dark. Beta until a recorded screen-reader pass.",
   "stage": "col"
 }

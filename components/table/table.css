@@ -4,4 +4,6 @@
 .ktable td{padding:var(--k-space-3) var(--k-space-3);border-bottom:1px solid var(--k-line);color:var(--k-ink-2)}
 .ktable tr:last-child td{border-bottom:0}
 .ktable td:first-child{color:var(--k-ink);font-weight:500}
-.ktable .ava{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--k-accent-bg-strong);color:var(--k-accent-ink);font-size:var(--k-text-xs);font-weight:600;margin-inline-end:var(--k-space-2);vertical-align:-8px}
+.ktable .ava{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--k-accent-bg-strong);color:var(--k-accent-ink);font-size:var(--k-text-xs);font-weight:600;margin-inline-end:var(--k-space-2);vertical-align:middle}
+/* Numbers: end-aligned with equal-width digits so columns of amounts line up. */
+.ktable .num{text-align:end;font-variant-numeric:tabular-nums}

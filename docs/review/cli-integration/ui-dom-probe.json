@@ -1,0 +1,67 @@
+{
+  "mainRef": "2c057fb48157fe5fa03ae3f58a892087ff044d4d",
+  "scope": "Chromium DOM/computed colors; Sparkles has a fixed zinc-950 surface. Theme field describes document root; preview stages may have their own theme. No screen reader or full axe audit.",
+  "sparkles": [
+    {
+      "component": "sparkles",
+      "theme": "light",
+      "elements": [
+        {
+          "text": "TEN THOUSAND PARTS COPIED",
+          "ariaLabel": null,
+          "color": "rgb(161, 161, 170)",
+          "hiddenSpans": 0,
+          "backdrop": "rgb(9, 9, 11)",
+          "contrastRatio": 7.763
+        },
+        {
+          "text": "Thank you for building with the mold.",
+          "ariaLabel": null,
+          "color": "rgb(255, 255, 255)",
+          "hiddenSpans": 0,
+          "backdrop": "rgb(9, 9, 11)",
+          "contrastRatio": 19.895
+        }
+      ]
+    },
+    {
+      "component": "sparkles",
+      "theme": "dark",
+      "elements": [
+        {
+          "text": "TEN THOUSAND PARTS COPIED",
+          "ariaLabel": null,
+          "color": "rgb(161, 161, 170)",
+          "hiddenSpans": 0,
+          "backdrop": "rgb(9, 9, 11)",
+          "contrastRatio": 7.763
+        },
+        {
+          "text": "Thank you for building with the mold.",
+          "ariaLabel": null,
+          "color": "rgb(255, 255, 255)",
+          "hiddenSpans": 0,
+          "backdrop": "rgb(9, 9, 11)",
+          "contrastRatio": 19.895
+        }
+      ]
+    }
+  ],
+  "ariaDom": [
+    {
+      "component": "bounce-letters",
+      "ariaLabel": "THANK YOU!",
+      "hiddenSpans": 1
+    },
+    {
+      "component": "text-reveal",
+      "ariaLabel": "Parts you copy. Code you own. Motion with a machined finish.",
+      "hiddenSpans": 11
+    },
+    {
+      "component": "scramble",
+      "ariaLabel": "SEVENTH WELL",
+      "hiddenSpans": 1
+    }
+  ]
+}

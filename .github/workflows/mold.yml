@@ -7,6 +7,23 @@ on:
 permissions:
   contents: read
 jobs:
+  cli:
+    name: CLI / Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Run CLI safety tests
+        run: npm test --prefix cli
+      - name: Inspect the package without publishing
+        working-directory: cli
+        run: npm pack --dry-run
   mold:
     runs-on: ubuntu-latest
     steps:
@@ -27,6 +44,8 @@ jobs:
         env:
           MOLD_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: python3 -W error::SyntaxWarning -m tools.mold_ratchet --report /tmp/mold-results.json --reference-ref "$MOLD_BASE_SHA"
+      - name: Run CLI safety and mold tests
+        run: npm test --prefix cli
       - name: Run regression tests
         run: python3 -W error::SyntaxWarning -m unittest discover -s tests -p 'test_*.py'
       - name: Verify the UI template and remove its temporary target

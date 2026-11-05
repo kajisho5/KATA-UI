@@ -101,7 +101,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| This PR (fix/t3-promote) | T3 promotion (checker change, mold v5): spacing/type fail for UI. **Owner review required before merge.** |
+| [#42](https://github.com/kajisho5/KATA-UI/pull/42) | T3 promotion (checker change, mold v5): spacing/type fail for UI. **Owner review required before merge.** |
 
 ### npm and environment
 
@@ -153,7 +153,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the T3 promotion PR is a checker change; the owner reviews it before merge. T4 starts after it merges.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #42 (T3 promotion) is a checker change; the owner reviews it before merge. T4 starts after it merges.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -190,7 +190,7 @@ mold v4) is #38. #39 replaced 762 declarations (UI 763 → 12;
 the 12 are `* -1` negatives, one `env(safe-area-inset-bottom)` and one `12vh`,
 to settle with the checker change in the final promotion PR). #40 replaced 433
 font sizes (UI 435 → 2; the 2 are `.86em` on inline code, also for the promotion
-PR). #41 replaced 84 (UI 84 → 0). The promotion PR (mold v5) settles the last 14:
+PR). #41 replaced 84 (UI 84 → 0). #42 (mold v5) settles the last 14:
 the 10 `calc(token * -1)` were a lexer bug (`-1` read as an identifier), fixed;
 `env(safe-area-inset-*)` is accepted in spacing only; the owner chose (chat,
 2026-11-06) Command's offset `12vh` → `--k-space-16` (64px) and a shared

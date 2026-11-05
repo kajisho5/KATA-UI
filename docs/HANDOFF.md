@@ -3,7 +3,7 @@
 ## Status
 
 Snapshot: 2026-11-06 (Asia/Tokyo), main `7d7b56243341db8f7c09f8a35460b051e0bb138c` (after #37).
-The mold v4 scale PR (T3 step 1) changes no counts.
+#38 (T3 step 1, mold v4) changes no counts.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -97,7 +97,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| Mold v4 scale PR | T3 step 1: spacing, text and leading scales; moldVersion 4. No counts change. |
+| [#38](https://github.com/kajisho5/KATA-UI/pull/38) | T3 step 1: spacing, text and leading scales; moldVersion 4. No counts change. |
 
 ### npm and environment
 
@@ -149,7 +149,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the mold v4 scale PR (T3 step 1) must be merged before the
+PR. Do not start while the previous task's PR is open. **Current blocker: #38 (T3 step 1) must be merged before the
 spacing replacement PR.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
@@ -183,7 +183,7 @@ follows KATA.md §0.5. Mappings with counts: docs/token-migration.md (T3 section
 Order changed with reason: replace spacing, then font size, then line height
 while the checks are warnings, and promote both to fail for UI last, at 0 UI
 findings, so the pass count and trusted-main ratchet never drop. Step 1 (scales,
-mold v4) is the mold v4 scale PR. Lab parts keep warnings.
+mold v4) is #38. Lab parts keep warnings.
 
 1. Complete the common 4px spacing and text/leading scales in tokens.json. Existing --k-space-* / --k-text-* / --k-lh-* already exist; reuse them and preserve names/aliases rather than adding duplicate scales. Propose --k-leading-* only if a missing shared role needs it. Bump moldVersion for changes and write counted mappings in docs/token-migration.md.
 2. Promote both checks to fail for ui only; record the lower baseline and explain the stricter-check transition, including the trusted-main CI ratchet effect. The owner must review the baseline-policy transition; never use an allowlist to conceal the drop.

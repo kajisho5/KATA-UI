@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import re
 from pathlib import Path
 import tempfile
 import unittest
@@ -12,7 +13,9 @@ class RulesTest(unittest.TestCase):
     def inspect(self, css, html, js=''):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp); d=root/'components'/'sample'; d.mkdir(parents=True)
-            (root/'tokens.css').write_text((ROOT/'tokens.css').read_text()+'\n:root{--k-red:red;}'); (d/'sample.css').write_text(css); (d/'preview.html').write_text(html); (d/'sample.js').write_text(js)
+            # Without the generated focus floor, so these cases test per-element focus evidence.
+            tokens=re.sub(r'/\* focus-floor:start \*/.*?/\* focus-floor:end \*/','',(ROOT/'tokens.css').read_text(),flags=re.S)
+            (root/'tokens.css').write_text(tokens+'\n:root{--k-red:red;}'); (d/'sample.css').write_text(css); (d/'preview.html').write_text(html); (d/'sample.js').write_text(js)
             return {c['id']:c for c in rules.inspect(d,root,json.loads((ROOT/'check.config.json').read_text()))}
     def test_failures(self):
         r=self.inspect('.btn-red{color:red;border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.2);transition:color .2s;animation:spin 1s}', '<button class="btn-red">Go</button><input>', "const x=document.querySelector('[data-one]');")

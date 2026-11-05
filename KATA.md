@@ -280,12 +280,30 @@ not exceptions for individual components. `check.config.json` is the policy sour
   Read metadata dependencies, stylesheet links and the builder's `parts:` combo
   declarations, including transitive dependencies. Count missing evidence once
   per file, tag and normalized class set (or role); retain occurrence counts in
-  JSON. Ancestor classes alone do not match the focused element. A global shared
-  `box-shadow: var(--k-ring)` focus rule can cover bare controls. The current
-  `:where(:focus-visible)` outline-only safety net is present, but does not meet
-  that shared-ring contract; adding/measuring it remains P7. This static evidence
-  check does not establish computed cascade, contrast, clipping or visible focus
-  in a browser. It must not be presented as browser accessibility verification.
+  JSON. Ancestor classes alone do not match the focused element.
+  Since mold v3 (T2 step 4) a control passes in one of two ways:
+  1. **Own ring.** A matching `:focus-visible` or `:focus` rule draws a ring
+     (`box-shadow` other than none, or a visible outline / outline color). A
+     focus rule that only removes the outline is not evidence. A host rule such
+     as `.host:has(input:focus-visible) .grip{...}` counts when the host is an
+     ancestor of the control.
+  2. **Shared floor.** `tokens.css` has a zero-specificity floor that draws a
+     2px `--k-ink` outline (`global_focus_outline_tokens`) or a `--k-ring`
+     box-shadow (`global_focus_ring_tokens`), and no part rule that applies at
+     rest or on focus removes the outline (`outline:none`/`0`,
+     `outline-style:none`, `outline-width:0`) for that control.
+  Rationale: the floor was measured. `tools/verify_focus_ring.py` renders every
+  part in Chromium, walks its Tab stops in light and dark and counts pixels
+  whose focused and blurred colors reach 3:1; it also reports rings cut by an
+  overflow-clipping ancestor. Once the floor itself reached 3:1 (#34) and the
+  part-owned weak and clipped rings were fixed (#35, #36), the measurement found
+  0 weak, 0 invisible and 0 clipped stops among 437. Requiring each part to
+  restate the floor added no evidence; detecting parts that cancel it does. The
+  measurement runs in CI (`--check`), so the static rule is not the only gate.
+  Fixtures: tests/mold/accuracy.json keeps the per-element cases with
+  `no_focus_floor` and adds cancellation, replacement, `:focus`, hover-only and
+  `:has()` cases. Static evidence still does not prove cascade order, contrast
+  or clipping; only the browser measurement does, and it is Chromium only.
 
 
 ### Shared shape scale (approved value migration)

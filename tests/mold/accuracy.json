@@ -641,7 +641,8 @@
       "focus-visible": "fail"
     },
     "html": "<button type=\"button\" class=\"btn\">A</button>",
-    "expected_focus_count": 1
+    "expected_focus_count": 1,
+    "no_focus_floor": true
   },
   {
     "name": "focus unrelated dependency",
@@ -658,7 +659,8 @@
     },
     "files": {
       "components/other/other.css": ".other:focus-visible{box-shadow:var(--k-ring)}"
-    }
+    },
+    "no_focus_floor": true
   },
   {
     "name": "focus deduplicates class order",
@@ -672,7 +674,8 @@
     "expected_focus_occurrences": [
       2,
       3
-    ]
+    ],
+    "no_focus_floor": true
   },
   {
     "name": "focus keeps file and tag separate",
@@ -685,7 +688,8 @@
     "files": {
       "components/sample/examples.html": "<button type=\"button\" class=\"btn\">A</button>"
     },
-    "expected_focus_count": 3
+    "expected_focus_count": 3,
+    "no_focus_floor": true
   },
   {
     "name": "bare focus without shared ring",
@@ -695,7 +699,8 @@
       "focus-visible": "fail"
     },
     "html": "<button type=\"button\">Go</button><a href=\"#\">Link</a><summary>Title</summary>",
-    "expected_focus_count": 3
+    "expected_focus_count": 3,
+    "no_focus_floor": true
   },
   {
     "name": "bare global shared ring",
@@ -718,7 +723,8 @@
     "expected_focus_count": 1,
     "expected_focus_occurrences": [
       3
-    ]
+    ],
+    "no_focus_floor": true
   },
   {
     "name": "ancestor focus selector is unrelated",
@@ -727,7 +733,8 @@
     "expected": {
       "focus-visible": "fail"
     },
-    "html": "<button type=\"button\" class=\"parent\">A</button>"
+    "html": "<button type=\"button\" class=\"parent\">A</button>",
+    "no_focus_floor": true
   },
   {
     "name": "border below allowed range",
@@ -752,7 +759,8 @@
     "html": "<input aria-label=\"Name\">",
     "expected": {
       "focus-visible": "fail"
-    }
+    },
+    "no_focus_floor": true
   },
   {
     "name": "dependency ancestor matches",
@@ -839,6 +847,80 @@
     "css": "",
     "shared_extra": ".other:focus-visible{box-shadow:var(--k-ring)}",
     "html": "<button type=\"button\" class=\"target\">Go</button>",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "no_focus_floor": true
+  },
+  {
+    "name": "shared focus floor covers bare controls",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<button type=\"button\">Go</button><a href=\"#\">Link</a><summary>Title</summary>",
+    "expected": {
+      "focus-visible": "pass"
+    }
+  },
+  {
+    "name": "part rule removes the shared floor",
+    "category": "Form & Input",
+    "css": ".btn{outline:none}",
+    "html": "<button type=\"button\" class=\"btn\">Go</button>",
+    "expected": {
+      "focus-visible": "fail"
+    },
+    "expected_focus_count": 1
+  },
+  {
+    "name": "focus rule that only cancels is not evidence",
+    "category": "Form & Input",
+    "css": ".btn:focus-visible{outline:0}",
+    "html": "<button type=\"button\" class=\"btn\">Go</button>",
+    "expected": {
+      "focus-visible": "fail"
+    }
+  },
+  {
+    "name": "cancelled floor with a replacement ring",
+    "category": "Form & Input",
+    "css": ".btn{outline:none}.btn:focus-visible{box-shadow:var(--k-ring)}",
+    "html": "<button type=\"button\" class=\"btn\">Go</button>",
+    "expected": {
+      "focus-visible": "pass"
+    }
+  },
+  {
+    "name": "focus ring on :focus counts",
+    "category": "Form & Input",
+    "css": ".field{outline:none}.field:focus{box-shadow:var(--k-ring)}",
+    "html": "<input class=\"field\" aria-label=\"Name\">",
+    "expected": {
+      "focus-visible": "pass"
+    }
+  },
+  {
+    "name": "hover-only outline removal keeps the floor",
+    "category": "Form & Input",
+    "css": ".btn:hover{outline:none}",
+    "html": "<button type=\"button\" class=\"btn\">Go</button>",
+    "expected": {
+      "focus-visible": "pass"
+    }
+  },
+  {
+    "name": "has() host shows a focused hidden input",
+    "category": "Form & Input",
+    "css": ".host input{opacity:0;outline:none}.host:has(input:focus-visible) .grip{outline:2px solid var(--k-ink)}",
+    "html": "<div class=\"host\"><input type=\"range\" aria-label=\"Split\"><span class=\"grip\"></span></div>",
+    "expected": {
+      "focus-visible": "pass"
+    }
+  },
+  {
+    "name": "has() host must be an ancestor",
+    "category": "Form & Input",
+    "css": "input{outline:none}.host:has(input:focus-visible) .grip{outline:2px solid var(--k-ink)}",
+    "html": "<div class=\"other\"><input type=\"range\" aria-label=\"Split\"></div>",
     "expected": {
       "focus-visible": "fail"
     }

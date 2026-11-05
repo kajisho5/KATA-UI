@@ -3,7 +3,7 @@
 Implementation agent: Claude Code (from 2026-11-05).
 
 <!-- mold-snapshot:start -->
-[Mold Verified 120 / 164 · UI 81 / 121 · Lab 39 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-06 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
@@ -20,7 +20,7 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 | token-values: easing | 0 |
 | spacing-values (warn) | 891 |
 | type-values (warn) | 638 |
-| focus-visible | 93 |
+| focus-visible | 0 |
 | js-single-instance | 0 |
 | js-global-bindings | 0 |
 | shared-token-scope | 0 |
@@ -60,12 +60,13 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Fourth batch: File Upload, Color Picker and Carousel: keyboard-reachable file input, radio swatches with visual arrows, RTL-safe carousel with settled announcements ([PR #29](https://github.com/kajisho5/KATA-UI/pull/29)).
   - [x] Fifth batch: Split Panel, Reorder and Follow Frame: RTL-aware separator with stacked mode, pausable autoplay, per-zone pointer following that idles when settled ([PR #30](https://github.com/kajisho5/KATA-UI/pull/30)).
   - [x] Sixth batch: Pricing, Site Header and Use Cases blocks: per-section state, Escape/outside-press menu dismissal with one document listener, keyboard row focus. js-single-instance and js-global-bindings reached **0** ([PR #31](https://github.com/kajisho5/KATA-UI/pull/31)).
-- [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
+- [x] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
   - [x] Measurement baseline: 444 Tab stops in 98 parts; below 3:1 contrast on 380 (light) and 156 (dark); 49 clipped stops in 8 parts ([PR #32](https://github.com/kajisho5/KATA-UI/pull/32)). The current `--k-ring` and light accent outline are below 3:1, so the ring value needs an owner decision before the shared rule.
   - [x] Closed Dropdown menus and collapsed Speed Dial actions leave the Tab order (7 of 10 no-change stops) ([PR #33](https://github.com/kajisho5/KATA-UI/pull/33)).
   - [x] Mold v3: `--k-ring` and the focus floor become a 2px ink ring; below 3:1 dropped from 380 to 20 (light) and 156 to 4 (dark) ([PR #34](https://github.com/kajisho5/KATA-UI/pull/34)).
   - [x] Part-owned weak rings replaced; below 3:1 dropped to 1 stop per theme (Rating, not measurable by the tool) ([PR #35](https://github.com/kajisho5/KATA-UI/pull/35)).
   - [x] Clipped rings drawn inside their controls (52 → 0); Navigation Menu's open panel is visible again ([PR #36](https://github.com/kajisho5/KATA-UI/pull/36)).
+  - [x] Static rule: shared floor plus cancellation detection; the browser measurement runs in CI with 0 stops below 3:1 or clipped (owner review: PR_PLACEHOLDER).
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and

@@ -2,14 +2,14 @@
   "updated_at": "2026-11-06",
   "schema_version": 2,
   "summary": {
-    "passed": 116,
-    "failed": 48,
+    "passed": 120,
+    "failed": 44,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 99,
+      "focus-visible": 93,
       "js-global-bindings": 0,
       "js-single-instance": 0,
       "legacy-contract": 0,
@@ -22,13 +22,13 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 78,
-        "failed": 43,
+        "passed": 81,
+        "failed": 40,
         "total": 121
       },
       "lab": {
-        "passed": 38,
-        "failed": 5,
+        "passed": 39,
+        "failed": 4,
         "total": 43
       }
     }
@@ -5226,7 +5226,7 @@
     {
       "id": "components/comparison-slider",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -5340,19 +5340,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/comparison-slider/preview.html: <input> "
-          ],
-          "details": [
-            {
-              "path": "components/comparison-slider/preview.html",
-              "tag": "input",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -12170,7 +12161,7 @@
     {
       "id": "components/list",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -12294,19 +12285,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/list/preview.html: <a> k-list-row"
-          ],
-          "details": [
-            {
-              "path": "components/list/preview.html",
-              "tag": "a",
-              "class_or_role": "k-list-row",
-              "occurrences": 3
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -23896,7 +23878,7 @@
     {
       "id": "components/wagara",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -24132,33 +24114,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/wagara/preview.html: <button> k-wag-btn k-wag-tone",
-            "components/wagara/preview.html: <button> k-wag-btn on",
-            "components/wagara/preview.html: <button> k-wag-btn"
-          ],
-          "details": [
-            {
-              "path": "components/wagara/preview.html",
-              "tag": "button",
-              "class_or_role": "k-wag-btn k-wag-tone",
-              "occurrences": 1
-            },
-            {
-              "path": "components/wagara/preview.html",
-              "tag": "button",
-              "class_or_role": "k-wag-btn on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/wagara/preview.html",
-              "tag": "button",
-              "class_or_role": "k-wag-btn",
-              "occurrences": 99
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -31249,7 +31208,7 @@
     {
       "id": "templates/product-page",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -31695,19 +31654,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/product-page/preview.html: <button> "
-          ],
-          "details": [
-            {
-              "path": "templates/product-page/preview.html",
-              "tag": "button",
-              "class_or_role": "",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",

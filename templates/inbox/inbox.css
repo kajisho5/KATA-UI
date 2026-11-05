@@ -39,3 +39,5 @@
 .k-tpl3-ractions{display:flex;gap:8px}
 @media (max-width:900px){.k-tpl3{grid-template-columns:206px 1fr}.k-tpl3-read{display:none}}
 @media (max-width:560px){.k-tpl3{grid-template-columns:1fr}.k-tpl3-rail{display:none}}
+/* The template frame clips overflow; the reply field draws its ring inside. */
+.k-tpl3 .k-textarea:focus{box-shadow:none;outline:2px solid var(--k-ink);outline-offset:-2px}

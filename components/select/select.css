@@ -1,9 +1,13 @@
 /* KATA Select — native <select>, token-styled. No JS. */
 .k-select{position:relative;display:inline-block}
-.k-select select{appearance:none;-webkit-appearance:none;height:38px;max-width:100%;padding:0 var(--k-space-8) 0 var(--k-space-3);border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);font-size:var(--k-text-base);cursor:pointer;transition:border-color var(--k-dur-fast)}
-.k-select select:hover{border-color:var(--k-border-strong)}
+/* Logical padding keeps the chevron's room on the inline end, so RTL text does not run under it. */
+.k-select select{appearance:none;-webkit-appearance:none;height:38px;max-width:100%;padding-block:0;padding-inline:var(--k-space-3) var(--k-space-8);border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);font-size:var(--k-text-base);cursor:pointer;transition:border-color var(--k-dur-fast)}
+.k-select select:hover:not(:disabled){border-color:var(--k-border-strong)}
 .k-select select:focus-visible{outline:none;border-color:var(--k-ink);box-shadow:var(--k-ring)}
 .k-select select:disabled{opacity:.5;cursor:not-allowed}
+/* aria-invalid is the accessible error state, as in Input and Textarea. */
+.k-select select[aria-invalid="true"]{border-color:var(--k-danger)}
+.k-select select[aria-invalid="true"]:focus-visible{border-color:var(--k-danger);box-shadow:var(--k-ring)}
 .k-select svg{position:absolute;inset-inline-end:var(--k-space-2);top:50%;transform:translateY(-50%);pointer-events:none;color:var(--k-ink-3)}
 .k-select[data-size="sm"] select{height:32px;font-size:var(--k-text-sm)}
 .k-select[data-size="lg"] select{height:44px;font-size:var(--k-text-md)}
@@ -11,8 +15,7 @@
 @media (max-width:640px){.k-select select,.k-select[data-size="sm"] select,.k-select[data-size="lg"] select{font-size:var(--k-text-lg)}}
 
 .k-select-examples{display:flex;gap:var(--k-space-3);flex-wrap:wrap;align-items:flex-end}
-:root{color-scheme:light}
-[data-theme="dark"]{color-scheme:dark}
-[data-theme="light"]{color-scheme:light}
-.k-select select{color-scheme:inherit}
-@media(prefers-color-scheme:dark){:root:not([data-theme]){color-scheme:dark}}
+/* The native option list follows the KATA theme. Scoped to the select: the part no longer sets color-scheme on :root. */
+.k-select select{color-scheme:light}
+[data-theme="dark"] .k-select select{color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme]) .k-select select{color-scheme:dark}}

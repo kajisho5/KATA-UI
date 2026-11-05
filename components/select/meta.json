@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "Use for 4+ options where a native control is the honest tool. The chevron is decorative; the select itself carries the behavior.",
-  "a11y": "Real <select> with a <label>. Keyboard, touch pickers and screen readers work exactly as the platform intends."
+  "a11y": "Real <select> wrapped in its <label>; keyboard, touch pickers and screen readers use the platform's own behavior. Keyboard focus shows --k-ring via :focus-visible; arrow keys change the value. aria-invalid=\"true\" draws the danger border; disabled is dimmed, not-allowed, unaffected by hover and skipped by Tab. The chevron is aria-hidden and its room is on the inline end, so RTL text does not run under it. Selected text measures at least 16:1 in light and dark; 16px or more below 640px so iOS Safari does not zoom. The native option list follows the KATA theme through color-scheme on the select only. IME does not apply (no text entry). Beta until a screen reader is checked by hand; Chromium only."
 }

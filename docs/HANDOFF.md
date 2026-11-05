@@ -2,8 +2,8 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/t4-textarea` on main
-`619f1192aec3fdf59901b726d64cef30e357edc9` (after #46). Counts become main's when this PR merges.
+Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/t4-select` on main
+`d2046dbb29bc1714f1fb0db02f4b4b4a38a4139c` (after #47). Counts become main's when this PR merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -41,7 +41,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #46
+### Merged work, PR #11 through #47
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -82,6 +82,7 @@ Missing number #12 is open, not silently assumed merged.
 | #44 | c04cf60 | T4 Button: ID-free combo, three-set browser test in CI, variant × state contrast; beta pending a screen-reader pass. |
 | #45 | 9792d5a | T4 Input: wrapped labels, aria-invalid, focus-visible, visible disabled state, RTL search icon; beta. |
 | #46 | 619f119 | T4 Field: wrapped label, field.js links hint/error, alert on later errors, controls fit the field; beta. |
+| #47 | d2046db | T4 Textarea: border-box, focus-visible, aria-invalid, read-only state, samples without IDs; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -89,7 +90,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#46 were squash-merged the same way after green CI. The owner then asked the
+#29–#47 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -106,7 +107,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#47](https://github.com/kajisho5/KATA-UI/pull/47) | T4 Textarea: border-box (fits, 92px), focus-visible, aria-invalid, visible read-only, samples without IDs, browser test. |
+| [#48](https://github.com/kajisho5/KATA-UI/pull/48) | T4 Select: RTL chevron overlap fixed (logical padding), color-scheme no longer set on :root, disabled hover, aria-invalid, browser test. |
 
 ### npm and environment
 
@@ -158,7 +159,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #47 (T4 Textarea) must be merged before Select.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #48 (T4 Select) must be merged before Checkbox.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -255,7 +256,13 @@ an alias of data-invalid, hover skips disabled, read-only gets a soft
 background, samples wrap the textarea in its label and gain error and
 disabled/read-only examples. Pixel contrast here is measured at 2x scale
 (placeholder 5.74:1); the Input table was at 1x and reads lower (4.83:1) for the
-same colors, so treat 1x values as a floor. Next: select.
+same colors, so treat 1x values as a floor.
+Select ([#48](https://github.com/kajisho5/KATA-UI/pull/48)): in RTL the chevron moved to the left but its 32px padding
+stayed on the right, so text ran under it; padding is now logical. select.css
+set color-scheme on :root (every page that loaded it, including the one-file
+bundle, changed scrollbars and native controls); it is now scoped to the select,
+and site.css sets the site's own color-scheme. Disabled no longer reacts to
+hover; aria-invalid draws the danger border. Next: checkbox.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

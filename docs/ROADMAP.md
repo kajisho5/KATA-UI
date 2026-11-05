@@ -84,6 +84,7 @@ least 90% of UI-profile targets pass all checks.
   switch, dialog/modal, dropdown-menu, popover, tooltip, toast, card, tabs,
   accordion, badge, alert, table, pagination, breadcrumb, then the remaining
   components needed to reach 40. Map requested names to repository slugs in each PR.
+  - [ ] Select: release procedure run; beta until a screen-reader pass (docs/review/select, [PR #48](https://github.com/kajisho5/KATA-UI/pull/48)).
   - [ ] Textarea: release procedure run; beta until screen-reader and IME passes (docs/review/textarea, [PR #47](https://github.com/kajisho5/KATA-UI/pull/47)).
   - [ ] Field: release procedure run; field.js links hint/error; beta until screen-reader and IME passes (docs/review/field, [PR #46](https://github.com/kajisho5/KATA-UI/pull/46)).
   - [ ] Input: release procedure run; beta until screen-reader and IME passes (docs/review/input, [PR #45](https://github.com/kajisho5/KATA-UI/pull/45)).

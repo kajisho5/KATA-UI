@@ -82,7 +82,7 @@
     }
   ],
   "schemaVersion": 1,
-  "throughCommit": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+  "throughCommit": "a6234315e7a35839cd3b52f656e5c4ad64deda10",
   "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
   "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
   "v1EvidenceVerified": false,
@@ -343,7 +343,7 @@
   },
   "v2": {
     "--k-mold": [
-      "4"
+      "5"
     ],
     "--k-tsutsuji": [
       "#e95295"
@@ -703,6 +703,9 @@
     "--k-text-display": [
       "44px"
     ],
+    "--k-text-code": [
+      ".86em"
+    ],
     "--k-ls-display": [
       "-.025em"
     ],
@@ -928,10 +931,11 @@
     "--k-text-display": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
     "--k-lh-tight": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
     "--k-lh-card": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
-    "--k-lh-small": "f6f7bc590d992baf2f15522e38c6abd2383d3678"
+    "--k-lh-small": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-text-code": "a6234315e7a35839cd3b52f656e5c4ad64deda10"
   },
   "tokenVersions": {
-    "--k-mold": 4,
+    "--k-mold": 5,
     "--k-tsutsuji": 2,
     "--k-mscale": 2,
     "--k-dur-fast": 2,
@@ -1044,6 +1048,7 @@
     "--k-text-2xl": 1,
     "--k-text-3xl": 1,
     "--k-text-display": 4,
+    "--k-text-code": 5,
     "--k-ls-display": 2,
     "--k-ls-heading": 2,
     "--k-ls-body": 2,
@@ -1106,6 +1111,11 @@
     }
   ],
   "releases": [
+    {
+      "version": 5,
+      "date": "2026-11-06",
+      "summary": "Spacing and type checks become errors for UI parts (T3). Added --k-text-code (.86em), a relative size for inline code that follows the surrounding text, generated from system/tokens.json. No existing value changes; parts that use --k-text-code require mold v5."
+    },
     {
       "version": 4,
       "date": "2026-11-06",
@@ -3323,6 +3333,31 @@
           "before": [],
           "after": [
             "14px"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "a6234315e7a35839cd3b52f656e5c4ad64deda10",
+      "date": "2026-11-05",
+      "subject": "Promote spacing and type checks to fail for UI parts (mold v5, T3)",
+      "changes": [
+        {
+          "token": "--k-mold",
+          "before": [
+            "4"
+          ],
+          "after": [
+            "5"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-text-code",
+          "before": [],
+          "after": [
+            ".86em"
           ],
           "kind": "added"
         }

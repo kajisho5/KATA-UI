@@ -42,7 +42,7 @@ type-values has 638. token-values has no remaining findings.
 | blocks/site-header | js-single-instance, js-global-bindings |
 | blocks/use-cases | js-global-bindings |
 
-#27 (Tag Input, Input OTP, Data Table) is merged: 100 → 103. This PR (File
+#27 (Tag Input, Input OTP, Data Table) is merged: 100 → 103. #29 (File
 Upload, Color Picker, Carousel) takes the branch to 106. Evidence:
 docs/review/tag-otp-table/ and docs/review/upload-color-carousel/.
 
@@ -90,7 +90,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| This PR | T1 batch 4: File Upload, Color Picker, Carousel. Owner review/merge is required before the next T1 batch. |
+| [#29](https://github.com/kajisho5/KATA-UI/pull/29) | T1 batch 4: File Upload, Color Picker, Carousel. Owner review/merge is required before the next T1 batch. |
 
 ### npm and environment
 
@@ -138,15 +138,15 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the
-T1 batch 4 PR (File Upload, Color Picker, Carousel) must be merged by the owner
+PR. Do not start while the previous task's PR is open. **Current blocker: #29
+(T1 batch 4: File Upload, Color Picker, Carousel) must be merged by the owner
 before batch 5 starts.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
 ### T1 — JS multi-instance: next 3 failing parts (repeat until none fail)
 
-Done: batch 3 (#27: tag-input, input-otp, data-table) and batch 4 (this PR:
+Done: batch 3 (#27: tag-input, input-otp, data-table) and batch 4 (#29:
 file-upload, color-picker, carousel). After the owner merges the pending batch,
 regenerate the report. Pick the first three parts still failing
 js-single-instance or js-global-bindings, in this order: split-panel, reorder,
@@ -228,7 +228,7 @@ The contract is a target. No code is changed to conceal these differences:
 - Item 7: prior 40-part contrast artifacts exist under docs/review; no complete fresh 164-part/state contrast certification was performed for this handoff.
 - Item 10: #25 is merged, so main's CLI (1.1.0 in cli/package.json) has the mold-header warnings and safe forced-add behavior. npm still serves 1.0.0 until the owner publishes. Explicit owner init --force is an intentional update, not automatic add overwrite.
 - Item 11: Combobox and Popover still install per-instance document click listeners, rather than one pointerdown listener per part type. The JS checker does not detect every contract violation; the measured remaining JS failures are listed above.
-- Item 12: Date Picker's RTL correction is merged in #26; Tag/OTP behavior (including OTP LTR/IME/completion) is merged in #27. Color Picker and Carousel visual arrows are in this PR.
+- Item 12: Date Picker's RTL correction is merged in #26; Tag/OTP behavior (including OTP LTR/IME/completion) is merged in #27. Color Picker and Carousel visual arrows are in #29.
 - Item 13: main Modal uses native showModal/Escape but has no backdrop-click close handler. Drawer/Alert Dialog have the reviewed #24 behavior. Do not silently call Modal complete.
 - Item 14: inline sample styles and fixed IDs remain across legacy parts; the static inline-data-color allowance is not proof of full sample compliance.
 - Items 15/16: metadata and existing Stable labels predate the full manual release gate. No new manual IME/SR certification was performed. Missing multi-instance pages for Modal/Dropdown/Tabs/Tooltip are confirmed above.

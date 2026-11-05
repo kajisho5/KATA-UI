@@ -4,7 +4,7 @@
   },
   "description": "CLI for KATA UI \u2014 install vanilla HTML/CSS/JS components, blocks, templates and themes from the registry.",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "files": [
     "kata-ui.mjs",

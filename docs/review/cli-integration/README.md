@@ -38,3 +38,15 @@ Read-only npm view found kata-ui@1.0.0, so kata-ui is already published. @kata-u
 - [PR #3 head vs main](pr3-vs-main-cli.diff)
 
 The new implementation adapts PR #3 staging/rollback and PR #1 overlapping path safety, fixes root/ancestor symlink checks and cross-platform traversal, preserves existing tokens during add (even force), checks required mold from the full dependency closure, keeps unique backups and file modes, and validates dry-run without writes. The old PR heads/base refs are pinned in the adjacent JSON records. No unrelated component or token patch is carried over.
+
+## Rebase after PR #26
+
+Rebased without conflicts onto main `2c057fb48157fe5fa03ae3f58a892087ff044d4d`.
+Mold is now **100/164**, UI 67/121, Lab 33/43; token-values remains zero.
+The 97/164 numbers above describe the original pre-rebase investigation.
+The main baseline and roadmap are retained; distribution package headers remain
+1.1.0. The CLI requires Node >=20 and CI tests Node 20 and 22 separately.
+
+[Non-CLI remainder and paste-ready issues](UI-LEFTOVERS.md) distinguishes useful
+unmerged changes from replaced token values and obsolete landing-page changes.
+No issues or old PRs were closed or created automatically.

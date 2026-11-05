@@ -8,6 +8,7 @@
 - Compare the installed mold header with the maximum requirement of selected parts and dependencies. Warn on stderr for legacy/older versions; unreadable and malformed headers are errors.
 - Keep existing tokens.css unchanged during add, including add --force. Explicit init --force --backup is required to replace a customized mold.
 - Add zero-dependency Node integration tests for filesystem and version boundaries.
+- Require Node 20 or newer; test Node 20 and 22 in CI.
 
 ## 1.0.0
 

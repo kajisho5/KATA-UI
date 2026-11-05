@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // kataui — install KATA UI parts from the registry into your project.
-// Zero dependencies; Node 18+. Existing files are protected by default.
+// Zero dependencies; Node 20+. Existing files are protected by default.
 import {
   mkdir, writeFile, readFile, lstat, rename, copyFile, rm, chmod
 } from 'node:fs/promises';
@@ -225,7 +225,9 @@ function usage() {
     '  kataui list              list every part',
     '',
     'Options: --dir <folder>, --base <url>, --dry-run, --force, --backup',
-    '--force overwrites selected files; --backup keeps unique .bak copies. add never replaces an existing tokens.css.',
+    'add --force overwrites component files but never overwrites an existing tokens.css.',
+    '--backup keeps unique .bak copies when used with --force.',
+    'To update tokens.css, follow https://kata-ui.dev/docs/update-mold/.',
     '--dry-run prints the plan without writing files.',
     'Docs: https://kata-ui.dev/docs/cli/',
   ].join('\n'));

@@ -10,7 +10,7 @@ from one design-token mold. No framework, no runtime, no build step.
 
 `kataui` fetches parts from the same registry the site publishes and writes
 them into your project, dependencies included. It has zero dependencies
-itself and needs Node 18+.
+itself and needs Node 20+.
 
 ## Usage
 
@@ -51,7 +51,7 @@ kataui add button --force --backup
 
 `--backup` requires `--force`; backups are `.bak`, `.bak.1`, etc., so earlier backups are kept. `--dry-run` creates no files, directories or backups and can preview protected destinations. The CLI refuses symlink roots/ancestors/targets, traversal and absolute registry paths, and non-file destinations. Use a physical directory path for `--dir`.
 
-`add` never overwrites an existing `tokens.css`, even with `--force`. It reads the first mold header, treats an unversioned readable file as legacy v1, and compares against the highest `requiresMold` among the selected parts and dependencies. An older mold produces one stderr warning linking to [Update your mold](https://kata-ui.dev/docs/update-mold/). An unreadable file or malformed mold header stops the install; the version is not guessed. A header does not validate custom theme edits.
+`add --force` overwrites selected component files but never overwrites an existing `tokens.css`. To update `tokens.css`, follow [Update your mold](https://kata-ui.dev/docs/update-mold/). It reads the first mold header, treats an unversioned readable file as legacy v1, and compares against the highest `requiresMold` among the selected parts and dependencies. An older mold produces one stderr warning linking to [Update your mold](https://kata-ui.dev/docs/update-mold/). An unreadable file or malformed mold header stops the install; the version is not guessed. A header does not validate custom theme edits.
 
 Review and back up custom changes before explicitly replacing the mold:
 

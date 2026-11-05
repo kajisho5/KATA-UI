@@ -22,4 +22,4 @@ Read-only lookup on 2026-11-05 found kata-ui@1.0.0 already published. @kata-ui/c
 
 ## Verification scope
 
-The integration tests ran on Linux with Node 24.19.0. The package still declares Node >=18; the APIs used are built-in. Windows/macOS and every Node release were not exercised here. No npm account ownership or publication operation was verified. The name lookups above are public metadata checks only.
+The package requires Node >=20. The rebased CLI integration tests run on Linux with Node 20 and 22; CI has a matching two-version matrix. Windows/macOS and every Node release were not exercised here. No npm account ownership or publication operation was verified. The name lookups above are public metadata checks only.

@@ -2421,7 +2421,7 @@ DOC_STYLE = """<style>
 .dc h2{font-size:18px;font-weight:600;letter-spacing:-.015em}
 .dc p{margin-top:9px;font-size:14px;line-height:1.9;color:var(--ink2);letter-spacing:.012em}
 .dc pre{margin-top:12px;border:1px solid var(--hair);border-radius:10px;background:var(--soft);padding:13px 15px;font-family:var(--mono);font-size:12px;line-height:1.75;overflow:auto;color:var(--ink)}
-.dcgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.mold-history{overflow:auto;max-inline-size:100%}\n.mold-history table{border-collapse:collapse;width:100%;font-size:var(--k-text-sm)}\n.mold-history th,.mold-history td{text-align:start;vertical-align:top;border-block-end:1px solid var(--k-line);padding:var(--k-space-2)}\n.mold-history code{white-space:normal;overflow-wrap:anywhere}\n.dcgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .dccard{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:17px;text-decoration:none;color:var(--ink);display:block}
 .dccard:hover{border-color:var(--ink3)}
 .dccard h3{font-size:15px;font-weight:600}

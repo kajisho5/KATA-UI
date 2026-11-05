@@ -14,15 +14,18 @@ def declarations(text):
     return result
 
 def generate(ref):
-    commits=git('log','--reverse','--format=%H',ref,'--','tokens.css').splitlines();previous={};events=[];introduced={};baseline={}
+    commits=git('log','--reverse','--format=%H',ref,'--','tokens.css').splitlines();previous={};events=[];introduced={};introduced_versions={};baseline={}
     for sha in commits:
         raw=git('show',sha+':tokens.css');current=declarations(raw)
-        for name in current:introduced.setdefault(name,sha)
+        stamp=re.search(r'^/\* KATA mold v(\d+)',raw)
+        for name in current:
+            introduced.setdefault(name,sha)
+            introduced_versions.setdefault(name,int(stamp[1]) if stamp else 1 if not previous else 2)
         changes=[{'token':name,'before':previous.get(name,[]),'after':current.get(name,[]),'kind':'added' if name not in previous else 'removed' if name not in current else 'value'} for name in sorted(set(previous)|set(current)) if previous.get(name)!=current.get(name)]
         if changes:events.append({'commit':sha,'date':git('show','-s','--format=%cs',sha),'subject':git('show','-s','--format=%s',sha),'changes':changes})
         if not baseline:baseline=current.copy()
         previous=current
-    versions={name:(1 if name in baseline else 2) for name in previous};versions['--k-mold']=2
+    versions={name:introduced_versions[name] for name in previous};versions['--k-mold']=2
     audits=[]
     for sha in git('log','--first-parent','--reverse','--format=%H',ref).splitlines():
         result=subprocess.run(['git','show',sha+':mold-results.json'],cwd=ROOT,text=True,capture_output=True)

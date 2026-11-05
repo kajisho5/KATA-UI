@@ -37,7 +37,7 @@
     }
   ],
   "schemaVersion": 1,
-  "throughCommit": "2fa7cdcd502557358f219cf42173047fb1577bde",
+  "throughCommit": "91a9ef1674a0c83949563c94b63d467f1316fa06",
   "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
   "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
   "v1EvidenceVerified": false,
@@ -297,6 +297,9 @@
     ]
   },
   "v2": {
+    "--k-mold": [
+      "2"
+    ],
     "--k-tsutsuji": [
       "#e95295"
     ],
@@ -836,9 +839,11 @@
     "--k-ease-spring": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
     "--k-ease-bounce": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
     "--k-ease-out": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
-    "--k-tsutsuji": "2fa7cdcd502557358f219cf42173047fb1577bde"
+    "--k-tsutsuji": "2fa7cdcd502557358f219cf42173047fb1577bde",
+    "--k-mold": "91a9ef1674a0c83949563c94b63d467f1316fa06"
   },
   "tokenVersions": {
+    "--k-mold": 2,
     "--k-tsutsuji": 2,
     "--k-mscale": 2,
     "--k-dur-fast": 2,
@@ -955,8 +960,7 @@
     "--k-lh-heading": 2,
     "--k-lh-body": 2,
     "--k-lh-loose": 2,
-    "--k-accent-luminance": 2,
-    "--k-mold": 2
+    "--k-accent-luminance": 2
   },
   "semanticVersions": {
     "--k-dur-1": 2,
@@ -3052,6 +3056,21 @@
           "before": [],
           "after": [
             "#e95295"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "91a9ef1674a0c83949563c94b63d467f1316fa06",
+      "date": "2026-11-05",
+      "subject": "Version the shared mold and publish compatibility requirements and history",
+      "changes": [
+        {
+          "token": "--k-mold",
+          "before": [],
+          "after": [
+            "2"
           ],
           "kind": "added"
         }

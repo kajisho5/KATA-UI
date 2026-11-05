@@ -1,0 +1,297 @@
+{
+  "before": {
+    "passed": 94,
+    "failed": 70,
+    "total": 164,
+    "warnings": 318,
+    "findings": {
+      "accessible-label": 1,
+      "button-type": 0,
+      "focus-visible": 132,
+      "js-global-bindings": 57,
+      "js-single-instance": 24,
+      "legacy-contract": 0,
+      "reduced-motion": 0,
+      "shared-token-scope": 0,
+      "spacing-values": 892,
+      "token-values": 0,
+      "type-values": 638,
+      "variant-hover": 0
+    },
+    "by_profile": {
+      "ui": {
+        "passed": 61,
+        "failed": 60,
+        "total": 121
+      },
+      "lab": {
+        "passed": 33,
+        "failed": 10,
+        "total": 43
+      }
+    }
+  },
+  "after": {
+    "passed": 97,
+    "failed": 67,
+    "total": 164,
+    "warnings": 318,
+    "findings": {
+      "accessible-label": 1,
+      "button-type": 0,
+      "focus-visible": 132,
+      "js-global-bindings": 52,
+      "js-single-instance": 19,
+      "legacy-contract": 0,
+      "reduced-motion": 0,
+      "shared-token-scope": 0,
+      "spacing-values": 892,
+      "token-values": 0,
+      "type-values": 638,
+      "variant-hover": 0
+    },
+    "by_profile": {
+      "ui": {
+        "passed": 64,
+        "failed": 57,
+        "total": 121
+      },
+      "lab": {
+        "passed": 33,
+        "failed": 10,
+        "total": 43
+      }
+    }
+  },
+  "beforeRemaining": [
+    [
+      "components/alert-dialog",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/carousel",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/color-picker",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/command",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/context-menu",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/data-table",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/date-picker",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/drawer",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/file-upload",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/follow-frame",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/input-otp",
+      [
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/popover",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/reorder",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/split-panel",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/tag-input",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "blocks/pricing",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "blocks/site-header",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "blocks/use-cases",
+      [
+        "js-global-bindings"
+      ]
+    ]
+  ],
+  "afterRemaining": [
+    [
+      "components/carousel",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/color-picker",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/command",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/context-menu",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/data-table",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/date-picker",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/file-upload",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/follow-frame",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/input-otp",
+      [
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/reorder",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/split-panel",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "components/tag-input",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "blocks/pricing",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "blocks/site-header",
+      [
+        "js-single-instance",
+        "js-global-bindings"
+      ]
+    ],
+    [
+      "blocks/use-cases",
+      [
+        "js-global-bindings"
+      ]
+    ]
+  ]
+}

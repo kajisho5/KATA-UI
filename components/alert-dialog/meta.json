@@ -1,13 +1,13 @@
 {
   "title": "Alert Dialog",
   "category": "Overlays & Dialogs",
-  "description": "The decision that cannot be clicked away — for destructive, irreversible actions.",
+  "description": "A confirmation dialog for destructive actions, with initial focus on the safer choice.",
   "tags": [
     "confirm",
     "destructive",
     "overlay"
   ],
   "status": "beta",
-  "usage": "Only for actions that cannot be undone: deletes, revocations, sends. If it can be dismissed casually, use the Modal instead.",
-  "a11y": "Unlike the Modal, backdrop clicks and Escape do not dismiss it — the cancel event is intercepted. The destructive button names the verb and the object."
+  "usage": "Connect the destructive button to your own action. Backdrop clicks do not dismiss this dialog. Escape follows the native cancel \u2192 close path; applications can listen for cancel and treat Escape as cancellation, or prevent its default if needed.",
+  "a11y": "Uses native <dialog> with role=\"alertdialog\". Initial focus uses data-autofocus/autofocus, then the first non-primary button, then the dialog itself to avoid placing focus on a destructive action. Tab cycles inside. Native Escape emits cancel and closes; backdrop clicks do not close. Close restores the opener; IDs are generated without replacing existing IDs."
 }

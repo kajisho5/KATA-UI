@@ -1,13 +1,13 @@
 {
   "title": "Popover",
   "category": "Overlays & Dialogs",
-  "description": "A small panel anchored to its trigger — for detail that does not deserve a page.",
+  "description": "A small panel anchored to its trigger \u2014 for detail that does not deserve a page.",
   "tags": [
     "overlay",
     "panel",
     "anchored"
   ],
   "status": "beta",
-  "usage": "For rich, short content tied to one element: share panels, quick info, mini forms. Not for plain text — that is the Tooltip.",
-  "a11y": "Toggle with aria-expanded on the trigger. Escape and outside clicks close it; focus returns to the trigger."
+  "usage": "For rich, short content tied to one element: share panels, quick info, mini forms. Not for plain text \u2014 that is the Tooltip.",
+  "a11y": "The non-modal dialog panel has an automatically linked trigger with aria-expanded. Escape closes and returns focus to the trigger. A null focusout target is ignored. Outside clicks and focus leaving the component close without stealing focus. Closed panels are inert and hidden; zero-duration transitions complete immediately with a timeout fallback otherwise. Existing IDs are preserved."
 }

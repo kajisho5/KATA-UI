@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="../logo/favicon.svg"><title>drawer multi-instance</title><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/button/button.css"><link rel="stylesheet" href="../components/drawer/drawer.css"><style>body{font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink);padding:var(--k-space-8)}section{margin-block:var(--k-space-8);min-block-size:calc(var(--k-space-16) * 6);display:grid;justify-items:center;align-content:start}</style></head><body><h1>drawer — three independent instances</h1><section><h2>Instance 1</h2><button type="button" class="btn btn-pri btn-md" data-drawer-open>Open drawer</button>
+<dialog class="kdrawer" data-drawer aria-label="Invoice detail">
+  <div class="kdrawer-head">
+    <div class="kdrawer-title">Invoice INV-1042</div>
+    <button type="button" class="btn btn-ghost btn-sm" data-drawer-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="kdrawer-body"><p data-test-prose>Non-interactive panel text.</p>Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.</div>
+  <div class="kdrawer-foot">
+    <button type="button" class="btn btn-sec btn-md" data-drawer-close>Close</button>
+    <button type="button" class="btn btn-pri btn-md" data-drawer-close>Send reminder</button>
+  </div>
+</dialog>
+
+</section><section><h2>Instance 2</h2><button type="button" class="btn btn-pri btn-md" data-drawer-open>Open drawer</button>
+<dialog class="kdrawer" data-drawer aria-label="Invoice detail">
+  <div class="kdrawer-head">
+    <div class="kdrawer-title">Invoice INV-1042</div>
+    <button type="button" class="btn btn-ghost btn-sm" data-drawer-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="kdrawer-body"><p data-test-prose>Non-interactive panel text.</p>Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.</div>
+  <div class="kdrawer-foot">
+    <button type="button" class="btn btn-sec btn-md" data-drawer-close>Close</button>
+    <button type="button" class="btn btn-pri btn-md" data-drawer-close>Send reminder</button>
+  </div>
+</dialog>
+
+</section><section dir="rtl"><h2>Instance 3</h2><button type="button" class="btn btn-pri btn-md" data-drawer-open>Open drawer</button>
+<dialog class="kdrawer" data-drawer aria-label="Invoice detail">
+  <div class="kdrawer-head">
+    <div class="kdrawer-title">Invoice INV-1042</div>
+    <button type="button" class="btn btn-ghost btn-sm" data-drawer-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="kdrawer-body"><p data-test-prose>Non-interactive panel text.</p>Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.</div>
+  <div class="kdrawer-foot">
+    <button type="button" class="btn btn-sec btn-md" data-drawer-close>Close</button>
+    <button type="button" class="btn btn-pri btn-md" data-drawer-close>Send reminder</button>
+  </div>
+</dialog>
+
+</section><button type="button" data-outside>Outside the components</button><script src="../components/drawer/drawer.js"></script><script src="../components/drawer/drawer.js"></script></body></html>

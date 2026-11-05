@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="../logo/favicon.svg"><title>popover multi-instance</title><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/button/button.css"><link rel="stylesheet" href="../components/popover/popover.css"><style>body{font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink);padding:var(--k-space-8)}section{margin-block:var(--k-space-8);min-block-size:calc(var(--k-space-16) * 6);display:grid;justify-items:center;align-content:start}</style></head><body><h1>popover — three independent instances</h1><section><h2>Instance 1</h2><div class="kpop-wrap" data-popover>
+  <button type="button" class="btn btn-pri btn-md" data-popover-btn aria-expanded="false" aria-haspopup="dialog">Share</button>
+  <div class="kpop" data-popover-panel role="dialog" aria-label="Share">
+    <div class="kpop-h">Share this page</div>
+    <p class="kpop-p">Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.</p>
+    <div class="kpop-row">
+      <button type="button" class="btn btn-sec btn-sm">Copy link</button>
+      <button type="button" class="btn btn-sec btn-sm">Permissions</button>
+    </div>
+  </div>
+</div>
+
+</section><section><h2>Instance 2</h2><div class="kpop-wrap" data-popover>
+  <button type="button" class="btn btn-pri btn-md" data-popover-btn aria-expanded="false" aria-haspopup="dialog">Share</button>
+  <div class="kpop" data-popover-panel role="dialog" aria-label="Share">
+    <div class="kpop-h">Share this page</div>
+    <p class="kpop-p">Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.</p>
+    <div class="kpop-row">
+      <button type="button" class="btn btn-sec btn-sm">Copy link</button>
+      <button type="button" class="btn btn-sec btn-sm">Permissions</button>
+    </div>
+  </div>
+</div>
+
+</section><section dir="rtl"><h2>Instance 3</h2><div class="kpop-wrap" data-popover>
+  <button type="button" class="btn btn-pri btn-md" data-popover-btn aria-expanded="false" aria-haspopup="dialog">Share</button>
+  <div class="kpop" data-popover-panel role="dialog" aria-label="Share">
+    <div class="kpop-h">Share this page</div>
+    <p class="kpop-p">Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.</p>
+    <div class="kpop-row">
+      <button type="button" class="btn btn-sec btn-sm">Copy link</button>
+      <button type="button" class="btn btn-sec btn-sm">Permissions</button>
+    </div>
+  </div>
+</div>
+
+</section><button type="button" data-outside>Outside the components</button><script src="../components/popover/popover.js"></script><script src="../components/popover/popover.js"></script></body></html>

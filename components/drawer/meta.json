@@ -1,7 +1,7 @@
 {
   "title": "Drawer",
   "category": "Overlays & Dialogs",
-  "description": "A panel that slides in from the edge — detail and forms without losing the page.",
+  "description": "A panel that slides in from the edge \u2014 detail and forms without losing the page.",
   "tags": [
     "panel",
     "slide-in",
@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For detail views and edit forms that belong to the current page. On narrow screens it takes most of the width.",
-  "a11y": "Built on <dialog>: focus is trapped and Escape closes. The close button is labelled, not just an icon."
+  "a11y": "Uses native <dialog>. Tab and Shift+Tab cycle inside the panel. Escape, backdrop clicks and labelled close buttons dismiss it and return focus to the opener. All instances initialize independently; existing IDs are preserved and missing IDs are generated. Closing is immediate, as in the original implementation; the closed dialog is inert. Native modal focus does not use focusout dismissal."
 }

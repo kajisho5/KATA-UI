@@ -149,6 +149,7 @@
       item.addEventListener('click', () => { pick(item); });
     });
     combo.addEventListener('focusout', event => {
+      if (!event.relatedTarget) return;
       if (!combo.contains(event.relatedTarget)) close();
     });
     document.addEventListener('click', event => { if (!combo.contains(event.target)) close(); });

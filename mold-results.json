@@ -2,16 +2,16 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 94,
-    "failed": 70,
+    "passed": 97,
+    "failed": 67,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 1,
       "button-type": 0,
       "focus-visible": 132,
-      "js-global-bindings": 57,
-      "js-single-instance": 24,
+      "js-global-bindings": 52,
+      "js-single-instance": 19,
       "legacy-contract": 0,
       "reduced-motion": 0,
       "shared-token-scope": 0,
@@ -22,8 +22,8 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 61,
-        "failed": 60,
+        "passed": 64,
+        "failed": 57,
         "total": 121
       },
       "lab": {
@@ -491,7 +491,7 @@
     {
       "id": "components/alert-dialog",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -643,20 +643,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-alert-dialog]",
-            "document.querySelector('[data-alert-open]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const alertDlg"
-          ]
+          "findings": []
         }
       ]
     },
@@ -7305,7 +7300,7 @@
     {
       "id": "components/drawer",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -7459,20 +7454,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-drawer]",
-            "document.querySelector('[data-drawer-open]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const drawer"
-          ]
+          "findings": []
         }
       ]
     },
@@ -14926,7 +14916,7 @@
     {
       "id": "components/popover",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -15078,21 +15068,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-popover]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const wrap",
-            "const popBtn",
-            "const popPanel"
-          ]
+          "findings": []
         }
       ]
     },

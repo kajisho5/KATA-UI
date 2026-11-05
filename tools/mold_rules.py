@@ -272,7 +272,8 @@ def inspect(directory, root, config):
                     results[target].append(f"{path}: {prop}: {value} [{reported_kind}] — " + '; '.join(problems))
                     details[target].append({'path':path,'property':prop,'value':value,'kind':reported_kind,'reasons':problems})
     for key in results:
-        record(key, results[key], 'error' if key == 'token-values' else 'warning')
+        # Spacing and type became UI errors after T3 (KATA.md profile item C); Lab keeps advice.
+        record(key, results[key], 'error' if key == 'token-values' or profile == 'ui' else 'warning')
         checks[-1]['profile'] = profile
         checks[-1]['details'] = details[key]
         checks[-1]['by_kind'] = {kind:sum(d['kind'] == kind for d in details[key]) for kind in sorted({d['kind'] for d in details[key]})}

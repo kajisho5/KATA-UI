@@ -6,7 +6,7 @@ description: Build web UI with KATA UI — practical components, blocks and full
 # Building with KATA UI
 
 <!-- mold-version:start -->
-moldVersion: 4. Before copying a part, check the tokens.css mold header against requiresMold; update the mold before using newer parts. Unversioned tokens.css is legacy v1.
+moldVersion: 5. Before copying a part, check the tokens.css mold header against requiresMold; update the mold before using newer parts. Unversioned tokens.css is legacy v1.
 <!-- mold-version:end -->
 
 KATA UI (https://kata-ui.dev) is a copy-paste library with a CLI and a

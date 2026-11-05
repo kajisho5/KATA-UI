@@ -2,7 +2,9 @@
 import re
 
 NUMBER = re.compile(r'[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?(?:[a-zA-Z]+|%)?')
-IDENT = re.compile(r'--[\w-]+|[-a-zA-Z_][\w-]*')
+# A CSS identifier never starts with a minus followed by a digit: `-1` and `-4px`
+# are numbers (CSS Syntax 3, 4.3.9), so a negated token such as `* -1` is a number.
+IDENT = re.compile(r'--[\w-]+|-?[a-zA-Z_][\w-]*')
 
 
 def split_top(text, delimiter=','):
@@ -161,6 +163,13 @@ class Values:
                     found,used=self.check(args,'shadow',prop,stack,arithmetic,paint);issues+=found;has_token |= used
                 elif prop in ('filter','backdrop-filter') and low in self.config['filter_geometry_functions']:pass
                 elif low=='url':pass  # Image source, not a color literal.
+                elif low=='env' and kind=='spacing':
+                    # Device geometry (iPhone home indicator, notch) has no token; only the
+                    # configured safe-area insets are accepted, and a fallback is still checked.
+                    parts=split_top(args)
+                    if parts[0].lower() not in self.config['environment_spacing_variables']:issues.append('unsupported env: '+parts[0])
+                    if len(parts)>1:
+                        found,used=self.check(','.join(parts[1:]),kind,prop,stack,arithmetic,paint);issues+=found;has_token |= used
                 else:issues.append('unsupported function: '+text)
                 continue
             if low in allowed:continue

@@ -32,7 +32,7 @@ def roadmap_block(report):
         kinds.update(next(c['by_kind'] for c in item['checks'] if c['id']=='token-values'))
     out=[summary_block(report),'','| Remaining check findings | Count |','|---|---:|']
     for kind in ('radius','radius-full','duration','shadow','shadow-ring','border','color','easing'):out.append(f'| token-values: {kind} | {kinds[kind]} |')
-    for key in ('spacing-values','type-values'):out.append(f"| {key} (warn) | {report['summary']['findings'][key]} |")
+    for key in ('spacing-values','type-values'):out.append(f"| {key} (UI fail, Lab warn) | {report['summary']['findings'][key]} |")
     for key in ('focus-visible','js-single-instance','js-global-bindings','shared-token-scope','accessible-label'):
         out.append(f"| {key} | {report['summary']['findings'][key]} |")
     return '\n'.join(out)

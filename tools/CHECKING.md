@@ -35,7 +35,7 @@ Combobox message hooks: `data-combo-result-one` and `data-combo-result-many` acc
 UI requires shared token provenance for radius, duration/delay, shadow, color and
 border. Motion/KATAYABURI use Lab: color, duration, shadow and easing require
 tokens; literal radius/border/dimension/position geometry is permitted. Spacing
-and type checks are advisory in both profiles, including Lab. Local aliases are
+and type checks fail in UI and are advisory warnings in Lab (mold v5, T3). Local aliases are
 followed at use sites; a private variable name alone never proves provenance.
 All candidate definitions are inspected conservatively, including dependencies.
 Namespaces come from slug and explicit meta.prefix, never the first CSS class.

@@ -2704,3 +2704,20 @@ PR promotes both checks to fail for UI once the UI findings are 0, so the pass
 count never drops and the trusted-main ratchet stays green. This reorders HANDOFF
 T3 steps 2 and 3 for that reason.
 
+### Promotion (mold v5)
+
+After #39–#41, 14 UI findings remained. 10 were `calc(var(--k-space-*) * -1)`:
+the lexer read `-1` as an identifier, while `* 2` already passed. CSS Syntax 3
+makes `-1` a number, so the lexer fix removes them without a new allowance; a raw
+`-4px` still fails. Bottom Navigation's `env(safe-area-inset-bottom)` is device
+geometry, accepted in spacing through `environment_spacing_variables`. Owner
+decisions (2026-11-06): Command's `margin: 12vh auto auto` → `var(--k-space-16)`
+(64px; 108px → 64px on a 900px-tall viewport, 72px → 64px at 600px), and the two
+`.86em` inline-code sizes → new shared `--k-text-code` (`.86em`, no visual change).
+Then spacing-values and type-values fail for UI parts and warn for Lab parts.
+
+| | Before | After |
+|---|---:|---:|
+| UI spacing / type findings | 12 / 2 | 0 / 0 |
+| Lab spacing / type findings (warn) | 128 / 119 | 128 / 119 |
+| Mold Verified | 164 / 164 | 164 / 164 |

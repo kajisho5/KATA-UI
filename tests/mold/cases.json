@@ -344,10 +344,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "warn gap",
+    "name": "ui raw gap fails",
     "css": ".sample{gap:7px}",
     "expected": {
-      "spacing-values": "warn",
+      "spacing-values": "fail",
       "token-values": "pass"
     },
     "category": "Form & Input"
@@ -361,10 +361,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "warn row-gap",
+    "name": "ui raw row-gap fails",
     "css": ".sample{row-gap:7px}",
     "expected": {
-      "spacing-values": "warn",
+      "spacing-values": "fail",
       "token-values": "pass"
     },
     "category": "Form & Input"
@@ -378,10 +378,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "warn column-gap",
+    "name": "ui raw column-gap fails",
     "css": ".sample{column-gap:7px}",
     "expected": {
-      "spacing-values": "warn",
+      "spacing-values": "fail",
       "token-values": "pass"
     },
     "category": "Form & Input"
@@ -395,10 +395,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "warn margin",
+    "name": "ui raw margin fails",
     "css": ".sample{margin:7px}",
     "expected": {
-      "spacing-values": "warn",
+      "spacing-values": "fail",
       "token-values": "pass"
     },
     "category": "Form & Input"
@@ -412,10 +412,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "warn padding-inline",
+    "name": "ui raw padding-inline fails",
     "css": ".sample{padding-inline:7px}",
     "expected": {
-      "spacing-values": "warn",
+      "spacing-values": "fail",
       "token-values": "pass"
     },
     "category": "Form & Input"
@@ -429,10 +429,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "warn inset-block-start",
+    "name": "ui raw inset-block-start fails",
     "css": ".sample{inset-block-start:7px}",
     "expected": {
-      "spacing-values": "warn",
+      "spacing-values": "fail",
       "token-values": "pass"
     },
     "category": "Form & Input"
@@ -455,10 +455,83 @@
     "category": "Motion"
   },
   {
-    "name": "warn font-size",
+    "name": "lab type stays warning",
+    "css": ".sample{font-size:13px;line-height:1.7}",
+    "expected": {
+      "type-values": "warn",
+      "token-values": "pass"
+    },
+    "category": "Motion"
+  },
+  {
+    "name": "ui negated spacing token",
+    "css": ".sample{margin-inline-start:calc(var(--k-space-px) * -1);inset:calc(var(--k-space-2) * -1)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui raw negative spacing fails",
+    "css": ".sample{margin-top:-4px}",
+    "expected": {
+      "spacing-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui negative multiplier needs a token",
+    "css": ".sample{margin-top:calc(4px * -1)}",
+    "expected": {
+      "spacing-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui safe-area inset",
+    "css": ".sample{padding-bottom:calc(var(--k-space-1) + env(safe-area-inset-bottom));padding-top:env(safe-area-inset-top)}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui safe-area token fallback",
+    "css": ".sample{padding-bottom:env(safe-area-inset-bottom, var(--k-space-2))}",
+    "expected": {
+      "spacing-values": "pass"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui safe-area raw fallback fails",
+    "css": ".sample{padding-bottom:env(safe-area-inset-bottom, 12px)}",
+    "expected": {
+      "spacing-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui other env fails",
+    "css": ".sample{padding-left:env(titlebar-area-x)}",
+    "expected": {
+      "spacing-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "env is not a type value",
+    "css": ".sample{font-size:env(safe-area-inset-top)}",
+    "expected": {
+      "type-values": "fail"
+    },
+    "category": "Form & Input"
+  },
+  {
+    "name": "ui raw font-size fails",
     "css": ".sample{font-size:1.7}",
     "expected": {
-      "type-values": "warn"
+      "type-values": "fail"
     },
     "category": "Form & Input"
   },
@@ -471,10 +544,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "warn line-height",
+    "name": "ui raw line-height fails",
     "css": ".sample{line-height:1.7}",
     "expected": {
-      "type-values": "warn"
+      "type-values": "fail"
     },
     "category": "Form & Input"
   },
@@ -487,10 +560,10 @@
     "category": "Form & Input"
   },
   {
-    "name": "font shorthand raw",
+    "name": "ui font shorthand raw fails",
     "css": ".sample{font:500 14px/1.7 sans-serif}",
     "expected": {
-      "type-values": "warn"
+      "type-values": "fail"
     },
     "category": "Form & Input"
   },

@@ -14,5 +14,5 @@
 .k-tpl-co-item span{color:var(--k-ink-2)}
 .k-tpl-co-row{display:flex;justify-content:space-between;font-size:var(--k-text-base);padding:var(--k-space-1) 0;color:var(--k-ink-2)}
 .k-tpl-co-total{display:flex;justify-content:space-between;font-size:var(--k-text-lead);font-weight:700;padding-top:var(--k-space-3);margin-top:var(--k-space-2);border-top:2px solid var(--k-line)}
-.k-tpl-co-note{font-size:var(--k-text-xs);line-height:1.65;color:var(--k-ink-3);margin-top:var(--k-space-3);text-align:center}
+.k-tpl-co-note{font-size:var(--k-text-xs);line-height:var(--k-lh-body);color:var(--k-ink-3);margin-top:var(--k-space-3);text-align:center}
 @media (max-width:820px){.k-tpl-co-grid{grid-template-columns:1fr}.k-tpl-co-sum{position:static;order:-1}}

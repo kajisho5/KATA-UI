@@ -8,8 +8,8 @@
 .k-kan-card{background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-3) var(--k-space-3);box-shadow:var(--k-shadow-xs);cursor:grab}
 .k-kan-card:active{cursor:grabbing}
 .k-kan-card.drag{opacity:.45}
-.k-kan-card h4{font-size:var(--k-text-base);font-weight:600;line-height:1.5}
-.k-kan-card p{font-size:var(--k-text-sm);color:var(--k-ink-2);line-height:1.65;margin-top:var(--k-space-1);letter-spacing:.01em}
+.k-kan-card h4{font-size:var(--k-text-base);font-weight:600;line-height:var(--k-lh-small)}
+.k-kan-card p{font-size:var(--k-text-sm);color:var(--k-ink-2);line-height:var(--k-lh-body);margin-top:var(--k-space-1);letter-spacing:.01em}
 .k-kan-meta{display:flex;align-items:center;gap:var(--k-space-2);margin-top:var(--k-space-2)}
 .k-kan-meta .k-avatar{margin-inline-start:auto}
 @media (max-width:760px){.k-kan{grid-template-columns:1fr}}

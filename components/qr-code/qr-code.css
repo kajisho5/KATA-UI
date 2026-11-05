@@ -1,4 +1,4 @@
 /* KATA QR Code — the code is drawn by the part's own encoder. */
 .k-qr{display:inline-block;background:var(--k-on-color);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-3);line-height:0}
 .k-qr svg{width:100%;height:auto;display:block}
-.k-qr .qr-fallback{font-size:var(--k-text-sm);line-height:1.6;color:var(--k-danger-ink);max-width:22ch;letter-spacing:.01em}
+.k-qr .qr-fallback{font-size:var(--k-text-sm);line-height:var(--k-lh-small);color:var(--k-danger-ink);max-width:22ch;letter-spacing:.01em}

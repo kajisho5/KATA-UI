@@ -1,5 +1,5 @@
 /* KATA Textarea */
-.k-textarea{width:100%;min-height:92px;padding:var(--k-space-2) var(--k-space-3);border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);font-size:var(--k-text-base);line-height:1.7;resize:vertical;transition:border-color var(--k-dur-fast),box-shadow var(--k-dur-fast)}
+.k-textarea{width:100%;min-height:92px;padding:var(--k-space-2) var(--k-space-3);border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);font-size:var(--k-text-base);line-height:var(--k-lh-body);resize:vertical;transition:border-color var(--k-dur-fast),box-shadow var(--k-dur-fast)}
 .k-textarea::placeholder{color:var(--k-ink-3)}
 .k-textarea:hover{border-color:var(--k-border-strong)}
 .k-textarea:focus{outline:none;border-color:var(--k-ink);box-shadow:var(--k-ring)}

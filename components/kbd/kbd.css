@@ -1,2 +1,2 @@
 /* KATA Kbd */
-.k-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 var(--k-space-1);border:1px solid var(--k-line);border-bottom-width:2px;border-radius:var(--k-radius-sm);background:var(--k-bg-soft);color:var(--k-ink-2);font-family:var(--k-mono);font-size:var(--k-text-xs);font-weight:500;line-height:1}
+.k-kbd{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 var(--k-space-1);border:1px solid var(--k-line);border-bottom-width:2px;border-radius:var(--k-radius-sm);background:var(--k-bg-soft);color:var(--k-ink-2);font-family:var(--k-mono);font-size:var(--k-text-xs);font-weight:500;line-height:var(--k-lh-tight)}

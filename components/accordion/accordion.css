@@ -7,4 +7,4 @@
 .k-acc summary:focus-visible{outline:none;box-shadow:var(--k-ring)}
 .k-acc summary svg{color:var(--k-ink-3);transition:transform var(--k-dur-base) var(--k-ease);flex:none}
 .k-acc[open] summary svg{transform:rotate(180deg)}
-.k-acc-body{padding:var(--k-space-0-5) var(--k-space-4) var(--k-space-4);font-size:var(--k-text-base);line-height:1.8;color:var(--k-ink-2);letter-spacing:.012em}
+.k-acc-body{padding:var(--k-space-0-5) var(--k-space-4) var(--k-space-4);font-size:var(--k-text-base);line-height:var(--k-lh-loose);color:var(--k-ink-2);letter-spacing:.012em}

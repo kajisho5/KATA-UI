@@ -4,5 +4,5 @@
 .k-result-ic.ok{background:var(--k-success-bg);color:var(--k-success-ink)}
 .k-result-ic.err{background:var(--k-danger-bg);color:var(--k-danger-ink)}
 .k-result h3{font-size:var(--k-text-lg);font-weight:600;letter-spacing:-.015em}
-.k-result p{margin-top:var(--k-space-2);font-size:var(--k-text-base);line-height:1.8;color:var(--k-ink-2);letter-spacing:.012em}
+.k-result p{margin-top:var(--k-space-2);font-size:var(--k-text-base);line-height:var(--k-lh-loose);color:var(--k-ink-2);letter-spacing:.012em}
 .k-result .acts{margin-top:var(--k-space-4);display:flex;gap:var(--k-space-2);justify-content:center;flex-wrap:wrap}

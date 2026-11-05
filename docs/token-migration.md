@@ -2632,7 +2632,7 @@ Owner decisions (2026-11-06): spacing snaps to the 4px grid and a value exactly
 between two steps goes to the **smaller** step; 1px and 2px get their own tokens;
 font sizes snap to the existing text steps plus one new 15px step. Leading follows
 the KATA.md §0.5 table. Counts are UI-profile findings at main `7d7b562`
-(spacing 925 values, font size 433, line height 86); Lab parts stay warnings.
+(spacing 925 values, font size 433 plus 2 `.86em`, line height 84); Lab parts stay warnings.
 
 New tokens (generated from system/tokens.json into the `scale-tokens` region):
 `--k-space-px` 1px, `--k-space-0-5` 2px, `--k-space-5` 20px, `--k-space-7` 28px,
@@ -2683,7 +2683,7 @@ Applied by `tools/t3_migrate.py font-size`: 433 declarations in 148 files. Two m
 font-size findings are `.86em` on inline `code` (Typeset, Blog Article): the size
 follows the surrounding text, so no px token fits; they stay for the promotion PR.
 
-### Line height (UI, 86 values)
+### Line height (UI, 84 values)
 
 | Raw | Token | Count |
 |---|---|---:|
@@ -2694,6 +2694,9 @@ follows the surrounding text, so no px token fits; they stay for the promotion P
 | 1.5, 1.55, 1.6 | `--k-lh-small` (1.6) | 2, 2, 6 |
 | 1.65, 1.7, 1.75 | `--k-lh-body` (1.7) | 13, 13, 19 |
 | 1.8, 1.85 | `--k-lh-loose` (1.85) | 11, 2 |
+
+Applied by `tools/t3_migrate.py line-height`: 84 declarations in 58 files; UI
+line-height findings 84 → 0.
 
 Order: this PR adds the scale only (no component changes). Then one PR each for
 spacing, font size and line height while the checks are still warnings; the last

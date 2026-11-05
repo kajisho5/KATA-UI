@@ -5,7 +5,7 @@
     "passed": 164,
     "failed": 0,
     "total": 164,
-    "warnings": 141,
+    "warnings": 91,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
@@ -17,7 +17,7 @@
       "shared-token-scope": 0,
       "spacing-values": 140,
       "token-values": 0,
-      "type-values": 205,
+      "type-values": 121,
       "variant-hover": 0
     },
     "by_profile": {
@@ -71,26 +71,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/accordion/accordion.css: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/accordion/accordion.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -301,26 +287,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/alert/alert.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/alert/alert.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -404,26 +376,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/alert-dialog/alert-dialog.css: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/alert-dialog/alert-dialog.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -757,26 +715,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/avatar/combos.html: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/avatar/combos.html",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -1362,36 +1306,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/bottom-navigation/examples.html: line-height: 1.75 [type] — raw type: 1.75",
-            "components/bottom-navigation/preview.html: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/bottom-navigation/examples.html",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            },
-            {
-              "path": "components/bottom-navigation/preview.html",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -2231,66 +2151,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/card/card.css: line-height: 1.6 [type] — raw type: 1.6",
-            "components/card/card.css: line-height: 1.75 [type] — raw type: 1.75",
-            "components/card/examples.html: line-height: 1.75 [type] — raw type: 1.75",
-            "components/card/examples.html: line-height: 1.75 [type] — raw type: 1.75",
-            "components/card/examples.html: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/card/card.css",
-              "property": "line-height",
-              "value": "1.6",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.6"
-              ]
-            },
-            {
-              "path": "components/card/card.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            },
-            {
-              "path": "components/card/examples.html",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            },
-            {
-              "path": "components/card/examples.html",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            },
-            {
-              "path": "components/card/examples.html",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 5
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -2374,26 +2240,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/carousel/carousel.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/carousel/carousel.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -2922,26 +2774,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/collapsible/collapsible.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/collapsible/collapsible.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -4263,26 +4101,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/descriptions/descriptions.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/descriptions/descriptions.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -4624,26 +4448,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/drawer/drawer.css: line-height: 1.85 [type] — raw type: 1.85"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/drawer/drawer.css",
-              "property": "line-height",
-              "value": "1.85",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.85"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -4905,26 +4715,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/empty-state/empty-state.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/empty-state/empty-state.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -5008,26 +4804,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/field/field.css: line-height: 1.6 [type] — raw type: 1.6"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/field/field.css",
-              "property": "line-height",
-              "value": "1.6",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.6"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -6528,26 +6310,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/hanko/hanko.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/hanko/hanko.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -6897,26 +6665,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/hover-card/hover-card.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/hover-card/hover-card.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -7721,26 +7475,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/kbd/kbd.css: line-height: 1 [type] — raw type: 1"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/kbd/kbd.css",
-              "property": "line-height",
-              "value": "1",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -7824,26 +7564,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/kintsugi-card/kintsugi-card.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/kintsugi-card/kintsugi-card.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -8973,26 +8699,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/modal/modal.css: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/modal/modal.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -9076,26 +8788,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/navigation-menu/navigation-menu.css: line-height: 1.55 [type] — raw type: 1.55"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/navigation-menu/navigation-menu.css",
-              "property": "line-height",
-              "value": "1.55",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.55"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -9924,26 +9622,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/popover/popover.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/popover/popover.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -10116,46 +9800,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/qr-code/qr-code.css: line-height: 1.6 [type] — raw type: 1.6",
-            "components/qr-code/examples.html: line-height: 1.7 [type] — raw type: 1.7",
-            "components/qr-code/preview.html: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/qr-code/qr-code.css",
-              "property": "line-height",
-              "value": "1.6",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.6"
-              ]
-            },
-            {
-              "path": "components/qr-code/examples.html",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            },
-            {
-              "path": "components/qr-code/preview.html",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 3
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -10705,26 +10355,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/result/result.css: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/result/result.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -11113,26 +10749,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/scrollspy/scrollspy.css: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/scrollspy/scrollspy.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -11620,66 +11242,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/sidebar/sidebar.css: line-height: 1.3 [type] — raw type: 1.3",
-            "components/sidebar/sidebar.css: line-height: 1.3 [type] — raw type: 1.3",
-            "components/sidebar/examples.html: line-height: 1.8 [type] — raw type: 1.8",
-            "components/sidebar/examples.html: line-height: 1.8 [type] — raw type: 1.8",
-            "components/sidebar/preview.html: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/sidebar/sidebar.css",
-              "property": "line-height",
-              "value": "1.3",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.3"
-              ]
-            },
-            {
-              "path": "components/sidebar/sidebar.css",
-              "property": "line-height",
-              "value": "1.3",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.3"
-              ]
-            },
-            {
-              "path": "components/sidebar/examples.html",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            },
-            {
-              "path": "components/sidebar/examples.html",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            },
-            {
-              "path": "components/sidebar/preview.html",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 5
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -12415,26 +11983,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/split-panel/split-panel.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/split-panel/split-panel.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -13398,26 +12952,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/tabs/tabs.css: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tabs/tabs.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -13590,36 +13130,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/tategaki/tategaki.css: line-height: 1 [type] — raw type: 1",
-            "components/tategaki/tategaki.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tategaki/tategaki.css",
-              "property": "line-height",
-              "value": "1",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1"
-              ]
-            },
-            {
-              "path": "components/tategaki/tategaki.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -13842,26 +13358,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/textarea/textarea.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/textarea/textarea.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -14212,26 +13714,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/timeline/timeline.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/timeline/timeline.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -14315,26 +13803,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/toast/toast.css: line-height: 1.6 [type] — raw type: 1.6"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/toast/toast.css",
-              "property": "line-height",
-              "value": "1.6",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.6"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -14507,26 +13981,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/tooltip/tooltip.css: line-height: 1 [type] — raw type: 1"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tooltip/tooltip.css",
-              "property": "line-height",
-              "value": "1",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -14610,26 +14070,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/torn-ticket/torn-ticket.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/torn-ticket/torn-ticket.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -14727,26 +14173,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "components/tour/tour.css: line-height: 1.6 [type] — raw type: 1.6"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tour/tour.css",
-              "property": "line-height",
-              "value": "1.6",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.6"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -15178,72 +14610,10 @@
           "status": "warn",
           "severity": "warning",
           "findings": [
-            "components/typeset/typeset.css: line-height: 1.75 [type] — raw type: 1.75",
-            "components/typeset/typeset.css: line-height: 1.4 [type] — raw type: 1.4",
-            "components/typeset/typeset.css: line-height: 1.25 [type] — raw type: 1.25",
-            "components/typeset/typeset.css: line-height: 1.35 [type] — raw type: 1.35",
-            "components/typeset/typeset.css: line-height: 1.4 [type] — raw type: 1.4",
-            "components/typeset/typeset.css: line-height: 1.65 [type] — raw type: 1.65",
-            "components/typeset/typeset.css: font-size: .86em [type] — raw type: .86em",
-            "components/typeset/typeset.css: line-height: 1.7 [type] — raw type: 1.7",
-            "components/typeset/typeset.css: line-height: 1.65 [type] — raw type: 1.65"
+            "components/typeset/typeset.css: font-size: .86em [type] — raw type: .86em"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            },
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.4",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.4"
-              ]
-            },
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.25",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.25"
-              ]
-            },
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.35",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.35"
-              ]
-            },
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.4",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.4"
-              ]
-            },
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            },
             {
               "path": "components/typeset/typeset.css",
               "property": "font-size",
@@ -15252,28 +14622,10 @@
               "reasons": [
                 "raw type: .86em"
               ]
-            },
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            },
-            {
-              "path": "components/typeset/typeset.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
             }
           ],
           "by_kind": {
-            "type": 9
+            "type": 1
           }
         },
         {
@@ -15814,26 +15166,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/app-shell/app-shell.css: line-height: 1.3 [type] — raw type: 1.3"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/app-shell/app-shell.css",
-              "property": "line-height",
-              "value": "1.3",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.3"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -15917,26 +15255,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/cookie-consent/cookie-consent.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/cookie-consent/cookie-consent.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -16020,26 +15344,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/cta-band/cta-band.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/cta-band/cta-band.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -16123,26 +15433,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/faq/faq.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/faq/faq.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -16404,26 +15700,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/invoice/invoice.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/invoice/invoice.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -16507,36 +15789,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/kanban/kanban.css: line-height: 1.5 [type] — raw type: 1.5",
-            "blocks/kanban/kanban.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/kanban/kanban.css",
-              "property": "line-height",
-              "value": "1.5",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.5"
-              ]
-            },
-            {
-              "path": "blocks/kanban/kanban.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -16976,26 +16234,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/pricing/pricing.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/pricing/pricing.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -17079,26 +16323,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/roadmap/roadmap.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/roadmap/roadmap.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -17271,36 +16501,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/site-footer/site-footer.css: line-height: 1.7 [type] — raw type: 1.7",
-            "blocks/site-footer/site-footer.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/site-footer/site-footer.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            },
-            {
-              "path": "blocks/site-footer/site-footer.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -17562,26 +16768,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/team/team.css: line-height: 1.7 [type] — raw type: 1.7"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/team/team.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -17665,26 +16857,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/testimonials/testimonials.css: line-height: 1.8 [type] — raw type: 1.8"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/testimonials/testimonials.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -17768,26 +16946,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "blocks/use-cases/use-cases.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/use-cases/use-cases.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -17874,52 +17038,10 @@
           "status": "warn",
           "severity": "warning",
           "findings": [
-            "templates/blog-article/blog-article.css: line-height: 1.25 [type] — raw type: 1.25",
-            "templates/blog-article/blog-article.css: line-height: 1.75 [type] — raw type: 1.75",
-            "templates/blog-article/blog-article.css: line-height: 1.85 [type] — raw type: 1.85",
-            "templates/blog-article/blog-article.css: line-height: 1.75 [type] — raw type: 1.75",
-            "templates/blog-article/blog-article.css: font-size: .86em [type] — raw type: .86em",
-            "templates/blog-article/blog-article.css: line-height: 1.7 [type] — raw type: 1.7",
-            "templates/blog-article/blog-article.css: line-height: 1.5 [type] — raw type: 1.5"
+            "templates/blog-article/blog-article.css: font-size: .86em [type] — raw type: .86em"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "line-height",
-              "value": "1.25",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.25"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "line-height",
-              "value": "1.85",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.85"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            },
             {
               "path": "templates/blog-article/blog-article.css",
               "property": "font-size",
@@ -17928,28 +17050,10 @@
               "reasons": [
                 "raw type: .86em"
               ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "line-height",
-              "value": "1.7",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.7"
-              ]
-            },
-            {
-              "path": "templates/blog-article/blog-article.css",
-              "property": "line-height",
-              "value": "1.5",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.5"
-              ]
             }
           ],
           "by_kind": {
-            "type": 7
+            "type": 1
           }
         },
         {
@@ -18034,26 +17138,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "templates/checkout/checkout.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/checkout/checkout.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -18137,36 +17227,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "templates/dashboard/dashboard.css: line-height: 1.3 [type] — raw type: 1.3",
-            "templates/dashboard/dashboard.css: line-height: 1.3 [type] — raw type: 1.3"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/dashboard/dashboard.css",
-              "property": "line-height",
-              "value": "1.3",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.3"
-              ]
-            },
-            {
-              "path": "templates/dashboard/dashboard.css",
-              "property": "line-height",
-              "value": "1.3",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.3"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -18250,46 +17316,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "templates/inbox/inbox.css: line-height: 1.3 [type] — raw type: 1.3",
-            "templates/inbox/inbox.css: line-height: 1.35 [type] — raw type: 1.35",
-            "templates/inbox/inbox.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/inbox/inbox.css",
-              "property": "line-height",
-              "value": "1.3",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.3"
-              ]
-            },
-            {
-              "path": "templates/inbox/inbox.css",
-              "property": "line-height",
-              "value": "1.35",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.35"
-              ]
-            },
-            {
-              "path": "templates/inbox/inbox.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 3
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -18373,36 +17405,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "templates/landing/landing.css: line-height: 1.12 [type] — raw type: 1.12",
-            "templates/landing/landing.css: line-height: 1.75 [type] — raw type: 1.75"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/landing/landing.css",
-              "property": "line-height",
-              "value": "1.12",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.12"
-              ]
-            },
-            {
-              "path": "templates/landing/landing.css",
-              "property": "line-height",
-              "value": "1.75",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.75"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -18486,36 +17494,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "templates/product-page/product-page.css: line-height: 1.8 [type] — raw type: 1.8",
-            "templates/product-page/product-page.css: line-height: 1.65 [type] — raw type: 1.65"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "line-height",
-              "value": "1.8",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.8"
-              ]
-            },
-            {
-              "path": "templates/product-page/product-page.css",
-              "property": "line-height",
-              "value": "1.65",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.65"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",
@@ -18599,36 +17583,12 @@
         },
         {
           "id": "type-values",
-          "status": "warn",
+          "status": "pass",
           "severity": "warning",
-          "findings": [
-            "templates/settings-page/settings-page.css: line-height: 1.6 [type] — raw type: 1.6",
-            "templates/settings-page/settings-page.css: line-height: 1.55 [type] — raw type: 1.55"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "templates/settings-page/settings-page.css",
-              "property": "line-height",
-              "value": "1.6",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.6"
-              ]
-            },
-            {
-              "path": "templates/settings-page/settings-page.css",
-              "property": "line-height",
-              "value": "1.55",
-              "kind": "type",
-              "reasons": [
-                "raw type: 1.55"
-              ]
-            }
-          ],
-          "by_kind": {
-            "type": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",

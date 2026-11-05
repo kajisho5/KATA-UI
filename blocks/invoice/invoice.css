@@ -5,7 +5,7 @@
 .k-inv-head p{font-size:var(--k-text-sm);color:var(--k-ink-2);margin-top:var(--k-space-1)}
 .k-inv-parties{display:grid;grid-template-columns:1fr 1fr;gap:var(--k-space-3);margin-bottom:var(--k-space-4)}
 .k-inv-parties h4{font-size:var(--k-text-xs);font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--k-ink-3);margin-bottom:var(--k-space-1)}
-.k-inv-parties p{font-size:var(--k-text-base);line-height:1.65;letter-spacing:.01em}
+.k-inv-parties p{font-size:var(--k-text-base);line-height:var(--k-lh-body);letter-spacing:.01em}
 .k-inv table{width:100%;border-collapse:collapse;font-size:var(--k-text-base)}
 .k-inv th,.k-inv td{padding:var(--k-space-2) var(--k-space-2);border-bottom:1px solid var(--k-line);text-align:left}
 .k-inv th{font-size:var(--k-text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:650}

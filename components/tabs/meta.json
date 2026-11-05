@@ -7,8 +7,8 @@
     "switch",
     "sections"
   ],
-  "status": "stable",
-  "usage": "For peer sections of one object. Keep to 2–5 tabs with short labels.",
-  "a11y": "Buttons in a row; the active tab is marked with a class and aria-selected in the full version.",
+  "status": "beta",
+  "usage": "For peer sections of one object. Keep to 2–5 tabs with short labels. Put one [data-tabpane] per tab after the tab list, in tab order.",
+  "a11y": "WAI-ARIA APG tabs with automatic activation. The list is a tablist, buttons are tabs with aria-selected and aria-controls, and each [data-tabpane] is a tabpanel labelled by its tab; unselected panels are hidden. Only the selected tab is in the Tab order; ArrowLeft/ArrowRight move and select (visual direction, so reversed in RTL) and wrap, Home/End jump. A panel without focusable content takes focus so Tab reaches it. A kata-tabs-change event (bubbling, detail.index) reports changes. Instances initialize independently and loading the script twice is safe. Beta until a recorded screen-reader pass.",
   "stage": "col"
 }

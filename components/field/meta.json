@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "Wrap any single control in a Field so labels, hints and errors stay attached. Stack Fields with a consistent gap and a form stops looking improvised.",
-  "a11y": "The label is a real <label>, the hint and error are wired with aria-describedby, and the error carries role=\"alert\" only when it appears after submit — not while typing."
+  "a11y": "The label wraps its control, so the name works without IDs or script. field.js (optional, IIFE, safe to load twice, one MutationObserver per field) links the hint, and the error while data-invalid is set, with aria-describedby using generated IDs; it keeps existing IDs and author descriptions and keeps aria-invalid in step with data-invalid. An error present at load is not announced; when data-invalid is added later (for example on submit) the error gets role=\"alert\" once, not while typing. Label, badge, hint and error text measure at least 4.83:1 in light and dark. Controls inside a Field size with box-sizing:border-box so they fit it. Beta until a screen reader and real IME input are checked by hand. Checked in Chromium only."
 }

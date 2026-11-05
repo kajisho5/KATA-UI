@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Field — three instances</title><link rel="icon" href="../logo/favicon.svg"><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/input/input.css"><link rel="stylesheet" href="../components/field/field.css"><style>body{margin:var(--k-space-6);font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink)}main{display:grid;gap:var(--k-space-8)}</style></head><body><h1>Field: three sets and RTL</h1><main><section aria-label="Field set 1"><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <div class="k-field">
+    <label class="lab">Workspace name <span class="opt">Optional</span><input class="input" type="text" value="Acme Studio"></label>
+    <p class="hint">Shown in menus and the sidebar. You can change it later.</p>
+  </div>
+  <div class="k-field" data-invalid>
+    <label class="lab">Billing email <span class="req">Required</span><input class="input" type="email" value="accounts@acme" aria-invalid="true"></label>
+    <p class="err"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m9.5 9.5 5 5m0-5-5 5"/></svg> That address is missing its domain.</p>
+  </div>
+</div></section><section aria-label="Field set 2"><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <div class="k-field">
+    <label class="lab">Workspace name <span class="opt">Optional</span><input class="input" type="text" value="Acme Studio"></label>
+    <p class="hint">Shown in menus and the sidebar. You can change it later.</p>
+  </div>
+  <div class="k-field" data-invalid>
+    <label class="lab">Billing email <span class="req">Required</span><input class="input" type="email" value="accounts@acme" aria-invalid="true"></label>
+    <p class="err"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m9.5 9.5 5 5m0-5-5 5"/></svg> That address is missing its domain.</p>
+  </div>
+</div></section><section dir="rtl" aria-label="Field set 3"><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <div class="k-field">
+    <label class="lab">Workspace name <span class="opt">Optional</span><input class="input" type="text" value="Acme Studio"></label>
+    <p class="hint">Shown in menus and the sidebar. You can change it later.</p>
+  </div>
+  <div class="k-field" data-invalid>
+    <label class="lab">Billing email <span class="req">Required</span><input class="input" type="email" value="accounts@acme" aria-invalid="true"></label>
+    <p class="err"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m9.5 9.5 5 5m0-5-5 5"/></svg> That address is missing its domain.</p>
+  </div>
+</div></section><section aria-label="Existing IDs"><div class="k-field"><label class="lab" for="own-name">Display name</label><input class="input" id="own-name" type="text" aria-describedby="own-extra"><p class="hint" id="own-hint">Your own IDs are kept.</p><p id="own-extra">Extra description.</p></div></section></main><script src="../components/field/field.js"></script><script src="../components/field/field.js"></script></body></html>

@@ -87,6 +87,7 @@ Missing number #12 is open, not silently assumed merged.
 | #49 | 7bb190b | T4 Checkbox: unchecked boundary 1.65:1 → 4.83:1, hover/mixed/invalid/disabled states; beta. |
 | #50 | 1cdcbdf | T4 Radio: unchecked boundary 1.65:1 → 4.83:1, hover and aria-invalid; beta. |
 | #51 | adab252 | T4 Switch: accessible names (were empty), role=switch, track boundary 3:1+, disabled; beta. |
+| #52 | 2e59f45 | Product Page colour swatches: aria-label from the visible colour names, radiogroup named Color (repair before the empty-label rule). |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -94,7 +95,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#51 were squash-merged the same way after green CI. The owner then asked the
+#29–#52 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -111,7 +112,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#52](https://github.com/kajisho5/KATA-UI/pull/52) | Product Page colour swatches had no accessible name; aria-label from the visible colour name. Repair before the empty-label checker rule. |
+| [#53](https://github.com/kajisho5/KATA-UI/pull/53) | Checker: an empty label, label[for] or aria-labelledby target no longer names a control. Owner approved; 164/164 before and after. |
 
 ### npm and environment
 
@@ -163,7 +164,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #52 (swatch repair), then the empty-label checker PR (owner approved), then T4 Modal.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #53 (empty-label checker rule, owner approved), then T4 Modal.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -287,11 +288,12 @@ all get role=switch. The off track (1.48:1 light, 2.29:1 dark) and the accent
 track (2.88:1) get a 1px rim so their edge is 3:1+. **Checker gap for the
 owner:** `accessible-label` passes any input inside a <label>, even a label with
 no text; detecting empty labels is a rule change and needs owner approval.
-The owner approved it in chat on 2026-11-06 ("なおしてもいいよ"). A prototype of the
-stricter rule (name from aria-label, title, aria-labelledby text, label[for] or
-ancestor label text/aria-label/img alt) flags only the three Product Page colour
-swatches; per KATA.md F the repair lands first (#52), then the checker PR.
-Next: the checker PR, then modal.
+The owner approved it in chat on 2026-11-06 ("なおしてもいいよ"). The stricter
+rule (name from the control's aria-label, or aria-labelledby, label[for] or
+ancestor label holding text, a child aria-label or img alt; title is still not
+accepted) flags only the three Product Page colour swatches. The repair landed
+first (#52); the rule is #53 (rationale in KATA.md "Accessible label").
+Next: #53, then modal.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

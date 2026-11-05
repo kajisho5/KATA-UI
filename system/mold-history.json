@@ -34,10 +34,40 @@
       "commit": "2fa7cdcd502557358f219cf42173047fb1577bde",
       "passed": 94,
       "total": 164
+    },
+    {
+      "commit": "839b05daa3752ceafe6a03b521608731c4739294",
+      "passed": 97,
+      "total": 164
+    },
+    {
+      "commit": "2c057fb48157fe5fa03ae3f58a892087ff044d4d",
+      "passed": 100,
+      "total": 164
+    },
+    {
+      "commit": "30f67abac5ddd22d8c5edc4317b4e2bf5b2216eb",
+      "passed": 103,
+      "total": 164
+    },
+    {
+      "commit": "47298c57dde8a6a61272c6180c90dc077a7f8647",
+      "passed": 106,
+      "total": 164
+    },
+    {
+      "commit": "9c003f3f61139d1e82247ee40e6f06211a08280c",
+      "passed": 109,
+      "total": 164
+    },
+    {
+      "commit": "1ec074ee3198580444fa92945e1c3f9b03d42bac",
+      "passed": 112,
+      "total": 164
     }
   ],
   "schemaVersion": 1,
-  "throughCommit": "91a9ef1674a0c83949563c94b63d467f1316fa06",
+  "throughCommit": "5e2dd3f551635efbc0f6c7bd84a929a9b65ab45f",
   "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
   "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
   "v1EvidenceVerified": false,
@@ -298,7 +328,7 @@
   },
   "v2": {
     "--k-mold": [
-      "2"
+      "3"
     ],
     "--k-tsutsuji": [
       "#e95295"
@@ -360,6 +390,9 @@
     ],
     "--k-radius-full": [
       "999px"
+    ],
+    "--k-ring": [
+      "0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink)"
     ],
     "--k-ring-inset": [
       "inset 0 0 0 1px currentColor"
@@ -456,10 +489,6 @@
     ],
     "--k-yamabuki": [
       "#ffb11b"
-    ],
-    "--k-ring": [
-      "0 0 0 3px rgba(24,24,27,.12)",
-      "0 0 0 3px rgba(244,244,245,.18)"
     ],
     "--k-font": [
       "\"Inter\",\"Hiragino Sans\",\"Noto Sans JP\",system-ui,sans-serif"
@@ -840,10 +869,10 @@
     "--k-ease-bounce": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
     "--k-ease-out": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
     "--k-tsutsuji": "2fa7cdcd502557358f219cf42173047fb1577bde",
-    "--k-mold": "91a9ef1674a0c83949563c94b63d467f1316fa06"
+    "--k-mold": "deb88d2ca614733b2981f874ad985de9d9e78034"
   },
   "tokenVersions": {
-    "--k-mold": 2,
+    "--k-mold": 3,
     "--k-tsutsuji": 2,
     "--k-mscale": 2,
     "--k-dur-fast": 2,
@@ -864,6 +893,7 @@
     "--k-radius-lg": 1,
     "--k-radius-xl": 2,
     "--k-radius-full": 1,
+    "--k-ring": 1,
     "--k-ring-inset": 2,
     "--k-ring-line": 2,
     "--k-ring-selected": 2,
@@ -890,7 +920,6 @@
     "--k-core": 1,
     "--k-danger": 1,
     "--k-yamabuki": 2,
-    "--k-ring": 1,
     "--k-font": 1,
     "--k-mono": 1,
     "--k-on-color": 1,
@@ -966,7 +995,8 @@
     "--k-dur-1": 2,
     "--k-dur-2": 2,
     "--k-dur-3": 2,
-    "--k-mscale": 2
+    "--k-mscale": 2,
+    "--k-ring": 3
   },
   "semanticChanges": [
     {
@@ -984,6 +1014,13 @@
       ],
       "commit": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
       "reason": "The external multiplier now has a shared default of 1; reduced motion sets it to zero. Scoped loop ownership was included in the merged PR."
+    },
+    {
+      "tokens": [
+        "--k-ring"
+      ],
+      "commit": "5e2dd3f551635efbc0f6c7bd84a929a9b65ab45f",
+      "reason": "Keyboard focus ring changed from a 3px 12% tint (about 1.3:1 on white) to a 2px page-colored gap plus a 2px ink ring, which reaches 3:1 in both themes. It is now 4px wide instead of 3px; check rings inside overflow-clipped containers."
     }
   ],
   "deprecations": [
@@ -996,6 +1033,13 @@
       "name": "--k-ease-out",
       "replacement": "--k-ease-in-out (deprecated alias retained)",
       "commit": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7"
+    }
+  ],
+  "releases": [
+    {
+      "version": 3,
+      "date": "2026-11-06",
+      "summary": "Focus visibility. --k-ring is a 2px page-colored gap plus a 2px ink ring, and the tokens.css focus floor is a 2px ink outline with a 2px offset; both replace sub-3:1 values (a 12% tint and the #33a6b8 accent, 2.88:1 on white). Parts that use --k-ring require mold v3. Measured with tools/verify_focus_ring.py."
     }
   ],
   "events": [
@@ -3062,9 +3106,9 @@
       ]
     },
     {
-      "commit": "91a9ef1674a0c83949563c94b63d467f1316fa06",
+      "commit": "deb88d2ca614733b2981f874ad985de9d9e78034",
       "date": "2026-11-05",
-      "subject": "Version the shared mold and publish compatibility requirements and history",
+      "subject": "mold v2と配布部品の互換性ヘッダー・変更履歴を導入 (#23)",
       "changes": [
         {
           "token": "--k-mold",
@@ -3073,6 +3117,34 @@
             "2"
           ],
           "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "5e2dd3f551635efbc0f6c7bd84a929a9b65ab45f",
+      "date": "2026-11-05",
+      "subject": "Make the keyboard focus ring reach 3:1 in both themes (mold v3)",
+      "changes": [
+        {
+          "token": "--k-mold",
+          "before": [
+            "2"
+          ],
+          "after": [
+            "3"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-ring",
+          "before": [
+            "0 0 0 3px rgba(24,24,27,.12)",
+            "0 0 0 3px rgba(244,244,245,.18)"
+          ],
+          "after": [
+            "0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink)"
+          ],
+          "kind": "value"
         }
       ]
     }

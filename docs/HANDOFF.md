@@ -2,8 +2,8 @@
 
 ## Status
 
-Snapshot: 2026-11-05 (Asia/Tokyo), main `69b5a86551f2e6b9926ca5d5c1e557b4cc6fc27a`
-(after #32; neither #32 nor #33 changes counts).
+Snapshot: 2026-11-06 (Asia/Tokyo), main `4dddb8a3df5590ff8f4c69f4b408d83aa1bb5ef1`
+(after #33; the mold v3 focus PR changes no counts).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -40,7 +40,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #32
+### Merged work, PR #11 through #33
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -68,13 +68,14 @@ Missing number #12 is open, not silently assumed merged.
 | #30 | 9c003f3 | Split Panel, Reorder and Follow Frame instances, stacked split and pausable autoplay. |
 | #31 | 1ec074e | Pricing, Site Header and Use Cases block instances; JS findings reach 0. |
 | #32 | 69b5a86 | Focus-ring visibility measurement and baseline (T2 step 1). |
+| #33 | 4dddb8a | Closed Dropdown menus and collapsed Speed Dial actions leave the Tab order. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#32 were squash-merged the same way after green CI. The owner then asked the
+#29–#33 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -91,7 +92,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#33](https://github.com/kajisho5/KATA-UI/pull/33) | Closed Dropdown / collapsed Speed Dial items leave the Tab order. No counts change. |
+| Mold v3 focus PR | --k-ring and the focus floor become a 2px ink ring (T2 step 2); moldVersion 3. |
 
 ### npm and environment
 
@@ -143,8 +144,8 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: T2 step 2 needs an owner decision on the focus-ring
-value (see T2 below). #32 (step 1) is the last T2 work done without it.**
+PR. Do not start while the previous task's PR is open. **Current blocker: the mold v3 focus PR (T2 step 2) must be merged before
+step 3 starts.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -160,20 +161,20 @@ markup and CSS selectors.
 
 ### T2 — focus-visible (in progress)
 
-Step 1 is done by #32: `python3 -m tools.verify_focus_ring`
-and docs/review/focus-ring/. Measured: 444 Tab stops in 98 parts; below 3:1
-contrast on 380 (light) / 156 (dark); no change at all on 10 / 9; 49 clipped
-stops in 8 parts. **Owner decision needed before step 2:** the current
-`--k-ring` (3px, 12% ink) and the light-theme accent outline (#33a6b8, 2.88:1 on
-white) are both below 3:1, so applying `var(--k-ring)` everywhere as written
-below would make focus weak everywhere in light. Choose a ring that reaches 3:1
-in both themes (for example a 2px ink or darker-accent outline plus offset);
-that is a `--k-ring` value/meaning change with a moldVersion bump. Then do steps
-2–5 and use the tool for before/after numbers. The closed Dropdown items and
-collapsed Speed Dial actions (7 of the 10 no-change stops) are fixed by #33
-(visibility:hidden after the fade-out). Rating, Comparison Slider
-and Magnet remain.
-
+Step 1 is done by #32 (`python3 -m tools.verify_focus_ring`, docs/review/focus-ring/).
+#33 removed closed Dropdown items and collapsed Speed Dial actions from the Tab order.
+Step 2 is done by the mold v3 focus PR: the owner chose a 2px ink ring (option 1,
+2026-11-06). `--k-ring` is a 2px page-colored gap plus a 2px ink ring, and the
+generated focus floor is a 2px ink outline (outline, not box-shadow, so component
+shadows and forced colors cannot remove it). Below 3:1: light 380 → 20, dark
+156 → 4 (docs/review/focus-ring-v3/). **Next, step 3:** replace the remaining
+component-owned accent outlines (Dual Range, Toggle, Glow Button, Confetti Cannon,
+Kaleidoscope, Particle Word, Wagara search, Use Cases rows), the dark error-field
+ring (`--k-ring-danger`), the three no-change stops (Rating, Chip remove,
+Comparison Slider) and 52 clipped stops in 9 parts. Then step 4 (checker rule,
+owner review) and step 5. After the v3 PR merges, regenerate
+system/mold-history.json with `--ref origin/main` so the v3 event points at the
+squash commit instead of the branch commit.
 
 1. First add a Playwright focus-ring test, tests/focus-ring.spec (using the runner's required extension). For every part test page, Tab through focusable controls in light/dark, compare before/after screenshots and check ring pixels outside the control are not clipped by overflow:hidden.
 2. Add the shared --k-ring focus rule in canonical tokens.json and generate CSS; do not hand-edit tokens.css. Targets are a[href], button, input, select, textarea, summary and tabindex other than -1. Use outline:none and box-shadow:var(--k-ring). Keep the whole selector, including :focus-visible, inside :where for actual zero specificity; e.g. :where(:is(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible).

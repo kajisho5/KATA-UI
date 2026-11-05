@@ -6,3 +6,7 @@
 .k-card-b{padding:var(--k-space-3) var(--k-space-4) var(--k-space-4);font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink-2);letter-spacing:.012em}
 .k-card-f{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-4);border-top:1px solid var(--k-line);background:var(--k-bg-soft);font-size:var(--k-text-sm);color:var(--k-ink-3)}
 .k-card-f .sp{margin-inline-start:auto;display:flex;gap:var(--k-space-2)}
+/* Optional title and text for a body without a header. */
+.k-card-t{font-size:var(--k-text-lead)}
+.k-card-p{font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink-2);letter-spacing:.01em}
+.k-card-t + .k-card-p{margin-top:var(--k-space-1)}

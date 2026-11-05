@@ -7,6 +7,6 @@
     "panel"
   ],
   "status": "beta",
-  "usage": "The default box for grouped content. If a thing has a title, a body and actions, it is a card; if it only has a body, use a plain section.",
-  "a11y": "A card is a region, not a landmark: give the page real headings and let the card carry an aria-label only when it needs a name."
+  "usage": "The default box for grouped content. If a thing has a title, a body and actions, it is a card; if it only has a body, use a plain section. A body without a header can use .k-card-t for its title and .k-card-p for its text.",
+  "a11y": "A card is a region, not a landmark: give the page real headings and let the card carry an aria-label only when it needs a name. Controls inside keep their own names (the combo names its progress bars). A whole-card link shows the shared focus outline outside its box. Footer text (ink-3 on bg-soft) measures 4.51:1 light and 4.71:1 dark; do not lighten it."
 }

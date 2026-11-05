@@ -96,6 +96,7 @@ Missing number #12 is open, not silently assumed merged.
 | #58 | 23e2ea0 | T4 Toast: status live region (was claimed, not present), text instead of markup, tokenised icon; beta. |
 | #59 | 463bdbd | T4 Card: combo progress bars named, optional .k-card-t/.k-card-p replace inline example styles; beta. |
 | #60 | ce3d1ff | T4 Tabs: real panels (text was in the script), APG roles and keyboard, IIFE with data-kata-ready; beta. |
+| #61 | 951d650 | T4 Accordion: three-set page and browser test; no defect found, no part file changed; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -103,7 +104,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#60 were squash-merged the same way after green CI. The owner then asked the
+#29–#61 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -120,7 +121,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#61](https://github.com/kajisho5/KATA-UI/pull/61) | T4 Accordion: three-set page and browser test; no defect found, no part file changed; beta. |
+| [#62](https://github.com/kajisho5/KATA-UI/pull/62) | T4 Badge: three-set page and browser test; no defect found; legacy stable → beta. |
 
 ### npm and environment
 
@@ -172,7 +173,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #61 (T4 Accordion), then T4 badge.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #62 (T4 Badge), then T4 alert.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -344,7 +345,10 @@ tabindex leaves one tab in the Tab order). Beta.
 Accordion ([#61](https://github.com/kajisho5/KATA-UI/pull/61)): native details; the browser test (names, expanded
 state, Enter/Space, focus ring, RTL chevron, contrast) found no defect, so no
 part file changed. Beta until a screen-reader pass.
-Next: badge.
+Badge ([#62](https://github.com/kajisho5/KATA-UI/pull/62)): no defect found (every tone ≥ 5.26:1 text contrast,
+text-spacing overrides do not clip, RTL dot at the inline start); legacy
+stable becomes beta per item 16.
+Next: alert.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

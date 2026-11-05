@@ -16,7 +16,7 @@ SPECS = {
 
 def run(output=ROOT/'docs/review/command-context-date'):
     output = Path(output); output.mkdir(parents=True, exist_ok=True)
-    facts, errors = [], []
+    facts, errors, rtl_positions = [], [], []
     server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), partial(http.server.SimpleHTTPRequestHandler, directory=str(ROOT)))
     threading.Thread(target=server.serve_forever, daemon=True).start()
     try:
@@ -25,6 +25,12 @@ def run(output=ROOT/'docs/review/command-context-date'):
             for slug, (panel_selector, trigger_selector) in SPECS.items():
                 for case, theme, scale, reduced in [('normal', 'light', 1, 'no-preference'), ('zero', 'dark', 0, 'no-preference'), ('reduce', 'dark', 2, 'reduce')]:
                     page = browser.new_page(viewport={'width': 1100, 'height': 1000}, reduced_motion=reduced)
+                    page.add_init_script("""window.contextBlurListeners = 0;
+                        const originalAdd = window.addEventListener;
+                        window.addEventListener = function(type, ...args) {
+                            if (type === 'blur') window.contextBlurListeners++;
+                            return originalAdd.call(this, type, ...args);
+                        };""")
                     page.on('pageerror', lambda error: errors.append(str(error)))
                     page.on('console', lambda message: errors.append(message.text) if message.type == 'error' else None)
                     page.goto(f'http://127.0.0.1:{server.server_port}/tests/{slug}-multi.html')
@@ -39,15 +45,21 @@ def run(output=ROOT/'docs/review/command-context-date'):
                         else: triggers.nth(index).click()
                         assert opened(index)
                     def closed(index):
-                        page.wait_for_function('(e)=>e.tagName==="DIALOG"?!e.open:e.hidden', arg=panels.nth(index).element_handle())
+                        page.wait_for_function('(e)=>e.tagName==="DIALOG"?(!e.open && e.querySelector("[data-command-input]").getAttribute("aria-expanded")==="false"):e.hidden', arg=panels.nth(index).element_handle())
                     for index in range(3):
                         open_at(index)
                         assert all(not opened(other) for other in range(3) if other != index)
                         panel = panels.nth(index)
                         panel.locator('[data-probe]').click()
                         assert opened(index)
-                        panel.evaluate('(e)=>{window.dispatchEvent(new Event("blur"));e.dispatchEvent(new FocusEvent("focusout",{bubbles:true,relatedTarget:null}))}')
+                        panel.evaluate('(e)=>{e.dispatchEvent(new FocusEvent("focusout",{bubbles:true,relatedTarget:null}))}')
                         assert opened(index)
+                        page.evaluate('()=>window.dispatchEvent(new Event("blur"))')
+                        if slug == 'context-menu':
+                            closed(index); assert page.evaluate('window.contextBlurListeners') == 1
+                            open_at(index)
+                        else:
+                            assert opened(index)
                         if slug == 'context-menu':
                             buttons = panel.locator('[role="menuitem"]')
                             buttons.nth(0).focus(); page.keyboard.press('Tab'); closed(index)
@@ -82,13 +94,19 @@ def run(output=ROOT/'docs/review/command-context-date'):
                             assert input_.get_attribute('aria-activedescendant') is None
                             open_at(index); input_.focus()
                         elif slug == 'date-picker':
-                            grid = panel.locator('[role="grid"]'); day = grid.locator('[data-d][tabindex="0"]'); day.focus()
+                            grid = panel.locator('[role="grid"]'); day = grid.locator('[data-dp-week]').nth(2).locator('[data-d]').nth(3); day.focus()
                             original = day.get_attribute('data-d')
-                            page.keyboard.press('ArrowRight'); next_day = grid.locator('[tabindex="0"]').get_attribute('data-d')
+                            rtl = grid.evaluate('(e)=>getComputedStyle(e).direction') == 'rtl'
+                            forward, backward = ('ArrowLeft', 'ArrowRight') if rtl else ('ArrowRight', 'ArrowLeft')
+                            before_left = grid.locator('[tabindex="0"]').evaluate('(e)=>e.getBoundingClientRect().left')
+                            page.keyboard.press(forward); next_day = grid.locator('[tabindex="0"]').get_attribute('data-d')
                             from datetime import date, timedelta
                             assert date.fromisoformat(next_day) == date.fromisoformat(original) + timedelta(days=1)
+                            after_left = grid.locator('[tabindex="0"]').evaluate('(e)=>e.getBoundingClientRect().left')
+                            assert after_left < before_left if rtl else after_left > before_left
+                            if rtl: rtl_positions.append({'case':case,'key':forward,'beforeLeft':before_left,'afterLeft':after_left,'beforeDate':original,'afterDate':next_day})
                             page.keyboard.press('ArrowDown'); assert date.fromisoformat(grid.locator('[tabindex="0"]').get_attribute('data-d')) == date.fromisoformat(original) + timedelta(days=8)
-                            page.keyboard.press('ArrowUp'); page.keyboard.press('ArrowLeft'); assert grid.locator('[tabindex="0"]').get_attribute('data-d') == original
+                            page.keyboard.press('ArrowUp'); page.keyboard.press(backward); assert grid.locator('[tabindex="0"]').get_attribute('data-d') == original
                             page.keyboard.press('Home'); assert date.fromisoformat(grid.locator('[tabindex="0"]').get_attribute('data-d')).weekday() == 6
                             page.keyboard.press('End'); assert date.fromisoformat(grid.locator('[tabindex="0"]').get_attribute('data-d')).weekday() == 5
                             before_year = int(grid.locator('[tabindex="0"]').get_attribute('data-d')[:4]); page.keyboard.press('Shift+PageDown')
@@ -99,7 +117,7 @@ def run(output=ROOT/'docs/review/command-context-date'):
                             while current.month != 1:
                                 page.keyboard.press('PageUp'); current = date.fromisoformat(grid.locator('[tabindex="0"]').get_attribute('data-d'))
                             while current.day < 31:
-                                page.keyboard.press('ArrowRight'); current = date.fromisoformat(grid.locator('[tabindex="0"]').get_attribute('data-d'))
+                                page.keyboard.press(forward); current = date.fromisoformat(grid.locator('[tabindex="0"]').get_attribute('data-d'))
                             page.keyboard.press('PageDown')
                             february = date.fromisoformat(grid.locator('[tabindex="0"]').get_attribute('data-d'))
                             import calendar
@@ -114,10 +132,14 @@ def run(output=ROOT/'docs/review/command-context-date'):
                             open_at(index)
                         page.keyboard.press('Escape'); closed(index)
                         assert triggers.nth(index).evaluate('(e)=>e===document.activeElement')
+                    if slug == 'context-menu':
+                        triggers.nth(1).focus(); page.keyboard.press('ContextMenu'); assert opened(1)
+                        page.evaluate('()=>window.dispatchEvent(new Event("blur"))'); closed(1)
                     # Existing IDs survive; pre-existing generated-looking IDs are not reused.
                     original_id = triggers.first.get_attribute('id')
                     page.add_script_tag(content=(ROOT/f'components/{slug}/{slug}.js').read_text())
                     assert triggers.first.get_attribute('id') == original_id
+                    if slug == 'context-menu': assert page.evaluate('window.contextBlurListeners') == 1
                     assert panels.nth(1).get_attribute('id') == 'existing-'+slug+'-panel'
                     assert triggers.nth(1).get_attribute('id') == 'existing-'+slug+'-trigger'
                     ids = page.evaluate('()=>[...document.querySelectorAll("[id]")].map(e=>e.id)'); assert len(ids) == len(set(ids))
@@ -147,13 +169,13 @@ def run(output=ROOT/'docs/review/command-context-date'):
                         panels.nth(1).evaluate('(e)=>e.addEventListener("cancel",event=>event.preventDefault(),{once:true})')
                         page.keyboard.press('Escape'); assert opened(1)
                         page.keyboard.press('Escape'); closed(1)
-                    facts.append({'component':slug,'case':case,'threeIndependent':True,'doubleLoad':True,'rtl':True,'idsUnique':True,'existingIdsPreserved':True,'monthEndClamped':slug == 'date-picker','nullFocusoutKeepsOpen':True,'paragraphKeepsOpen':True,'keyboard':True,'syntheticIme':slug != 'context-menu','consoleErrors':0})
+                    facts.append({'component':slug,'case':case,'threeIndependent':True,'doubleLoad':True,'rtl':True,'idsUnique':True,'existingIdsPreserved':True,'monthEndClamped':slug == 'date-picker','nullFocusoutKeepsOpen':True,'windowBlurCloses':slug == 'context-menu','singleWindowBlurListener':slug == 'context-menu','paragraphKeepsOpen':True,'keyboard':True,'syntheticIme':slug != 'context-menu','consoleErrors':0})
                     page.close()
             browser.close()
     finally:
         server.shutdown(); server.server_close()
     assert not errors, errors
-    (output/'results.json').write_text(json.dumps({'cases':facts,'consoleErrors':errors,'manualNotVerified':['Real Japanese IME','Screen readers','Firefox','Safari']},indent=2)+'\n')
+    (output/'results.json').write_text(json.dumps({'cases':facts,'rtlHorizontalPositions':rtl_positions,'consoleErrors':errors,'manualNotVerified':['Real Japanese IME','Screen readers','Firefox','Safari']},indent=2)+'\n')
     print('3 components × normal/zero/reduce, triple instances, double load, keyboard and null focusout: passed; console errors 0')
     return facts
 

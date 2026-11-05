@@ -133,7 +133,8 @@
       if (event.key === 'Escape' && !panel.hidden) { event.preventDefault(); close(true); return; }
       if (panel.hidden && (event.target === input || event.target === trigger) && ['ArrowDown', 'Enter', ' '].includes(event.key)) { event.preventDefault(); open(event.target); return; }
       if (panel.hidden || !event.target.closest('[data-d]')) return;
-      const movement = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -7, ArrowDown: 7 };
+      const horizontal = getComputedStyle(grid).direction === 'rtl' ? -1 : 1;
+      const movement = { ArrowLeft: -horizontal, ArrowRight: horizontal, ArrowUp: -7, ArrowDown: 7 };
       if (event.key in movement) focused = new Date(focused.getFullYear(), focused.getMonth(), focused.getDate() + movement[event.key]);
       else if (event.key === 'Home' || event.key === 'End') focused = new Date(focused.getFullYear(), focused.getMonth(), focused.getDate() + (event.key === 'Home' ? -focused.getDay() : 6 - focused.getDay()));
       else if (event.key === 'PageUp' || event.key === 'PageDown') monthMove((event.key === 'PageUp' ? -1 : 1) * (event.shiftKey ? 12 : 1));

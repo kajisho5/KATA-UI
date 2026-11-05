@@ -8,6 +8,6 @@
     "keyboard"
   ],
   "status": "beta",
-  "usage": "For apps with many actions or pages. Trigger it with a button and with Cmd/Ctrl+K; selecting an item is the app’s job.",
+  "usage": "For apps with many actions or pages. Trigger it with a button and with Cmd/Ctrl+K; selecting an item is the app’s job. On pages with multiple palettes, Cmd/Ctrl+K opens the palette associated with the focused trigger, or the first palette in document order if there is none.\n\n```js\ndocument.addEventListener('kata-command-select', event => {\n  console.log(event.detail.item);\n});\n```",
   "a11y": "Native modal dialog. Search keeps focus on a labelled combobox; Up/Down loop through listbox options, Enter activates a command, Escape closes and restores the opener. Empty results and a polite result count are provided. Composition events and IME keys are ignored during selection."
 }

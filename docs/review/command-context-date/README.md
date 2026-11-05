@@ -45,13 +45,13 @@ All keyboard selection handlers guard composition events, `isComposing`, keyCode
   Cmd/Ctrl+K targets the associated focused trigger, then the first palette.
 - Context Menu adds roving focus, Up/Down/Home/End, prefix search and edge flipping.
   Escape, Tab and selection close and return focus to the trigger; outside
-  pointer/focus departure closes without stealing the user's new focus. Window
-  blur and null focusout no longer close it. Keyboard access still mirrors
+  pointer/focus departure closes without stealing the user's new focus. Window blur closes all open menus through one guarded window listener; null
+  focusout does not close it. Keyboard access still mirrors
   right-click; applications must keep visible alternatives to these actions.
 - Date Picker adds the implemented grid keyboard model, polite month names,
   full date labels, selection/current-date states, month-end clamping, and a
-  complete six-row calendar. Left/Right mean previous/next calendar day even in
-  RTL; row placement follows RTL. Native non-modal behavior is retained.
+  complete six-row calendar. Horizontal arrows follow visual direction: in RTL, Left advances one day
+  and Right goes back one day. Native non-modal behavior is retained.
 - These panels had no exit animation in main. The close helper supports end
   events, duration/delay/iteration-based timeout fallback and immediate zero
   duration completion. Reopen cancels the old listeners/timer. Native Command
@@ -76,9 +76,10 @@ python3 -m tools.verify_mold_distribution
 
 `results.json` records nine Chromium cases: three copied instances, one RTL,
 script loaded twice, normal motion, multiplier zero and OS reduced motion.
-The tests cover paragraphs, null relatedTarget/window blur, internal focus,
+The tests cover paragraphs, null relatedTarget, per-component window-blur policy, internal focus,
 keyboard navigation and selection, IME event guards, unique/pre-existing IDs,
-edge positioning, native cancel veto, month-end clamping, timeout fallback and
+edge positioning, RTL screen coordinates and next-day movement, single window
+blur listener and dismissal, native cancel veto, month-end clamping, timeout fallback and
 reopening during a pending exit. Console errors: zero. Screenshots show each
 case; `*-light/dark-before/after.png` compare a single instance against main.
 Date Picker's visible label and keyboard focus treatment intentionally change;

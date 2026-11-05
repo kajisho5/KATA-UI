@@ -44,6 +44,15 @@
     return { cancel, close };
   }
 
+  // A document-level guard keeps one window listener across repeated script loads.
+  if (!document.documentElement.hasAttribute('data-kata-context-blur-ready')) {
+    document.documentElement.setAttribute('data-kata-context-blur-ready', 'true');
+    window.addEventListener('blur', () => {
+      document.querySelectorAll('[data-ctx][data-kata-ready]').forEach(menu => {
+        if (!menu.hidden) menu.dispatchEvent(new Event('kata-context-blur'));
+      });
+    });
+  }
   document.querySelectorAll('[data-ctx-zone]').forEach(zone => {
     if (zone.dataset.kataReady) return;
     const target = zone.getAttribute('aria-controls');
@@ -66,6 +75,7 @@
       if (restore && zone.isConnected) zone.focus();
     });
     function close(focus = true) { if (menu.hidden) return; restore = focus; exit.close(); }
+    menu.addEventListener('kata-context-blur', () => close(false));
     function focusItem(index) {
       const options = available(); const item = options[(index + options.length) % options.length];
       items.forEach(candidate => { candidate.tabIndex = candidate === item ? 0 : -1; });

@@ -35,3 +35,7 @@ KATA UI (https://kata-ui.dev) is a framework-free, build-free UI library. Users 
 ## Audit ratchet
 
 - check.py の合格数が変わる PR では、mold-baseline.json と docs/ROADMAP.md 冒頭の数字、該当項目のチェックボックスを同じ PR で更新する。
+
+## Mold compatibility
+
+- tokens.json のトークン追加・値変更・意味変更をしたら moldVersion を上げ、mold-changelog を同じ PR で更新する。正本は system/tokens.json。履歴は system/mold-history.json に git の証拠とともに保存する。

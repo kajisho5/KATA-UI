@@ -44,6 +44,15 @@ async function localAudit() {
   } catch { return null; }
 }
 
+async function localMold() {
+  if (registryArg) {
+    const reg = await loadRegistry();
+    return { moldVersion: reg.moldVersion || 1, instruction: reg.moldInstruction || 'Before copying a part, check tokens.css against requiresMold.' };
+  }
+  try { return JSON.parse(await readFile(new URL('./mold.json', import.meta.url), 'utf8')); }
+  catch { const reg = await loadRegistry(); return {moldVersion: reg.moldVersion || 1, instruction: reg.moldInstruction || 'Before copying a part, check tokens.css against requiresMold.'}; }
+}
+
 const TOOLS = [
   {
     name: 'get_audit',
@@ -81,12 +90,12 @@ const TOOLS = [
 ];
 
 function brief(it) {
-  return { name: it.name, type: it.type, title: it.title, description: it.description, dependencies: it.dependencies || [] };
+  return { name: it.name, type: it.type, title: it.title, description: it.description, requiresMold: it.requiresMold, dependencies: it.dependencies || [] };
 }
 
 async function callTool(name, a) {
   const reg = await loadRegistry();
-  if (name === 'get_audit') return JSON.stringify(reg.audit || { error: 'Audit metadata is unavailable in this registry.' });
+  if (name === 'get_audit') return JSON.stringify({...reg.audit, moldVersion: reg.moldVersion || 1, moldInstruction: reg.moldInstruction});
   const items = reg.items || [];
   if (name === 'list_components') {
     const out = items.filter(it => !a.type || it.type === a.type).map(brief);
@@ -100,7 +109,7 @@ async function callTool(name, a) {
   if (name === 'get_component') {
     const it = items.find(x => x.name === a.name);
     if (!it) return 'No catalog item named "' + a.name + '". Try search_components.';
-    return JSON.stringify(it, null, 1);
+    return JSON.stringify({moldVersion: reg.moldVersion || 1, moldInstruction: reg.moldInstruction, ...it}, null, 1);
   }
   throw new Error('unknown tool: ' + name);
 }
@@ -119,8 +128,10 @@ rl.on('line', async line => {
   try {
     if (method === 'initialize') {
       const audit = await localAudit();
+      const mold = await localMold();
       reply(id, {
-        instructions: audit ? `${audit.label}. ${audit.url}. Updated ${audit.updated_at}. Static checks only.` : 'Use get_audit to read current registry audit metadata.',
+        instructions: `moldVersion: ${mold.moldVersion}. ${mold.instruction} ` + (audit ? `${audit.label}. ${audit.url}. Updated ${audit.updated_at}. Static checks only.` : 'Use get_audit to read current registry audit metadata.'),
+        _meta: {'kata-ui/moldVersion': mold.moldVersion},
         protocolVersion: (params && params.protocolVersion) || '2024-11-05',
         capabilities: { tools: {} },
         serverInfo: { name: 'kata-ui', version: '1.0.0' }

@@ -1,7 +1,7 @@
-.k-field{display:grid;gap:7px;font-family:var(--k-font);text-align:start}
-.k-field .lab{display:flex;align-items:baseline;gap:8px;font-size:13px;font-weight:550;color:var(--k-ink)}
+.k-field{display:grid;gap:var(--k-space-2);font-family:var(--k-font);text-align:start}
+.k-field .lab{display:flex;align-items:baseline;gap:var(--k-space-2);font-size:13px;font-weight:550;color:var(--k-ink)}
 .k-field .req{font-size:11px;font-weight:500;color:var(--k-danger-ink)}
 .k-field .opt{font-size:11px;font-weight:500;color:var(--k-ink-3)}
 .k-field .hint{font-size:12px;color:var(--k-ink-3);line-height:1.6}
-.k-field .err{display:flex;gap:6px;align-items:center;font-size:12px;font-weight:500;color:var(--k-danger-ink)}
+.k-field .err{display:flex;gap:var(--k-space-1);align-items:center;font-size:12px;font-weight:500;color:var(--k-danger-ink)}
 .k-field[data-invalid] input,.k-field[data-invalid] textarea,.k-field[data-invalid] select{border-color:var(--k-danger)}

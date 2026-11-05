@@ -6,4 +6,4 @@
 .k-avatar[data-status]::after{content:"";position:absolute;right:0;bottom:0;width:9px;height:9px;border-radius:50%;background:var(--k-success);border:2px solid var(--k-bg)}
 .k-avatars{display:inline-flex}
 .k-avatars .k-avatar{border:2px solid var(--k-bg)}
-.k-avatars .k-avatar + .k-avatar{margin-inline-start:-9px}
+.k-avatars .k-avatar + .k-avatar{margin-inline-start:calc(var(--k-space-2) * -1)}

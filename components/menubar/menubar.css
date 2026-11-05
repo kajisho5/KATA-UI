@@ -1,14 +1,14 @@
 /* KATA Menubar — the desktop bar, with the shortcuts showing. */
-.k-mbar{display:flex;align-items:center;gap:2px;font-family:var(--k-font);color:var(--k-ink);position:relative;background:var(--k-bg)}
+.k-mbar{display:flex;align-items:center;gap:var(--k-space-0-5);font-family:var(--k-font);color:var(--k-ink);position:relative;background:var(--k-bg)}
 .k-mbar-item{position:relative}
-.k-mbar-btn{padding:6px 11px;border:0;background:none;font-family:inherit;font-size:13px;color:var(--k-ink-2);border-radius:var(--k-radius-md);cursor:pointer}
+.k-mbar-btn{padding:var(--k-space-1) var(--k-space-3);border:0;background:none;font-family:inherit;font-size:13px;color:var(--k-ink-2);border-radius:var(--k-radius-md);cursor:pointer}
 .k-mbar-btn:hover{background:var(--k-bg-soft);color:var(--k-ink)}
 .k-mbar-item.open .k-mbar-btn{background:var(--k-bg-soft);color:var(--k-ink)}
-.k-mbar-menu{position:absolute;inset-inline-start:0;top:calc(100% + 4px);min-width:228px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-pop);padding:5px;display:none;z-index:60}
+.k-mbar-menu{position:absolute;inset-inline-start:0;top:calc(100% + 4px);min-width:228px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-pop);padding:var(--k-space-1);display:none;z-index:60}
 .k-mbar-item.open .k-mbar-menu{display:block}
-.k-mbar-mi{display:flex;align-items:center;gap:9px;width:100%;padding:7px 9px;border:0;background:none;font-family:inherit;font-size:13px;color:var(--k-ink);border-radius:var(--k-radius-md);cursor:pointer;text-align:start}
+.k-mbar-mi{display:flex;align-items:center;gap:var(--k-space-2);width:100%;padding:var(--k-space-2) var(--k-space-2);border:0;background:none;font-family:inherit;font-size:13px;color:var(--k-ink);border-radius:var(--k-radius-md);cursor:pointer;text-align:start}
 .k-mbar-mi:hover{background:var(--k-bg-soft)}
 .k-mbar-mi .ck{width:15px;flex:none;color:var(--k-ink)}
-.k-mbar-mi .sc{margin-inline-start:auto;font-size:11.5px;color:var(--k-ink-3);font-family:var(--k-mono,monospace);padding-inline-start:22px}
-.k-mbar-sep{height:1px;background:var(--k-line);margin:5px 8px}
+.k-mbar-mi .sc{margin-inline-start:auto;font-size:11.5px;color:var(--k-ink-3);font-family:var(--k-mono,monospace);padding-inline-start:var(--k-space-5)}
+.k-mbar-sep{height:1px;background:var(--k-line);margin:var(--k-space-1) var(--k-space-2)}
 .k-mbar-mi[disabled]{opacity:.45;pointer-events:none}

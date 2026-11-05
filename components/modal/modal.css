@@ -1,6 +1,6 @@
 .kmodal{border:0;border-radius:var(--k-radius-xl);padding:0;max-width:420px;width:calc(100% - 40px);box-shadow:var(--k-shadow-modal);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font)}
 .kmodal::backdrop{background:var(--k-backdrop);backdrop-filter:blur(3px)}
-.modal-in{padding:26px}
+.modal-in{padding:var(--k-space-6)}
 .modal-in h3{font-size:16.5px;font-weight:600}
-.modal-in p{margin-top:9px;font-size:13.5px;color:var(--k-ink-2);line-height:1.8;letter-spacing:.012em}
-.modal-in .row{display:flex;gap:9px;justify-content:flex-end;margin-top:22px}
+.modal-in p{margin-top:var(--k-space-2);font-size:13.5px;color:var(--k-ink-2);line-height:1.8;letter-spacing:.012em}
+.modal-in .row{display:flex;gap:var(--k-space-2);justify-content:flex-end;margin-top:var(--k-space-5)}

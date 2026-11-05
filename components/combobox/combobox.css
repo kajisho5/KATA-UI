@@ -1,4 +1,4 @@
-.k-combo{--combo-width:300px;--combo-input-end:34px;--combo-input-size:16px;--combo-chevron-end:11px;--combo-chevron-bottom:11px;--combo-icon:15px;--combo-check-icon:14px;--combo-max-height:238px;--combo-sr-size:1px;--combo-focus-width:2px;position:relative;font-family:var(--k-font);text-align:start;max-inline-size:var(--combo-width)}
+.k-combo{--combo-width:300px;--combo-input-end:var(--k-space-8);--combo-input-size:16px;--combo-chevron-end:var(--k-space-3);--combo-chevron-bottom:var(--k-space-3);--combo-icon:15px;--combo-check-icon:14px;--combo-max-height:238px;--combo-sr-size:1px;--combo-focus-width:2px;position:relative;font-family:var(--k-font);text-align:start;max-inline-size:var(--combo-width)}
 .k-combo label{display:block;margin-block-end:var(--k-space-1);font-size:var(--k-text-base);color:var(--k-ink)}
 .k-combo .input{inline-size:100%;box-sizing:border-box;padding-inline-end:var(--combo-input-end);font-size:var(--combo-input-size)}
 .k-combo .input:hover:not(:disabled){border-color:var(--k-border-strong)}

@@ -1,10 +1,10 @@
 /* KATA Collapsible — one native details, styled as a row. */
 .k-coll{font-family:var(--k-font);color:var(--k-ink);max-width:460px}
-.k-coll summary{display:flex;align-items:center;gap:9px;padding:11px 13px;border:1px solid var(--k-line);border-radius:var(--k-radius);font-size:13.5px;font-weight:550;cursor:pointer;list-style:none;background:var(--k-bg)}
+.k-coll summary{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-3);border:1px solid var(--k-line);border-radius:var(--k-radius);font-size:13.5px;font-weight:550;cursor:pointer;list-style:none;background:var(--k-bg)}
 .k-coll summary::-webkit-details-marker{display:none}
 .k-coll summary:hover{background:var(--k-bg-soft)}
 .k-coll summary svg{margin-inline-start:auto;transition:transform var(--k-dur-base);color:var(--k-ink-3)}
 .k-coll[open ] summary{border-radius:var(--k-radius) var(--k-radius) 0 0}
 .k-coll[open ] summary svg{transform:rotate(180deg)}
-.k-coll-body{border:1px solid var(--k-line);border-top:0;border-radius:0 0 var(--k-radius) var(--k-radius);padding:13px;font-size:13px;line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
+.k-coll-body{border:1px solid var(--k-line);border-top:0;border-radius:0 0 var(--k-radius) var(--k-radius);padding:var(--k-space-3);font-size:13px;line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){.k-coll summary svg{transition:none}}

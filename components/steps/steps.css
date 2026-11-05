@@ -1,5 +1,5 @@
 .k-steps{list-style:none;margin:0;padding:0;display:flex;width:100%;font-family:var(--k-font)}
-.k-steps li{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;text-align:center}
+.k-steps li{flex:1;display:flex;flex-direction:column;align-items:center;gap:var(--k-space-2);position:relative;text-align:center}
 .k-steps li::before{content:"";position:absolute;top:13px;left:calc(-50% + 16px);right:calc(50% + 16px);height:2px;background:var(--k-line);border-radius:var(--k-radius-xs)}
 .k-steps li:first-child::before{display:none}
 .k-steps li[data-state="done"]::before{background:var(--k-ink)}

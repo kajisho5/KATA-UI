@@ -4,11 +4,11 @@
   -webkit-mask-composite:source-in;
   mask:radial-gradient(circle 10px at var(--px) 0, transparent 10px, #000 11px), radial-gradient(circle 10px at var(--px) 100%, transparent 10px, #000 11px);
   mask-composite:intersect}
-.k-tick-main{flex:1;padding:19px 20px;min-width:0}
+.k-tick-main{flex:1;padding:var(--k-space-5) var(--k-space-5);min-width:0}
 .k-tick-main .ev{font-size:11px;font-weight:650;letter-spacing:.16em;color:var(--k-accent-ink)}
-.k-tick-main h3{font-size:18.5px;font-weight:650;letter-spacing:-.015em;margin:6px 0 5px}
+.k-tick-main h3{font-size:18.5px;font-weight:650;letter-spacing:-.015em;margin:var(--k-space-1) 0 var(--k-space-1)}
 .k-tick-main p{font-size:12.5px;color:var(--k-ink-2);line-height:1.7;letter-spacing:.01em}
-.k-tick-stub{flex:none;width:98px;border-inline-start:2px dashed var(--k-zinc-300);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:14px 8px;text-align:center}
+.k-tick-stub{flex:none;width:98px;border-inline-start:2px dashed var(--k-zinc-300);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-2);text-align:center}
 .k-tick-stub .code{font-size:14px;font-weight:700;letter-spacing:.1em}
 .k-tick-stub .lbl{font-size:10px;letter-spacing:.14em;color:var(--k-ink-3)}
 .k-tick-bar{width:64px;height:26px;background:repeating-linear-gradient(90deg, var(--k-ink) 0 2px, transparent 2px 5px, var(--k-ink) 5px 6px, transparent 6px 10px, var(--k-ink) 10px 13px, transparent 13px 16px)}

@@ -2662,7 +2662,7 @@ tokens.json, now exported), `--k-text-lead` 15px, `--k-lh-tight` 1, `--k-lh-card
 | 32px / 34px | `--k-space-8` | 1 / 4 | 0 / 2px |
 | 36px, 41px, 42px, 46px, 150px | calc of `--k-space-1` (36, 40, 40, 44, 148px) | 2, 1, 2, 1, 1 | ≤2px |
 
-Negative values keep their sign (-5/-6px → -4px, -9px → -8px).
+Negative values keep their sign (-5/-6px → -4px, -9px → -8px). Applied by `tools/t3_migrate.py spacing`: 762 declarations in 177 files. Exception: Tour's spotlight ring is -8px, not -4px, so it stays outside the 4px focus ring.
 
 ### Font size (UI, 433 values)
 

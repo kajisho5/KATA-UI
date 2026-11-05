@@ -1,4 +1,4 @@
-.badge{display:inline-flex;align-items:center;gap:6px;height:23px;padding:0 9px;border-radius:var(--k-radius-full);font-size:11.5px;font-weight:500;background:var(--k-bg-soft);color:var(--k-ink-2);border:1px solid var(--k-line);font-family:var(--k-font)}
+.badge{display:inline-flex;align-items:center;gap:var(--k-space-1);height:23px;padding:0 var(--k-space-2);border-radius:var(--k-radius-full);font-size:11.5px;font-weight:500;background:var(--k-bg-soft);color:var(--k-ink-2);border:1px solid var(--k-line);font-family:var(--k-font)}
 .badge i{width:6px;height:6px;border-radius:50%;background:currentColor}
 .badge.dark{background:var(--k-ink);color:var(--k-bg);border-color:var(--k-ink)}
 .badge.asagi{background:var(--k-accent-bg);color:var(--k-accent-ink);border-color:var(--k-accent-line)}

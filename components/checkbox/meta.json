@@ -7,7 +7,7 @@
     "choice",
     "radio"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "Checkboxes for independent options, radios for exactly one choice in a group.",
-  "a11y": "Native inputs restyled with appearance:none — focus rings, keyboard and form submission keep working."
+  "a11y": "Native checkbox and radio inputs restyled with appearance:none inside a wrapping <label>; Space toggles, arrow keys move within a radio group, and form submission is unchanged. Keyboard focus shows --k-ring. The unchecked boundary measures 4.83:1 (light) and 5.6:1 (dark), above the 3:1 WCAG 1.4.11 asks; it was 1.65:1 and 2.29:1 before. Checked, mixed (set input.indeterminate = true from script), aria-invalid and disabled states are styled; disabled is dimmed, not-allowed and does not toggle. A radio group is defined by its name: give each group a name that is unique in its form, including when a sample is pasted twice. IME does not apply. Beta until a screen reader is checked by hand; Chromium only."
 }

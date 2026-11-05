@@ -6,3 +6,6 @@ __pycache__/
 *.muse-github-snapshot-sync.json
 font/*.ttf
 font/*.woff2
+# Local agent dependencies and caches; never commit downloaded runtimes.
+.agent/
+cli/node_modules/

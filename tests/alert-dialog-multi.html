@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="../logo/favicon.svg"><title>alert-dialog multi-instance</title><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/button/button.css"><link rel="stylesheet" href="../components/alert-dialog/alert-dialog.css"><style>body{font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink);padding:var(--k-space-8)}section{margin-block:var(--k-space-8);min-block-size:calc(var(--k-space-16) * 6);display:grid;justify-items:center;align-content:start}</style></head><body><h1>alert-dialog — three independent instances</h1><section><h2>Instance 1</h2><button type="button" class="btn btn-danger btn-md" data-alert-open>Delete project</button>
+<dialog class="kalert" data-alert-dialog role="alertdialog" aria-label="Delete project">
+  <div class="kalert-in">
+    <h3>Delete this project?</h3>
+    <p>The project and all of its files will be permanently deleted. This cannot be undone, and shared links stop working immediately.</p>
+    <div class="kalert-row">
+      <button type="button" class="btn btn-sec btn-md" data-alert-close>Keep project</button>
+      <button type="button" class="btn btn-danger btn-md" data-alert-close>Delete project</button>
+    </div>
+  </div>
+</dialog>
+
+</section><section><h2>Instance 2</h2><button type="button" class="btn btn-danger btn-md" data-alert-open>Delete project</button>
+<dialog class="kalert" data-alert-dialog role="alertdialog" aria-label="Delete project">
+  <div class="kalert-in">
+    <h3>Delete this project?</h3>
+    <p>The project and all of its files will be permanently deleted. This cannot be undone, and shared links stop working immediately.</p>
+    <div class="kalert-row">
+      <button type="button" class="btn btn-sec btn-md" data-alert-close>Keep project</button>
+      <button type="button" class="btn btn-danger btn-md" data-alert-close>Delete project</button>
+    </div>
+  </div>
+</dialog>
+
+</section><section dir="rtl"><h2>Instance 3</h2><button type="button" class="btn btn-danger btn-md" data-alert-open>Delete project</button>
+<dialog class="kalert" data-alert-dialog role="alertdialog" aria-label="Delete project">
+  <div class="kalert-in">
+    <h3>Delete this project?</h3>
+    <p>The project and all of its files will be permanently deleted. This cannot be undone, and shared links stop working immediately.</p>
+    <div class="kalert-row">
+      <button type="button" class="btn btn-sec btn-md" data-alert-close>Keep project</button>
+      <button type="button" class="btn btn-danger btn-md" data-alert-close>Delete project</button>
+    </div>
+  </div>
+</dialog>
+
+</section><button type="button" data-outside>Outside the components</button><script src="../components/alert-dialog/alert-dialog.js"></script><script src="../components/alert-dialog/alert-dialog.js"></script></body></html>

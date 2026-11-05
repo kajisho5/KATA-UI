@@ -27,7 +27,9 @@ class ClosedMenuTabOrder(unittest.TestCase):
                     load(page,*pages['dropdown']);page.evaluate('(s)=>document.documentElement.style.setProperty("--k-mscale",s)',scale)
                     page.focus('#kata-focus-start');page.keyboard.press('Tab');self.assertEqual(page.evaluate(active),'Actions')
                     page.keyboard.press('Tab');self.assertNotIn(page.evaluate(active),['Edit','Duplicate','Copy share link','Delete'])
-                    page.click('[data-dd-trigger]');page.keyboard.press('Tab');self.assertEqual(page.evaluate(active),'Edit')
+                    # Menu button (APG): opening moves focus to the first item; items are reached with arrows, not Tab.
+                    page.click('[data-dd-trigger]');self.assertEqual(page.evaluate(active),'Edit')
+                    page.keyboard.press('ArrowDown');self.assertEqual(page.evaluate(active),'Duplicate')
                     page.keyboard.press('Escape');page.wait_for_timeout(300)
                     self.assertEqual(page.locator('[data-dd-menu]').evaluate('e=>getComputedStyle(e).visibility'),'hidden')
                     load(page,*pages['speed-dial'])

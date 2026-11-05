@@ -82,7 +82,7 @@
     }
   ],
   "schemaVersion": 1,
-  "throughCommit": "a6234315e7a35839cd3b52f656e5c4ad64deda10",
+  "throughCommit": "cbc90730d267596403b9b76803acd5fef6f366d4",
   "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
   "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
   "v1EvidenceVerified": false,
@@ -932,7 +932,7 @@
     "--k-lh-tight": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
     "--k-lh-card": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
     "--k-lh-small": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
-    "--k-text-code": "a6234315e7a35839cd3b52f656e5c4ad64deda10"
+    "--k-text-code": "cbc90730d267596403b9b76803acd5fef6f366d4"
   },
   "tokenVersions": {
     "--k-mold": 5,
@@ -3339,9 +3339,9 @@
       ]
     },
     {
-      "commit": "a6234315e7a35839cd3b52f656e5c4ad64deda10",
-      "date": "2026-11-05",
-      "subject": "Promote spacing and type checks to fail for UI parts (mold v5, T3)",
+      "commit": "cbc90730d267596403b9b76803acd5fef6f366d4",
+      "date": "2026-11-06",
+      "subject": "余白・文字のチェックを UI 部品で不合格扱いに格上げ（mold v5、T3 仕上げ） (#42)",
       "changes": [
         {
           "token": "--k-mold",

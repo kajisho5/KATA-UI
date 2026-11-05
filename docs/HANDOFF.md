@@ -2,8 +2,8 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/t3-promote` on main
-`5d4163d417eb6e69a1fa79c794ae6c4fafb180e2` (after #41). Counts become main's when this PR merges.
+Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/mold-history-v5` on main
+`cbc90730d267596403b9b76803acd5fef6f366d4` (after #42). Counts become main's when this PR merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -41,7 +41,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #41
+### Merged work, PR #11 through #42
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -77,6 +77,7 @@ Missing number #12 is open, not silently assumed merged.
 | #39 | 0c318c1 | T3 spacing: 762 raw declarations → tokens; UI spacing findings 763 → 12. |
 | #40 | 77d926e | T3 font size: 433 raw declarations → text tokens; UI font-size findings 435 → 2. |
 | #41 | 5d4163d | T3 line height: 84 raw declarations → leading tokens; UI line-height findings 84 → 0. |
+| #42 | cbc9073 | T3 promotion, mold v5: spacing/type fail for UI; `--k-text-code`; owner approved in chat on 2026-11-06 ("おすきにどうぞ"). |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -84,7 +85,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#41 were squash-merged the same way after green CI. The owner then asked the
+#29–#42 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -101,7 +102,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#42](https://github.com/kajisho5/KATA-UI/pull/42) | T3 promotion (checker change, mold v5): spacing/type fail for UI. **Owner review required before merge.** |
+| This PR (fix/mold-history-v5) | system/mold-history.json regenerated with `--ref origin/main`: `--k-text-code` pointed at a pre-squash branch commit. |
 
 ### npm and environment
 
@@ -153,7 +154,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #42 (T3 promotion) is a checker change; the owner reviews it before merge. T4 starts after it merges.**
+PR. Do not start while the previous task's PR is open. **Current blocker: none after the mold-history follow-up merges; next is T4 Button.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -178,7 +179,7 @@ through its label. Below 3:1 in light: 380 → 0; clipped: 49 → 0; Mold Verifi
 Open follow-ups: `--k-ring-danger` is unused; Navigation Menu and Dropdown do not
 return focus on Escape (T4); only default-preview Tab stops are measured.
 
-### T3 — spacing-values and type-values become failures for ui (promotion PR open)
+### T3 — done
 
 Owner decisions (2026-11-06): spacing ties go to the smaller 4px step; 1px and
 2px get tokens; font sizes snap to existing steps plus a new 15px step; leading
@@ -196,7 +197,9 @@ the 10 `calc(token * -1)` were a lexer bug (`-1` read as an identifier), fixed;
 2026-11-06) Command's offset `12vh` → `--k-space-16` (64px) and a shared
 `--k-text-code` `.86em` for inline code. spacing-values and type-values then fail
 for UI at 0 UI findings, 164 / 164 before and after. Evidence:
-docs/review/t3-promote/.
+docs/review/t3-promote/. #42 merged with owner approval. After a squash merge, regenerate
+`python3 -m tools.mold_history --ref origin/main` so token introductions point at main
+commits (v5's `--k-text-code` pointed at the branch commit until this follow-up).
 Lab parts keep warnings.
 
 1. Complete the common 4px spacing and text/leading scales in tokens.json. Existing --k-space-* / --k-text-* / --k-lh-* already exist; reuse them and preserve names/aliases rather than adding duplicate scales. Propose --k-leading-* only if a missing shared role needs it. Bump moldVersion for changes and write counted mappings in docs/token-migration.md.

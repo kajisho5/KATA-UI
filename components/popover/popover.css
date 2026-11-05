@@ -1,6 +1,7 @@
 .kpop-wrap{position:relative;display:inline-block;font-family:var(--k-font)}
-.kpop{position:absolute;top:calc(100% + 8px);left:50%;transform:translate(-50%,4px);width:272px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-overlay);padding:var(--k-space-4);opacity:0;pointer-events:none;transition:opacity var(--k-dur-1) var(--k-ease),transform var(--k-dur-1) var(--k-ease);z-index:var(--k-z-overlay);text-align:start}
-.kpop.open{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+/* --kpop-shift is set by popover.js so the centred panel stays inside the viewport. */
+.kpop{--kpop-shift:0px;position:absolute;top:calc(100% + 8px);left:50%;transform:translate(calc(-50% + var(--kpop-shift)),4px);width:272px;max-width:calc(100vw - var(--k-space-16));background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-overlay);padding:var(--k-space-4);opacity:0;pointer-events:none;transition:opacity var(--k-dur-1) var(--k-ease),transform var(--k-dur-1) var(--k-ease);z-index:var(--k-z-overlay);text-align:start}
+.kpop.open{opacity:1;transform:translate(calc(-50% + var(--kpop-shift)),0);pointer-events:auto}
 .kpop-h{font-size:var(--k-text-base);font-weight:600;color:var(--k-ink)}
 .kpop-p{margin-top:var(--k-space-1);font-size:var(--k-text-sm);line-height:var(--k-lh-body);color:var(--k-ink-2);letter-spacing:.01em}
 .kpop-row{display:flex;gap:var(--k-space-2);margin-top:var(--k-space-3)}

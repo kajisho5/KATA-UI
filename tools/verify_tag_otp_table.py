@@ -86,10 +86,12 @@ def run(output=ROOT/'docs/review/tag-otp-table'):
                             assert page.evaluate('(id)=>window.completions.filter(e=>e.root===id).length',root.get_attribute('id'))==3
                             page.locator('section').nth(index).locator('[data-probe]').click();root.dispatch_event('focusout',{'relatedTarget':None});page.evaluate('()=>window.dispatchEvent(new Event("blur"))');assert root.get_attribute('data-value')=='987654'
                             if index==2:assert inputs.first.evaluate('e=>e.getBoundingClientRect().left')<inputs.last.evaluate('e=>e.getBoundingClientRect().left')
+                            inputs.first.focus();page.keyboard.type('1');assert root.get_attribute('data-value')=='187654' and inputs.nth(1).evaluate('e=>e===document.activeElement')
+                            assert page.evaluate('(id)=>window.completions.filter(e=>e.root===id).length',root.get_attribute('id'))==4
                         else:
                             table=root.locator('table');assert table.locator('caption').inner_text()=='Members' and root.get_by_role('table',name='Members').count()==1
                             inputs=table.locator('tbody input');all_=table.locator('thead input');inputs.first.check();assert all_.evaluate('e=>e.indeterminate')
-                            assert root.locator('[role="status"]').inner_text()=='1 rows selected.'
+                            assert root.locator('[role="status"]').inner_text()=='1 row selected.'
                             all_.check();assert all(item.is_checked() for item in inputs.all())
                             all_.uncheck();assert not any(item.is_checked() for item in inputs.all())
                             inputs.first.check()

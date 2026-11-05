@@ -46,7 +46,8 @@
     function selection() {
       const boxes = [...body.querySelectorAll('input[type="checkbox"]')];
       if (all) { all.checked = boxes.length > 0 && boxes.every(box => box.checked); all.indeterminate = selected().length > 0 && !all.checked; }
-      status.textContent = selected().length + ' rows selected.';
+      const count = selected().length;
+      status.textContent = count + (count === 1 ? ' row selected.' : ' rows selected.');
     }
     table.querySelectorAll('input[type="checkbox"]').forEach((input, index) => {
       identify(input, 'kata-data-select');

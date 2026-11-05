@@ -32,6 +32,7 @@
       identify(input, 'kata-otp-digit'); input.inputMode = 'numeric';
       if (!input.hasAttribute('aria-label') && !input.labels?.length) input.setAttribute('aria-label', 'Digit ' + (index + 1));
       input.autocomplete = index === 0 ? 'one-time-code' : 'off';
+      input.addEventListener('focus', () => input.select());
       input.addEventListener('input', event => { if (!composing && !finishing && !event.isComposing) fill(index, input.value); });
       input.addEventListener('keydown', event => {
         if (composing || finishing || event.isComposing || event.keyCode === 229) return;

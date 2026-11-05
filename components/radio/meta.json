@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "Use when all options deserve to be seen (2–5). For longer lists use Select. Group with fieldset/legend.",
-  "a11y": "Native radio inputs share one name, so arrow keys move the choice. The visible circle is styled on the real input."
+  "a11y": "Native radio inputs in a fieldset with a legend; inputs in one group share a name, so arrow keys move the choice and skip disabled options. The visible circle is the real input; keyboard focus shows --k-ring. The unchecked boundary measures 4.83:1 (light) and 5.6:1 (dark), above WCAG 1.4.11's 3:1 (it was 1.65:1 and 2.29:1). Hover, aria-invalid and disabled are styled; disabled is dimmed, not-allowed and cannot be chosen. Give each group a name unique in its form, including when a sample is pasted twice. IME does not apply. Beta until a screen reader is checked by hand; Chromium only."
 }

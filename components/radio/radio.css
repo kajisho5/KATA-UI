@@ -1,9 +1,12 @@
 /* KATA Radio — native input, styled face. No JS. */
+/* The unchecked border uses --k-ink-3: --k-border-strong measured 1.65:1 (light) and 2.29:1 (dark), below the 3:1 WCAG 1.4.11 asks of a control boundary. */
 .k-radio{display:inline-flex;align-items:center;gap:var(--k-space-2);font-size:var(--k-text-base);cursor:pointer}
-.k-radio input{appearance:none;-webkit-appearance:none;width:17px;height:17px;margin:0;border:1.5px solid var(--k-border-strong);border-radius:50%;background:var(--k-bg);display:grid;place-content:center;cursor:pointer;transition:border-color var(--k-dur-fast);flex:none}
+.k-radio input{appearance:none;-webkit-appearance:none;width:17px;height:17px;margin:0;border:1.5px solid var(--k-ink-3);border-radius:50%;background:var(--k-bg);display:grid;place-content:center;cursor:pointer;transition:border-color var(--k-dur-fast);flex:none}
 .k-radio input::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--k-core);transform:scale(0);transition:transform var(--k-dur-fast) var(--k-ease)}
+.k-radio input:hover:not(:disabled):not(:checked){border-color:var(--k-ink-2)}
 .k-radio input:checked{border-color:var(--k-ink)}
 .k-radio input:checked::after{transform:scale(1)}
 .k-radio input:focus-visible{outline:none;box-shadow:var(--k-ring)}
+.k-radio input[aria-invalid="true"]:not(:checked){border-color:var(--k-danger)}
 .k-radio input:disabled{opacity:.5;cursor:not-allowed}
 .k-radio:has(input:disabled){color:var(--k-ink-3);cursor:not-allowed}

@@ -107,7 +107,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| This PR (fix/t4-select) | T4 Select: RTL chevron overlap fixed (logical padding), color-scheme no longer set on :root, disabled hover, aria-invalid, browser test. |
+| [#48](https://github.com/kajisho5/KATA-UI/pull/48) | T4 Select: RTL chevron overlap fixed (logical padding), color-scheme no longer set on :root, disabled hover, aria-invalid, browser test. |
 
 ### npm and environment
 
@@ -159,7 +159,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the T4 Select PR must be merged before Checkbox.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #48 (T4 Select) must be merged before Checkbox.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -257,7 +257,7 @@ background, samples wrap the textarea in its label and gain error and
 disabled/read-only examples. Pixel contrast here is measured at 2x scale
 (placeholder 5.74:1); the Input table was at 1x and reads lower (4.83:1) for the
 same colors, so treat 1x values as a floor.
-Select (this PR): in RTL the chevron moved to the left but its 32px padding
+Select ([#48](https://github.com/kajisho5/KATA-UI/pull/48)): in RTL the chevron moved to the left but its 32px padding
 stayed on the right, so text ran under it; padding is now logical. select.css
 set color-scheme on :root (every page that loaded it, including the one-file
 bundle, changed scrollbars and native controls); it is now scoped to the select,

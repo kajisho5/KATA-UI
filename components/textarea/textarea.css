@@ -1,10 +1,13 @@
 /* KATA Textarea */
-.k-textarea{width:100%;min-height:92px;padding:var(--k-space-2) var(--k-space-3);border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);font-size:var(--k-text-base);line-height:var(--k-lh-body);resize:vertical;transition:border-color var(--k-dur-fast),box-shadow var(--k-dur-fast)}
+/* border-box: width 100% and min-height include padding and border, so the field fits its container. */
+.k-textarea{box-sizing:border-box;width:100%;min-height:92px;padding:var(--k-space-2) var(--k-space-3);border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);font-size:var(--k-text-base);line-height:var(--k-lh-body);resize:vertical;transition:border-color var(--k-dur-fast),box-shadow var(--k-dur-fast)}
 .k-textarea::placeholder{color:var(--k-ink-3)}
-.k-textarea:hover{border-color:var(--k-border-strong)}
-.k-textarea:focus{outline:none;border-color:var(--k-ink);box-shadow:var(--k-ring)}
-.k-textarea:disabled{opacity:.55;resize:none}
-.k-textarea[data-invalid="true"]{border-color:var(--k-danger)}
-.k-textarea[data-invalid="true"]:focus{box-shadow:var(--k-ring)}
+.k-textarea:hover:not(:disabled){border-color:var(--k-border-strong)}
+.k-textarea:focus-visible{outline:none;border-color:var(--k-ink);box-shadow:var(--k-ring)}
+.k-textarea:disabled{opacity:.55;resize:none;cursor:not-allowed}
+.k-textarea[readonly]:not(:disabled){background:var(--k-bg-soft)}
+/* aria-invalid is the accessible error state; data-invalid="true" stays as the original hook. */
+.k-textarea[data-invalid="true"],.k-textarea[aria-invalid="true"]{border-color:var(--k-danger)}
+.k-textarea[data-invalid="true"]:focus-visible,.k-textarea[aria-invalid="true"]:focus-visible{border-color:var(--k-danger);box-shadow:var(--k-ring)}
 /* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
 @media (max-width:640px){.k-textarea{font-size:var(--k-text-lg)}}

@@ -98,6 +98,7 @@ Missing number #12 is open, not silently assumed merged.
 | #60 | ce3d1ff | T4 Tabs: real panels (text was in the script), APG roles and keyboard, IIFE with data-kata-ready; beta. |
 | #61 | 951d650 | T4 Accordion: three-set page and browser test; no defect found, no part file changed; beta. |
 | #62 | 377ed56 | T4 Badge: three-set page and browser test; no defect found; legacy stable → beta. |
+| #63 | 5205d0e | T4 Alert: decorative icons aria-hidden (were unnamed images), danger tone shown; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -105,7 +106,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#62 were squash-merged the same way after green CI. The owner then asked the
+#29–#63 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -122,7 +123,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#63](https://github.com/kajisho5/KATA-UI/pull/63) | T4 Alert: decorative icons aria-hidden (were unnamed images), danger tone shown; beta. |
+| [#64](https://github.com/kajisho5/KATA-UI/pull/64) | T4 Table: thead/scope, keyboard-scrollable named region, avatar initials hidden, end-aligned numbers; beta. |
 
 ### npm and environment
 
@@ -174,7 +175,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #63 (T4 Alert), then T4 table.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #64 (T4 Table), then T4 pagination, then breadcrumbs.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -352,7 +353,11 @@ stable becomes beta per item 16.
 Alert ([#63](https://github.com/kajisho5/KATA-UI/pull/63)): tone icons were unnamed images in the accessibility tree
 (also in the Settings Page template); they take aria-hidden. The preview adds
 the danger tone. The lowest pair is the dark success icon at 3.10:1. Beta.
-Next: table.
+Table ([#64](https://github.com/kajisho5/KATA-UI/pull/64)): header row in <thead> with scope="col"; the overflowing
+.ktable-wrap (360px) is a named region with tabindex=0 so the keyboard can
+scroll it; avatar initials aria-hidden; .num end-aligns numbers (usage already
+asked for it); avatars centred on the name. Header text is 4.51:1 light. Beta.
+Next: pagination, breadcrumbs (both prepared locally), then the rest of the 40.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

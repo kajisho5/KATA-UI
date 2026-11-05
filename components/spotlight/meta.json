@@ -1,5 +1,5 @@
 {
-  "a11y": "The readable base text remains in the accessibility tree. The script clones it into an aria-hidden highlight layer and removes cloned IDs and tab stops.",
+  "a11y": "The base text remains in the accessibility tree. The script creates an aria-hidden highlight clone and removes IDs and tab stops from the clone's descendants.",
   "category": "Motion",
   "description": "A pointer-following light highlights muted text on a fixed dark panel.",
   "status": "beta",

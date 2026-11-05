@@ -7,7 +7,7 @@
     "form",
     "settings"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "For settings that take effect immediately. For choices applied on submit, use a Checkbox instead.",
-  "a11y": "It is a native checkbox: keyboard, focus and screen readers work out of the box. The clickable area includes the label text."
+  "a11y": "A native checkbox with role=\"switch\", so screen readers announce on/off. Wrap the switch and its text in label.switchrow: the text names the switch and is clickable. When the text sits elsewhere (a settings row), give the input an aria-label. Space toggles; keyboard focus shows --k-ring; disabled is dimmed and does not toggle. The off track has a 1px --k-ink-3 outline so its edge measures at least 3:1 from the page (the track alone was 1.48:1 light, 2.29:1 dark); the accent track gets an --k-accent-ink rim (the accent alone is 2.88:1 on white). The knob moves to the inline end in RTL. IME does not apply. Beta until a screen reader is checked by hand; Chromium only."
 }

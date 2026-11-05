@@ -1,12 +1,20 @@
 .switch{position:relative;display:inline-block;width:42px;height:24px;flex:none}
 .switch input{position:absolute;opacity:0;inset:0;cursor:pointer;z-index:2;margin:0}
-.switch .tr{position:absolute;inset:0;border-radius:var(--k-radius-full);background:var(--k-track);transition:background var(--k-dur-base)}
+/* The 1px outline keeps the off track 3:1 from the page (WCAG 1.4.11): --k-track alone measured 1.48:1 (light) and 2.29:1 (dark). */
+.switch .tr{position:absolute;inset:0;border-radius:var(--k-radius-full);background:var(--k-track);outline:1px solid var(--k-ink-3);outline-offset:-1px;transition:background var(--k-dur-base)}
 .switch .tr::after{content:"";position:absolute;inset-inline-start:var(--k-space-1);top:3px;width:18px;height:18px;border-radius:50%;background:var(--k-knob);box-shadow:var(--k-shadow-xs),var(--k-ring-inset);transition:transform var(--k-dur-base)}
-.switch input:checked + .tr{background:var(--k-ink)}
+.switch input:hover:not(:disabled):not(:checked) + .tr{outline-color:var(--k-ink-2)}
+.switch input:checked + .tr{background:var(--k-ink);outline-color:var(--k-ink)}
 .switch input:checked + .tr::after{background:radial-gradient(circle at center,var(--k-core) 0 3px,var(--k-knob) 3.6px)}
 .switch input:checked + .tr::after{transform:translateX(18px)}
 .switch input:focus-visible + .tr{box-shadow:var(--k-ring)}
-.switch.asagi input:checked + .tr{background:var(--k-accent);color:var(--k-on-accent)}
+/* The accent track is 2.88:1 on white; its accent-ink rim keeps the boundary above 3:1. */
+.switch.asagi input:checked + .tr{background:var(--k-accent);color:var(--k-on-accent);outline-color:var(--k-accent-ink)}
+.switch input:disabled{cursor:not-allowed}
+.switch input:disabled + .tr{opacity:.5}
 .switchrow{display:inline-flex;align-items:center;gap:var(--k-space-3);font-size:var(--k-text-base);font-family:var(--k-font);color:var(--k-ink)}
+/* A switchrow that is a <label> names the switch and makes its text clickable. */
+label.switchrow{cursor:pointer}
+.switchrow:has(input:disabled){color:var(--k-ink-3);cursor:not-allowed}
 
-[dir="rtl"] .switch input:checked + .tr::after{transform:translateX(-18px)}
+[dir="rtl"] .switch input:checked + .tr::after,.switch input:checked:dir(rtl) + .tr::after{transform:translateX(-18px)}

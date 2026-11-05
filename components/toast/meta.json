@@ -7,7 +7,7 @@
     "feedback",
     "save"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "Confirm completed actions. Never put errors that need action into a toast.",
-  "a11y": "Announces via a polite live region in the full version; auto-dismiss never hides critical information."
+  "a11y": "Each [data-toasts] stack is a polite status live region (role=\"status\", aria-live=\"polite\") set before any toast is added, so new toasts are announced without moving focus. The check icon is decorative (aria-hidden); the title states the outcome. Title and detail are inserted as text, not markup. Toasts leave after 4 seconds, at once at zero motion, so they must only confirm actions that are visible elsewhere; never put errors that need action into a toast. Not implemented: pausing on hover or focus and a dismiss button. The script exposes no public toast() API; the demo button triggers it. Beta until a recorded screen-reader pass."
 }

@@ -4,7 +4,7 @@
 .k-casc-panel.open{display:flex}
 .k-casc-col{min-width:148px;max-height:236px;overflow:auto;padding:var(--k-space-0-5)}
 .k-casc-col + .k-casc-col{border-inline-start:1px solid var(--k-line)}
-.k-casc-it{display:flex;align-items:center;gap:var(--k-space-2);width:100%;padding:var(--k-space-2) var(--k-space-2);border:0;border-radius:var(--k-radius-md);background:none;font-family:inherit;font-size:13.5px;color:var(--k-ink-2);cursor:pointer;text-align:start}
+.k-casc-it{display:flex;align-items:center;gap:var(--k-space-2);width:100%;padding:var(--k-space-2) var(--k-space-2);border:0;border-radius:var(--k-radius-md);background:none;font-family:inherit;font-size:var(--k-text-base);color:var(--k-ink-2);cursor:pointer;text-align:start}
 .k-casc-it:hover{background:var(--k-bg-soft);color:var(--k-ink)}
 .k-casc-it.on{background:var(--k-accent-bg);color:var(--k-ink);font-weight:550}
 .k-casc-it svg{margin-inline-start:auto;color:var(--k-ink-3);flex:none}

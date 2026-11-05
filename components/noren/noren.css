@@ -9,5 +9,5 @@
 .k-nor:hover .k-nor-p.c1{transform:translateX(-11px)}
 .k-nor:hover .k-nor-p.c3{transform:translateX(11px)}
 @keyframes k-nor-sway{from{rotate:-1.1deg}to{rotate:1.1deg}}
-.k-nor-cap{text-align:center;font-size:12px;color:var(--k-ink-3);margin-top:var(--k-space-4);letter-spacing:.12em}
+.k-nor-cap{text-align:center;font-size:var(--k-text-sm);color:var(--k-ink-3);margin-top:var(--k-space-4);letter-spacing:.12em}
 @media (prefers-reduced-motion:reduce){.k-nor-p{animation:none}}

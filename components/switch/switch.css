@@ -7,6 +7,6 @@
 .switch input:checked + .tr::after{transform:translateX(18px)}
 .switch input:focus-visible + .tr{box-shadow:var(--k-ring)}
 .switch.asagi input:checked + .tr{background:var(--k-accent);color:var(--k-on-accent)}
-.switchrow{display:inline-flex;align-items:center;gap:var(--k-space-3);font-size:13.5px;font-family:var(--k-font);color:var(--k-ink)}
+.switchrow{display:inline-flex;align-items:center;gap:var(--k-space-3);font-size:var(--k-text-base);font-family:var(--k-font);color:var(--k-ink)}
 
 [dir="rtl"] .switch input:checked + .tr::after{transform:translateX(-18px)}

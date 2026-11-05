@@ -1,9 +1,9 @@
 .k-tags{display:flex;flex-wrap:wrap;gap:var(--k-space-2);align-items:center;border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);padding:var(--k-space-2) var(--k-space-2);font-family:var(--k-font);transition:border-color var(--k-dur-fast), box-shadow var(--k-dur-fast);text-align:start}
 .k-tags:focus-within{border-color:var(--k-accent)}
-.k-tags-in{flex:1;min-width:110px;border:none;outline:none;background:transparent;font:inherit;font-size:13.5px;color:var(--k-ink);height:29px}
+.k-tags-in{flex:1;min-width:110px;border:none;outline:none;background:transparent;font:inherit;font-size:var(--k-text-base);color:var(--k-ink);height:29px}
 .k-tags-in::placeholder{color:var(--k-ink-3)}
 /* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
-@media (max-width:640px){.k-tags-in{font-size:16px}}
+@media (max-width:640px){.k-tags-in{font-size:var(--k-text-lg)}}
 
 .k-tags-in:focus-visible,.k-tags .k-chip-x:focus-visible{outline:0;box-shadow:var(--k-ring)}
 .k-tags-status{position:absolute;width:var(--k-space-1);height:var(--k-space-1);clip-path:inset(50%);overflow:hidden;white-space:nowrap}

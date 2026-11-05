@@ -1,8 +1,8 @@
 .k-tst{font-family:var(--k-font);text-align:start;color:var(--k-ink)}
 .k-tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--k-space-3)}
 @media (max-width:720px){.k-tst-grid{grid-template-columns:1fr}}
-.k-tst q{font-size:14px;line-height:1.8;color:var(--k-ink);quotes:"“" "”";letter-spacing:.012em}
+.k-tst q{font-size:var(--k-text-md);line-height:1.8;color:var(--k-ink);quotes:"“" "”";letter-spacing:.012em}
 .k-tst .who{display:flex;align-items:center;gap:var(--k-space-2);margin-top:var(--k-space-3)}
-.k-tst .who b{font-size:13px;display:block}
-.k-tst .who span{font-size:11.5px;color:var(--k-ink-3)}
+.k-tst .who b{font-size:var(--k-text-base);display:block}
+.k-tst .who span{font-size:var(--k-text-xs);color:var(--k-ink-3)}
 .k-tst .stars{color:var(--k-accent-ink);display:flex;gap:var(--k-space-0-5);margin-bottom:var(--k-space-3)}

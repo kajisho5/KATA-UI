@@ -1,6 +1,6 @@
 .k-dt{border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);font-family:var(--k-font);overflow:hidden;text-align:start;color:var(--k-ink)}
-.k-dt-t{width:100%;border-collapse:collapse;font-size:13.5px}
-.k-dt-t th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;text-align:start;padding:var(--k-space-3) var(--k-space-3);border-bottom:1px solid var(--k-line);background:var(--k-bg-soft);white-space:nowrap}
+.k-dt-t{width:100%;border-collapse:collapse;font-size:var(--k-text-base)}
+.k-dt-t th{font-size:var(--k-text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;text-align:start;padding:var(--k-space-3) var(--k-space-3);border-bottom:1px solid var(--k-line);background:var(--k-bg-soft);white-space:nowrap}
 .k-dt-t td{padding:var(--k-space-3) var(--k-space-3);border-bottom:1px solid var(--k-line);vertical-align:middle}
 .k-dt-t tbody tr:hover{background:var(--k-bg-soft)}
 .k-dt-t tbody tr:last-child td{border-bottom:none}
@@ -11,7 +11,7 @@
 .k-dt-sort[data-dir="asc"] .arr{opacity:1;transform:rotate(180deg)}
 .k-dt-sort[data-dir="desc"] .arr{opacity:1}
 .k-dt input[type="checkbox"]{accent-color:var(--k-accent);width:15px;height:15px;cursor:pointer;vertical-align:middle}
-.k-dt-f{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-3);border-top:1px solid var(--k-line);font-size:12.5px;color:var(--k-ink-3)}
+.k-dt-f{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-3);border-top:1px solid var(--k-line);font-size:var(--k-text-sm);color:var(--k-ink-3)}
 .k-dt-f .pg{margin-inline-start:auto;display:flex;gap:var(--k-space-2)}
 
 .k-dt-sort:focus-visible,.k-dt input:focus-visible{outline:0;box-shadow:var(--k-ring)}

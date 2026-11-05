@@ -1,5 +1,5 @@
 .k-ctab{position:relative;border-radius:var(--k-radius-xl);overflow:hidden;font-family:var(--k-font);text-align:center;color:var(--k-ink)}
 .k-ctab .k-aurora{position:absolute;inset:0;border-radius:var(--k-radius-xl)}
 .k-ctab-in{position:relative;padding:calc(var(--k-space-1) * 11) var(--k-space-6) var(--k-space-10)}
-.k-ctab h3{font-size:25px;font-weight:650;letter-spacing:-.02em}
-.k-ctab p{margin:var(--k-space-2) auto var(--k-space-5);font-size:14px;line-height:1.75;color:var(--k-ink-2);max-width:46ch;letter-spacing:.012em}
+.k-ctab h3{font-size:var(--k-text-2xl);font-weight:650;letter-spacing:-.02em}
+.k-ctab p{margin:var(--k-space-2) auto var(--k-space-5);font-size:var(--k-text-md);line-height:1.75;color:var(--k-ink-2);max-width:46ch;letter-spacing:.012em}

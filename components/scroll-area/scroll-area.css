@@ -4,7 +4,7 @@
 .k-scroll-in::-webkit-scrollbar-thumb{background:var(--k-border-strong);border-radius:var(--k-radius-full)}
 .k-scroll-in::-webkit-scrollbar-track{background:transparent}
 .k-scroll::after{content:"";position:absolute;left:0;right:10px;bottom:0;height:34px;background:linear-gradient(transparent,var(--k-bg));pointer-events:none}
-.k-scroll .rl{display:flex;gap:var(--k-space-2);padding:var(--k-space-2) var(--k-space-2);border-radius:var(--k-radius-md);font-size:13px;align-items:baseline}
+.k-scroll .rl{display:flex;gap:var(--k-space-2);padding:var(--k-space-2) var(--k-space-2);border-radius:var(--k-radius-md);font-size:var(--k-text-base);align-items:baseline}
 .k-scroll .rl:hover{background:var(--k-bg-soft)}
-.k-scroll .rl time{font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3);flex:none}
+.k-scroll .rl time{font-family:var(--k-mono);font-size:var(--k-text-xs);color:var(--k-ink-3);flex:none}
 .k-scroll .rl b{font-weight:550}

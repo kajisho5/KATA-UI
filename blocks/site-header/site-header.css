@@ -1,15 +1,15 @@
 .k-hdr{font-family:var(--k-font);text-align:start;color:var(--k-ink);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);overflow:hidden}
 .k-hdr-in{display:flex;align-items:center;gap:var(--k-space-6);padding:var(--k-space-3) var(--k-space-4)}
-.k-hdr .brand{display:flex;align-items:center;gap:var(--k-space-2);font-weight:650;font-size:15px;letter-spacing:-.01em;color:var(--k-ink);text-decoration:none}
+.k-hdr .brand{display:flex;align-items:center;gap:var(--k-space-2);font-weight:650;font-size:var(--k-text-lead);letter-spacing:-.01em;color:var(--k-ink);text-decoration:none}
 .k-hdr .brand .mk{width:22px;height:22px;border:2.5px solid var(--k-ink);border-radius:var(--k-radius-md);display:grid;place-items:center}
 .k-hdr .brand .mk i{width:7px;height:7px;border-radius:var(--k-radius-xs);background:var(--k-core);display:block}
 .k-hdr nav{display:flex;gap:var(--k-space-5)}
-.k-hdr nav a{font-size:13.5px;color:var(--k-ink-2);text-decoration:none;font-weight:500}
+.k-hdr nav a{font-size:var(--k-text-base);color:var(--k-ink-2);text-decoration:none;font-weight:500}
 .k-hdr nav a:hover{color:var(--k-ink)}
 .k-hdr .acts{margin-inline-start:auto;display:flex;gap:var(--k-space-2);align-items:center}
 .k-hdr .burger{display:none;width:36px;height:36px;border:1px solid var(--k-line);background:var(--k-bg);border-radius:var(--k-radius-md);color:var(--k-ink);place-items:center;cursor:pointer;margin-inline-start:auto}
 .k-hdr .panel{display:none;border-top:1px solid var(--k-line);padding:var(--k-space-2) var(--k-space-4) var(--k-space-3)}
-.k-hdr .panel a{display:block;padding:var(--k-space-2) 0;font-size:14px;color:var(--k-ink-2);text-decoration:none;font-weight:500}
+.k-hdr .panel a{display:block;padding:var(--k-space-2) 0;font-size:var(--k-text-md);color:var(--k-ink-2);text-decoration:none;font-weight:500}
 @media (max-width:640px){.k-hdr nav,.k-hdr .acts{display:none}.k-hdr .burger{display:grid}.k-hdr .panel.open{display:block}}
 .k-hdr .brand:focus-visible,.k-hdr nav a:focus-visible,.k-hdr .panel a:focus-visible,.k-hdr .burger:focus-visible{outline:0;box-shadow:var(--k-ring);border-radius:var(--k-radius-sm)}
 .k-hdr .burger:focus-visible{border-radius:var(--k-radius-md)}

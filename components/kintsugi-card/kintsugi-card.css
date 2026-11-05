@@ -2,9 +2,9 @@
 .k-kin{position:relative;width:100%;background:var(--k-zinc-950);color:var(--k-on-color);border-radius:var(--k-radius-xl);overflow:hidden;font-family:var(--k-font);padding:var(--k-space-5)}
 .k-kin canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .k-kin-in{position:relative;z-index:1;pointer-events:none}
-.k-kin .k-kin-tag{font-size:11px;font-weight:650;letter-spacing:.16em;color:var(--k-yamabuki)}
-.k-kin h3{font-size:18.5px;font-weight:650;letter-spacing:-.015em;margin:var(--k-space-2) 0 var(--k-space-2)}
-.k-kin p{font-size:13px;line-height:1.75;color:var(--k-zinc-400);max-width:380px;letter-spacing:.01em}
+.k-kin .k-kin-tag{font-size:var(--k-text-xs);font-weight:650;letter-spacing:.16em;color:var(--k-yamabuki)}
+.k-kin h3{font-size:var(--k-text-xl);font-weight:650;letter-spacing:-.015em;margin:var(--k-space-2) 0 var(--k-space-2)}
+.k-kin p{font-size:var(--k-text-base);line-height:1.75;color:var(--k-zinc-400);max-width:380px;letter-spacing:.01em}
 .k-kin-meta{display:flex;gap:var(--k-space-5);margin-top:var(--k-space-4);flex-wrap:wrap}
-.k-kin-meta div b{display:block;font-size:14.5px}
-.k-kin-meta div span{font-size:11px;letter-spacing:.1em;color:var(--k-zinc-500);text-transform:uppercase}
+.k-kin-meta div b{display:block;font-size:var(--k-text-lead)}
+.k-kin-meta div span{font-size:var(--k-text-xs);letter-spacing:.1em;color:var(--k-zinc-500);text-transform:uppercase}

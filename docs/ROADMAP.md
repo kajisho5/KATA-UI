@@ -68,6 +68,7 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Clipped rings drawn inside their controls (52 → 0); Navigation Menu's open panel is visible again ([PR #36](https://github.com/kajisho5/KATA-UI/pull/36)).
   - [x] Static rule: shared floor plus cancellation detection; the browser measurement runs in CI with 0 stops below 3:1 or clipped (owner review: [PR #37](https://github.com/kajisho5/KATA-UI/pull/37)).
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
+  - [x] Mold v4 completes the spacing, text and leading scales with owner-chosen mappings (docs/token-migration.md) ([PR #38](https://github.com/kajisho5/KATA-UI/pull/38)).
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and
 individual passing-target regressions; claims stay within test coverage; at

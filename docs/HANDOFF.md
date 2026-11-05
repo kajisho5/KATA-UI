@@ -2,8 +2,8 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-rule-cancellation` on main
-`5fcba9ea2e18344926a20d285160c42dac60736d` (after #36). Counts become main's only if the owner merges #37.
+Snapshot: 2026-11-06 (Asia/Tokyo), main `7d7b56243341db8f7c09f8a35460b051e0bb138c` (after #37).
+#38 (T3 step 1, mold v4) changes no counts.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -41,7 +41,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #36
+### Merged work, PR #11 through #37
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -73,13 +73,14 @@ Missing number #12 is open, not silently assumed merged.
 | #34 | 0b8f5f6 | Mold v3: --k-ring and the focus floor become a 2px ink ring. |
 | #35 | 9b3ecf9 | Part-owned weak focus rings replaced; 112 → 116. |
 | #36 | 5fcba9e | Clipped focus rings drawn inside; Navigation Menu panel visible; 116 → 120. |
+| #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#36 were squash-merged the same way after green CI. The owner then asked the
+#29–#37 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -96,7 +97,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#37](https://github.com/kajisho5/KATA-UI/pull/37) | **Checker policy change (T2 step 4–5): owner review and merge required.** Shared floor + cancellation detection, browser focus measurement in CI; 120 → 164. |
+| [#38](https://github.com/kajisho5/KATA-UI/pull/38) | T3 step 1: spacing, text and leading scales; moldVersion 4. No counts change. |
 
 ### npm and environment
 
@@ -148,8 +149,8 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #37 changes a checker rule. The owner reviews
-and merges it; the implementation agent does not. T3 waits for that decision.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #38 (T3 step 1) must be merged before the
+spacing replacement PR.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -163,7 +164,7 @@ Use Cases rows are buttons that contain headings and lists, so their accessible
 names are very long; splitting the row into a button plus a sibling body changes
 markup and CSS selectors.
 
-### T2 — done (pending owner merge of #37)
+### T2 — done
 
 #32 measurement tool and baseline; #33 closed menus out of the Tab order; #34
 mold v3 2px ink ring (owner chose option 1); #35 part-owned weak rings; #36
@@ -174,7 +175,15 @@ through its label. Below 3:1 in light: 380 → 0; clipped: 49 → 0; Mold Verifi
 Open follow-ups: `--k-ring-danger` is unused; Navigation Menu and Dropdown do not
 return focus on Escape (T4); only default-preview Tab stops are measured.
 
-### T3 — spacing-values and type-values become failures for ui (after T2)
+### T3 — spacing-values and type-values become failures for ui (in progress)
+
+Owner decisions (2026-11-06): spacing ties go to the smaller 4px step; 1px and
+2px get tokens; font sizes snap to existing steps plus a new 15px step; leading
+follows KATA.md §0.5. Mappings with counts: docs/token-migration.md (T3 section).
+Order changed with reason: replace spacing, then font size, then line height
+while the checks are warnings, and promote both to fail for UI last, at 0 UI
+findings, so the pass count and trusted-main ratchet never drop. Step 1 (scales,
+mold v4) is #38. Lab parts keep warnings.
 
 1. Complete the common 4px spacing and text/leading scales in tokens.json. Existing --k-space-* / --k-text-* / --k-lh-* already exist; reuse them and preserve names/aliases rather than adding duplicate scales. Propose --k-leading-* only if a missing shared role needs it. Bump moldVersion for changes and write counted mappings in docs/token-migration.md.
 2. Promote both checks to fail for ui only; record the lower baseline and explain the stricter-check transition, including the trusted-main CI ratchet effect. The owner must review the baseline-policy transition; never use an allowlist to conceal the drop.

@@ -1,5 +1,5 @@
 {
-  "moldVersion": 3,
+  "moldVersion": 4,
   "instruction": "Before copying a part, check the tokens.css mold header against requiresMold; update the mold before using newer parts. Unversioned tokens.css is legacy v1.",
   "changelog": "https://kata-ui.dev/docs/mold-changelog/"
 }

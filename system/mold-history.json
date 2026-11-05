@@ -64,10 +64,25 @@
       "commit": "1ec074ee3198580444fa92945e1c3f9b03d42bac",
       "passed": 112,
       "total": 164
+    },
+    {
+      "commit": "9b3ecf97faa8a21b0996240f564696339afa1e7b",
+      "passed": 116,
+      "total": 164
+    },
+    {
+      "commit": "5fcba9ea2e18344926a20d285160c42dac60736d",
+      "passed": 120,
+      "total": 164
+    },
+    {
+      "commit": "7d7b56243341db8f7c09f8a35460b051e0bb138c",
+      "passed": 164,
+      "total": 164
     }
   ],
   "schemaVersion": 1,
-  "throughCommit": "0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef",
+  "throughCommit": "679825c7098b148316c4c91b572b25b356a0e932",
   "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
   "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
   "v1EvidenceVerified": false,
@@ -328,7 +343,7 @@
   },
   "v2": {
     "--k-mold": [
-      "3"
+      "4"
     ],
     "--k-tsutsuji": [
       "#e95295"
@@ -619,6 +634,12 @@
     "--k-asagi-900": [
       "#143f47"
     ],
+    "--k-space-px": [
+      "1px"
+    ],
+    "--k-space-0-5": [
+      "2px"
+    ],
     "--k-space-1": [
       "4px"
     ],
@@ -631,11 +652,20 @@
     "--k-space-4": [
       "16px"
     ],
+    "--k-space-5": [
+      "20px"
+    ],
     "--k-space-6": [
       "24px"
     ],
+    "--k-space-7": [
+      "28px"
+    ],
     "--k-space-8": [
       "32px"
+    ],
+    "--k-space-10": [
+      "40px"
     ],
     "--k-space-12": [
       "48px"
@@ -652,6 +682,12 @@
     "--k-text-base": [
       "13.5px"
     ],
+    "--k-text-md": [
+      "14px"
+    ],
+    "--k-text-lead": [
+      "15px"
+    ],
     "--k-text-lg": [
       "16.5px"
     ],
@@ -663,6 +699,9 @@
     ],
     "--k-text-3xl": [
       "30px"
+    ],
+    "--k-text-display": [
+      "44px"
     ],
     "--k-ls-display": [
       "-.025em"
@@ -688,11 +727,20 @@
     "--k-ls-cjk-small": [
       ".05em"
     ],
+    "--k-lh-tight": [
+      "1"
+    ],
     "--k-lh-display": [
       "1.1"
     ],
     "--k-lh-heading": [
       "1.3"
+    ],
+    "--k-lh-card": [
+      "1.35"
+    ],
+    "--k-lh-small": [
+      "1.6"
     ],
     "--k-lh-body": [
       "1.7"
@@ -869,10 +917,21 @@
     "--k-ease-bounce": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
     "--k-ease-out": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
     "--k-tsutsuji": "2fa7cdcd502557358f219cf42173047fb1577bde",
-    "--k-mold": "deb88d2ca614733b2981f874ad985de9d9e78034"
+    "--k-mold": "deb88d2ca614733b2981f874ad985de9d9e78034",
+    "--k-space-px": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-space-0-5": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-space-5": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-space-7": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-space-10": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-text-md": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-text-lead": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-text-display": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-lh-tight": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-lh-card": "679825c7098b148316c4c91b572b25b356a0e932",
+    "--k-lh-small": "679825c7098b148316c4c91b572b25b356a0e932"
   },
   "tokenVersions": {
-    "--k-mold": 3,
+    "--k-mold": 4,
     "--k-tsutsuji": 2,
     "--k-mscale": 2,
     "--k-dur-fast": 2,
@@ -962,21 +1021,29 @@
     "--k-asagi-700": 2,
     "--k-asagi-800": 2,
     "--k-asagi-900": 2,
+    "--k-space-px": 4,
+    "--k-space-0-5": 4,
     "--k-space-1": 1,
     "--k-space-2": 1,
     "--k-space-3": 1,
     "--k-space-4": 1,
+    "--k-space-5": 4,
     "--k-space-6": 1,
+    "--k-space-7": 4,
     "--k-space-8": 1,
+    "--k-space-10": 4,
     "--k-space-12": 1,
     "--k-space-16": 1,
     "--k-text-xs": 1,
     "--k-text-sm": 1,
     "--k-text-base": 1,
+    "--k-text-md": 4,
+    "--k-text-lead": 4,
     "--k-text-lg": 1,
     "--k-text-xl": 1,
     "--k-text-2xl": 1,
     "--k-text-3xl": 1,
+    "--k-text-display": 4,
     "--k-ls-display": 2,
     "--k-ls-heading": 2,
     "--k-ls-body": 2,
@@ -985,8 +1052,11 @@
     "--k-ls-mono": 2,
     "--k-ls-cjk": 2,
     "--k-ls-cjk-small": 2,
+    "--k-lh-tight": 4,
     "--k-lh-display": 2,
     "--k-lh-heading": 2,
+    "--k-lh-card": 4,
+    "--k-lh-small": 4,
     "--k-lh-body": 2,
     "--k-lh-loose": 2,
     "--k-accent-luminance": 2
@@ -1036,6 +1106,11 @@
     }
   ],
   "releases": [
+    {
+      "version": 4,
+      "date": "2026-11-06",
+      "summary": "Complete spacing, text and leading scales for T3. Added --k-space-px (1px), --k-space-0-5 (2px), --k-space-5 (20px), --k-space-7 (28px), --k-space-10 (40px), --k-text-md (14px) and --k-text-display (44px) from tokens.json, --k-text-lead (15px), --k-lh-tight (1), --k-lh-card (1.35) and --k-lh-small (1.6). The scales are now generated from system/tokens.json. No existing value changes; parts that use a new token require mold v4."
+    },
     {
       "version": 3,
       "date": "2026-11-06",
@@ -3145,6 +3220,111 @@
             "0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink)"
           ],
           "kind": "value"
+        }
+      ]
+    },
+    {
+      "commit": "679825c7098b148316c4c91b572b25b356a0e932",
+      "date": "2026-11-05",
+      "subject": "Complete the spacing, text and leading scales (mold v4, T3 step 1)",
+      "changes": [
+        {
+          "token": "--k-lh-card",
+          "before": [],
+          "after": [
+            "1.35"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-lh-small",
+          "before": [],
+          "after": [
+            "1.6"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-lh-tight",
+          "before": [],
+          "after": [
+            "1"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-mold",
+          "before": [
+            "3"
+          ],
+          "after": [
+            "4"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-space-0-5",
+          "before": [],
+          "after": [
+            "2px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-10",
+          "before": [],
+          "after": [
+            "40px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-5",
+          "before": [],
+          "after": [
+            "20px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-7",
+          "before": [],
+          "after": [
+            "28px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-px",
+          "before": [],
+          "after": [
+            "1px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-display",
+          "before": [],
+          "after": [
+            "44px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-lead",
+          "before": [],
+          "after": [
+            "15px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-md",
+          "before": [],
+          "after": [
+            "14px"
+          ],
+          "kind": "added"
         }
       ]
     }

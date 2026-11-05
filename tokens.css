@@ -1,6 +1,8 @@
+/* KATA mold v2 — 2026-11-05 — kata-ui.dev/docs/mold-changelog */
 /* KATA UI — design tokens. Components reference ONLY these variables. */
 :root{
   /* shape-tokens:root:start */
+  --k-mold:2;
   --k-tsutsuji:#e95295;
   --k-mscale:1;
   --k-dur-fast:calc(130ms * var(--k-mscale));

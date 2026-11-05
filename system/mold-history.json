@@ -1,0 +1,3080 @@
+{
+  "auditMilestones": [
+    {
+      "commit": "fba323357dba23b690aa520dd4e376c54acd8d8e",
+      "passed": 19,
+      "total": 164
+    },
+    {
+      "commit": "a582ad2e0a298fb83ecb580a181b17f1c2e0a037",
+      "passed": 20,
+      "total": 164
+    },
+    {
+      "commit": "b97d4b45aab95125304b2f301766093ecc56bff1",
+      "passed": 21,
+      "total": 164
+    },
+    {
+      "commit": "1db2d128f1c5d13040c60976e1e1c9b2aa389e4c",
+      "passed": 29,
+      "total": 164
+    },
+    {
+      "commit": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+      "passed": 53,
+      "total": 164
+    },
+    {
+      "commit": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+      "passed": 88,
+      "total": 164
+    },
+    {
+      "commit": "2fa7cdcd502557358f219cf42173047fb1577bde",
+      "passed": 94,
+      "total": 164
+    }
+  ],
+  "schemaVersion": 1,
+  "throughCommit": "91a9ef1674a0c83949563c94b63d467f1316fa06",
+  "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+  "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
+  "v1EvidenceVerified": false,
+  "v1": {
+    "--k-bg": [
+      "#ffffff",
+      "#18181b"
+    ],
+    "--k-bg-soft": [
+      "#f7f7f7",
+      "#27272a"
+    ],
+    "--k-ink": [
+      "#18181b",
+      "#f4f4f5"
+    ],
+    "--k-ink-2": [
+      "#52525b",
+      "#a1a1aa"
+    ],
+    "--k-ink-3": [
+      "#a1a1aa",
+      "#71717a"
+    ],
+    "--k-line": [
+      "#e4e4e7",
+      "#3f3f46"
+    ],
+    "--k-accent": [
+      "#0e9594"
+    ],
+    "--k-core": [
+      "#eb471f"
+    ],
+    "--k-danger": [
+      "#dc2626"
+    ],
+    "--k-amber": [
+      "#f59e0b"
+    ],
+    "--k-ring": [
+      "0 0 0 3px rgba(24,24,27,.12)",
+      "0 0 0 3px rgba(244,244,245,.18)"
+    ],
+    "--k-radius": [
+      "8px"
+    ],
+    "--k-radius-lg": [
+      "12px"
+    ],
+    "--k-font": [
+      "\"Inter\",\"Hiragino Sans\",\"Noto Sans JP\",system-ui,sans-serif"
+    ],
+    "--k-mono": [
+      "\"Geist Mono\",ui-monospace,monospace"
+    ],
+    "--k-on-color": [
+      "#ffffff"
+    ],
+    "--k-knob": [
+      "#ffffff"
+    ],
+    "--k-accent-ink": [
+      "#0b7372",
+      "#2dd4bf"
+    ],
+    "--k-danger-ink": [
+      "#b91c1c",
+      "#fca5a5"
+    ],
+    "--k-amber-ink": [
+      "#b45309",
+      "#fcd34d"
+    ],
+    "--k-accent-bg": [
+      "rgba(14,149,148,.08)"
+    ],
+    "--k-accent-bg-strong": [
+      "rgba(14,149,148,.1)"
+    ],
+    "--k-accent-line": [
+      "rgba(14,149,148,.18)"
+    ],
+    "--k-danger-bg": [
+      "rgba(220,38,38,.07)"
+    ],
+    "--k-danger-line": [
+      "rgba(220,38,38,.17)"
+    ],
+    "--k-danger-ring": [
+      "rgba(220,38,38,.14)"
+    ],
+    "--k-ring-danger": [
+      "0 0 0 3px rgba(220,38,38,.14)"
+    ],
+    "--k-amber-bg": [
+      "rgba(245,158,11,.08)"
+    ],
+    "--k-amber-line": [
+      "rgba(245,158,11,.18)"
+    ],
+    "--k-track": [
+      "#d4d4d8",
+      "#52525b"
+    ],
+    "--k-seg": [
+      "#ececee",
+      "#27272a"
+    ],
+    "--k-border-strong": [
+      "#c9c9cf",
+      "#52525b"
+    ],
+    "--k-success-bg": [
+      "#ecfdf5"
+    ],
+    "--k-success-line": [
+      "#a7f3d0"
+    ],
+    "--k-success-ink": [
+      "#047857"
+    ],
+    "--k-toast-ink": [
+      "#f4f4f5"
+    ],
+    "--k-toast-sub": [
+      "#a1a1aa"
+    ],
+    "--k-success": [
+      "#34d399"
+    ],
+    "--k-zinc-50": [
+      "#fafafa"
+    ],
+    "--k-zinc-100": [
+      "#f4f4f5"
+    ],
+    "--k-zinc-200": [
+      "#e4e4e7"
+    ],
+    "--k-zinc-300": [
+      "#d4d4d8"
+    ],
+    "--k-zinc-400": [
+      "#a1a1aa"
+    ],
+    "--k-zinc-500": [
+      "#71717a"
+    ],
+    "--k-zinc-600": [
+      "#52525b"
+    ],
+    "--k-zinc-700": [
+      "#3f3f46"
+    ],
+    "--k-zinc-800": [
+      "#27272a"
+    ],
+    "--k-zinc-900": [
+      "#18181b"
+    ],
+    "--k-zinc-950": [
+      "#09090b"
+    ],
+    "--k-teal-50": [
+      "#effaf9"
+    ],
+    "--k-teal-100": [
+      "#d7f2f0"
+    ],
+    "--k-teal-200": [
+      "#b0e5e2"
+    ],
+    "--k-teal-300": [
+      "#7fd1cd"
+    ],
+    "--k-teal-400": [
+      "#3fb3ae"
+    ],
+    "--k-teal-500": [
+      "#0e9594"
+    ],
+    "--k-teal-600": [
+      "#0b7a78"
+    ],
+    "--k-teal-700": [
+      "#0b7372"
+    ],
+    "--k-teal-800": [
+      "#0a5c5b"
+    ],
+    "--k-teal-900": [
+      "#083f3e"
+    ],
+    "--k-space-1": [
+      "4px"
+    ],
+    "--k-space-2": [
+      "8px"
+    ],
+    "--k-space-3": [
+      "12px"
+    ],
+    "--k-space-4": [
+      "16px"
+    ],
+    "--k-space-6": [
+      "24px"
+    ],
+    "--k-space-8": [
+      "32px"
+    ],
+    "--k-space-12": [
+      "48px"
+    ],
+    "--k-space-16": [
+      "64px"
+    ],
+    "--k-radius-sm": [
+      "6px"
+    ],
+    "--k-radius-full": [
+      "99px"
+    ],
+    "--k-text-xs": [
+      "11px"
+    ],
+    "--k-text-sm": [
+      "12.5px"
+    ],
+    "--k-text-base": [
+      "13.5px"
+    ],
+    "--k-text-lg": [
+      "16.5px"
+    ],
+    "--k-text-xl": [
+      "19px"
+    ],
+    "--k-text-2xl": [
+      "24px"
+    ],
+    "--k-text-3xl": [
+      "30px"
+    ],
+    "--k-dur-1": [
+      "130ms"
+    ],
+    "--k-dur-2": [
+      "180ms"
+    ],
+    "--k-dur-3": [
+      "220ms"
+    ],
+    "--k-ease": [
+      "cubic-bezier(.3,.7,.3,1)"
+    ]
+  },
+  "v2": {
+    "--k-mold": [
+      "2"
+    ],
+    "--k-tsutsuji": [
+      "#e95295"
+    ],
+    "--k-mscale": [
+      "1",
+      "0 !important"
+    ],
+    "--k-dur-fast": [
+      "calc(130ms * var(--k-mscale))"
+    ],
+    "--k-dur-base": [
+      "calc(180ms * var(--k-mscale))"
+    ],
+    "--k-dur-slow": [
+      "calc(220ms * var(--k-mscale))"
+    ],
+    "--k-dur-1": [
+      "var(--k-dur-fast)"
+    ],
+    "--k-dur-2": [
+      "var(--k-dur-base)"
+    ],
+    "--k-dur-3": [
+      "var(--k-dur-slow)"
+    ],
+    "--k-ease": [
+      "cubic-bezier(.3,.7,.3,1)"
+    ],
+    "--k-ease-in-out": [
+      "cubic-bezier(.6,0,.2,1)"
+    ],
+    "--k-ease-spring": [
+      "cubic-bezier(.3,1.2,.4,1)"
+    ],
+    "--k-ease-bounce": [
+      "cubic-bezier(.3,2.2,.45,1)"
+    ],
+    "--k-ease-out": [
+      "var(--k-ease-in-out)"
+    ],
+    "--k-radius": [
+      "8px"
+    ],
+    "--k-radius-xs": [
+      "calc(var(--k-radius) * 0.375)"
+    ],
+    "--k-radius-sm": [
+      "calc(var(--k-radius) * 0.75)"
+    ],
+    "--k-radius-md": [
+      "var(--k-radius)"
+    ],
+    "--k-radius-lg": [
+      "calc(var(--k-radius) * 1.5)"
+    ],
+    "--k-radius-xl": [
+      "calc(var(--k-radius) * 2)"
+    ],
+    "--k-radius-full": [
+      "999px"
+    ],
+    "--k-ring-inset": [
+      "inset 0 0 0 1px currentColor"
+    ],
+    "--k-ring-line": [
+      "0 0 0 1px var(--k-line)"
+    ],
+    "--k-ring-selected": [
+      "0 0 0 2px var(--k-ink)"
+    ],
+    "--k-ring-offset": [
+      "0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent)"
+    ],
+    "--k-shadow-overlay": [
+      "var(--k-shadow-pop)"
+    ],
+    "--k-shadow-xs": [
+      "0 1px 2px rgba(16,24,40,.05)",
+      "0 1px 2px rgba(0,0,0,.25)"
+    ],
+    "--k-shadow-sm": [
+      "0 1px 4px rgba(16,24,40,.18)",
+      "0 1px 4px rgba(0,0,0,.35)"
+    ],
+    "--k-shadow-pop": [
+      "0 20px 44px -14px rgba(16,24,40,.22)",
+      "0 20px 44px -14px rgba(0,0,0,.55)"
+    ],
+    "--k-shadow-modal": [
+      "0 30px 80px -20px rgba(0,0,0,.4)",
+      "0 30px 80px -20px rgba(0,0,0,.65)"
+    ],
+    "--k-backdrop": [
+      "color-mix(in srgb,var(--k-zinc-900) 45%,transparent)",
+      "color-mix(in srgb,var(--k-zinc-950) 70%,transparent)"
+    ],
+    "--k-ink-3": [
+      "#71717a",
+      "#90909a"
+    ],
+    "--k-yamabuki-ink": [
+      "#876019",
+      "#f6c555"
+    ],
+    "--k-danger-ink": [
+      "#b7282e",
+      "#f28b90"
+    ],
+    "--k-accent-ink": [
+      "#165e83",
+      "#81c7d4",
+      "oklch(from var(--k-accent) min(l, 0.48) c h)",
+      "oklch(from var(--k-accent) max(l, 0.78) c h)"
+    ],
+    "--k-on-accent": [
+      "var(--k-ink)",
+      "color(from var(--k-accent-luminance) srgb-linear max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.0109600940065, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 1.18284201626))))"
+    ],
+    "--k-accent-contrast-surface": [
+      "var(--k-bg)",
+      "color(from var(--k-accent-luminance) srgb-linear calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)))"
+    ],
+    "--k-accent-hover": [
+      "color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface))"
+    ],
+    "--k-bg": [
+      "#ffffff",
+      "#18181b"
+    ],
+    "--k-bg-soft": [
+      "#f7f7f7",
+      "#27272a"
+    ],
+    "--k-ink": [
+      "#18181b",
+      "#f4f4f5"
+    ],
+    "--k-ink-2": [
+      "#52525b",
+      "#a1a1aa"
+    ],
+    "--k-line": [
+      "#e4e4e7",
+      "#3f3f46"
+    ],
+    "--k-accent": [
+      "#33a6b8"
+    ],
+    "--k-core": [
+      "#eb471f"
+    ],
+    "--k-danger": [
+      "#c9171e"
+    ],
+    "--k-yamabuki": [
+      "#ffb11b"
+    ],
+    "--k-ring": [
+      "0 0 0 3px rgba(24,24,27,.12)",
+      "0 0 0 3px rgba(244,244,245,.18)"
+    ],
+    "--k-font": [
+      "\"Inter\",\"Hiragino Sans\",\"Noto Sans JP\",system-ui,sans-serif"
+    ],
+    "--k-mono": [
+      "\"Geist Mono\",ui-monospace,monospace"
+    ],
+    "--k-on-color": [
+      "#ffffff"
+    ],
+    "--k-knob": [
+      "#ffffff"
+    ],
+    "--k-accent-bg": [
+      "rgba(51,166,184,.08)"
+    ],
+    "--k-accent-bg-strong": [
+      "rgba(51,166,184,.1)"
+    ],
+    "--k-accent-line": [
+      "rgba(51,166,184,.18)"
+    ],
+    "--k-danger-bg": [
+      "rgba(201,23,30,.07)"
+    ],
+    "--k-danger-line": [
+      "rgba(201,23,30,.17)"
+    ],
+    "--k-danger-ring": [
+      "rgba(201,23,30,.14)"
+    ],
+    "--k-ring-danger": [
+      "0 0 0 3px rgba(201,23,30,.14)"
+    ],
+    "--k-yamabuki-bg": [
+      "rgba(255,177,27,.12)"
+    ],
+    "--k-yamabuki-line": [
+      "rgba(255,177,27,.3)"
+    ],
+    "--k-track": [
+      "#d4d4d8",
+      "#52525b"
+    ],
+    "--k-seg": [
+      "#ececee",
+      "#27272a"
+    ],
+    "--k-border-strong": [
+      "#c9c9cf",
+      "#52525b"
+    ],
+    "--k-success-bg": [
+      "rgba(93,172,129,.1)"
+    ],
+    "--k-success-line": [
+      "rgba(93,172,129,.32)"
+    ],
+    "--k-success-ink": [
+      "#1b813e"
+    ],
+    "--k-success": [
+      "#5dac81"
+    ],
+    "--k-z-overlay": [
+      "50"
+    ],
+    "--k-zinc-50": [
+      "#fafafa"
+    ],
+    "--k-zinc-100": [
+      "#f4f4f5"
+    ],
+    "--k-zinc-200": [
+      "#e4e4e7"
+    ],
+    "--k-zinc-300": [
+      "#d4d4d8"
+    ],
+    "--k-zinc-400": [
+      "#a1a1aa"
+    ],
+    "--k-zinc-500": [
+      "#71717a"
+    ],
+    "--k-zinc-600": [
+      "#52525b"
+    ],
+    "--k-zinc-700": [
+      "#3f3f46"
+    ],
+    "--k-zinc-800": [
+      "#27272a"
+    ],
+    "--k-zinc-900": [
+      "#18181b"
+    ],
+    "--k-zinc-950": [
+      "#09090b"
+    ],
+    "--k-asagi-50": [
+      "#eef9fa"
+    ],
+    "--k-asagi-100": [
+      "#d7f0f3"
+    ],
+    "--k-asagi-200": [
+      "#b0e0e7"
+    ],
+    "--k-asagi-300": [
+      "#7fc9d4"
+    ],
+    "--k-asagi-400": [
+      "#4fb0bf"
+    ],
+    "--k-asagi-500": [
+      "#33a6b8"
+    ],
+    "--k-asagi-600": [
+      "#29889a"
+    ],
+    "--k-asagi-700": [
+      "#206b79"
+    ],
+    "--k-asagi-800": [
+      "#1a5561"
+    ],
+    "--k-asagi-900": [
+      "#143f47"
+    ],
+    "--k-space-1": [
+      "4px"
+    ],
+    "--k-space-2": [
+      "8px"
+    ],
+    "--k-space-3": [
+      "12px"
+    ],
+    "--k-space-4": [
+      "16px"
+    ],
+    "--k-space-6": [
+      "24px"
+    ],
+    "--k-space-8": [
+      "32px"
+    ],
+    "--k-space-12": [
+      "48px"
+    ],
+    "--k-space-16": [
+      "64px"
+    ],
+    "--k-text-xs": [
+      "11px"
+    ],
+    "--k-text-sm": [
+      "12.5px"
+    ],
+    "--k-text-base": [
+      "13.5px"
+    ],
+    "--k-text-lg": [
+      "16.5px"
+    ],
+    "--k-text-xl": [
+      "19px"
+    ],
+    "--k-text-2xl": [
+      "24px"
+    ],
+    "--k-text-3xl": [
+      "30px"
+    ],
+    "--k-ls-display": [
+      "-.025em"
+    ],
+    "--k-ls-heading": [
+      "-.015em"
+    ],
+    "--k-ls-body": [
+      ".012em"
+    ],
+    "--k-ls-small": [
+      ".01em"
+    ],
+    "--k-ls-caps": [
+      ".1em"
+    ],
+    "--k-ls-mono": [
+      ".02em"
+    ],
+    "--k-ls-cjk": [
+      ".06em"
+    ],
+    "--k-ls-cjk-small": [
+      ".05em"
+    ],
+    "--k-lh-display": [
+      "1.1"
+    ],
+    "--k-lh-heading": [
+      "1.3"
+    ],
+    "--k-lh-body": [
+      "1.7"
+    ],
+    "--k-lh-loose": [
+      "1.85"
+    ],
+    "--k-accent-luminance": [
+      "color(from var(--k-accent) srgb-linear calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722))"
+    ]
+  },
+  "introduced": {
+    "--k-bg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-bg-soft": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-ink": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-ink-2": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-ink-3": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-line": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-accent": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-core": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-danger": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-amber": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-ring": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-radius": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-radius-lg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-font": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-mono": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-on-color": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-knob": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-accent-ink": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-danger-ink": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-amber-ink": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-accent-bg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-accent-bg-strong": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-accent-line": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-danger-bg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-danger-line": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-danger-ring": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-ring-danger": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-amber-bg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-amber-line": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-track": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-seg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-border-strong": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-success-bg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-success-line": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-success-ink": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-toast-ink": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-toast-sub": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-success": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-50": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-100": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-200": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-300": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-400": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-500": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-600": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-700": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-800": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-900": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-zinc-950": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-50": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-100": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-200": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-300": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-400": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-500": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-600": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-700": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-800": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-teal-900": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-1": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-2": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-3": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-4": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-6": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-8": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-12": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-space-16": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-radius-sm": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-radius-full": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-text-xs": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-text-sm": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-text-base": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-text-lg": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-text-xl": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-text-2xl": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-text-3xl": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-dur-1": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-dur-2": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-dur-3": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-ease": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+    "--k-ls-display": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-ls-heading": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-ls-body": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-ls-small": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-ls-caps": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-ls-mono": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-ls-cjk": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-ls-cjk-small": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-lh-display": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-lh-heading": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-lh-body": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-lh-loose": "223e972547287f33774bd6d95005afe1a90e2d9d",
+    "--k-yamabuki": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-yamabuki-ink": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-yamabuki-bg": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-yamabuki-line": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-50": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-100": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-200": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-300": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-400": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-500": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-600": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-700": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-800": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-asagi-900": "55968f10c544a676dee216eaf9707cf0d4935726",
+    "--k-combo-focus-width": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-sr-size": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-width": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-input-end": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-input-size": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-chevron-end": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-chevron-bottom": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-icon": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-check-icon": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-gap": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-popup-padding": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-option-inline": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-z": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-max-height": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-combo-shadow": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+    "--k-btn-gap": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-weight": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-press": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-height-sm": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-height-md": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-height-lg": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-pad-lg": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-text-lg": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-disabled-opacity": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-shadow": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-inset": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-spinner-size": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-spinner-border": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-spinner-track": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-spin-duration": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-btn-spin-turn": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+    "--k-shadow-overlay": "d51182e427f0a91d0cd924787e262eca999efef4",
+    "--k-z-overlay": "d51182e427f0a91d0cd924787e262eca999efef4",
+    "--k-radius-xs": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-radius-md": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-radius-xl": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-ring-inset": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-ring-line": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-ring-selected": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-ring-offset": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-shadow-xs": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-shadow-sm": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-shadow-pop": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-shadow-modal": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-backdrop": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+    "--k-on-accent": "c6982b885f9fd0331283c1b67991444bf9682922",
+    "--k-accent-contrast-surface": "c6982b885f9fd0331283c1b67991444bf9682922",
+    "--k-accent-hover": "c6982b885f9fd0331283c1b67991444bf9682922",
+    "--k-accent-luminance": "c6982b885f9fd0331283c1b67991444bf9682922",
+    "--k-mscale": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-dur-fast": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-dur-base": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-dur-slow": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-ease-in-out": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-ease-spring": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-ease-bounce": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-ease-out": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+    "--k-tsutsuji": "2fa7cdcd502557358f219cf42173047fb1577bde",
+    "--k-mold": "91a9ef1674a0c83949563c94b63d467f1316fa06"
+  },
+  "tokenVersions": {
+    "--k-mold": 2,
+    "--k-tsutsuji": 2,
+    "--k-mscale": 2,
+    "--k-dur-fast": 2,
+    "--k-dur-base": 2,
+    "--k-dur-slow": 2,
+    "--k-dur-1": 1,
+    "--k-dur-2": 1,
+    "--k-dur-3": 1,
+    "--k-ease": 1,
+    "--k-ease-in-out": 2,
+    "--k-ease-spring": 2,
+    "--k-ease-bounce": 2,
+    "--k-ease-out": 2,
+    "--k-radius": 1,
+    "--k-radius-xs": 2,
+    "--k-radius-sm": 1,
+    "--k-radius-md": 2,
+    "--k-radius-lg": 1,
+    "--k-radius-xl": 2,
+    "--k-radius-full": 1,
+    "--k-ring-inset": 2,
+    "--k-ring-line": 2,
+    "--k-ring-selected": 2,
+    "--k-ring-offset": 2,
+    "--k-shadow-overlay": 2,
+    "--k-shadow-xs": 2,
+    "--k-shadow-sm": 2,
+    "--k-shadow-pop": 2,
+    "--k-shadow-modal": 2,
+    "--k-backdrop": 2,
+    "--k-ink-3": 1,
+    "--k-yamabuki-ink": 2,
+    "--k-danger-ink": 1,
+    "--k-accent-ink": 1,
+    "--k-on-accent": 2,
+    "--k-accent-contrast-surface": 2,
+    "--k-accent-hover": 2,
+    "--k-bg": 1,
+    "--k-bg-soft": 1,
+    "--k-ink": 1,
+    "--k-ink-2": 1,
+    "--k-line": 1,
+    "--k-accent": 1,
+    "--k-core": 1,
+    "--k-danger": 1,
+    "--k-yamabuki": 2,
+    "--k-ring": 1,
+    "--k-font": 1,
+    "--k-mono": 1,
+    "--k-on-color": 1,
+    "--k-knob": 1,
+    "--k-accent-bg": 1,
+    "--k-accent-bg-strong": 1,
+    "--k-accent-line": 1,
+    "--k-danger-bg": 1,
+    "--k-danger-line": 1,
+    "--k-danger-ring": 1,
+    "--k-ring-danger": 1,
+    "--k-yamabuki-bg": 2,
+    "--k-yamabuki-line": 2,
+    "--k-track": 1,
+    "--k-seg": 1,
+    "--k-border-strong": 1,
+    "--k-success-bg": 1,
+    "--k-success-line": 1,
+    "--k-success-ink": 1,
+    "--k-success": 1,
+    "--k-z-overlay": 2,
+    "--k-zinc-50": 1,
+    "--k-zinc-100": 1,
+    "--k-zinc-200": 1,
+    "--k-zinc-300": 1,
+    "--k-zinc-400": 1,
+    "--k-zinc-500": 1,
+    "--k-zinc-600": 1,
+    "--k-zinc-700": 1,
+    "--k-zinc-800": 1,
+    "--k-zinc-900": 1,
+    "--k-zinc-950": 1,
+    "--k-asagi-50": 2,
+    "--k-asagi-100": 2,
+    "--k-asagi-200": 2,
+    "--k-asagi-300": 2,
+    "--k-asagi-400": 2,
+    "--k-asagi-500": 2,
+    "--k-asagi-600": 2,
+    "--k-asagi-700": 2,
+    "--k-asagi-800": 2,
+    "--k-asagi-900": 2,
+    "--k-space-1": 1,
+    "--k-space-2": 1,
+    "--k-space-3": 1,
+    "--k-space-4": 1,
+    "--k-space-6": 1,
+    "--k-space-8": 1,
+    "--k-space-12": 1,
+    "--k-space-16": 1,
+    "--k-text-xs": 1,
+    "--k-text-sm": 1,
+    "--k-text-base": 1,
+    "--k-text-lg": 1,
+    "--k-text-xl": 1,
+    "--k-text-2xl": 1,
+    "--k-text-3xl": 1,
+    "--k-ls-display": 2,
+    "--k-ls-heading": 2,
+    "--k-ls-body": 2,
+    "--k-ls-small": 2,
+    "--k-ls-caps": 2,
+    "--k-ls-mono": 2,
+    "--k-ls-cjk": 2,
+    "--k-ls-cjk-small": 2,
+    "--k-lh-display": 2,
+    "--k-lh-heading": 2,
+    "--k-lh-body": 2,
+    "--k-lh-loose": 2,
+    "--k-accent-luminance": 2
+  },
+  "semanticVersions": {
+    "--k-dur-1": 2,
+    "--k-dur-2": 2,
+    "--k-dur-3": 2,
+    "--k-mscale": 2
+  },
+  "semanticChanges": [
+    {
+      "tokens": [
+        "--k-dur-1",
+        "--k-dur-2",
+        "--k-dur-3"
+      ],
+      "commit": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+      "reason": "Numbered durations now alias scaled fast/base/slow values. Remove an extra multiplier at call sites."
+    },
+    {
+      "tokens": [
+        "--k-mscale"
+      ],
+      "commit": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+      "reason": "The external multiplier now has a shared default of 1; reduced motion sets it to zero. Scoped loop ownership was included in the merged PR."
+    }
+  ],
+  "deprecations": [
+    {
+      "name": ".btn-asagi",
+      "replacement": ".btn-accent (deprecated alias retained)",
+      "commit": "6f06c4633082259c03d3528c39b8d41dce6fef45"
+    },
+    {
+      "name": "--k-ease-out",
+      "replacement": "--k-ease-in-out (deprecated alias retained)",
+      "commit": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7"
+    }
+  ],
+  "events": [
+    {
+      "commit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
+      "date": "2026-11-02",
+      "subject": "Add KATA UI source: 41 components, 150 icons, design system, build and mold check",
+      "changes": [
+        {
+          "token": "--k-accent",
+          "before": [],
+          "after": [
+            "#0e9594"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-accent-bg",
+          "before": [],
+          "after": [
+            "rgba(14,149,148,.08)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-accent-bg-strong",
+          "before": [],
+          "after": [
+            "rgba(14,149,148,.1)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-accent-ink",
+          "before": [],
+          "after": [
+            "#0b7372",
+            "#2dd4bf"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-accent-line",
+          "before": [],
+          "after": [
+            "rgba(14,149,148,.18)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-amber",
+          "before": [],
+          "after": [
+            "#f59e0b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-amber-bg",
+          "before": [],
+          "after": [
+            "rgba(245,158,11,.08)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-amber-ink",
+          "before": [],
+          "after": [
+            "#b45309",
+            "#fcd34d"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-amber-line",
+          "before": [],
+          "after": [
+            "rgba(245,158,11,.18)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-bg",
+          "before": [],
+          "after": [
+            "#ffffff",
+            "#18181b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-bg-soft",
+          "before": [],
+          "after": [
+            "#f7f7f7",
+            "#27272a"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-border-strong",
+          "before": [],
+          "after": [
+            "#c9c9cf",
+            "#52525b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-core",
+          "before": [],
+          "after": [
+            "#eb471f"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-danger",
+          "before": [],
+          "after": [
+            "#dc2626"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-danger-bg",
+          "before": [],
+          "after": [
+            "rgba(220,38,38,.07)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-danger-ink",
+          "before": [],
+          "after": [
+            "#b91c1c",
+            "#fca5a5"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-danger-line",
+          "before": [],
+          "after": [
+            "rgba(220,38,38,.17)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-danger-ring",
+          "before": [],
+          "after": [
+            "rgba(220,38,38,.14)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-dur-1",
+          "before": [],
+          "after": [
+            "130ms"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-dur-2",
+          "before": [],
+          "after": [
+            "180ms"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-dur-3",
+          "before": [],
+          "after": [
+            "220ms"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ease",
+          "before": [],
+          "after": [
+            "cubic-bezier(.3,.7,.3,1)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-font",
+          "before": [],
+          "after": [
+            "\"Inter\",\"Hiragino Sans\",\"Noto Sans JP\",system-ui,sans-serif"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ink",
+          "before": [],
+          "after": [
+            "#18181b",
+            "#f4f4f5"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ink-2",
+          "before": [],
+          "after": [
+            "#52525b",
+            "#a1a1aa"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ink-3",
+          "before": [],
+          "after": [
+            "#a1a1aa",
+            "#71717a"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-knob",
+          "before": [],
+          "after": [
+            "#ffffff"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-line",
+          "before": [],
+          "after": [
+            "#e4e4e7",
+            "#3f3f46"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-mono",
+          "before": [],
+          "after": [
+            "\"Geist Mono\",ui-monospace,monospace"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-on-color",
+          "before": [],
+          "after": [
+            "#ffffff"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-radius",
+          "before": [],
+          "after": [
+            "8px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-radius-full",
+          "before": [],
+          "after": [
+            "99px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-radius-lg",
+          "before": [],
+          "after": [
+            "12px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-radius-sm",
+          "before": [],
+          "after": [
+            "6px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ring",
+          "before": [],
+          "after": [
+            "0 0 0 3px rgba(24,24,27,.12)",
+            "0 0 0 3px rgba(244,244,245,.18)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ring-danger",
+          "before": [],
+          "after": [
+            "0 0 0 3px rgba(220,38,38,.14)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-seg",
+          "before": [],
+          "after": [
+            "#ececee",
+            "#27272a"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-1",
+          "before": [],
+          "after": [
+            "4px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-12",
+          "before": [],
+          "after": [
+            "48px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-16",
+          "before": [],
+          "after": [
+            "64px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-2",
+          "before": [],
+          "after": [
+            "8px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-3",
+          "before": [],
+          "after": [
+            "12px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-4",
+          "before": [],
+          "after": [
+            "16px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-6",
+          "before": [],
+          "after": [
+            "24px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-space-8",
+          "before": [],
+          "after": [
+            "32px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-success",
+          "before": [],
+          "after": [
+            "#34d399"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-success-bg",
+          "before": [],
+          "after": [
+            "#ecfdf5"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-success-ink",
+          "before": [],
+          "after": [
+            "#047857"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-success-line",
+          "before": [],
+          "after": [
+            "#a7f3d0"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-100",
+          "before": [],
+          "after": [
+            "#d7f2f0"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-200",
+          "before": [],
+          "after": [
+            "#b0e5e2"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-300",
+          "before": [],
+          "after": [
+            "#7fd1cd"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-400",
+          "before": [],
+          "after": [
+            "#3fb3ae"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-50",
+          "before": [],
+          "after": [
+            "#effaf9"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-500",
+          "before": [],
+          "after": [
+            "#0e9594"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-600",
+          "before": [],
+          "after": [
+            "#0b7a78"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-700",
+          "before": [],
+          "after": [
+            "#0b7372"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-800",
+          "before": [],
+          "after": [
+            "#0a5c5b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-teal-900",
+          "before": [],
+          "after": [
+            "#083f3e"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-2xl",
+          "before": [],
+          "after": [
+            "24px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-3xl",
+          "before": [],
+          "after": [
+            "30px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-base",
+          "before": [],
+          "after": [
+            "13.5px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-lg",
+          "before": [],
+          "after": [
+            "16.5px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-sm",
+          "before": [],
+          "after": [
+            "12.5px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-xl",
+          "before": [],
+          "after": [
+            "19px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-text-xs",
+          "before": [],
+          "after": [
+            "11px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-toast-ink",
+          "before": [],
+          "after": [
+            "#f4f4f5"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-toast-sub",
+          "before": [],
+          "after": [
+            "#a1a1aa"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-track",
+          "before": [],
+          "after": [
+            "#d4d4d8",
+            "#52525b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-100",
+          "before": [],
+          "after": [
+            "#f4f4f5"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-200",
+          "before": [],
+          "after": [
+            "#e4e4e7"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-300",
+          "before": [],
+          "after": [
+            "#d4d4d8"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-400",
+          "before": [],
+          "after": [
+            "#a1a1aa"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-50",
+          "before": [],
+          "after": [
+            "#fafafa"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-500",
+          "before": [],
+          "after": [
+            "#71717a"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-600",
+          "before": [],
+          "after": [
+            "#52525b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-700",
+          "before": [],
+          "after": [
+            "#3f3f46"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-800",
+          "before": [],
+          "after": [
+            "#27272a"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-900",
+          "before": [],
+          "after": [
+            "#18181b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-zinc-950",
+          "before": [],
+          "after": [
+            "#09090b"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "223e972547287f33774bd6d95005afe1a90e2d9d",
+      "date": "2026-11-02",
+      "subject": "Template the type basics: tracking/leading table in KATA.md 0.5, --k-ls-*/--k-lh-* tokens, structured scales in tokens.json, rendered on Design System",
+      "changes": [
+        {
+          "token": "--k-lh-body",
+          "before": [],
+          "after": [
+            "1.7"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-lh-display",
+          "before": [],
+          "after": [
+            "1.1"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-lh-heading",
+          "before": [],
+          "after": [
+            "1.3"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-lh-loose",
+          "before": [],
+          "after": [
+            "1.85"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-body",
+          "before": [],
+          "after": [
+            ".012em"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-caps",
+          "before": [],
+          "after": [
+            ".1em"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-cjk",
+          "before": [],
+          "after": [
+            ".06em"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-cjk-small",
+          "before": [],
+          "after": [
+            ".05em"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-display",
+          "before": [],
+          "after": [
+            "-.025em"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-heading",
+          "before": [],
+          "after": [
+            "-.015em"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-mono",
+          "before": [],
+          "after": [
+            ".02em"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ls-small",
+          "before": [],
+          "after": [
+            ".01em"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "55968f10c544a676dee216eaf9707cf0d4935726",
+      "date": "2026-11-02",
+      "subject": "Wa colors throughout (Asagi accent, Yamabuki warning, Beni danger, Wakatake success, five dentou theme presets), type table applied to all reading text, sidebar headings redesigned, pointer parts answer to touch",
+      "changes": [
+        {
+          "token": "--k-accent",
+          "before": [
+            "#0e9594"
+          ],
+          "after": [
+            "#33a6b8"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-accent-bg",
+          "before": [
+            "rgba(14,149,148,.08)"
+          ],
+          "after": [
+            "rgba(51,166,184,.08)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-accent-bg-strong",
+          "before": [
+            "rgba(14,149,148,.1)"
+          ],
+          "after": [
+            "rgba(51,166,184,.1)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-accent-ink",
+          "before": [
+            "#0b7372",
+            "#2dd4bf"
+          ],
+          "after": [
+            "#165e83",
+            "#81c7d4"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-accent-line",
+          "before": [
+            "rgba(14,149,148,.18)"
+          ],
+          "after": [
+            "rgba(51,166,184,.18)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-amber",
+          "before": [
+            "#f59e0b"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-amber-bg",
+          "before": [
+            "rgba(245,158,11,.08)"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-amber-ink",
+          "before": [
+            "#b45309",
+            "#fcd34d"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-amber-line",
+          "before": [
+            "rgba(245,158,11,.18)"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-asagi-100",
+          "before": [],
+          "after": [
+            "#d7f0f3"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-200",
+          "before": [],
+          "after": [
+            "#b0e0e7"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-300",
+          "before": [],
+          "after": [
+            "#7fc9d4"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-400",
+          "before": [],
+          "after": [
+            "#4fb0bf"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-50",
+          "before": [],
+          "after": [
+            "#eef9fa"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-500",
+          "before": [],
+          "after": [
+            "#33a6b8"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-600",
+          "before": [],
+          "after": [
+            "#29889a"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-700",
+          "before": [],
+          "after": [
+            "#206b79"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-800",
+          "before": [],
+          "after": [
+            "#1a5561"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-asagi-900",
+          "before": [],
+          "after": [
+            "#143f47"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-danger",
+          "before": [
+            "#dc2626"
+          ],
+          "after": [
+            "#c9171e"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-danger-bg",
+          "before": [
+            "rgba(220,38,38,.07)"
+          ],
+          "after": [
+            "rgba(201,23,30,.07)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-danger-ink",
+          "before": [
+            "#b91c1c",
+            "#fca5a5"
+          ],
+          "after": [
+            "#b7282e",
+            "#f596aa"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-danger-line",
+          "before": [
+            "rgba(220,38,38,.17)"
+          ],
+          "after": [
+            "rgba(201,23,30,.17)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-danger-ring",
+          "before": [
+            "rgba(220,38,38,.14)"
+          ],
+          "after": [
+            "rgba(201,23,30,.14)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-ring-danger",
+          "before": [
+            "0 0 0 3px rgba(220,38,38,.14)"
+          ],
+          "after": [
+            "0 0 0 3px rgba(201,23,30,.14)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-success",
+          "before": [
+            "#34d399"
+          ],
+          "after": [
+            "#5dac81"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-success-bg",
+          "before": [
+            "#ecfdf5"
+          ],
+          "after": [
+            "rgba(93,172,129,.1)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-success-ink",
+          "before": [
+            "#047857"
+          ],
+          "after": [
+            "#1b813e"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-success-line",
+          "before": [
+            "#a7f3d0"
+          ],
+          "after": [
+            "rgba(93,172,129,.32)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-teal-100",
+          "before": [
+            "#d7f2f0"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-200",
+          "before": [
+            "#b0e5e2"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-300",
+          "before": [
+            "#7fd1cd"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-400",
+          "before": [
+            "#3fb3ae"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-50",
+          "before": [
+            "#effaf9"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-500",
+          "before": [
+            "#0e9594"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-600",
+          "before": [
+            "#0b7a78"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-700",
+          "before": [
+            "#0b7372"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-800",
+          "before": [
+            "#0a5c5b"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-teal-900",
+          "before": [
+            "#083f3e"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-yamabuki",
+          "before": [],
+          "after": [
+            "#ffb11b"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-yamabuki-bg",
+          "before": [],
+          "after": [
+            "rgba(255,177,27,.12)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-yamabuki-ink",
+          "before": [],
+          "after": [
+            "#9b6e23",
+            "#f6c555"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-yamabuki-line",
+          "before": [],
+          "after": [
+            "rgba(255,177,27,.3)"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "6aa3df8007c3dc64971e4a41124c40756c06e958",
+      "date": "2026-11-03",
+      "subject": "fix: rebuild combobox for accessible multi-instance use",
+      "changes": [
+        {
+          "token": "--k-combo-check-icon",
+          "before": [],
+          "after": [
+            "14px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-chevron-bottom",
+          "before": [],
+          "after": [
+            "11px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-chevron-end",
+          "before": [],
+          "after": [
+            "11px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-focus-width",
+          "before": [],
+          "after": [
+            "2px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-gap",
+          "before": [],
+          "after": [
+            "6px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-icon",
+          "before": [],
+          "after": [
+            "15px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-input-end",
+          "before": [],
+          "after": [
+            "34px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-input-size",
+          "before": [],
+          "after": [
+            "16px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-max-height",
+          "before": [],
+          "after": [
+            "238px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-option-inline",
+          "before": [],
+          "after": [
+            "10px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-popup-padding",
+          "before": [],
+          "after": [
+            "5px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-shadow",
+          "before": [],
+          "after": [
+            "0 20px 44px -14px rgba(16,24,40,.22)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-sr-size",
+          "before": [],
+          "after": [
+            "1px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-width",
+          "before": [],
+          "after": [
+            "300px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-combo-z",
+          "before": [],
+          "after": [
+            "50"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "6f06c4633082259c03d3528c39b8d41dce6fef45",
+      "date": "2026-11-03",
+      "subject": "fix: complete button states and accent alias",
+      "changes": [
+        {
+          "token": "--k-btn-disabled-opacity",
+          "before": [],
+          "after": [
+            ".45"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-gap",
+          "before": [],
+          "after": [
+            "7px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-height-lg",
+          "before": [],
+          "after": [
+            "44px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-height-md",
+          "before": [],
+          "after": [
+            "38px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-height-sm",
+          "before": [],
+          "after": [
+            "32px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-inset",
+          "before": [],
+          "after": [
+            "inset 0 0 0 1px currentColor"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-pad-lg",
+          "before": [],
+          "after": [
+            "20px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-press",
+          "before": [],
+          "after": [
+            ".5px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-shadow",
+          "before": [],
+          "after": [
+            "0 1px 2px rgba(16,24,40,.05)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-spin-duration",
+          "before": [],
+          "after": [
+            "700ms"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-spin-turn",
+          "before": [],
+          "after": [
+            "360deg"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-spinner-border",
+          "before": [],
+          "after": [
+            "2px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-spinner-size",
+          "before": [],
+          "after": [
+            "14px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-spinner-track",
+          "before": [],
+          "after": [
+            "color-mix(in srgb,currentColor 35%,transparent)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-text-lg",
+          "before": [],
+          "after": [
+            "14px"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-btn-weight",
+          "before": [],
+          "after": [
+            "500"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "d51182e427f0a91d0cd924787e262eca999efef4",
+      "date": "2026-11-03",
+      "subject": "fix: align combobox interaction and public audit with measured results",
+      "changes": [
+        {
+          "token": "--k-btn-disabled-opacity",
+          "before": [
+            ".45"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-gap",
+          "before": [
+            "7px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-height-lg",
+          "before": [
+            "44px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-height-md",
+          "before": [
+            "38px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-height-sm",
+          "before": [
+            "32px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-inset",
+          "before": [
+            "inset 0 0 0 1px currentColor"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-pad-lg",
+          "before": [
+            "20px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-press",
+          "before": [
+            ".5px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-shadow",
+          "before": [
+            "0 1px 2px rgba(16,24,40,.05)"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-spin-duration",
+          "before": [
+            "700ms"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-spin-turn",
+          "before": [
+            "360deg"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-spinner-border",
+          "before": [
+            "2px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-spinner-size",
+          "before": [
+            "14px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-spinner-track",
+          "before": [
+            "color-mix(in srgb,currentColor 35%,transparent)"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-text-lg",
+          "before": [
+            "14px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-btn-weight",
+          "before": [
+            "500"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-check-icon",
+          "before": [
+            "14px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-chevron-bottom",
+          "before": [
+            "11px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-chevron-end",
+          "before": [
+            "11px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-focus-width",
+          "before": [
+            "2px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-gap",
+          "before": [
+            "6px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-icon",
+          "before": [
+            "15px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-input-end",
+          "before": [
+            "34px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-input-size",
+          "before": [
+            "16px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-max-height",
+          "before": [
+            "238px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-option-inline",
+          "before": [
+            "10px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-popup-padding",
+          "before": [
+            "5px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-shadow",
+          "before": [
+            "0 20px 44px -14px rgba(16,24,40,.22)"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-sr-size",
+          "before": [
+            "1px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-width",
+          "before": [
+            "300px"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-combo-z",
+          "before": [
+            "50"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-shadow-overlay",
+          "before": [],
+          "after": [
+            "0 18px 44px -14px rgba(16,24,40,.28)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-z-overlay",
+          "before": [],
+          "after": [
+            "50"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "1db2d128f1c5d13040c60976e1e1c9b2aa389e4c",
+      "date": "2026-11-04",
+      "subject": "fix: Mold検査の精度を改善し、Toast専用色をローカル化 (#17)",
+      "changes": [
+        {
+          "token": "--k-toast-ink",
+          "before": [
+            "#f4f4f5"
+          ],
+          "after": [],
+          "kind": "removed"
+        },
+        {
+          "token": "--k-toast-sub",
+          "before": [
+            "#a1a1aa"
+          ],
+          "after": [],
+          "kind": "removed"
+        }
+      ]
+    },
+    {
+      "commit": "ee7d1796fd8b8deb34340bee7d21eb8d04e59a3a",
+      "date": "2026-11-04",
+      "subject": "feat: 共通shapeトークンへ移行しLabグローと選択リングを維持 (#19)",
+      "changes": [
+        {
+          "token": "--k-backdrop",
+          "before": [],
+          "after": [
+            "color-mix(in srgb,var(--k-zinc-900) 45%,transparent)",
+            "color-mix(in srgb,var(--k-zinc-950) 70%,transparent)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-radius-full",
+          "before": [
+            "99px"
+          ],
+          "after": [
+            "999px"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-radius-lg",
+          "before": [
+            "12px"
+          ],
+          "after": [
+            "calc(var(--k-radius) * 1.5)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-radius-md",
+          "before": [],
+          "after": [
+            "var(--k-radius)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-radius-sm",
+          "before": [
+            "6px"
+          ],
+          "after": [
+            "calc(var(--k-radius) * 0.75)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-radius-xl",
+          "before": [],
+          "after": [
+            "calc(var(--k-radius) * 2)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-radius-xs",
+          "before": [],
+          "after": [
+            "calc(var(--k-radius) * 0.375)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ring-inset",
+          "before": [],
+          "after": [
+            "inset 0 0 0 1px currentColor"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ring-line",
+          "before": [],
+          "after": [
+            "0 0 0 1px var(--k-line)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ring-offset",
+          "before": [],
+          "after": [
+            "0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ring-selected",
+          "before": [],
+          "after": [
+            "0 0 0 2px var(--k-ink)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-shadow-modal",
+          "before": [],
+          "after": [
+            "0 30px 80px -20px rgba(0,0,0,.4)",
+            "0 30px 80px -20px rgba(0,0,0,.65)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-shadow-overlay",
+          "before": [
+            "0 18px 44px -14px rgba(16,24,40,.28)"
+          ],
+          "after": [
+            "var(--k-shadow-pop)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-shadow-pop",
+          "before": [],
+          "after": [
+            "0 20px 44px -14px rgba(16,24,40,.22)",
+            "0 20px 44px -14px rgba(0,0,0,.55)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-shadow-sm",
+          "before": [],
+          "after": [
+            "0 1px 4px rgba(16,24,40,.18)",
+            "0 1px 4px rgba(0,0,0,.35)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-shadow-xs",
+          "before": [],
+          "after": [
+            "0 1px 2px rgba(16,24,40,.05)",
+            "0 1px 2px rgba(0,0,0,.25)"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "c6982b885f9fd0331283c1b67991444bf9682922",
+      "date": "2026-11-05",
+      "subject": "共有テキスト色の役割分離と Foundry の自動コントラストを実装 (#20)",
+      "changes": [
+        {
+          "token": "--k-accent-contrast-surface",
+          "before": [],
+          "after": [
+            "var(--k-bg)",
+            "color(from var(--k-accent-luminance) srgb-linear calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)))"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-accent-hover",
+          "before": [],
+          "after": [
+            "color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface))"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-accent-ink",
+          "before": [
+            "#165e83",
+            "#81c7d4"
+          ],
+          "after": [
+            "#165e83",
+            "#81c7d4",
+            "oklch(from var(--k-accent) min(l, 0.48) c h)",
+            "oklch(from var(--k-accent) max(l, 0.78) c h)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-accent-luminance",
+          "before": [],
+          "after": [
+            "color(from var(--k-accent) srgb-linear calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722))"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-danger-ink",
+          "before": [
+            "#b7282e",
+            "#f596aa"
+          ],
+          "after": [
+            "#b7282e",
+            "#f28b90"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-ink-3",
+          "before": [
+            "#a1a1aa",
+            "#71717a"
+          ],
+          "after": [
+            "#71717a",
+            "#90909a"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-on-accent",
+          "before": [],
+          "after": [
+            "var(--k-ink)",
+            "color(from var(--k-accent-luminance) srgb-linear max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.0109600940065, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 1.18284201626))))"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-yamabuki-ink",
+          "before": [
+            "#9b6e23",
+            "#f6c555"
+          ],
+          "after": [
+            "#876019",
+            "#f6c555"
+          ],
+          "kind": "value"
+        }
+      ]
+    },
+    {
+      "commit": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+      "date": "2026-11-05",
+      "subject": "共有モーショントークンで duration・easing を統一し、倍率0の後片付けを保証 (#21)",
+      "changes": [
+        {
+          "token": "--k-dur-1",
+          "before": [
+            "130ms"
+          ],
+          "after": [
+            "var(--k-dur-fast)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-dur-2",
+          "before": [
+            "180ms"
+          ],
+          "after": [
+            "var(--k-dur-base)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-dur-3",
+          "before": [
+            "220ms"
+          ],
+          "after": [
+            "var(--k-dur-slow)"
+          ],
+          "kind": "value"
+        },
+        {
+          "token": "--k-dur-base",
+          "before": [],
+          "after": [
+            "calc(180ms * var(--k-mscale))"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-dur-fast",
+          "before": [],
+          "after": [
+            "calc(130ms * var(--k-mscale))"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-dur-slow",
+          "before": [],
+          "after": [
+            "calc(220ms * var(--k-mscale))"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ease-bounce",
+          "before": [],
+          "after": [
+            "cubic-bezier(.3,2.2,.45,1)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ease-in-out",
+          "before": [],
+          "after": [
+            "cubic-bezier(.6,0,.2,1)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ease-out",
+          "before": [],
+          "after": [
+            "var(--k-ease-in-out)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-ease-spring",
+          "before": [],
+          "after": [
+            "cubic-bezier(.3,1.2,.4,1)"
+          ],
+          "kind": "added"
+        },
+        {
+          "token": "--k-mscale",
+          "before": [],
+          "after": [
+            "1",
+            "0 !important"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "2fa7cdcd502557358f219cf42173047fb1577bde",
+      "date": "2026-11-05",
+      "subject": "残る color・border 違反を共通トークンへ置換 (#22)",
+      "changes": [
+        {
+          "token": "--k-tsutsuji",
+          "before": [],
+          "after": [
+            "#e95295"
+          ],
+          "kind": "added"
+        }
+      ]
+    },
+    {
+      "commit": "91a9ef1674a0c83949563c94b63d467f1316fa06",
+      "date": "2026-11-05",
+      "subject": "Version the shared mold and publish compatibility requirements and history",
+      "changes": [
+        {
+          "token": "--k-mold",
+          "before": [],
+          "after": [
+            "2"
+          ],
+          "kind": "added"
+        }
+      ]
+    }
+  ]
+}

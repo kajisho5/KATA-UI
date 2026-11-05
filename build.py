@@ -9,6 +9,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 sync_shape_tokens(ROOT)
+from tools.mold_release import config as mold_config, requires_component, version_line, sync_docs as sync_mold_docs, changelog_html, history as mold_history
+sync_mold_docs(ROOT)
+MOLD_CONFIG = mold_config(ROOT)
 DIST = ROOT / 'dist'
 RELEASE_VERSION = json.loads((ROOT / 'cli' / 'package.json').read_text())['version']
 
@@ -20,7 +23,8 @@ def distribution_header(path, content):
     kind, name = parts[:2]
     meta = json.loads((ROOT / kind / name / 'meta.json').read_text())
     version = meta.get('version', RELEASE_VERSION)
-    stamp = f'KATA {name} {version} — kata-ui.dev/{kind}/{name}'
+    requirement=requires_component(kind,name,ROOT)
+    stamp = f'KATA {name} {version} — kata-ui.dev/{kind}/{name} — requires mold >= {requirement}'
     if Path(path).suffix in ('.css', '.js'):
         return f'/* {stamp} */\n' + content
     if Path(path).suffix == '.html':
@@ -827,13 +831,14 @@ def registry_json(comps, blocks, templates=None):
         kind = {'registry:component':'components','registry:block':'blocks','registry:page':'templates'}.get(item['type'])
         if kind:
             item['audit'] = MOLD_ITEMS[kind + '/' + item['name']]
+            item['requiresMold']=requires_component(kind,item['name'],ROOT)
         for file in item['files']:
             file['content'] = distribution_header(file['path'], file['content'])
     return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': RELEASE_VERSION,
-                       'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
+                       'moldVersion': MOLD_CONFIG['moldVersion'], 'moldInstruction': version_line(ROOT), 'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
-    lines = ['# KATA UI', '', summary_block(MOLD_REPORT), '',
+    lines = ['# KATA UI', '', summary_block(MOLD_REPORT), '', version_line(ROOT), '',
              'Copy a button, form or table into your project. Edit the files yourself. No framework, no build step.', '',
              'KATA is framework-free: parts drop into plain HTML, Astro, Laravel, Django, Rails and templates unchanged. Components depend on tokens.css (design tokens) being loaded once.', '',
              '## Docs', '',
@@ -859,7 +864,7 @@ def llms_txt(comps, blocks, n_icons, templates=None):
     return '\n'.join(lines)
 
 def llms_full(comps, blocks, templates=None):
-    out = ['# KATA UI — full text', '', summary_block(MOLD_REPORT), '',
+    out = ['# KATA UI — full text', '', summary_block(MOLD_REPORT), '', version_line(ROOT), '',
            'Vanilla UI components: HTML, CSS and JS for every part, plus the design tokens.', '',
            '## Design tokens (tokens.css)', '', '```css', (ROOT / 'tokens.css').read_text(encoding='utf-8').strip(), '```', '']
     for c in comps:
@@ -2399,6 +2404,16 @@ DOCS = [
 
 ]
 
+next(d for d in DOCS if d[0]=='changelog')[3].insert(0, ('November 5, 2026 — Shared mold v2', 'Merged PRs #11 and #13–#22 added stricter checks, audit reporting and a CI ratchet. Recorded Mold Verified totals: '+ ' → '.join(str(x['passed'])+'/'+str(x['total']) for x in mold_history(ROOT)['auditMilestones']) + '; token-values reached 0. Combobox initialization and keyboard handling were rebuilt, shared text contrast was corrected, and reduced motion now leaves host application transitions intact. Mold v2 publishes token compatibility requirements.', None, None))
+
+DOCS += [
+ ('mold-changelog','Mold changelog','Versioned token API history, with git evidence.',[]),
+ ('update-mold','Update your mold','Upgrade an existing tokens.css without losing your customizations.',[
+  ('Check the installed version','Read the first line of your tokens.css, then compare it with the requires mold >= N header on the CSS or JS you are copying. A file without a mold header is legacy v1. Package version and mold version are separate.', 'head -n 1 path/to/tokens.css',None),
+  ('Download and compare','Keep a backup. Download v2 into a new temporary file; do not overwrite your working copy before reviewing the diff.', 'cp path/to/tokens.css path/to/tokens.css.backup\ncurl -fsSL https://kata-ui.dev/tokens.css -o /tmp/kata-tokens-v2.css\ndiff -u path/to/tokens.css /tmp/kata-tokens-v2.css',None),
+  ('Preserve local changes','If you edited tokens by hand, compare against the exact upstream revision you originally copied. Apply your theme overrides after the new mold rather than copying an old :root over it. Review the mold changelog; numbered durations now include the multiplier, so remove an extra multiplication. Do not restore removed combo/toast tokens at root. An unknown original revision needs a manual three-way review; do not guess.', 'git diff --no-index path/to/tokens.css.backup /tmp/kata-tokens-v2.css',None),
+  ('Replace and verify','After reviewing the diff, replace tokens.css and reapply reviewed overrides. Test light and dark, focus states, custom palettes, motion multiplier zero and reduced motion. Keep the backup until those checks pass. Reload uncached assets to avoid mixing old tokens with new components.', 'cp /tmp/kata-tokens-v2.css path/to/tokens.css', 'The CLI compatibility warning is pending the overlapping CLI safety PRs #1 and #3. Until it is merged, check headers manually; the CLI does not protect this upgrade yet.')])]
+
 DOC_STYLE = """<style>
 .dc h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
 .dc .lead{margin-top:10px;color:var(--ink2);font-size:15px;line-height:1.85;max-width:64ch;letter-spacing:.012em}
@@ -2406,7 +2421,7 @@ DOC_STYLE = """<style>
 .dc h2{font-size:18px;font-weight:600;letter-spacing:-.015em}
 .dc p{margin-top:9px;font-size:14px;line-height:1.9;color:var(--ink2);letter-spacing:.012em}
 .dc pre{margin-top:12px;border:1px solid var(--hair);border-radius:10px;background:var(--soft);padding:13px 15px;font-family:var(--mono);font-size:12px;line-height:1.75;overflow:auto;color:var(--ink)}
-.dcgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.mold-history{overflow:auto;max-inline-size:100%}\n.mold-history table{border-collapse:collapse;width:100%;font-size:var(--k-text-sm)}\n.mold-history th,.mold-history td{text-align:start;vertical-align:top;border-block-end:1px solid var(--k-line);padding:var(--k-space-2)}\n.mold-history code{white-space:normal;overflow-wrap:anywhere}\n.dcgrid{margin-top:24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .dccard{border:1px solid var(--hair);border-radius:12px;background:var(--paper);padding:17px;text-decoration:none;color:var(--ink);display:block}
 .dccard:hover{border-color:var(--ink3)}
 .dccard h3{font-size:15px;font-weight:600}
@@ -2433,7 +2448,7 @@ def docs_index():
 def doc_page(slug):
     entry = next(d for d in DOCS if d[0] == slug)
     _, title, desc, sections = entry
-    secs = []
+    secs = [changelog_html(ROOT)] if slug=='mold-changelog' else []
     for h, p1, code, p2 in sections:
         chunk = f'<section><h2>{esc(h)}</h2><p>{esc(p1)}</p>'
         if code:

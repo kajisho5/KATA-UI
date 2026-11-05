@@ -11,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def values(tokens,mode):
     result={}
     if mode=='root':
+        if 'moldVersion' in tokens:result['--k-mold']=str(tokens['moldVersion'])
         result.update({'--k-'+name:value for name,value in tokens['color'].get('fixed',{}).items()})
         motion=tokens['motion']
         result[motion['multiplier']]=str(motion['defaultMultiplier'])
@@ -44,6 +45,10 @@ def sync(root=ROOT,check=False):
         start='/* relative-color-roles:start */';end='/* relative-color-roles:end */'
         if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing relative color adapter region')
         new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+relative_css(tokens['contrast'])+'\n'+end,new,flags=re.S)
+    if 'moldVersion' in tokens:
+        header=f"/* KATA mold v{tokens['moldVersion']} — {tokens['moldDate']} — kata-ui.dev/docs/mold-changelog */"
+        new=re.sub(r'^/\* KATA mold v[^\n]+\*/\n','',new)
+        new=header+'\n'+new
     if old!=new:
         if check:raise ValueError('tokens.css shape adapter is stale; run python3 -m tools.sync_shape_tokens')
         path.write_text(new)

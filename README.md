@@ -56,6 +56,10 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 
 ```bash
 # 1. write the design tokens into ./kata (every part reads them)
+
+<!-- mold-version:start -->
+moldVersion: 2. Before copying a part, check the tokens.css mold header against requiresMold; update the mold before using newer parts. Unversioned tokens.css is legacy v1.
+<!-- mold-version:end -->
 npx @kajisho5/kataui init
 
 # 2. add parts — dependencies come along on their own

@@ -34,7 +34,9 @@ jobs:
       - name: Build the website
         run: python3 -W error::SyntaxWarning build.py
       - name: Verify generated audit surfaces
-        run: python3 -W error::SyntaxWarning -m tools.mold_publish --check
+        run: |
+          python3 -W error::SyntaxWarning -m tools.mold_publish --check
+          python3 -W error::SyntaxWarning -m tools.verify_mold_distribution
       - uses: actions/upload-artifact@v4
         if: always()
         with:

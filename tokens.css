@@ -1,6 +1,7 @@
 /* KATA UI — design tokens. Components reference ONLY these variables. */
 :root{
   /* shape-tokens:root:start */
+  --k-tsutsuji:#e95295;
   --k-mscale:1;
   --k-dur-fast:calc(130ms * var(--k-mscale));
   --k-dur-base:calc(180ms * var(--k-mscale));

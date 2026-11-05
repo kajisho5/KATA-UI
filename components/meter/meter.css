@@ -1,7 +1,7 @@
 /* KATA Meter */
 .k-meter-track{position:relative;height:8px;border-radius:var(--k-radius-full);background:var(--k-seg);overflow:hidden}
 .k-meter-fill{height:100%;border-radius:var(--k-radius-full);background:var(--k-ink)}
-.k-meter-track::after{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:10% 100%}
+.k-meter-track::after{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,color-mix(in srgb,var(--k-zinc-50) 50%,transparent) 1px,transparent 1px);background-size:10% 100%}
 .k-meter[data-tone="warning"] .k-meter-fill{background:var(--k-yamabuki)}
 .k-meter[data-tone="critical"] .k-meter-fill{background:var(--k-danger)}
 .k-meter-scale{display:flex;justify-content:space-between;margin-top:5px;font-family:var(--k-mono);font-size:10.5px;color:var(--k-ink-3)}

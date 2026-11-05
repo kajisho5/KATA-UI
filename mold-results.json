@@ -2,8 +2,8 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 88,
-    "failed": 76,
+    "passed": 94,
+    "failed": 70,
     "total": 164,
     "warnings": 318,
     "findings": {
@@ -16,19 +16,19 @@
       "reduced-motion": 0,
       "shared-token-scope": 0,
       "spacing-values": 892,
-      "token-values": 20,
+      "token-values": 0,
       "type-values": 638,
       "variant-hover": 0
     },
     "by_profile": {
       "ui": {
-        "passed": 59,
-        "failed": 62,
+        "passed": 61,
+        "failed": 60,
         "total": 121
       },
       "lab": {
-        "passed": 29,
-        "failed": 14,
+        "passed": 33,
+        "failed": 10,
         "total": 43
       }
     }
@@ -4444,26 +4444,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/chip/chip.css: background: rgba(255,255,255,.16) [color] — raw color: rgba(255,255,255,.16)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/chip/chip.css",
-              "property": "background",
-              "value": "rgba(255,255,255,.16)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(255,255,255,.16)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -4779,36 +4765,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/color-picker/color-picker.css: color: #fff [color] — raw color: #fff",
-            "components/color-picker/preview.html: background: hsl(175 84% 32%) [color] — raw color: hsl(175 84% 32%)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/color-picker/color-picker.css",
-              "property": "color",
-              "value": "#fff",
-              "kind": "color",
-              "reasons": [
-                "raw color: #fff"
-              ]
-            },
-            {
-              "path": "components/color-picker/preview.html",
-              "property": "background",
-              "value": "hsl(175 84% 32%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(175 84% 32%)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -5381,26 +5343,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/comparison-slider/comparison-slider.css: background: rgba(24,24,27,.72) [color] — raw color: rgba(24,24,27,.72)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/comparison-slider/comparison-slider.css",
-              "property": "background",
-              "value": "rgba(24,24,27,.72)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(24,24,27,.72)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -5857,7 +5805,7 @@
     {
       "id": "components/converge",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -5873,117 +5821,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/converge/converge.css: stroke: hsl(335 85% 68%) [color] — raw color: hsl(335 85% 68%)",
-            "components/converge/converge.css: stroke: hsl(32 95% 60%) [color] — raw color: hsl(32 95% 60%)",
-            "components/converge/converge.css: stroke: hsl(205 90% 63%) [color] — raw color: hsl(205 90% 63%)",
-            "components/converge/converge.css: fill: hsl(335 85% 68%) [color] — raw color: hsl(335 85% 68%)",
-            "components/converge/converge.css: fill: hsl(32 95% 60%) [color] — raw color: hsl(32 95% 60%)",
-            "components/converge/converge.css: fill: hsl(205 90% 63%) [color] — raw color: hsl(205 90% 63%)",
-            "components/converge/converge.css: background: radial-gradient(circle at 38% 32%,color-mix(in srgb,hsl(335 85% 68%) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,hsl(205 90% 63%) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%) [color] — raw color: hsl(335 85% 68%); raw color: hsl(205 90% 63%)",
-            "components/converge/preview.html: color: hsl(335 85% 72%) [color] — raw color: hsl(335 85% 72%)",
-            "components/converge/preview.html: color: hsl(32 95% 64%) [color] — raw color: hsl(32 95% 64%)",
-            "components/converge/preview.html: color: hsl(205 90% 66%) [color] — raw color: hsl(205 90% 66%)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/converge/converge.css",
-              "property": "stroke",
-              "value": "hsl(335 85% 68%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(335 85% 68%)"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "stroke",
-              "value": "hsl(32 95% 60%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(32 95% 60%)"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "stroke",
-              "value": "hsl(205 90% 63%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(205 90% 63%)"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "fill",
-              "value": "hsl(335 85% 68%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(335 85% 68%)"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "fill",
-              "value": "hsl(32 95% 60%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(32 95% 60%)"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "fill",
-              "value": "hsl(205 90% 63%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(205 90% 63%)"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "background",
-              "value": "radial-gradient(circle at 38% 32%,color-mix(in srgb,hsl(335 85% 68%) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,hsl(205 90% 63%) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(335 85% 68%)",
-                "raw color: hsl(205 90% 63%)"
-              ]
-            },
-            {
-              "path": "components/converge/preview.html",
-              "property": "color",
-              "value": "hsl(335 85% 72%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(335 85% 72%)"
-              ]
-            },
-            {
-              "path": "components/converge/preview.html",
-              "property": "color",
-              "value": "hsl(32 95% 64%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(32 95% 64%)"
-              ]
-            },
-            {
-              "path": "components/converge/preview.html",
-              "property": "color",
-              "value": "hsl(205 90% 66%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: hsl(205 90% 66%)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 10
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -13415,7 +13258,7 @@
     {
       "id": "components/meteors",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13431,26 +13274,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/meteors/meteors.css: background: linear-gradient(to right, rgba(255,255,255,.75), transparent) [color] — raw color: rgba(255,255,255,.75)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/meteors/meteors.css",
-              "property": "background",
-              "value": "linear-gradient(to right, rgba(255,255,255,.75), transparent)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(255,255,255,.75)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -13577,7 +13406,7 @@
     {
       "id": "components/meter",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13593,26 +13422,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/meter/meter.css: background-image: linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px) [color] — raw color: rgba(255,255,255,.5)"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/meter/meter.css",
-              "property": "background-image",
-              "value": "linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(255,255,255,.5)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -19594,7 +19409,7 @@
     {
       "id": "components/spotlight",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -19610,37 +19425,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/spotlight/spotlight.css: background: radial-gradient(200px circle at var(--mx) var(--my),rgba(255,255,255,.17),rgba(255,255,255,.05) 55%,transparent 72%) [color] — raw color: rgba(255,255,255,.17); raw color: rgba(255,255,255,.05)",
-            "components/spotlight/spotlight.css: color: rgba(255,255,255,.3) [color] — raw color: rgba(255,255,255,.3)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/spotlight/spotlight.css",
-              "property": "background",
-              "value": "radial-gradient(200px circle at var(--mx) var(--my),rgba(255,255,255,.17),rgba(255,255,255,.05) 55%,transparent 72%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(255,255,255,.17)",
-                "raw color: rgba(255,255,255,.05)"
-              ]
-            },
-            {
-              "path": "components/spotlight/spotlight.css",
-              "property": "color",
-              "value": "rgba(255,255,255,.3)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(255,255,255,.3)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -21794,7 +21584,7 @@
     {
       "id": "components/tilt-card",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -21810,26 +21600,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tilt-card/tilt-card.css: background: radial-gradient(340px circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.14), transparent 65%) [color] — raw color: rgba(255,255,255,.14)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/tilt-card/tilt-card.css",
-              "property": "background",
-              "value": "radial-gradient(340px circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.14), transparent 65%)",
-              "kind": "color",
-              "reasons": [
-                "raw color: rgba(255,255,255,.14)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "color": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22723,7 +22499,7 @@
     {
       "id": "components/tooltip",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -22739,26 +22515,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tooltip/tooltip.css: border: 5px solid transparent [border] — raw border: 5px"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tooltip/tooltip.css",
-              "property": "border",
-              "value": "5px solid transparent",
-              "kind": "border",
-              "reasons": [
-                "raw border: 5px"
-              ]
-            }
-          ],
-          "by_kind": {
-            "border": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",

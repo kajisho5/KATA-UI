@@ -1,0 +1,3492 @@
+{
+  "beforeRef": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
+  "parts": [
+    "chip",
+    "color-picker",
+    "comparison-slider",
+    "converge",
+    "meteors",
+    "meter",
+    "spotlight",
+    "tilt-card",
+    "tooltip"
+  ],
+  "facts": {
+    "before": {
+      "light": {
+        "chip": [
+          {
+            "element": "span.k-chip",
+            "index": 1,
+            "text": "Design",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.k-chip",
+            "index": 5,
+            "text": "Vanilla",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.k-chip",
+            "index": 9,
+            "text": "Accessibility",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.k-chip",
+            "index": 13,
+            "text": "Motion",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "color-picker": [
+          {
+            "element": "div.k-cp-out",
+            "index": 16,
+            "text": "Selected",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "code.",
+            "index": 18,
+            "text": "#30A3BB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "comparison-slider": [
+          {
+            "element": "span.tag l",
+            "index": 17,
+            "text": "BEFORE",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              86.09019607843138,
+              86.09019607843138,
+              87.53333333333335
+            ],
+            "ratio": 7.317288094381068
+          },
+          {
+            "element": "span.tag r",
+            "index": 18,
+            "text": "AFTER",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              86.09019607843138,
+              86.09019607843138,
+              87.53333333333335
+            ],
+            "ratio": 7.317288094381068
+          },
+          {
+            "element": "p.",
+            "index": 24,
+            "text": "One scene, drawn twice \u2014 flat zinc before, lit after. Drag, or focus and use the arrow keys.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          }
+        ],
+        "converge": [
+          {
+            "element": "span.lb",
+            "index": 41,
+            "text": "Calendar",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 46,
+            "text": "Inbox",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 50,
+            "text": "Chat",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          }
+        ],
+        "meteors": [
+          {
+            "element": "h3.",
+            "index": 2,
+            "text": "Ship it under a night sky",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "The launch page for a fictional star registry. The sky is the part; the words are yours.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          }
+        ],
+        "meter": [
+          {
+            "element": "span.",
+            "index": 3,
+            "text": "Storage",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.",
+            "index": 4,
+            "text": "72 / 100 GB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "span.",
+            "index": 9,
+            "text": "0",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "25",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 11,
+            "text": "50",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 12,
+            "text": "75",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "100",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 16,
+            "text": "Export queue",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.",
+            "index": 17,
+            "text": "88%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "span.",
+            "index": 23,
+            "text": "Failed jobs",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.",
+            "index": 24,
+            "text": "96%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          }
+        ],
+        "spotlight": [
+          {
+            "element": "p.",
+            "index": 2,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              83.28235294117647,
+              83.28235294117647,
+              84.67843137254901
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 2.6020203011071756
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              83.28235294117647,
+              83.28235294117647,
+              84.67843137254901
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 2.6020203011071756
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              83.28235294117647,
+              83.28235294117647,
+              84.67843137254901
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 2.6020203011071756
+          },
+          {
+            "element": "p.",
+            "index": 7,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 8,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 9,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          }
+        ],
+        "tilt-card": [
+          {
+            "element": "h3.",
+            "index": 4,
+            "text": "Northwind Pro",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 5,
+            "text": "The whole workspace, one payment. This card is the part \u2014 tip it.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "span.",
+            "index": 7,
+            "text": "Seats",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 8,
+            "text": "Unlimited",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "Updates",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 11,
+            "text": "Lifetime",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "Price",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 14,
+            "text": "$129 once",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "Copy",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "\"Copy link\"",
+            "kind": "::after",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "text": "Settings",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "text": "Save",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      },
+      "dark": {
+        "chip": [
+          {
+            "element": "span.k-chip",
+            "index": 1,
+            "text": "Design",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.k-chip",
+            "index": 5,
+            "text": "Vanilla",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.k-chip",
+            "index": 9,
+            "text": "Accessibility",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.k-chip",
+            "index": 13,
+            "text": "Motion",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "color-picker": [
+          {
+            "element": "div.k-cp-out",
+            "index": 16,
+            "text": "Selected",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "code.",
+            "index": 18,
+            "text": "#30A3BB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "comparison-slider": [
+          {
+            "element": "span.tag l",
+            "index": 17,
+            "text": "BEFORE",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              28.176470588235293,
+              28.176470588235293,
+              30.454901960784316
+            ],
+            "ratio": 16.978332640869226
+          },
+          {
+            "element": "span.tag r",
+            "index": 18,
+            "text": "AFTER",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              28.176470588235293,
+              28.176470588235293,
+              30.454901960784316
+            ],
+            "ratio": 16.978332640869226
+          },
+          {
+            "element": "p.",
+            "index": 24,
+            "text": "One scene, drawn twice \u2014 flat zinc before, lit after. Drag, or focus and use the arrow keys.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          }
+        ],
+        "converge": [
+          {
+            "element": "span.lb",
+            "index": 41,
+            "text": "Calendar",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 46,
+            "text": "Inbox",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 50,
+            "text": "Chat",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          }
+        ],
+        "meteors": [
+          {
+            "element": "h3.",
+            "index": 2,
+            "text": "Ship it under a night sky",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "The launch page for a fictional star registry. The sky is the part; the words are yours.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          }
+        ],
+        "meter": [
+          {
+            "element": "span.",
+            "index": 3,
+            "text": "Storage",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.",
+            "index": 4,
+            "text": "72 / 100 GB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "span.",
+            "index": 9,
+            "text": "0",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "25",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 11,
+            "text": "50",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 12,
+            "text": "75",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "100",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 16,
+            "text": "Export queue",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.",
+            "index": 17,
+            "text": "88%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "span.",
+            "index": 23,
+            "text": "Failed jobs",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.",
+            "index": 24,
+            "text": "96%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          }
+        ],
+        "spotlight": [
+          {
+            "element": "p.",
+            "index": 2,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              83.28235294117647,
+              83.28235294117647,
+              84.67843137254901
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 2.6020203011071756
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              83.28235294117647,
+              83.28235294117647,
+              84.67843137254901
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 2.6020203011071756
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              83.28235294117647,
+              83.28235294117647,
+              84.67843137254901
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 2.6020203011071756
+          },
+          {
+            "element": "p.",
+            "index": 7,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 8,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 9,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          }
+        ],
+        "tilt-card": [
+          {
+            "element": "h3.",
+            "index": 4,
+            "text": "Northwind Pro",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 5,
+            "text": "The whole workspace, one payment. This card is the part \u2014 tip it.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "span.",
+            "index": 7,
+            "text": "Seats",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 8,
+            "text": "Unlimited",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "Updates",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 11,
+            "text": "Lifetime",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "Price",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 14,
+            "text": "$129 once",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "Copy",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "\"Copy link\"",
+            "kind": "::after",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "text": "Settings",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "text": "Save",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      }
+    },
+    "after": {
+      "light": {
+        "chip": [
+          {
+            "element": "span.k-chip",
+            "index": 1,
+            "text": "Design",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.k-chip",
+            "index": 5,
+            "text": "Vanilla",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.k-chip",
+            "index": 9,
+            "text": "Accessibility",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.k-chip",
+            "index": 13,
+            "text": "Motion",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "color-picker": [
+          {
+            "element": "div.k-cp-out",
+            "index": 16,
+            "text": "Selected",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "code.",
+            "index": 18,
+            "text": "#30A3BB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          }
+        ],
+        "comparison-slider": [
+          {
+            "element": "span.tag l",
+            "index": 17,
+            "text": "BEFORE",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              86.09019607843138,
+              86.09019607843138,
+              87.53333333333335
+            ],
+            "ratio": 7.317288094381068
+          },
+          {
+            "element": "span.tag r",
+            "index": 18,
+            "text": "AFTER",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              86.09019607843138,
+              86.09019607843138,
+              87.53333333333335
+            ],
+            "ratio": 7.317288094381068
+          },
+          {
+            "element": "p.",
+            "index": 24,
+            "text": "One scene, drawn twice \u2014 flat zinc before, lit after. Drag, or focus and use the arrow keys.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          }
+        ],
+        "converge": [
+          {
+            "element": "span.lb",
+            "index": 41,
+            "text": "Calendar",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 46,
+            "text": "Inbox",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 50,
+            "text": "Chat",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          }
+        ],
+        "meteors": [
+          {
+            "element": "h3.",
+            "index": 2,
+            "text": "Ship it under a night sky",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "The launch page for a fictional star registry. The sky is the part; the words are yours.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          }
+        ],
+        "meter": [
+          {
+            "element": "span.",
+            "index": 3,
+            "text": "Storage",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.",
+            "index": 4,
+            "text": "72 / 100 GB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "span.",
+            "index": 9,
+            "text": "0",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "25",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 11,
+            "text": "50",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 12,
+            "text": "75",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "100",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              113,
+              113,
+              122
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 4.832895561154151
+          },
+          {
+            "element": "span.",
+            "index": 16,
+            "text": "Export queue",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.",
+            "index": 17,
+            "text": "88%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          },
+          {
+            "element": "span.",
+            "index": 23,
+            "text": "Failed jobs",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "span.",
+            "index": 24,
+            "text": "96%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              82,
+              82,
+              91
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 7.729820868495424
+          }
+        ],
+        "spotlight": [
+          {
+            "element": "p.",
+            "index": 2,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "p.",
+            "index": 7,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 8,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 9,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          }
+        ],
+        "tilt-card": [
+          {
+            "element": "h3.",
+            "index": 4,
+            "text": "Northwind Pro",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 5,
+            "text": "The whole workspace, one payment. This card is the part \u2014 tip it.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "span.",
+            "index": 7,
+            "text": "Seats",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 8,
+            "text": "Unlimited",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "Updates",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 11,
+            "text": "Lifetime",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "Price",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 14,
+            "text": "$129 once",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "Copy",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              247,
+              247,
+              247
+            ],
+            "ratio": 16.53751793170972
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "\"Copy link\"",
+            "kind": "::after",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "text": "Settings",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              255,
+              255,
+              255
+            ],
+            "ratio": 17.71676507806213
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "text": "Save",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 17.71676507806213
+          }
+        ]
+      },
+      "dark": {
+        "chip": [
+          {
+            "element": "span.k-chip",
+            "index": 1,
+            "text": "Design",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.k-chip",
+            "index": 5,
+            "text": "Vanilla",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.k-chip",
+            "index": 9,
+            "text": "Accessibility",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.k-chip",
+            "index": 13,
+            "text": "Motion",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "color-picker": [
+          {
+            "element": "div.k-cp-out",
+            "index": 16,
+            "text": "Selected",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "code.",
+            "index": 18,
+            "text": "#30A3BB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          }
+        ],
+        "comparison-slider": [
+          {
+            "element": "span.tag l",
+            "index": 17,
+            "text": "BEFORE",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              28.176470588235293,
+              28.176470588235293,
+              30.454901960784316
+            ],
+            "ratio": 16.978332640869226
+          },
+          {
+            "element": "span.tag r",
+            "index": 18,
+            "text": "AFTER",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              28.176470588235293,
+              28.176470588235293,
+              30.454901960784316
+            ],
+            "ratio": 16.978332640869226
+          },
+          {
+            "element": "p.",
+            "index": 24,
+            "text": "One scene, drawn twice \u2014 flat zinc before, lit after. Drag, or focus and use the arrow keys.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          }
+        ],
+        "converge": [
+          {
+            "element": "span.lb",
+            "index": 41,
+            "text": "Calendar",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 46,
+            "text": "Inbox",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          },
+          {
+            "element": "span.lb",
+            "index": 50,
+            "text": "Chat",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              34.08235294117647,
+              34.08235294117647,
+              35.87843137254902
+            ],
+            "ratio": 15.868494790377095
+          }
+        ],
+        "meteors": [
+          {
+            "element": "h3.",
+            "index": 2,
+            "text": "Ship it under a night sky",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "The launch page for a fictional star registry. The sky is the part; the words are yours.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          }
+        ],
+        "meter": [
+          {
+            "element": "span.",
+            "index": 3,
+            "text": "Storage",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.",
+            "index": 4,
+            "text": "72 / 100 GB",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "span.",
+            "index": 9,
+            "text": "0",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "25",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 11,
+            "text": "50",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 12,
+            "text": "75",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "100",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              144,
+              144,
+              154
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 5.6033747235814975
+          },
+          {
+            "element": "span.",
+            "index": 16,
+            "text": "Export queue",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.",
+            "index": 17,
+            "text": "88%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          },
+          {
+            "element": "span.",
+            "index": 23,
+            "text": "Failed jobs",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "span.",
+            "index": 24,
+            "text": "96%",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 6.912758604004126
+          }
+        ],
+        "spotlight": [
+          {
+            "element": "p.",
+            "index": 2,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "p.",
+            "index": 3,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "p.",
+            "index": 4,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "p.",
+            "index": 7,
+            "text": "Everything is here. It is just dark.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 8,
+            "text": "Move the light across the panel. The words do not fade in \u2014 they were always written; the beam is what finds them. What the light has not reached stays a silhouette.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 9,
+            "text": "TOKENS\u2002\u00b7\u2002PARTS\u2002\u00b7\u2002BLOCKS\u2002\u00b7\u2002TEMPLATES",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          }
+        ],
+        "tilt-card": [
+          {
+            "element": "h3.",
+            "index": 4,
+            "text": "Northwind Pro",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              255,
+              255,
+              255
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 19.895357656776593
+          },
+          {
+            "element": "p.",
+            "index": 5,
+            "text": "The whole workspace, one payment. This card is the part \u2014 tip it.",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              161,
+              161,
+              170
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 7.762805693682826
+          },
+          {
+            "element": "span.",
+            "index": 7,
+            "text": "Seats",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 8,
+            "text": "Unlimited",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 10,
+            "text": "Updates",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 11,
+            "text": "Lifetime",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "span.",
+            "index": 13,
+            "text": "Price",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          },
+          {
+            "element": "b.",
+            "index": 14,
+            "text": "$129 once",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              212,
+              212,
+              216
+            ],
+            "background": [
+              9,
+              9,
+              11
+            ],
+            "ratio": 13.460987437168082
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "Copy",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              39,
+              39,
+              42
+            ],
+            "ratio": 13.550818000872297
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "text": "\"Copy link\"",
+            "kind": "::after",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "text": "Settings",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              244,
+              244,
+              245
+            ],
+            "background": [
+              24,
+              24,
+              27
+            ],
+            "ratio": 16.118381484528566
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "text": "Save",
+            "kind": "text",
+            "disabled": false,
+            "opacity": "1",
+            "foreground": [
+              24,
+              24,
+              27
+            ],
+            "background": [
+              244,
+              244,
+              245
+            ],
+            "ratio": 16.118381484528566
+          }
+        ]
+      }
+    }
+  },
+  "pixelDiffs": {
+    "light": {
+      "chip": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "color-picker": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "comparison-slider": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "converge": {
+        "changed_pixels": 35761,
+        "bounds": [
+          59,
+          32,
+          396,
+          228
+        ]
+      },
+      "meteors": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "meter": {
+        "changed_pixels": 234,
+        "bounds": [
+          32,
+          56,
+          411,
+          181
+        ]
+      },
+      "spotlight": {
+        "changed_pixels": 28402,
+        "bounds": [
+          45,
+          32,
+          510,
+          251
+        ]
+      },
+      "tilt-card": {
+        "changed_pixels": 33271,
+        "bounds": [
+          285,
+          42,
+          615,
+          303
+        ]
+      },
+      "tooltip": {
+        "changed_pixels": 0,
+        "bounds": null
+      }
+    },
+    "dark": {
+      "chip": {
+        "changed_pixels": 305,
+        "bounds": [
+          93,
+          38,
+          112,
+          57
+        ]
+      },
+      "color-picker": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "comparison-slider": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "converge": {
+        "changed_pixels": 35761,
+        "bounds": [
+          59,
+          32,
+          396,
+          228
+        ]
+      },
+      "meteors": {
+        "changed_pixels": 0,
+        "bounds": null
+      },
+      "meter": {
+        "changed_pixels": 234,
+        "bounds": [
+          32,
+          56,
+          411,
+          181
+        ]
+      },
+      "spotlight": {
+        "changed_pixels": 28402,
+        "bounds": [
+          45,
+          32,
+          510,
+          251
+        ]
+      },
+      "tilt-card": {
+        "changed_pixels": 33271,
+        "bounds": [
+          285,
+          42,
+          615,
+          303
+        ]
+      },
+      "tooltip": {
+        "changed_pixels": 0,
+        "bounds": null
+      }
+    }
+  },
+  "errors": []
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 88,
+    "passed": 94,
     "total": 164
   },
   "items": [
@@ -167,7 +167,7 @@
     },
     {
       "id": "components/converge",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -377,12 +377,12 @@
     },
     {
       "id": "components/meteors",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
       "id": "components/meter",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -547,7 +547,7 @@
     },
     {
       "id": "components/spotlight",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -607,7 +607,7 @@
     },
     {
       "id": "components/tilt-card",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -632,7 +632,7 @@
     },
     {
       "id": "components/tooltip",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

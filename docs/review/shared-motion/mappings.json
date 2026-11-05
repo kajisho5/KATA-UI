@@ -10,7 +10,7 @@
       "file": "components/accordion-gallery/accordion-gallery.css",
       "property": "transition",
       "before": "flex .55s cubic-bezier(.6,0,.2,1)",
-      "after": "flex calc(.55s * var(--k-mscale)) var(--k-ease-out)"
+      "after": "flex calc(.55s * var(--k-mscale)) var(--k-ease-in-out)"
     },
     {
       "file": "components/accordion-gallery/accordion-gallery.css",
@@ -256,7 +256,7 @@
       "file": "components/liquid-button/liquid-button.css",
       "property": "transition",
       "before": "transform .65s cubic-bezier(.5,0,.2,1)",
-      "after": "transform calc(.65s * var(--k-mscale)) var(--k-ease-out)"
+      "after": "transform calc(.65s * var(--k-mscale)) var(--k-ease-in-out)"
     },
     {
       "file": "components/liquid-button/liquid-button.css",
@@ -304,7 +304,7 @@
       "file": "components/noren/noren.css",
       "property": "transition",
       "before": "transform .5s cubic-bezier(.4,0,.2,1)",
-      "after": "transform calc(.5s * var(--k-mscale)) var(--k-ease-out)"
+      "after": "transform calc(.5s * var(--k-mscale)) var(--k-ease-in-out)"
     },
     {
       "file": "components/noren/noren.css",
@@ -634,7 +634,7 @@
       "file": "components/word-rotate/word-rotate.css",
       "property": "transition",
       "before": "transform .55s cubic-bezier(.65,0,.2,1)",
-      "after": "transform calc(.55s * var(--k-mscale)) var(--k-ease-out)"
+      "after": "transform calc(.55s * var(--k-mscale)) var(--k-ease-in-out)"
     },
     {
       "file": "blocks/integrations/integrations.css",
@@ -657,18 +657,18 @@
   ],
   "easings": {
     "cubic-bezier(.3,.7,.3,1)": "--k-ease",
-    "cubic-bezier(.6,0,.2,1)": "--k-ease-out",
+    "cubic-bezier(.6,0,.2,1)": "--k-ease-in-out",
     "cubic-bezier(.2,.6,.2,1)": "--k-ease",
     "cubic-bezier(.3,2.3,.4,1)": "--k-ease-bounce",
     "cubic-bezier(.6,-0.1,.2,1.25)": "--k-ease-spring",
     "cubic-bezier(.2,1.6,.4,1)": "--k-ease-spring",
     "cubic-bezier(.3,2.4,.45,1)": "--k-ease-bounce",
     "cubic-bezier(.3,2.2,.45,1)": "--k-ease-bounce",
-    "cubic-bezier(.5,0,.2,1)": "--k-ease-out",
+    "cubic-bezier(.5,0,.2,1)": "--k-ease-in-out",
     "cubic-bezier(.2,.8,.25,1.2)": "--k-ease-spring",
-    "cubic-bezier(.4,0,.2,1)": "--k-ease-out",
+    "cubic-bezier(.4,0,.2,1)": "--k-ease-in-out",
     "cubic-bezier(.2,.7,.2,1)": "--k-ease",
     "cubic-bezier(.3,1.2,.4,1)": "--k-ease-spring",
-    "cubic-bezier(.65,0,.2,1)": "--k-ease-out"
+    "cubic-bezier(.65,0,.2,1)": "--k-ease-in-out"
   }
 }

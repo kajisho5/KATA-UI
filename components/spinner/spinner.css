@@ -3,4 +3,4 @@
 .k-spinner[data-size="sm"]{width:14px;height:14px;border-width:2px}
 .k-spinner[data-size="lg"]{width:26px;height:26px;border-width:3px}
 @keyframes k-spin{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion: reduce){.k-spinner{animation-duration:calc(1.6s * var(--k-mscale))}}
+@media (prefers-reduced-motion: reduce){.k-spinner{animation:none}}

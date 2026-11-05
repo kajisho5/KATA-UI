@@ -18,13 +18,13 @@ Mold **53 / 164 → 88 / 164**; UI **42 / 121 → 59 / 121**, Lab **11 / 43 → 
 | --k-dur-2 | var(--k-dur-base) |
 | --k-dur-3 | var(--k-dur-slow) |
 | --k-ease | cubic-bezier(.3,.7,.3,1) (unchanged) |
-| --k-ease-out | cubic-bezier(.6,0,.2,1) |
+| --k-ease-in-out | cubic-bezier(.6,0,.2,1) |
 | --k-ease-spring | cubic-bezier(.3,1.2,.4,1) |
 | --k-ease-bounce | cubic-bezier(.3,2.2,.45,1) |
 
-Foundry writes the existing --k-mscale. Its slider now covers 0–2, including a persisted zero; saved zero is no longer skipped by a truthy check. Design-system samples use the generated tokens and list all four named curves. Foundry also displays the effective fast/base/slow times from canonical JSON. Its actual scale 2, persisted zero and OS reduced-motion override were checked on the generated design-system page (foundry.json). The three added curves distinguish exits, gentle overshoot, and pronounced Lab overshoot. Existing --k-ease is retained.
+Foundry writes the existing --k-mscale. Its slider now covers 0–2, including a persisted zero; saved zero is no longer skipped by a truthy check. Design-system samples use the generated tokens and list all four named curves. Foundry also displays the effective fast/base/slow times from canonical JSON. Its actual scale 2, persisted zero and OS reduced-motion override were checked on the generated design-system page (foundry.json). The three added curves distinguish in-out repositioning/exit, gentle overshoot, and pronounced Lab overshoot. Existing --k-ease is retained.
 
-Before: the root multiplier had no default, numbered durations were unscaled, and global reduced-motion used .01ms / one iteration (some components already disabled their own animations). After: the default multiplier is 1; reduced motion sets it to 0 !important and uses animation:none / transition:none !important for elements and pseudos. This stops infinite CSS animations, even if Foundry sets a nonzero inline multiplier. JavaScript scheduling clocks and dwell times are not motion durations and remain unchanged.
+Before: the root multiplier had no default, numbered durations were unscaled, and global reduced-motion used .01ms / one iteration (some components already disabled their own animations). After: the default multiplier is 1; reduced motion sets only --k-mscale to 0 !important. No universal animation, transition or scroll rule is applied. Each KATA loop component owns its animation:none (or display:none) rule; Spinner now stops instead of merely slowing down. A plain host div retains its 400ms transition, including actual interpolation, under both reduced-motion and the zero KATA multiplier. JavaScript scheduling clocks and dwell times are not motion durations and remain unchanged.
 
 ## Final duration mapping
 
@@ -53,13 +53,13 @@ Explicit zero remains zero. Existing local loop parameters already multiplied by
 | cubic-bezier(.3,2.2,.45,1) | --k-ease-bounce |
 | cubic-bezier(.3,2.3,.4,1) | --k-ease-bounce |
 | cubic-bezier(.3,2.4,.45,1) | --k-ease-bounce |
-| cubic-bezier(.4,0,.2,1) | --k-ease-out |
-| cubic-bezier(.5,0,.2,1) | --k-ease-out |
+| cubic-bezier(.4,0,.2,1) | --k-ease-in-out |
+| cubic-bezier(.5,0,.2,1) | --k-ease-in-out |
 | cubic-bezier(.6,-0.1,.2,1.25) | --k-ease-spring |
-| cubic-bezier(.6,0,.2,1) | --k-ease-out |
-| cubic-bezier(.65,0,.2,1) | --k-ease-out |
+| cubic-bezier(.6,0,.2,1) | --k-ease-in-out |
+| cubic-bezier(.65,0,.2,1) | --k-ease-in-out |
 
-Standard CSS easing keywords remain unchanged. Curves with pronounced overshoot (>1.6) use bounce, modest overshoot uses spring, and slow-start exit curves use out. Other close monotonic curves use the existing default. This intentionally changes curve shape; original → new declarations are recorded below.
+Standard CSS easing keywords remain unchanged. Curves with pronounced overshoot (>1.6) use bounce, modest overshoot uses spring, and slow-start / slow-finish repositioning and exit curves use in-out. Other close monotonic curves use the existing default. This intentionally changes curve shape; original → new declarations are recorded below.
 
 ## JavaScript end-event audit
 
@@ -95,10 +95,10 @@ Chromium actual computed transition / animation values, in seconds. Dependency c
 
 ## Zero and reduced-motion safety
 
-| Setting | Effective multiplier | Modal / Drawer | Toast after dwell | Jelly | Running animations |
-|---|---:|---|---|---|---|
-| no-preference, inline 0 | 0 | opened and closed | removed | reset; double load safe | 0 |
-| reduce, inline 2 | 0 | opened and closed | removed | reset; double load safe | 0 |
+| Setting | Effective multiplier | Host transition / opacity at 200ms | Modal / Drawer | Toast after dwell | Jelly | Running animations |
+|---|---:|---|---|---|---|---|
+| no-preference, inline 0 | 0 | 0.4s / 0.6 | opened and closed | removed | reset; double load safe | 0 |
+| reduce, inline 2 | 0 | 0.4s / 0.6 | opened and closed | removed | reset; double load safe | 0 |
 
 The test page includes spinner, skeleton, Aurora and marquee loops. Reduced motion has no running CSS animation. The zero multiplier also passes the dialog and toast checks. Toast and Jelly scripts are each loaded twice; neither registers a duplicate action. Regression tests also suppress animation completion events and verify Jelly timeout cleanup.
 
@@ -110,7 +110,7 @@ The test page includes spinner, skeleton, Aurora and marquee loops. Reduced moti
 | File / property | Before | After |
 |---|---|---|
 | components/accordion/accordion.css / transition | `transform .18s cubic-bezier(.3,.7,.3,1)` | `transform var(--k-dur-base) var(--k-ease)` |
-| components/accordion-gallery/accordion-gallery.css / transition | `flex .55s cubic-bezier(.6,0,.2,1)` | `flex calc(.55s * var(--k-mscale)) var(--k-ease-out)` |
+| components/accordion-gallery/accordion-gallery.css / transition | `flex .55s cubic-bezier(.6,0,.2,1)` | `flex calc(.55s * var(--k-mscale)) var(--k-ease-in-out)` |
 | components/accordion-gallery/accordion-gallery.css / transition | `opacity .3s .18s` | `opacity calc(.3s * var(--k-mscale)) calc(.18s * var(--k-mscale))` |
 | components/aurora/aurora.css / animation | `k-aur-a 9s var(--k-ease) infinite alternate` | `k-aur-a calc(9s * var(--k-mscale)) var(--k-ease) infinite alternate` |
 | components/aurora/aurora.css / animation | `k-aur-b 12s var(--k-ease) infinite alternate` | `k-aur-b calc(12s * var(--k-mscale)) var(--k-ease) infinite alternate` |
@@ -151,7 +151,7 @@ The test page includes spinner, skeleton, Aurora and marquee loops. Reduced moti
 | components/input-otp/input-otp.css / transition | `border-color .13s, box-shadow .13s` | `border-color var(--k-dur-fast), box-shadow var(--k-dur-fast)` |
 | components/jelly-buttons/jelly-buttons.css / transition | `transform .28s cubic-bezier(.3,2.4,.45,1)` | `transform calc(.28s * var(--k-mscale)) var(--k-ease-bounce)` |
 | components/jelly-buttons/jelly-buttons.css / animation | `k-jelly-wob .55s cubic-bezier(.3,2.2,.45,1)` | `k-jelly-wob calc(.55s * var(--k-mscale)) var(--k-ease-bounce)` |
-| components/liquid-button/liquid-button.css / transition | `transform .65s cubic-bezier(.5,0,.2,1)` | `transform calc(.65s * var(--k-mscale)) var(--k-ease-out)` |
+| components/liquid-button/liquid-button.css / transition | `transform .65s cubic-bezier(.5,0,.2,1)` | `transform calc(.65s * var(--k-mscale)) var(--k-ease-in-out)` |
 | components/liquid-button/liquid-button.css / transition | `color .4s` | `color calc(.4s * var(--k-mscale))` |
 | components/magnet/magnet.css / transition | `transform .35s cubic-bezier(.2,.8,.25,1.2)` | `transform calc(.35s * var(--k-mscale)) var(--k-ease-spring)` |
 | components/magnet/magnet.css / transition | `transform .12s ease-out` | `transform calc(.12s * var(--k-mscale)) ease-out` |
@@ -159,7 +159,7 @@ The test page includes spinner, skeleton, Aurora and marquee loops. Reduced moti
 | components/navigation-menu/navigation-menu.css / transition | `transform .18s` | `transform var(--k-dur-base)` |
 | components/newtons-cradle/newtons-cradle.css / animation | `k-cr-l 2.4s ease-in-out infinite` | `k-cr-l calc(2.4s * var(--k-mscale)) ease-in-out infinite` |
 | components/newtons-cradle/newtons-cradle.css / animation | `k-cr-r 2.4s ease-in-out infinite` | `k-cr-r calc(2.4s * var(--k-mscale)) ease-in-out infinite` |
-| components/noren/noren.css / transition | `transform .5s cubic-bezier(.4,0,.2,1)` | `transform calc(.5s * var(--k-mscale)) var(--k-ease-out)` |
+| components/noren/noren.css / transition | `transform .5s cubic-bezier(.4,0,.2,1)` | `transform calc(.5s * var(--k-mscale)) var(--k-ease-in-out)` |
 | components/noren/noren.css / animation | `k-nor-sway 5.2s ease-in-out infinite alternate` | `k-nor-sway calc(5.2s * var(--k-mscale)) ease-in-out infinite alternate` |
 | components/noren/noren.css / animation | `k-nor-sway 6.4s ease-in-out infinite alternate-reverse` | `k-nor-sway calc(6.4s * var(--k-mscale)) ease-in-out infinite alternate-reverse` |
 | components/noren/noren.css / animation | `k-nor-sway 5.8s ease-in-out infinite alternate` | `k-nor-sway calc(5.8s * var(--k-mscale)) ease-in-out infinite alternate` |
@@ -214,7 +214,7 @@ The test page includes spinner, skeleton, Aurora and marquee loops. Reduced moti
 | components/warp-tunnel/preview.html / animation-delay | `4.20s` | `calc(4.20s * var(--k-mscale))` |
 | components/warp-tunnel/preview.html / animation-delay | `4.62s` | `calc(4.62s * var(--k-mscale))` |
 | components/warp-tunnel/warp-tunnel.css / animation | `k-warp-fly 5s linear infinite` | `k-warp-fly calc(5s * var(--k-mscale)) linear infinite` |
-| components/word-rotate/word-rotate.css / transition | `transform .55s cubic-bezier(.65,0,.2,1)` | `transform calc(.55s * var(--k-mscale)) var(--k-ease-out)` |
+| components/word-rotate/word-rotate.css / transition | `transform .55s cubic-bezier(.65,0,.2,1)` | `transform calc(.55s * var(--k-mscale)) var(--k-ease-in-out)` |
 | blocks/integrations/integrations.css / transition | `border-color .14s` | `border-color var(--k-dur-fast)` |
 | blocks/use-cases/use-cases.css / transition | `transform .2s var(--k-ease)` | `transform var(--k-dur-base) var(--k-ease)` |
 | blocks/use-cases/use-cases.css / animation | `k-uc-in .45s var(--k-ease)` | `k-uc-in calc(.45s * var(--k-mscale)) var(--k-ease)` |
@@ -232,3 +232,9 @@ Reproduce:
 python3 -m tools.capture_motion_migration --before-ref c6982b885f9fd0331283c1b67991444bf9682922
 python3 -m unittest discover -s tests -p "test_*.py"
 ```
+
+## Review corrections: scope and curve naming
+
+KATA.md documents multiplier-only reduced-motion ownership and all four curve roles. The corrected --k-ease-in-out name is used by every first-party consumer, metadata and migration map; --k-ease-out remains only as a deprecated compatibility alias, as required by AGENTS.md. No curve shape or audit rule changes. The non-KATA div in tests/motion-zero.html must retain both its computed 0.4s transition and intermediate opacity; the browser capture and regression test enforce this.
+
+The host transition is a native CSSTransition, paused at 200ms of its 400ms duration: opacity is 0.6 between endpoints 1 and 0.2. It is sought using the compositor animation API because Playwright fake timers do not advance CSS compositor time. Unit tests independently check that the host computed duration remains 0.4s in every preference/multiplier configuration.

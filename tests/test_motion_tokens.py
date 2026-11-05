@@ -17,7 +17,8 @@ class MotionTokens(unittest.TestCase):
             browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
             for preference,scale in [('no-preference',.5),('no-preference',2),('no-preference',0),('reduce',2)]:
                 page=browser.new_page(reduced_motion=preference)
-                page.set_content('<style>'+(ROOT/'tokens.css').read_text()+(ROOT/'components/jelly-buttons/jelly-buttons.css').read_text()+'</style><button type="button" class="k-jelly">Press</button>')
+                page.set_content('<style>'+(ROOT/'tokens.css').read_text()+(ROOT/'components/jelly-buttons/jelly-buttons.css').read_text()+'</style><button type="button" class="k-jelly">Press</button><div id="host" style="transition:opacity 400ms linear">Host application</div>')
+                self.assertEqual(page.locator('#host').evaluate('(e)=>getComputedStyle(e).transitionDuration'),'0.4s')
                 page.evaluate('(v)=>document.documentElement.style.setProperty("--k-mscale",v)',str(scale))
                 for index,(name,milliseconds) in enumerate(config['durationsMs'].items(),1):
                     for token in (name,str(index)):

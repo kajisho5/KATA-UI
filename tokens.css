@@ -9,9 +9,10 @@
   --k-dur-2:var(--k-dur-base);
   --k-dur-3:var(--k-dur-slow);
   --k-ease:cubic-bezier(.3,.7,.3,1);
-  --k-ease-out:cubic-bezier(.6,0,.2,1);
+  --k-ease-in-out:cubic-bezier(.6,0,.2,1);
   --k-ease-spring:cubic-bezier(.3,1.2,.4,1);
   --k-ease-bounce:cubic-bezier(.3,2.2,.45,1);
+  --k-ease-out:var(--k-ease-in-out);
   --k-radius:8px;
   --k-radius-xs:calc(var(--k-radius) * 0.375);
   --k-radius-sm:calc(var(--k-radius) * 0.75);
@@ -63,12 +64,11 @@
   --k-lh-display:1.1; --k-lh-heading:1.3; --k-lh-body:1.7; --k-lh-loose:1.85;
 }
 /* craftsmanship floors — every part inherits these (KATA.md §0.6):
-   a keyboard focus ring in the accent, and a reduced-motion safety net
-   so no part's animation can outstay a user who asked for calm. */
+   a keyboard focus ring in the accent. Reduced motion only changes the KATA
+   multiplier; each component owns its animation stop rules. Host motion is untouched. */
 :where(:focus-visible){outline:2px solid var(--k-accent);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
   :root{--k-mscale:0 !important}
-  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
 }
 [data-theme="dark"]{
   /* shape-tokens:dark:start */

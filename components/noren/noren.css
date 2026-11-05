@@ -2,7 +2,7 @@
 .k-nor{font-family:var(--k-font);background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:0 26px 22px;overflow:hidden}
 .k-nor-bar{height:7px;border-radius:var(--k-radius-sm);background:var(--k-zinc-800);margin:0 -6px}
 .k-nor-row{display:flex;gap:5px;justify-content:center}
-.k-nor-p{width:76px;height:148px;transform-origin:top center;display:flex;align-items:center;justify-content:center;color:var(--k-on-color);transition:transform calc(.5s * var(--k-mscale)) var(--k-ease-out)}
+.k-nor-p{width:76px;height:148px;transform-origin:top center;display:flex;align-items:center;justify-content:center;color:var(--k-on-color);transition:transform calc(.5s * var(--k-mscale)) var(--k-ease-in-out)}
 .k-nor-p.c1{background:linear-gradient(180deg,color-mix(in srgb,var(--k-asagi-900) 82%,var(--k-on-color)),var(--k-asagi-900) 68%);animation:k-nor-sway calc(5.2s * var(--k-mscale)) ease-in-out infinite alternate}
 .k-nor-p.c2{background:linear-gradient(180deg,color-mix(in srgb,var(--k-accent-ink) 84%,var(--k-on-color)),var(--k-accent-ink) 68%);animation:k-nor-sway calc(6.4s * var(--k-mscale)) ease-in-out infinite alternate-reverse}
 .k-nor-p.c3{background:linear-gradient(180deg,color-mix(in srgb,var(--k-asagi-800) 84%,var(--k-on-color)),var(--k-asagi-800) 68%);animation:k-nor-sway calc(5.8s * var(--k-mscale)) ease-in-out infinite alternate}

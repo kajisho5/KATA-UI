@@ -263,7 +263,7 @@ FOUNDRY_HTML = """<button class="fdeck-fab" id="fdfab" type="button" aria-expand
   <div class="frow"><label>Mode</label><div class="fseg"><button type="button" id="fd-light">Light (washi)</button><button type="button" id="fd-dark">Dark (sumi)</button></div></div>
   <div class="frow"><label>Backdrop \u2014 wagara</label><div class="fseg" id="fd-wgs"><button type="button" data-wg="">None</button><button type="button" data-wg="seigaiha">Seigaiha</button><button type="button" data-wg="asanoha">Asanoha</button><button type="button" data-wg="ichimatsu">Ichimatsu</button></div></div>
   <div class="frow"><label>Motion <output id="fd-mv">1.0&times;</output></label><input type="range" id="fd-motion" min="0" max="2" step="0.1" value="1"></div>
-  <div class="frow"><output id="fd-times" aria-label="Effective transition durations"></output></div>
+  <div class="frow"><output id="fd-times" aria-label="Effective transition durations"></output><small>Curves: ease · in-out · spring · bounce</small></div>
   <div class="fcore"><i></i><span>The vermillion core — \u578b\u306e\u6731 — is not on the deck. It never moves; that is the point of a mold.</span></div>
   <div class="flog" id="fd-log"></div>
   <button class="freset" type="button" data-export-theme>Export theme CSS</button>
@@ -1616,7 +1616,7 @@ def design_system_page(tokens):
       <div class="m" style="--dur:var(--k-dur-fast)">fast · 130ms<div class="dot"></div></div>
       <div class="m" style="--dur:var(--k-dur-base)">base · 180ms<div class="dot"></div></div>
       <div class="m" style="--dur:var(--k-dur-slow)">slow · 220ms<div class="dot"></div></div>
-    </div><p class="note">--k-ease: standard · --k-ease-out: exit · --k-ease-spring: gentle overshoot · --k-ease-bounce: pronounced overshoot (Lab). Numbered duration tokens remain aliases.</p>{motion_rows}</section>
+    </div><p class="note">--k-ease: entrance / general (out) · --k-ease-in-out: repositioning / exit · --k-ease-spring: gentle overshoot · --k-ease-bounce: pronounced overshoot (Lab). Numbered duration tokens remain aliases. The old ease-out name is a deprecated alias for ease-in-out.</p>{motion_rows}</section>
   <section><h2>Elevation</h2><p class="note">{esc(tokens['elevation']['rule'])}</p><div class="spec">{elevation_rows}</div></section>
   {core_map}
   <section><h2>Breakage — Kintsugi</h2><p class="note">Errors, empty states and loading wear one seam: a jagged line of yamabuki gold, the Kintsugi Card's vein. Breakage is shown honestly and mended visibly — never hidden behind a spinner and never dressed as success. It is the seam on the 404 plate and the state line in \u2318K search.</p>

@@ -38,6 +38,21 @@ def run(before_ref,output):
             page.goto(f'http://127.0.0.1:{server.server_port}/tests/motion-zero.html',wait_until='networkidle')
             page.evaluate('(v)=>document.documentElement.style.setProperty("--k-mscale",v)',str(multiplier))
             page.clock.install()
+            host=page.locator('#host-transition')
+            host_duration=host.evaluate('(e)=>getComputedStyle(e).transitionDuration')
+            assert host_duration=='0.4s',host_duration
+            # Flush both styles so Chromium creates a native CSSTransition. Playwright's
+            # fake timer clock does not drive the compositor clock; seek it explicitly.
+            host_mid_opacity=host.evaluate('''(e)=>{
+                getComputedStyle(e).opacity;
+                e.style.opacity='0.2';getComputedStyle(e).opacity;
+                const transition=e.getAnimations().find(a=>a.transitionProperty==='opacity');
+                if(!transition)throw new Error('Host opacity transition was suppressed');
+                transition.pause();transition.currentTime=200;
+                const midway=parseFloat(getComputedStyle(e).opacity);
+                transition.finish();return midway;
+            }''')
+            assert .2<host_mid_opacity<1,host_mid_opacity
             for slug in ('modal','drawer'):
                 page.locator(f'[data-{slug}-open]').first.click()
                 assert page.locator(f'[data-{slug}]').evaluate('(e)=>e.open')
@@ -53,7 +68,7 @@ def run(before_ref,output):
             active=page.evaluate('()=>document.getAnimations().filter(a=>a.playState==="running").map(a=>({name:a.animationName,duration:a.effect.getTiming().duration}))')
             if preference=='reduce':assert not active,active
             page.screenshot(path=str(output/f'safety-{preference}.png'),full_page=True)
-            safety.append({'preference':preference,'inlineMultiplier':multiplier,'effectiveMultiplier':page.evaluate('()=>getComputedStyle(document.documentElement).getPropertyValue("--k-mscale")'),'modalClosed':True,'drawerClosed':True,'toastRemoved':True,'jellyReset':True,'doubleLoadSafe':True,'runningAnimations':active})
+            safety.append({'preference':preference,'inlineMultiplier':multiplier,'effectiveMultiplier':page.evaluate('()=>getComputedStyle(document.documentElement).getPropertyValue("--k-mscale")'),'hostTransitionDuration':host_duration,'hostMidOpacity':host_mid_opacity,'modalClosed':True,'drawerClosed':True,'toastRemoved':True,'jellyReset':True,'doubleLoadSafe':True,'runningAnimations':active})
             page.close()
         browser.close()
     finally:server.shutdown();server.server_close()

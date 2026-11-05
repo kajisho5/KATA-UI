@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 100,
+    "passed": 103,
     "total": 164
   },
   "items": [
@@ -182,7 +182,7 @@
     },
     {
       "id": "components/data-table",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -317,7 +317,7 @@
     },
     {
       "id": "components/input-otp",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -587,7 +587,7 @@
     },
     {
       "id": "components/tag-input",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

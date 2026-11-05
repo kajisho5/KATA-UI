@@ -2,16 +2,16 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 100,
-    "failed": 64,
+    "passed": 103,
+    "failed": 61,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 125,
-      "js-global-bindings": 37,
-      "js-single-instance": 14,
+      "focus-visible": 119,
+      "js-global-bindings": 31,
+      "js-single-instance": 12,
       "legacy-contract": 0,
       "reduced-motion": 0,
       "shared-token-scope": 0,
@@ -22,8 +22,8 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 67,
-        "failed": 54,
+        "passed": 70,
+        "failed": 51,
         "total": 121
       },
       "lab": {
@@ -6264,7 +6264,7 @@
     {
       "id": "components/data-table",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -6450,26 +6450,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/data-table/preview.html: <input> ",
-            "components/data-table/preview.html: <button> k-dt-sort"
-          ],
-          "details": [
-            {
-              "path": "components/data-table/preview.html",
-              "tag": "input",
-              "class_or_role": "",
-              "occurrences": 6
-            },
-            {
-              "path": "components/data-table/preview.html",
-              "tag": "button",
-              "class_or_role": "k-dt-sort",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -6485,20 +6469,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-dt]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const dt",
-            "const dtBody"
-          ]
+          "findings": []
         }
       ]
     },
@@ -11066,7 +11045,7 @@
     {
       "id": "components/input-otp",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -11149,19 +11128,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/input-otp/preview.html: <input> "
-          ],
-          "details": [
-            {
-              "path": "components/input-otp/preview.html",
-              "tag": "input",
-              "class_or_role": "",
-              "occurrences": 6
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -11183,11 +11153,9 @@
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const otpBoxes"
-          ]
+          "findings": []
         }
       ]
     },
@@ -20792,7 +20760,7 @@
     {
       "id": "components/tag-input",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -20896,26 +20864,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tag-input/preview.html: <button> k-chip-x",
-            "components/tag-input/preview.html: <input> k-tags-in"
-          ],
-          "details": [
-            {
-              "path": "components/tag-input/preview.html",
-              "tag": "button",
-              "class_or_role": "k-chip-x",
-              "occurrences": 2
-            },
-            {
-              "path": "components/tag-input/preview.html",
-              "tag": "input",
-              "class_or_role": "k-tags-in",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -20931,21 +20883,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-tags]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const tagsBox",
-            "const tagsIn",
-            "const X_SVG"
-          ]
+          "findings": []
         }
       ]
     },
@@ -30674,8 +30620,7 @@
           "findings": [
             "templates/dashboard/preview.html: <a> on",
             "templates/dashboard/preview.html: <a> ",
-            "templates/dashboard/preview.html: <input> input",
-            "templates/dashboard/preview.html: <button> k-dt-sort"
+            "templates/dashboard/preview.html: <input> input"
           ],
           "details": [
             {
@@ -30694,12 +30639,6 @@
               "path": "templates/dashboard/preview.html",
               "tag": "input",
               "class_or_role": "input",
-              "occurrences": 1
-            },
-            {
-              "path": "templates/dashboard/preview.html",
-              "tag": "button",
-              "class_or_role": "k-dt-sort",
               "occurrences": 1
             }
           ]

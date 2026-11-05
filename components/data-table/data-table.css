@@ -13,3 +13,6 @@
 .k-dt input[type="checkbox"]{accent-color:var(--k-accent);width:15px;height:15px;cursor:pointer;vertical-align:middle}
 .k-dt-f{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--k-line);font-size:12.5px;color:var(--k-ink-3)}
 .k-dt-f .pg{margin-inline-start:auto;display:flex;gap:7px}
+
+.k-dt-sort:focus-visible,.k-dt input:focus-visible{outline:0;box-shadow:var(--k-ring)}
+.k-dt-status,.k-dt-caption{position:absolute;width:var(--k-space-1);height:var(--k-space-1);clip-path:inset(50%);overflow:hidden;white-space:nowrap}

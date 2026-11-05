@@ -8,6 +8,6 @@
     "admin"
   ],
   "status": "beta",
-  "usage": "For admin lists where the reader compares, sorts and acts. Read-only data stays a plain Table; the moment headers sort and rows select, it is this part.",
-  "a11y": "Sort state lives on aria-sort at the column header; checkboxes carry row names in their labels. Sorting is stable and never reorders under a screen reader without announcing it."
+  "usage": "For admin lists where the reader compares, sorts and acts. Read-only data stays a plain Table; the moment headers sort and rows select, it is this part. Native checkbox change events bubble. Listen for sorting:\n\n```js\ndocument.addEventListener('kata-data-table-sort', event => {\n  console.log(event.detail.column, event.detail.direction);\n});\n```",
+  "a11y": "The table has a caption. Native header buttons sort text/numeric columns; aria-sort is on their column headers. Named row/select-all checkboxes retain selection through sorting. Mixed selection sets the select-all indeterminate state. A polite status reports sorting and selection counts. Each table keeps its own state."
 }

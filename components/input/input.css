@@ -1,14 +1,14 @@
-.field{display:flex;flex-direction:column;gap:6px;min-width:230px;flex:1;max-width:300px;font-family:var(--k-font)}
+.field{display:flex;flex-direction:column;gap:var(--k-space-1);min-width:230px;flex:1;max-width:300px;font-family:var(--k-font)}
 .field label{font-size:12.5px;font-weight:500;color:var(--k-ink)}
 .field .hint{font-size:12px;color:var(--k-ink-3)}
 .field .err{font-size:12px;color:var(--k-danger-ink)}
-.input{-webkit-appearance:none;appearance:none;height:38px;border:1px solid var(--k-line);border-radius:var(--k-radius);padding:0 12px;font-family:var(--k-font);font-size:13.5px;background:var(--k-bg);color:var(--k-ink);box-shadow:var(--k-shadow-xs);width:100%}
+.input{-webkit-appearance:none;appearance:none;height:38px;border:1px solid var(--k-line);border-radius:var(--k-radius);padding:0 var(--k-space-3);font-family:var(--k-font);font-size:13.5px;background:var(--k-bg);color:var(--k-ink);box-shadow:var(--k-shadow-xs);width:100%}
 .input::placeholder{color:var(--k-ink-3)}
 .input:focus{outline:0;border-color:var(--k-ink);box-shadow:var(--k-ring)}
 .input.errb{border-color:var(--k-danger)}
 .input.errb:focus{box-shadow:var(--k-ring)}
 .searchwrap{position:relative;display:block}
 .searchwrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%)}
-.searchwrap .input{padding-inline-start:34px}
+.searchwrap .input{padding-inline-start:var(--k-space-8)}
 /* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
 @media (max-width:640px){.input{font-size:16px}}

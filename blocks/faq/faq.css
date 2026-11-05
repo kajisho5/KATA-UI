@@ -1,6 +1,6 @@
 .k-faqb{font-family:var(--k-font);text-align:start;color:var(--k-ink)}
 .k-faqb h3{font-size:19px;font-weight:620;letter-spacing:-.02em}
-.k-faqb .sub{margin-top:6px;font-size:13.5px;color:var(--k-ink-2);line-height:1.7;letter-spacing:.012em}
-.k-faqb .acc{margin-top:16px}
-.k-faqb .more{margin-top:14px;font-size:13px;color:var(--k-ink-2)}
+.k-faqb .sub{margin-top:var(--k-space-1);font-size:13.5px;color:var(--k-ink-2);line-height:1.7;letter-spacing:.012em}
+.k-faqb .acc{margin-top:var(--k-space-4)}
+.k-faqb .more{margin-top:var(--k-space-3);font-size:13px;color:var(--k-ink-2)}
 .k-faqb .more a{color:var(--k-accent-ink);font-weight:550;text-decoration:none}

@@ -1,13 +1,13 @@
 /* KATA Block: Order Confirmation */
-.k-oc{font-family:var(--k-font);color:var(--k-ink);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:24px;background:var(--k-bg);max-width:560px;text-align:center}
-.k-oc .ok{width:46px;height:46px;border-radius:50%;background:var(--k-success-bg);color:var(--k-success-ink);display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px}
+.k-oc{font-family:var(--k-font);color:var(--k-ink);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:var(--k-space-6);background:var(--k-bg);max-width:560px;text-align:center}
+.k-oc .ok{width:46px;height:46px;border-radius:50%;background:var(--k-success-bg);color:var(--k-success-ink);display:inline-flex;align-items:center;justify-content:center;margin-bottom:var(--k-space-3)}
 .k-oc h3{font-size:18px;font-weight:650;letter-spacing:-.015em}
-.k-oc .no{font-size:13px;color:var(--k-ink-2);margin-top:5px}
+.k-oc .no{font-size:13px;color:var(--k-ink-2);margin-top:var(--k-space-1)}
 .k-oc .no b{color:var(--k-ink);font-variant-numeric:tabular-nums}
-.k-oc-items{text-align:left;border-top:1px solid var(--k-line);margin-top:18px;padding-top:6px}
-.k-oc-items .r{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;padding:8px 0;border-bottom:1px solid var(--k-line)}
+.k-oc-items{text-align:left;border-top:1px solid var(--k-line);margin-top:var(--k-space-4);padding-top:var(--k-space-1)}
+.k-oc-items .r{display:flex;justify-content:space-between;gap:var(--k-space-2);font-size:13.5px;padding:var(--k-space-2) 0;border-bottom:1px solid var(--k-line)}
 .k-oc-items .r span{color:var(--k-ink-2)}
-.k-oc-items .t{display:flex;justify-content:space-between;font-size:14.5px;font-weight:700;padding-top:11px}
-.k-oc-eta{margin-top:16px;background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:12px 14px;font-size:13px;text-align:left}
+.k-oc-items .t{display:flex;justify-content:space-between;font-size:14.5px;font-weight:700;padding-top:var(--k-space-3)}
+.k-oc-eta{margin-top:var(--k-space-4);background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-3) var(--k-space-3);font-size:13px;text-align:left}
 .k-oc-eta b{font-weight:650}
-.k-oc-actions{display:flex;gap:9px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+.k-oc-actions{display:flex;gap:var(--k-space-2);justify-content:center;margin-top:var(--k-space-4);flex-wrap:wrap}

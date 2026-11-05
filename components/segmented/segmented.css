@@ -1,8 +1,8 @@
 /* KATA Segmented — radios in one pill. No JS. */
-.k-seg{display:inline-flex;gap:2px;padding:3px;border-radius:var(--k-radius-lg);background:var(--k-seg)}
+.k-seg{display:inline-flex;gap:var(--k-space-0-5);padding:var(--k-space-1);border-radius:var(--k-radius-lg);background:var(--k-seg)}
 .k-seg-item{position:relative}
 .k-seg-item input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
-.k-seg-item span{display:flex;align-items:center;height:27px;padding:0 13px;border-radius:var(--k-radius-md);font-size:12.5px;color:var(--k-ink-2);transition:background var(--k-dur-fast),color var(--k-dur-fast);white-space:nowrap}
+.k-seg-item span{display:flex;align-items:center;height:27px;padding:0 var(--k-space-3);border-radius:var(--k-radius-md);font-size:12.5px;color:var(--k-ink-2);transition:background var(--k-dur-fast),color var(--k-dur-fast);white-space:nowrap}
 .k-seg-item input:checked + span{background:var(--k-bg);color:var(--k-ink);font-weight:550;box-shadow:var(--k-shadow-xs)}
 .k-seg-item input:focus-visible + span{box-shadow:var(--k-ring)}
 .k-seg-item input:disabled + span{opacity:.5;cursor:not-allowed}

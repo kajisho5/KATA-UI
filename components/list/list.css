@@ -1,10 +1,10 @@
 .k-list{list-style:none;margin:0;padding:0;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);font-family:var(--k-font);overflow:hidden;text-align:start}
 .k-list li+li{border-top:1px solid var(--k-line)}
-.k-list-row{display:flex;align-items:center;gap:12px;padding:12px 15px;text-decoration:none;color:var(--k-ink)}
+.k-list-row{display:flex;align-items:center;gap:var(--k-space-3);padding:var(--k-space-3) var(--k-space-4);text-decoration:none;color:var(--k-ink)}
 a.k-list-row:hover{background:var(--k-bg-soft)}
 .k-list-row .main{flex:1;min-width:0}
 .k-list-row .tt{display:block;font-size:13.5px;font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.k-list-row .ss{display:block;font-size:12px;color:var(--k-ink-3);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.k-list-row .ss{display:block;font-size:12px;color:var(--k-ink-3);margin-top:var(--k-space-px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .k-list-row .meta{font-size:12px;color:var(--k-ink-3);flex:none}
 .k-list-row .chev{color:var(--k-ink-3);flex:none;display:grid;place-items:center}
 /* The list clips overflow, so rows draw their focus ring inside. */

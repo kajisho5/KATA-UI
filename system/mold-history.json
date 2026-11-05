@@ -82,7 +82,7 @@
     }
   ],
   "schemaVersion": 1,
-  "throughCommit": "679825c7098b148316c4c91b572b25b356a0e932",
+  "throughCommit": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
   "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
   "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
   "v1EvidenceVerified": false,
@@ -918,17 +918,17 @@
     "--k-ease-out": "fd010dc87fafb45e2c4a6ca3d26de68e82a5a0d7",
     "--k-tsutsuji": "2fa7cdcd502557358f219cf42173047fb1577bde",
     "--k-mold": "deb88d2ca614733b2981f874ad985de9d9e78034",
-    "--k-space-px": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-space-0-5": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-space-5": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-space-7": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-space-10": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-text-md": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-text-lead": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-text-display": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-lh-tight": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-lh-card": "679825c7098b148316c4c91b572b25b356a0e932",
-    "--k-lh-small": "679825c7098b148316c4c91b572b25b356a0e932"
+    "--k-space-px": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-space-0-5": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-space-5": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-space-7": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-space-10": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-text-md": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-text-lead": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-text-display": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-lh-tight": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-lh-card": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+    "--k-lh-small": "f6f7bc590d992baf2f15522e38c6abd2383d3678"
   },
   "tokenVersions": {
     "--k-mold": 4,
@@ -3224,9 +3224,9 @@
       ]
     },
     {
-      "commit": "679825c7098b148316c4c91b572b25b356a0e932",
-      "date": "2026-11-05",
-      "subject": "Complete the spacing, text and leading scales (mold v4, T3 step 1)",
+      "commit": "f6f7bc590d992baf2f15522e38c6abd2383d3678",
+      "date": "2026-11-06",
+      "subject": "余白・文字サイズ・行の高さのトークンの段をそろえる（mold v4、T3 手順1） (#38)",
       "changes": [
         {
           "token": "--k-lh-card",

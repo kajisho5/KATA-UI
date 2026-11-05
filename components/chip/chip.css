@@ -1,8 +1,8 @@
-.k-chip{display:inline-flex;align-items:center;gap:7px;height:29px;padding:0 7px 0 12px;border:1px solid var(--k-line);border-radius:var(--k-radius-full);background:var(--k-bg);font-family:var(--k-font);font-size:12.5px;font-weight:500;color:var(--k-ink)}
+.k-chip{display:inline-flex;align-items:center;gap:var(--k-space-2);height:29px;padding:0 var(--k-space-2) 0 var(--k-space-3);border:1px solid var(--k-line);border-radius:var(--k-radius-full);background:var(--k-bg);font-family:var(--k-font);font-size:12.5px;font-weight:500;color:var(--k-ink)}
 .k-chip[data-on]{background:var(--k-ink);border-color:var(--k-ink);color:var(--k-bg)}
 .k-chip-x{width:19px;height:19px;border-radius:50%;border:none;background:var(--k-bg-soft);color:var(--k-ink-2);display:grid;place-items:center;cursor:pointer;padding:0}
 .k-chip[data-on] .k-chip-x{background:color-mix(in srgb,var(--k-bg) 16%,transparent);color:var(--k-bg)}
 .k-chip-x:hover{color:var(--k-danger-ink)}
-.k-chips{display:flex;flex-wrap:wrap;gap:8px}
+.k-chips{display:flex;flex-wrap:wrap;gap:var(--k-space-2)}
 /* On a selected (ink) chip the ink focus ring would vanish; use the page color. */
 .k-chip[data-on] .k-chip-x:focus-visible{outline-color:var(--k-bg)}

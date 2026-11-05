@@ -1,19 +1,19 @@
 .pricing{font-family:var(--k-font);color:var(--k-ink);text-align:start;width:100%}
-.pricing-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.pricing-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--k-space-4);flex-wrap:wrap}
 .pricing-h{font-size:21px;font-weight:600;letter-spacing:-.02em}
-.pricing-sub{margin-top:5px;font-size:13.5px;color:var(--k-ink-2)}
-.pricing-grid{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pricing-sub{margin-top:var(--k-space-1);font-size:13.5px;color:var(--k-ink-2)}
+.pricing-grid{margin-top:var(--k-space-5);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--k-space-3)}
 @media (max-width:760px){.pricing-grid{grid-template-columns:1fr}}
-.plan{position:relative;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);padding:22px 20px}
+.plan{position:relative;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);padding:var(--k-space-5) var(--k-space-5)}
 .plan-hot{border-color:var(--k-ink)}
 .plan-badge{position:absolute;top:-11px;inset-inline-start:calc(var(--k-space-4) + var(--k-space-1))}
 .plan-name{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-2)}
-.plan-price{margin-top:10px;font-size:32px;font-weight:600;letter-spacing:-.03em}
+.plan-price{margin-top:var(--k-space-2);font-size:32px;font-weight:600;letter-spacing:-.03em}
 .plan-per{font-size:13px;font-weight:500;color:var(--k-ink-3);letter-spacing:0}
-.plan-desc{margin-top:7px;font-size:13px;line-height:1.7;color:var(--k-ink-2);letter-spacing:.01em}
-.plan-cta{width:100%;justify-content:center;margin-top:16px}
-.plan .k-sep{margin:18px 0 14px}
-.plan-feats{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:13px}
-.plan-feats li{display:flex;gap:9px;align-items:center}
+.plan-desc{margin-top:var(--k-space-2);font-size:13px;line-height:1.7;color:var(--k-ink-2);letter-spacing:.01em}
+.plan-cta{width:100%;justify-content:center;margin-top:var(--k-space-4)}
+.plan .k-sep{margin:var(--k-space-4) 0 var(--k-space-3)}
+.plan-feats{list-style:none;margin:0;padding:0;display:grid;gap:var(--k-space-2);font-size:13px}
+.plan-feats li{display:flex;gap:var(--k-space-2);align-items:center}
 .plan-feats svg{color:var(--k-accent-ink);flex:none}
 .pricing-status{position:absolute;width:var(--k-space-1);height:var(--k-space-1);clip-path:inset(50%);overflow:hidden;white-space:nowrap}

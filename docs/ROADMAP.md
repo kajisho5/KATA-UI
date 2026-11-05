@@ -18,7 +18,7 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 | token-values: border | 0 |
 | token-values: color | 0 |
 | token-values: easing | 0 |
-| spacing-values (warn) | 891 |
+| spacing-values (warn) | 140 |
 | type-values (warn) | 638 |
 | focus-visible | 0 |
 | js-single-instance | 0 |
@@ -69,6 +69,7 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Static rule: shared floor plus cancellation detection; the browser measurement runs in CI with 0 stops below 3:1 or clipped (owner review: [PR #37](https://github.com/kajisho5/KATA-UI/pull/37)).
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
   - [x] Mold v4 completes the spacing, text and leading scales with owner-chosen mappings (docs/token-migration.md) ([PR #38](https://github.com/kajisho5/KATA-UI/pull/38)).
+  - [x] Spacing: 762 raw declarations in UI parts replaced with tokens; UI spacing findings 763 → 12 (PR_PLACEHOLDER).
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and
 individual passing-target regressions; claims stay within test coverage; at

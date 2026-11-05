@@ -1,31 +1,31 @@
 /* KATA Sidebar — the app sidebar as a part: sections, collapsible groups,
    an icon rail, and the user at the foot. The current page carries the
    vermillion core on its icon, like the app shell and the templates. */
-.k-side{width:230px;flex:none;display:flex;flex-direction:column;background:var(--k-bg);border-inline-end:1px solid var(--k-line);padding:14px 10px;font-family:var(--k-font);color:var(--k-ink);text-align:start}
-.k-side-brand{display:flex;align-items:center;gap:9px;padding:2px 8px 12px;font-size:14px;font-weight:600}
+.k-side{width:230px;flex:none;display:flex;flex-direction:column;background:var(--k-bg);border-inline-end:1px solid var(--k-line);padding:var(--k-space-3) var(--k-space-2);font-family:var(--k-font);color:var(--k-ink);text-align:start}
+.k-side-brand{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-0-5) var(--k-space-2) var(--k-space-3);font-size:14px;font-weight:600}
 .k-side-mark{width:24px;height:24px;border-radius:var(--k-radius-md);background:var(--k-ink);color:var(--k-bg);display:flex;align-items:center;justify-content:center;flex:none}
-.k-side-sec{font-size:11.5px;letter-spacing:.1em;font-weight:650;color:var(--k-ink-2);margin:16px 10px 6px;line-height:1.3}
-.k-side-nav{display:grid;gap:2px}
-.k-side-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--k-radius-md);font-size:13.5px;letter-spacing:.01em;color:var(--k-ink-2);text-decoration:none;cursor:pointer;background:none;border:0;width:100%;text-align:start;font-family:inherit}
+.k-side-sec{font-size:11.5px;letter-spacing:.1em;font-weight:650;color:var(--k-ink-2);margin:var(--k-space-4) var(--k-space-2) var(--k-space-1);line-height:1.3}
+.k-side-nav{display:grid;gap:var(--k-space-0-5)}
+.k-side-item{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-2) var(--k-space-2);border-radius:var(--k-radius-md);font-size:13.5px;letter-spacing:.01em;color:var(--k-ink-2);text-decoration:none;cursor:pointer;background:none;border:0;width:100%;text-align:start;font-family:inherit}
 .k-side-item:hover{background:var(--k-bg-soft);color:var(--k-ink)}
 .k-side-item.on{background:var(--k-bg-soft);color:var(--k-ink);font-weight:550}
 .k-side-item.on svg{color:var(--k-core)}
 .k-side-item svg{flex:none}
-.k-side-badge{margin-inline-start:auto;font-size:11px;font-weight:600;background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);border-radius:var(--k-radius-full);padding:1px 7px}
+.k-side-badge{margin-inline-start:auto;font-size:11px;font-weight:600;background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);border-radius:var(--k-radius-full);padding:var(--k-space-px) var(--k-space-2)}
 .k-side-item.on .k-side-badge{background:var(--k-bg)}
 .k-side-chev{margin-inline-start:auto;transition:transform var(--k-dur-base)}
 .k-side-group.open .k-side-chev{transform:rotate(180deg)}
-.k-side-sub{display:none;gap:2px;margin:2px 0 2px 25px}
+.k-side-sub{display:none;gap:var(--k-space-0-5);margin:var(--k-space-0-5) 0 var(--k-space-0-5) var(--k-space-6)}
 .k-side-group.open .k-side-sub{display:grid}
-.k-side-sub .k-side-item{font-size:13px;padding:6px 10px}
-.k-side-user{margin-top:auto;display:flex;align-items:center;gap:9px;padding:12px 8px 2px;border-top:1px solid var(--k-line)}
+.k-side-sub .k-side-item{font-size:13px;padding:var(--k-space-1) var(--k-space-2)}
+.k-side-user{margin-top:auto;display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-2) var(--k-space-0-5);border-top:1px solid var(--k-line)}
 .k-side-ava{width:30px;height:30px;border-radius:50%;background:var(--k-ink);color:var(--k-bg);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex:none}
 .k-side-uname{font-size:13px;font-weight:550;line-height:1.3}
 .k-side-urole{font-size:11.5px;color:var(--k-ink-3);letter-spacing:.01em}
-.k-side.rail{width:60px;padding:14px 8px;align-items:center}
-.k-side.rail .k-side-brand{padding:2px 0 12px}
+.k-side.rail{width:60px;padding:var(--k-space-3) var(--k-space-2);align-items:center}
+.k-side.rail .k-side-brand{padding:var(--k-space-0-5) 0 var(--k-space-3)}
 .k-side.rail .k-side-nav{justify-items:center}
-.k-side.rail .k-side-item{justify-content:center;padding:9px 0;width:40px}
+.k-side.rail .k-side-item{justify-content:center;padding:var(--k-space-2) 0;width:40px}
 .k-side.rail .k-side-t,.k-side.rail .k-side-sec,.k-side.rail .k-side-badge,.k-side.rail .k-side-chev,.k-side.rail .k-side-umeta{display:none}
-.k-side.rail .k-side-user{justify-content:center;padding:12px 0 2px}
+.k-side.rail .k-side-user{justify-content:center;padding:var(--k-space-3) 0 var(--k-space-0-5)}
 @media (prefers-reduced-motion:reduce){.k-side-chev{transition:none}}

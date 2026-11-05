@@ -5,7 +5,7 @@
 Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-upload-color-carousel`
 on main `20ca626109a755deb696ddc9c8c8847408f6f9b6` (after #25, #27 and #28).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
-come from that JSON. The counts become main's only when the owner merges this PR.
+come from that JSON. The counts become main's only when the owner merges #29.
 
 **Mold Verified 106 / 164 · UI 73 / 121 · Lab 33 / 43**.
 58 targets fail at least one check. The JSON reports 318 warning-bearing

@@ -3,7 +3,7 @@
 ## Status
 
 Snapshot: 2026-11-05 (Asia/Tokyo), main `69b5a86551f2e6b9926ca5d5c1e557b4cc6fc27a`
-(after #32; neither #32 nor the closed-menu PR changes counts).
+(after #32; neither #32 nor #33 changes counts).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -91,7 +91,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| Closed-menu PR | Closed Dropdown / collapsed Speed Dial items leave the Tab order. No counts change. |
+| [#33](https://github.com/kajisho5/KATA-UI/pull/33) | Closed Dropdown / collapsed Speed Dial items leave the Tab order. No counts change. |
 
 ### npm and environment
 
@@ -170,8 +170,8 @@ below would make focus weak everywhere in light. Choose a ring that reaches 3:1
 in both themes (for example a 2px ink or darker-accent outline plus offset);
 that is a `--k-ring` value/meaning change with a moldVersion bump. Then do steps
 2–5 and use the tool for before/after numbers. The closed Dropdown items and
-collapsed Speed Dial actions (7 of the 10 no-change stops) are fixed by the
-closed-menu PR (visibility:hidden after the fade-out). Rating, Comparison Slider
+collapsed Speed Dial actions (7 of the 10 no-change stops) are fixed by #33
+(visibility:hidden after the fade-out). Rating, Comparison Slider
 and Magnet remain.
 
 

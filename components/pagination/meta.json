@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For lists longer than a screen. Show the current page and its neighbours; collapse the rest into an ellipsis. On mobile, the compact form (prev / next + position) is enough.",
-  "a11y": "A <nav> with aria-label=\"Pagination\"; the current page carries aria-current=\"page\"; prev/next say where they go, not just show arrows."
+  "a11y": "A <nav> with its own aria-label; the current page carries aria-current=\"page\" and keeps its filled state on hover. Prev/next links are named (\"Previous page\", \"Next page\"); their arrow icons and the compact form's text arrows are aria-hidden and mirror in RTL so they point in the reading direction. The ellipsis is aria-hidden. A disabled prev/next is an <a> without href and with aria-disabled=\"true\", so it is out of the Tab order; .disabled remains as a deprecated alias that only stops the pointer. Beta until a recorded screen-reader pass."
 }

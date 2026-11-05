@@ -84,6 +84,7 @@ least 90% of UI-profile targets pass all checks.
   switch, dialog/modal, dropdown-menu, popover, tooltip, toast, card, tabs,
   accordion, badge, alert, table, pagination, breadcrumb, then the remaining
   components needed to reach 40. Map requested names to repository slugs in each PR.
+  - [ ] Input: release procedure run; beta until screen-reader and IME passes (docs/review/input, [PR #45](https://github.com/kajisho5/KATA-UI/pull/45)).
   - [ ] Button: release procedure run; beta until a recorded screen-reader pass (docs/review/button, [PR #44](https://github.com/kajisho5/KATA-UI/pull/44)).
 - [ ] Build one Torture Test page: three instances per component, RTL, dark mode,
   200% zoom and keyboard-only operation.

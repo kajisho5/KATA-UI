@@ -2,13 +2,18 @@
 .field label{font-size:var(--k-text-sm);font-weight:500;color:var(--k-ink)}
 .field .hint{font-size:var(--k-text-sm);color:var(--k-ink-3)}
 .field .err{font-size:var(--k-text-sm);color:var(--k-danger-ink)}
+/* A label that wraps its input needs no id/for, so a pasted sample can appear twice. */
+.field label:has(> .input,> .searchwrap){display:grid;gap:var(--k-space-1)}
 .input{-webkit-appearance:none;appearance:none;height:38px;border:1px solid var(--k-line);border-radius:var(--k-radius);padding:0 var(--k-space-3);font-family:var(--k-font);font-size:var(--k-text-base);background:var(--k-bg);color:var(--k-ink);box-shadow:var(--k-shadow-xs);width:100%}
 .input::placeholder{color:var(--k-ink-3)}
-.input:focus{outline:0;border-color:var(--k-ink);box-shadow:var(--k-ring)}
-.input.errb{border-color:var(--k-danger)}
-.input.errb:focus{box-shadow:var(--k-ring)}
+.input:focus-visible{outline:0;border-color:var(--k-ink);box-shadow:var(--k-ring)}
+/* aria-invalid is the accessible error state; .errb stays as the visual class. */
+.input.errb,.input[aria-invalid="true"]{border-color:var(--k-danger)}
+.input.errb:focus-visible,.input[aria-invalid="true"]:focus-visible{border-color:var(--k-danger);box-shadow:var(--k-ring)}
+.input:disabled{background:var(--k-bg-soft);color:var(--k-ink-3);box-shadow:none;cursor:not-allowed}
+.input[readonly]:not(:disabled){background:var(--k-bg-soft)}
 .searchwrap{position:relative;display:block}
-.searchwrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%)}
+.searchwrap svg{position:absolute;inset-inline-start:var(--k-space-3);top:50%;transform:translateY(-50%);pointer-events:none}
 .searchwrap .input{padding-inline-start:var(--k-space-8)}
 /* iOS: fields under 16px make Safari zoom the page on focus — 16px on small screens (the mold, KATA.md) */
 @media (max-width:640px){.input{font-size:var(--k-text-lg)}}

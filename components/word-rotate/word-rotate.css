@@ -1,5 +1,5 @@
 /* KATA Word Rotate — a stack of words, stepped. */
 .k-wrot{display:inline-block;height:1.26em;overflow:hidden;vertical-align:bottom;text-align:start}
-.k-wrot-in{display:flex;flex-direction:column;transition:transform .55s cubic-bezier(.65,0,.2,1)}
+.k-wrot-in{display:flex;flex-direction:column;transition:transform calc(.55s * var(--k-mscale)) var(--k-ease-in-out)}
 .k-wrot-in span{height:1.26em;line-height:1.26em;white-space:nowrap;color:var(--k-accent-ink);font-weight:650}
 @media (prefers-reduced-motion:reduce){.k-wrot-in{transition:none}}

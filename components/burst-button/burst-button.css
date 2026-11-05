@@ -1,6 +1,6 @@
 /* KATA Burst Button — a CTA with visible punctuation. */
 .k-burst{position:relative;display:inline-block;font-family:var(--k-font)}
 .k-burst canvas{position:absolute;inset:-70px -90px;width:calc(100% + 180px);height:calc(100% + 140px);pointer-events:none}
-.k-burst-btn{position:relative;z-index:1;background:var(--k-ink);color:var(--k-bg);border:0;font-family:inherit;font-size:14.5px;font-weight:650;padding:13px 26px;border-radius:11px;cursor:pointer;transition:transform .12s}
+.k-burst-btn{position:relative;z-index:1;background:var(--k-ink);color:var(--k-bg);border:0;font-family:inherit;font-size:14.5px;font-weight:650;padding:13px 26px;border-radius:11px;cursor:pointer;transition:transform calc(.12s * var(--k-mscale))}
 .k-burst-btn:active{transform:scale(.96)}
 .k-burst-btn.asagi{background:var(--k-accent);color:var(--k-on-accent)}

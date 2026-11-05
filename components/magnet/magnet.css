@@ -1,4 +1,4 @@
 /* KATA Magnet — a control with gravity. */
 .k-mag{display:inline-block;padding:26px;touch-action:none}
-.k-mag-in{display:inline-block;transition:transform .35s cubic-bezier(.2,.8,.25,1.2);will-change:transform}
-.k-mag.live .k-mag-in{transition:transform .12s ease-out}
+.k-mag-in{display:inline-block;transition:transform calc(.35s * var(--k-mscale)) var(--k-ease-spring);will-change:transform}
+.k-mag.live .k-mag-in{transition:transform calc(.12s * var(--k-mscale)) ease-out}

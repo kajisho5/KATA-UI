@@ -11,6 +11,14 @@ ROOT=Path(__file__).resolve().parents[1]
 def values(tokens,mode):
     result={}
     if mode=='root':
+        motion=tokens['motion']
+        result[motion['multiplier']]=str(motion['defaultMultiplier'])
+        for name,value in motion['durationsMs'].items():result['--k-dur-'+name]=f'calc({value}ms * var({motion["multiplier"]}))'
+        for name,target in motion['aliases'].items():result['--k-dur-'+name]='var(--k-dur-'+target+')'
+        result['--k-ease']=motion['easing']
+        for name,value in motion['easings'].items():result['--k-ease-'+name]=value
+        # Deprecated public names keep working; all first-party consumers use canonical names.
+        for name,target in motion.get('deprecatedEasingAliases',{}).items():result['--k-ease-'+name]='var(--k-ease-'+target+')'
         radii=tokens['radiusPx'];base=radii['md']
         result['--k-radius']=f'{base:g}px'
         for name,value in radii.items():

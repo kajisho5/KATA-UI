@@ -8,5 +8,5 @@
 .k-car-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--k-line);background:var(--k-bg);color:var(--k-ink);display:grid;place-items:center;cursor:pointer}
 .k-car-btn:hover{background:var(--k-bg-soft)}
 .k-car-dots{display:flex;gap:6px;margin-inline-start:auto}
-.k-car-dots button{width:7px;height:7px;border-radius:var(--k-radius-full);border:none;background:var(--k-line);cursor:pointer;padding:0;transition:width .18s var(--k-ease),background .18s}
+.k-car-dots button{width:7px;height:7px;border-radius:var(--k-radius-full);border:none;background:var(--k-line);cursor:pointer;padding:0;transition:width var(--k-dur-base) var(--k-ease),background var(--k-dur-base)}
 .k-car-dots button[aria-current="true"]{width:20px;background:var(--k-ink)}

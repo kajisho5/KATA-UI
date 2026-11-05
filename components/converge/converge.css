@@ -12,12 +12,12 @@
 .k-converge .dot.d1 .halo{fill:hsl(335 85% 68%);opacity:.45}
 .k-converge .dot.d2 .halo{fill:hsl(32 95% 60%);opacity:.45}
 .k-converge .dot.d3 .halo{fill:hsl(205 90% 63%);opacity:.45}
-.k-converge .glow{position:absolute;left:58%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 38% 32%,color-mix(in srgb,hsl(335 85% 68%) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,hsl(205 90% 63%) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%);animation:k-conv-pulse 3.4s var(--k-ease) infinite alternate;display:block}
-.k-converge .spark{position:absolute;z-index:2;display:grid;place-items:center;color:var(--k-on-color);animation:k-conv-tw 2.2s ease-in-out infinite alternate}
+.k-converge .glow{position:absolute;left:58%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 38% 32%,color-mix(in srgb,hsl(335 85% 68%) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,hsl(205 90% 63%) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%);animation:k-conv-pulse calc(3.4s * var(--k-mscale)) var(--k-ease) infinite alternate;display:block}
+.k-converge .spark{position:absolute;z-index:2;display:grid;place-items:center;color:var(--k-on-color);animation:k-conv-tw calc(2.2s * var(--k-mscale)) ease-in-out infinite alternate}
 .k-converge .sp1{left:48%;top:20%}
-.k-converge .sp2{left:67%;top:28%;animation-delay:.5s}
-.k-converge .sp3{left:65%;top:64%;animation-delay:1.1s}
-.k-converge .sp4{left:46%;top:60%;animation-delay:1.6s}
+.k-converge .sp2{left:67%;top:28%;animation-delay:calc(.5s * var(--k-mscale))}
+.k-converge .sp3{left:65%;top:64%;animation-delay:calc(1.1s * var(--k-mscale))}
+.k-converge .sp4{left:46%;top:60%;animation-delay:calc(1.6s * var(--k-mscale))}
 .k-converge-tile{position:absolute;left:58%;top:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;border-radius:16px;background:var(--k-bg);display:grid;place-items:center;color:var(--k-ink);box-shadow:0 0 46px color-mix(in srgb,var(--k-accent) 45%,transparent)}
 @keyframes k-conv-tw{from{opacity:.15;transform:scale(.55) rotate(0deg)}to{opacity:1;transform:scale(1.05) rotate(18deg)}}
 @keyframes k-conv-pulse{from{transform:translate(-50%,-50%) scale(.94);opacity:.75}to{transform:translate(-50%,-50%) scale(1.1);opacity:1}}

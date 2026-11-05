@@ -1,4 +1,4 @@
 /* KATA Progress */
 .k-progress{height:6px;border-radius:var(--k-radius-full);background:var(--k-track);overflow:hidden}
-.k-progress-bar{height:100%;border-radius:var(--k-radius-full);background:var(--k-ink);transition:width .3s cubic-bezier(.3,.7,.3,1)}
+.k-progress-bar{height:100%;border-radius:var(--k-radius-full);background:var(--k-ink);transition:width var(--k-dur-slow) var(--k-ease)}
 .k-progress[data-tone="accent"] .k-progress-bar{background:var(--k-accent);color:var(--k-on-accent)}

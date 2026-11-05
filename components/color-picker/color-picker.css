@@ -1,6 +1,6 @@
 .k-cp{font-family:var(--k-font);text-align:start}
 .k-cp-grid{display:flex;flex-wrap:wrap;gap:8px}
-.k-cp-sw{width:34px;height:34px;border-radius:var(--k-radius-lg);border:1px solid var(--k-line);cursor:pointer;padding:0;display:grid;place-items:center;color:transparent;transition:transform .12s var(--k-ease)}
+.k-cp-sw{width:34px;height:34px;border-radius:var(--k-radius-lg);border:1px solid var(--k-line);cursor:pointer;padding:0;display:grid;place-items:center;color:transparent;transition:transform var(--k-dur-fast) var(--k-ease)}
 .k-cp-sw:hover{transform:scale(1.08)}
 .k-cp-sw.sel{color:#fff;box-shadow:var(--k-ring-offset)}
 .k-cp-custom{position:relative;width:34px;height:34px;border-radius:var(--k-radius-lg);border:1.5px dashed var(--k-border-strong);display:grid;place-items:center;color:var(--k-ink-3);cursor:pointer;background:var(--k-bg)}

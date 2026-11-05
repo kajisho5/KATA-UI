@@ -8,8 +8,8 @@
 .k-seal{position:relative;margin-inline-start:auto;width:56px;height:56px;flex:none;cursor:pointer}
 .k-seal::after{content:"";position:absolute;inset:0;border:2px solid var(--k-core);border-radius:var(--k-radius-lg);opacity:0}
 .k-seal-face{position:absolute;inset:0;background:var(--k-core);color:var(--k-on-color);border-radius:var(--k-radius-md) var(--k-radius-lg) var(--k-radius-lg) var(--k-radius-lg);display:flex;align-items:center;justify-content:center;font-family:"Hiragino Mincho ProN","YuMincho",serif;font-size:29px;font-weight:600;transform:rotate(-3deg)}
-.k-seal.stamp .k-seal-face{animation:k-seal-in .5s cubic-bezier(.2,1.6,.4,1)}
-.k-seal.stamp::after{animation:k-seal-ring .55s ease-out}
+.k-seal.stamp .k-seal-face{animation:k-seal-in calc(.5s * var(--k-mscale)) var(--k-ease-spring)}
+.k-seal.stamp::after{animation:k-seal-ring calc(.55s * var(--k-mscale)) ease-out}
 @keyframes k-seal-in{0%{transform:scale(2.1) rotate(-13deg);opacity:0}55%{transform:scale(.94) rotate(-2.2deg);opacity:1}78%{transform:scale(1.03) rotate(-3.2deg)}100%{transform:scale(1) rotate(-3deg)}}
 @keyframes k-seal-ring{0%{transform:scale(.7);opacity:.55}100%{transform:scale(1.55);opacity:0}}
 @media (prefers-reduced-motion:reduce){.k-seal.stamp .k-seal-face,.k-seal.stamp::after{animation:none}}

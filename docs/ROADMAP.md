@@ -1,7 +1,7 @@
 # Roadmap
 
 <!-- mold-snapshot:start -->
-[Mold Verified 53 / 164 · UI 42 / 121 · Lab 11 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 88 / 164 · UI 59 / 121 · Lab 29 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-05 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
@@ -10,12 +10,12 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 |---|---:|
 | token-values: radius | 0 |
 | token-values: radius-full | 0 |
-| token-values: duration | 107 |
+| token-values: duration | 0 |
 | token-values: shadow | 0 |
 | token-values: shadow-ring | 0 |
 | token-values: border | 1 |
 | token-values: color | 19 |
-| token-values: easing | 10 |
+| token-values: easing | 0 |
 | spacing-values (warn) | 892 |
 | type-values (warn) | 638 |
 | focus-visible | 132 |
@@ -48,7 +48,8 @@ separate release statuses. The phases below are targets, not shipped features.
 - [x] PR #19 regression correction: preserve Lab glow geometry with token paint, separate selected/offset rings, and measure both Drawer edges ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [x] P5 (shadow/rings): Normalize all remaining elevation/ring findings and four backdrops ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [x] Shared text contrast: role separation, Foundry/export fallback and 40-part Chromium measurements ([PR #20](https://github.com/kajisho5/KATA-UI/pull/20)); Firefox/Safari and screen-reader checks remain manual.
-- [ ] P5 remaining: Replace duration, border, color and easing literals. One remaining value kind per PR.
+- [x] P5 (duration/easing): Shared scaled timing, named curves, zero/reduced-motion safety ([PR #21](https://github.com/kajisho5/KATA-UI/pull/21)).
+- [ ] P5 remaining: Replace border and color literals. One remaining value kind per PR.
 - [ ] P6: Rebuild JS-failing components using the Combobox initialization pattern. Three components per PR; test repeated loading, generated IDs, IME and focus departure.
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.

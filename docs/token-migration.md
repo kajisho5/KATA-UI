@@ -2601,3 +2601,23 @@ the corrected rule retains Tracing Beam's pass, without hiding other Lab issues.
 Danger foreground now uses danger-ink; full accent surfaces use on-accent and neutral-surface accent text uses accent-ink. JSON generates adaptive relative-color roles, and Foundry exports static WCAG-safe roles. Default accent, core and dark canvas are unchanged. Mold remains **53 / 164** (UI 42 / 121, Lab 11 / 43), with **137 token-values findings**, no new finding, and unchanged checker rules / baseline identities.
 
 [Complete token/usage tables, before/after 40-part × 2-theme measurements, states, custom palettes and screenshots](review/text-contrast/README.md). All measured eligible samples meet 4.5:1; disabled samples are listed separately. This does not certify unmeasured states or browsers.
+
+## Shared duration and easing migration — PR #21
+
+Mold **53 / 164 → 88 / 164**. Duration **107 → 0**, easing **10 → 0**. Color 19 and border 1 remain unchanged. Rules are unchanged.
+
+### Final UI discrete duration map
+
+| Original | Shared token | Base |
+|---|---|---:|
+| >0–150ms | --k-dur-fast | 130ms |
+| 151–200ms | --k-dur-base | 180ms |
+| 201–400ms | --k-dur-slow | 220ms |
+
+All three multiply --k-mscale exactly once. Numbered --k-dur-1/2/3 remain aliases. UI loops, UI durations above 400ms, delays and Lab periods retain the original value via calc(original * var(--k-mscale)); explicit zero remains zero. Reduced motion sets only --k-mscale to zero; KATA loop components stop their own animations. Host application transitions are untouched. No component-specific shared tokens were added.
+
+[All easing approximations, declaration mappings, computed timing table and JS safety checks](review/shared-motion/README.md).
+
+### PR #21 review corrections
+
+The slow-start / slow-finish curve is now --k-ease-in-out (cubic-bezier(.6,0,.2,1)); --k-ease-out remains only as its deprecated compatibility alias. ease is entrance/general (out-shaped), in-out is repositioning/exit, spring is weak overshoot, and bounce is strong overshoot. tokens.css contains no universal reduced-motion animation/transition/scroll override. A plain host div keeps its 400ms transition while KATA motion is stopped. See KATA.md and the updated shared-motion measurements. Mold remains 88/164.

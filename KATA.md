@@ -18,6 +18,23 @@ KATA UI の全コンポーネントは、この「型」から鋳造する。新
 - **声**： 英語コピーは短く断定する（"Parts you copy. Code you own."）。説明は1文で切る。煽らない。
 - **記号**： ロゴは枠なしの4分割正方形（2026-11-02 本人決定、A1 Mold から変更）： 左上＝墨、右上＝市松の入れ子（正方形の中にまた正方形——型の中の型）、左下＝灰、右下＝朱。
 
+### Shared motion roles and reduced-motion ownership
+
+- `--k-ease`: entrance and general transitions (out-shaped).
+- `--k-ease-in-out`: repositioning and exit transitions (slow start and slow finish).
+- `--k-ease-spring`: weak overshoot.
+- `--k-ease-bounce`: strong overshoot.
+
+Under `prefers-reduced-motion: reduce`, tokens.css sets only `--k-mscale:0 !important`.
+It must not apply universal animation, transition, or scroll overrides: copied KATA
+styles must not disable motion owned by the host application. Scaled KATA state
+transitions become zero-duration; spinner, skeleton, marquee and Lab loop components
+stop their own animations (or hide the animated decoration) in component CSS.
+Completion logic must still work with no end event. The misleading `--k-ease-out`
+name is retained only as a deprecated alias of `--k-ease-in-out` for API compatibility;
+all first-party consumers use the corrected name. This is a naming/scope correction,
+not a static audit exception or a change to the four curve shapes.
+
 ## 0.5 文字の型（字間・行間は固定値）
 
 - **入力欄はモバイルで 16px**：テキスト入力部品（Input / Textarea / Select / Tag Input / Command 等）は `@media (max-width:640px)` で font-size:16px にする。iOS Safari は 16px 未満の欄にフォーカスするとページを自動ズームし、戻らない — デザインではなくプラットフォームの型。
@@ -56,7 +73,7 @@ KATA UI の全コンポーネントは、この「型」から鋳造する。新
 - **余白のリズムは一律**: 見出しの上下など、同じ役割の間隔はブロック境界で変わらない。目分量でなく実測値で揃える。
 - **状態を全部作る**: hover / active / focus-visible / disabled / 空・多すぎ・長すぎ の各状態と、その間の transition。キーボードのフォーカス環は tokens.css の床が保証するが、部品固有の見せ方が要る所は部品で作る。
 - **光学補正**: アイコンと文字の中心、±1px の見えのズレは実寸スクリーンショットで詰める。拡大して見るのが標準手順。
-- **prefers-reduced-motion**: 部品側でも止める（tokens.css に全体の安全網あり）。
+- **prefers-reduced-motion**: tokens.css changes only --k-mscale; each component stops its own loops. Host application transitions must remain untouched.
 - **フォーム部品は -webkit-appearance も併記**: iOS Safari は標準 appearance だけでは native の白い欄・青いラジオを手放さない。背景や枠を自前で描く input / select / checkbox / radio は `-webkit-appearance:none;appearance:none;` を必ず対で書く（2026-11-02、カタログのギャラリーで発覚）。
 - **配布ファイルの URL は全て内容ハッシュ付き**: バンドル（kata-ui.css / kata-ui.js）も例外にしない。バージョンなしの URL は端末に古いコピーを固定する（2026-11-02、実機で発覚）。
 - **カード（<a>）の中にプレビューを入れる時は内部リンクを span 化**: プレビュー内の <a> は HTML の入れ子禁止で外側のカードをパーサに壊される（カタログで10部品が空表示になった）。ギャラリーの stage は inert が前提なので、card() が自動で span 化し、build が残存を assert する。

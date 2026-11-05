@@ -1,0 +1,68 @@
+<!doctype html><html lang="en" style="--k-mscale:0"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Zero motion safety</title><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/button/button.css"><link rel="stylesheet" href="../components/modal/modal.css"><link rel="stylesheet" href="../components/drawer/drawer.css"><link rel="stylesheet" href="../components/toast/toast.css"><link rel="stylesheet" href="../components/jelly-buttons/jelly-buttons.css"><link rel="stylesheet" href="../components/spinner/spinner.css"><link rel="stylesheet" href="../components/skeleton/skeleton.css"><link rel="stylesheet" href="../components/aurora/aurora.css"><link rel="stylesheet" href="../components/marquee/marquee.css"></head><body><h1>Zero motion safety</h1><p>Shared motion multiplier is zero. Modal, drawer and toast must still close. Reduced motion must stop the loops.</p><section><h2>Host application control</h2><div id="host-transition" style="transition:opacity 400ms linear;opacity:1">This plain div is not a KATA component. Its transition remains active under reduced motion.</div></section><section><h2>modal</h2><button type="button" class="btn btn-pri btn-md" data-modal-open>Open modal</button>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Send this estimate?</h3>
+    <p>Once sent, it can't be undone. Check the recipient and the amount first.</p>
+    <div class="row">
+      <button type="button" class="btn btn-sec btn-md" data-modal-close>Cancel</button>
+      <button type="button" class="btn btn-pri btn-md" data-modal-close>Send</button>
+    </div>
+  </div>
+</dialog>
+
+</section><section><h2>drawer</h2><button type="button" class="btn btn-pri btn-md" data-drawer-open>Open drawer</button>
+<dialog class="kdrawer" data-drawer aria-label="Invoice detail">
+  <div class="kdrawer-head">
+    <div class="kdrawer-title">Invoice INV-1042</div>
+    <button type="button" class="btn btn-ghost btn-sm" data-drawer-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="kdrawer-body">Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.</div>
+  <div class="kdrawer-foot">
+    <button type="button" class="btn btn-sec btn-md" data-drawer-close>Close</button>
+    <button type="button" class="btn btn-pri btn-md" data-drawer-close>Send reminder</button>
+  </div>
+</dialog>
+
+</section><section><h2>toast</h2><button type="button" class="btn btn-sec btn-md" data-toast-demo>Show toast</button>
+<div class="toasts k-toast" data-toasts></div>
+
+</section><section><h2>jelly-buttons</h2><div style="display:flex;gap:13px;flex-wrap:wrap;align-items:center;padding:8px 0">
+  <button class="k-jelly" type="button">Squish me</button>
+  <button class="k-jelly asagi" type="button">Me too</button>
+  <button class="k-jelly soft" type="button">Reluctantly</button>
+</div>
+<p style="font-size:12.5px;color:var(--k-ink-3);margin-top:6px">Hover is a lean, press is a squash, release is the wobble home.</p></section><section><h2>spinner</h2><div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+  <span class="k-spinner" data-size="sm" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" data-size="lg" role="status" aria-label="Loading"></span>
+  <button type="button" class="btn btn-sec btn-md" disabled><span class="k-spinner" data-size="sm"></span> Saving…</button>
+</div>
+
+</section><section><h2>skeleton</h2><div style="display:grid;gap:12px;max-width:380px;width:100%" aria-hidden="true">
+  <div style="display:flex;gap:12px;align-items:center">
+    <span class="k-sk k-sk-circle" style="width:40px;height:40px"></span>
+    <div style="display:grid;gap:7px;flex:1"><span class="k-sk" style="height:12px;width:46%"></span><span class="k-sk" style="height:12px;width:72%"></span></div>
+  </div>
+  <span class="k-sk" style="height:12px"></span>
+  <span class="k-sk" style="height:12px;width:84%"></span>
+  <span class="k-sk" style="height:64px;border-radius:var(--k-radius-lg)"></span>
+</div>
+
+</section><section><h2>aurora</h2><div class="k-aurora" style="max-width:430px">
+  <i class="b1"></i><i class="b2"></i><i class="b3"></i>
+  <div class="k-aurora-in">
+    <h3>Ship the calm version</h3>
+    <p>A slow wash of the accent and the core, moving behind whatever the hero needs to say.</p>
+  </div>
+</div>
+</section><section><h2>marquee</h2><div class="k-marquee" style="max-width:520px">
+  <div class="k-marquee-track">
+    <div class="k-marquee-group">
+      <span style="font-weight:600;font-size:15px;color:var(--k-ink-2)">NORTHWIND</span><span style="font-family:var(--k-mono);font-size:13px;color:var(--k-ink-3)">hexlab</span><span style="font-weight:600;font-size:15px;letter-spacing:.06em;color:var(--k-ink-2)">ATELIER&nbsp;9</span><span style="font-family:var(--k-mono);font-size:13px;color:var(--k-ink-3)">mono&amp;co</span><span style="font-weight:600;font-size:15px;color:var(--k-ink-2)">Fieldset</span><span style="font-family:var(--k-mono);font-size:13px;color:var(--k-ink-3)">oslo.fm</span>
+    </div>
+    <div class="k-marquee-group" aria-hidden="true">
+      <span style="font-weight:600;font-size:15px;color:var(--k-ink-2)">NORTHWIND</span><span style="font-family:var(--k-mono);font-size:13px;color:var(--k-ink-3)">hexlab</span><span style="font-weight:600;font-size:15px;letter-spacing:.06em;color:var(--k-ink-2)">ATELIER&nbsp;9</span><span style="font-family:var(--k-mono);font-size:13px;color:var(--k-ink-3)">mono&amp;co</span><span style="font-weight:600;font-size:15px;color:var(--k-ink-2)">Fieldset</span><span style="font-family:var(--k-mono);font-size:13px;color:var(--k-ink-3)">oslo.fm</span>
+    </div>
+  </div>
+</div>
+</section><script src="../components/modal/modal.js"></script><script src="../components/drawer/drawer.js"></script><script src="../components/toast/toast.js"></script><script src="../components/jelly-buttons/jelly-buttons.js"></script></body></html>

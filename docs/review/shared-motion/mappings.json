@@ -1,0 +1,674 @@
+{
+  "declarations": [
+    {
+      "file": "components/accordion/accordion.css",
+      "property": "transition",
+      "before": "transform .18s cubic-bezier(.3,.7,.3,1)",
+      "after": "transform var(--k-dur-base) var(--k-ease)"
+    },
+    {
+      "file": "components/accordion-gallery/accordion-gallery.css",
+      "property": "transition",
+      "before": "flex .55s cubic-bezier(.6,0,.2,1)",
+      "after": "flex calc(.55s * var(--k-mscale)) var(--k-ease-in-out)"
+    },
+    {
+      "file": "components/accordion-gallery/accordion-gallery.css",
+      "property": "transition",
+      "before": "opacity .3s .18s",
+      "after": "opacity calc(.3s * var(--k-mscale)) calc(.18s * var(--k-mscale))"
+    },
+    {
+      "file": "components/aurora/aurora.css",
+      "property": "animation",
+      "before": "k-aur-a 9s var(--k-ease) infinite alternate",
+      "after": "k-aur-a calc(9s * var(--k-mscale)) var(--k-ease) infinite alternate"
+    },
+    {
+      "file": "components/aurora/aurora.css",
+      "property": "animation",
+      "before": "k-aur-b 12s var(--k-ease) infinite alternate",
+      "after": "k-aur-b calc(12s * var(--k-mscale)) var(--k-ease) infinite alternate"
+    },
+    {
+      "file": "components/aurora/aurora.css",
+      "property": "animation",
+      "before": "k-aur-c 11s var(--k-ease) infinite alternate",
+      "after": "k-aur-c calc(11s * var(--k-mscale)) var(--k-ease) infinite alternate"
+    },
+    {
+      "file": "components/aurora/aurora.css",
+      "property": "animation",
+      "before": "k-aur-pat 26s linear infinite alternate",
+      "after": "k-aur-pat calc(26s * var(--k-mscale)) linear infinite alternate"
+    },
+    {
+      "file": "components/beam-border/beam-border.css",
+      "property": "animation",
+      "before": "k-beam-spin 4.5s linear infinite",
+      "after": "k-beam-spin calc(4.5s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/blur-in/blur-in.css",
+      "property": "animation",
+      "before": "k-blur-in .7s cubic-bezier(.2,.6,.2,1) forwards",
+      "after": "k-blur-in calc(.7s * var(--k-mscale)) var(--k-ease) forwards"
+    },
+    {
+      "file": "components/bounce-letters/bounce-letters.css",
+      "property": "transition",
+      "before": "transform .34s cubic-bezier(.3,2.3,.4,1)",
+      "after": "transform calc(.34s * var(--k-mscale)) var(--k-ease-bounce)"
+    },
+    {
+      "file": "components/burst-button/burst-button.css",
+      "property": "transition",
+      "before": "transform .12s",
+      "after": "transform calc(.12s * var(--k-mscale))"
+    },
+    {
+      "file": "components/button/button.css",
+      "property": "transition",
+      "before": "background-color calc(var(--k-dur-1) * var(--k-mscale, 1)) var(--k-ease),color calc(var(--k-dur-1) * var(--k-mscale, 1)) var(--k-ease),box-shadow calc(var(--k-dur-1) * var(--k-mscale, 1)) var(--k-ease)",
+      "after": "background-color var(--k-dur-1) var(--k-ease),color var(--k-dur-1) var(--k-ease),box-shadow var(--k-dur-1) var(--k-ease)"
+    },
+    {
+      "file": "components/carousel/carousel.css",
+      "property": "transition",
+      "before": "width .18s var(--k-ease),background .18s",
+      "after": "width var(--k-dur-base) var(--k-ease),background var(--k-dur-base)"
+    },
+    {
+      "file": "components/carousel-ring/carousel-ring.css",
+      "property": "animation",
+      "before": "k-ring-spin 26s linear infinite",
+      "after": "k-ring-spin calc(26s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/checkbox/checkbox.css",
+      "property": "transition",
+      "before": "background .13s,border-color .13s",
+      "after": "background var(--k-dur-fast),border-color var(--k-dur-fast)"
+    },
+    {
+      "file": "components/checkbox/checkbox.css",
+      "property": "transition",
+      "before": "transform .13s",
+      "after": "transform var(--k-dur-fast)"
+    },
+    {
+      "file": "components/collapsible/collapsible.css",
+      "property": "transition",
+      "before": "transform .18s",
+      "after": "transform var(--k-dur-base)"
+    },
+    {
+      "file": "components/color-picker/color-picker.css",
+      "property": "transition",
+      "before": "transform .12s var(--k-ease)",
+      "after": "transform var(--k-dur-fast) var(--k-ease)"
+    },
+    {
+      "file": "components/converge/converge.css",
+      "property": "animation",
+      "before": "k-conv-pulse 3.4s var(--k-ease) infinite alternate",
+      "after": "k-conv-pulse calc(3.4s * var(--k-mscale)) var(--k-ease) infinite alternate"
+    },
+    {
+      "file": "components/converge/converge.css",
+      "property": "animation",
+      "before": "k-conv-tw 2.2s ease-in-out infinite alternate",
+      "after": "k-conv-tw calc(2.2s * var(--k-mscale)) ease-in-out infinite alternate"
+    },
+    {
+      "file": "components/converge/converge.css",
+      "property": "animation-delay",
+      "before": ".5s",
+      "after": "calc(.5s * var(--k-mscale))"
+    },
+    {
+      "file": "components/converge/converge.css",
+      "property": "animation-delay",
+      "before": "1.1s",
+      "after": "calc(1.1s * var(--k-mscale))"
+    },
+    {
+      "file": "components/converge/converge.css",
+      "property": "animation-delay",
+      "before": "1.6s",
+      "after": "calc(1.6s * var(--k-mscale))"
+    },
+    {
+      "file": "components/copy-field/copy-field.css",
+      "property": "transition",
+      "before": "background .15s",
+      "after": "background var(--k-dur-fast)"
+    },
+    {
+      "file": "components/data-table/data-table.css",
+      "property": "transition",
+      "before": "transform .15s var(--k-ease),opacity .15s",
+      "after": "transform var(--k-dur-fast) var(--k-ease),opacity var(--k-dur-fast)"
+    },
+    {
+      "file": "components/dock/dock.css",
+      "property": "transition",
+      "before": "transform .14s ease-out",
+      "after": "transform calc(.14s * var(--k-mscale)) ease-out"
+    },
+    {
+      "file": "components/dock/dock.css",
+      "property": "transition",
+      "before": "opacity .15s,transform .15s",
+      "after": "opacity calc(.15s * var(--k-mscale)),transform calc(.15s * var(--k-mscale))"
+    },
+    {
+      "file": "components/dropdown/dropdown.css",
+      "property": "transition",
+      "before": "opacity .15s,transform .15s",
+      "after": "opacity var(--k-dur-fast),transform var(--k-dur-fast)"
+    },
+    {
+      "file": "components/file-upload/file-upload.css",
+      "property": "transition",
+      "before": "border-color .15s,background .15s",
+      "after": "border-color var(--k-dur-fast),background var(--k-dur-fast)"
+    },
+    {
+      "file": "components/glow-button/glow-button.css",
+      "property": "animation",
+      "before": "k-ga-spin 3.6s linear infinite",
+      "after": "k-ga-spin calc(3.6s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/glow-button/glow-button.css",
+      "property": "transition",
+      "before": "box-shadow .3s",
+      "after": "box-shadow calc(.3s * var(--k-mscale))"
+    },
+    {
+      "file": "components/glow-button/glow-button.css",
+      "property": "transition",
+      "before": "background .3s, box-shadow .3s",
+      "after": "background calc(.3s * var(--k-mscale)), box-shadow calc(.3s * var(--k-mscale))"
+    },
+    {
+      "file": "components/glow-button/glow-button.css",
+      "property": "animation",
+      "before": "k-ga-spin 3.6s linear infinite",
+      "after": "k-ga-spin calc(3.6s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/glow-cards/glow-cards.css",
+      "property": "transition",
+      "before": "opacity .25s",
+      "after": "opacity calc(.25s * var(--k-mscale))"
+    },
+    {
+      "file": "components/goo-tabs/goo-tabs.css",
+      "property": "transition",
+      "before": "left .45s cubic-bezier(.6,-0.1,.2,1.25), width .45s cubic-bezier(.6,-0.1,.2,1.25), transform .3s",
+      "after": "left calc(.45s * var(--k-mscale)) var(--k-ease-spring), width calc(.45s * var(--k-mscale)) var(--k-ease-spring), transform calc(.3s * var(--k-mscale))"
+    },
+    {
+      "file": "components/goo-tabs/goo-tabs.css",
+      "property": "transition",
+      "before": "color .25s",
+      "after": "color calc(.25s * var(--k-mscale))"
+    },
+    {
+      "file": "components/hanko/hanko.css",
+      "property": "animation",
+      "before": "k-seal-in .5s cubic-bezier(.2,1.6,.4,1)",
+      "after": "k-seal-in calc(.5s * var(--k-mscale)) var(--k-ease-spring)"
+    },
+    {
+      "file": "components/hanko/hanko.css",
+      "property": "animation",
+      "before": "k-seal-ring .55s ease-out",
+      "after": "k-seal-ring calc(.55s * var(--k-mscale)) ease-out"
+    },
+    {
+      "file": "components/hover-card/hover-card.css",
+      "property": "transition",
+      "before": "opacity .16s var(--k-ease),transform .16s var(--k-ease)",
+      "after": "opacity var(--k-dur-base) var(--k-ease),transform var(--k-dur-base) var(--k-ease)"
+    },
+    {
+      "file": "components/input-otp/input-otp.css",
+      "property": "transition",
+      "before": "border-color .13s, box-shadow .13s",
+      "after": "border-color var(--k-dur-fast), box-shadow var(--k-dur-fast)"
+    },
+    {
+      "file": "components/jelly-buttons/jelly-buttons.css",
+      "property": "transition",
+      "before": "transform .28s cubic-bezier(.3,2.4,.45,1)",
+      "after": "transform calc(.28s * var(--k-mscale)) var(--k-ease-bounce)"
+    },
+    {
+      "file": "components/jelly-buttons/jelly-buttons.css",
+      "property": "animation",
+      "before": "k-jelly-wob .55s cubic-bezier(.3,2.2,.45,1)",
+      "after": "k-jelly-wob calc(.55s * var(--k-mscale)) var(--k-ease-bounce)"
+    },
+    {
+      "file": "components/liquid-button/liquid-button.css",
+      "property": "transition",
+      "before": "transform .65s cubic-bezier(.5,0,.2,1)",
+      "after": "transform calc(.65s * var(--k-mscale)) var(--k-ease-in-out)"
+    },
+    {
+      "file": "components/liquid-button/liquid-button.css",
+      "property": "transition",
+      "before": "color .4s",
+      "after": "color calc(.4s * var(--k-mscale))"
+    },
+    {
+      "file": "components/magnet/magnet.css",
+      "property": "transition",
+      "before": "transform .35s cubic-bezier(.2,.8,.25,1.2)",
+      "after": "transform calc(.35s * var(--k-mscale)) var(--k-ease-spring)"
+    },
+    {
+      "file": "components/magnet/magnet.css",
+      "property": "transition",
+      "before": "transform .12s ease-out",
+      "after": "transform calc(.12s * var(--k-mscale)) ease-out"
+    },
+    {
+      "file": "components/marquee/marquee.css",
+      "property": "animation",
+      "before": "k-marquee 30s linear infinite",
+      "after": "k-marquee calc(30s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/navigation-menu/navigation-menu.css",
+      "property": "transition",
+      "before": "transform .18s",
+      "after": "transform var(--k-dur-base)"
+    },
+    {
+      "file": "components/newtons-cradle/newtons-cradle.css",
+      "property": "animation",
+      "before": "k-cr-l 2.4s ease-in-out infinite",
+      "after": "k-cr-l calc(2.4s * var(--k-mscale)) ease-in-out infinite"
+    },
+    {
+      "file": "components/newtons-cradle/newtons-cradle.css",
+      "property": "animation",
+      "before": "k-cr-r 2.4s ease-in-out infinite",
+      "after": "k-cr-r calc(2.4s * var(--k-mscale)) ease-in-out infinite"
+    },
+    {
+      "file": "components/noren/noren.css",
+      "property": "transition",
+      "before": "transform .5s cubic-bezier(.4,0,.2,1)",
+      "after": "transform calc(.5s * var(--k-mscale)) var(--k-ease-in-out)"
+    },
+    {
+      "file": "components/noren/noren.css",
+      "property": "animation",
+      "before": "k-nor-sway 5.2s ease-in-out infinite alternate",
+      "after": "k-nor-sway calc(5.2s * var(--k-mscale)) ease-in-out infinite alternate"
+    },
+    {
+      "file": "components/noren/noren.css",
+      "property": "animation",
+      "before": "k-nor-sway 6.4s ease-in-out infinite alternate-reverse",
+      "after": "k-nor-sway calc(6.4s * var(--k-mscale)) ease-in-out infinite alternate-reverse"
+    },
+    {
+      "file": "components/noren/noren.css",
+      "property": "animation",
+      "before": "k-nor-sway 5.8s ease-in-out infinite alternate",
+      "after": "k-nor-sway calc(5.8s * var(--k-mscale)) ease-in-out infinite alternate"
+    },
+    {
+      "file": "components/orbit/orbit.css",
+      "property": "animation-duration",
+      "before": "16s",
+      "after": "calc(16s * var(--k-mscale))"
+    },
+    {
+      "file": "components/orbit/orbit.css",
+      "property": "animation-duration",
+      "before": "26s",
+      "after": "calc(26s * var(--k-mscale))"
+    },
+    {
+      "file": "components/orbit/orbit.css",
+      "property": "animation-duration",
+      "before": "16s",
+      "after": "calc(16s * var(--k-mscale))"
+    },
+    {
+      "file": "components/orbit/orbit.css",
+      "property": "animation-duration",
+      "before": "26s",
+      "after": "calc(26s * var(--k-mscale))"
+    },
+    {
+      "file": "components/pagination/pagination.css",
+      "property": "transition",
+      "before": "background .13s",
+      "after": "background var(--k-dur-fast)"
+    },
+    {
+      "file": "components/progress/progress.css",
+      "property": "transition",
+      "before": "width .3s cubic-bezier(.3,.7,.3,1)",
+      "after": "width var(--k-dur-slow) var(--k-ease)"
+    },
+    {
+      "file": "components/radio/radio.css",
+      "property": "transition",
+      "before": "border-color .15s",
+      "after": "border-color var(--k-dur-fast)"
+    },
+    {
+      "file": "components/radio/radio.css",
+      "property": "transition",
+      "before": "transform .15s cubic-bezier(.3,.7,.3,1)",
+      "after": "transform var(--k-dur-fast) var(--k-ease)"
+    },
+    {
+      "file": "components/rating/rating.css",
+      "property": "transition",
+      "before": "fill .12s",
+      "after": "fill var(--k-dur-fast)"
+    },
+    {
+      "file": "components/segmented/segmented.css",
+      "property": "transition",
+      "before": "background .15s,color .15s",
+      "after": "background var(--k-dur-fast),color var(--k-dur-fast)"
+    },
+    {
+      "file": "components/select/select.css",
+      "property": "transition",
+      "before": "border-color .15s",
+      "after": "border-color var(--k-dur-fast)"
+    },
+    {
+      "file": "components/shine-text/shine-text.css",
+      "property": "animation",
+      "before": "k-shine-move 3.4s linear infinite",
+      "after": "k-shine-move calc(3.4s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/sidebar/sidebar.css",
+      "property": "transition",
+      "before": "transform .18s",
+      "after": "transform var(--k-dur-base)"
+    },
+    {
+      "file": "components/skeleton/skeleton.css",
+      "property": "animation",
+      "before": "k-shimmer 1.4s ease-in-out infinite",
+      "after": "k-shimmer calc(1.4s * var(--k-mscale)) ease-in-out infinite"
+    },
+    {
+      "file": "components/speed-dial/speed-dial.css",
+      "property": "transition",
+      "before": "opacity .18s,transform .18s",
+      "after": "opacity var(--k-dur-base),transform var(--k-dur-base)"
+    },
+    {
+      "file": "components/speed-dial/speed-dial.css",
+      "property": "transition",
+      "before": "transform .2s",
+      "after": "transform var(--k-dur-base)"
+    },
+    {
+      "file": "components/spinner/spinner.css",
+      "property": "animation",
+      "before": "k-spin .7s linear infinite",
+      "after": "k-spin calc(.7s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/spinner/spinner.css",
+      "property": "animation-duration",
+      "before": "1.6s",
+      "after": "calc(1.6s * var(--k-mscale))"
+    },
+    {
+      "file": "components/stepper/stepper.css",
+      "property": "transition",
+      "before": "background .13s",
+      "after": "background var(--k-dur-fast)"
+    },
+    {
+      "file": "components/switch/switch.css",
+      "property": "transition",
+      "before": "background .18s",
+      "after": "background var(--k-dur-base)"
+    },
+    {
+      "file": "components/switch/switch.css",
+      "property": "transition",
+      "before": "transform .18s",
+      "after": "transform var(--k-dur-base)"
+    },
+    {
+      "file": "components/tabs/tabs.css",
+      "property": "transition",
+      "before": "left .22s cubic-bezier(.3,.7,.3,1),width .22s cubic-bezier(.3,.7,.3,1)",
+      "after": "left var(--k-dur-slow) var(--k-ease),width var(--k-dur-slow) var(--k-ease)"
+    },
+    {
+      "file": "components/tag-input/tag-input.css",
+      "property": "transition",
+      "before": "border-color .13s, box-shadow .13s",
+      "after": "border-color var(--k-dur-fast), box-shadow var(--k-dur-fast)"
+    },
+    {
+      "file": "components/tategaki/tategaki.css",
+      "property": "animation",
+      "before": "k-tate-in 1s cubic-bezier(.2,.7,.2,1) both",
+      "after": "k-tate-in calc(1s * var(--k-mscale)) var(--k-ease) both"
+    },
+    {
+      "file": "components/tategaki/tategaki.css",
+      "property": "animation-delay",
+      "before": ".05s",
+      "after": "calc(.05s * var(--k-mscale))"
+    },
+    {
+      "file": "components/tategaki/tategaki.css",
+      "property": "animation-delay",
+      "before": ".22s",
+      "after": "calc(.22s * var(--k-mscale))"
+    },
+    {
+      "file": "components/tategaki/tategaki.css",
+      "property": "animation-delay",
+      "before": ".39s",
+      "after": "calc(.39s * var(--k-mscale))"
+    },
+    {
+      "file": "components/text-reveal/text-reveal.css",
+      "property": "transition",
+      "before": "transform .7s cubic-bezier(.3,.7,.3,1)",
+      "after": "transform calc(.7s * var(--k-mscale)) var(--k-ease)"
+    },
+    {
+      "file": "components/text-reveal/text-reveal.css",
+      "property": "transition-delay",
+      "before": "calc(var(--i,0)*45ms)",
+      "after": "calc(var(--i,0)*calc(45ms * var(--k-mscale)))"
+    },
+    {
+      "file": "components/textarea/textarea.css",
+      "property": "transition",
+      "before": "border-color .15s,box-shadow .15s",
+      "after": "border-color var(--k-dur-fast),box-shadow var(--k-dur-fast)"
+    },
+    {
+      "file": "components/tilt-card/tilt-card.css",
+      "property": "transition",
+      "before": "transform .3s ease-out",
+      "after": "transform calc(.3s * var(--k-mscale)) ease-out"
+    },
+    {
+      "file": "components/tilt-card/tilt-card.css",
+      "property": "transition",
+      "before": "transform .08s linear",
+      "after": "transform calc(.08s * var(--k-mscale)) linear"
+    },
+    {
+      "file": "components/toast/toast.css",
+      "property": "animation",
+      "before": "k-tin .3s cubic-bezier(.3,1.2,.4,1)",
+      "after": "k-tin var(--k-dur-slow) var(--k-ease-spring)"
+    },
+    {
+      "file": "components/toggle/toggle.css",
+      "property": "transition",
+      "before": "background .13s,border-color .13s,color .13s",
+      "after": "background var(--k-dur-fast),border-color var(--k-dur-fast),color var(--k-dur-fast)"
+    },
+    {
+      "file": "components/tooltip/tooltip.css",
+      "property": "transition",
+      "before": "opacity .15s,transform .15s",
+      "after": "opacity var(--k-dur-fast),transform var(--k-dur-fast)"
+    },
+    {
+      "file": "components/tooltip/tooltip.css",
+      "property": "transition",
+      "before": "opacity .15s",
+      "after": "opacity var(--k-dur-fast)"
+    },
+    {
+      "file": "components/tree/tree.css",
+      "property": "transition",
+      "before": "transform .15s var(--k-ease)",
+      "after": "transform var(--k-dur-fast) var(--k-ease)"
+    },
+    {
+      "file": "components/typewriter/typewriter.css",
+      "property": "animation",
+      "before": "k-type-blink 1.05s steps(1) infinite",
+      "after": "k-type-blink calc(1.05s * var(--k-mscale)) steps(1) infinite"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "0.00s",
+      "after": "calc(0.00s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "0.42s",
+      "after": "calc(0.42s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "0.84s",
+      "after": "calc(0.84s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "1.26s",
+      "after": "calc(1.26s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "1.68s",
+      "after": "calc(1.68s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "2.10s",
+      "after": "calc(2.10s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "2.52s",
+      "after": "calc(2.52s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "2.94s",
+      "after": "calc(2.94s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "3.36s",
+      "after": "calc(3.36s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "3.78s",
+      "after": "calc(3.78s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "4.20s",
+      "after": "calc(4.20s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/preview.html",
+      "property": "animation-delay",
+      "before": "4.62s",
+      "after": "calc(4.62s * var(--k-mscale))"
+    },
+    {
+      "file": "components/warp-tunnel/warp-tunnel.css",
+      "property": "animation",
+      "before": "k-warp-fly 5s linear infinite",
+      "after": "k-warp-fly calc(5s * var(--k-mscale)) linear infinite"
+    },
+    {
+      "file": "components/word-rotate/word-rotate.css",
+      "property": "transition",
+      "before": "transform .55s cubic-bezier(.65,0,.2,1)",
+      "after": "transform calc(.55s * var(--k-mscale)) var(--k-ease-in-out)"
+    },
+    {
+      "file": "blocks/integrations/integrations.css",
+      "property": "transition",
+      "before": "border-color .14s",
+      "after": "border-color var(--k-dur-fast)"
+    },
+    {
+      "file": "blocks/use-cases/use-cases.css",
+      "property": "transition",
+      "before": "transform .2s var(--k-ease)",
+      "after": "transform var(--k-dur-base) var(--k-ease)"
+    },
+    {
+      "file": "blocks/use-cases/use-cases.css",
+      "property": "animation",
+      "before": "k-uc-in .45s var(--k-ease)",
+      "after": "k-uc-in calc(.45s * var(--k-mscale)) var(--k-ease)"
+    }
+  ],
+  "easings": {
+    "cubic-bezier(.3,.7,.3,1)": "--k-ease",
+    "cubic-bezier(.6,0,.2,1)": "--k-ease-in-out",
+    "cubic-bezier(.2,.6,.2,1)": "--k-ease",
+    "cubic-bezier(.3,2.3,.4,1)": "--k-ease-bounce",
+    "cubic-bezier(.6,-0.1,.2,1.25)": "--k-ease-spring",
+    "cubic-bezier(.2,1.6,.4,1)": "--k-ease-spring",
+    "cubic-bezier(.3,2.4,.45,1)": "--k-ease-bounce",
+    "cubic-bezier(.3,2.2,.45,1)": "--k-ease-bounce",
+    "cubic-bezier(.5,0,.2,1)": "--k-ease-in-out",
+    "cubic-bezier(.2,.8,.25,1.2)": "--k-ease-spring",
+    "cubic-bezier(.4,0,.2,1)": "--k-ease-in-out",
+    "cubic-bezier(.2,.7,.2,1)": "--k-ease",
+    "cubic-bezier(.3,1.2,.4,1)": "--k-ease-spring",
+    "cubic-bezier(.65,0,.2,1)": "--k-ease-in-out"
+  }
+}

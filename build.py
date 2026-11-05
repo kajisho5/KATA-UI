@@ -262,7 +262,8 @@ FOUNDRY_HTML = """<button class="fdeck-fab" id="fdfab" type="button" aria-expand
   <div class="frow"><span style="background:var(--k-accent);color:var(--k-on-accent)">Text on accent</span> · <span style="color:var(--k-accent-ink)">Accent text</span></div>
   <div class="frow"><label>Mode</label><div class="fseg"><button type="button" id="fd-light">Light (washi)</button><button type="button" id="fd-dark">Dark (sumi)</button></div></div>
   <div class="frow"><label>Backdrop \u2014 wagara</label><div class="fseg" id="fd-wgs"><button type="button" data-wg="">None</button><button type="button" data-wg="seigaiha">Seigaiha</button><button type="button" data-wg="asanoha">Asanoha</button><button type="button" data-wg="ichimatsu">Ichimatsu</button></div></div>
-  <div class="frow"><label>Motion <output id="fd-mv">1.0&times;</output></label><input type="range" id="fd-motion" min="0.5" max="1.5" step="0.1" value="1"></div>
+  <div class="frow"><label>Motion <output id="fd-mv">1.0&times;</output></label><input type="range" id="fd-motion" min="0" max="2" step="0.1" value="1"></div>
+  <div class="frow"><output id="fd-times" aria-label="Effective transition durations"></output><small>Curves: ease · in-out · spring · bounce</small></div>
   <div class="fcore"><i></i><span>The vermillion core — \u578b\u306e\u6731 — is not on the deck. It never moves; that is the point of a mold.</span></div>
   <div class="flog" id="fd-log"></div>
   <button class="freset" type="button" data-export-theme>Export theme CSS</button>
@@ -279,7 +280,7 @@ function dark(){return root.getAttribute('data-theme')==='dark'}
 function applyAccent(p,quiet){document.getElementById('fd-accent').value=p[1];S.accent=p[1];S.accentInk=p[2];S.darkInk=p[3];S.accentName=p[0];root.style.setProperty('--k-accent',p[1]);root.style.setProperty('--acc',p[1]);root.style.removeProperty("--k-accent-ink");document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.toggle('on',b.dataset.n===p[0])});if(!quiet)log('Accent \u2192 '+p[0]);save();}
 function applyRadius(v,quiet){S.radius=+v;root.style.setProperty('--k-radius',v+'px');document.getElementById('fd-rv').textContent=v+'px';if(!quiet)log('Radius \u2192 '+v+'px');save();}
 function applyMode(d,quiet){S.dark=d;if(d)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');if(S.accent){var p=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p)root.style.removeProperty("--k-accent-ink");}document.getElementById('fd-light').classList.toggle('on',!d);document.getElementById('fd-dark').classList.toggle('on',d);if(!quiet)log(d?'Mode \u2192 Dark (sumi)':'Mode \u2192 Light (washi)');document.querySelectorAll('#stage').forEach(function(st){st.setAttribute('data-theme',d?'dark':'light');});document.querySelectorAll('[data-seg="theme"]').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',(b.dataset.v==='dark')===!!d);});});save();}
-function applyMotion(v,quiet){S.mscale=+v;root.style.setProperty('--k-mscale',v);document.getElementById('fd-mv').textContent=(+v).toFixed(1)+'\u00d7';if(!quiet)log('Motion \u2192 '+(+v).toFixed(1)+'\u00d7');save();}
+function applyMotion(v,quiet){var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;document.getElementById('fd-times').textContent=Object.entries(__KATA_MOTION_DURATIONS__).map(function(pair){return pair[0]+' '+Math.round(pair[1]*(reduced?0:+v))+'ms'}).join(' · ');S.mscale=+v;root.style.setProperty('--k-mscale',v);document.getElementById('fd-mv').textContent=(+v).toFixed(1)+'\u00d7';if(!quiet)log('Motion \u2192 '+(+v).toFixed(1)+'\u00d7');save();}
 var sws=document.getElementById('fd-sws');PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='sw';b.dataset.n=p[0];b.title=p[0];b.style.background=p[1];b.setAttribute('aria-label','Accent '+p[0]);b.addEventListener('click',function(){applyAccent(p)});sws.appendChild(b);});
 document.getElementById('fd-accent').addEventListener('input',function(){applyAccent(['Custom',this.value])});
 fab.addEventListener('click',function(){var open=deck.classList.toggle('open');fab.setAttribute('aria-expanded',open)});
@@ -291,12 +292,13 @@ document.getElementById('fd-light').addEventListener('click',function(){applyMod
 document.getElementById('fd-dark').addEventListener('click',function(){applyMode(true)});
 document.getElementById('fd-reset').addEventListener('click',function(){S={};save();root.removeAttribute('data-theme');['--k-radius','--k-radius-sm','--k-radius-lg','--k-accent','--k-accent-ink','--acc','--k-mscale'].forEach(function(k){root.style.removeProperty(k)});document.getElementById('fd-radius').value=8;document.getElementById('fd-motion').value=1;applyRadius(8,true);applyMotion(1,true);applyMode(false,true);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.remove('on')});applyBg('',true);log('Reset to the mold');});
 if(S.radius!==undefined){document.getElementById('fd-radius').value=S.radius;applyRadius(S.radius,true);}
-if(S.mscale){document.getElementById('fd-motion').value=S.mscale;applyMotion(S.mscale,true);}
+document.getElementById('fd-motion').value=S.mscale===undefined?1:S.mscale;applyMotion(S.mscale===undefined?1:S.mscale,true);
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',function(){applyMotion(S.mscale,true)});
 if(S.accentName){var p0=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p0)applyAccent(p0,true);else if(S.accent)applyAccent(['Custom',S.accent],true);}
 applyBg(S.wg||'',true);
 applyMode(dark(),true);
 })();
-</script>"""
+</script>""".replace("__KATA_MOTION_DURATIONS__", json.dumps(json.loads((ROOT / "system/tokens.json").read_text())["motion"]["durationsMs"]))
 
 
 def emit(page, comps, active, current=None, tree=False):
@@ -1215,7 +1217,7 @@ DS_STYLE = """<style>
 .radii .box{width:74px;height:56px;border:1.5px solid var(--ink);display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;font-family:var(--mono);font-size:10.5px;color:var(--ink2)}
 .motions{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap}
 .motions .m{flex:1;min-width:150px;border:1px solid var(--hair);border-radius:12px;padding:14px;background:var(--paper);font-size:12.5px;color:var(--ink2)}
-.motions .dot{width:16px;height:16px;border-radius:50%;background:var(--ink);margin-top:10px;transition:transform var(--dur) cubic-bezier(.3,.7,.3,1)}
+.motions .dot{width:16px;height:16px;border-radius:50%;background:var(--ink);margin-top:10px;transition:transform var(--dur) var(--k-ease)}
 .motions .m:hover .dot{transform:translateX(56px)}
 .dl{margin-top:16px;display:flex;gap:9px;flex-wrap:wrap}
 .dl a{border:1px solid var(--hair);border-radius:8px;padding:9px 14px;font-size:13px;font-weight:500;text-decoration:none;background:var(--paper)}
@@ -1543,6 +1545,7 @@ def design_system_page(tokens):
     elevation_rows+='<div class="row"><b>--k-shadow-overlay</b><code>var(--k-shadow-pop)</code></div>'
     elevation_rows+=''.join(f'<div class="row"><b>--k-ring-{name}</b><code>{esc(value)}</code></div>' for name,value in tokens['elevation']['rings'].items())
     elevation_rows+=f'<div class="row"><b>--k-backdrop</b><code>{esc(tokens["elevation"]["backdrop"]["light"])}</code><small>Dark: {esc(tokens["elevation"]["backdrop"]["dark"])}</small></div>'
+    motion_rows=''.join(f'<div class="row"><b>--k-ease{"-"+name if name else ""}</b><code>{esc(value)}</code></div>' for name,value in {'':tokens['motion']['easing'],**tokens['motion']['easings']}.items())
     roles = ''.join(f'<div><b>--k-{k}</b> — {esc(v)}</div>' for k, v in tokens['color']['roles'].items())
     semantic_rows=''.join(f'<div><b>{esc(name)}</b> — light: <code>{esc(tokens["semanticColors"]["light"].get(name,"inherited"))}</code>; dark: <code>{esc(tokens["semanticColors"]["dark"].get(name,"inherited"))}</code></div>' for name in sorted(set(tokens.get('semanticColors',{}).get('light',{})) | set(tokens.get('semanticColors',{}).get('dark',{}))))
     specs = ''.join(
@@ -1608,12 +1611,12 @@ def design_system_page(tokens):
   <section><h2>Spacing</h2><p class="note">A 4px base. If a gap is not on this scale, it is a mistake.</p><div class="bars">{bars}</div></section>
   <section><h2>Radius</h2><p class="note">xs / sm / md / lg / xl follow --k-radius. Full stays 999px for pills; circular geometry stays circular.</p><div class="radii">{radii}</div></section>
   <section><h2>Heights</h2><p class="note">Controls come in three heights — 32 / 38 / 44px. Shared heights are what make separate components look like one system.</p></section>
-  <section><h2>Motion</h2><p class="note">{esc(tokens['motion']['rule'])} Hover the cards:</p>
+  <section><h2>Motion</h2><p class="note">{esc(tokens['motion']['rule'])} Hover the cards. Fast / base / slow all follow the Foundry multiplier; reduced motion stops them.</p>
     <div class="motions">
-      <div class="m" style="--dur:130ms">fast · 130ms<div class="dot"></div></div>
-      <div class="m" style="--dur:180ms">base · 180ms<div class="dot"></div></div>
-      <div class="m" style="--dur:220ms">slow · 220ms<div class="dot"></div></div>
-    </div></section>
+      <div class="m" style="--dur:var(--k-dur-fast)">fast · 130ms<div class="dot"></div></div>
+      <div class="m" style="--dur:var(--k-dur-base)">base · 180ms<div class="dot"></div></div>
+      <div class="m" style="--dur:var(--k-dur-slow)">slow · 220ms<div class="dot"></div></div>
+    </div><p class="note">--k-ease: entrance / general (out) · --k-ease-in-out: repositioning / exit · --k-ease-spring: gentle overshoot · --k-ease-bounce: pronounced overshoot (Lab). Numbered duration tokens remain aliases. The old ease-out name is a deprecated alias for ease-in-out.</p>{motion_rows}</section>
   <section><h2>Elevation</h2><p class="note">{esc(tokens['elevation']['rule'])}</p><div class="spec">{elevation_rows}</div></section>
   {core_map}
   <section><h2>Breakage — Kintsugi</h2><p class="note">Errors, empty states and loading wear one seam: a jagged line of yamabuki gold, the Kintsugi Card's vein. Breakage is shown honestly and mended visibly — never hidden behind a spinner and never dressed as success. It is the seam on the 404 plate and the state line in \u2318K search.</p>

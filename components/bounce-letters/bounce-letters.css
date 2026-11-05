@@ -1,6 +1,6 @@
 /* KATA Bounce Letters — KATAYABURI. A headline with springs. */
 .k-bnc{font-family:var(--k-font);cursor:pointer}
-.k-bnc .ch{display:inline-block;transition:transform .34s cubic-bezier(.3,2.3,.4,1)}
+.k-bnc .ch{display:inline-block;transition:transform calc(.34s * var(--k-mscale)) var(--k-ease-bounce)}
 .k-bnc .ch:hover{transform:translateY(-11px)}
 .k-bnc.waving .ch{transform:translateY(-12px)}
 @media (prefers-reduced-motion:reduce){.k-bnc .ch{transition:none}.k-bnc .ch:hover,.k-bnc.waving .ch{transform:none}}

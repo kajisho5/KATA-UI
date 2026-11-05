@@ -1,0 +1,102 @@
+[
+  {
+    "file": "components/chip/chip.css",
+    "old": "rgba(255,255,255,.16)",
+    "new": "color-mix(in srgb,var(--k-bg) 16%,transparent)"
+  },
+  {
+    "file": "components/color-picker/color-picker.css",
+    "old": "color:#fff",
+    "new": "color:var(--k-on-color)"
+  },
+  {
+    "file": "components/color-picker/preview.html",
+    "old": "background:hsl(175 84% 32%)",
+    "new": "background:var(--k-accent)"
+  },
+  {
+    "file": "components/comparison-slider/comparison-slider.css",
+    "old": "rgba(24,24,27,.72)",
+    "new": "color-mix(in srgb,var(--k-zinc-900) 72%,transparent)"
+  },
+  {
+    "file": "components/converge/converge.css",
+    "old": "hsl(335 85% 68%)",
+    "new": "var(--k-zinc-300)"
+  },
+  {
+    "file": "components/converge/converge.css",
+    "old": "hsl(32 95% 60%)",
+    "new": "var(--k-yamabuki)"
+  },
+  {
+    "file": "components/converge/converge.css",
+    "old": "hsl(205 90% 63%)",
+    "new": "var(--k-asagi-300)"
+  },
+  {
+    "file": "components/converge/preview.html",
+    "old": "hsl(335 85% 72%)",
+    "new": "var(--k-zinc-300)"
+  },
+  {
+    "file": "components/converge/preview.html",
+    "old": "hsl(32 95% 64%)",
+    "new": "var(--k-yamabuki)"
+  },
+  {
+    "file": "components/converge/preview.html",
+    "old": "hsl(205 90% 66%)",
+    "new": "var(--k-asagi-300)"
+  },
+  {
+    "file": "components/meteors/meteors.css",
+    "old": "rgba(255,255,255,.75)",
+    "new": "color-mix(in srgb,var(--k-zinc-50) 75%,transparent)"
+  },
+  {
+    "file": "components/meter/meter.css",
+    "old": "rgba(255,255,255,.5)",
+    "new": "color-mix(in srgb,var(--k-bg) 50%,transparent)"
+  },
+  {
+    "file": "components/spotlight/spotlight.css",
+    "old": "rgba(255,255,255,.17)",
+    "new": "color-mix(in srgb,var(--k-zinc-50) 17%,transparent)"
+  },
+  {
+    "file": "components/spotlight/spotlight.css",
+    "old": "rgba(255,255,255,.05)",
+    "new": "color-mix(in srgb,var(--k-zinc-50) 5%,transparent)"
+  },
+  {
+    "file": "components/spotlight/spotlight.css",
+    "old": "rgba(255,255,255,.3)",
+    "new": "var(--k-zinc-400)"
+  },
+  {
+    "file": "components/spotlight/spotlight.css",
+    "old": "#000",
+    "new": "var(--k-zinc-950)"
+  },
+  {
+    "file": "components/spotlight/spotlight.css",
+    "old": "rgba(0,0,0,.5)",
+    "new": "color-mix(in srgb,var(--k-zinc-950) 50%,transparent)"
+  },
+  {
+    "file": "components/tilt-card/tilt-card.css",
+    "old": "rgba(255,255,255,.14)",
+    "new": "color-mix(in srgb,var(--k-zinc-50) 14%,transparent)"
+  },
+  {
+    "file": "components/tooltip/tooltip.css",
+    "old": "border:5px solid transparent;border-top-color:var(--k-ink)",
+    "new": "width:calc(var(--k-space-2) * 1.25);height:calc(var(--k-space-2) * 1.25);box-sizing:border-box;border:1px solid var(--k-line);background:var(--k-ink);clip-path:polygon(0 0,100% 0,50% 50%)"
+  },
+  {
+    "file": "components/tooltip/tooltip.css",
+    "old": "border-top-color:transparent;border-bottom-color:var(--k-ink)",
+    "new": "clip-path:polygon(0 100%,100% 100%,50% 50%)"
+  }
+]

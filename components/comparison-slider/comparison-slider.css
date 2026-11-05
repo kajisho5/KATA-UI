@@ -2,7 +2,7 @@
 .k-cmp{--pos:55%;width:100%;position:relative;overflow:hidden;border-radius:var(--k-radius-lg);border:1px solid var(--k-line);font-family:var(--k-font);max-width:520px;aspect-ratio:8/5;background:var(--k-bg-soft)}
 .k-cmp .layer{position:absolute;inset:0}
 .k-cmp .top{clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
-.k-cmp .tag{position:absolute;top:10px;font-size:11px;font-weight:600;letter-spacing:.06em;padding:3px 9px;border-radius:99px;background:rgba(24,24,27,.72);color:var(--k-on-color)}
+.k-cmp .tag{position:absolute;top:10px;font-size:11px;font-weight:600;letter-spacing:.06em;padding:3px 9px;border-radius:99px;background:color-mix(in srgb,var(--k-zinc-900) 72%,transparent);color:var(--k-on-color)}
 .k-cmp .tag.l{left:10px}
 .k-cmp .tag.r{right:10px}
 .k-cmp .seam{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;margin-left:-1px;background:var(--k-on-color);box-shadow:0 0 0 1px color-mix(in srgb,var(--k-zinc-900) 25%,transparent)}

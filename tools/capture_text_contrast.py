@@ -58,8 +58,8 @@ def extra_state(page,slug):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--phase',choices=('before','after','proposal'),required=True);parser.add_argument('--ref');parser.add_argument('--only',nargs='+');parser.add_argument('--limit',type=int,default=40);args=parser.parse_args()
-    out=ROOT/'docs/review/text-contrast';out.mkdir(parents=True,exist_ok=True);source=RoleProposal() if args.phase=='proposal' else Source(args.ref);errors=[];facts={}
+    parser=argparse.ArgumentParser();parser.add_argument('--phase',choices=('before','after','proposal'),required=True);parser.add_argument('--ref');parser.add_argument('--output',default='docs/review/text-contrast');parser.add_argument('--only',nargs='+');parser.add_argument('--limit',type=int,default=40);args=parser.parse_args()
+    out=ROOT/args.output;out.mkdir(parents=True,exist_ok=True);source=RoleProposal() if args.phase=='proposal' else Source(args.ref);errors=[];facts={}
     slugs=(CORE+MORE)[:args.limit]
     if args.only and (out/(args.phase+'.json')).exists():facts=json.loads((out/(args.phase+'.json')).read_text())['facts']
     with sync_playwright() as p:

@@ -1,1 +1,14 @@
-{"a11y":"The lit layer is a clone the script builds — aria-hidden, with its links made unfocusable; the words themselves live once, in the dim layer. A decoration-forward part: never put copy here that exists nowhere else, and keep the dim layer a legible silhouette, not invisible.","category":"Motion","description":"A flashlight beam that follows the cursor across a dark panel. The words sit in shadow until the light reaches them.","status":"beta","tags":["beam","reveal","cursor","dark"],"title":"Spotlight","usage":"For hero panels and short lists that should feel like a torch in a dark room. Keep the copy short — the reader hunts for it, line by line. The beam rests at the top left until the pointer moves, so touch readers meet the panel already lit in one place."}
+{
+  "a11y": "The readable base text remains in the accessibility tree. The script clones it into an aria-hidden highlight layer and removes cloned IDs and tab stops.",
+  "category": "Motion",
+  "description": "A pointer-following light highlights muted text on a fixed dark panel.",
+  "status": "beta",
+  "tags": [
+    "beam",
+    "reveal",
+    "cursor",
+    "dark"
+  ],
+  "title": "Spotlight",
+  "usage": "For short hero panels and lists. Text remains readable outside the light; the pointer adds a visual highlight. The initial highlight rests near the top left for touch readers."
+}

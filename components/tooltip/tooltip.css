@@ -1,8 +1,8 @@
 /* KATA Tooltip — CSS only, driven by [data-tip]. */
 .k-tip{position:relative}
 .k-tip::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%) translateY(2px);background:var(--k-ink);color:var(--k-bg);font-family:var(--k-font);font-size:11.5px;font-weight:500;line-height:1;padding:5px 8px;border-radius:var(--k-radius-sm);white-space:nowrap;opacity:0;pointer-events:none;transition:opacity var(--k-dur-fast),transform var(--k-dur-fast);z-index:30}
-.k-tip::before{content:"";position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--k-ink);opacity:0;pointer-events:none;transition:opacity var(--k-dur-fast);z-index:30}
+.k-tip::before{content:"";position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);width:calc(var(--k-space-2) * 1.25);height:calc(var(--k-space-2) * 1.25);box-sizing:border-box;border:1px solid var(--k-line);background:var(--k-ink);clip-path:polygon(0 0,100% 0,50% 50%);opacity:0;pointer-events:none;transition:opacity var(--k-dur-fast);z-index:30}
 .k-tip:hover::after,.k-tip:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0)}
 .k-tip:hover::before,.k-tip:focus-visible::before{opacity:1}
 .k-tip[data-side="bottom"]::after{bottom:auto;top:calc(100% + 7px)}
-.k-tip[data-side="bottom"]::before{bottom:auto;top:calc(100% + 2px);border-top-color:transparent;border-bottom-color:var(--k-ink)}
+.k-tip[data-side="bottom"]::before{bottom:auto;top:calc(100% + 2px);clip-path:polygon(0 100%,100% 100%,50% 50%)}

@@ -14,6 +14,8 @@ CASES = {
     'weak': '<button type="button" class="t" style="outline:none" onfocus="this.style.boxShadow=\'0 0 0 3px rgba(24,24,27,.12)\'" onblur="this.style.boxShadow=\'\'">A</button>',
     'visible': '<button type="button" class="t" style="outline:none" onfocus="this.style.boxShadow=\'0 0 0 3px #18181b\'" onblur="this.style.boxShadow=\'\'">A</button>',
 }
+# A visually hidden radio shows focus on its label, as Rating does.
+LABELLED = '<input type="radio" id="r" name="r" style="position:absolute;width:1px;height:1px;opacity:0"><label for="r" class="t">Star</label><style>#r:focus-visible+label{outline:2px solid #18181b;outline-offset:2px}</style>'
 CLIPPED = '<div style="overflow:hidden;display:inline-block"><button type="button" style="outline:none;display:block" onfocus="this.style.boxShadow=\'0 0 0 3px #18181b\'" onblur="this.style.boxShadow=\'\'">A</button></div>'
 HEAD = '<style>:root{--k-bg:#fff;--k-ink:#18181b;--k-font:sans-serif;--k-space-6:24px}.t{padding:8px 16px;border:1px solid #ccc;background:#fff}</style>'
 
@@ -28,6 +30,8 @@ class FocusRing(unittest.TestCase):
                 load(page,page_html(HEAD,html));records=measure(page,'light')
                 self.assertEqual([r['level'] for r in records],[level],(level,records))
                 self.assertIsNone(records[0]['clipped'])
+            load(page,page_html(HEAD,LABELLED));records=measure(page,'light')
+            self.assertEqual((records[0]['level'],records[0].get('measured')),('visible','label'),records)
             load(page,page_html(HEAD,CLIPPED));records=measure(page,'light')
             self.assertEqual(records[0]['clipped']['cut'],3.0)
             browser.close()

@@ -2,14 +2,14 @@
   "updated_at": "2026-11-06",
   "schema_version": 2,
   "summary": {
-    "passed": 120,
-    "failed": 44,
+    "passed": 164,
+    "failed": 0,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 93,
+      "focus-visible": 0,
       "js-global-bindings": 0,
       "js-single-instance": 0,
       "legacy-contract": 0,
@@ -22,13 +22,13 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 81,
-        "failed": 40,
+        "passed": 121,
+        "failed": 0,
         "total": 121
       },
       "lab": {
-        "passed": 39,
-        "failed": 4,
+        "passed": 43,
+        "failed": 0,
         "total": 43
       }
     }
@@ -1904,7 +1904,7 @@
     {
       "id": "components/bottom-navigation",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -2121,40 +2121,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/bottom-navigation/examples.html: <a> on",
-            "components/bottom-navigation/examples.html: <a> ",
-            "components/bottom-navigation/preview.html: <a> on",
-            "components/bottom-navigation/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "components/bottom-navigation/examples.html",
-              "tag": "a",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/bottom-navigation/examples.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 3
-            },
-            {
-              "path": "components/bottom-navigation/preview.html",
-              "tag": "a",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/bottom-navigation/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 4
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -2312,7 +2282,7 @@
     {
       "id": "components/breadcrumbs",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -2405,19 +2375,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/breadcrumbs/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "components/breadcrumbs/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 3
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -2448,7 +2409,7 @@
     {
       "id": "components/burst-button",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -2574,26 +2535,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/burst-button/preview.html: <button> k-burst-btn",
-            "components/burst-button/preview.html: <button> asagi k-burst-btn"
-          ],
-          "details": [
-            {
-              "path": "components/burst-button/preview.html",
-              "tag": "button",
-              "class_or_role": "k-burst-btn",
-              "occurrences": 1
-            },
-            {
-              "path": "components/burst-button/preview.html",
-              "tag": "button",
-              "class_or_role": "asagi k-burst-btn",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -2624,7 +2569,7 @@
     {
       "id": "components/button",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -2717,19 +2662,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/button/combos.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "components/button/combos.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -2883,7 +2819,7 @@
     {
       "id": "components/calendar",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -3046,47 +2982,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/calendar/examples.html: <button> k-cal-nav",
-            "components/calendar/preview.html: <button> k-cal-nav",
-            "components/calendar/preview.html: <button> k-cal-day",
-            "components/calendar/preview.html: <button> k-cal-day sel",
-            "components/calendar/preview.html: <button> k-cal-day off"
-          ],
-          "details": [
-            {
-              "path": "components/calendar/examples.html",
-              "tag": "button",
-              "class_or_role": "k-cal-nav",
-              "occurrences": 4
-            },
-            {
-              "path": "components/calendar/preview.html",
-              "tag": "button",
-              "class_or_role": "k-cal-nav",
-              "occurrences": 2
-            },
-            {
-              "path": "components/calendar/preview.html",
-              "tag": "button",
-              "class_or_role": "k-cal-day",
-              "occurrences": 29
-            },
-            {
-              "path": "components/calendar/preview.html",
-              "tag": "button",
-              "class_or_role": "k-cal-day sel",
-              "occurrences": 1
-            },
-            {
-              "path": "components/calendar/preview.html",
-              "tag": "button",
-              "class_or_role": "k-cal-day off",
-              "occurrences": 12
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -3274,7 +3173,7 @@
     {
       "id": "components/card",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -3630,26 +3529,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/card/examples.html: <a> ",
-            "components/card/examples.html: <a> k-card"
-          ],
-          "details": [
-            {
-              "path": "components/card/examples.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 1
-            },
-            {
-              "path": "components/card/examples.html",
-              "tag": "a",
-              "class_or_role": "k-card",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -4055,7 +3938,7 @@
     {
       "id": "components/cascader",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -4189,19 +4072,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/cascader/preview.html: <button> input"
-          ],
-          "details": [
-            {
-              "path": "components/cascader/preview.html",
-              "tag": "button",
-              "class_or_role": "input",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -4537,7 +4411,7 @@
     {
       "id": "components/collapsible",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -4661,26 +4535,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/collapsible/examples.html: <summary> ",
-            "components/collapsible/preview.html: <summary> "
-          ],
-          "details": [
-            {
-              "path": "components/collapsible/examples.html",
-              "tag": "summary",
-              "class_or_role": "",
-              "occurrences": 2
-            },
-            {
-              "path": "components/collapsible/preview.html",
-              "tag": "summary",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -5809,7 +5667,7 @@
     {
       "id": "components/copy-field",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -5942,19 +5800,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/copy-field/preview.html: <button> k-copyfield-btn"
-          ],
-          "details": [
-            {
-              "path": "components/copy-field/preview.html",
-              "tag": "button",
-              "class_or_role": "k-copyfield-btn",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -7273,7 +7122,7 @@
     {
       "id": "components/dropdown",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -7410,26 +7259,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/dropdown/preview.html: <a> ",
-            "components/dropdown/preview.html: <a> danger"
-          ],
-          "details": [
-            {
-              "path": "components/dropdown/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 3
-            },
-            {
-              "path": "components/dropdown/preview.html",
-              "tag": "a",
-              "class_or_role": "danger",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -7745,7 +7578,7 @@
     {
       "id": "components/field",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -7908,19 +7741,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/field/preview.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "components/field/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -8892,7 +8716,7 @@
     {
       "id": "components/glow-button",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -9056,26 +8880,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/glow-button/preview.html: <button> ",
-            "components/glow-button/preview.html: <input> "
-          ],
-          "details": [
-            {
-              "path": "components/glow-button/preview.html",
-              "tag": "button",
-              "class_or_role": "",
-              "occurrences": 1
-            },
-            {
-              "path": "components/glow-button/preview.html",
-              "tag": "input",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -9430,7 +9238,7 @@
     {
       "id": "components/goo-tabs",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -9556,19 +9364,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/goo-tabs/preview.html: <button> tab"
-          ],
-          "details": [
-            {
-              "path": "components/goo-tabs/preview.html",
-              "tag": "button",
-              "class_or_role": "tab",
-              "occurrences": 3
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -10318,7 +10117,7 @@
     {
       "id": "components/hover-card",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -10451,19 +10250,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/hover-card/preview.html: <a> trigger"
-          ],
-          "details": [
-            {
-              "path": "components/hover-card/preview.html",
-              "tag": "a",
-              "class_or_role": "trigger",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -10494,7 +10284,7 @@
     {
       "id": "components/input",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -10687,47 +10477,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/input/combos.html: <input> input",
-            "components/input/examples.html: <input> input",
-            "components/input/examples.html: <input> errb input",
-            "components/input/preview.html: <input> input",
-            "components/input/preview.html: <input> errb input"
-          ],
-          "details": [
-            {
-              "path": "components/input/combos.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            },
-            {
-              "path": "components/input/examples.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 4
-            },
-            {
-              "path": "components/input/examples.html",
-              "tag": "input",
-              "class_or_role": "errb input",
-              "occurrences": 1
-            },
-            {
-              "path": "components/input/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            },
-            {
-              "path": "components/input/preview.html",
-              "tag": "input",
-              "class_or_role": "errb input",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -10758,7 +10511,7 @@
     {
       "id": "components/input-group",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -10881,26 +10634,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/input-group/examples.html: <input> input",
-            "components/input-group/preview.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "components/input-group/examples.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            },
-            {
-              "path": "components/input-group/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -11048,7 +10785,7 @@
     {
       "id": "components/jelly-buttons",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -11172,33 +10909,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/jelly-buttons/preview.html: <button> k-jelly",
-            "components/jelly-buttons/preview.html: <button> asagi k-jelly",
-            "components/jelly-buttons/preview.html: <button> k-jelly soft"
-          ],
-          "details": [
-            {
-              "path": "components/jelly-buttons/preview.html",
-              "tag": "button",
-              "class_or_role": "k-jelly",
-              "occurrences": 1
-            },
-            {
-              "path": "components/jelly-buttons/preview.html",
-              "tag": "button",
-              "class_or_role": "asagi k-jelly",
-              "occurrences": 1
-            },
-            {
-              "path": "components/jelly-buttons/preview.html",
-              "tag": "button",
-              "class_or_role": "k-jelly soft",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -12693,7 +12407,7 @@
     {
       "id": "components/menubar",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -12941,26 +12655,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/menubar/preview.html: <button> k-mbar-btn",
-            "components/menubar/preview.html: <button> k-mbar-mi"
-          ],
-          "details": [
-            {
-              "path": "components/menubar/preview.html",
-              "tag": "button",
-              "class_or_role": "k-mbar-btn",
-              "occurrences": 4
-            },
-            {
-              "path": "components/menubar/preview.html",
-              "tag": "button",
-              "class_or_role": "k-mbar-mi",
-              "occurrences": 15
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -13326,7 +13024,7 @@
     {
       "id": "components/modal",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13479,19 +13177,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/modal/combos.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "components/modal/combos.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -13522,7 +13211,7 @@
     {
       "id": "components/navigation-menu",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13719,33 +13408,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/navigation-menu/preview.html: <button> k-navm-btn",
-            "components/navigation-menu/preview.html: <a> k-navm-link",
-            "components/navigation-menu/preview.html: <a> k-navm-btn"
-          ],
-          "details": [
-            {
-              "path": "components/navigation-menu/preview.html",
-              "tag": "button",
-              "class_or_role": "k-navm-btn",
-              "occurrences": 2
-            },
-            {
-              "path": "components/navigation-menu/preview.html",
-              "tag": "a",
-              "class_or_role": "k-navm-link",
-              "occurrences": 6
-            },
-            {
-              "path": "components/navigation-menu/preview.html",
-              "tag": "a",
-              "class_or_role": "k-navm-btn",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -14161,7 +13827,7 @@
     {
       "id": "components/pagination",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -14284,19 +13950,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/pagination/preview.html: <a> k-page"
-          ],
-          "details": [
-            {
-              "path": "components/pagination/preview.html",
-              "tag": "a",
-              "class_or_role": "k-page",
-              "occurrences": 9
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -16306,7 +15963,7 @@
     {
       "id": "components/scroll-area",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -16420,19 +16077,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/scroll-area/preview.html: <div> k-scroll-in"
-          ],
-          "details": [
-            {
-              "path": "components/scroll-area/preview.html",
-              "tag": "div",
-              "class_or_role": "k-scroll-in",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -16463,7 +16111,7 @@
     {
       "id": "components/scrollspy",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -16628,26 +16276,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/scrollspy/preview.html: <a> on",
-            "components/scrollspy/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "components/scrollspy/preview.html",
-              "tag": "a",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/scrollspy/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 4
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -17307,7 +16939,7 @@
     {
       "id": "components/sidebar",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -17814,47 +17446,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/sidebar/examples.html: <a> k-side-item on",
-            "components/sidebar/examples.html: <a> k-side-item",
-            "components/sidebar/preview.html: <a> k-side-item on",
-            "components/sidebar/preview.html: <button> k-side-item",
-            "components/sidebar/preview.html: <a> k-side-item"
-          ],
-          "details": [
-            {
-              "path": "components/sidebar/examples.html",
-              "tag": "a",
-              "class_or_role": "k-side-item on",
-              "occurrences": 2
-            },
-            {
-              "path": "components/sidebar/examples.html",
-              "tag": "a",
-              "class_or_role": "k-side-item",
-              "occurrences": 8
-            },
-            {
-              "path": "components/sidebar/preview.html",
-              "tag": "a",
-              "class_or_role": "k-side-item on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/sidebar/preview.html",
-              "tag": "button",
-              "class_or_role": "k-side-item",
-              "occurrences": 1
-            },
-            {
-              "path": "components/sidebar/preview.html",
-              "tag": "a",
-              "class_or_role": "k-side-item",
-              "occurrences": 7
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -18631,7 +18226,7 @@
     {
       "id": "components/speed-dial",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -18755,26 +18350,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/speed-dial/preview.html: <button> act",
-            "components/speed-dial/preview.html: <button> main"
-          ],
-          "details": [
-            {
-              "path": "components/speed-dial/preview.html",
-              "tag": "button",
-              "class_or_role": "act",
-              "occurrences": 3
-            },
-            {
-              "path": "components/speed-dial/preview.html",
-              "tag": "button",
-              "class_or_role": "main",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -20369,7 +19948,7 @@
     {
       "id": "components/tabs",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -20524,40 +20103,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tabs/combos.html: <button> on",
-            "components/tabs/combos.html: <button> ",
-            "components/tabs/preview.html: <button> on",
-            "components/tabs/preview.html: <button> "
-          ],
-          "details": [
-            {
-              "path": "components/tabs/combos.html",
-              "tag": "button",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/tabs/combos.html",
-              "tag": "button",
-              "class_or_role": "",
-              "occurrences": 2
-            },
-            {
-              "path": "components/tabs/preview.html",
-              "tag": "button",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/tabs/preview.html",
-              "tag": "button",
-              "class_or_role": "",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -21072,7 +20621,7 @@
     {
       "id": "components/textarea",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -21206,19 +20755,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/textarea/preview.html: <textarea> k-textarea"
-          ],
-          "details": [
-            {
-              "path": "components/textarea/preview.html",
-              "tag": "textarea",
-              "class_or_role": "k-textarea",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -21427,7 +20967,7 @@
     {
       "id": "components/time-picker",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -21601,26 +21141,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/time-picker/preview.html: <input> input",
-            "components/time-picker/preview.html: <button> k-tp-btn"
-          ],
-          "details": [
-            {
-              "path": "components/time-picker/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            },
-            {
-              "path": "components/time-picker/preview.html",
-              "tag": "button",
-              "class_or_role": "k-tp-btn",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -22917,7 +22441,7 @@
     {
       "id": "components/transfer",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -23124,26 +22648,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/transfer/preview.html: <input> ",
-            "components/transfer/preview.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "components/transfer/preview.html",
-              "tag": "input",
-              "class_or_role": "",
-              "occurrences": 11
-            },
-            {
-              "path": "components/transfer/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -23174,7 +22682,7 @@
     {
       "id": "components/tree",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -23288,19 +22796,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tree/preview.html: <button> tg"
-          ],
-          "details": [
-            {
-              "path": "components/tree/preview.html",
-              "tag": "button",
-              "class_or_role": "tg",
-              "occurrences": 5
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -23331,7 +22830,7 @@
     {
       "id": "components/typeset",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -23718,19 +23217,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/typeset/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "components/typeset/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -24398,7 +23888,7 @@
     {
       "id": "blocks/app-shell",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -24678,19 +24168,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/app-shell/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "blocks/app-shell/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -24721,7 +24202,7 @@
     {
       "id": "blocks/cookie-consent",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -24845,19 +24326,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/cookie-consent/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "blocks/cookie-consent/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -25038,7 +24510,7 @@
     {
       "id": "blocks/faq",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -25171,19 +24643,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/faq/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "blocks/faq/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -25214,7 +24677,7 @@
     {
       "id": "blocks/filter-toolbar",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -25307,26 +24770,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/filter-toolbar/preview.html: <input> input",
-            "blocks/filter-toolbar/preview.html: <select> k-select"
-          ],
-          "details": [
-            {
-              "path": "blocks/filter-toolbar/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            },
-            {
-              "path": "blocks/filter-toolbar/preview.html",
-              "tag": "select",
-              "class_or_role": "k-select",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -26155,7 +25602,7 @@
     {
       "id": "blocks/login",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -26339,33 +25786,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/login/preview.html: <input> input",
-            "blocks/login/preview.html: <a> login-link",
-            "blocks/login/preview.html: <a> "
-          ],
-          "details": [
-            {
-              "path": "blocks/login/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            },
-            {
-              "path": "blocks/login/preview.html",
-              "tag": "a",
-              "class_or_role": "login-link",
-              "occurrences": 1
-            },
-            {
-              "path": "blocks/login/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -27436,7 +26860,7 @@
     {
       "id": "blocks/settings",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -27669,26 +27093,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/settings/preview.html: <input> input",
-            "blocks/settings/preview.html: <textarea> k-textarea"
-          ],
-          "details": [
-            {
-              "path": "blocks/settings/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            },
-            {
-              "path": "blocks/settings/preview.html",
-              "tag": "textarea",
-              "class_or_role": "k-textarea",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -27719,7 +27127,7 @@
     {
       "id": "blocks/site-footer",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -27982,26 +27390,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/site-footer/preview.html: <a> ",
-            "blocks/site-footer/preview.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "blocks/site-footer/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 14
-            },
-            {
-              "path": "blocks/site-footer/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -29020,7 +28412,7 @@
     {
       "id": "templates/blog-article",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -29591,26 +28983,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/blog-article/preview.html: <a> ",
-            "templates/blog-article/preview.html: <a> on"
-          ],
-          "details": [
-            {
-              "path": "templates/blog-article/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 4
-            },
-            {
-              "path": "templates/blog-article/preview.html",
-              "tag": "a",
-              "class_or_role": "on",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -29641,7 +29017,7 @@
     {
       "id": "templates/checkout",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -29974,26 +29350,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/checkout/preview.html: <input> input",
-            "templates/checkout/preview.html: <select> k-select"
-          ],
-          "details": [
-            {
-              "path": "templates/checkout/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 7
-            },
-            {
-              "path": "templates/checkout/preview.html",
-              "tag": "select",
-              "class_or_role": "k-select",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -30024,7 +29384,7 @@
     {
       "id": "templates/dashboard",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -30368,33 +29728,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/dashboard/preview.html: <a> on",
-            "templates/dashboard/preview.html: <a> ",
-            "templates/dashboard/preview.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "templates/dashboard/preview.html",
-              "tag": "a",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "templates/dashboard/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 5
-            },
-            {
-              "path": "templates/dashboard/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -30425,7 +29762,7 @@
     {
       "id": "templates/inbox",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -30884,40 +30221,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/inbox/preview.html: <a> on",
-            "templates/inbox/preview.html: <a> ",
-            "templates/inbox/preview.html: <input> input",
-            "templates/inbox/preview.html: <textarea> k-textarea"
-          ],
-          "details": [
-            {
-              "path": "templates/inbox/preview.html",
-              "tag": "a",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "templates/inbox/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 3
-            },
-            {
-              "path": "templates/inbox/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            },
-            {
-              "path": "templates/inbox/preview.html",
-              "tag": "textarea",
-              "class_or_role": "k-textarea",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -30948,7 +30255,7 @@
     {
       "id": "templates/landing",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -31158,26 +30465,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/landing/preview.html: <a> ",
-            "templates/landing/preview.html: <input> input"
-          ],
-          "details": [
-            {
-              "path": "templates/landing/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 15
-            },
-            {
-              "path": "templates/landing/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -31688,7 +30979,7 @@
     {
       "id": "templates/settings-page",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -32064,40 +31355,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "templates/settings-page/preview.html: <a> on",
-            "templates/settings-page/preview.html: <a> ",
-            "templates/settings-page/preview.html: <input> input",
-            "templates/settings-page/preview.html: <textarea> k-textarea"
-          ],
-          "details": [
-            {
-              "path": "templates/settings-page/preview.html",
-              "tag": "a",
-              "class_or_role": "on",
-              "occurrences": 1
-            },
-            {
-              "path": "templates/settings-page/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 4
-            },
-            {
-              "path": "templates/settings-page/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 2
-            },
-            {
-              "path": "templates/settings-page/preview.html",
-              "tag": "textarea",
-              "class_or_role": "k-textarea",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",

@@ -296,5 +296,8 @@
   },
   "global_focus_ring_tokens": [
     "var(--k-ring)"
+  ],
+  "global_focus_outline_tokens": [
+    "var(--k-ink)"
   ]
 }

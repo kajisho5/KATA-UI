@@ -2,13 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-ring-clipping` on main
-`9b3ecf97faa8a21b0996240f564696339afa1e7b` (after #35). Counts become main's when #36 merges.
+Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-rule-cancellation` on main
+`5fcba9ea2e18344926a20d285160c42dac60736d` (after #36). Counts become main's only if the owner merges #37.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
-**Mold Verified 120 / 164 · UI 81 / 121 · Lab 39 / 43**.
-44 targets fail at least one check. The JSON reports 318 warning-bearing
+**Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43**.
+No target fails a check. The JSON reports 318 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -16,7 +16,7 @@ not browser or screen-reader certification.
 |---|---:|---|
 | accessible-label | 0 | fail |
 | button-type | 0 | fail |
-| focus-visible | 93 | fail |
+| focus-visible | 0 | fail |
 | js-global-bindings | 0 | fail |
 | js-single-instance | 0 | fail |
 | legacy-contract | 0 | fail |
@@ -27,8 +27,9 @@ not browser or screen-reader certification.
 | type-values | 638 | warn |
 | variant-hover | 0 | fail |
 
-Focus-visible fails for **44 parts**, with 93 findings; parts and
-findings are different units. spacing-values has 891 warning findings;
+Focus-visible has no findings under the T2 step 4 rule (shared floor plus
+cancellation detection, KATA.md Focus); the browser measurement in CI finds
+0 Tab stops below 3:1 or clipped. spacing-values has 891 warning findings;
 type-values has 638. token-values has no remaining findings.
 
 ### Remaining JS failures
@@ -40,7 +41,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #35
+### Merged work, PR #11 through #36
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -71,13 +72,14 @@ Missing number #12 is open, not silently assumed merged.
 | #33 | 4dddb8a | Closed Dropdown menus and collapsed Speed Dial actions leave the Tab order. |
 | #34 | 0b8f5f6 | Mold v3: --k-ring and the focus floor become a 2px ink ring. |
 | #35 | 9b3ecf9 | Part-owned weak focus rings replaced; 112 → 116. |
+| #36 | 5fcba9e | Clipped focus rings drawn inside; Navigation Menu panel visible; 116 → 120. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#35 were squash-merged the same way after green CI. The owner then asked the
+#29–#36 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -94,7 +96,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#36](https://github.com/kajisho5/KATA-UI/pull/36) | Clipped rings drawn inside; Navigation Menu panel visible again (T2 step 3, part 2); 116 → 120. |
+| [#37](https://github.com/kajisho5/KATA-UI/pull/37) | **Checker policy change (T2 step 4–5): owner review and merge required.** Shared floor + cancellation detection, browser focus measurement in CI; 120 → 164. |
 
 ### npm and environment
 
@@ -146,8 +148,8 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #36 (T2 step 3, part 2) must be merged
-before step 4.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #37 changes a checker rule. The owner reviews
+and merges it; the implementation agent does not. T3 waits for that decision.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -161,33 +163,16 @@ Use Cases rows are buttons that contain headings and lists, so their accessible
 names are very long; splitting the row into a button plus a sibling body changes
 markup and CSS selectors.
 
-### T2 — focus-visible (in progress)
+### T2 — done (pending owner merge of #37)
 
-Step 1 is done by #32 (`python3 -m tools.verify_focus_ring`, docs/review/focus-ring/).
-#33 removed closed Dropdown items and collapsed Speed Dial actions from the Tab order.
-Step 2 is done by #34: the owner chose a 2px ink ring (option 1,
-2026-11-06). `--k-ring` is a 2px page-colored gap plus a 2px ink ring, and the
-generated focus floor is a 2px ink outline (outline, not box-shadow, so component
-shadows and forced colors cannot remove it). Below 3:1: light 380 → 20, dark
-156 → 4 (docs/review/focus-ring-v3/). Step 3 part 1 (#35) replaced the part-owned weak
-rings (Toggle, Dual Range, Rating, Wagara, Use Cases, Confetti Cannon,
-Kaleidoscope, Particle Word, selected Chip, Comparison Slider, Glow Button, error
-Input/Textarea): below 3:1 is now 1 per theme, Rating, which the tool cannot see
-(1px input, ring on its label). docs/review/focus-ring-components/. Step 3 part 2 (#36)
-drew clipped rings inside their controls and made Navigation Menu's open panel
-visible again (a scrolling bar had clipped it completely): clipped stops 52 → 0
-(docs/review/focus-ring-clipping/). **Next, step 4 (owner review required):**
-replace the static focus-visible rule with detection of cancelled rings, accept
-`:has()`-based focus rules (Comparison Slider, Glow Button), add the Playwright
-visibility test to CI, explain the change in KATA.md with passing/failing
-fixtures, and report before/after counts. Then step 5. `--k-ring-danger` is unused.
-Navigation Menu and Dropdown do not return focus on Escape (T4).
-
-1. First add a Playwright focus-ring test, tests/focus-ring.spec (using the runner's required extension). For every part test page, Tab through focusable controls in light/dark, compare before/after screenshots and check ring pixels outside the control are not clipped by overflow:hidden.
-2. Add the shared --k-ring focus rule in canonical tokens.json and generate CSS; do not hand-edit tokens.css. Targets are a[href], button, input, select, textarea, summary and tabindex other than -1. Use outline:none and box-shadow:var(--k-ring). Keep the whole selector, including :focus-visible, inside :where for actual zero specificity; e.g. :where(:is(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible).
-3. Fix cancelled rings (outline:none / box-shadow:none without replacement), doubled rings (review Combobox and input-group :focus-within) and clipped rings (parent padding/appropriate offset). Preserve selection as a separate state.
-4. Change the static focus rule from per-part declaration evidence to detecting cancellation of the measured global ring. Add the Playwright visibility test to CI. Explain the change in KATA.md and add passing/failing fixtures; do not weaken inspection.
-5. Report before/after counts and every part whose focus ring was not visible. Shared token additions/meaning changes require the mold-version/changelog procedure.
+#32 measurement tool and baseline; #33 closed menus out of the Tab order; #34
+mold v3 2px ink ring (owner chose option 1); #35 part-owned weak rings; #36
+clipped rings and the Navigation Menu panel; #37: static rule = shared
+floor + cancellation detection, `verify_focus_ring --check` in CI, Rating measured
+through its label. Below 3:1 in light: 380 → 0; clipped: 49 → 0; Mold Verified
+120 → 164. Evidence: docs/review/focus-ring*/ and docs/review/focus-rule/.
+Open follow-ups: `--k-ring-danger` is unused; Navigation Menu and Dropdown do not
+return focus on Escape (T4); only default-preview Tab stops are measured.
 
 ### T3 — spacing-values and type-values become failures for ui (after T2)
 

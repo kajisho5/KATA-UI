@@ -11,6 +11,8 @@ This is evidence for HANDOFF T2. It does not change components or checker rules.
 """
 import argparse
 import http.server
+import os
+import sys
 import io
 import json
 import threading
@@ -120,6 +122,13 @@ def measure(page, theme):
         seen.add(key)
         geo = el.evaluate(GEOMETRY)
         x, y, w, h = geo['box']
+        # A visually hidden input (radio/checkbox) shows focus on its label; measure that box.
+        if w < 4 or h < 4:
+            label = el.evaluate_handle('e=>(e.labels&&e.labels[0])||(e.nextElementSibling&&e.nextElementSibling.tagName==="LABEL"?e.nextElementSibling:null)').as_element()
+            if label is not None:
+                lb = label.evaluate('e=>{const r=e.getBoundingClientRect();return [r.left,r.top,r.width,r.height]}')
+                if lb[2] >= 1 and lb[3] >= 1:
+                    x, y, w, h = lb; geo = {**geo, 'box': lb, 'measured': 'label'}
         if w < 1 or h < 1:
             records.append({**geo, 'visible': False, 'level': 'none', 'changed': 0, 'strong': 0, 'outside': 0, 'note': 'zero-size'})
             continue
@@ -171,7 +180,7 @@ def run(selected=None, output=ROOT / 'docs/review/focus-ring', themes=('light', 
     parts, errors = [], []
     try:
         with sync_playwright() as p:
-            browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
+            browser = p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH', '/usr/bin/chromium'), args=['--no-sandbox'])
             page = browser.new_page(viewport={'width': 1100, 'height': 900})
             page.on('pageerror', lambda error: errors.append(str(error)))
             page.goto(f'http://127.0.0.1:{server.server_port}/tokens.css')
@@ -209,7 +218,16 @@ def summarize(parts):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(); parser.add_argument('parts', nargs='*')
+    parser.add_argument('--check', action='store_true', help='exit 1 if any stop is below 3:1 or clipped, 2 on page errors')
+    parser.add_argument('--output', default=str(ROOT / 'docs/review/focus-ring'))
     args = parser.parse_args()
-    report, _ = run(args.parts or None)
+    report, parts = run(args.parts or None, output=args.output)
     for theme, s in report.items():
         print(f"{theme}: {s['stops']} focus stops in {s['partsWithStops']}/{s['parts']} parts; below 3:1 {s['invisible']} (no change {s['none']}, weak {s['weak']}; {len(s['partsWithInvisible'])} parts); clipped {s['clipped']} ({len(s['partsWithClipped'])} parts)")
+    if args.check:
+        errors = json.loads((Path(args.output) / 'results.json').read_text())['pageErrors']
+        bad = [f"{p['id']} ({theme}): {r['tag']}.{r['cls'] or r['role']} {r['level']}{' clipped' if r['clipped'] else ''}"
+               for p in parts for theme, rs in p['themes'].items() for r in rs if not r['visible'] or r['clipped']]
+        for line in bad: print('FAIL', line)
+        if errors: print('Page errors:', errors); sys.exit(2)
+        sys.exit(1 if bad else 0)

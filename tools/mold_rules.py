@@ -61,47 +61,96 @@ def dependency_styles(directory, root, seen=None):
     return out
 
 
-def focus_matches(node, selector, body, config):
-    """Static selector evidence only; P7 must measure the rendered focus ring."""
-    if ':focus-visible' not in selector:return False
-    attrs=node['attrs'];tag=node['tag'];classes=attrs.get('class','').split()
-    declarations_=dict(declarations(body))
-    # The existing outline-only safety net is not the shared ring contract.
-    global_ring=any(token in declarations_.get('box-shadow','') for token in config['global_focus_ring_tokens'])
-    # Expand :where/:is subject alternatives without splitting function arguments.
-    branches=[]
+def _branches(selector):
+    """Expand :where/:is subject alternatives without splitting function arguments."""
+    out=[]
     for branch in split_top(selector):
         match=re.search(r':(?:where|is)\(([^()]*)\)',branch)
         if match:
-            branches.extend(branch[:match.start()]+part+branch[match.end():] for part in split_top(match[1]))
-        else:branches.append(branch)
-    for branch in branches:
+            out.extend(branch[:match.start()]+part+branch[match.end():] for part in split_top(match[1]))
+        else:out.append(branch)
+    return out
+
+
+def _subject_matches(node, subject):
+    """Does a selector without state pseudo-classes target this node? Returns (matched, specific)."""
+    attrs=node['attrs'];tag=node['tag'];classes=attrs.get('class','').split()
+    # Dependency rules scoped to another host must not cover every input.
+    ancestry=re.split(r'[>+~\s]+',subject.strip())[:-1]
+    ancestors=list(reversed(node.get('parents',[])))
+    for ancestor in reversed(ancestry):
+        if not ancestor:continue
+        needed=set(re.findall(r'\.([\w-]+)',ancestor))
+        ancestor_tag=re.match(r'^([a-z][\w-]*)',ancestor)
+        index=next((i for i,p in enumerate(ancestors) if needed.issubset(p['attrs'].get('class','').split()) and (not ancestor_tag or ancestor_tag[1]==p['tag'])),None)
+        if index is None:return False,False
+        ancestors=ancestors[index+1:]
+    # Ignore ancestor classes: .parent .other:focus-visible cannot cover .parent.
+    subject=re.split(r'[>+~\s]+',subject.strip())[-1]
+    required=re.findall(r'\.([\w-]+)',subject)
+    if required and not set(required).issubset(classes):return False,False
+    tag_match=re.match(r'^([a-z][\w-]*)',subject)
+    if tag_match and tag_match[1]!=tag:return False,False
+    roles=re.findall(r'\[role=[\"\']?([\w-]+)',subject)
+    if roles and attrs.get('role') not in roles:return False,False
+    for name,value in re.findall(r'\[([\w-]+)=[\"\']?([^\]\"\']+)',subject):
+        if name!='role' and attrs.get(name)!=value:return False,False
+    if '[tabindex]' in subject and 'tabindex' not in attrs:return False,False
+    return True,bool(required or tag_match or roles or '[tabindex]' in subject)
+
+
+def _outline_off(d):
+    value=d.get('outline','').strip().lower()
+    return (bool(value) and (value in ('none','0','0px') or value.startswith(('none ','0 ','0px ')))) or d.get('outline-style','').strip()=='none' or d.get('outline-width','').strip() in ('0','0px')
+
+
+def _shows_focus(body):
+    """A focus rule shows something only if it draws a ring: a box-shadow or a visible outline."""
+    d=dict(declarations(body))
+    shadow=d.get('box-shadow','').strip().lower()
+    if shadow and shadow not in ('none','0'):return True
+    if d.get('outline','').strip() and not _outline_off(d):return True
+    return bool(d.get('outline-color','').strip()) and not _outline_off(d)
+
+
+def focus_matches(node, selector, body, config):
+    """Static selector evidence: 'specific' (a matching rule draws a ring), 'global' (the shared
+    floor covers it) or None. Browser visibility is measured by tools/verify_focus_ring.py."""
+    # A ring drawn on :focus also shows for keyboard focus (and text fields always match both).
+    selector=re.sub(r':focus(?![\w-])',':focus-visible',selector)
+    if ':focus-visible' not in selector:return None
+    d=dict(declarations(body))
+    global_ring=any(token in d.get('box-shadow','') for token in config['global_focus_ring_tokens']) or \
+        any(token in d.get('outline','') for token in config.get('global_focus_outline_tokens',[]))
+    for branch in _branches(selector):
         if ':focus-visible' not in branch:continue
-        subject=branch.split(':focus-visible',1)[0]
-        # Dependency rules scoped to another host must not cover every input.
-        ancestry=re.split(r'[>+~\s]+',subject.strip())[:-1]
-        ancestors=list(reversed(node.get('parents',[])))
-        matched=True
-        for ancestor in reversed(ancestry):
-            if not ancestor:continue
-            needed=set(re.findall(r'\.([\w-]+)',ancestor))
-            ancestor_tag=re.match(r'^([a-z][\w-]*)',ancestor)
-            index=next((i for i,p in enumerate(ancestors) if needed.issubset(p['attrs'].get('class','').split()) and (not ancestor_tag or ancestor_tag[1]==p['tag'])),None)
-            if index is None:matched=False;break
-            ancestors=ancestors[index+1:]
+        # A focused descendant restyles a visible host: .host:has(input:focus-visible) .grip
+        has=re.search(r':has\(([^()]*:focus-visible[^()]*)\)',branch)
+        if has:
+            inner=has[1].split(':focus-visible',1)[0]
+            host=re.split(r'[>+~\s]+',branch[:has.start()].strip())[-1]
+            needed=set(re.findall(r'\.([\w-]+)',host))
+            if _subject_matches(node,inner)[0] and any(needed.issubset(p['attrs'].get('class','').split()) for p in node.get('parents',[])) and _shows_focus(body):
+                return 'specific'
+            continue
+        matched,specific=_subject_matches(node,branch.split(':focus-visible',1)[0])
         if not matched:continue
-        # Ignore ancestor classes: .parent .other:focus-visible cannot cover .parent.
-        subject=re.split(r'[>+~\s]+',subject.strip())[-1]
-        required=re.findall(r'\.([\w-]+)',subject)
-        if required and not set(required).issubset(classes):continue
-        tag_match=re.match(r'^([a-z][\w-]*)',subject)
-        if tag_match and tag_match[1]!=tag:continue
-        roles=re.findall(r'\[role=[\"\']?([\w-]+)',subject)
-        if roles and attrs.get('role') not in roles:continue
-        if '[tabindex]' in subject and 'tabindex' not in attrs:continue
-        relevant=bool(required or tag_match or roles or '[tabindex]' in subject)
-        if relevant:return True
-        if global_ring and re.fullmatch(r'(?:\*|:where\(|:is\(|)',subject):return True
+        if specific and _shows_focus(body):return 'specific'
+        subject=re.split(r'[>+~\s]+',branch.split(':focus-visible',1)[0].strip())[-1]
+        if not specific and global_ring and re.fullmatch(r'(?:\*|)',subject):return 'global'
+    return None
+
+
+def focus_cancelled(node, component_rules):
+    """True when a part rule that applies while focused removes the outline (the shared floor)."""
+    for selector,body in component_rules:
+        if not _outline_off(dict(declarations(body))):continue
+        for branch in _branches(selector):
+            # Only the resting state and focus states apply while a keyboard user is focused.
+            plain=re.sub(r':focus(?:-visible)?(?![\w-])','',branch)
+            if ':' in plain or '[' in plain and '::' in plain:continue
+            matched,specific=_subject_matches(node,plain)
+            if matched and specific:return True
     return False
 
 
@@ -229,7 +278,8 @@ def inspect(directory, root, config):
         checks[-1]['by_kind'] = {kind:sum(d['kind'] == kind for d in details[key]) for kind in sorted({d['kind'] for d in details[key]})}
     types=[];labels=[];focus=[]
     focus_details={}
-    candidates=rules(css+'\n'+'\n'.join(dependency_css)) + rules(token_source)
+    component_rules=rules(css+'\n'+'\n'.join(dependency_css))
+    candidates=component_rules + rules(token_source)
     for f,doc in docs:
         ids={n['attrs']['id'] for n in doc.nodes if n['attrs'].get('id')}
         fors={n['attrs'].get('for') for n in doc.nodes if n['tag']=='label' and n['attrs'].get('for')}
@@ -241,7 +291,9 @@ def inspect(directory, root, config):
                 if not (named or (a.get('id') and a.get('id') in fors) or any(p['tag']=='label' for p in n['parents'])):labels.append(identity)
             interactive=tag in ('button','input','select','textarea','summary') or (tag=='a' and 'href' in a) or 'tabindex' in a or a.get('role') in ('button','combobox','slider','switch','checkbox','radio','tab')
             if not interactive or a.get('type')=='hidden':continue
-            if not any(focus_matches(n,sel,body,config) for sel,body in candidates):
+            evidence={focus_matches(n,sel,body,config) for sel,body in candidates}
+            # A part rule that draws its own ring passes; the shared floor passes unless a part rule removes it.
+            if 'specific' not in evidence and not ('global' in evidence and not focus_cancelled(n,component_rules)):
                 signature=' '.join(sorted(set(a.get('class','').split()))) or a.get('role','')
                 key=(str(f.relative_to(root)),tag,signature)
                 if key not in focus_details:focus_details[key]={'path':key[0],'tag':tag,'class_or_role':signature,'occurrences':0}

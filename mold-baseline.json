@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 120,
+    "passed": 164,
     "total": 164
   },
   "items": [
@@ -62,7 +62,7 @@
     },
     {
       "id": "components/bottom-navigation",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -72,17 +72,17 @@
     },
     {
       "id": "components/breadcrumbs",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/burst-button",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
       "id": "components/button",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "id": "components/calendar",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "id": "components/card",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -117,7 +117,7 @@
     },
     {
       "id": "components/cascader",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -132,7 +132,7 @@
     },
     {
       "id": "components/collapsible",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -172,7 +172,7 @@
     },
     {
       "id": "components/copy-field",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -212,7 +212,7 @@
     },
     {
       "id": "components/dropdown",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -227,7 +227,7 @@
     },
     {
       "id": "components/field",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -262,7 +262,7 @@
     },
     {
       "id": "components/glow-button",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -277,7 +277,7 @@
     },
     {
       "id": "components/goo-tabs",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -302,17 +302,17 @@
     },
     {
       "id": "components/hover-card",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/input",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/input-group",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -322,7 +322,7 @@
     },
     {
       "id": "components/jelly-buttons",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -372,7 +372,7 @@
     },
     {
       "id": "components/menubar",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -387,12 +387,12 @@
     },
     {
       "id": "components/modal",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/navigation-menu",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -412,7 +412,7 @@
     },
     {
       "id": "components/pagination",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -477,12 +477,12 @@
     },
     {
       "id": "components/scroll-area",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/scrollspy",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -507,7 +507,7 @@
     },
     {
       "id": "components/sidebar",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -532,7 +532,7 @@
     },
     {
       "id": "components/speed-dial",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -582,7 +582,7 @@
     },
     {
       "id": "components/tabs",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -602,7 +602,7 @@
     },
     {
       "id": "components/textarea",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -612,7 +612,7 @@
     },
     {
       "id": "components/time-picker",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -652,17 +652,17 @@
     },
     {
       "id": "components/transfer",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/tree",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "components/typeset",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -687,12 +687,12 @@
     },
     {
       "id": "blocks/app-shell",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "blocks/cookie-consent",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -702,12 +702,12 @@
     },
     {
       "id": "blocks/faq",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "blocks/filter-toolbar",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -727,7 +727,7 @@
     },
     {
       "id": "blocks/login",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -757,12 +757,12 @@
     },
     {
       "id": "blocks/settings",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "blocks/site-footer",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -792,27 +792,27 @@
     },
     {
       "id": "templates/blog-article",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "templates/checkout",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "templates/dashboard",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "templates/inbox",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
       "id": "templates/landing",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -822,7 +822,7 @@
     },
     {
       "id": "templates/settings-page",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     }
   ]

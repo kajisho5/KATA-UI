@@ -44,7 +44,7 @@ A zero-dependency CLI ([`@kajisho5/kataui`](https://www.npmjs.com/package/@kajis
 If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rails templates, WordPress themes, or one island inside a React app.
 
 <!-- mold-summary:start -->
-[Mold Verified 120 / 164 · UI 81 / 121 · Lab 39 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-06 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.

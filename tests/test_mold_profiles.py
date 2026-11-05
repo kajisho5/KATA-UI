@@ -1,5 +1,6 @@
 """Policy fixtures exercise the real checker using isolated temporary repositories."""
 import json
+import re
 from pathlib import Path
 import tempfile
 import unittest
@@ -13,7 +14,9 @@ class ProfileFixtures(unittest.TestCase):
         for case in [case for path in sorted((ROOT/'tests/mold').glob('*.json')) for case in json.loads(path.read_text())]:
             with self.subTest(case=case['name']), tempfile.TemporaryDirectory() as tmp:
                 root=Path(tmp);slug=case.get('slug','sample');d=root/'components'/slug;d.mkdir(parents=True)
-                (root/'tokens.css').write_text((ROOT/'tokens.css').read_text()+case.get('shared_extra',''))
+                tokens=(ROOT/'tokens.css').read_text()
+                if case.get('no_focus_floor'):tokens=re.sub(r'/\* focus-floor:start \*/.*?/\* focus-floor:end \*/','',tokens,flags=re.S)
+                (root/'tokens.css').write_text(tokens+case.get('shared_extra',''))
                 meta={'category':case['category'],**case.get('meta',{})}
                 if 'prefix' in case:meta['prefix']=case['prefix']
                 (d/'meta.json').write_text(json.dumps(meta))

@@ -11,7 +11,10 @@ function toast(title, sub, near){
   if (!toasts) return;
   const el = document.createElement('div');
   el.className = 'toast';
-  el.innerHTML = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5dac81" stroke-width="2.4" stroke-linecap="round" style="flex:none;margin-top:1px"><path d="M4 12.5l5 5L20 6.5"/></svg><span><b>' + title + '</b>' + (sub ? '<small>' + sub + '</small>' : '') + '</span>';
+  // Text goes in as text, never as markup. The check icon is decorative; the title says the outcome.
+  el.innerHTML = '<svg class="toast-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg><span><b></b></span>';
+  el.querySelector('b').textContent = title;
+  if (sub) { const small = document.createElement('small'); small.textContent = sub; el.querySelector('span').append(small); }
   toasts.appendChild(el);
   setTimeout(() => {
     el.setAttribute('data-closing', '');
@@ -33,6 +36,11 @@ function toast(title, sub, near){
     el.addEventListener('transitioncancel', finish);
   }, 4000);
 }
+// Each stack is a polite status live region before any toast is added, so screen readers announce new toasts.
+document.querySelectorAll('[data-toasts]').forEach(box => {
+  if (!box.hasAttribute('role')) box.setAttribute('role', 'status');
+  if (!box.hasAttribute('aria-live')) box.setAttribute('aria-live', 'polite');
+});
 document.querySelectorAll('[data-toast-demo]').forEach(btn => {
   if (btn.dataset.kataReady) return;
   btn.dataset.kataReady = 'true';

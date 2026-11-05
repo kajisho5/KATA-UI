@@ -13,7 +13,7 @@
 .k-wag-tools{display:flex;gap:8px;align-items:center;margin-top:11px}
 .k-wag-search{flex:1;min-width:0;-webkit-appearance:none;appearance:none;border:1px solid var(--k-line);background:var(--k-bg);color:var(--k-ink);border-radius:var(--k-radius-full);padding:8px 14px;font-family:inherit;font-size:13px;letter-spacing:.01em}
 .k-wag-search::placeholder{color:var(--k-ink-3)}
-.k-wag-search:focus-visible{outline:2px solid var(--k-accent);outline-offset:1px}
+.k-wag-search:focus-visible{outline:2px solid var(--k-ink);outline-offset:1px}
 .k-wag-count{font-size:11.5px;color:var(--k-ink-3);white-space:nowrap;font-variant-numeric:tabular-nums}
 .k-wag-none{font-size:12.5px;color:var(--k-ink-3);margin-top:9px;letter-spacing:.01em}
 .k-wag-btn[hidden]{display:none}

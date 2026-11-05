@@ -67,7 +67,7 @@
     }
   ],
   "schemaVersion": 1,
-  "throughCommit": "5e2dd3f551635efbc0f6c7bd84a929a9b65ab45f",
+  "throughCommit": "0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef",
   "baselineCommit": "a8bc6fad863504c43502bc7e16b5c6da43c6e2fc",
   "evidenceGap": "The owner identifies the 2026-11-01 release as v1. Git has no November 1 source snapshot; its earliest tokens.css is November 2. The earliest surviving snapshot is the conservative v1 evidence baseline, not a verified copy of the November 1 publication. Later additions require v2.",
   "v1EvidenceVerified": false,
@@ -1019,7 +1019,7 @@
       "tokens": [
         "--k-ring"
       ],
-      "commit": "5e2dd3f551635efbc0f6c7bd84a929a9b65ab45f",
+      "commit": "0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef",
       "reason": "Keyboard focus ring changed from a 3px 12% tint (about 1.3:1 on white) to a 2px page-colored gap plus a 2px ink ring, which reaches 3:1 in both themes. It is now 4px wide instead of 3px; check rings inside overflow-clipped containers."
     }
   ],
@@ -3121,9 +3121,9 @@
       ]
     },
     {
-      "commit": "5e2dd3f551635efbc0f6c7bd84a929a9b65ab45f",
-      "date": "2026-11-05",
-      "subject": "Make the keyboard focus ring reach 3:1 in both themes (mold v3)",
+      "commit": "0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef",
+      "date": "2026-11-06",
+      "subject": "フォーカス環を2pxの墨色に変更し、両テーマで3:1を満たす（mold v3、T2 手順2） (#34)",
       "changes": [
         {
           "token": "--k-mold",

@@ -3,7 +3,7 @@
 Implementation agent: Claude Code (from 2026-11-05).
 
 <!-- mold-snapshot:start -->
-[Mold Verified 112 / 164 · UI 77 / 121 · Lab 35 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 116 / 164 · UI 78 / 121 · Lab 38 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-06 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
@@ -20,7 +20,7 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 | token-values: easing | 0 |
 | spacing-values (warn) | 891 |
 | type-values (warn) | 638 |
-| focus-visible | 104 |
+| focus-visible | 99 |
 | js-single-instance | 0 |
 | js-global-bindings | 0 |
 | shared-token-scope | 0 |
@@ -64,6 +64,7 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Measurement baseline: 444 Tab stops in 98 parts; below 3:1 contrast on 380 (light) and 156 (dark); 49 clipped stops in 8 parts ([PR #32](https://github.com/kajisho5/KATA-UI/pull/32)). The current `--k-ring` and light accent outline are below 3:1, so the ring value needs an owner decision before the shared rule.
   - [x] Closed Dropdown menus and collapsed Speed Dial actions leave the Tab order (7 of 10 no-change stops) ([PR #33](https://github.com/kajisho5/KATA-UI/pull/33)).
   - [x] Mold v3: `--k-ring` and the focus floor become a 2px ink ring; below 3:1 dropped from 380 to 20 (light) and 156 to 4 (dark) ([PR #34](https://github.com/kajisho5/KATA-UI/pull/34)).
+  - [x] Part-owned weak rings replaced; below 3:1 dropped to 1 stop per theme (Rating, not measurable by the tool) (PR_PLACEHOLDER).
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and

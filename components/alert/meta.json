@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For information the user must not miss but does not need to act on right now. Toasts interrupt; alerts stay. One alert per region is usually enough.",
-  "a11y": "Use role=\"alert\" only for messages injected after load; static alerts are plain regions. Tone is never carried by color alone — the icon and title say it too."
+  "a11y": "Use role=\"alert\" only for messages injected after load; static alerts are plain regions. Tone is never carried by color alone: the title says it, and the icon is decorative (aria-hidden=\"true\") so screen readers do not announce an unnamed image. Title and body text measure at least 12.68:1 and 5.44:1 in every tone and theme; the tone icon at least 3.1:1 (success, dark). Beta until a recorded screen-reader pass."
 }

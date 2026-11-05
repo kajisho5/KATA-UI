@@ -70,7 +70,7 @@ separate release statuses. The phases below are targets, not shipped features.
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
   - [x] Mold v4 completes the spacing, text and leading scales with owner-chosen mappings (docs/token-migration.md) ([PR #38](https://github.com/kajisho5/KATA-UI/pull/38)).
   - [x] Spacing: 762 raw declarations in UI parts replaced with tokens; UI spacing findings 763 → 12 ([PR #39](https://github.com/kajisho5/KATA-UI/pull/39)).
-  - [x] Font size: 433 raw declarations in UI parts replaced with text tokens; UI font-size findings 435 → 2.
+  - [x] Font size: 433 raw declarations in UI parts replaced with text tokens; UI font-size findings 435 → 2 ([PR #40](https://github.com/kajisho5/KATA-UI/pull/40)).
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and
 individual passing-target regressions; claims stay within test coverage; at

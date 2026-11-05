@@ -107,6 +107,14 @@ MOLD_STATUS = _ms
 FOOTER = FOOTER.replace('__MOLD__', '<a href="/audit/">' + _ms + '</a>')
 
 
+def render_usage(text):
+    """Render escaped usage prose and optional fenced JavaScript examples."""
+    segments = re.split(r'```(?:js|javascript)\n(.*?)\n```', text, flags=re.S)
+    return ''.join('<pre><code class="language-javascript">' + esc(part) + '</code></pre>'
+                   if index % 2 else '<p>' + esc(part.strip()) + '</p>'
+                   for index, part in enumerate(segments) if part.strip())
+
+
 def _v(text):
     return hashlib.md5(text.encode('utf-8')).hexdigest()[:8]
 
@@ -1177,7 +1185,7 @@ def detail(comps, idx):
       {render_checks(MOLD_ITEMS['components/' + slug])}
     {install_html}
       {examples_html}
-      <section class="doc"><h2>Usage</h2><p>{esc(m.get('usage',''))}</p></section>
+      <section class="doc"><h2>Usage</h2>{render_usage(m.get('usage',''))}</section>
       <section class="doc"><h2>Accessibility</h2><p>{esc(m.get('a11y',''))}</p></section>
       {anatomy_html}
       {token_html}

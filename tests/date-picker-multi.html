@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>date-picker multiple instances</title><link rel="icon" href="../logo/favicon.svg"><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/input/input.css"><link rel="stylesheet" href="../components/date-picker/date-picker.css"></head><body><h1>date-picker — triple instances</h1><button type="button" data-outside>Outside target</button><section data-instance="0"><div class="k-dp" data-dp style="max-width:300px">
+  <label class="k-dp-label" data-dp-label>Date</label>
+  <div class="wrap-in">
+    <input class="input" data-dp-input aria-label="Date" type="text" placeholder="Pick a date" readonly aria-haspopup="dialog" aria-expanded="false">
+    <button class="cal-btn" data-dp-btn type="button" aria-label="Open calendar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
+  </div>
+  <div class="k-dp-panel" data-dp-panel role="dialog" aria-label="Choose a date" hidden>
+    <p data-probe>Choose a date.</p><button type="button" data-probe-a>First probe</button><button type="button" data-probe-b>Second probe</button>
+    <div class="k-dp-h">
+      <button class="k-dp-nav" data-dp-prev type="button" aria-label="Previous month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <b data-dp-title></b>
+      <button class="k-dp-nav" data-dp-next type="button" aria-label="Next month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="k-dp-wd"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+    <div class="k-dp-grid" data-dp-grid></div>
+  </div>
+</div></section><section data-instance="1"><div class="k-dp" data-dp style="max-width:300px">
+  <label class="k-dp-label" data-dp-label>Date</label>
+  <div class="wrap-in">
+    <input class="input" data-dp-input aria-label="Date" type="text" placeholder="Pick a date" readonly aria-haspopup="dialog" aria-expanded="false">
+    <button class="cal-btn" data-dp-btn type="button" aria-label="Open calendar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
+  </div>
+  <div class="k-dp-panel" data-dp-panel role="dialog" aria-label="Choose a date" hidden>
+    <p data-probe>Choose a date.</p><button type="button" data-probe-a>First probe</button><button type="button" data-probe-b>Second probe</button>
+    <div class="k-dp-h">
+      <button class="k-dp-nav" data-dp-prev type="button" aria-label="Previous month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <b data-dp-title></b>
+      <button class="k-dp-nav" data-dp-next type="button" aria-label="Next month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="k-dp-wd"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+    <div class="k-dp-grid" data-dp-grid></div>
+  </div>
+</div></section><section data-instance="2" dir="rtl"><div class="k-dp" data-dp style="max-width:300px">
+  <label class="k-dp-label" data-dp-label>Date</label>
+  <div class="wrap-in">
+    <input class="input" data-dp-input aria-label="Date" type="text" placeholder="Pick a date" readonly aria-haspopup="dialog" aria-expanded="false">
+    <button class="cal-btn" data-dp-btn type="button" aria-label="Open calendar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
+  </div>
+  <div class="k-dp-panel" data-dp-panel role="dialog" aria-label="Choose a date" hidden>
+    <p data-probe>Choose a date.</p><button type="button" data-probe-a>First probe</button><button type="button" data-probe-b>Second probe</button>
+    <div class="k-dp-h">
+      <button class="k-dp-nav" data-dp-prev type="button" aria-label="Previous month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <b data-dp-title></b>
+      <button class="k-dp-nav" data-dp-next type="button" aria-label="Next month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="k-dp-wd"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+    <div class="k-dp-grid" data-dp-grid></div>
+  </div>
+</div></section><script>
+// Application-provided IDs and an occupied generated-looking ID must be preserved.
+const marker = document.createElement('span'); marker.id = 'kata-date-picker-1'; document.body.prepend(marker);
+document.querySelectorAll('[data-dp-panel]')[1].id = 'existing-date-picker-panel';
+document.querySelectorAll('[data-dp-input]')[1].id = 'existing-date-picker-trigger';
+</script><script src="../components/date-picker/date-picker.js"></script><script src="../components/date-picker/date-picker.js"></script></body></html>

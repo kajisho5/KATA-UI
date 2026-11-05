@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 97,
+    "passed": 100,
     "total": 164
   },
   "items": [
@@ -147,7 +147,7 @@
     },
     {
       "id": "components/command",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -162,7 +162,7 @@
     },
     {
       "id": "components/context-menu",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -187,7 +187,7 @@
     },
     {
       "id": "components/date-picker",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

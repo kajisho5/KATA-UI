@@ -6,3 +6,5 @@
 .k-ctx button .hint{margin-inline-start:auto;font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3)}
 .k-ctx button.danger{color:var(--k-danger-ink)}
 .k-ctx hr{border:none;border-top:1px solid var(--k-line);margin:5px 4px}
+
+.k-ctx-zone:focus-visible,.k-ctx button:focus-visible{outline:0;box-shadow:var(--k-ring)}

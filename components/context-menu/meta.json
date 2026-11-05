@@ -7,6 +7,6 @@
     "menu"
   ],
   "status": "beta",
-  "usage": "For dense surfaces — file rows, canvas items, table cells — where actions belong to the thing under the cursor. Always mirror the same actions somewhere visible; a context menu is a shortcut, never the only door.",
-  "a11y": "Opens on the contextmenu event and on Shift+F10 / the Menu key for keyboard users, takes focus, and returns it on Esc. Items are real buttons."
+  "usage": "For dense surfaces — file rows, canvas items, table cells — where actions belong to the thing under the cursor. Always mirror the same actions somewhere visible; a context menu is a shortcut, never the only door. Focus the trigger and press Shift+F10 or the Menu key to open it.",
+  "a11y": "Right-click, Shift+F10 or the Menu key opens a menu with button menuitems. Up/Down, Home/End and prefix search move focus. Escape and Tab close it; Escape and selection restore the trigger. Pointer placement flips at viewport edges. Null focusout does not dismiss the menu. Window blur dismisses an open menu without moving focus."
 }

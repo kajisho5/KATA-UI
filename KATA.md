@@ -115,6 +115,10 @@ components/<slug>/
 - Esc で閉じる、フォーカスを戻す、といった後始末は部品の責任。
 - JS がなくても「見た目と意味」が成立する部品は JS を置かない（Switch / Checkbox が手本）。
 
+### Keyboard direction
+
+Horizontal arrow keys follow the visual direction. In RTL, ArrowLeft moves forward.
+
 ## 5. preview.html の型
 
 - 実演だけを書く。説明文や見出しは入れない（それは meta と生成器の仕事）。

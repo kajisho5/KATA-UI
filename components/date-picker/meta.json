@@ -8,5 +8,5 @@
   ],
   "status": "beta",
   "usage": "For single dates: deadlines, start dates, birthdays. Ranges and time are separate problems; this part does one day, completely.",
-  "a11y": "Full keyboard support: arrows move by day and week, Page Up/Down by month, Enter selects, Esc closes. The grid is a real table-like structure with weekday headers, and today carries aria-current=\"date\"."
+  "a11y": "The labelled readonly input opens a non-modal calendar dialog. Its grid has weekday headers, one tabbable day, selected-date state and aria-current for today. Arrows move by day/week, Home/End by week edge, PageUp/Down by month, Shift+PageUp/Down by year; Enter selects and Escape restores the opener. Month changes are announced politely. Horizontal arrows follow visual direction: in RTL, Left moves to the next day and Right to the previous day."
 }

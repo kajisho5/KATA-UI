@@ -7,7 +7,7 @@
     "confirm",
     "overlay"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "For confirmations that block the flow. Keep the message to one decision.",
-  "a11y": "<dialog> traps focus and closes on Escape natively. Label the primary action with the verb, not \"OK\"."
+  "a11y": "Uses native <dialog> with showModal. Tab and Shift+Tab cycle inside the dialog. Escape, backdrop clicks and [data-modal-close] buttons close it and return focus to the opener. The first heading names the dialog (aria-labelledby) and the first paragraph describes it (aria-describedby), with generated IDs; existing IDs are preserved. All instances initialize independently and loading the script twice is safe. Escape is ignored while an IME is composing. Label the primary action with the verb, not \"OK\". Beta until a recorded screen-reader pass."
 }

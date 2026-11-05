@@ -65,7 +65,7 @@ jobs:
         run: python3 -W error::SyntaxWarning -m tools.verify_focus_ring --check --output /tmp/focus-ring
       - name: Run part browser regressions that need Chromium
         # The regression step above runs before Chromium is installed, so these skip there.
-        run: python3 -W error::SyntaxWarning -m unittest tests.test_button_browser tests.test_input_browser tests.test_field_browser tests.test_textarea_browser tests.test_select_browser tests.test_checkbox_browser tests.test_radio_browser tests.test_switch_browser
+        run: python3 -W error::SyntaxWarning -m unittest tests.test_button_browser tests.test_input_browser tests.test_field_browser tests.test_textarea_browser tests.test_select_browser tests.test_checkbox_browser tests.test_radio_browser tests.test_switch_browser tests.test_overlay_instances
       - uses: actions/upload-artifact@v4
         if: always()
         with:

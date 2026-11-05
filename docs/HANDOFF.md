@@ -102,7 +102,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| This PR (fix/mold-history-v5) | system/mold-history.json regenerated with `--ref origin/main`: `--k-text-code` pointed at a pre-squash branch commit. |
+| [#43](https://github.com/kajisho5/KATA-UI/pull/43) | system/mold-history.json regenerated with `--ref origin/main`: `--k-text-code` pointed at a pre-squash branch commit. |
 
 ### npm and environment
 
@@ -154,7 +154,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: none after the mold-history follow-up merges; next is T4 Button.**
+PR. Do not start while the previous task's PR is open. **Current blocker: none after #43 (mold-history follow-up) merges; next is T4 Button.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 

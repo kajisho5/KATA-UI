@@ -63,7 +63,7 @@ separate release statuses. The phases below are targets, not shipped features.
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
   - [x] Measurement baseline: 444 Tab stops in 98 parts; below 3:1 contrast on 380 (light) and 156 (dark); 49 clipped stops in 8 parts ([PR #32](https://github.com/kajisho5/KATA-UI/pull/32)). The current `--k-ring` and light accent outline are below 3:1, so the ring value needs an owner decision before the shared rule.
   - [x] Closed Dropdown menus and collapsed Speed Dial actions leave the Tab order (7 of 10 no-change stops) ([PR #33](https://github.com/kajisho5/KATA-UI/pull/33)).
-  - [x] Mold v3: `--k-ring` and the focus floor become a 2px ink ring; below 3:1 dropped from 380 to 20 (light) and 156 to 4 (dark) (PR_PLACEHOLDER).
+  - [x] Mold v3: `--k-ring` and the focus floor become a 2px ink ring; below 3:1 dropped from 380 to 20 (light) and 156 to 4 (dark) ([PR #34](https://github.com/kajisho5/KATA-UI/pull/34)).
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and

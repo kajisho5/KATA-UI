@@ -1,7 +1,14 @@
 /* KATA Pagination */
 .k-pagination{display:flex;align-items:center;gap:var(--k-space-1)}
-.k-page{min-width:32px;height:32px;padding:0 var(--k-space-2);display:inline-flex;align-items:center;justify-content:center;border-radius:var(--k-radius);font-size:var(--k-text-base);color:var(--k-ink-2);text-decoration:none;font-family:var(--k-font);transition:background var(--k-dur-fast)}
-a.k-page:hover{background:var(--k-bg-soft);color:var(--k-ink)}
+.k-page{min-width:32px;height:32px;padding:0 var(--k-space-2);display:inline-flex;align-items:center;justify-content:center;gap:var(--k-space-1);border-radius:var(--k-radius);font-size:var(--k-text-base);color:var(--k-ink-2);text-decoration:none;font-family:var(--k-font);transition:background var(--k-dur-fast)}
+a.k-page:not([aria-current="page"]):hover{background:var(--k-bg-soft);color:var(--k-ink)}
 .k-page[aria-current="page"]{background:var(--k-ink);color:var(--k-bg);font-weight:550}
 .k-page.dots{color:var(--k-ink-3);pointer-events:none}
-.k-page.disabled{opacity:.4;pointer-events:none}
+/* Disabled: an <a> without href and aria-disabled="true" is out of the Tab order and does nothing.
+   .disabled is kept as a deprecated alias; it only stops the pointer. */
+.k-page[aria-disabled="true"],.k-page.disabled{opacity:.4;pointer-events:none}
+a.k-page:not([aria-current="page"]):active{background:var(--k-line)}
+.k-page-pos{font-size:var(--k-text-sm);color:var(--k-ink-2);padding:0 var(--k-space-1)}
+/* Arrows point in the reading direction. */
+.k-pagination:dir(rtl) .k-page svg,.k-pagination:dir(rtl) .k-page-arrow{transform:scaleX(-1)}
+.k-page-arrow{display:inline-block}

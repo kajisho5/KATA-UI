@@ -99,6 +99,7 @@ Missing number #12 is open, not silently assumed merged.
 | #61 | 951d650 | T4 Accordion: three-set page and browser test; no defect found, no part file changed; beta. |
 | #62 | 377ed56 | T4 Badge: three-set page and browser test; no defect found; legacy stable → beta. |
 | #63 | 5205d0e | T4 Alert: decorative icons aria-hidden (were unnamed images), danger tone shown; beta. |
+| #64 | 0a0ce65 | T4 Table: thead/scope, keyboard-scrollable named region, avatar initials hidden, end-aligned numbers; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -106,7 +107,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#63 were squash-merged the same way after green CI. The owner then asked the
+#29–#64 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -123,7 +124,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#64](https://github.com/kajisho5/KATA-UI/pull/64) | T4 Table: thead/scope, keyboard-scrollable named region, avatar initials hidden, end-aligned numbers; beta. |
+| [#65](https://github.com/kajisho5/KATA-UI/pull/65) | T4 Pagination: RTL arrows, real disabled state (no href + aria-disabled), current page keeps its fill on hover; beta. |
 
 ### npm and environment
 
@@ -175,7 +176,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #64 (T4 Table), then T4 pagination, then breadcrumbs.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #65 (T4 Pagination), then breadcrumbs (prepared locally), then the remaining 19 below.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -357,7 +358,17 @@ Table ([#64](https://github.com/kajisho5/KATA-UI/pull/64)): header row in <thead
 .ktable-wrap (360px) is a named region with tabindex=0 so the keyboard can
 scroll it; avatar initials aria-hidden; .num end-aligns numbers (usage already
 asked for it); avatars centred on the name. Header text is 4.51:1 light. Beta.
-Next: pagination, breadcrumbs (both prepared locally), then the rest of the 40.
+Pagination ([#65](https://github.com/kajisho5/KATA-UI/pull/65)): prev/next chevrons and the compact text arrows
+mirror in RTL; disabled prev/next is an <a> without href plus aria-disabled
+(.disabled kept as a deprecated alias); hover and :active skip the current page;
+text arrows, chevrons and the ellipsis are aria-hidden. Beta.
+Next: breadcrumbs.
+
+Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
+UI libraries ship; the queue names only 21; the owner may reorder or swap):
+alert-dialog, drawer, combobox, date-picker, slider, toggle, segmented, avatar,
+progress, skeleton, spinner, empty-state, separator, sidebar, command,
+context-menu, hover-card, data-table, file-upload.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

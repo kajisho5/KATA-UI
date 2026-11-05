@@ -3,9 +3,17 @@
 <!-- note: Tabs do not need a page of their own — set into a Card's header they organize one surface. The panels wire up through data-tabpane, as the preview above shows. -->
 <div class="k-card" style="max-width:480px;width:100%">
   <div class="k-card-h"><div><h3>Notifications</h3><p>Per channel, per project.</p></div><span class="sp"><span class="tabs" data-tabs><span class="thumb"></span><button class="on" type="button">Email</button><button type="button">Chat</button><button type="button">Push</button></span></span></div>
-  <div class="k-card-b" style="display:grid;gap:var(--k-space-3)">
+  <div class="k-card-b" data-tabpane style="display:grid;gap:var(--k-space-3)">
     <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>New comments</label>
     <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Mentions only after hours</label>
     <label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Weekly digest</label>
+  </div>
+  <div class="k-card-b" data-tabpane style="display:grid;gap:var(--k-space-3)">
+    <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Direct messages</label>
+    <label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Every new thread</label>
+  </div>
+  <div class="k-card-b" data-tabpane style="display:grid;gap:var(--k-space-3)">
+    <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Deploy failures</label>
+    <label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Quiet hours on weekends</label>
   </div>
 </div>

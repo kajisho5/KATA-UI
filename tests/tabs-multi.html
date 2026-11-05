@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="../logo/favicon.svg"><title>tabs multi-instance</title><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/tabs/tabs.css"><link rel="stylesheet" href="../components/card/card.css"><link rel="stylesheet" href="../components/switch/switch.css"><style>body{font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink);padding:var(--k-space-8)}section{margin-block:var(--k-space-8);display:grid;justify-items:start}</style></head><body><h1>tabs — three instances and the combo</h1><section><h2>Instance 1</h2><span class="tabs" data-tabs><span class="thumb"></span>
+  <button type="button" class="on">Overview</button><button type="button">Details</button><button type="button">History</button>
+</span>
+<div class="tabpane" data-tabpane>Overview panel — the essentials of the project live here.</div>
+<div class="tabpane" data-tabpane>Details panel — labor, day rates and travel, itemized.</div>
+<div class="tabpane" data-tabpane>History panel — created, edited and sent.</div>
+</section><section><h2>Instance 2</h2><span class="tabs" data-tabs><span class="thumb"></span>
+  <button type="button" class="on">Overview</button><button type="button">Details</button><button type="button">History</button>
+</span>
+<div class="tabpane" data-tabpane>Overview panel — the essentials of the project live here.</div>
+<div class="tabpane" data-tabpane>Details panel — labor, day rates and travel, itemized.</div>
+<div class="tabpane" data-tabpane>History panel — created, edited and sent.</div>
+</section><section dir="rtl"><h2>Instance 3</h2><span class="tabs" data-tabs><span class="thumb"></span>
+  <button type="button" class="on">Overview</button><button type="button">Details</button><button type="button">History</button>
+</span>
+<div class="tabpane" data-tabpane>Overview panel — the essentials of the project live here.</div>
+<div class="tabpane" data-tabpane>Details panel — labor, day rates and travel, itemized.</div>
+<div class="tabpane" data-tabpane>History panel — created, edited and sent.</div>
+</section><section data-combo><h2>Combo</h2><div class="k-card" style="max-width:480px;width:100%">
+  <div class="k-card-h"><div><h3>Notifications</h3><p>Per channel, per project.</p></div><span class="sp"><span class="tabs" data-tabs><span class="thumb"></span><button class="on" type="button">Email</button><button type="button">Chat</button><button type="button">Push</button></span></span></div>
+  <div class="k-card-b" data-tabpane style="display:grid;gap:var(--k-space-3)">
+    <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>New comments</label>
+    <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Mentions only after hours</label>
+    <label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Weekly digest</label>
+  </div>
+  <div class="k-card-b" data-tabpane style="display:grid;gap:var(--k-space-3)">
+    <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Direct messages</label>
+    <label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Every new thread</label>
+  </div>
+  <div class="k-card-b" data-tabpane style="display:grid;gap:var(--k-space-3)">
+    <label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Deploy failures</label>
+    <label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Quiet hours on weekends</label>
+  </div>
+</div>
+</section><script src="../components/tabs/tabs.js"></script><script src="../components/tabs/tabs.js"></script></body></html>

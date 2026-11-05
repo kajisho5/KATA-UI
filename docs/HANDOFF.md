@@ -109,7 +109,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| This PR (fix/t4-radio) | T4 Radio: unchecked boundary 1.65:1 → 4.83:1 (WCAG 1.4.11), hover and aria-invalid, browser test. |
+| [#50](https://github.com/kajisho5/KATA-UI/pull/50) | T4 Radio: unchecked boundary 1.65:1 → 4.83:1 (WCAG 1.4.11), hover and aria-invalid, browser test. |
 
 ### npm and environment
 
@@ -161,7 +161,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the T4 Radio PR must be merged before Switch.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #50 (T4 Radio) must be merged before Switch.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -274,7 +274,7 @@ in the Radio PR. Radio names in samples are per group; pasting a radio sample
 twice joins the groups (documented in meta; a native-HTML property).
 Measure contrast with --k-mscale 0 after a theme switch: border transitions
 otherwise catch mid-fade colours (2.89:1 was read once).
-Radio (this PR, `.k-radio`): same boundary fix (--k-ink-3, 4.83:1 / 5.6:1),
+Radio ([#50](https://github.com/kajisho5/KATA-UI/pull/50), `.k-radio`): same boundary fix (--k-ink-3, 4.83:1 / 5.6:1),
 hover and aria-invalid; arrow keys skip the disabled option. Next: switch.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.

@@ -1,5 +1,7 @@
 # Roadmap
 
+Implementation agent: Claude Code (from 2026-11-05).
+
 <!-- mold-snapshot:start -->
 [Mold Verified 100 / 164 · UI 67 / 121 · Lab 33 / 43](https://kata-ui.dev/audit/)
 

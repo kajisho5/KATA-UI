@@ -35,6 +35,13 @@ name is retained only as a deprecated alias of `--k-ease-in-out` for API compati
 all first-party consumers use the corrected name. This is a naming/scope correction,
 not a static audit exception or a change to the four curve shapes.
 
+The motion multiplier is `--k-mscale`, default 1. Every KATA duration must multiply
+it. Discrete state transitions use `--k-dur-fast/base/slow` (130/180/220ms before
+scaling). Continuous effects keep their original period as
+`calc(<time> * var(--k-mscale))`. An end-event waiter must complete immediately
+when computed duration is zero and have a duration/delay-based timeout fallback.
+Reopening cancels obsolete listeners and timers.
+
 ## 0.5 文字の型（字間・行間は固定値）
 
 - **入力欄はモバイルで 16px**：テキスト入力部品（Input / Textarea / Select / Tag Input / Command 等）は `@media (max-width:640px)` で font-size:16px にする。iOS Safari は 16px 未満の欄にフォーカスするとページを自動ズームし、戻らない — デザインではなくプラットフォームの型。
@@ -102,7 +109,7 @@ components/<slug>/
 ## 3. CSS の型
 
 - **色は tokens.css の `--k-*` 変数だけ**。16進数カラーの直書きは禁止（check.py が検出する）。
-- 例外として許すリテラル： 黒・白・ブランドニュートラルの **影と幕だけ**（rgba(0,0,0,*)、rgba(16,24,40,*) 等の無彩色アルファ）。色味のある色は必ずトークン化する。足りない色は勝手に直書きせず、tokens.css に意味のある名前で追加する（例： --k-accent-bg）。
+- Shared UI shadow/backdrop recipes come from system/tokens.json; raw neutral paint is not an exception. Lab shadow geometry follows the paint/provenance profile below. Propose missing shared roles in the canonical JSON, never directly in tokens.css.
 - JS 内で色が要る場合も、トークンの値を写した定数1箇所に集約する（例： toast の --k-success）。
 - クラス名は意味で付ける（.btn, .badge, .field）。バリアントは接尾辞（.btn-pri, .badge.asagi）、サイズは .btn-sm の形。状態は .on / .open / [disabled] 等、既存部品と揃える。
 - ダークはトークンの差し替えで成立させる。部品側に [data-theme] の分岐を書かない。
@@ -111,13 +118,15 @@ components/<slug>/
 ## 4. JS の型
 
 - 依存なし・import なし・単体で動く。フレームワーク前提の書き方をしない。
-- フックは `data-` 属性（data-tabs, data-modal-open 等）。ID は使わない（同じ部品を1ページに複数置けること）。
+- Data attributes select instances. Generate collision-checked IDs for ARIA/label associations and preserve application IDs; samples must not carry fixed IDs. See implementation contract item 11.
 - Esc で閉じる、フォーカスを戻す、といった後始末は部品の責任。
 - JS がなくても「見た目と意味」が成立する部品は JS を置かない（Switch / Checkbox が手本）。
 
 ### Keyboard direction
 
 Horizontal arrow keys follow the visual direction. In RTL, ArrowLeft moves forward.
+ArrowUp/Down, Home/End and PageUp/Down keep their meanings. Numeric OTP sequences
+stay explicitly LTR inside RTL pages.
 
 ## 5. preview.html の型
 
@@ -149,7 +158,7 @@ Horizontal arrow keys follow the visual direction. In RTL, ArrowLeft moves forwa
 1. `cp -r template components/<slug>` して、雛形の中身を置き換える
 2. `python3 check.py <slug>` が OK になるまで直す
 3. `python3 build.py` → プレビューブランチにデプロイして目視検品
-4. 問題なければ main にデプロイし、changelog に1行足す
+4. Open a main-targeted PR with a changelog entry for owner review. The owner handles merge and release; the implementation agent does not deploy to main.
 
 ## アイコンの型
 
@@ -306,7 +315,88 @@ both accepted and rejected paint provenance for all three shadow properties.
 Filter aliases that resolve to drop-shadow are inspected as shadows too; wrapping a raw paint value in a local filter variable must not bypass this rule.
 
 
-Selection and focus are separate states. --k-ring-selected marks the persistent
-selection; --k-ring-offset separates a colored swatch/spotlight from its surface.
-The existing --k-ring remains the transient text-field focus treatment. Semantic
-ring tokens resolve ink, background and accent through the active theme/Foundry.
+See implementation contract item 6 for distinct selection, surface-offset and keyboard-focus rings.
+
+
+## Approved implementation contract
+
+These numbered decisions are the implementation target, not a claim that all
+legacy parts meet them. Read docs/HANDOFF.md for measured status and discrepancies.
+Existing profile and precision definitions above remain the checker policy; this
+index does not add checks or exceptions.
+
+1. **Source of truth.** system/tokens.json generates tokens.css through the build
+   token synchronizer. Never hand-edit generated token CSS.
+2. **Local versus shared values.** The namespace rule is defined in profile item E.
+   Do not add --k-<slug>-* component tokens to the mold. Component-local custom
+   properties belong on the root class in that component's own stylesheet;
+   provenance still follows profile item B.
+3. **Profiles.** Use the ui/lab split and required value kinds in profile item A
+   above. Motion and KATAYABURI are Lab. The Lab shadow-paint section preserves
+   glow geometry while requiring token paint. Do not reinterpret geometry as paint.
+4. **Geometry.** Use the configured precision rules above: 1–3px border widths,
+   circular 50% radii and layout percentages are primitives; pills reference
+   --k-radius-full. An allowed width never excuses a raw border color.
+5. **Shared scales.** The existing shape scale has --k-radius-xs/sm/md/lg/xl
+   derived from --k-radius; full intentionally stays a fixed 999px pill token.
+   Shared elevation roles are --k-shadow-xs/sm/pop/modal, plus --k-shadow-edge
+   if present. Backdrops use --k-backdrop. A shared glow role is named --k-glow;
+   it is not present in this checkout and must not be assumed to exist.
+6. **Distinct rings.** --k-ring is keyboard focus only. --k-ring-selected is
+   persistent selection; --k-ring-offset separates a ring from a colored surface.
+   A selected item with focus must retain visible evidence of both states.
+   Semantic ring colors resolve through the active theme and Foundry.
+7. **Text and surfaces.** --k-danger is a surface; --k-danger-ink is text.
+   --k-on-accent is text on accent and switches by accent luminance via relative
+   color, with static ink fallback. --k-accent-ink is accent used as text.
+   --k-on-color is white on fixed dark surfaces and strong danger surfaces.
+   Text must measure at least 4.5:1 in both themes, including placeholder, hint,
+   hover and active. Measure disabled text but apply its contrast exemption.
+   This is an acceptance requirement, not a catalog-wide certification.
+   Core vermilion #eb471f and dark canvas #18181b remain unchanged.
+8. **Fixed palette.** Zinc-50/950, asagi, yamabuki and tsutsuji are fixed paint;
+   they do not invert with the theme. Highlights on fixed-hue surfaces use fixed
+   light tokens, not the inverting --k-bg pair.
+9. **Motion.** Use the shared motion roles and reduced-motion ownership section
+   above. The multiplier, discrete/loop timing, four curve meanings, scoped
+   reduced motion and completion-fallback requirements are defined there.
+10. **Mold compatibility.** tokens.css carries KATA mold vN and --k-mold. Parts
+    declare requires mold >= N. The CLI must warn when selected parts require a
+    newer mold and must not automatically replace existing tokens.css during add.
+    An explicit owner-requested update follows /docs/update-mold/. This CLI
+    implementation is pending PR #25 on the current main; do not claim it ships.
+11. **JS parts.** Combobox supplies the initialization reference: IIFE;
+    querySelectorAll for every instance; data-kata-ready; preserved existing IDs,
+    otherwise collision-checked generated IDs. Samples have no fixed id/for/
+    aria-controls. Every text input guards isComposing, keyCode 229 and
+    compositionstart/end; a composition-confirming Enter must not select/submit.
+    Null relatedTarget never closes a part. Outside dismissal uses pointerdown;
+    showModal parts do not close on focusout. Window blur dismisses transient
+    menus only. An exit waits for the end event plus a duration/delay timeout,
+    finishes immediately at zero duration, and cancels stale work on reopen.
+    Register document/window shortcuts, blur and resize once per part type,
+    never once per instance. Prefer native change/input/toggle/close/cancel;
+    otherwise dispatch kata-<slug>-<action> as a bubbling CustomEvent with detail
+    and document a usage listener. Open/close/select/drag must work at multiplier
+    zero and with reduced motion. Combobox itself still has gaps; it is not a
+    blanket implementation or accessibility certificate.
+12. **Keyboard.** Use the Keyboard direction section above, including the OTP
+    LTR exception. Keep vertical/week/month/year key meanings unchanged.
+13. **Dialogs.** Modal and Drawer close on Escape and backdrop click, trap focus
+    while open and restore the opener on close. Alert Dialog never dismisses on
+    backdrop click; native cancel/Escape closes it unless the application vetoes
+    cancel. Start Alert Dialog focus on the least destructive action, then use
+    the documented non-primary/dialog fallback.
+14. **Samples.** Every button has an explicit type; every input/select has a
+    label. Avoid inline presentation styles; compose Field and shared classes.
+    A pasted sample must work twice on one page. Existing inline-data exceptions
+    in the checker are not proof that a sample meets this stricter authoring rule.
+15. **Accessibility metadata.** Describe only implemented behavior and identify
+    real IME, screen-reader and browser/device checks still needed. Do not infer
+    a full ARIA pattern from one passing static rule.
+16. **Stable.** Require every static failure check to pass, plus a
+    tests/<slug>-multi.html page (three instances, one RTL, script loaded twice,
+    console clean), and manual IME/screen-reader evidence recorded in the PR.
+    For non-text parts record why IME is inapplicable. Otherwise keep Beta and
+    explain the missing evidence. Existing legacy Stable labels are not evidence
+    that this release procedure has been completed.

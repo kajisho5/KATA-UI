@@ -146,3 +146,5 @@ Start at [kata-ui.dev/docs](https://kata-ui.dev/docs/): Getting Started, Install
 MIT. The components, icons and tokens are free to use, including commercially. Blocks and templates will be sold separately as a one-time purchase (Pro, $129 lifetime — [pricing](https://kata-ui.dev/pricing/)); everything in this repository stays MIT.
 
 [Development roadmap](docs/ROADMAP.md)
+
+Implementation agents: [Claude Code instructions](CLAUDE.md) · [Current state and task queue](docs/HANDOFF.md).

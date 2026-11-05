@@ -1,0 +1,3 @@
+# Versions available in the verified handoff environment; no application runtime dependencies.
+playwright==1.62.0
+Pillow==12.3.0

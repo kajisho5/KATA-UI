@@ -32,7 +32,11 @@ def run(output=ROOT/'docs/review/overlay-instances'):
        page.keyboard.press('Escape');page.wait_for_function('(e)=>!e.open',arg=root.element_handle());assert trigger.evaluate('(e)=>document.activeElement===e')
        trigger.click();page.mouse.click(5,5);page.wait_for_function('(e)=>!e.open',arg=root.element_handle())
        assert trigger.evaluate('(e)=>document.activeElement===e')
-       trigger.click();root.locator(f'[{last_attr}]').first.click();assert not root.evaluate('(e)=>e.open')
+       trigger.click();root.dispatch_event('compositionstart');root.locator(f'[{last_attr}]').first.click();assert not root.evaluate('(e)=>e.open')
+       trigger.click();page.keyboard.press('Escape');assert not root.evaluate('(e)=>e.open')
+       trigger.click();root.evaluate('(dialog,trigger)=>{dialog.close();trigger.click();dialog.dispatchEvent(new CompositionEvent("compositionstart",{bubbles:true}))}',trigger.element_handle())
+       page.evaluate('()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))')
+       page.keyboard.press('Escape');assert root.evaluate('(e)=>e.open');root.dispatch_event('compositionend');page.keyboard.press('Escape')
       else:
        panel=root.locator(f'[{last_attr}]');assert trigger.get_attribute('aria-expanded')=='true' and not panel.evaluate('(e)=>e.hidden')
        root.dispatch_event('compositionstart');page.keyboard.press('Escape');assert trigger.get_attribute('aria-expanded')=='true';root.dispatch_event('compositionend')
@@ -40,7 +44,8 @@ def run(output=ROOT/'docs/review/overlay-instances'):
        page.keyboard.press('Escape');page.wait_for_function('(e)=>e.hidden',arg=panel.element_handle());assert trigger.evaluate('(e)=>document.activeElement===e')
        trigger.click();panel.locator('button').last.focus();page.keyboard.press('Tab');page.wait_for_function('(e)=>e.hidden',arg=panel.element_handle());assert not root.evaluate('(e)=>e.contains(document.activeElement)')
        trigger.click();root.evaluate('(e)=>{e.dispatchEvent(new FocusEvent("focusout",{bubbles:true,relatedTarget:document.querySelector("[data-outside]")}));e.querySelector("[data-popover-panel]").getAnimations().forEach(a=>a.pause())}');page.wait_for_function('(e)=>e.hidden',arg=panel.element_handle())
-       trigger.click();page.locator('[data-outside]').click();panel.evaluate('(e)=>e.getAnimations().forEach(a=>a.pause())');page.wait_for_function('(e)=>e.hidden',arg=panel.element_handle());assert page.locator('[data-outside]').evaluate('(e)=>document.activeElement===e')
+       trigger.click();root.dispatch_event('compositionstart');page.locator('[data-outside]').click();panel.evaluate('(e)=>e.getAnimations().forEach(a=>a.pause())');page.wait_for_function('(e)=>e.hidden',arg=panel.element_handle());assert page.locator('[data-outside]').evaluate('(e)=>document.activeElement===e')
+       trigger.click();page.keyboard.press('Escape');page.wait_for_function('(e)=>e.hidden',arg=panel.element_handle())
      assert roots.nth(2).evaluate('(e)=>getComputedStyle(e).direction')=='rtl'
      triggers.nth(2).click();page.screenshot(path=str(output/f'{slug}-{case}.png'));page.keyboard.press('Escape')
      # An appended instance with application-provided IDs also initializes on a subsequent load.

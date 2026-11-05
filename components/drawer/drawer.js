@@ -33,13 +33,14 @@
       return [...dialog.querySelectorAll('button,a[href],input,select,textarea,[tabindex]')].filter(element => element.tabIndex >= 0 && !element.disabled && !element.closest('[inert]') && element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
     }
     // Native close is immediate; it never waits for a CSS end event.
-    function close() { if (dialog.open) dialog.close(); }
+    function close() { composing = false; if (dialog.open) dialog.close(); }
     triggers.filter(trigger => targetOf(trigger) === dialog).forEach(trigger => {
       ensureId(trigger, 'trigger');
       trigger.setAttribute('aria-controls', id);
       trigger.setAttribute('aria-haspopup', 'dialog');
       trigger.addEventListener('click', () => {
         if (dialog.open) return;
+        composing = false;
         opener = trigger;
         dialog.showModal();
         (focusables().find(element => element.hasAttribute('autofocus')) || focusables()[0] || dialog).focus();
@@ -70,6 +71,8 @@
       if (dialog.open && event.relatedTarget && !dialog.contains(event.relatedTarget)) close();
     });
     dialog.addEventListener('close', () => {
+      if (dialog.open) return; // Ignore a queued close event from an earlier opening.
+      composing = false;
       if (opener?.isConnected && !opener.disabled && !document.querySelectorAll('dialog[open]').length) opener.focus();
     });
   });

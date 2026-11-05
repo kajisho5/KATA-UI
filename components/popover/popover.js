@@ -28,6 +28,7 @@
     function close(restore = false) {
       if (!open) return;
       open = false;
+      composing = false;
       panel.classList.remove('open');
       trigger.setAttribute('aria-expanded', 'false');
       panel.inert = true;
@@ -43,6 +44,7 @@
     function show() {
       clearTimeout(timer);
       open = true;
+      composing = false;
       panel.hidden = false;
       panel.inert = false;
       void panel.offsetWidth;

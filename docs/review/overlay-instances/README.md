@@ -1,4 +1,4 @@
-# Overlay instance safety
+# Overlay instance safety — PR #24
 
 Latest main includes merged PR #23. Three parts were selected by the requested JS-failure priority: Alert Dialog, Drawer, Popover. Modal already passed both JS checks; dropdown-menu maps to the repository slug dropdown, which also passed those checks. They were skipped; no claim is made that the skipped parts have a complete runtime accessibility pattern.
 
@@ -33,7 +33,7 @@ The tests pages each contain three instances, the third dir=rtl, and two copies 
 | popover | zero | pass | pass | pass | unique / existing retained | pass |
 | popover | reduce | pass | pass | pass | unique / existing retained | pass |
 
-Native dialogs verify forward/backward focus wrap, Escape focus return, background click and close controls. Popover verifies real Tab departure, outside focus preservation, and a paused closing transition that must complete through its timeout. Synthetic composition events and keyCode229 are checked. No page or console errors occurred.
+Native dialogs verify forward/backward focus wrap, Escape focus return, background click and close controls. Popover verifies real Tab departure, outside focus preservation, and a paused closing transition that must complete through its timeout. Synthetic composition events and keyCode229 are checked, including composition state reset when closing and reopening without a compositionend event. No page or console errors occurred.
 
 ![Alert dialog RTL](alert-dialog-normal.png)
 ![Drawer RTL](drawer-normal.png)

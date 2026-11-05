@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 109,
+    "passed": 112,
     "total": 164
   },
   "items": [
@@ -747,7 +747,7 @@
     },
     {
       "id": "blocks/pricing",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -767,7 +767,7 @@
     },
     {
       "id": "blocks/site-header",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -787,7 +787,7 @@
     },
     {
       "id": "blocks/use-cases",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

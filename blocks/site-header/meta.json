@@ -10,5 +10,6 @@
   "uses": [
     "button"
   ],
-  "usage": "For marketing sites and app shells alike. Keep the links to five; the sixth thing you want up here is what the button is for."
+  "usage": "For marketing sites and app shells alike. Keep the links to five; the sixth thing you want up here is what the button is for. Below 640px the links move into a menu behind the button.",
+  "a11y": "The menu button names itself (Open menu), reports aria-expanded and controls the panel. Escape closes an open menu and returns focus to the button; a pointer press outside the header or following a menu link also closes it. Focus leaving the header does not. Links and the button show the shared focus ring. Screen-reader output is not yet verified by hand."
 }

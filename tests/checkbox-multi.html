@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Checkbox — three instances</title><link rel="icon" href="../logo/favicon.svg"><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/checkbox/checkbox.css"><style>body{margin:var(--k-space-6);font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink)}main{display:grid;gap:var(--k-space-8)}section{display:grid;gap:var(--k-space-3);justify-items:start}</style></head><body><h1>Checkbox / Radio: three sets and RTL</h1><main><section aria-label="Checkbox set 1"><label class="check"><input type="checkbox" checked>Send estimate</label>
+<label class="check"><input type="checkbox">Include travel</label>
+<label class="check"><input type="radio" name="kpay-1" checked>End of month</label>
+<label class="check"><input type="radio" name="kpay-1">End of next month</label>
+<label class="check"><input type="checkbox" data-mixed>Attach all documents</label>
+<label class="check"><input type="checkbox" aria-invalid="true">Accept the terms</label>
+<label class="check"><input type="checkbox" disabled>Beta features</label>
+<label class="check"><input type="radio" name="kpay-1" disabled>On receipt</label></section><section aria-label="Checkbox set 2"><label class="check"><input type="checkbox" checked>Send estimate</label>
+<label class="check"><input type="checkbox">Include travel</label>
+<label class="check"><input type="radio" name="kpay-2" checked>End of month</label>
+<label class="check"><input type="radio" name="kpay-2">End of next month</label>
+<label class="check"><input type="checkbox" data-mixed>Attach all documents</label>
+<label class="check"><input type="checkbox" aria-invalid="true">Accept the terms</label>
+<label class="check"><input type="checkbox" disabled>Beta features</label>
+<label class="check"><input type="radio" name="kpay-2" disabled>On receipt</label></section><section dir="rtl" aria-label="Checkbox set 3"><label class="check"><input type="checkbox" checked>Send estimate</label>
+<label class="check"><input type="checkbox">Include travel</label>
+<label class="check"><input type="radio" name="kpay-3" checked>End of month</label>
+<label class="check"><input type="radio" name="kpay-3">End of next month</label>
+<label class="check"><input type="checkbox" data-mixed>Attach all documents</label>
+<label class="check"><input type="checkbox" aria-invalid="true">Accept the terms</label>
+<label class="check"><input type="checkbox" disabled>Beta features</label>
+<label class="check"><input type="radio" name="kpay-3" disabled>On receipt</label></section></main><script>document.querySelectorAll("input[data-mixed]").forEach(i=>{i.indeterminate=true})</script></body></html>

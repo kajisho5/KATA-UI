@@ -106,7 +106,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| This PR (fix/t4-textarea) | T4 Textarea: border-box (fits, 92px), focus-visible, aria-invalid, visible read-only, samples without IDs, browser test. |
+| [#47](https://github.com/kajisho5/KATA-UI/pull/47) | T4 Textarea: border-box (fits, 92px), focus-visible, aria-invalid, visible read-only, samples without IDs, browser test. |
 
 ### npm and environment
 
@@ -158,7 +158,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the T4 Textarea PR must be merged before Select.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #47 (T4 Textarea) must be merged before Select.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -249,7 +249,7 @@ Follow-up for Input: `.input` is content-box, so `width:100%` overflows its
 container by 26px and the height is 40px, not 38px, everywhere outside a Field;
 fixing it in input.css changes about ten parts, so it needs its own PR with
 screenshots.
-Textarea (this PR): border-box (it overflowed by 26px and rendered 110px for a
+Textarea ([#47](https://github.com/kajisho5/KATA-UI/pull/47)): border-box (it overflowed by 26px and rendered 110px for a
 92px minimum; Settings block is 18px shorter), :focus-visible, aria-invalid as
 an alias of data-invalid, hover skips disabled, read-only gets a soft
 background, samples wrap the textarea in its label and gain error and

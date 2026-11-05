@@ -48,7 +48,7 @@ separate release statuses. The phases below are targets, not shipped features.
 - [x] PR #19 regression correction: preserve Lab glow geometry with token paint, separate selected/offset rings, and measure both Drawer edges ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [x] P5 (shadow/rings): Normalize all remaining elevation/ring findings and four backdrops ([PR #19](https://github.com/kajisho5/KATA-UI/pull/19)).
 - [x] Shared text contrast: role separation, Foundry/export fallback and 40-part Chromium measurements ([PR #20](https://github.com/kajisho5/KATA-UI/pull/20)); Firefox/Safari and screen-reader checks remain manual.
-- [x] P5 (duration/easing): Shared scaled timing, named curves, zero/reduced-motion safety (fix/shared-motion-tokens; PR link pending).
+- [x] P5 (duration/easing): Shared scaled timing, named curves, zero/reduced-motion safety ([PR #21](https://github.com/kajisho5/KATA-UI/pull/21)).
 - [ ] P5 remaining: Replace border and color literals. One remaining value kind per PR.
 - [ ] P6: Rebuild JS-failing components using the Combobox initialization pattern. Three components per PR; test repeated loading, generated IDs, IME and focus departure.
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.

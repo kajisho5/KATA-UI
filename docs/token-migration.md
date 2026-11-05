@@ -2602,7 +2602,7 @@ Danger foreground now uses danger-ink; full accent surfaces use on-accent and ne
 
 [Complete token/usage tables, before/after 40-part × 2-theme measurements, states, custom palettes and screenshots](review/text-contrast/README.md). All measured eligible samples meet 4.5:1; disabled samples are listed separately. This does not certify unmeasured states or browsers.
 
-## Shared duration and easing migration
+## Shared duration and easing migration — PR #21
 
 Mold **53 / 164 → 88 / 164**. Duration **107 → 0**, easing **10 → 0**. Color 19 and border 1 remain unchanged. Rules are unchanged.
 

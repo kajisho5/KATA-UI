@@ -1,4 +1,4 @@
-# Shared duration and easing migration
+# Shared duration and easing migration — PR #21
 
 Base: merged PR #20, commit c6982b885f9fd0331283c1b67991444bf9682922. Checker rules, color and border declarations are unchanged.
 

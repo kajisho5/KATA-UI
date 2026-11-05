@@ -7,7 +7,7 @@
     "label",
     "tag"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "Short status words only. Pair the dot variant with a text label; color alone is not a status.",
-  "a11y": "Status is carried by the text, never by color alone."
+  "a11y": "Status is carried by the text, never by color alone; the dot is decorative. Every tone measures at least 5.26:1 (light) and 5.81:1 (dark) text contrast, and text-spacing overrides (WCAG 1.4.12) do not clip the label. Badges are not interactive. Beta until a recorded screen-reader pass."
 }

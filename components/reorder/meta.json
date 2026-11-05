@@ -8,6 +8,6 @@
     "flip"
   ],
   "status": "beta",
-  "usage": "For leaderboards, priority queues and anything whose order is the message. The FLIP technique keeps the motion honest: rows travel, they never teleport.",
-  "a11y": "Rows keep their text and rank numbers after every move, so screen readers follow the final order. Autoplay pauses on hover and never starts under prefers-reduced-motion."
+  "usage": "For leaderboards, priority queues and anything whose order is the message. The FLIP technique makes rows glide to their new positions instead of jumping. This part re-ranks sample scores; it is not a drag-to-sort list. Add data-rank-autoplay=\"off\" to the list to start paused. Listen for new orders:\n\n```js\ndocument.addEventListener('kata-reorder-change', event => {\n  console.log(event.detail.order, event.detail.source);\n});\n```",
+  "a11y": "Rows keep their text and rank numbers after every move, so screen readers follow the final order. Autoplay re-ranks every 3 seconds; it pauses while a pointer or keyboard focus is inside the panel, a Pause toggle (aria-pressed) stops it, and it never starts under prefers-reduced-motion. A status region announces manual re-ranks only. Motion scales with --k-mscale and is skipped at zero. Screen-reader output is not yet verified by hand."
 }

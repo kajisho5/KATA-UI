@@ -2,16 +2,16 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 106,
-    "failed": 58,
+    "passed": 109,
+    "failed": 55,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 112,
-      "js-global-bindings": 18,
-      "js-single-instance": 7,
+      "focus-visible": 111,
+      "js-global-bindings": 5,
+      "js-single-instance": 3,
       "legacy-contract": 0,
       "reduced-motion": 0,
       "shared-token-scope": 0,
@@ -22,13 +22,13 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 73,
-        "failed": 48,
+        "passed": 74,
+        "failed": 47,
         "total": 121
       },
       "lab": {
-        "passed": 33,
-        "failed": 10,
+        "passed": 35,
+        "failed": 8,
         "total": 43
       }
     }
@@ -8280,7 +8280,7 @@
     {
       "id": "components/follow-frame",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -8403,23 +8403,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-follow]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const fz",
-            "const fFrame",
-            "const fTag",
-            "const fReduced",
-            "let fTx"
-          ]
+          "findings": []
         }
       ]
     },
@@ -15714,7 +15706,7 @@
     {
       "id": "components/reorder",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -15879,19 +15871,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/reorder/preview.html: <button> k-rank-btn"
-          ],
-          "details": [
-            {
-              "path": "components/reorder/preview.html",
-              "tag": "button",
-              "class_or_role": "k-rank-btn",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -15907,23 +15890,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-rank]",
-            "document.querySelector('[data-rank-btn]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const rankList",
-            "const rankBtn",
-            "const rankReduced",
-            "let rankTimer"
-          ]
+          "findings": []
         }
       ]
     },
@@ -18994,7 +18969,7 @@
     {
       "id": "components/split-panel",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -19167,22 +19142,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-split]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const split",
-            "const splitA",
-            "const splitH",
-            "let splitPct"
-          ]
+          "findings": []
         }
       ]
     },

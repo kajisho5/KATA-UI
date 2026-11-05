@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>follow-frame triple instances</title><link rel="icon" href="../logo/favicon.svg"><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/follow-frame/follow-frame.css"><style>body{background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);padding:var(--k-space-4)}section{margin-block:var(--k-space-6)}</style></head><body><h1>follow-frame multiple instances</h1><button type="button" data-outside>Outside</button><section data-instance="0"><p data-probe>Component instructions. Clicking this text leaves the part unchanged.</p><div class="k-fzone" data-follow style="max-width:430px">
+  <div class="k-frame" data-frame></div>
+  <div class="k-frame-tag" data-frame-tag><i></i>Approve &amp; send</div>
+  <span class="hint">Move your cursor — the frame follows, and names the action.</span>
+</div></section><section data-instance="1"><p data-probe>Component instructions. Clicking this text leaves the part unchanged.</p><div class="k-fzone" data-follow style="max-width:430px">
+  <div class="k-frame" data-frame></div>
+  <div class="k-frame-tag" data-frame-tag><i></i>Approve &amp; send</div>
+  <span class="hint">Move your cursor — the frame follows, and names the action.</span>
+</div></section><section data-instance="2" dir="rtl"><p data-probe>Component instructions. Clicking this text leaves the part unchanged.</p><div class="k-fzone" data-follow style="max-width:430px">
+  <div class="k-frame" data-frame></div>
+  <div class="k-frame-tag" data-frame-tag><i></i>Approve &amp; send</div>
+  <span class="hint">Move your cursor — the frame follows, and names the action.</span>
+</div></section><script>
+// Reserve a generated-looking ID and preserve an application-provided root ID.
+const marker = document.createElement('span'); marker.id = 'kata-follow-1'; document.body.prepend(marker);
+document.querySelectorAll('[data-follow]')[1].id = 'existing-follow-frame-root';
+</script><script src="../components/follow-frame/follow-frame.js"></script><script src="../components/follow-frame/follow-frame.js"></script></body></html>

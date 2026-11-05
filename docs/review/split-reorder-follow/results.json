@@ -1,0 +1,293 @@
+{
+  "cases": [
+    {
+      "component": "split-panel",
+      "case": "normal",
+      "theme": "light",
+      "mscale": 1,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "split-panel",
+      "case": "zero",
+      "theme": "dark",
+      "mscale": 0,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "split-panel",
+      "case": "reduce",
+      "theme": "dark",
+      "mscale": 2,
+      "reducedMotion": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "reorder",
+      "case": "normal",
+      "theme": "light",
+      "mscale": 1,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "reorder",
+      "case": "zero",
+      "theme": "dark",
+      "mscale": 0,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "reorder",
+      "case": "reduce",
+      "theme": "dark",
+      "mscale": 2,
+      "reducedMotion": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "follow-frame",
+      "case": "normal",
+      "theme": "light",
+      "mscale": 1,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": false,
+      "globalListeners": 0
+    },
+    {
+      "component": "follow-frame",
+      "case": "zero",
+      "theme": "dark",
+      "mscale": 0,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": false,
+      "globalListeners": 0
+    },
+    {
+      "component": "follow-frame",
+      "case": "reduce",
+      "theme": "dark",
+      "mscale": 2,
+      "reducedMotion": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": false,
+      "globalListeners": 0
+    }
+  ],
+  "positions": [
+    {
+      "component": "split-panel",
+      "instance": 0,
+      "key": "ArrowRight",
+      "handleXBefore": 257.5,
+      "handleXAfter": 269.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 1,
+      "key": "ArrowRight",
+      "handleXBefore": 257.5,
+      "handleXAfter": 269.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "handleXBefore": 842.5,
+      "handleXAfter": 830.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 0,
+      "key": "ArrowRight",
+      "handleXBefore": 257.5,
+      "handleXAfter": 269.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 1,
+      "key": "ArrowRight",
+      "handleXBefore": 257.5,
+      "handleXAfter": 269.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "handleXBefore": 842.5,
+      "handleXAfter": 830.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 0,
+      "key": "ArrowRight",
+      "handleXBefore": 257.5,
+      "handleXAfter": 269.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 1,
+      "key": "ArrowRight",
+      "handleXBefore": 257.5,
+      "handleXAfter": 269.5
+    },
+    {
+      "component": "split-panel",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "handleXBefore": 842.5,
+      "handleXAfter": 830.5
+    },
+    {
+      "component": "reorder",
+      "instance": 0,
+      "case": [
+        1,
+        "no-preference"
+      ],
+      "animationsAfterManualRerank": 21
+    },
+    {
+      "component": "reorder",
+      "instance": 1,
+      "case": [
+        1,
+        "no-preference"
+      ],
+      "animationsAfterManualRerank": 41
+    },
+    {
+      "component": "reorder",
+      "instance": 2,
+      "case": [
+        1,
+        "no-preference"
+      ],
+      "animationsAfterManualRerank": 32
+    },
+    {
+      "component": "reorder",
+      "instance": 0,
+      "case": [
+        0,
+        "no-preference"
+      ],
+      "animationsAfterManualRerank": 0
+    },
+    {
+      "component": "reorder",
+      "instance": 1,
+      "case": [
+        0,
+        "no-preference"
+      ],
+      "animationsAfterManualRerank": 0
+    },
+    {
+      "component": "reorder",
+      "instance": 2,
+      "case": [
+        0,
+        "no-preference"
+      ],
+      "animationsAfterManualRerank": 0
+    },
+    {
+      "component": "reorder",
+      "instance": 0,
+      "case": [
+        2,
+        "reduce"
+      ],
+      "animationsAfterManualRerank": 0
+    },
+    {
+      "component": "reorder",
+      "instance": 1,
+      "case": [
+        2,
+        "reduce"
+      ],
+      "animationsAfterManualRerank": 0
+    },
+    {
+      "component": "reorder",
+      "instance": 2,
+      "case": [
+        2,
+        "reduce"
+      ],
+      "animationsAfterManualRerank": 0
+    }
+  ],
+  "consoleErrors": [],
+  "unverified": [
+    "Real Japanese IME",
+    "Screen readers",
+    "Firefox",
+    "Safari",
+    "Touch dragging on real devices"
+  ]
+}

@@ -8,6 +8,6 @@
     "layout"
   ],
   "status": "beta",
-  "usage": "For editors, mail clients and inspectors: a list on one side, the thing itself on the other. Below two panes, stop — stack instead.",
-  "a11y": "The divider is a real separator: role=\"separator\" with aria-valuenow for the split percentage, arrow keys to move it, so the layout is adjustable without a pointer."
+  "usage": "For editors, mail clients and inspectors: a list on one side, the thing itself on the other. Below two panes, stop — stack instead. Set aria-orientation=\"horizontal\" on the handle to stack the panes vertically. Listen for a finished resize:\n\n```js\ndocument.addEventListener('kata-split-panel-change', event => {\n  console.log(event.detail.value);\n});\n```",
+  "a11y": "The handle is a focusable role=separator that controls the first pane, with aria-valuenow, aria-valuemin and aria-valuemax (default 20–80). Left/Right move it in the arrow's visual direction (RTL included); stacked panes use Up/Down. Shift moves 10 instead of 2, and Home/End jump to the limits. Dragging uses pointer capture and reports one change when it ends. Screen-reader output is not yet verified by hand."
 }

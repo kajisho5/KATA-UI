@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 106,
+    "passed": 109,
     "total": 164
   },
   "items": [
@@ -242,7 +242,7 @@
     },
     {
       "id": "components/follow-frame",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -457,7 +457,7 @@
     },
     {
       "id": "components/reorder",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -542,7 +542,7 @@
     },
     {
       "id": "components/split-panel",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

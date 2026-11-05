@@ -2,13 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-upload-color-carousel`
-on main `20ca626109a755deb696ddc9c8c8847408f6f9b6` (after #25, #27 and #28).
+Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-split-reorder-follow`
+on main `47298c57dde8a6a61272c6180c90dc077a7f8647` (after #29).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
-come from that JSON. The counts become main's only when the owner merges #29.
+come from that JSON. The counts become main's only when the T1 batch 5 PR is merged.
 
-**Mold Verified 106 / 164 · UI 73 / 121 · Lab 33 / 43**.
-58 targets fail at least one check. The JSON reports 318 warning-bearing
+**Mold Verified 109 / 164 · UI 74 / 121 · Lab 35 / 43**.
+55 targets fail at least one check. The JSON reports 318 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -16,9 +16,9 @@ not browser or screen-reader certification.
 |---|---:|---|
 | accessible-label | 0 | fail |
 | button-type | 0 | fail |
-| focus-visible | 112 | fail |
-| js-global-bindings | 18 | fail |
-| js-single-instance | 7 | fail |
+| focus-visible | 111 | fail |
+| js-global-bindings | 5 | fail |
+| js-single-instance | 3 | fail |
 | legacy-contract | 0 | fail |
 | reduced-motion | 0 | fail |
 | shared-token-scope | 0 | fail |
@@ -27,7 +27,7 @@ not browser or screen-reader certification.
 | type-values | 638 | warn |
 | variant-hover | 0 | fail |
 
-Focus-visible fails for **55 parts**, with 112 findings; parts and
+Focus-visible fails for **54 parts**, with 111 findings; parts and
 findings are different units. spacing-values has 891 warning findings;
 type-values has 638. token-values has no remaining findings.
 
@@ -35,18 +35,16 @@ type-values has 638. token-values has no remaining findings.
 
 | Part | Failing JS checks |
 |---|---|
-| components/follow-frame | js-single-instance, js-global-bindings |
-| components/reorder | js-single-instance, js-global-bindings |
-| components/split-panel | js-single-instance, js-global-bindings |
 | blocks/pricing | js-single-instance, js-global-bindings |
 | blocks/site-header | js-single-instance, js-global-bindings |
 | blocks/use-cases | js-global-bindings |
 
-#27 (Tag Input, Input OTP, Data Table) is merged: 100 → 103. #29 (File
-Upload, Color Picker, Carousel) takes the branch to 106. Evidence:
-docs/review/tag-otp-table/ and docs/review/upload-color-carousel/.
+#27 (Tag Input, Input OTP, Data Table) took main to 103 and #29 (File Upload,
+Color Picker, Carousel) to 106. Batch 5 (Split Panel, Reorder, Follow Frame)
+takes this branch to 109. Evidence: docs/review/tag-otp-table/,
+docs/review/upload-color-carousel/ and docs/review/split-reorder-follow/.
 
-### Merged work, PR #11 through #28
+### Merged work, PR #11 through #29
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -70,13 +68,17 @@ Missing number #12 is open, not silently assumed merged.
 | #25 | dcbd287 | CLI safe installs, mold-version warnings, Node 20/22 CLI tests in CI. |
 | #27 | 30f67ab | Tag Input, Input OTP and Data Table instances and keyboard behavior. |
 | #28 | 20ca626 | This handoff, CLAUDE.md and the opt-in session setup helper. |
+| #29 | 47298c5 | File Upload, Color Picker and Carousel instances and keyboard behavior. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-That was a one-time owner decision; the standing rule below is unchanged.
+#29 was squash-merged the same way after green CI. The owner then asked the
+session to keep going: after each batch PR's CI is green, merge it and start
+the next task. That instruction applies to this session; record it again if a
+later session is given the same permission.
 
 Evidence commands: `git log --first-parent --oneline origin/main` and
 `gh pr list --state merged --limit 50 --json number,title,mergedAt,url`.
@@ -90,7 +92,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#29](https://github.com/kajisho5/KATA-UI/pull/29) | T1 batch 4: File Upload, Color Picker, Carousel. Owner review/merge is required before the next T1 batch. |
+| T1 batch 5 PR | Split Panel, Reorder, Follow Frame. Must be merged before batch 6. |
 
 ### npm and environment
 
@@ -133,25 +135,26 @@ output and report skips rather than claiming headless verification happened.
 - Carousel (batch 4): announcing on every scroll index change reported the slides a smooth jump passed. Update dots live, announce and dispatch once on scrollend (with a timeout fallback).
 - A sample root with role=region and a fixed aria-label repeats the same landmark when pasted twice (axe landmark-unique). Use role=group for carousel-like widgets.
 - File inputs: `hidden` removes them from the tab order. Hide visually, keep focusable, and show the ring on the visible zone with :has(). Chromium opens the picker on Space; Enter was not reliable.
+- Reorder (batch 5): the queue described a drag-to-sort list, but the part is an auto re-ranking leaderboard. Check the real part before applying a per-part spec; changing its purpose is a new part, not a fix.
+- Split Panel (batch 5): a padded content-box pane made the percentage and the handle disagree by the padding. Use border-box when a percentage positions a handle.
 - Playwright: expect_file_chooser was flaky; use page.on('filechooser') and close each chooser. After a mouse click, a programmatic focus() is not :focus-visible; press a key first.
 
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #29
-(T1 batch 4: File Upload, Color Picker, Carousel) must be merged by the owner
-before batch 5 starts.**
+PR. Do not start while the previous task's PR is open. **Current blocker: the
+T1 batch 5 PR (Split Panel, Reorder, Follow Frame) must be merged before batch 6
+starts.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
 ### T1 — JS multi-instance: next 3 failing parts (repeat until none fail)
 
-Done: batch 3 (#27: tag-input, input-otp, data-table) and batch 4 (#29:
-file-upload, color-picker, carousel). After the owner merges the pending batch,
-regenerate the report. Pick the first three parts still failing
-js-single-instance or js-global-bindings, in this order: split-panel, reorder,
-follow-frame, blocks/pricing, blocks/site-header, blocks/use-cases (next batch 5:
-split-panel, reorder, follow-frame; then batch 6: the three blocks).
+Done: batch 3 (#27: tag-input, input-otp, data-table), batch 4 (#29:
+file-upload, color-picker, carousel) and batch 5 (split-panel, reorder,
+follow-frame). After the pending batch merges, regenerate the report. The last
+batch 6 is blocks/pricing, blocks/site-header and blocks/use-cases; T1 is empty
+when those pass.
 State the choice and the remainder in the PR. Do not pre-count an open PR as shipped.
 Reuse tools/verify_upload_color_carousel.py as the test pattern.
 
@@ -163,9 +166,6 @@ arrows follow visual direction. Metadata follows item 15; keep status unchanged.
 
 Per part:
 
-- Split Panel: separator handle with aria-valuenow/min/max. Visual Left/Right for horizontal, Up/Down for vertical resizing. Use pointer capture.
-- Reorder: Space lifts/drops, Up/Down move, Escape cancels. Announce moves via role=status. Use pointer capture.
-- Follow Frame: independent pointer following; stop it for reduced motion.
 - Blocks pricing/site-header/use-cases: follow Dropdown/Tabs toggle patterns, remove fixed IDs, and close mobile menus on Escape/outside click.
 
 Verify node --check, checker before/after and remaining JS list, unittest, build,

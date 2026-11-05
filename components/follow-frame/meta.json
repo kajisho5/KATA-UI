@@ -8,6 +8,6 @@
     "playful"
   ],
   "status": "beta",
-  "usage": "For playful surfaces — onboarding, product tours, marketing panels. One frame per surface, and the label must name a real action.",
-  "a11y": "Pointer-only by design; touch and keyboard users lose nothing, since the frame carries no information the panel itself does not. It parks, centered, under prefers-reduced-motion."
+  "usage": "For playful surfaces — onboarding, product tours, marketing panels. The label must name a real action. Several zones on one page follow the pointer independently.",
+  "a11y": "Pointer-only by design; touch and keyboard users lose nothing, since the frame carries no information the panel itself does not. Each zone animates only while its frame is moving. Under prefers-reduced-motion the frame stays parked in the center; with --k-mscale set to 0 it jumps to the pointer without easing."
 }

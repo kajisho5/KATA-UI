@@ -89,6 +89,7 @@ Missing number #12 is open, not silently assumed merged.
 | #51 | adab252 | T4 Switch: accessible names (were empty), role=switch, track boundary 3:1+, disabled; beta. |
 | #52 | 2e59f45 | Product Page colour swatches: aria-label from the visible colour names, radiogroup named Color (repair before the empty-label rule). |
 | #53 | 67b6759 | Checker: an empty label, label[for] or aria-labelledby target no longer names a control (owner approved); 164/164 unchanged. |
+| #54 | 51baa6c | T4 Modal: backdrop click closes (item 13), dialog name/description, opener focus, IIFE with data-kata-ready; overlay browser test in CI; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -96,7 +97,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#53 were squash-merged the same way after green CI. The owner then asked the
+#29–#54 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -113,7 +114,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#54](https://github.com/kajisho5/KATA-UI/pull/54) | T4 Modal: backdrop click closes (item 13), dialog name/description links, opener focus, IIFE with data-kata-ready; beta. |
+| [#55](https://github.com/kajisho5/KATA-UI/pull/55) | T4 Dropdown: APG menu button (ARIA states, arrow keys, Escape focus return), IIFE with data-kata-ready, focused-item styles; beta. |
 
 ### npm and environment
 
@@ -165,7 +166,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #54 (T4 Modal), then T4 dropdown (components/dropdown).**
+PR. Do not start while the previous task's PR is open. **Current blocker: #55 (T4 Dropdown), then T4 popover.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -299,7 +300,16 @@ no backdrop close (item 13); the dialog had no name link and focus did not
 return to the opener. It now follows the Drawer pattern from #24. combos.html
 wraps the input in its label. tests/modal-multi.html; tools/verify_overlay_instances
 covers Modal and CI runs tests.test_overlay_instances after Chromium. Beta.
-Next: dropdown.
+Dropdown ([#55](https://github.com/kajisho5/KATA-UI/pull/55)): dropdown.js was four lines with one document click
+and keydown listener per instance, no ARIA state, no arrow keys and no focus
+return. It now follows the APG menu button pattern (aria-haspopup/expanded/
+controls, role menu/menuitem/separator, Enter/Space/ArrowDown/ArrowUp open,
+arrows wrap, Home/End, aria-disabled skipped, Escape and item choice return
+focus, Tab/outside pointerdown/blur close, one menu open at a time). A focused
+item now gets the hover background. tests/test_closed_menu_tab_order.py now
+expects opening to focus the first item (APG) instead of a Tab into the menu;
+closed items are still not Tab stops. Beta.
+Next: popover.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

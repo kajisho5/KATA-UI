@@ -7,7 +7,7 @@
     "actions",
     "context"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "Group actions under one trigger. Keep destructive actions last, below a divider, in red.",
-  "a11y": "Closes on outside click and on Escape. While closed, the menu is hidden from Tab and assistive tech after its fade-out. Not yet implemented: returning focus to the trigger on close, aria-expanded on the trigger, and arrow-key movement between items; the T4 Stable pass covers them."
+  "a11y": "Menu button pattern (WAI-ARIA APG). The trigger has aria-haspopup=\"menu\", aria-expanded and aria-controls; the menu has role=\"menu\" and is named by the trigger, items are menuitems and dividers are separators. Enter, Space or ArrowDown opens on the first item, ArrowUp on the last; ArrowUp/Down wrap, Home/End jump, disabled items (aria-disabled) are skipped. Escape and choosing an item close the menu and return focus to the trigger; Tab, an outside press and window blur close it. Opening one menu closes the others. Instances initialize independently and loading the script twice is safe. Closed items are not Tab stops. Beta until a recorded screen-reader pass."
 }

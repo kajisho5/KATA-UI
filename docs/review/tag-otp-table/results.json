@@ -1,0 +1,202 @@
+{
+  "cases": [
+    {
+      "component": "tag-input",
+      "case": "normal",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "tag-input",
+      "case": "zero",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "tag-input",
+      "case": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "input-otp",
+      "case": "normal",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "input-otp",
+      "case": "zero",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "input-otp",
+      "case": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "data-table",
+      "case": "normal",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "data-table",
+      "case": "zero",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    },
+    {
+      "component": "data-table",
+      "case": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsOnce": true,
+      "globalListeners": 0,
+      "consoleErrors": 0
+    }
+  ],
+  "horizontalPositions": [
+    {
+      "case": "normal",
+      "instance": 0,
+      "key": "ArrowRight",
+      "beforeLeft": 94.8125,
+      "afterLeft": 187.5
+    },
+    {
+      "case": "normal",
+      "instance": 1,
+      "key": "ArrowRight",
+      "beforeLeft": 94.8125,
+      "afterLeft": 187.5
+    },
+    {
+      "case": "normal",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "beforeLeft": 991.1875,
+      "afterLeft": 898.5
+    },
+    {
+      "case": "zero",
+      "instance": 0,
+      "key": "ArrowRight",
+      "beforeLeft": 94.8125,
+      "afterLeft": 187.5
+    },
+    {
+      "case": "zero",
+      "instance": 1,
+      "key": "ArrowRight",
+      "beforeLeft": 94.8125,
+      "afterLeft": 187.5
+    },
+    {
+      "case": "zero",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "beforeLeft": 991.1875,
+      "afterLeft": 898.5
+    },
+    {
+      "case": "reduce",
+      "instance": 0,
+      "key": "ArrowRight",
+      "beforeLeft": 94.8125,
+      "afterLeft": 187.5
+    },
+    {
+      "case": "reduce",
+      "instance": 1,
+      "key": "ArrowRight",
+      "beforeLeft": 94.8125,
+      "afterLeft": 187.5
+    },
+    {
+      "case": "reduce",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "beforeLeft": 991.1875,
+      "afterLeft": 898.5
+    }
+  ],
+  "consoleErrors": [],
+  "unverified": [
+    "Real Japanese IME",
+    "Screen readers",
+    "Firefox",
+    "Safari"
+  ]
+}

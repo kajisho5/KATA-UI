@@ -8,6 +8,6 @@
     "tokens"
   ],
   "status": "beta",
-  "usage": "For labels, skills, invite lists. Built on the Chip part, so committed tags look and behave exactly like chips everywhere else.",
-  "a11y": "Chips are removed by real buttons. The input keeps a plain text value for the tag being typed, so nothing is lost if JavaScript is off — it degrades to a comma-separated field."
+  "usage": "For labels, skills, invite lists. Built on the Chip part, so committed tags look and behave exactly like chips everywhere else. Listen for added or removed tags:\n\n```js\ndocument.addEventListener('kata-tag-input-add', event => {\n  console.log(event.detail.tag, event.detail.tags);\n});\n```\nUse kata-tag-input-remove for removals. Typed text is kept when focus leaves; only Enter or comma commits it.",
+  "a11y": "Enter or comma adds a trimmed tag; duplicates are ignored case-insensitively. An empty input Backspace removes the last tag. Horizontal arrows follow visual direction between removal buttons; Delete/Backspace removes the focused tag. Buttons have tag-specific names; status announces additions and removals. Composition keys do not commit tags."
 }

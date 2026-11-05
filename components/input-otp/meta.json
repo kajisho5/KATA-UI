@@ -8,6 +8,6 @@
     "verification"
   ],
   "status": "beta",
-  "usage": "For verification codes and short PINs. One component, one inputmode, no per-box tab stops to fight with.",
-  "a11y": "Each box is a real input with inputmode=\"numeric\" and autocomplete=\"one-time-code\" on the first, so password managers and SMS autofill land properly. Arrow keys and paste are handled."
+  "usage": "For verification codes and short PINs. Each digit is a separate native tab stop; paste or autofill a complete code when available. Listen to completion on the group, distinguishing it from native per-digit changes:\n\n```js\ndocument.addEventListener('change', event => {\n  if (event.target.matches('[data-otp]')) console.log(event.target.dataset.value);\n});\n```",
+  "a11y": "Each digit is a labelled numeric input; the first supports one-time-code autocomplete. Digits stay left-to-right inside RTL pages. Typing advances, Backspace clears and moves back, Left/Right move visually, and paste/autofill distributes digits within one instance. IME composition is guarded. A completed changed code emits a bubbling change on the group."
 }

@@ -320,6 +320,22 @@ not exceptions for individual components. `check.config.json` is the policy sour
   `:has()` cases. Static evidence still does not prove cascade order, contrast
   or clipping; only the browser measurement does, and it is Chromium only.
 
+- **Accessible label (non-empty names):** an `input`, `select` or `textarea`
+  needs a non-empty name. Before this change, any ancestor `<label>`, any
+  `label[for]` and any `aria-labelledby` reference counted, even when it held no
+  text. The Switch (#51) and Product Page swatches (#52) passed the checker
+  while Chromium's accessibility tree gave them an empty name. Now a label or
+  referenced element counts only when it contains text, a child `aria-label`
+  or an `img` `alt`. Text under `aria-hidden="true"` and text inside `select`,
+  `textarea`, `option`, `optgroup`, `script`, `style` or `template` does not
+  count. The control's own `aria-label` still counts. `title` remains not
+  accepted, as before. This tightens the rule; it adds no allowance.
+  Measured on the repository with the Product Page repair: 164/164 before and
+  after. Against main without that repair the new rule reports the three swatch
+  radios (163/164), which matches the empty names Chromium reported.
+  Fixtures: tests/mold/accuracy.json (`accessible-label` cases). Static text
+  analysis is still not the browser's name computation: CSS-generated content,
+  `display:none` and script-set names are not seen.
 
 ### Shared shape scale (approved value migration)
 

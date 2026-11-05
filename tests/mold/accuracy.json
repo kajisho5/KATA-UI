@@ -924,5 +924,113 @@
     "expected": {
       "focus-visible": "fail"
     }
+  },
+  {
+    "name": "label wrapper with text names its input",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label><input type=\"checkbox\"> Email me</label>",
+    "expected": {
+      "accessible-label": "pass"
+    }
+  },
+  {
+    "name": "empty label wrapper does not name its input",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label><input type=\"radio\" name=\"c\"><i></i></label>",
+    "expected": {
+      "accessible-label": "fail"
+    }
+  },
+  {
+    "name": "label wrapper with only aria-hidden text fails",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label><input type=\"checkbox\"><span aria-hidden=\"true\">On</span></label>",
+    "expected": {
+      "accessible-label": "fail"
+    }
+  },
+  {
+    "name": "label wrapper named by aria-label on a child passes",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label><input type=\"checkbox\"><span aria-label=\"Dark mode\"></span></label>",
+    "expected": {
+      "accessible-label": "pass"
+    }
+  },
+  {
+    "name": "label wrapper with image alt passes",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label><input type=\"radio\" name=\"c\"><img alt=\"Charcoal\" src=\"x.png\"></label>",
+    "expected": {
+      "accessible-label": "pass"
+    }
+  },
+  {
+    "name": "empty label for does not name its input",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label for=\"a\"></label><input id=\"a\">",
+    "expected": {
+      "accessible-label": "fail"
+    }
+  },
+  {
+    "name": "label for with text names its input",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label for=\"a\">Name</label><input id=\"a\">",
+    "expected": {
+      "accessible-label": "pass"
+    }
+  },
+  {
+    "name": "labelledby pointing at empty element fails",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<span id=\"t\"></span><input aria-labelledby=\"t\">",
+    "expected": {
+      "accessible-label": "fail"
+    }
+  },
+  {
+    "name": "labelledby pointing at text passes",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<span id=\"t\">Search</span><input aria-labelledby=\"t\">",
+    "expected": {
+      "accessible-label": "pass"
+    }
+  },
+  {
+    "name": "select options do not name the select",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label><select><option>One</option></select></label>",
+    "expected": {
+      "accessible-label": "fail"
+    }
+  },
+  {
+    "name": "control with aria-label passes inside empty label",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<label><input type=\"radio\" name=\"c\" aria-label=\"Stone\"><i></i></label>",
+    "expected": {
+      "accessible-label": "pass"
+    }
+  },
+  {
+    "name": "title alone does not name a control",
+    "category": "Form & Input",
+    "css": "",
+    "html": "<input title=\"Quantity\">",
+    "expected": {
+      "accessible-label": "fail"
+    }
   }
 ]

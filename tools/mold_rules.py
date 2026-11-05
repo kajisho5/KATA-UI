@@ -4,16 +4,31 @@ from html.parser import HTMLParser
 from tools.token_values import Values, kinds_for, split_top, lex, NUMBER
 from tools.mold_data import is_color_data
 
+# Text inside these elements is a control's value or code, not a label for it.
+NAME_SKIP = ('select','textarea','option','optgroup','script','style','template')
+
 class Markup(HTMLParser):
     def __init__(self, text):
         super().__init__(convert_charrefs=True)
         self.nodes = []; self.stack = []
         self.feed(text)
+    def _add_text(self, data, nodes):
+        for i, node in enumerate(nodes):
+            inner = nodes[i+1:]
+            if any(n['tag'] in NAME_SKIP or n['attrs'].get('aria-hidden') == 'true' for n in inner):continue
+            node['text'] += data
     def handle_starttag(self, tag, attrs):
-        node = {'tag': tag, 'attrs': dict(attrs), 'parents': list(self.stack)}
+        node = {'tag': tag, 'attrs': dict(attrs), 'parents': list(self.stack), 'text': ''}
         self.nodes.append(node)
+        a = node['attrs']
+        # Name-giving attributes count as text for the elements that contain them (and for themselves).
+        given = a.get('aria-label') or (a.get('alt') if tag == 'img' else '') or ''
+        if given.strip() and a.get('aria-hidden') != 'true':
+            self._add_text(' ' + given, self.stack + [node])
         if tag not in ('input','img','br','hr','meta','link','source','area','wbr','embed'):
             self.stack.append(node)
+    def handle_data(self, data):
+        self._add_text(data, self.stack)
     def handle_endtag(self, tag):
         for i in range(len(self.stack)-1, -1, -1):
             if self.stack[i]['tag'] == tag:
@@ -283,13 +298,16 @@ def inspect(directory, root, config):
     candidates=component_rules + rules(token_source)
     for f,doc in docs:
         ids={n['attrs']['id'] for n in doc.nodes if n['attrs'].get('id')}
-        fors={n['attrs'].get('for') for n in doc.nodes if n['tag']=='label' and n['attrs'].get('for')}
+        nodes_by_id={n['attrs']['id']:n for n in doc.nodes if n['attrs'].get('id')}
+        # A label only names a control when it has text: an empty <label> wrapper used to pass.
+        named_fors={n['attrs'].get('for') for n in doc.nodes if n['tag']=='label' and n['attrs'].get('for') and n['text'].strip()}
         for n in doc.nodes:
             a=n['attrs'];tag=n['tag'];identity=f'{f.name}: <{tag}> '+str(a.get('class',a.get('id','')))
             if tag=='button' and not a.get('type'):types.append(identity)
             if tag in ('input','select','textarea') and a.get('type') not in ('hidden','button','submit','reset','image'):
-                named=bool(a.get('aria-label','').strip()) or bool(a.get('aria-labelledby') and all(x in ids for x in a['aria-labelledby'].split()))
-                if not (named or (a.get('id') and a.get('id') in fors) or any(p['tag']=='label' for p in n['parents'])):labels.append(identity)
+                refs=a.get('aria-labelledby','').split()
+                named=bool(a.get('aria-label','').strip()) or bool(refs and all(x in ids for x in refs) and any(nodes_by_id[x]['text'].strip() for x in refs))
+                if not (named or (a.get('id') and a.get('id') in named_fors) or any(p['tag']=='label' and p['text'].strip() for p in n['parents'])):labels.append(identity)
             interactive=tag in ('button','input','select','textarea','summary') or (tag=='a' and 'href' in a) or 'tabindex' in a or a.get('role') in ('button','combobox','slider','switch','checkbox','radio','tab')
             if not interactive or a.get('type')=='hidden':continue
             evidence={focus_matches(n,sel,body,config) for sel,body in candidates}

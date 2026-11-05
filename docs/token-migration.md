@@ -2621,3 +2621,7 @@ All three multiply --k-mscale exactly once. Numbered --k-dur-1/2/3 remain aliase
 ### PR #21 review corrections
 
 The slow-start / slow-finish curve is now --k-ease-in-out (cubic-bezier(.6,0,.2,1)); --k-ease-out remains only as its deprecated compatibility alias. ease is entrance/general (out-shaped), in-out is repositioning/exit, spring is weak overshoot, and bounce is strong overshoot. tokens.css contains no universal reduced-motion animation/transition/scroll override. A plain host div keeps its 400ms transition while KATA motion is stopped. See KATA.md and the updated shared-motion measurements. Mold remains 88/164.
+
+## Integrated color/border migration — PR #22
+
+Rebased on merged PR #21. Token-values is **0**; main duration/easing fixes are preserved. Pre-rebase result was **56/164**, explicitly historical. Latest counts are generated in the ROADMAP header and mold-results.json. Fixed --k-tsutsuji (#e95295, HSL hue 333.38°) restores Converge pink; botan #e7609e is 332.44°, farther from original 335°. Meter stripes now use fixed zinc-50 because warning/danger fills do not invert. Selected Chip stays bg over ink, an intentional inverse pair. [Updated before/after images](review/shared-paint/integrated/README.md).

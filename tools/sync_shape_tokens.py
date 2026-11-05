@@ -11,6 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def values(tokens,mode):
     result={}
     if mode=='root':
+        result.update({'--k-'+name:value for name,value in tokens['color'].get('fixed',{}).items()})
         motion=tokens['motion']
         result[motion['multiplier']]=str(motion['defaultMultiplier'])
         for name,value in motion['durationsMs'].items():result['--k-dur-'+name]=f'calc({value}ms * var({motion["multiplier"]}))'

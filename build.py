@@ -272,6 +272,7 @@ FOUNDRY_HTML = """<button class="fdeck-fab" id="fdfab" type="button" aria-expand
 FOUNDRY_JS = """<script>
 (function(){var fab=document.getElementById('fdfab'),deck=document.getElementById('fdeck');if(!fab||!deck)return;
 var PRESETS=[["Asagi","#33A6B8","#165E83","#81C7D4"],["Ruri","#1E50A2","#223A70","#58B2DC"],["Edomurasaki","#745399","#592C63","#8B81C3"],["Suo","#8E354A","#64363C","#DC9FB4"],["Kaki","#ED6D3D","#95483F","#E2943B"]];
+PRESETS=PRESETS.concat(Object.entries(__KATA_FIXED_PALETTE__).map(function(pair){return [pair[0],pair[1]]}));
 var S={};try{S=JSON.parse(localStorage.getItem('kata-fdeck')||'{}')}catch(e){}
 var root=document.documentElement,logEl=document.getElementById('fd-log');
 function save(){try{localStorage.setItem('kata-fdeck',JSON.stringify(S))}catch(e){}}
@@ -298,7 +299,7 @@ if(S.accentName){var p0=PRESETS.filter(function(x){return x[0]===S.accentName})[
 applyBg(S.wg||'',true);
 applyMode(dark(),true);
 })();
-</script>""".replace("__KATA_MOTION_DURATIONS__", json.dumps(json.loads((ROOT / "system/tokens.json").read_text())["motion"]["durationsMs"]))
+</script>""".replace("__KATA_MOTION_DURATIONS__", json.dumps(json.loads((ROOT / "system/tokens.json").read_text())["motion"]["durationsMs"])).replace("__KATA_FIXED_PALETTE__",json.dumps(json.loads((ROOT / "system/tokens.json").read_text())["color"].get("fixed",{})))
 
 
 def emit(page, comps, active, current=None, tree=False):
@@ -1538,7 +1539,7 @@ DS_CAST_TAG = "<script>" + "\n(function(){\n  var root=document.documentElement;
 def design_system_page(tokens):
     def swatches(scale_name, scale):
         cells = ''.join(
-            f'<div class="sw"><div class="fill" style="background:{v}"></div><div class="meta"><b>{scale_name}-{k}</b><br>{v}</div></div>'
+            f'<div class="sw"><div class="fill" style="background:{v}"></div><div class="meta"><b>{scale_name+"-" if scale_name else ""}{k}</b><br>{v}</div></div>'
             for k, v in scale.items())
         return f'<div class="swatches">{cells}</div>'
     elevation_rows=''.join(f'<div class="row"><b>--k-shadow-{name}</b><code>{esc(pair["light"])}</code><small>Dark: {esc(pair["dark"])}</small></div>' for name,pair in tokens['elevation']['shadows'].items())
@@ -1604,6 +1605,7 @@ def design_system_page(tokens):
     <a href="/design-system/tokens.json">tokens.json</a>
     <a href="/components/">Browse components</a>
   </div>
+  <section><h2>Fixed traditional palette</h2>{swatches("", tokens["color"].get("fixed",{}))}</section>
   <section><h2>Color — Zinc</h2><p class="note">The dominant scale. Interfaces are built from zinc first; color is the exception.</p>{swatches('zinc', tokens['color']['zinc'])}</section>
   <section><h2>Color — Asagi (the one accent)</h2><p class="note">A single accent, used sparingly: links, highlights, the core of the mark. If everything is asagi, nothing is.</p>{swatches('asagi', tokens['color']['asagi'])}</section>
   <section><h2>Color — Roles</h2><div class="roles">{roles}</div><div class="roles">{semantic_rows}</div></section>

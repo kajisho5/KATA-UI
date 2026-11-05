@@ -1,3 +1,5 @@
+> Historical pre-rebase evidence: 56/164. The current integrated result is **94/164, token-values 0**. [Latest record](integrated/README.md).
+
 # Shared paint migration — PR #22
 
 Base: main `c6982b885f9fd0331283c1b67991444bf9682922`. PR #21 remains open and is deliberately not included. No checker rules, duration/easing declarations, core vermilion or shared palette values are changed.

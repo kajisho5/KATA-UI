@@ -5,14 +5,14 @@
 .k-converge .beams{position:absolute;inset:0;width:100%;height:100%;z-index:1;display:block}
 .k-converge .beam{fill:none;stroke-width:1.8;stroke-linecap:round}
 .k-converge .beam-bg{fill:none;stroke-width:6;stroke-linecap:round;opacity:.14}
-.k-converge .b1{stroke:var(--k-zinc-300)}
+.k-converge .b1{stroke:var(--k-tsutsuji)}
 .k-converge .b2{stroke:var(--k-yamabuki)}
 .k-converge .b3{stroke:var(--k-asagi-300)}
 .k-converge .dot .core{fill:var(--k-on-color)}
-.k-converge .dot.d1 .halo{fill:var(--k-zinc-300);opacity:.45}
+.k-converge .dot.d1 .halo{fill:var(--k-tsutsuji);opacity:.45}
 .k-converge .dot.d2 .halo{fill:var(--k-yamabuki);opacity:.45}
 .k-converge .dot.d3 .halo{fill:var(--k-asagi-300);opacity:.45}
-.k-converge .glow{position:absolute;left:58%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 38% 32%,color-mix(in srgb,var(--k-zinc-300) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,var(--k-asagi-300) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%);animation:k-conv-pulse calc(3.4s * var(--k-mscale)) var(--k-ease) infinite alternate;display:block}
+.k-converge .glow{position:absolute;left:58%;top:50%;width:230px;height:230px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 38% 32%,color-mix(in srgb,var(--k-tsutsuji) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,var(--k-asagi-300) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%);animation:k-conv-pulse calc(3.4s * var(--k-mscale)) var(--k-ease) infinite alternate;display:block}
 .k-converge .spark{position:absolute;z-index:2;display:grid;place-items:center;color:var(--k-on-color);animation:k-conv-tw calc(2.2s * var(--k-mscale)) ease-in-out infinite alternate}
 .k-converge .sp1{left:48%;top:20%}
 .k-converge .sp2{left:67%;top:28%;animation-delay:calc(.5s * var(--k-mscale))}

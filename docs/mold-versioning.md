@@ -1,4 +1,8 @@
-# Mold compatibility (v2, v3)
+# Mold compatibility (v2–v4)
+
+## v4 — complete spacing, text and leading scales (2026-11-06)
+
+T3 replaces raw spacing and type values in UI parts with tokens. v4 adds the missing scale steps, generated from `system/tokens.json` into the `scale-tokens` region of tokens.css: `--k-space-px` 1px, `--k-space-0-5` 2px, `--k-space-5` 20px, `--k-space-7` 28px, `--k-space-10` 40px, `--k-text-md` 14px and `--k-text-display` 44px (already canonical, now exported), `--k-text-lead` 15px, `--k-lh-tight` 1, `--k-lh-card` 1.35, `--k-lh-small` 1.6. No existing token changes value or meaning. Mappings and counts: docs/token-migration.md.
 
 ## v3 — focus visibility (2026-11-06)
 

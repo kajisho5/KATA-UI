@@ -37,6 +37,25 @@ def values(tokens,mode):
     return result
 
 
+def _num(value, unit=''):
+    """CSS number text as tokens.css writes it: 12.5px, .012em, -.025em."""
+    text=f'{float(value):g}'
+    text=text.replace('0.','.',1) if text.startswith('0.') else text.replace('-0.','-.',1) if text.startswith('-0.') else text
+    return text+unit
+
+
+def scale_css(tokens):
+    """Spacing, text, tracking and leading scales, one line per family (KATA.md 0.5)."""
+    font=tokens['font']
+    kebab=lambda name:re.sub(r'([A-Z])',lambda m:'-'+m[1].lower(),name)
+    rows=[' '.join(f'--k-space-{k}:{_num(v,"px")};' for k,v in tokens['spacePx'].items()),
+      ' '.join(f'--k-text-{k}:{_num(v,"px")};' for k,v in tokens['typeScalePx'].items()),
+      '/* type tracking & leading — the table in KATA.md §0.5 */',
+      ' '.join(f'--k-ls-{kebab(k)}:{_num(v.replace("em",""),"em")};' for k,v in font['trackingScale'].items()),
+      ' '.join(f'--k-lh-{k}:{_num(v)};' for k,v in font['leadingScale'].items())]
+    return '\n'.join('  '+row for row in rows)
+
+
 def sync(root=ROOT,check=False):
     tokens=json.loads((root/'system/tokens.json').read_text());path=root/'tokens.css';old=path.read_text();new=old
     for mode in ('root','dark','light'):
@@ -44,6 +63,10 @@ def sync(root=ROOT,check=False):
         if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing/duplicate shape adapter region: '+mode)
         content='\n'.join('  '+name+':'+value+';' for name,value in values(tokens,mode).items())
         new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+content+'\n  '+end,new,flags=re.S)
+    if 'spacePx' in tokens:
+        start='/* scale-tokens:start */';end='/* scale-tokens:end */'
+        if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing/duplicate scale region')
+        new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+scale_css(tokens)+'\n  '+end,new,flags=re.S)
     outline=tokens['elevation'].get('focusOutline')
     if outline:
         start='/* focus-floor:start */';end='/* focus-floor:end */'

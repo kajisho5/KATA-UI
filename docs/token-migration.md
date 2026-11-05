@@ -2625,3 +2625,76 @@ The slow-start / slow-finish curve is now --k-ease-in-out (cubic-bezier(.6,0,.2,
 ## Integrated color/border migration — PR #22
 
 Rebased on merged PR #21. Token-values is **0**; main duration/easing fixes are preserved. Pre-rebase result was **56/164**, explicitly historical. Latest counts are generated in the ROADMAP header and mold-results.json. Fixed --k-tsutsuji (#e95295, HSL hue 333.38°) restores Converge pink; botan #e7609e is 332.44°, farther from original 335°. Meter stripes now use fixed zinc-50 because warning/danger fills do not invert. Selected Chip stays bg over ink, an intentional inverse pair. [Updated before/after images](review/shared-paint/integrated/README.md).
+
+## T3: spacing, text and leading scales (mold v4, 2026-11-06)
+
+Owner decisions (2026-11-06): spacing snaps to the 4px grid and a value exactly
+between two steps goes to the **smaller** step; 1px and 2px get their own tokens;
+font sizes snap to the existing text steps plus one new 15px step. Leading follows
+the KATA.md §0.5 table. Counts are UI-profile findings at main `7d7b562`
+(spacing 925 values, font size 433, line height 86); Lab parts stay warnings.
+
+New tokens (generated from system/tokens.json into the `scale-tokens` region):
+`--k-space-px` 1px, `--k-space-0-5` 2px, `--k-space-5` 20px, `--k-space-7` 28px,
+`--k-space-10` 40px, `--k-text-md` 14px and `--k-text-display` 44px (already in
+tokens.json, now exported), `--k-text-lead` 15px, `--k-lh-tight` 1, `--k-lh-card`
+1.35, `--k-lh-small` 1.6. No existing value changes.
+
+### Spacing (UI, 925 values)
+
+| Raw | Token | Count | Shift |
+|---|---|---:|---:|
+| 1px / -1px | `--k-space-px` | 14 / 6 | 0 |
+| 2px | `--k-space-0-5` | 45 | 0 |
+| 3px, 3.5px, 4.5px, 5px, 6px | `--k-space-1` (4px) | 16, 1, 1, 44, 51 | ≤2px |
+| 4px | `--k-space-1` | 27 | 0 |
+| 7px, 9px, 10px | `--k-space-2` (8px) | 50, 79, 74 | ≤2px |
+| 8px | `--k-space-2` | 86 | 0 |
+| 11px, 13px, 14px | `--k-space-3` (12px) | 35, 26, 65 | ≤2px |
+| 12px | `--k-space-3` | 65 | 0 |
+| 15px, 17px, 18px | `--k-space-4` (16px) | 17, 5, 41 | ≤2px |
+| 16px | `--k-space-4` | 56 | 0 |
+| 19px, 22px | `--k-space-5` (20px) | 2, 25 | ≤2px |
+| 20px | `--k-space-5` | 32 | 0 |
+| 25px, 26px | `--k-space-6` (24px) | 1, 23 | ≤2px |
+| 24px | `--k-space-6` | 12 | 0 |
+| 28px / 30px | `--k-space-7` | 5 / 4 | 0 / 2px |
+| 32px / 34px | `--k-space-8` | 1 / 4 | 0 / 2px |
+| 36px, 41px, 42px, 46px, 150px | calc of `--k-space-1` (36, 40, 40, 44, 148px) | 2, 1, 2, 1, 1 | ≤2px |
+
+Negative values keep their sign (-5/-6px → -4px, -9px → -8px).
+
+### Font size (UI, 433 values)
+
+| Raw | Token | Count |
+|---|---|---:|
+| 9.5px, 10px, 10.5px, 11px, 11.5px | `--k-text-xs` (11px) | 1, 1, 5, 32, 24 |
+| 12px, 12.5px | `--k-text-sm` (12.5px) | 44, 82 |
+| 13px, 13.5px | `--k-text-base` (13.5px) | 76, 65 |
+| 14px | `--k-text-md` (14px) | 23 |
+| 14.5px, 15px, 15.5px | `--k-text-lead` (15px) | 10, 14, 6 |
+| 16px, 16.5px, 17px | `--k-text-lg` (16.5px) | 10, 4, 4 |
+| 18px, 18.5px, 19px, 19.5px, 20px, 21px | `--k-text-xl` (19px) | 2, 2, 5, 1, 2, 3 |
+| 23px, 24px, 25px, 26px, 27px | `--k-text-2xl` (24px) | 1, 4, 2, 1, 1 |
+| 29px, 31px, 32px | `--k-text-3xl` (30px) | 4, 1, 1 |
+| 41px, 44px | `--k-text-display` (44px) | 1, 1 |
+
+### Line height (UI, 86 values)
+
+| Raw | Token | Count |
+|---|---|---:|
+| 1 | `--k-lh-tight` | 3 |
+| 1.12 | `--k-lh-display` (1.1) | 1 |
+| 1.25, 1.3 | `--k-lh-heading` (1.3) | 2, 6 |
+| 1.35, 1.4 | `--k-lh-card` (1.35) | 2, 2 |
+| 1.5, 1.55, 1.6 | `--k-lh-small` (1.6) | 2, 2, 6 |
+| 1.65, 1.7, 1.75 | `--k-lh-body` (1.7) | 13, 13, 19 |
+| 1.8, 1.85 | `--k-lh-loose` (1.85) | 11, 2 |
+| .86em | reviewed per part in the line-height PR | 2 |
+
+Order: this PR adds the scale only (no component changes). Then one PR each for
+spacing, font size and line height while the checks are still warnings; the last
+PR promotes both checks to fail for UI once the UI findings are 0, so the pass
+count never drops and the trusted-main ratchet stays green. This reorders HANDOFF
+T3 steps 2 and 3 for that reason.
+

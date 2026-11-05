@@ -27,6 +27,8 @@ jobs:
         env:
           MOLD_BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: python3 -W error::SyntaxWarning -m tools.mold_ratchet --report /tmp/mold-results.json --reference-ref "$MOLD_BASE_SHA"
+      - name: Run CLI safety and mold tests
+        run: npm test --prefix cli
       - name: Run regression tests
         run: python3 -W error::SyntaxWarning -m unittest discover -s tests -p 'test_*.py'
       - name: Verify the UI template and remove its temporary target

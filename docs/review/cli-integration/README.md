@@ -31,3 +31,10 @@ After the consolidated CLI PR merges and its tests pass, #1 can be closed as sup
 ## npm name check — 2026-11-05 (Asia/Tokyo)
 
 Read-only npm view found kata-ui@1.0.0, so kata-ui is already published. @kata-ui/cli returned E404. That is not proof of publish eligibility: scope ownership, reserved-name policy and permissions remain unverified. No publish or deprecate is performed.
+
+## Exact CLI diffs against main 839b05d
+
+- [PR #1 head vs main](pr1-vs-main-cli.diff)
+- [PR #3 head vs main](pr3-vs-main-cli.diff)
+
+The new implementation adapts PR #3 staging/rollback and PR #1 overlapping path safety, fixes root/ancestor symlink checks and cross-platform traversal, preserves existing tokens during add (even force), checks required mold from the full dependency closure, keeps unique backups and file modes, and validates dry-run without writes. The old PR heads/base refs are pinned in the adjacent JSON records. No unrelated component or token patch is carried over.

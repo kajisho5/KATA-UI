@@ -39,3 +39,27 @@ that typed itself.
 - Source: https://github.com/kajisho5/KATA-UI
 
 MIT
+
+## Safe installs (1.1.0)
+
+Existing files are protected by default. Resolve the entire plan before changing any files:
+
+```sh
+kataui add button --dry-run
+kataui add button --force --backup
+```
+
+`--backup` requires `--force`; backups are `.bak`, `.bak.1`, etc., so earlier backups are kept. `--dry-run` creates no files, directories or backups and can preview protected destinations. The CLI refuses symlink roots/ancestors/targets, traversal and absolute registry paths, and non-file destinations. Use a physical directory path for `--dir`.
+
+`add` never overwrites an existing `tokens.css`, even with `--force`. It reads the first mold header, treats an unversioned readable file as legacy v1, and compares against the highest `requiresMold` among the selected parts and dependencies. An older mold produces one stderr warning linking to [Update your mold](https://kata-ui.dev/docs/update-mold/). An unreadable file or malformed mold header stops the install; the version is not guessed. A header does not validate custom theme edits.
+
+Review and back up custom changes before explicitly replacing the mold:
+
+```sh
+kataui init --dry-run --force --backup
+kataui init --force --backup
+```
+
+Downloaded tokens must satisfy selected requirements. Installs stage all contents before replacing target files. A failure before replacement leaves target bytes unchanged; a commit failure attempts rollback. Created empty directories or safety backups may remain after a failed install. No atomic filesystem guarantee against a concurrently hostile process is claimed.
+
+Tests: `npm test --prefix cli` from the repository root (no npm dependencies needed). The package remains `@kajisho5/kataui`; publishing and any namespace migration are owner actions.

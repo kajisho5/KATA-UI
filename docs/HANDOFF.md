@@ -2,8 +2,8 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/mold-history-v5` on main
-`cbc90730d267596403b9b76803acd5fef6f366d4` (after #42). Counts become main's when this PR merges.
+Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/t4-button` on main
+`f5e27340ad935ca81e58456d16f1fb4fca07dbd5` (after #43). Counts become main's when this PR merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -41,7 +41,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #42
+### Merged work, PR #11 through #43
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -78,6 +78,7 @@ Missing number #12 is open, not silently assumed merged.
 | #40 | 77d926e | T3 font size: 433 raw declarations → text tokens; UI font-size findings 435 → 2. |
 | #41 | 5d4163d | T3 line height: 84 raw declarations → leading tokens; UI line-height findings 84 → 0. |
 | #42 | cbc9073 | T3 promotion, mold v5: spacing/type fail for UI; `--k-text-code`; owner approved in chat on 2026-11-06 ("おすきにどうぞ"). |
+| #43 | f5e2734 | Mold history regenerated against main after #42's squash merge. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -85,7 +86,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#42 were squash-merged the same way after green CI. The owner then asked the
+#29–#43 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -102,7 +103,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#43](https://github.com/kajisho5/KATA-UI/pull/43) | system/mold-history.json regenerated with `--ref origin/main`: `--k-text-code` pointed at a pre-squash branch commit. |
+| [#44](https://github.com/kajisho5/KATA-UI/pull/44) | T4 Button: ID-free combo, three-set page and browser test, variant × state contrast, beta until a screen-reader pass. |
 
 ### npm and environment
 
@@ -154,7 +155,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: none after #43 (mold-history follow-up) merges; next is T4 Button.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #44 (T4 Button) must be merged before Input.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -223,6 +224,15 @@ legacy Stable labels do not bypass this procedure.
 Button also reconciles the unmerged #12 remainder (combos id/for, explicit
 focus-visible and triple/RTL test). Verify the existing btn-accent and deprecated
 btn-asagi alias instead of recreating them; include the variant × state table.
+
+Progress: Button ([#44](https://github.com/kajisho5/KATA-UI/pull/44)) — combo sample without fixed IDs, tests/button-multi.html
+and tests/test_button_browser.py (run in CI after Chromium is installed), variant ×
+state contrast in docs/review/button/ (enabled minimum 5.57:1). Status changed
+from the legacy `stable` label to `beta`: item 16 needs a recorded screen-reader
+pass, which the container cannot run. The owner can record one with iPhone
+VoiceOver on the preview (steps in docs/review/button/README.md); then a one-line
+meta change marks Button stable. The Input focus-visible remainder of #12 moves
+to the Input PR. Next: input.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

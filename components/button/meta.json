@@ -7,7 +7,7 @@
     "cta",
     "submit"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "One primary action per view. Use Secondary for the alternative, Ghost for tertiary actions, Danger only for destructive ones.",
-  "a11y": "Native buttons with explicit types, a token-based focus-visible ring, and hover/active/disabled states for every variant. Loading examples use disabled and aria-busy while retaining their text label; decorative spinners stop under reduced motion. btn-asagi remains a deprecated alias of btn-accent."
+  "a11y": "Native buttons with explicit types; no JavaScript. Keyboard focus shows --k-ring (2px gap plus 2px ink ring, measured at 3:1 in light and dark). Primary, Secondary, Ghost, Accent and Danger each have hover, pressed and disabled styles; enabled text measures at least 5.5:1 in every state in both themes (docs/review/button). Disabled uses the native disabled attribute; loading examples keep their text and add disabled with aria-busy, and their spinner is aria-hidden and stops with prefers-reduced-motion. btn-asagi is a deprecated alias of btn-accent. Beta until a manual screen-reader pass (VoiceOver or NVDA) is recorded; IME does not apply because a button takes no text input. Checked in Chromium only; Safari and Firefox are not yet verified."
 }

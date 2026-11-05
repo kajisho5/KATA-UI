@@ -7,7 +7,7 @@
     "text",
     "field"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "Always pair with a visible label. Put helper text under the field; replace it with the error message when validation fails.",
-  "a11y": "Labels are real <label> elements. The error state uses color plus text — never color alone."
+  "a11y": "Each input is named by a <label> that wraps it, so samples carry no id/for and can be pasted twice; the visible label stays above the field. Errors set aria-invalid=\"true\" (styled like .errb) and show text, not color alone. The hint and error text are not linked to the input for screen readers: add aria-describedby with ids that are unique in your page. Keyboard focus shows --k-ring (3:1 measured in light and dark). Disabled inputs use the native attribute, a soft background and muted text and are skipped by Tab; read-only inputs stay focusable. Enabled text measures at least 4.83:1 in both themes (docs/review/input). The search icon is aria-hidden and sits at the inline start, so it moves to the right in RTL. Fields use 16px or more below 640px so iOS Safari does not zoom. No JavaScript. Beta until manual checks are recorded: a screen reader (VoiceOver or NVDA) and real IME input (Japanese kana-kanji conversion) in the field. Checked in Chromium only."
 }

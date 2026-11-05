@@ -4,5 +4,5 @@
 .k-ctx button{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;border:none;background:transparent;border-radius:var(--k-radius-md);font:inherit;font-size:13px;color:var(--k-ink);cursor:pointer}
 .k-ctx button:hover,.k-ctx button:focus-visible{background:var(--k-bg-soft);outline:none}
 .k-ctx button .hint{margin-inline-start:auto;font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3)}
-.k-ctx button.danger{color:var(--k-danger)}
+.k-ctx button.danger{color:var(--k-danger-ink)}
 .k-ctx hr{border:none;border-top:1px solid var(--k-line);margin:5px 4px}

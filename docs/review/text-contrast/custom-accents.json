@@ -1,0 +1,557 @@
+{
+  "measurements": [
+    {
+      "theme": "light",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "default",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1021,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "light",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "hover",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1021,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        28,
+        52,
+        85
+      ],
+      "ratio": 12.561707187929198
+    },
+    {
+      "theme": "light",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "active",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1021,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "light",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "focus",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1021,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "light",
+      "accent": "#1f3a5f",
+      "source": "static-export",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Export fallback",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "light",
+      "accent": "#1f3a5f",
+      "source": "manual-css",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Manual CSS",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        51,
+        166,
+        184
+      ],
+      "ratio": 6.148044043734327
+    },
+    {
+      "theme": "light",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "default",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "light",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "hover",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        214,
+        117
+      ],
+      "ratio": 12.762396407659335
+    },
+    {
+      "theme": "light",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "active",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "light",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "focus",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "light",
+      "accent": "#ffd166",
+      "source": "static-export",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Export fallback",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "light",
+      "accent": "#ffd166",
+      "source": "manual-css",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Manual CSS",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        51,
+        166,
+        184
+      ],
+      "ratio": 6.148044043734327
+    },
+    {
+      "theme": "dark",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "default",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "dark",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "hover",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        28,
+        52,
+        85
+      ],
+      "ratio": 12.561707187929198
+    },
+    {
+      "theme": "dark",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "active",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "dark",
+      "accent": "#1f3a5f",
+      "source": "Foundry",
+      "state": "focus",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "dark",
+      "accent": "#1f3a5f",
+      "source": "static-export",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Export fallback",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        255,
+        255,
+        255
+      ],
+      "background": [
+        31,
+        58,
+        95
+      ],
+      "ratio": 11.483389508877028
+    },
+    {
+      "theme": "dark",
+      "accent": "#1f3a5f",
+      "source": "manual-css",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Manual CSS",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        51,
+        166,
+        184
+      ],
+      "ratio": 6.148044043734327
+    },
+    {
+      "theme": "dark",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "default",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "dark",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "hover",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        214,
+        117
+      ],
+      "ratio": 12.762396407659335
+    },
+    {
+      "theme": "dark",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "active",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "dark",
+      "accent": "#ffd166",
+      "source": "Foundry",
+      "state": "focus",
+      "element": "button.btn btn-accent btn-md",
+      "index": 1022,
+      "text": "Palette test button",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "dark",
+      "accent": "#ffd166",
+      "source": "static-export",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Export fallback",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        255,
+        209,
+        102
+      ],
+      "ratio": 12.287038518389487
+    },
+    {
+      "theme": "dark",
+      "accent": "#ffd166",
+      "source": "manual-css",
+      "state": "default",
+      "element": "button.btn btn-accent",
+      "index": 0,
+      "text": "Manual CSS",
+      "kind": "text",
+      "disabled": false,
+      "opacity": "1",
+      "foreground": [
+        24,
+        24,
+        27
+      ],
+      "background": [
+        51,
+        166,
+        184
+      ],
+      "ratio": 6.148044043734327
+    }
+  ],
+  "errors": []
+}

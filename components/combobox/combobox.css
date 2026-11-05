@@ -11,7 +11,7 @@
 .k-combo-list{list-style:none;max-block-size:var(--combo-max-height);overflow:auto;scrollbar-color:var(--k-border-strong) var(--k-bg)}
 .k-combo-list[hidden],.k-combo-list li[hidden],.k-combo>.none[hidden]{display:none}
 .k-combo-list li{padding:var(--k-space-2) var(--k-space-2);border-radius:var(--k-radius);font-size:var(--k-text-base);color:var(--k-ink);cursor:pointer;display:flex;align-items:center;gap:var(--k-space-2);overflow-wrap:anywhere}
-.k-combo-list li .ck{color:var(--k-accent);visibility:hidden;display:grid;place-items:center}
+.k-combo-list li .ck{color:var(--k-accent-ink);visibility:hidden;display:grid;place-items:center}
 .k-combo-list li .ck svg{inline-size:var(--combo-check-icon);block-size:var(--combo-check-icon)}
 .k-combo-list li.act,.k-combo-list li:hover{background:var(--k-bg-soft)}
 .k-combo-list li:active{background:var(--k-accent-bg-strong)}

@@ -1,7 +1,7 @@
 .k-funnel{font-family:var(--k-font);text-align:start;color:var(--k-ink)}
 .k-funnel .st{display:grid;grid-template-columns:92px 1fr 74px;gap:12px;align-items:center;padding:5px 0}
 .k-funnel .nm{font-size:12.5px;font-weight:550;color:var(--k-ink-2)}
-.k-funnel .bar{height:30px;border-radius:var(--k-radius-md);background:var(--k-accent)}
+.k-funnel .bar{height:30px;border-radius:var(--k-radius-md);background:var(--k-accent);color:var(--k-on-accent)}
 .k-funnel .st:nth-child(2) .bar{opacity:.78}
 .k-funnel .st:nth-child(3) .bar{opacity:.56}
 .k-funnel .st:nth-child(4) .bar{opacity:.36}

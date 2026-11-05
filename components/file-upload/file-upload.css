@@ -12,4 +12,4 @@
 .k-up-item .nm{font-size:13px;font-weight:550;color:var(--k-ink);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .k-up-item .sz{font-size:11.5px;color:var(--k-ink-3);font-family:var(--k-mono)}
 .k-up-item .rm{width:26px;height:26px;border:none;background:transparent;color:var(--k-ink-3);border-radius:var(--k-radius-md);display:grid;place-items:center;cursor:pointer;flex:none}
-.k-up-item .rm:hover{background:var(--k-bg-soft);color:var(--k-danger)}
+.k-up-item .rm:hover{background:var(--k-bg-soft);color:var(--k-danger-ink)}

@@ -2,7 +2,7 @@
 .k-jelly{display:inline-block;border:0;cursor:pointer;font-family:var(--k-font);font-weight:650;font-size:14.5px;padding:13px 26px;border-radius:14px;background:var(--k-ink);color:var(--k-bg);transition:transform .28s cubic-bezier(.3,2.4,.45,1)}
 .k-jelly:hover{transform:scale(1.07,.92)}
 .k-jelly:active{transform:scale(.88,1.12)}
-.k-jelly.asagi{background:var(--k-accent);color:var(--k-on-color)}
+.k-jelly.asagi{background:var(--k-accent);color:var(--k-on-accent)}
 .k-jelly.soft{background:var(--k-bg-soft);color:var(--k-ink);border:1px solid var(--k-line)}
 .k-jelly.squish{animation:k-jelly-wob .55s cubic-bezier(.3,2.2,.45,1)}
 @keyframes k-jelly-wob{0%{transform:scale(1,1)}25%{transform:scale(1.18,.78)}50%{transform:scale(.92,1.1)}72%{transform:scale(1.05,.97)}100%{transform:scale(1,1)}}

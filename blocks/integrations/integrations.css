@@ -1,7 +1,7 @@
 .k-int{font-family:var(--k-font);text-align:start;color:var(--k-ink)}
 .k-int-h{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:16px}
 .k-int-h h3{font-size:17px;font-weight:600;letter-spacing:-.015em}
-.k-int-h a{font-size:13px;font-weight:550;color:var(--k-accent);text-decoration:none;white-space:nowrap}
+.k-int-h a{font-size:13px;font-weight:550;color:var(--k-accent-ink);text-decoration:none;white-space:nowrap}
 .k-int-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 @media (max-width:640px){.k-int-grid{grid-template-columns:repeat(2,1fr)}}
 .k-int-tile{border:1px solid var(--k-line);border-radius:var(--k-radius-lg);background:var(--k-bg);padding:15px;display:grid;gap:10px;transition:border-color .14s}

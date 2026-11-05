@@ -1,0 +1,21 @@
+/* KATA theme: static WCAG color roles. Load after tokens.css. */
+:root,[data-theme="light"]{
+  --k-accent:#ffd166;
+  --k-on-accent:#18181b;
+  --k-accent-ink:#866d35;
+  --k-accent-contrast-surface:#ffffff;
+  --k-accent-hover:#ffd675;
+  --k-accent-bg:rgba(255,209,102,.08);
+  --k-accent-bg-strong:rgba(255,209,102,.1);
+  --k-accent-line:rgba(255,209,102,.18);
+}
+[data-theme="dark"]{
+  --k-accent:#ffd166;
+  --k-on-accent:#18181b;
+  --k-accent-ink:#ffd166;
+  --k-accent-contrast-surface:#ffffff;
+  --k-accent-hover:#ffd675;
+  --k-accent-bg:rgba(255,209,102,.08);
+  --k-accent-bg-strong:rgba(255,209,102,.1);
+  --k-accent-line:rgba(255,209,102,.18);
+}

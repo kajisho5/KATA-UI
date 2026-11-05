@@ -1,0 +1,602 @@
+{
+  "button": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "input": {
+    "light": {
+      "changed_pixels": 2041,
+      "bounds": [
+        33,
+        69,
+        203,
+        256
+      ]
+    },
+    "dark": {
+      "changed_pixels": 2048,
+      "bounds": [
+        33,
+        69,
+        203,
+        256
+      ]
+    }
+  },
+  "select": {
+    "light": {
+      "changed_pixels": 54,
+      "bounds": [
+        129,
+        48,
+        739,
+        53
+      ]
+    },
+    "dark": {
+      "changed_pixels": 54,
+      "bounds": [
+        129,
+        48,
+        739,
+        53
+      ]
+    }
+  },
+  "card": {
+    "light": {
+      "changed_pixels": 1553,
+      "bounds": [
+        51,
+        102,
+        269,
+        271
+      ]
+    },
+    "dark": {
+      "changed_pixels": 1560,
+      "bounds": [
+        51,
+        102,
+        269,
+        271
+      ]
+    }
+  },
+  "badge": {
+    "light": {
+      "changed_pixels": 233,
+      "bounds": [
+        268,
+        43,
+        329,
+        51
+      ]
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "modal": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "drawer": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "dropdown": {
+    "light": {
+      "changed_pixels": 160,
+      "bounds": [
+        49,
+        92,
+        88,
+        103
+      ]
+    },
+    "dark": {
+      "changed_pixels": 160,
+      "bounds": [
+        49,
+        92,
+        88,
+        103
+      ]
+    }
+  },
+  "popover": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "tabs": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "toast": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "tooltip": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "field": {
+    "light": {
+      "changed_pixels": 1619,
+      "bounds": [
+        32,
+        38,
+        350,
+        133
+      ]
+    },
+    "dark": {
+      "changed_pixels": 1649,
+      "bounds": [
+        32,
+        38,
+        350,
+        133
+      ]
+    }
+  },
+  "textarea": {
+    "light": {
+      "changed_pixels": 699,
+      "bounds": [
+        33,
+        178,
+        180,
+        188
+      ]
+    },
+    "dark": {
+      "changed_pixels": 702,
+      "bounds": [
+        33,
+        178,
+        180,
+        188
+      ]
+    }
+  },
+  "checkbox": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "radio": {
+    "light": {
+      "changed_pixels": 609,
+      "bounds": [
+        58,
+        110,
+        171,
+        124
+      ]
+    },
+    "dark": {
+      "changed_pixels": 617,
+      "bounds": [
+        58,
+        110,
+        171,
+        124
+      ]
+    }
+  },
+  "switch": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "accordion": {
+    "light": {
+      "changed_pixels": 84,
+      "bounds": [
+        463,
+        52,
+        473,
+        232
+      ]
+    },
+    "dark": {
+      "changed_pixels": 84,
+      "bounds": [
+        463,
+        52,
+        473,
+        232
+      ]
+    }
+  },
+  "alert": {
+    "light": {
+      "changed_pixels": 84,
+      "bounds": [
+        48,
+        263,
+        62,
+        275
+      ]
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "table": {
+    "light": {
+      "changed_pixels": 1209,
+      "bounds": [
+        48,
+        45,
+        794,
+        159
+      ]
+    },
+    "dark": {
+      "changed_pixels": 940,
+      "bounds": [
+        48,
+        45,
+        794,
+        58
+      ]
+    }
+  },
+  "pagination": {
+    "light": {
+      "changed_pixels": 16,
+      "bounds": [
+        300,
+        51,
+        310,
+        53
+      ]
+    },
+    "dark": {
+      "changed_pixels": 16,
+      "bounds": [
+        300,
+        51,
+        310,
+        53
+      ]
+    }
+  },
+  "breadcrumbs": {
+    "light": {
+      "changed_pixels": 45,
+      "bounds": [
+        120,
+        50,
+        271,
+        58
+      ]
+    },
+    "dark": {
+      "changed_pixels": 45,
+      "bounds": [
+        120,
+        50,
+        271,
+        58
+      ]
+    }
+  },
+  "combobox": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "input-otp": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "tag-input": {
+    "light": {
+      "changed_pixels": 331,
+      "bounds": [
+        232,
+        50,
+        302,
+        65
+      ]
+    },
+    "dark": {
+      "changed_pixels": 333,
+      "bounds": [
+        232,
+        50,
+        302,
+        65
+      ]
+    }
+  },
+  "file-upload": {
+    "light": {
+      "changed_pixels": 1289,
+      "bounds": [
+        47,
+        61,
+        441,
+        200
+      ]
+    },
+    "dark": {
+      "changed_pixels": 1284,
+      "bounds": [
+        47,
+        61,
+        441,
+        200
+      ]
+    }
+  },
+  "slider": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "dual-range": {
+    "light": {
+      "changed_pixels": 585,
+      "bounds": [
+        33,
+        69,
+        372,
+        80
+      ]
+    },
+    "dark": {
+      "changed_pixels": 588,
+      "bounds": [
+        33,
+        69,
+        372,
+        80
+      ]
+    }
+  },
+  "segmented": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "toggle": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "button-group": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "input-group": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "alert-dialog": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "command": {
+    "light": {
+      "changed_pixels": 2370,
+      "bounds": [
+        187,
+        91,
+        714,
+        334
+      ]
+    },
+    "dark": {
+      "changed_pixels": 2376,
+      "bounds": [
+        187,
+        91,
+        714,
+        334
+      ]
+    }
+  },
+  "context-menu": {
+    "light": {
+      "changed_pixels": 1011,
+      "bounds": [
+        181,
+        119,
+        468,
+        306
+      ]
+    },
+    "dark": {
+      "changed_pixels": 1028,
+      "bounds": [
+        181,
+        119,
+        468,
+        306
+      ]
+    }
+  },
+  "hover-card": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "navigation-menu": {
+    "light": {
+      "changed_pixels": 1739,
+      "bounds": [
+        45,
+        57,
+        449,
+        101
+      ]
+    },
+    "dark": {
+      "changed_pixels": 1753,
+      "bounds": [
+        45,
+        57,
+        449,
+        101
+      ]
+    }
+  },
+  "menubar": {
+    "light": {
+      "changed_pixels": 1634,
+      "bounds": [
+        109,
+        46,
+        445,
+        246
+      ]
+    },
+    "dark": {
+      "changed_pixels": 1643,
+      "bounds": [
+        109,
+        46,
+        445,
+        246
+      ]
+    }
+  },
+  "copy-field": {
+    "light": {
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    "dark": {
+      "changed_pixels": 0,
+      "bounds": null
+    }
+  },
+  "collapsible": {
+    "light": {
+      "changed_pixels": 26,
+      "bounds": [
+        466,
+        50,
+        475,
+        56
+      ]
+    },
+    "dark": {
+      "changed_pixels": 26,
+      "bounds": [
+        466,
+        50,
+        475,
+        56
+      ]
+    }
+  }
+}

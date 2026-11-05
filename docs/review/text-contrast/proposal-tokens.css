@@ -1,0 +1,2 @@
+/* Diagnostic proposal only; not loaded by the app. */
+:root,[data-theme="light"]{--k-accent:#247c8c;--k-on-accent:#fff;--k-danger-hover:#b7282e}[data-theme="dark"]{--k-accent:#33a6b8;--k-on-accent:#18181b;--k-danger-hover:#b7282e}

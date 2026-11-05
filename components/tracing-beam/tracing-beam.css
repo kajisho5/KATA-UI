@@ -2,8 +2,8 @@
 .k-beam{display:grid;grid-template-columns:16px 1fr;gap:16px;font-family:var(--k-font);color:var(--k-ink)}
 .k-beam-rail{position:relative}
 .k-beam-rail::before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:2px;background:var(--k-line);border-radius:2px}
-.k-beam-fill{position:absolute;left:7px;top:4px;width:2px;height:0;background:var(--k-accent);border-radius:2px}
-.k-beam-dot{position:absolute;left:3px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--k-accent);box-shadow:0 0 0 4px var(--k-accent-bg)}
+.k-beam-fill{position:absolute;left:7px;top:4px;width:2px;height:0;background:var(--k-accent);border-radius:2px;color:var(--k-on-accent)}
+.k-beam-dot{position:absolute;left:3px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--k-accent);box-shadow:0 0 0 4px var(--k-accent-bg);color:var(--k-on-accent)}
 .k-beam-body{height:264px;overflow:auto;padding-inline-end:6px}
 .k-beam-body section{margin-bottom:20px}
 .k-beam-body h4{font-size:14px;font-weight:600;margin-bottom:5px}

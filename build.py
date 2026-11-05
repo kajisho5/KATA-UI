@@ -44,7 +44,7 @@ def load_components():
         css = (d / f'{slug}.css').read_text(encoding='utf-8')
         js_file = d / f'{slug}.js'
         js = js_file.read_text(encoding='utf-8') if js_file.exists() else None
-        deps = sorted(set(re.findall(r'/components/([a-z0-9-]+)/\1\.css', preview))) 
+        deps = sorted(set(re.findall(r'/components/([a-z0-9-]+)/\1\.css', preview)))
         deps = [x for x in deps if x != slug]
         ex_file = d / 'examples.html'
         examples = []
@@ -257,12 +257,15 @@ FOUNDRY_HTML = """<button class="fdeck-fab" id="fdfab" type="button" aria-expand
 <div class="fdeck" id="fdeck" role="dialog" aria-label="Foundry — recast this page">
   <h3><span class="fdot"></span>The Foundry<span style="margin-left:auto;font-weight:500;color:var(--ink3);font-size:11.5px">one change recasts everything</span></h3>
   <div class="frow"><label>Radius <output id="fd-rv">8px</output></label><input type="range" id="fd-radius" min="0" max="20" step="1" value="8"></div>
+  <div class="frow"><label for="fd-accent">Custom accent</label><input id="fd-accent" type="color" value="#33a6b8"></div>
   <div class="frow"><label>Accent — a traditional color</label><div class="sws" id="fd-sws"></div></div>
+  <div class="frow"><span style="background:var(--k-accent);color:var(--k-on-accent)">Text on accent</span> · <span style="color:var(--k-accent-ink)">Accent text</span></div>
   <div class="frow"><label>Mode</label><div class="fseg"><button type="button" id="fd-light">Light (washi)</button><button type="button" id="fd-dark">Dark (sumi)</button></div></div>
   <div class="frow"><label>Backdrop \u2014 wagara</label><div class="fseg" id="fd-wgs"><button type="button" data-wg="">None</button><button type="button" data-wg="seigaiha">Seigaiha</button><button type="button" data-wg="asanoha">Asanoha</button><button type="button" data-wg="ichimatsu">Ichimatsu</button></div></div>
   <div class="frow"><label>Motion <output id="fd-mv">1.0&times;</output></label><input type="range" id="fd-motion" min="0.5" max="1.5" step="0.1" value="1"></div>
   <div class="fcore"><i></i><span>The vermillion core — \u578b\u306e\u6731 — is not on the deck. It never moves; that is the point of a mold.</span></div>
   <div class="flog" id="fd-log"></div>
+  <button class="freset" type="button" data-export-theme>Export theme CSS</button>
   <button class="freset" id="fd-reset" type="button">Reset to the mold</button>
 </div>"""
 FOUNDRY_JS = """<script>
@@ -273,11 +276,12 @@ var root=document.documentElement,logEl=document.getElementById('fd-log');
 function save(){try{localStorage.setItem('kata-fdeck',JSON.stringify(S))}catch(e){}}
 function log(msg){var d=document.createElement('div');var now=new Date();d.textContent=now.toTimeString().slice(0,5)+'  '+msg;logEl.prepend(d);while(logEl.children.length>4)logEl.lastChild.remove();}
 function dark(){return root.getAttribute('data-theme')==='dark'}
-function applyAccent(p,quiet){S.accent=p[1];S.accentInk=p[2];S.darkInk=p[3];S.accentName=p[0];root.style.setProperty('--k-accent',p[1]);root.style.setProperty('--acc',p[1]);root.style.setProperty('--k-accent-ink',dark()?p[3]:p[2]);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.toggle('on',b.dataset.n===p[0])});if(!quiet)log('Accent \u2192 '+p[0]);save();}
+function applyAccent(p,quiet){document.getElementById('fd-accent').value=p[1];S.accent=p[1];S.accentInk=p[2];S.darkInk=p[3];S.accentName=p[0];root.style.setProperty('--k-accent',p[1]);root.style.setProperty('--acc',p[1]);root.style.removeProperty("--k-accent-ink");document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.toggle('on',b.dataset.n===p[0])});if(!quiet)log('Accent \u2192 '+p[0]);save();}
 function applyRadius(v,quiet){S.radius=+v;root.style.setProperty('--k-radius',v+'px');document.getElementById('fd-rv').textContent=v+'px';if(!quiet)log('Radius \u2192 '+v+'px');save();}
-function applyMode(d,quiet){S.dark=d;if(d)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');if(S.accent){var p=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p)root.style.setProperty('--k-accent-ink',d?p[3]:p[2]);}document.getElementById('fd-light').classList.toggle('on',!d);document.getElementById('fd-dark').classList.toggle('on',d);if(!quiet)log(d?'Mode \u2192 Dark (sumi)':'Mode \u2192 Light (washi)');document.querySelectorAll('#stage').forEach(function(st){st.setAttribute('data-theme',d?'dark':'light');});document.querySelectorAll('[data-seg="theme"]').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',(b.dataset.v==='dark')===!!d);});});save();}
+function applyMode(d,quiet){S.dark=d;if(d)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');if(S.accent){var p=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p)root.style.removeProperty("--k-accent-ink");}document.getElementById('fd-light').classList.toggle('on',!d);document.getElementById('fd-dark').classList.toggle('on',d);if(!quiet)log(d?'Mode \u2192 Dark (sumi)':'Mode \u2192 Light (washi)');document.querySelectorAll('#stage').forEach(function(st){st.setAttribute('data-theme',d?'dark':'light');});document.querySelectorAll('[data-seg="theme"]').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('on',(b.dataset.v==='dark')===!!d);});});save();}
 function applyMotion(v,quiet){S.mscale=+v;root.style.setProperty('--k-mscale',v);document.getElementById('fd-mv').textContent=(+v).toFixed(1)+'\u00d7';if(!quiet)log('Motion \u2192 '+(+v).toFixed(1)+'\u00d7');save();}
 var sws=document.getElementById('fd-sws');PRESETS.forEach(function(p){var b=document.createElement('button');b.type='button';b.className='sw';b.dataset.n=p[0];b.title=p[0];b.style.background=p[1];b.setAttribute('aria-label','Accent '+p[0]);b.addEventListener('click',function(){applyAccent(p)});sws.appendChild(b);});
+document.getElementById('fd-accent').addEventListener('input',function(){applyAccent(['Custom',this.value])});
 fab.addEventListener('click',function(){var open=deck.classList.toggle('open');fab.setAttribute('aria-expanded',open)});
 document.getElementById('fd-radius').addEventListener('input',function(e){applyRadius(e.target.value)});
 document.getElementById('fd-motion').addEventListener('input',function(e){applyMotion(e.target.value)});
@@ -288,7 +292,7 @@ document.getElementById('fd-dark').addEventListener('click',function(){applyMode
 document.getElementById('fd-reset').addEventListener('click',function(){S={};save();root.removeAttribute('data-theme');['--k-radius','--k-radius-sm','--k-radius-lg','--k-accent','--k-accent-ink','--acc','--k-mscale'].forEach(function(k){root.style.removeProperty(k)});document.getElementById('fd-radius').value=8;document.getElementById('fd-motion').value=1;applyRadius(8,true);applyMotion(1,true);applyMode(false,true);document.querySelectorAll('#fd-sws .sw').forEach(function(b){b.classList.remove('on')});applyBg('',true);log('Reset to the mold');});
 if(S.radius!==undefined){document.getElementById('fd-radius').value=S.radius;applyRadius(S.radius,true);}
 if(S.mscale){document.getElementById('fd-motion').value=S.mscale;applyMotion(S.mscale,true);}
-if(S.accentName){var p0=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p0)applyAccent(p0,true);}
+if(S.accentName){var p0=PRESETS.filter(function(x){return x[0]===S.accentName})[0];if(p0)applyAccent(p0,true);else if(S.accent)applyAccent(['Custom',S.accent],true);}
 applyBg(S.wg||'',true);
 applyMode(dark(),true);
 })();
@@ -314,7 +318,8 @@ def head(title, desc, extra=''):
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<script>(function(){{try{{var s=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;if(s.dark||(!("dark" in s)&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))r.setAttribute("data-theme","dark");if(s.radius!==undefined){{r.style.setProperty("--k-radius",s.radius+"px");}}if(s.accent){{r.style.setProperty("--k-accent",s.accent);r.style.setProperty("--acc",s.accent);r.style.setProperty("--k-accent-ink",(r.getAttribute("data-theme")==="dark"?s.darkInk:s.accentInk)||s.accent);if(s.wg)r.setAttribute(\"data-wg\",s.wg);}}}}catch(e){{}}}})();</script>
+<script>(function(){{try{{var s=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;if(s.dark||(!("dark" in s)&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))r.setAttribute("data-theme","dark");if(s.radius!==undefined){{r.style.setProperty("--k-radius",s.radius+"px");}}if(s.accent){{r.style.setProperty("--k-accent",s.accent);r.style.setProperty("--acc",s.accent);r.style.removeProperty("--k-accent-ink");if(s.wg)r.setAttribute(\"data-wg\",s.wg);}}}}catch(e){{}}}})();</script>
+<script src="/color-roles.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
@@ -685,7 +690,7 @@ def landing(comps, blocks, n_icons, templates=None):
       '</div></div>'
       '<p class="lpnote" style="margin-top:12px">Scroll on \u2014 the sections below have re-cast too.</p>'
       "<script>var clo=document.getElementById('cl-open');if(clo)clo.addEventListener('click',function(e){e.preventDefault();var f=document.getElementById('fdfab');if(f)f.click();});</script>"
-      '<script>(function(){var root=document.documentElement;var PRESETS={Asagi:["#33A6B8","#165E83","#81C7D4"],Ruri:["#1E50A2","#223A70","#58B2DC"],Edomurasaki:["#745399","#592C63","#8B81C3"],Suo:["#8E354A","#64363C","#DC9FB4"],Kaki:["#ED6D3D","#95483F","#E2943B"]};function load(){try{return JSON.parse(localStorage.getItem("kata-fdeck")||"{}")}catch(e){return{}}}function save(S){try{localStorage.setItem("kata-fdeck",JSON.stringify(S))}catch(e){}}function dark(){return root.getAttribute("data-theme")==="dark"}function mark(){var S=load();document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.classList.toggle("on",b.dataset.lpcAccent===S.accentName)});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcRadius===(S.radius===undefined?8:S.radius))});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.classList.toggle("on",(b.dataset.lpcMode==="dark")===dark())});document.querySelectorAll("[data-lpc-motion]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcMotion===(S.mscale||1))})}function accent(name){var pr=PRESETS[name];if(!pr)return;var S=load();S.accent=pr[0];S.accentInk=pr[1];S.darkInk=pr[2];S.accentName=name;root.style.setProperty("--k-accent",pr[0]);root.style.setProperty("--acc",pr[0]);root.style.setProperty("--k-accent-ink",dark()?pr[2]:pr[1]);save(S);mark()}function radius(v){var S=load();S.radius=v;root.style.setProperty("--k-radius",v+"px");save(S);mark()}function motion(v){var S=load();S.mscale=v;root.style.setProperty("--k-mscale",v);save(S);mark()}function mode(d){var S=load();S.dark=d;if(d)root.setAttribute("data-theme","dark");else root.removeAttribute("data-theme");if(S.accentName&&PRESETS[S.accentName]){var pr=PRESETS[S.accentName];root.style.setProperty("--k-accent-ink",d?pr[2]:pr[1])}save(S);mark()}document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.addEventListener("click",function(){accent(b.dataset.lpcAccent)})});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.addEventListener("click",function(){radius(+b.dataset.lpcRadius)})});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.addEventListener("click",function(){mode(b.dataset.lpcMode==="dark")})});document.querySelectorAll("[data-lpc-motion]").forEach(function(b){b.addEventListener("click",function(){motion(+b.dataset.lpcMotion)})});mark();})();</script>'
+      '<script>(function(){var root=document.documentElement;var PRESETS={Asagi:["#33A6B8","#165E83","#81C7D4"],Ruri:["#1E50A2","#223A70","#58B2DC"],Edomurasaki:["#745399","#592C63","#8B81C3"],Suo:["#8E354A","#64363C","#DC9FB4"],Kaki:["#ED6D3D","#95483F","#E2943B"]};function load(){try{return JSON.parse(localStorage.getItem("kata-fdeck")||"{}")}catch(e){return{}}}function save(S){try{localStorage.setItem("kata-fdeck",JSON.stringify(S))}catch(e){}}function dark(){return root.getAttribute("data-theme")==="dark"}function mark(){var S=load();document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.classList.toggle("on",b.dataset.lpcAccent===S.accentName)});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcRadius===(S.radius===undefined?8:S.radius))});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.classList.toggle("on",(b.dataset.lpcMode==="dark")===dark())});document.querySelectorAll("[data-lpc-motion]").forEach(function(b){b.classList.toggle("on",+b.dataset.lpcMotion===(S.mscale||1))})}function accent(name){var pr=PRESETS[name];if(!pr)return;var S=load();S.accent=pr[0];S.accentInk=pr[1];S.darkInk=pr[2];S.accentName=name;root.style.setProperty("--k-accent",pr[0]);root.style.setProperty("--acc",pr[0]);root.style.removeProperty("--k-accent-ink");save(S);mark()}function radius(v){var S=load();S.radius=v;root.style.setProperty("--k-radius",v+"px");save(S);mark()}function motion(v){var S=load();S.mscale=v;root.style.setProperty("--k-mscale",v);save(S);mark()}function mode(d){var S=load();S.dark=d;if(d)root.setAttribute("data-theme","dark");else root.removeAttribute("data-theme");if(S.accentName&&PRESETS[S.accentName]){var pr=PRESETS[S.accentName];root.style.removeProperty("--k-accent-ink");mark()}document.querySelectorAll("[data-lpc-accent]").forEach(function(b){b.addEventListener("click",function(){accent(b.dataset.lpcAccent)})});document.querySelectorAll("[data-lpc-radius]").forEach(function(b){b.addEventListener("click",function(){radius(+b.dataset.lpcRadius)})});document.querySelectorAll("[data-lpc-mode]").forEach(function(b){b.addEventListener("click",function(){mode(b.dataset.lpcMode==="dark")})});document.querySelectorAll("[data-lpc-motion]").forEach(function(b){b.addEventListener("click",function(){motion(+b.dataset.lpcMotion)})});mark();})();</script>'
       '</section>')
     threeways = ('<section class="lpsec proof"><h2>Three ways in</h2>'
       '<p class="sub">However you work, there is a door at your height. All three end at the same place: the real part, in your project, owned by you.</p>'
@@ -1525,7 +1530,7 @@ def showcase_page(templates, blocks):
 </html>"""
     return head('Showcase — KATA UI', 'Live pages assembled from the KATA UI catalog itself: templates, the starter kit, and this site.', SC_STYLE) + body
 
-DS_CAST_TAG = "<script>" + "\n(function(){\n  var root=document.documentElement;\n  var PRESETS={Asagi:['#33A6B8','#165E83','#81C7D4'],Ruri:['#1E50A2','#223A70','#58B2DC'],Edomurasaki:['#745399','#592C63','#8B81C3'],Suo:['#8E354A','#64363C','#DC9FB4'],Kaki:['#ED6D3D','#95483F','#E2943B']};\n  function load(){try{return JSON.parse(localStorage.getItem('kata-fdeck')||'{}')}catch(e){return{}}}\n  function save(S){try{localStorage.setItem('kata-fdeck',JSON.stringify(S))}catch(e){}}\n  function stat(msg){var el=document.getElementById('ds-stat');if(el)el.textContent=msg;var card=document.getElementById('ds-floor');if(card){card.classList.remove('castflash');void card.offsetWidth;card.classList.add('castflash');}}\n  function castRadius(v){var S=load();S.radius=v;root.style.setProperty('--k-radius',v+'px');var sl=document.getElementById('fd-radius');if(sl){sl.value=v;var o=document.getElementById('fd-rv');if(o)o.textContent=v+'px';}save(S);stat('Cast \\u2014 radius '+v+'px. The parts above re-cast; the deck remembers it.');}\n  function castAccent(name){var p=PRESETS[name];if(!p)return;var S=load();S.accent=p[0];S.accentInk=p[1];S.darkInk=p[2];S.accentName=name;var dark=root.getAttribute('data-theme')==='dark';root.style.setProperty('--k-accent',p[0]);root.style.setProperty('--acc',p[0]);root.style.setProperty('--k-accent-ink',dark?p[2]:p[1]);save(S);document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===name)});stat('Cast \\u2014 accent '+name+'.');}\n  function castMotion(v){var S=load();S.mscale=v;root.style.setProperty('--k-mscale',v);var sl=document.getElementById('fd-motion');if(sl)sl.value=v;save(S);stat('Cast \\u2014 motion '+v+'\\u00d7.');}\n  document.querySelectorAll('[data-cast-radius]').forEach(function(b){b.addEventListener('click',function(){castRadius(+b.dataset.castRadius)})});\n  document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.addEventListener('click',function(){castAccent(b.dataset.castAccent)})});\n  document.querySelectorAll('[data-cast-motion]').forEach(function(b){b.addEventListener('click',function(){castMotion(+b.dataset.castMotion)})});\n  var S0=load();if(S0.accentName)document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===S0.accentName)});\n})();\n" + "</script>\n"
+DS_CAST_TAG = "<script>" + "\n(function(){\n  var root=document.documentElement;\n  var PRESETS={Asagi:['#33A6B8','#165E83','#81C7D4'],Ruri:['#1E50A2','#223A70','#58B2DC'],Edomurasaki:['#745399','#592C63','#8B81C3'],Suo:['#8E354A','#64363C','#DC9FB4'],Kaki:['#ED6D3D','#95483F','#E2943B']};\n  function load(){try{return JSON.parse(localStorage.getItem('kata-fdeck')||'{}')}catch(e){return{}}}\n  function save(S){try{localStorage.setItem('kata-fdeck',JSON.stringify(S))}catch(e){}}\n  function stat(msg){var el=document.getElementById('ds-stat');if(el)el.textContent=msg;var card=document.getElementById('ds-floor');if(card){card.classList.remove('castflash');void card.offsetWidth;card.classList.add('castflash');}}\n  function castRadius(v){var S=load();S.radius=v;root.style.setProperty('--k-radius',v+'px');var sl=document.getElementById('fd-radius');if(sl){sl.value=v;var o=document.getElementById('fd-rv');if(o)o.textContent=v+'px';}save(S);stat('Cast \\u2014 radius '+v+'px. The parts above re-cast; the deck remembers it.');}\n  function castAccent(name){var p=PRESETS[name];if(!p)return;var S=load();S.accent=p[0];S.accentInk=p[1];S.darkInk=p[2];S.accentName=name;var dark=root.getAttribute('data-theme')==='dark';root.style.setProperty('--k-accent',p[0]);root.style.setProperty('--acc',p[0]);root.style.removeProperty('--k-accent-ink');save(S);document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===name)});stat('Cast \\u2014 accent '+name+'.');}\n  function castMotion(v){var S=load();S.mscale=v;root.style.setProperty('--k-mscale',v);var sl=document.getElementById('fd-motion');if(sl)sl.value=v;save(S);stat('Cast \\u2014 motion '+v+'\\u00d7.');}\n  document.querySelectorAll('[data-cast-radius]').forEach(function(b){b.addEventListener('click',function(){castRadius(+b.dataset.castRadius)})});\n  document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.addEventListener('click',function(){castAccent(b.dataset.castAccent)})});\n  document.querySelectorAll('[data-cast-motion]').forEach(function(b){b.addEventListener('click',function(){castMotion(+b.dataset.castMotion)})});\n  var S0=load();if(S0.accentName)document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===S0.accentName)});\n})();\n" + "</script>\n"
 
 
 def design_system_page(tokens):
@@ -1538,7 +1543,8 @@ def design_system_page(tokens):
     elevation_rows+='<div class="row"><b>--k-shadow-overlay</b><code>var(--k-shadow-pop)</code></div>'
     elevation_rows+=''.join(f'<div class="row"><b>--k-ring-{name}</b><code>{esc(value)}</code></div>' for name,value in tokens['elevation']['rings'].items())
     elevation_rows+=f'<div class="row"><b>--k-backdrop</b><code>{esc(tokens["elevation"]["backdrop"]["light"])}</code><small>Dark: {esc(tokens["elevation"]["backdrop"]["dark"])}</small></div>'
-    roles = ''.join(f'<div><b>--{k}</b> — {esc(v)}</div>' for k, v in tokens['color']['roles'].items())
+    roles = ''.join(f'<div><b>--k-{k}</b> — {esc(v)}</div>' for k, v in tokens['color']['roles'].items())
+    semantic_rows=''.join(f'<div><b>{esc(name)}</b> — light: <code>{esc(tokens["semanticColors"]["light"].get(name,"inherited"))}</code>; dark: <code>{esc(tokens["semanticColors"]["dark"].get(name,"inherited"))}</code></div>' for name in sorted(set(tokens.get('semanticColors',{}).get('light',{})) | set(tokens.get('semanticColors',{}).get('dark',{}))))
     specs = ''.join(
         f'<div class="row"><span class="tag">{k} · {v}px</span><span class="sample" style="font-size:{v}px">Design, cast in a mold</span></div>'
         for k, v in tokens['typeScalePx'].items())
@@ -1597,7 +1603,7 @@ def design_system_page(tokens):
   </div>
   <section><h2>Color — Zinc</h2><p class="note">The dominant scale. Interfaces are built from zinc first; color is the exception.</p>{swatches('zinc', tokens['color']['zinc'])}</section>
   <section><h2>Color — Asagi (the one accent)</h2><p class="note">A single accent, used sparingly: links, highlights, the core of the mark. If everything is asagi, nothing is.</p>{swatches('asagi', tokens['color']['asagi'])}</section>
-  <section><h2>Color — Roles</h2><div class="roles">{roles}</div></section>
+  <section><h2>Color — Roles</h2><div class="roles">{roles}</div><div class="roles">{semantic_rows}</div></section>
   <section><h2>Typography</h2><p class="note">Sans: {esc(tokens['font']['sans'])}<br>Mono: {esc(tokens['font']['mono'])}<br>Tracking: {esc(tokens['font']['tracking'])}<br>Leading: {esc(tokens['font']['leading'])}</p><div class="spec">{specs}</div></section>
   <section><h2>Spacing</h2><p class="note">A 4px base. If a gap is not on this scale, it is a mistake.</p><div class="bars">{bars}</div></section>
   <section><h2>Radius</h2><p class="note">xs / sm / md / lg / xl follow --k-radius. Full stays 999px for pills; circular geometry stays circular.</p><div class="radii">{radii}</div></section>
@@ -1864,8 +1870,9 @@ def template_demo(t, comps, blocks):
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script src="/color-roles.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){{function apply(){{try{{var st=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;var d=("dark" in st)?!!st.dark:(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);if(d)r.setAttribute("data-theme","dark");else r.removeAttribute("data-theme");if(st.radius!==undefined){{r.style.setProperty("--k-radius",st.radius+"px");}}if(st.accent){{r.style.setProperty("--k-accent",st.accent);r.style.setProperty("--acc",st.accent);r.style.setProperty("--k-accent-ink",(d?st.darkInk:st.accentInk)||st.accent);}}}}catch(e){{}}}}apply();window.addEventListener("storage",function(e){{if(e.key==="kata-fdeck")apply();}});}})();</script>
+<script>(function(){{function apply(){{try{{var st=JSON.parse(localStorage.getItem("kata-fdeck")||"{{}}");var r=document.documentElement;var d=("dark" in st)?!!st.dark:(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);if(d)r.setAttribute("data-theme","dark");else r.removeAttribute("data-theme");if(st.radius!==undefined){{r.style.setProperty("--k-radius",st.radius+"px");}}if(st.accent){{r.style.setProperty("--k-accent",st.accent);r.style.setProperty("--acc",st.accent);r.style.removeProperty("--k-accent-ink");}}}}catch(e){{}}}}apply();window.addEventListener("storage",function(e){{if(e.key==="kata-fdeck")apply();}});}})();</script>
 <title>{esc(m['title'])} — live demo · KATA UI</title>
 <meta name="description" content="{esc(m['description'])}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1969,18 +1976,9 @@ def load_dentou():
     return json.loads((ROOT / 'system' / 'dentou.json').read_text(encoding='utf-8'))
 
 def theme_css(t):
-    return ('/* KATA UI theme: ' + t['label'] + ' — load AFTER tokens.css.\n'
-            '   A theme moves the accent only. Neutrals, motion and the vermillion core never change. */\n'
-            ':root{\n'
-            '  --k-accent:' + t['accent'] + ';\n'
-            '  --k-accent-ink:' + t['ink'] + ';\n'
-            '  --k-accent-bg:rgba(' + t['rgb'] + ',.08);\n'
-            '  --k-accent-bg-strong:rgba(' + t['rgb'] + ',.1);\n'
-            '  --k-accent-line:rgba(' + t['rgb'] + ',.18);\n'
-            '}\n'
-            '[data-theme="dark"]{\n'
-            '  --k-accent-ink:' + t['darkInk'] + ';\n'
-            '}\n')
+    from tools.color_roles import theme_css as export_roles
+    import json
+    return export_roles(t['accent'], json.loads((ROOT/'system/tokens.json').read_text())['contrast'])
 
 THEME_STYLE = """<style>
 .th h1{font-size:32px;font-weight:600;letter-spacing:-.025em;margin-top:26px}
@@ -2099,17 +2097,15 @@ def themes_page(themes):
 """
     dentou_script = r"""<script>
 function applyDentou(hex,romaji,slug,kanji){
-  var rgb=h2r(hex);var hsl=rgbToHsl(rgb[0],rgb[1],rgb[2]);
-  var ink=hslToHex(hsl[0],hsl[1],hsl[2]*0.84);
-  var dink=hslToHex(hsl[0],Math.max(hsl[1]-8,0),hsl[2]+(100-hsl[2])*0.55);
+  var rgb=h2r(hex);
   [demo,document.getElementById('dtpv')].forEach(function(el){
-    el.style.setProperty('--k-accent',hex);
-    el.style.setProperty('--k-accent-ink',ink);
+    el.style.setProperty('--k-accent',hex);document.dispatchEvent(new CustomEvent('kata:color-roles',{detail:{accent:hex,element:el}}));
+
     el.style.setProperty('--k-accent-bg','rgba('+rgb.join(',')+',.08)');
     el.style.setProperty('--k-accent-bg-strong','rgba('+rgb.join(',')+',.1)');
     el.style.setProperty('--k-accent-line','rgba('+rgb.join(',')+',.18)');
   });
-  var css='/* KATA UI theme: '+romaji+' ('+kanji+') \u2014 a traditional color of Japan.\n   Load AFTER tokens.css. A theme moves the accent only.\n   Neutrals, motion and the vermillion core never change. */\n:root{\n  --k-accent:'+hex+';\n  --k-accent-ink:'+ink+';\n  --k-accent-bg:rgba('+rgb.join(',')+',.08);\n  --k-accent-bg-strong:rgba('+rgb.join(',')+',.1);\n  --k-accent-line:rgba('+rgb.join(',')+',.18);\n}\n[data-theme="dark"]{\n  --k-accent-ink:'+dink+';\n}\n';
+  var css='';document.dispatchEvent(new CustomEvent('kata:color-roles',{detail:{accent:hex,receive:function(result){css=result.css;}}}));
   document.getElementById('thcss').textContent=css;
   document.getElementById('thname').textContent=slug+'.css';
   if(blobUrl)URL.revokeObjectURL(blobUrl);
@@ -2148,8 +2144,8 @@ var CODES={};
 var demo=document.getElementById('thdemo');
 function applyTheme(name){
   var t=THEMES.find(function(x){return x.name===name;});if(!t)return;
-  demo.style.setProperty('--k-accent',t.accent);
-  demo.style.setProperty('--k-accent-ink',t.ink);
+  demo.style.setProperty('--k-accent',t.accent);document.dispatchEvent(new CustomEvent('kata:color-roles',{detail:{accent:t.accent,element:demo}}));
+
   demo.style.setProperty('--k-accent-bg','rgba('+t.rgb+',.08)');
   demo.style.setProperty('--k-accent-bg-strong','rgba('+t.rgb+',.1)');
   demo.style.setProperty('--k-accent-line','rgba('+t.rgb+',.18)');
@@ -2165,15 +2161,13 @@ function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;var mx=Math.max(r,g,b),mn=Math.min
 function hslToHex(h,s,l){s/=100;l/=100;var a=s*Math.min(l,1-l);function f(n){var k=(n+h/30)%12;return l-a*Math.max(-1,Math.min(k-3,Math.min(9-k,1)));}function to(x){var s2=Math.round(x*255).toString(16);return s2.length<2?('0'+s2):s2;}return '#'+to(f(0))+to(f(8))+to(f(4));}
 var blobUrl=null;
 function applyCustom(hex){
-  var rgb=h2r(hex);var hsl=rgbToHsl(rgb[0],rgb[1],rgb[2]);
-  var ink=hslToHex(hsl[0],hsl[1],hsl[2]*0.84);
-  var dink=hslToHex(hsl[0],Math.max(hsl[1]-8,0),hsl[2]+(100-hsl[2])*0.55);
-  demo.style.setProperty('--k-accent',hex);
-  demo.style.setProperty('--k-accent-ink',ink);
+  var rgb=h2r(hex);
+  demo.style.setProperty('--k-accent',hex);document.dispatchEvent(new CustomEvent('kata:color-roles',{detail:{accent:hex,element:demo}}));
+
   demo.style.setProperty('--k-accent-bg','rgba('+rgb.join(',')+',.08)');
   demo.style.setProperty('--k-accent-bg-strong','rgba('+rgb.join(',')+',.1)');
   demo.style.setProperty('--k-accent-line','rgba('+rgb.join(',')+',.18)');
-  var css='/* KATA UI theme: Custom \u2014 load AFTER tokens.css.\\n   A theme moves the accent only. Neutrals, motion and the vermillion core never change. */\\n:root{\\n  --k-accent:'+hex+';\\n  --k-accent-ink:'+ink+';\\n  --k-accent-bg:rgba('+rgb.join(',')+',.08);\\n  --k-accent-bg-strong:rgba('+rgb.join(',')+',.1);\\n  --k-accent-line:rgba('+rgb.join(',')+',.18);\\n}\\n[data-theme="dark"]{\\n  --k-accent-ink:'+dink+';\\n}\\n';
+  var css='';document.dispatchEvent(new CustomEvent('kata:color-roles',{detail:{accent:hex,receive:function(result){css=result.css;}}}));
   document.getElementById('thcss').textContent=css;
   document.getElementById('thname').textContent='custom.css';
   if(blobUrl)URL.revokeObjectURL(blobUrl);
@@ -2480,6 +2474,8 @@ def main():
             if _f.is_file():
                 shutil.copy(_f, DIST / 'mcp' / _f.name)
     shutil.copy(ROOT / 'tokens.css', DIST / 'tokens.css')
+    config = json.loads((ROOT / 'system/tokens.json').read_text())['contrast']
+    (DIST / 'color-roles.js').write_text((ROOT / 'system/color-roles.js').read_text().replace('__KATA_COLOR_CONFIG__', json.dumps(config)))
     _sk = ROOT / 'skill'
     if _sk.exists():
         (DIST / 'skill').mkdir(exist_ok=True)

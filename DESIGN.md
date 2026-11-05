@@ -234,3 +234,14 @@ normalized to pop. These are approved visual changes, not checker exceptions.
 The audit rules are unchanged. Artistic Lab geometry, duration and easing are
 outside this migration. Only the four named UI backdrops change independent
 paint declarations; colors within normalized shadows follow the shadow scale.
+
+
+### Shared text-contrast roles
+
+Shared JSON owns text/surface roles. Muted text uses #71717a in light and #90909a
+in dark. Danger text uses danger-ink; strong danger surfaces use white on-color.
+Accent foreground uses accent-ink; full accent surfaces use adaptive on-accent.
+Foundry and exported themes share WCAG luminance-based role math. Core vermilion,
+dark canvas and default accent hue are unchanged. Measurements and limits:
+docs/review/text-contrast/README.md. Mold checks remain independent of this
+browser-based preview measurement; do not claim complete WCAG conformance.

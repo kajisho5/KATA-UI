@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For hierarchies three levels or deeper. Keep crumb names short; if the path gets long, collapse the middle on small screens rather than wrapping.",
-  "a11y": "A <nav> with an ordered list; the current page is plain text with aria-current=\"page\". Separators are decorative."
+  "a11y": "A <nav aria-label=\"Breadcrumb\"> with an ordered list; the current page is plain text with aria-current=\"page\". Separators are decorative (aria-hidden) and mirror in RTL so they point toward the current page. Beta until a recorded screen-reader pass."
 }

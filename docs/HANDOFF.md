@@ -5,7 +5,7 @@
 Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-split-reorder-follow`
 on main `47298c57dde8a6a61272c6180c90dc077a7f8647` (after #29).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
-come from that JSON. The counts become main's only when the T1 batch 5 PR is merged.
+come from that JSON. The counts become main's only when #30 is merged.
 
 **Mold Verified 109 / 164 · UI 74 / 121 · Lab 35 / 43**.
 55 targets fail at least one check. The JSON reports 318 warning-bearing
@@ -40,7 +40,7 @@ type-values has 638. token-values has no remaining findings.
 | blocks/use-cases | js-global-bindings |
 
 #27 (Tag Input, Input OTP, Data Table) took main to 103 and #29 (File Upload,
-Color Picker, Carousel) to 106. Batch 5 (Split Panel, Reorder, Follow Frame)
+Color Picker, Carousel) to 106. #30 (Split Panel, Reorder, Follow Frame)
 takes this branch to 109. Evidence: docs/review/tag-otp-table/,
 docs/review/upload-color-carousel/ and docs/review/split-reorder-follow/.
 
@@ -92,7 +92,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| T1 batch 5 PR | Split Panel, Reorder, Follow Frame. Must be merged before batch 6. |
+| [#30](https://github.com/kajisho5/KATA-UI/pull/30) | T1 batch 5: Split Panel, Reorder, Follow Frame. Must be merged before batch 6. |
 
 ### npm and environment
 
@@ -142,8 +142,8 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the
-T1 batch 5 PR (Split Panel, Reorder, Follow Frame) must be merged before batch 6
+PR. Do not start while the previous task's PR is open. **Current blocker: #30
+(T1 batch 5: Split Panel, Reorder, Follow Frame) must be merged before batch 6
 starts.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
@@ -151,7 +151,7 @@ unless the owner explicitly asks in that session (see Merged work above).
 ### T1 — JS multi-instance: next 3 failing parts (repeat until none fail)
 
 Done: batch 3 (#27: tag-input, input-otp, data-table), batch 4 (#29:
-file-upload, color-picker, carousel) and batch 5 (split-panel, reorder,
+file-upload, color-picker, carousel) and batch 5 (#30: split-panel, reorder,
 follow-frame). After the pending batch merges, regenerate the report. The last
 batch 6 is blocks/pricing, blocks/site-header and blocks/use-cases; T1 is empty
 when those pass.

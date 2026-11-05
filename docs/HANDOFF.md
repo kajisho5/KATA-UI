@@ -103,8 +103,8 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 |---|---|
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
-| [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in the Input PR. Once that merges, nothing in #12 is left unmerged; the owner may close it. |
-| This PR (fix/t4-input) | T4 Input: wrapped labels (no fixed IDs), aria-invalid, :focus-visible, visible disabled state, RTL search icon, browser test and contrast. |
+| [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Once that merges, nothing in #12 is left unmerged; the owner may close it. |
+| [#45](https://github.com/kajisho5/KATA-UI/pull/45) | T4 Input: wrapped labels (no fixed IDs), aria-invalid, :focus-visible, visible disabled state, RTL search icon, browser test and contrast. |
 
 ### npm and environment
 
@@ -156,7 +156,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the T4 Input PR must be merged before Field.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #45 (T4 Input) must be merged before Field.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -233,7 +233,7 @@ from the legacy `stable` label to `beta`: item 16 needs a recorded screen-reader
 pass, which the container cannot run. The owner can record one with iPhone
 VoiceOver on the preview (steps in docs/review/button/README.md); then a one-line
 meta change marks Button stable.
-Input (this PR): samples wrap inputs in labels (no fixed IDs), errors use
+Input ([#45](https://github.com/kajisho5/KATA-UI/pull/45)): samples wrap inputs in labels (no fixed IDs), errors use
 aria-invalid, `:focus-visible` (the last #12 remainder), the disabled state was
 indistinguishable and is now muted, the search icon is RTL-aware. Beta until a
 screen-reader and real IME pass. #12 has no remaining Button/Input work; the

@@ -3,7 +3,7 @@
 ## Status
 
 Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-ring-components` on main
-`0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef` (after #34). Counts become main's when the component-ring PR merges.
+`0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef` (after #34). Counts become main's when #35 merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -93,7 +93,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| Component-ring PR | Part-owned weak focus rings replaced (T2 step 3, part 1); 112 → 116. |
+| [#35](https://github.com/kajisho5/KATA-UI/pull/35) | Part-owned weak focus rings replaced (T2 step 3, part 1); 112 → 116. |
 
 ### npm and environment
 
@@ -145,7 +145,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the component-ring PR (T2 step 3, part 1) must be merged
+PR. Do not start while the previous task's PR is open. **Current blocker: #35 (T2 step 3, part 1) must be merged
 before the clipped-ring PR.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
@@ -168,7 +168,7 @@ Step 2 is done by #34: the owner chose a 2px ink ring (option 1,
 2026-11-06). `--k-ring` is a 2px page-colored gap plus a 2px ink ring, and the
 generated focus floor is a 2px ink outline (outline, not box-shadow, so component
 shadows and forced colors cannot remove it). Below 3:1: light 380 → 20, dark
-156 → 4 (docs/review/focus-ring-v3/). Step 3 part 1 (component-ring PR) replaced the part-owned weak
+156 → 4 (docs/review/focus-ring-v3/). Step 3 part 1 (#35) replaced the part-owned weak
 rings (Toggle, Dual Range, Rating, Wagara, Use Cases, Confetti Cannon,
 Kaleidoscope, Particle Word, selected Chip, Comparison Slider, Glow Button, error
 Input/Textarea): below 3:1 is now 1 per theme, Rating, which the tool cannot see

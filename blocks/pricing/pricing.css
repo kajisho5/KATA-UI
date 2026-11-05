@@ -10,7 +10,7 @@
 .plan-name{font-size:var(--k-text-base);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-2)}
 .plan-price{margin-top:var(--k-space-2);font-size:var(--k-text-3xl);font-weight:600;letter-spacing:-.03em}
 .plan-per{font-size:var(--k-text-base);font-weight:500;color:var(--k-ink-3);letter-spacing:0}
-.plan-desc{margin-top:var(--k-space-2);font-size:var(--k-text-base);line-height:1.7;color:var(--k-ink-2);letter-spacing:.01em}
+.plan-desc{margin-top:var(--k-space-2);font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink-2);letter-spacing:.01em}
 .plan-cta{width:100%;justify-content:center;margin-top:var(--k-space-4)}
 .plan .k-sep{margin:var(--k-space-4) 0 var(--k-space-3)}
 .plan-feats{list-style:none;margin:0;padding:0;display:grid;gap:var(--k-space-2);font-size:var(--k-text-base)}

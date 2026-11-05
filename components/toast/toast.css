@@ -1,7 +1,7 @@
 .k-toast,.toasts{--k-toast-ink:var(--k-bg);--k-toast-sub:var(--k-bg-soft)}
 .toasts{position:fixed;inset-inline-end:var(--k-space-4);bottom:18px;display:flex;flex-direction:column;gap:var(--k-space-2);z-index:99;font-family:var(--k-font)}
 .toast{display:flex;gap:var(--k-space-3);align-items:flex-start;background:var(--k-ink);color:var(--k-toast-ink);border-radius:var(--k-radius-lg);padding:var(--k-space-3) var(--k-space-4);font-size:var(--k-text-base);box-shadow:var(--k-shadow-pop);animation:k-tin var(--k-dur-slow) var(--k-ease-spring);max-width:320px}
-.toast small{display:block;color:var(--k-toast-sub);margin-top:var(--k-space-0-5);font-size:var(--k-text-sm);line-height:1.6}
+.toast small{display:block;color:var(--k-toast-sub);margin-top:var(--k-space-0-5);font-size:var(--k-text-sm);line-height:var(--k-lh-small)}
 .toast[data-closing]{transition:opacity var(--k-dur-slow) var(--k-ease)}
 @keyframes k-tin{from{opacity:0;transform:translateY(10px) scale(.97)}}
 

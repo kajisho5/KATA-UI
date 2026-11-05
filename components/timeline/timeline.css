@@ -8,4 +8,4 @@
 .k-timeline li[data-now]::before{background:var(--k-core);border-color:var(--k-core)}
 .k-timeline time{display:block;font-family:var(--k-mono);font-size:var(--k-text-xs);color:var(--k-ink-3);margin-bottom:var(--k-space-px)}
 .k-timeline b{display:block;font-size:var(--k-text-base);font-weight:550;color:var(--k-ink)}
-.k-timeline p{font-size:var(--k-text-base);color:var(--k-ink-2);line-height:1.65;letter-spacing:.01em}
+.k-timeline p{font-size:var(--k-text-base);color:var(--k-ink-2);line-height:var(--k-lh-body);letter-spacing:.01em}

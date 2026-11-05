@@ -7,5 +7,5 @@
 .k-spy-body{height:264px;overflow:auto;border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-4) var(--k-space-4);scroll-behavior:smooth}
 .k-spy-body section{margin-bottom:var(--k-space-5)}
 .k-spy-body h4{font-size:var(--k-text-md);font-weight:600;margin-bottom:var(--k-space-1)}
-.k-spy-body p{font-size:var(--k-text-base);line-height:1.8;color:var(--k-ink-2);letter-spacing:.01em}
+.k-spy-body p{font-size:var(--k-text-base);line-height:var(--k-lh-loose);color:var(--k-ink-2);letter-spacing:.01em}
 @media (max-width:560px){.k-spy{grid-template-columns:1fr}.k-spy nav{flex-direction:row;flex-wrap:wrap}}

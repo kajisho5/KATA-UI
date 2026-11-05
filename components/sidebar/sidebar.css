@@ -4,7 +4,7 @@
 .k-side{width:230px;flex:none;display:flex;flex-direction:column;background:var(--k-bg);border-inline-end:1px solid var(--k-line);padding:var(--k-space-3) var(--k-space-2);font-family:var(--k-font);color:var(--k-ink);text-align:start}
 .k-side-brand{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-0-5) var(--k-space-2) var(--k-space-3);font-size:var(--k-text-md);font-weight:600}
 .k-side-mark{width:24px;height:24px;border-radius:var(--k-radius-md);background:var(--k-ink);color:var(--k-bg);display:flex;align-items:center;justify-content:center;flex:none}
-.k-side-sec{font-size:var(--k-text-xs);letter-spacing:.1em;font-weight:650;color:var(--k-ink-2);margin:var(--k-space-4) var(--k-space-2) var(--k-space-1);line-height:1.3}
+.k-side-sec{font-size:var(--k-text-xs);letter-spacing:.1em;font-weight:650;color:var(--k-ink-2);margin:var(--k-space-4) var(--k-space-2) var(--k-space-1);line-height:var(--k-lh-heading)}
 .k-side-nav{display:grid;gap:var(--k-space-0-5)}
 .k-side-item{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-2) var(--k-space-2);border-radius:var(--k-radius-md);font-size:var(--k-text-base);letter-spacing:.01em;color:var(--k-ink-2);text-decoration:none;cursor:pointer;background:none;border:0;width:100%;text-align:start;font-family:inherit}
 .k-side-item:hover{background:var(--k-bg-soft);color:var(--k-ink)}
@@ -20,7 +20,7 @@
 .k-side-sub .k-side-item{font-size:var(--k-text-base);padding:var(--k-space-1) var(--k-space-2)}
 .k-side-user{margin-top:auto;display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-2) var(--k-space-0-5);border-top:1px solid var(--k-line)}
 .k-side-ava{width:30px;height:30px;border-radius:50%;background:var(--k-ink);color:var(--k-bg);display:flex;align-items:center;justify-content:center;font-size:var(--k-text-sm);font-weight:600;flex:none}
-.k-side-uname{font-size:var(--k-text-base);font-weight:550;line-height:1.3}
+.k-side-uname{font-size:var(--k-text-base);font-weight:550;line-height:var(--k-lh-heading)}
 .k-side-urole{font-size:var(--k-text-xs);color:var(--k-ink-3);letter-spacing:.01em}
 .k-side.rail{width:60px;padding:var(--k-space-3) var(--k-space-2);align-items:center}
 .k-side.rail .k-side-brand{padding:var(--k-space-0-5) 0 var(--k-space-3)}

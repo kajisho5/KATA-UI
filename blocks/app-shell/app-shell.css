@@ -8,7 +8,7 @@
 .shell-item.on svg{color:var(--k-core)}
 .shell-item .badge{margin-inline-start:auto}
 .shell-user{margin-top:auto;display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-2) var(--k-space-0-5);border-top:1px solid var(--k-line)}
-.shell-uname{font-size:var(--k-text-base);font-weight:550;line-height:1.3}
+.shell-uname{font-size:var(--k-text-base);font-weight:550;line-height:var(--k-lh-heading)}
 .shell-urole{font-size:var(--k-text-xs);color:var(--k-ink-3)}
 .shell-main{padding:var(--k-space-4) var(--k-space-5);min-width:0}
 .shell-top{display:flex;align-items:center;justify-content:space-between;gap:var(--k-space-3)}

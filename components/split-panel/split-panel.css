@@ -6,7 +6,7 @@
 /* .k-split clips overflow, so the handle draws its ring inside. */
 .k-split-h:focus-visible{outline:2px solid var(--k-ink);outline-offset:-2px}
 .k-split h5{font-size:var(--k-text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;margin-bottom:var(--k-space-2)}
-.k-split p{font-size:var(--k-text-base);line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
+.k-split p{font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink-2);letter-spacing:.01em}
 .k-split .row{font-size:var(--k-text-base);padding:var(--k-space-2) var(--k-space-2);border-radius:var(--k-radius-md);white-space:nowrap}
 .k-split .row.on{background:var(--k-accent-bg);color:var(--k-accent-ink);font-weight:550}
 .k-split-h .dots{width:4px;height:24px;background-image:radial-gradient(circle,currentColor 1.3px,transparent 1.5px);background-size:4px 7px;background-position:center}

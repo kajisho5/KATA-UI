@@ -12,5 +12,5 @@
 .k-navm-link:hover{background:var(--k-bg-soft)}
 .k-navm-link .ic{width:32px;height:32px;flex:none;border:1px solid var(--k-line);border-radius:var(--k-radius-md);display:flex;align-items:center;justify-content:center;color:var(--k-ink-2)}
 .k-navm-link b{display:block;font-size:var(--k-text-base);font-weight:600}
-.k-navm-link span{font-size:var(--k-text-sm);color:var(--k-ink-2);line-height:1.55;letter-spacing:.01em}
+.k-navm-link span{font-size:var(--k-text-sm);color:var(--k-ink-2);line-height:var(--k-lh-small);letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){.k-navm-btn svg{transition:none}}

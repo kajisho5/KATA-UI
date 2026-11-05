@@ -2,13 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/t3-font-size` on main
-`0c318c138c8dccdd15f4feebef8e2b816e182040` (after #39). Counts become main's when this PR merges.
+Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/t3-line-height` on main
+`77d926e926229c88567766c820eb2724c477e9ea` (after #40). Counts become main's when this PR merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
 **Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43**.
-No target fails a check. The JSON reports 141 warning-bearing
+No target fails a check. The JSON reports 91 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -24,13 +24,13 @@ not browser or screen-reader certification.
 | shared-token-scope | 0 | fail |
 | spacing-values | 140 | warn |
 | token-values | 0 | fail |
-| type-values | 205 | warn |
+| type-values | 121 | warn |
 | variant-hover | 0 | fail |
 
 Focus-visible has no findings under the T2 step 4 rule (shared floor plus
 cancellation detection, KATA.md Focus); the browser measurement in CI finds
 0 Tab stops below 3:1 or clipped. spacing-values has 140 warning findings (UI 12, Lab 128);
-type-values has 205 (UI: line-height 84, font-size 2; Lab 119). token-values has no remaining findings.
+type-values has 121 (UI: font-size 2, line-height 0; Lab 119). token-values has no remaining findings.
 
 ### Remaining JS failures
 
@@ -41,7 +41,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #39
+### Merged work, PR #11 through #40
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -75,6 +75,7 @@ Missing number #12 is open, not silently assumed merged.
 | #36 | 5fcba9e | Clipped focus rings drawn inside; Navigation Menu panel visible; 116 → 120. |
 | #38 | f6f7bc5 | Mold v4: spacing, text and leading scales generated from tokens.json (T3 step 1). |
 | #39 | 0c318c1 | T3 spacing: 762 raw declarations → tokens; UI spacing findings 763 → 12. |
+| #40 | 77d926e | T3 font size: 433 raw declarations → text tokens; UI font-size findings 435 → 2. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -82,7 +83,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#39 were squash-merged the same way after green CI. The owner then asked the
+#29–#40 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -99,7 +100,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#40](https://github.com/kajisho5/KATA-UI/pull/40) | T3: 433 raw font sizes → text tokens; UI font-size findings 435 → 2. |
+| This PR (fix/t3-line-height) | T3: 84 raw line heights → leading tokens; UI line-height findings 84 → 0. |
 
 ### npm and environment
 
@@ -151,7 +152,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #40 (T3 font size) must be merged before the line-height PR.**
+PR. Do not start while the previous task's PR is open. **Current blocker: the T3 line-height PR must be merged before the promotion PR.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -186,10 +187,12 @@ while the checks are warnings, and promote both to fail for UI last, at 0 UI
 findings, so the pass count and trusted-main ratchet never drop. Step 1 (scales,
 mold v4) is #38. #39 replaced 762 declarations (UI 763 → 12;
 the 12 are `* -1` negatives, one `env(safe-area-inset-bottom)` and one `12vh`,
-to settle with the checker change in the final promotion PR). The font-size PR
-replaced 433 declarations (UI 435 → 2; the 2 are `.86em` on inline code, also for
-the promotion PR). Next: line height (`python3 -m tools.t3_migrate line-height`),
-then promotion.
+to settle with the checker change in the final promotion PR). #40 replaced 433
+font sizes (UI 435 → 2; the 2 are `.86em` on inline code, also for the promotion
+PR). The line-height PR replaced 84 (UI 84 → 0). Next: the promotion PR (checker
+change; the owner reviews it before merge). It must settle the 14 remaining UI
+findings: 10 `calc(token * -1)`, Bottom Navigation's `env(safe-area-inset-bottom)`,
+Command's `12vh` and Typeset/Blog Article's `.86em` inline code.
 Lab parts keep warnings.
 
 1. Complete the common 4px spacing and text/leading scales in tokens.json. Existing --k-space-* / --k-text-* / --k-lh-* already exist; reuse them and preserve names/aliases rather than adding duplicate scales. Propose --k-leading-* only if a missing shared role needs it. Bump moldVersion for changes and write counted mappings in docs/token-migration.md.

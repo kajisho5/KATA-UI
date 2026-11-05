@@ -2,7 +2,7 @@
 .k-cc-stage{position:relative;border:1px dashed var(--k-zinc-300);border-radius:var(--k-radius-xl);min-height:218px;background:var(--k-bg-soft);font-family:var(--k-font)}
 .k-cc{position:absolute;left:14px;bottom:14px;max-width:380px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-pop);padding:var(--k-space-4)}
 .k-cc h3{font-size:var(--k-text-md);font-weight:650;color:var(--k-ink)}
-.k-cc p{font-size:var(--k-text-sm);line-height:1.7;color:var(--k-ink-2);margin:var(--k-space-1) 0 var(--k-space-3);letter-spacing:.01em}
+.k-cc p{font-size:var(--k-text-sm);line-height:var(--k-lh-body);color:var(--k-ink-2);margin:var(--k-space-1) 0 var(--k-space-3);letter-spacing:.01em}
 .k-cc p a{color:var(--k-accent-ink);font-weight:550}
 .k-cc-btns{display:flex;gap:var(--k-space-2);flex-wrap:wrap}
 @media (max-width:480px){.k-cc{right:14px}}

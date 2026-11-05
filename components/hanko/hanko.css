@@ -1,7 +1,7 @@
 /* KATA Hanko — the seal, in shu-iro. */
 .k-seal-doc{font-family:var(--k-font);color:var(--k-ink);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:var(--k-space-5);background:var(--k-bg);max-width:480px}
 .k-seal-doc h3{font-size:var(--k-text-lead);font-weight:650}
-.k-seal-doc p{font-size:var(--k-text-base);line-height:1.75;color:var(--k-ink-2);margin-top:var(--k-space-1);letter-spacing:.01em}
+.k-seal-doc p{font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink-2);margin-top:var(--k-space-1);letter-spacing:.01em}
 .k-seal-row{display:flex;align-items:center;gap:var(--k-space-4);margin-top:var(--k-space-4);padding-top:var(--k-space-4);border-top:1px solid var(--k-line)}
 .k-seal-meta b{display:block;font-size:var(--k-text-base)}
 .k-seal-meta span{font-size:var(--k-text-sm);color:var(--k-ink-3);letter-spacing:.01em}

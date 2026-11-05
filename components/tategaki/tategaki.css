@@ -1,12 +1,12 @@
 /* KATA Tategaki — vertical text, set properly. */
 .k-tate{display:flex;gap:var(--k-space-8);align-items:stretch;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:var(--k-space-6);font-family:var(--k-font);color:var(--k-ink)}
-.k-tate-v{writing-mode:vertical-rl;font-family:"Hiragino Mincho ProN","YuMincho",serif;font-size:var(--k-text-display);font-weight:600;letter-spacing:.32em;line-height:1;display:flex}
+.k-tate-v{writing-mode:vertical-rl;font-family:"Hiragino Mincho ProN","YuMincho",serif;font-size:var(--k-text-display);font-weight:600;letter-spacing:.32em;line-height:var(--k-lh-tight);display:flex}
 .k-tate-ch{animation:k-tate-in calc(1s * var(--k-mscale)) var(--k-ease) both}
 .k-tate-ch.d1{animation-delay:calc(.05s * var(--k-mscale))}.k-tate-ch.d2{animation-delay:calc(.22s * var(--k-mscale))}.k-tate-ch.d3{animation-delay:calc(.39s * var(--k-mscale))}
 @keyframes k-tate-in{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 .k-tate-gloss{border-inline-start:1px solid var(--k-line);padding-inline-start:var(--k-space-6);display:flex;flex-direction:column;justify-content:center;gap:var(--k-space-3)}
 .k-tate-gloss div b{font-size:var(--k-text-md);font-weight:650}
 .k-tate-gloss div b span{font-family:"Hiragino Mincho ProN","YuMincho",serif;margin-inline-end:var(--k-space-2)}
-.k-tate-gloss div p{font-size:var(--k-text-sm);color:var(--k-ink-2);line-height:1.65;letter-spacing:.01em}
+.k-tate-gloss div p{font-size:var(--k-text-sm);color:var(--k-ink-2);line-height:var(--k-lh-body);letter-spacing:.01em}
 .k-tate-gloss .en{font-size:var(--k-text-xs);font-weight:650;letter-spacing:.18em;color:var(--k-ink-3);text-transform:uppercase}
 @media (prefers-reduced-motion:reduce){.k-tate-ch{animation:none}}

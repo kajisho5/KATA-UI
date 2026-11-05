@@ -3,7 +3,7 @@
 .k-car-track::-webkit-scrollbar{display:none}
 .k-car-slide{flex:0 0 78%;scroll-snap-align:start;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);padding:var(--k-space-4);min-height:118px}
 .k-car-slide h4{font-size:var(--k-text-md);font-weight:600;color:var(--k-ink)}
-.k-car-slide p{margin-top:var(--k-space-1);font-size:var(--k-text-sm);line-height:1.7;color:var(--k-ink-2);letter-spacing:.01em}
+.k-car-slide p{margin-top:var(--k-space-1);font-size:var(--k-text-sm);line-height:var(--k-lh-body);color:var(--k-ink-2);letter-spacing:.01em}
 .k-car-ui{display:flex;align-items:center;gap:var(--k-space-2);margin-top:var(--k-space-3)}
 .k-car-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--k-line);background:var(--k-bg);color:var(--k-ink);display:grid;place-items:center;cursor:pointer}
 .k-car-btn:hover{background:var(--k-bg-soft)}

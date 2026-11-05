@@ -6,5 +6,5 @@
 .k-coll summary svg{margin-inline-start:auto;transition:transform var(--k-dur-base);color:var(--k-ink-3)}
 .k-coll[open ] summary{border-radius:var(--k-radius) var(--k-radius) 0 0}
 .k-coll[open ] summary svg{transform:rotate(180deg)}
-.k-coll-body{border:1px solid var(--k-line);border-top:0;border-radius:0 0 var(--k-radius) var(--k-radius);padding:var(--k-space-3);font-size:var(--k-text-base);line-height:1.75;color:var(--k-ink-2);letter-spacing:.01em}
+.k-coll-body{border:1px solid var(--k-line);border-top:0;border-radius:0 0 var(--k-radius) var(--k-radius);padding:var(--k-space-3);font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink-2);letter-spacing:.01em}
 @media (prefers-reduced-motion:reduce){.k-coll summary svg{transition:none}}

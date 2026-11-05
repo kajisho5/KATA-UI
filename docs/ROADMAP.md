@@ -66,7 +66,7 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Mold v3: `--k-ring` and the focus floor become a 2px ink ring; below 3:1 dropped from 380 to 20 (light) and 156 to 4 (dark) ([PR #34](https://github.com/kajisho5/KATA-UI/pull/34)).
   - [x] Part-owned weak rings replaced; below 3:1 dropped to 1 stop per theme (Rating, not measurable by the tool) ([PR #35](https://github.com/kajisho5/KATA-UI/pull/35)).
   - [x] Clipped rings drawn inside their controls (52 → 0); Navigation Menu's open panel is visible again ([PR #36](https://github.com/kajisho5/KATA-UI/pull/36)).
-  - [x] Static rule: shared floor plus cancellation detection; the browser measurement runs in CI with 0 stops below 3:1 or clipped (owner review: PR_PLACEHOLDER).
+  - [x] Static rule: shared floor plus cancellation detection; the browser measurement runs in CI with 0 stops below 3:1 or clipped (owner review: [PR #37](https://github.com/kajisho5/KATA-UI/pull/37)).
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and

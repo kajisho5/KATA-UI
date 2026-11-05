@@ -2,12 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-05 (Asia/Tokyo), main
-`2c057fb48157fe5fa03ae3f58a892087ff044d4d`. Regenerated with
-`python3 check.py --json mold-results.json`; all counts below come from that JSON.
+Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-upload-color-carousel`
+on main `20ca626109a755deb696ddc9c8c8847408f6f9b6` (after #25, #27 and #28).
+Regenerated with `python3 check.py --json mold-results.json`; all counts below
+come from that JSON. The counts become main's only when the owner merges this PR.
 
-**Mold Verified 100 / 164 · UI 67 / 121 · Lab 33 / 43**.
-64 targets fail at least one check. The JSON reports 318 warning-bearing
+**Mold Verified 106 / 164 · UI 73 / 121 · Lab 33 / 43**.
+58 targets fail at least one check. The JSON reports 318 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -15,9 +16,9 @@ not browser or screen-reader certification.
 |---|---:|---|
 | accessible-label | 0 | fail |
 | button-type | 0 | fail |
-| focus-visible | 125 | fail |
-| js-global-bindings | 37 | fail |
-| js-single-instance | 14 | fail |
+| focus-visible | 112 | fail |
+| js-global-bindings | 18 | fail |
+| js-single-instance | 7 | fail |
 | legacy-contract | 0 | fail |
 | reduced-motion | 0 | fail |
 | shared-token-scope | 0 | fail |
@@ -26,7 +27,7 @@ not browser or screen-reader certification.
 | type-values | 638 | warn |
 | variant-hover | 0 | fail |
 
-Focus-visible fails for **61 parts**, with 125 findings; parts and
+Focus-visible fails for **55 parts**, with 112 findings; parts and
 findings are different units. spacing-values has 891 warning findings;
 type-values has 638. token-values has no remaining findings.
 
@@ -34,27 +35,21 @@ type-values has 638. token-values has no remaining findings.
 
 | Part | Failing JS checks |
 |---|---|
-| components/carousel | js-single-instance, js-global-bindings |
-| components/color-picker | js-single-instance, js-global-bindings |
-| components/data-table | js-single-instance, js-global-bindings |
-| components/file-upload | js-single-instance, js-global-bindings |
 | components/follow-frame | js-single-instance, js-global-bindings |
-| components/input-otp | js-global-bindings |
 | components/reorder | js-single-instance, js-global-bindings |
 | components/split-panel | js-single-instance, js-global-bindings |
-| components/tag-input | js-single-instance, js-global-bindings |
 | blocks/pricing | js-single-instance, js-global-bindings |
 | blocks/site-header | js-single-instance, js-global-bindings |
 | blocks/use-cases | js-global-bindings |
 
-PR #27 proposes Tag Input, Input OTP and Data Table and reports 103/164 on its
-branch. It is **open**, not main; its score must not replace the 100/164 snapshot.
-After an owner merge, rerun the checker and update this section and the queue.
+#27 (Tag Input, Input OTP, Data Table) is merged: 100 → 103. This PR (File
+Upload, Color Picker, Carousel) takes the branch to 106. Evidence:
+docs/review/tag-otp-table/ and docs/review/upload-color-carousel/.
 
-### Merged work, PR #11 through #26
+### Merged work, PR #11 through #28
 
 The following one-line summaries are based on main's first-parent git log.
-Missing numbers #12 and #25 are open, not silently assumed merged.
+Missing number #12 is open, not silently assumed merged.
 
 | PR | Main commit | Summary |
 |---|---|---|
@@ -72,6 +67,16 @@ Missing numbers #12 and #25 are open, not silently assumed merged.
 | #23 | deb88d2 | Mold versioning, compatibility headers and upgrade/changelog pages. |
 | #24 | 839b05d | Alert Dialog, Drawer and Popover multi-instance behavior. |
 | #26 | 2c057fb | Command, Context Menu and Date Picker instances, RTL visual arrows and menu blur. |
+| #25 | dcbd287 | CLI safe installs, mold-version warnings, Node 20/22 CLI tests in CI. |
+| #27 | 30f67ab | Tag Input, Input OTP and Data Table instances and keyboard behavior. |
+| #28 | 20ca626 | This handoff, CLAUDE.md and the opt-in session setup helper. |
+
+#25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
+in that order, on the owner's explicit chat instruction to do the merging. Each
+PR's CI was green. #25 shared no files with the others and was based on main.
+#27 and #28 were each merged locally onto the updated main first and checked
+(check, ratchet, unittest, build, distribution; CLI tests for #27).
+That was a one-time owner decision; the standing rule below is unchanged.
 
 Evidence commands: `git log --first-parent --oneline origin/main` and
 `gh pr list --state merged --limit 50 --json number,title,mergedAt,url`.
@@ -82,30 +87,30 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 
 | PR | Handling |
 |---|---|
-| [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch; owner may close after #25 merges. Do not merge the stale branch wholesale. |
-| [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation is in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
+| [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
+| [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#25](https://github.com/kajisho5/KATA-UI/pull/25) | Open, rebased onto #26, Node20/22 tests and mold warnings proposed. Owner review/merge is required. Current main CLI is still 1.0.0 with no npm test script. |
-| [#27](https://github.com/kajisho5/KATA-UI/pull/27) | Open JS batch for Tag Input/OTP/Data Table. Owner review/merge is required before another implementation task. Do not duplicate it. |
-| [#28](https://github.com/kajisho5/KATA-UI/pull/28) | This documentation handoff. Owner review/merge is required before starting its queue; refresh this snapshot after merge. |
-
-This owner-requested documentation handoff records those open PRs without merging
-them. It does not authorize another implementation task. The owner must also
-finish review of this handoff PR before the next agent starts the queue.
+| This PR | T1 batch 4: File Upload, Color Picker, Carousel. Owner review/merge is required before the next T1 batch. |
 
 ### npm and environment
 
-Read-only `npm view @kajisho5/kataui version dist-tags time --json` returned
-latest **1.0.0**, published 2026-11-03. Version 1.1.0 is proposed in open #25,
-not claimed published. No npm publish/deprecate or ownership changes were made.
-The owner alone may use the manual publish workflow after reviewing its version
-and provenance requirements. Do not trigger it as an implementation agent.
+Read-only `npm view @kajisho5/kataui version dist-tags time --json` (2026-11-05)
+returned latest **1.0.0**, published 2026-11-03. main's cli/package.json is now
+1.1.0 (from #25) and requires Node >=20; 1.1.0 is **not** published. No npm
+publish/deprecate or ownership changes were made. The owner alone may use the
+manual publish workflow after reviewing its version and provenance requirements.
+Do not trigger it as an implementation agent.
 
-Ubuntu setup target: Python >=3.11 and Node >=20. This environment reports Python
-3.12.14, Node24.19.0, Playwright1.62.0, Pillow12.3.0 and /usr/bin/chromium.
-Current main's cli/package.json still says >=18; #25 corrects it to >=20.
-Current mold.yml has no dependency-install, CLI-test or Node matrix step.
-The setup helper supplements that workflow; it does not pretend those steps exist.
+Ubuntu setup target: Python >=3.11 and Node >=20. This session (cloud container)
+reports Python 3.13.18, Node 22.23.4, Playwright 1.62.0 (from
+tools/agent-setup.sh) and Pillow 12.3.0. Node 20 is not installed here, so CLI
+tests ran on Node 22 only; CI runs the Node 20/22 matrix. The container's
+browser is /opt/pw-browsers/chromium, not /usr/bin/chromium. This session linked
+/usr/bin/chromium to it by hand before running the setup helper, which then
+reported "Chromium already available"; a fresh container without that link gets
+the helper's /usr/bin/chromium warning, and the browser tests skip.
+mold.yml installs no Playwright, so the browser regression tests (including
+tests/test_upload_color_carousel.py) skip in CI; run them locally and report it.
 Python Playwright does not install a Node playwright module for legacy Node browser tools.
 Some existing browser tests hard-code /usr/bin/chromium and skip if it is missing;
 a Playwright-managed browser alone does not satisfy those paths. Inspect setup
@@ -125,21 +130,30 @@ output and report skips rather than claiming headless verification happened.
 - aria-sort belongs to a column/row header, not a button role. Use a native button in the header.
 - :where(targets):focus-visible is not zero specificity: the outside pseudo-class still counts. Wrap the whole focus selector in :where when zero specificity is intended.
 - A stricter-check rollout can reduce the score and fail the trusted-main ratchet even after updating a local baseline. The owner must review that deliberate transition; never hide it with a permissive exception.
+- Carousel (batch 4): announcing on every scroll index change reported the slides a smooth jump passed. Update dots live, announce and dispatch once on scrollend (with a timeout fallback).
+- A sample root with role=region and a fixed aria-label repeats the same landmark when pasted twice (axe landmark-unique). Use role=group for carousel-like widgets.
+- File inputs: `hidden` removes them from the tab order. Hide visually, keep focusable, and show the ring on the visible zone with :has(). Chromium opens the picker on Space; Enter was not reliable.
+- Playwright: expect_file_chooser was flaky; use page.on('filechooser') and close each chooser. After a mouse click, a programmatic focus() is not :focus-visible; press a key first.
 
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #25,
-#27 and then this handoff must be resolved by the owner; do not start T1 now.**
-Never merge, publish, deprecate or close PRs/issues as the implementation agent.
+PR. Do not start while the previous task's PR is open. **Current blocker: the
+T1 batch 4 PR (File Upload, Color Picker, Carousel) must be merged by the owner
+before batch 5 starts.**
+Never merge, publish, deprecate or close PRs/issues as the implementation agent
+unless the owner explicitly asks in that session (see Merged work above).
 
 ### T1 — JS multi-instance: next 3 failing parts (repeat until none fail)
 
-After the owner merges the pending batch, regenerate the report. Pick the first
-three parts still failing js-single-instance or js-global-bindings, in this order:
-tag-input, input-otp, data-table, file-upload, color-picker, carousel, split-panel,
-reorder, follow-frame, blocks/pricing, blocks/site-header, blocks/use-cases.
-State the choice and the remainder in the PR. Do not pre-count open #27 as shipped.
+Done: batch 3 (#27: tag-input, input-otp, data-table) and batch 4 (this PR:
+file-upload, color-picker, carousel). After the owner merges the pending batch,
+regenerate the report. Pick the first three parts still failing
+js-single-instance or js-global-bindings, in this order: split-panel, reorder,
+follow-frame, blocks/pricing, blocks/site-header, blocks/use-cases (next batch 5:
+split-panel, reorder, follow-frame; then batch 6: the three blocks).
+State the choice and the remainder in the PR. Do not pre-count an open PR as shipped.
+Reuse tools/verify_upload_color_carousel.py as the test pattern.
 
 Common: KATA.md implementation contract items 11, 12 and 14. Remove fixed
 id/for/aria-controls from samples. Add tests/<slug>-multi.html with three copies,
@@ -149,12 +163,6 @@ arrows follow visual direction. Metadata follows item 15; keep status unchanged.
 
 Per part:
 
-- Tag Input: Enter commits except during IME. Empty-input Backspace removes the last tag. Visual Left/Right move between tags; Delete/Backspace removes the focused tag. Removal buttons have names. Announce add/remove via role=status. Reject duplicates.
-- Input OTP: one digit per cell, auto-advance, Backspace back, full-code paste, numeric inputmode, one-time-code autocomplete, IME guard and change on completion. Keep digit cells LTR inside RTL pages.
-- Data Table: native sort buttons, aria-sort on the corresponding columnheader (APG correction to the supplied button wording), named selection checkboxes, keyboard sorting, caption or aria-labelledby, independent selection/sort state.
-- File Upload: decorative drop zone plus a real labelled file input that opens from the keyboard. Announce file names via role=status; isolate drag state.
-- Color Picker: radiogroup/radio swatches, arrow navigation and change notification. Pointer capture for handle drag; independent state.
-- Carousel: named prev/next buttons, aria-live position, visual horizontal arrows, pause control for autoplay and stop autoplay with reduced motion.
 - Split Panel: separator handle with aria-valuenow/min/max. Visual Left/Right for horizontal, Up/Down for vertical resizing. Use pointer capture.
 - Reorder: Space lifts/drops, Up/Down move, Escape cancels. Announce moves via role=status. Use pointer capture.
 - Follow Frame: independent pointer following; stop it for reduced motion.
@@ -218,10 +226,10 @@ The contract is a target. No code is changed to conceal these differences:
 - Item 5: finite radius steps follow --k-radius but full is intentionally fixed 999px; --k-glow is absent. No --k-shadow-edge exists (it is optional).
 - Item 6: templates/product-page/product-page.css replaces the selected swatch box-shadow with an offset focus shadow; preservation of both states needs a browser test.
 - Item 7: prior 40-part contrast artifacts exist under docs/review; no complete fresh 164-part/state contrast certification was performed for this handoff.
-- Item 10: main CLI1.0.0 lacks mold-header warnings and safe forced-add behavior. #25 implements the missing warning/protection but remains open. Explicit owner init --force in #25 is an intentional update, not automatic add overwrite.
+- Item 10: #25 is merged, so main's CLI (1.1.0 in cli/package.json) has the mold-header warnings and safe forced-add behavior. npm still serves 1.0.0 until the owner publishes. Explicit owner init --force is an intentional update, not automatic add overwrite.
 - Item 11: Combobox and Popover still install per-instance document click listeners, rather than one pointerdown listener per part type. The JS checker does not detect every contract violation; the measured remaining JS failures are listed above.
-- Item 12: Date Picker's RTL correction is merged in #26; Tag/OTP are still the old implementations until #27 merges. OTP's requested LTR/IME/completion behavior is not yet in main.
+- Item 12: Date Picker's RTL correction is merged in #26; Tag/OTP behavior (including OTP LTR/IME/completion) is merged in #27. Color Picker and Carousel visual arrows are in this PR.
 - Item 13: main Modal uses native showModal/Escape but has no backdrop-click close handler. Drawer/Alert Dialog have the reviewed #24 behavior. Do not silently call Modal complete.
 - Item 14: inline sample styles and fixed IDs remain across legacy parts; the static inline-data-color allowance is not proof of full sample compliance.
 - Items 15/16: metadata and existing Stable labels predate the full manual release gate. No new manual IME/SR certification was performed. Missing multi-instance pages for Modal/Dropdown/Tabs/Tooltip are confirmed above.
-- Setup/CI: main has no CLI regression script, Node20/22 matrix or Python browser dependency-install step; CLAUDE.md labels those limitations. Managed Chromium paths may not satisfy scripts hard-coded to /usr/bin/chromium.
+- Setup/CI: #25 added the CLI regression script and the Node 20/22 matrix to mold.yml. There is still no Python browser dependency-install step, so browser tests skip in CI. CLAUDE.md's "Pending PR #25" section predates that merge. Managed Chromium paths may not satisfy scripts hard-coded to /usr/bin/chromium.

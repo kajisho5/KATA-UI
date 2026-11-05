@@ -10,3 +10,8 @@
 .k-car-dots{display:flex;gap:6px;margin-inline-start:auto}
 .k-car-dots button{width:7px;height:7px;border-radius:var(--k-radius-full);border:none;background:var(--k-line);cursor:pointer;padding:0;transition:width var(--k-dur-base) var(--k-ease),background var(--k-dur-base)}
 .k-car-dots button[aria-current="true"]{width:20px;background:var(--k-ink)}
+
+.k-car-track:focus-visible,.k-car-btn:focus-visible,.k-car-dots button:focus-visible{outline:0;box-shadow:var(--k-ring)}
+/* Arrow icons point toward the slide they reveal, so they mirror in RTL. */
+.k-car:dir(rtl) .k-car-btn svg{transform:scaleX(-1)}
+.k-car-status{position:absolute;width:var(--k-space-1);height:var(--k-space-1);clip-path:inset(50%);overflow:hidden;white-space:nowrap}

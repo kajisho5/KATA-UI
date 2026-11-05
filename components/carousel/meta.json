@@ -7,6 +7,6 @@
     "scroll-snap"
   ],
   "status": "beta",
-  "usage": "For galleries and card rails on narrow screens. On wide screens it is a grid that happens to scroll; design for that first.",
-  "a11y": "Built on native scroll, so touch, trackpads and keyboards all work. Buttons move by one panel; dots are buttons too, labelled by position."
+  "usage": "For galleries and card rails on narrow screens. On wide screens it is a grid that happens to scroll; design for that first. There is no autoplay, so there is nothing to pause. Listen for the visible slide:\n\n```js\ndocument.addEventListener('kata-carousel-change', event => {\n  console.log(event.detail.index, event.detail.count);\n});\n```",
+  "a11y": "Built on native scroll, so touch and trackpads work. The root is a labelled group with the carousel role description (not a landmark, so pasted copies do not repeat landmark names); each slide is a group named 'n of N'. The track is a tab stop: horizontal arrows follow visual direction (in RTL, Left moves forward), and Home and End jump to the ends. Previous and Next are named buttons whose icons mirror in RTL, and dots are buttons labelled by position. A status region announces 'Slide n of N' after a change. Smooth scrolling turns off with reduced motion or a zero motion multiplier. Screen-reader output is not yet verified by hand."
 }

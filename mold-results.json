@@ -2,16 +2,16 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 103,
-    "failed": 61,
+    "passed": 106,
+    "failed": 58,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 119,
-      "js-global-bindings": 31,
-      "js-single-instance": 12,
+      "focus-visible": 112,
+      "js-global-bindings": 18,
+      "js-single-instance": 7,
       "legacy-contract": 0,
       "reduced-motion": 0,
       "shared-token-scope": 0,
@@ -22,8 +22,8 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 70,
-        "failed": 51,
+        "passed": 73,
+        "failed": 48,
         "total": 121
       },
       "lab": {
@@ -3680,7 +3680,7 @@
     {
       "id": "components/carousel",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -3843,26 +3843,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/carousel/preview.html: <button> k-car-btn",
-            "components/carousel/preview.html: <button> "
-          ],
-          "details": [
-            {
-              "path": "components/carousel/preview.html",
-              "tag": "button",
-              "class_or_role": "k-car-btn",
-              "occurrences": 2
-            },
-            {
-              "path": "components/carousel/preview.html",
-              "tag": "button",
-              "class_or_role": "",
-              "occurrences": 3
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -3878,23 +3862,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-car-track]",
-            "document.querySelector('[data-car-prev]",
-            "document.querySelector('[data-car-next]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const carTrack",
-            "const carSlides",
-            "const carDots"
-          ]
+          "findings": []
         }
       ]
     },
@@ -4744,7 +4720,7 @@
     {
       "id": "components/color-picker",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -4857,33 +4833,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/color-picker/preview.html: <button> k-cp-sw sel",
-            "components/color-picker/preview.html: <button> k-cp-sw",
-            "components/color-picker/preview.html: <input> "
-          ],
-          "details": [
-            {
-              "path": "components/color-picker/preview.html",
-              "tag": "button",
-              "class_or_role": "k-cp-sw sel",
-              "occurrences": 1
-            },
-            {
-              "path": "components/color-picker/preview.html",
-              "tag": "button",
-              "class_or_role": "k-cp-sw",
-              "occurrences": 7
-            },
-            {
-              "path": "components/color-picker/preview.html",
-              "tag": "input",
-              "class_or_role": "",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -4899,23 +4852,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-cp]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const cp",
-            "const cpOut",
-            "const cpChip",
-            "const cpCustom",
-            "const cpFirst"
-          ]
+          "findings": []
         }
       ]
     },
@@ -8033,7 +7978,7 @@
     {
       "id": "components/file-upload",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -8198,26 +8143,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/file-upload/preview.html: <input> ",
-            "components/file-upload/preview.html: <button> rm"
-          ],
-          "details": [
-            {
-              "path": "components/file-upload/preview.html",
-              "tag": "input",
-              "class_or_role": "",
-              "occurrences": 1
-            },
-            {
-              "path": "components/file-upload/preview.html",
-              "tag": "button",
-              "class_or_role": "rm",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -8233,23 +8162,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-upload]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const up",
-            "const upInput",
-            "const upZone",
-            "const upList",
-            "const FILE_SVG"
-          ]
+          "findings": []
         }
       ]
     },

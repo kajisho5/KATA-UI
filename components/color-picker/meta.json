@@ -8,6 +8,6 @@
     "palette"
   ],
   "status": "beta",
-  "usage": "For brand colors, labels and categories — anywhere the right answer is usually one of a few known colors. Free-form color fields invite off-brand chaos; the palette is the point.",
-  "a11y": "Swatches are radio inputs in disguise: one selected, arrow keys move, the choice is announced. The custom tile is a native color input, so the full picker is the platform one."
+  "usage": "For brand colors, labels and categories — anywhere the right answer is usually one of a few known colors. Free-form color fields invite off-brand chaos; the palette is the point. Listen for a new choice:\n\n```js\ndocument.addEventListener('kata-color-picker-change', event => {\n  console.log(event.detail.value, event.detail.name);\n});\n```\nThe current hex value is also on the root as data-value.",
+  "a11y": "Swatches are buttons with role=radio inside a labelled radiogroup, with one tab stop. Arrow keys move and select (horizontal arrows follow visual direction; in RTL, Left moves forward), Home and End jump to the ends, and Enter or Space selects. Focus on the selected swatch adds an outline outside its selection ring, so both states stay visible. The custom tile is a native color input: it previews while the picker moves and notifies once on change. There is no drag handle. Screen-reader output is not yet verified by hand."
 }

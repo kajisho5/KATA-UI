@@ -91,6 +91,7 @@ Missing number #12 is open, not silently assumed merged.
 | #53 | 67b6759 | Checker: an empty label, label[for] or aria-labelledby target no longer names a control (owner approved); 164/164 unchanged. |
 | #54 | 51baa6c | T4 Modal: backdrop click closes (item 13), dialog name/description, opener focus, IIFE with data-kata-ready; overlay browser test in CI; beta. |
 | #55 | 7947de8 | T4 Dropdown: APG menu button (ARIA state, arrow keys, Escape focus return), IIFE with data-kata-ready, focused-item styles; beta. |
+| #56 | f19e970 | T4 Popover: panel kept inside narrow viewports (--kpop-shift), one shared pointerdown/resize listener per script load; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -98,7 +99,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#55 were squash-merged the same way after green CI. The owner then asked the
+#29–#56 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -115,7 +116,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#56](https://github.com/kajisho5/KATA-UI/pull/56) | T4 Popover: panel kept inside narrow viewports (--kpop-shift), one shared pointerdown/resize listener per script load; beta. |
+| [#57](https://github.com/kajisho5/KATA-UI/pull/57) | T4 Tooltip: tip text kept out of the accessible name (CSS alternative text); WCAG 1.4.13 gap recorded for the owner; beta. |
 
 ### npm and environment
 
@@ -167,7 +168,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #56 (T4 Popover), then T4 tooltip.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #57 (T4 Tooltip), then T4 toast.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -315,7 +316,12 @@ the centred panel reached x=-77 (LTR) / 437 (RTL); popover.js now sets
 --kpop-shift on open and resize to keep a --k-space-4 margin. One pointerdown
 and one resize listener per script load replace a document click listener per
 instance (item 11). Beta.
-Next: tooltip.
+Tooltip ([#57](https://github.com/kajisho5/KATA-UI/pull/57)): the ::after tip text joined each trigger's accessible name
+("Copy Copy link"); `content: attr(data-tip) / ""` keeps it out, and the tip
+renders pixel-identically. **Owner decision:** WCAG 1.4.13 (Escape dismissal,
+hoverable tip) cannot be met in CSS alone; it needs a small tooltip.js, which
+changes the part's "Pure CSS, no JS" description. Beta until then.
+Next: toast.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
 Show a measured N stable / M beta split on the home page.

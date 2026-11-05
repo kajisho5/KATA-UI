@@ -84,6 +84,7 @@ least 90% of UI-profile targets pass all checks.
   switch, dialog/modal, dropdown-menu, popover, tooltip, toast, card, tabs,
   accordion, badge, alert, table, pagination, breadcrumb, then the remaining
   components needed to reach 40. Map requested names to repository slugs in each PR.
+  - [ ] Accordion: release procedure run; no defect found; beta until a screen-reader pass (docs/review/accordion, [PR #61](https://github.com/kajisho5/KATA-UI/pull/61)).
   - [ ] Tabs: release procedure run; real panels, APG roles and keyboard; beta until a screen-reader pass (docs/review/tabs, [PR #60](https://github.com/kajisho5/KATA-UI/pull/60)).
   - [ ] Card: release procedure run; combo progress bars named, example text classes; beta until a screen-reader pass (docs/review/card, [PR #59](https://github.com/kajisho5/KATA-UI/pull/59)).
   - [ ] Toast: release procedure run; status live region added, text inserted as text, icon colour from tokens; beta until a screen-reader pass (docs/review/toast, [PR #58](https://github.com/kajisho5/KATA-UI/pull/58)).

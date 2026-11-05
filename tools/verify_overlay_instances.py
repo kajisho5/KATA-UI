@@ -42,7 +42,8 @@ def run(output=ROOT/'docs/review/overlay-instances'):
        root.dispatch_event('compositionstart');page.keyboard.press('Escape');assert root.evaluate('(e)=>e.open');root.dispatch_event('compositionend')
        page.keyboard.press('Escape');page.wait_for_function('(e)=>!e.open',arg=root.element_handle());assert trigger.evaluate('(e)=>document.activeElement===e')
        if slug=='alert-dialog':assert root.get_attribute('data-cancel-count')=='1' and root.get_attribute('data-cancel-prevented')=='false'
-       trigger.click();page.mouse.click(5,5)
+       # Click the backdrop outside the panel: a drawer sits at the inline end, so in RTL it covers the left edge.
+       trigger.click();box=root.bounding_box();page.mouse.click(5 if box['x']>10 else page.viewport_size['width']-5,5)
        if slug=='alert-dialog':
         assert root.evaluate('(e)=>e.open');page.keyboard.press('Escape')
        page.wait_for_function('(e)=>!e.open',arg=root.element_handle())

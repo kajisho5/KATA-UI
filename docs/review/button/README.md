@@ -1,6 +1,6 @@
 # T4 Button: release procedure (KATA.md contract items 11, 14–16)
 
-Main base: `cbc90730d267596403b9b76803acd5fef6f366d4` (after #42; rebased onto #43).
+Main base: `f5e27340ad935ca81e58456d16f1fb4fca07dbd5` (after #43).
 Button has no JavaScript, so contract item 11 (initialization, IDs, IME guards)
 applies only to its samples.
 

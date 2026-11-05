@@ -63,6 +63,9 @@ jobs:
           echo "CHROMIUM_PATH=$(python3 -c 'from playwright.sync_api import sync_playwright as s; p=s().start(); print(p.chromium.executable_path); p.stop()')" >> "$GITHUB_ENV"
       - name: Measure keyboard focus visibility in light and dark
         run: python3 -W error::SyntaxWarning -m tools.verify_focus_ring --check --output /tmp/focus-ring
+      - name: Run part browser regressions that need Chromium
+        # The regression step above runs before Chromium is installed, so these skip there.
+        run: python3 -W error::SyntaxWarning -m unittest tests.test_button_browser
       - uses: actions/upload-artifact@v4
         if: always()
         with:

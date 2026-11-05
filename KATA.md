@@ -342,7 +342,9 @@ index does not add checks or exceptions.
    Shared elevation roles are --k-shadow-xs/sm/pop/modal, plus --k-shadow-edge
    if present. Backdrops use --k-backdrop. A shared glow role is named --k-glow;
    it is not present in this checkout and must not be assumed to exist.
-6. **Distinct rings.** --k-ring is keyboard focus only. --k-ring-selected is
+6. **Distinct rings.** --k-ring is keyboard focus only: since mold v3 a 2px
+   page-colored gap plus a 2px ink ring (3:1 in both themes), matching the 2px
+   ink focus-floor outline in tokens.css. --k-ring-selected is
    persistent selection; --k-ring-offset separates a ring from a colored surface.
    A selected item with focus must retain visible evidence of both states.
    Semantic ring colors resolve through the active theme and Foundry.

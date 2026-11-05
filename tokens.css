@@ -1,8 +1,8 @@
-/* KATA mold v2 — 2026-11-05 — kata-ui.dev/docs/mold-changelog */
+/* KATA mold v3 — 2026-11-06 — kata-ui.dev/docs/mold-changelog */
 /* KATA UI — design tokens. Components reference ONLY these variables. */
 :root{
   /* shape-tokens:root:start */
-  --k-mold:2;
+  --k-mold:3;
   --k-tsutsuji:#e95295;
   --k-mscale:1;
   --k-dur-fast:calc(130ms * var(--k-mscale));
@@ -23,6 +23,7 @@
   --k-radius-lg:calc(var(--k-radius) * 1.5);
   --k-radius-xl:calc(var(--k-radius) * 2);
   --k-radius-full:999px;
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
   --k-ring-inset:inset 0 0 0 1px currentColor;
   --k-ring-line:0 0 0 1px var(--k-line);
   --k-ring-selected:0 0 0 2px var(--k-ink);
@@ -43,7 +44,6 @@
   /* shape-tokens:root:end */
   --k-bg:#ffffff; --k-bg-soft:#f7f7f7; --k-ink:#18181b; --k-ink-2:#52525b;
   --k-line:#e4e4e7; --k-accent:#33a6b8; --k-core:#eb471f; --k-danger:#c9171e; --k-yamabuki:#ffb11b;
-  --k-ring:0 0 0 3px rgba(24,24,27,.12);
   --k-font:"Inter","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
   --k-mono:"Geist Mono",ui-monospace,monospace;
   --k-on-color:#ffffff; --k-knob:#ffffff;
@@ -67,14 +67,18 @@
   --k-lh-display:1.1; --k-lh-heading:1.3; --k-lh-body:1.7; --k-lh-loose:1.85;
 }
 /* craftsmanship floors — every part inherits these (KATA.md §0.6):
-   a keyboard focus ring in the accent. Reduced motion only changes the KATA
-   multiplier; each component owns its animation stop rules. Host motion is untouched. */
-:where(:focus-visible){outline:2px solid var(--k-accent);outline-offset:2px}
+   a 2px ink keyboard focus ring (3:1 in both themes), generated from
+   system/tokens.json. Reduced motion only changes the KATA multiplier; each
+   component owns its animation stop rules. Host motion is untouched. */
+/* focus-floor:start */
+:where(:focus-visible){outline:2px solid var(--k-ink);outline-offset:2px}
+/* focus-floor:end */
 @media (prefers-reduced-motion:reduce){
   :root{--k-mscale:0 !important}
 }
 [data-theme="dark"]{
   /* shape-tokens:dark:start */
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
   --k-ring-inset:inset 0 0 0 1px currentColor;
   --k-ring-line:0 0 0 1px var(--k-line);
   --k-ring-selected:0 0 0 2px var(--k-ink);
@@ -94,12 +98,13 @@
   --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
   /* shape-tokens:dark:end */
   --k-bg:#18181b; --k-bg-soft:#27272a; --k-ink:#f4f4f5; --k-ink-2:#a1a1aa;
-  --k-line:#3f3f46; --k-ring:0 0 0 3px rgba(244,244,245,.18);
+  --k-line:#3f3f46;
 
   --k-track:#52525b; --k-seg:#27272a; --k-border-strong:#52525b;
 }
 [data-theme="light"]{
   /* shape-tokens:light:start */
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
   --k-ring-inset:inset 0 0 0 1px currentColor;
   --k-ring-line:0 0 0 1px var(--k-line);
   --k-ring-selected:0 0 0 2px var(--k-ink);
@@ -119,7 +124,7 @@
   --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
   /* shape-tokens:light:end */
   --k-bg:#ffffff; --k-bg-soft:#f7f7f7; --k-ink:#18181b; --k-ink-2:#52525b;
-  --k-line:#e4e4e7; --k-ring:0 0 0 3px rgba(24,24,27,.12);
+  --k-line:#e4e4e7;
 
   --k-track:#d4d4d8; --k-seg:#ececee; --k-border-strong:#c9c9cf;
 }

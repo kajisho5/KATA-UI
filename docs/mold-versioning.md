@@ -1,4 +1,15 @@
-# Mold v2 compatibility
+# Mold compatibility (v2, v3)
+
+## v3 — focus visibility (2026-11-06)
+
+`tools/verify_focus_ring.py` measured 444 Tab stops in 98 parts: 380 were below 3:1 contrast in light and 156 in dark (docs/review/focus-ring/). The owner chose a 2px ink ring. v3 changes the meaning and width of one token and one tokens.css rule, both generated from `system/tokens.json` by `tools/sync_shape_tokens.py`:
+
+- `--k-ring`: `0 0 0 3px` 12% tint (theme-specific) → `0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink)`, declared in the root and both theme blocks so nested `[data-theme]` sections resolve their own colors. The ring is 4px wide instead of 3px.
+- The focus floor `:where(:focus-visible)`: 2px `--k-accent` outline (#33a6b8, 2.88:1 on white) → 2px `--k-ink` outline, 2px offset.
+
+`system/mold-history.json` records `--k-ring` as a v3 meaning change, so parts that reference it declare `requires mold >= 3` and the CLI warns on an older installed tokens.css. Parts that only inherit the floor need no newer mold: an old tokens.css keeps its weaker floor.
+
+## v2
 
 The owner identifies the November 1 release as mold v1; current shared tokens are v2. The git repository starts on November 2. Its earliest tokens.css (a8bc6fa) is evidence, **not a verified November 1 copy**. The generated changelog lists every recorded addition, removal and value change since that snapshot, including transient combo/toast additions and their later removal. Exact changes between the November 1 publication and the earliest surviving snapshot cannot be reconstructed.
 

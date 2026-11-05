@@ -3,7 +3,7 @@
 ## Status
 
 Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-ring-clipping` on main
-`9b3ecf97faa8a21b0996240f564696339afa1e7b` (after #35). Counts become main's when the clipped-ring PR merges.
+`9b3ecf97faa8a21b0996240f564696339afa1e7b` (after #35). Counts become main's when #36 merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -94,7 +94,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| Clipped-ring PR | Clipped rings drawn inside; Navigation Menu panel visible again (T2 step 3, part 2); 116 → 120. |
+| [#36](https://github.com/kajisho5/KATA-UI/pull/36) | Clipped rings drawn inside; Navigation Menu panel visible again (T2 step 3, part 2); 116 → 120. |
 
 ### npm and environment
 
@@ -146,7 +146,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the clipped-ring PR (T2 step 3, part 2) must be merged
+PR. Do not start while the previous task's PR is open. **Current blocker: #36 (T2 step 3, part 2) must be merged
 before step 4.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
@@ -173,7 +173,7 @@ shadows and forced colors cannot remove it). Below 3:1: light 380 → 20, dark
 rings (Toggle, Dual Range, Rating, Wagara, Use Cases, Confetti Cannon,
 Kaleidoscope, Particle Word, selected Chip, Comparison Slider, Glow Button, error
 Input/Textarea): below 3:1 is now 1 per theme, Rating, which the tool cannot see
-(1px input, ring on its label). docs/review/focus-ring-components/. Step 3 part 2 (clipped-ring PR)
+(1px input, ring on its label). docs/review/focus-ring-components/. Step 3 part 2 (#36)
 drew clipped rings inside their controls and made Navigation Menu's open panel
 visible again (a scrolling bar had clipped it completely): clipped stops 52 → 0
 (docs/review/focus-ring-clipping/). **Next, step 4 (owner review required):**

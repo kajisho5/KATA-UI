@@ -67,12 +67,12 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Part-owned weak rings replaced; below 3:1 dropped to 1 stop per theme (Rating, not measurable by the tool) ([PR #35](https://github.com/kajisho5/KATA-UI/pull/35)).
   - [x] Clipped rings drawn inside their controls (52 → 0); Navigation Menu's open panel is visible again ([PR #36](https://github.com/kajisho5/KATA-UI/pull/36)).
   - [x] Static rule: shared floor plus cancellation detection; the browser measurement runs in CI with 0 stops below 3:1 or clipped (owner review: [PR #37](https://github.com/kajisho5/KATA-UI/pull/37)).
-- [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
+- [x] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
   - [x] Mold v4 completes the spacing, text and leading scales with owner-chosen mappings (docs/token-migration.md) ([PR #38](https://github.com/kajisho5/KATA-UI/pull/38)).
   - [x] Spacing: 762 raw declarations in UI parts replaced with tokens; UI spacing findings 763 → 12 ([PR #39](https://github.com/kajisho5/KATA-UI/pull/39)).
   - [x] Font size: 433 raw declarations in UI parts replaced with text tokens; UI font-size findings 435 → 2 ([PR #40](https://github.com/kajisho5/KATA-UI/pull/40)).
   - [x] Line height: 84 raw declarations in UI parts replaced with leading tokens; UI line-height findings 84 → 0 ([PR #41](https://github.com/kajisho5/KATA-UI/pull/41)).
-  - [ ] Promotion (mold v5): spacing-values and type-values fail for UI parts at 0 UI findings; 164 / 164 before and after (owner review: [PR #42](https://github.com/kajisho5/KATA-UI/pull/42)).
+  - [x] Promotion (mold v5): spacing-values and type-values fail for UI parts at 0 UI findings; 164 / 164 before and after (owner review: [PR #42](https://github.com/kajisho5/KATA-UI/pull/42)).
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and
 individual passing-target regressions; claims stay within test coverage; at

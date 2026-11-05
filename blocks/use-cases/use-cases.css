@@ -3,6 +3,8 @@
 .k-uc-list{border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);overflow:hidden}
 .k-uc-row{width:100%;display:block;border:none;background:transparent;font:inherit;text-align:start;cursor:pointer;padding:0;color:var(--k-ink)}
 .k-uc-row+.k-uc-row{border-top:1px solid var(--k-line)}
+.k-uc-row:focus-visible{outline:2px solid var(--k-accent);outline-offset:-2px;color:var(--k-ink)}
+.k-uc-row:focus-visible .k-uc-head{background:var(--k-bg-soft)}
 .k-uc-head{display:flex;align-items:center;gap:12px;padding:15px 17px}
 .k-uc-head .no{font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3)}
 .k-uc-head .lb{font-size:14px;font-weight:550;flex:1}

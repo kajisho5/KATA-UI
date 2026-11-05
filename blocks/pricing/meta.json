@@ -13,5 +13,6 @@
     "switch",
     "separator"
   ],
-  "usage": "Prices live in data-m (monthly) and data-y (yearly) on each amount; the switch swaps them. Rewire the amounts, keep the rhythm."
+  "usage": "Prices live in data-m (monthly) and data-y (yearly) on each amount; the switch swaps them, only inside its own .pricing section, so several pricing sections can share a page. Rewire the amounts, keep the rhythm. The switch fires a native change event.",
+  "a11y": "The billing switch is a labelled checkbox (Yearly billing). Changing it updates this section's prices and a status region announces monthly or yearly prices. A checked state restored by the browser shows matching prices. Screen-reader output is not yet verified by hand."
 }

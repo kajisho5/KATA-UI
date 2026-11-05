@@ -3,7 +3,7 @@
 Implementation agent: Claude Code (from 2026-11-05).
 
 <!-- mold-snapshot:start -->
-[Mold Verified 109 / 164 · UI 74 / 121 · Lab 35 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 112 / 164 · UI 77 / 121 · Lab 35 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-05 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
@@ -20,9 +20,9 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 | token-values: easing | 0 |
 | spacing-values (warn) | 891 |
 | type-values (warn) | 638 |
-| focus-visible | 111 |
-| js-single-instance | 3 |
-| js-global-bindings | 5 |
+| focus-visible | 104 |
+| js-single-instance | 0 |
+| js-global-bindings | 0 |
 | shared-token-scope | 0 |
 | accessible-label | 0 |
 <!-- mold-snapshot:end -->
@@ -53,12 +53,13 @@ separate release statuses. The phases below are targets, not shipped features.
 - [x] P5 (duration/easing): Shared scaled timing, named curves, zero/reduced-motion safety ([PR #21](https://github.com/kajisho5/KATA-UI/pull/21)).
 - [x] P5 (color/border): token-values reached **0** on **2026-11-05** ([PR #22](https://github.com/kajisho5/KATA-UI/pull/22)); fixed tsutsuji palette and highlight review included.
 
-- [ ] P6: Rebuild JS-failing components using the Combobox initialization pattern. Three components per PR; test repeated loading, generated IDs, IME and focus departure.
+- [x] P6: Rebuild JS-failing components using the Combobox initialization pattern. Three components per PR; test repeated loading, generated IDs, IME and focus departure.
   - [x] First batch: Alert Dialog, Drawer and Popover JS instances, focus and zero-motion safety ([PR #24](https://github.com/kajisho5/KATA-UI/pull/24)).
   - [x] Second batch: Command, Context Menu and Date Picker: independent instances, keyboard/IME guards and zero-motion regression tests ([PR #26](https://github.com/kajisho5/KATA-UI/pull/26)).
   - [x] Third batch: Tag Input, Input OTP and Data Table: independent state, visual arrows, LTR codes and native/custom change events ([PR #27](https://github.com/kajisho5/KATA-UI/pull/27)).
   - [x] Fourth batch: File Upload, Color Picker and Carousel: keyboard-reachable file input, radio swatches with visual arrows, RTL-safe carousel with settled announcements ([PR #29](https://github.com/kajisho5/KATA-UI/pull/29)).
   - [x] Fifth batch: Split Panel, Reorder and Follow Frame: RTL-aware separator with stacked mode, pausable autoplay, per-zone pointer following that idles when settled ([PR #30](https://github.com/kajisho5/KATA-UI/pull/30)).
+  - [x] Sixth batch: Pricing, Site Header and Use Cases blocks: per-section state, Escape/outside-press menu dismissal with one document listener, keyboard row focus. js-single-instance and js-global-bindings reached **0** ([PR #31](https://github.com/kajisho5/KATA-UI/pull/31)).
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
 

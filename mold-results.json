@@ -2,16 +2,16 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 109,
-    "failed": 55,
+    "passed": 112,
+    "failed": 52,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 111,
-      "js-global-bindings": 5,
-      "js-single-instance": 3,
+      "focus-visible": 104,
+      "js-global-bindings": 0,
+      "js-single-instance": 0,
       "legacy-contract": 0,
       "reduced-motion": 0,
       "shared-token-scope": 0,
@@ -22,8 +22,8 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 74,
-        "failed": 47,
+        "passed": 77,
+        "failed": 44,
         "total": 121
       },
       "lab": {
@@ -27013,7 +27013,7 @@
     {
       "id": "blocks/pricing",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -27287,19 +27287,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-billing]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const billSwitch"
-          ]
+          "findings": []
         }
       ]
     },
@@ -28120,7 +28116,7 @@
     {
       "id": "blocks/site-header",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -28286,33 +28282,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/site-header/preview.html: <a> brand",
-            "blocks/site-header/preview.html: <a> ",
-            "blocks/site-header/preview.html: <button> burger"
-          ],
-          "details": [
-            {
-              "path": "blocks/site-header/preview.html",
-              "tag": "a",
-              "class_or_role": "brand",
-              "occurrences": 1
-            },
-            {
-              "path": "blocks/site-header/preview.html",
-              "tag": "a",
-              "class_or_role": "",
-              "occurrences": 9
-            },
-            {
-              "path": "blocks/site-header/preview.html",
-              "tag": "button",
-              "class_or_role": "burger",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -28328,21 +28301,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-hdr-btn]",
-            "document.querySelector('[data-hdr-panel]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const hdrBtn",
-            "const hdrPanel"
-          ]
+          "findings": []
         }
       ]
     },
@@ -28837,7 +28804,7 @@
     {
       "id": "blocks/use-cases",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -29103,26 +29070,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/use-cases/preview.html: <button> k-uc-row open",
-            "blocks/use-cases/preview.html: <button> k-uc-row"
-          ],
-          "details": [
-            {
-              "path": "blocks/use-cases/preview.html",
-              "tag": "button",
-              "class_or_role": "k-uc-row open",
-              "occurrences": 1
-            },
-            {
-              "path": "blocks/use-cases/preview.html",
-              "tag": "button",
-              "class_or_role": "k-uc-row",
-              "occurrences": 3
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -29144,12 +29095,9 @@
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const ucRows",
-            "const ucScenes"
-          ]
+          "findings": []
         }
       ]
     },
@@ -31297,29 +31245,15 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "templates/landing/preview.html: <a> brand",
             "templates/landing/preview.html: <a> ",
-            "templates/landing/preview.html: <button> burger",
             "templates/landing/preview.html: <input> input"
           ],
           "details": [
             {
               "path": "templates/landing/preview.html",
               "tag": "a",
-              "class_or_role": "brand",
-              "occurrences": 1
-            },
-            {
-              "path": "templates/landing/preview.html",
-              "tag": "a",
               "class_or_role": "",
-              "occurrences": 19
-            },
-            {
-              "path": "templates/landing/preview.html",
-              "tag": "button",
-              "class_or_role": "burger",
-              "occurrences": 1
+              "occurrences": 15
             },
             {
               "path": "templates/landing/preview.html",

@@ -2,13 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-split-reorder-follow`
-on main `47298c57dde8a6a61272c6180c90dc077a7f8647` (after #29).
+Snapshot: 2026-11-05 (Asia/Tokyo), branch `fix/js-instances-blocks`
+on main `9c003f3f61139d1e82247ee40e6f06211a08280c` (after #30).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
-come from that JSON. The counts become main's only when #30 is merged.
+come from that JSON. The counts become main's only when #31 is merged.
 
-**Mold Verified 109 / 164 · UI 74 / 121 · Lab 35 / 43**.
-55 targets fail at least one check. The JSON reports 318 warning-bearing
+**Mold Verified 112 / 164 · UI 77 / 121 · Lab 35 / 43**.
+52 targets fail at least one check. The JSON reports 318 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -16,9 +16,9 @@ not browser or screen-reader certification.
 |---|---:|---|
 | accessible-label | 0 | fail |
 | button-type | 0 | fail |
-| focus-visible | 111 | fail |
-| js-global-bindings | 5 | fail |
-| js-single-instance | 3 | fail |
+| focus-visible | 104 | fail |
+| js-global-bindings | 0 | fail |
+| js-single-instance | 0 | fail |
 | legacy-contract | 0 | fail |
 | reduced-motion | 0 | fail |
 | shared-token-scope | 0 | fail |
@@ -27,24 +27,20 @@ not browser or screen-reader certification.
 | type-values | 638 | warn |
 | variant-hover | 0 | fail |
 
-Focus-visible fails for **54 parts**, with 111 findings; parts and
+Focus-visible fails for **52 parts**, with 104 findings; parts and
 findings are different units. spacing-values has 891 warning findings;
 type-values has 638. token-values has no remaining findings.
 
 ### Remaining JS failures
 
-| Part | Failing JS checks |
-|---|---|
-| blocks/pricing | js-single-instance, js-global-bindings |
-| blocks/site-header | js-single-instance, js-global-bindings |
-| blocks/use-cases | js-global-bindings |
+None. js-single-instance and js-global-bindings reach 0 with #31
+(Pricing, Site Header, Use Cases). #27 took main to 103, #29 to 106, #30 to 109,
+and #31 takes this branch to 112. Evidence: docs/review/tag-otp-table/,
+docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
+docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
+every contract item (see Contract implementation gaps, item 11).
 
-#27 (Tag Input, Input OTP, Data Table) took main to 103 and #29 (File Upload,
-Color Picker, Carousel) to 106. #30 (Split Panel, Reorder, Follow Frame)
-takes this branch to 109. Evidence: docs/review/tag-otp-table/,
-docs/review/upload-color-carousel/ and docs/review/split-reorder-follow/.
-
-### Merged work, PR #11 through #29
+### Merged work, PR #11 through #30
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -69,13 +65,14 @@ Missing number #12 is open, not silently assumed merged.
 | #27 | 30f67ab | Tag Input, Input OTP and Data Table instances and keyboard behavior. |
 | #28 | 20ca626 | This handoff, CLAUDE.md and the opt-in session setup helper. |
 | #29 | 47298c5 | File Upload, Color Picker and Carousel instances and keyboard behavior. |
+| #30 | 9c003f3 | Split Panel, Reorder and Follow Frame instances, stacked split and pausable autoplay. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29 was squash-merged the same way after green CI. The owner then asked the
+#29 and #30 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -92,7 +89,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#30](https://github.com/kajisho5/KATA-UI/pull/30) | T1 batch 5: Split Panel, Reorder, Follow Frame. Must be merged before batch 6. |
+| [#31](https://github.com/kajisho5/KATA-UI/pull/31) | T1 batch 6: Pricing, Site Header, Use Cases blocks; empties T1. Must be merged before T2. |
 
 ### npm and environment
 
@@ -137,41 +134,27 @@ output and report skips rather than claiming headless verification happened.
 - File inputs: `hidden` removes them from the tab order. Hide visually, keep focusable, and show the ring on the visible zone with :has(). Chromium opens the picker on Space; Enter was not reliable.
 - Reorder (batch 5): the queue described a drag-to-sort list, but the part is an auto re-ranking leaderboard. Check the real part before applying a per-part spec; changing its purpose is a new part, not a fix.
 - Split Panel (batch 5): a padded content-box pane made the percentage and the handle disagree by the padding. Use border-box when a percentage positions a handle.
+- Site Header (batch 6): closing one stacked header's menu on pointerdown shifts the layout, so a click that started on another header's button can land elsewhere. Test the outside press and the other button's click separately.
+- Use Cases axe color-contrast comes and goes (2, 1, 1 violations on unchanged code): the scene fades in over 0.45s and axe can measure mid-fade. Do not treat it as a palette change.
 - Playwright: expect_file_chooser was flaky; use page.on('filechooser') and close each chooser. After a mouse click, a programmatic focus() is not :focus-visible; press a key first.
 
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #30
-(T1 batch 5: Split Panel, Reorder, Follow Frame) must be merged before batch 6
-starts.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #31
+(T1 batch 6: Pricing, Site Header, Use Cases) must be merged before T2 starts.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
-### T1 — JS multi-instance: next 3 failing parts (repeat until none fail)
+### T1 — done
 
-Done: batch 3 (#27: tag-input, input-otp, data-table), batch 4 (#29:
-file-upload, color-picker, carousel) and batch 5 (#30: split-panel, reorder,
-follow-frame). After the pending batch merges, regenerate the report. The last
-batch 6 is blocks/pricing, blocks/site-header and blocks/use-cases; T1 is empty
-when those pass.
-State the choice and the remainder in the PR. Do not pre-count an open PR as shipped.
-Reuse tools/verify_upload_color_carousel.py as the test pattern.
-
-Common: KATA.md implementation contract items 11, 12 and 14. Remove fixed
-id/for/aria-controls from samples. Add tests/<slug>-multi.html with three copies,
-one RTL, script loaded twice. A headless run proves independent state, no console
-errors, body clicks and null-relatedTarget focusout do not close, and horizontal
-arrows follow visual direction. Metadata follows item 15; keep status unchanged.
-
-Per part:
-
-- Blocks pricing/site-header/use-cases: follow Dropdown/Tabs toggle patterns, remove fixed IDs, and close mobile menus on Escape/outside click.
-
-Verify node --check, checker before/after and remaining JS list, unittest, build,
-ratchet and distribution integrity. List real IME and screen readers as unverified
-unless actual manual evidence is recorded. Update baseline/roadmap/handoff and
-relevant token-migration documentation when the pass count changes.
+JS multi-instance batches 1–6 (#24, #26, #27, #29, #30 and #31) left no
+js-single-instance or js-global-bindings findings. For new JS parts, reuse the
+pattern in tools/verify_blocks_instances.py and the Common rules kept in KATA.md
+contract items 11, 12 and 14. Follow-up found during T1, for T4 or a separate PR:
+Use Cases rows are buttons that contain headings and lists, so their accessible
+names are very long; splitting the row into a button plus a sibling body changes
+markup and CSS selectors.
 
 ### T2 — focus-visible (after T1 is empty)
 
@@ -228,7 +211,7 @@ The contract is a target. No code is changed to conceal these differences:
 - Item 7: prior 40-part contrast artifacts exist under docs/review; no complete fresh 164-part/state contrast certification was performed for this handoff.
 - Item 10: #25 is merged, so main's CLI (1.1.0 in cli/package.json) has the mold-header warnings and safe forced-add behavior. npm still serves 1.0.0 until the owner publishes. Explicit owner init --force is an intentional update, not automatic add overwrite.
 - Item 11: Combobox and Popover still install per-instance document click listeners, rather than one pointerdown listener per part type. The JS checker does not detect every contract violation; the measured remaining JS failures are listed above.
-- Item 12: Date Picker's RTL correction is merged in #26; Tag/OTP behavior (including OTP LTR/IME/completion) is merged in #27. Color Picker and Carousel visual arrows are in #29.
+- Item 12: Date Picker's RTL correction is merged in #26; Tag/OTP behavior (including OTP LTR/IME/completion) is merged in #27. Color Picker and Carousel visual arrows are in #29; Split Panel visual arrows are in #30.
 - Item 13: main Modal uses native showModal/Escape but has no backdrop-click close handler. Drawer/Alert Dialog have the reviewed #24 behavior. Do not silently call Modal complete.
 - Item 14: inline sample styles and fixed IDs remain across legacy parts; the static inline-data-color allowance is not proof of full sample compliance.
 - Items 15/16: metadata and existing Stable labels predate the full manual release gate. No new manual IME/SR certification was performed. Missing multi-instance pages for Modal/Dropdown/Tabs/Tooltip are confirmed above.

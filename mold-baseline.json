@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 112,
+    "passed": 116,
     "total": 164
   },
   "items": [
@@ -127,7 +127,7 @@
     },
     {
       "id": "components/chip",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -157,7 +157,7 @@
     },
     {
       "id": "components/confetti-cannon",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -327,7 +327,7 @@
     },
     {
       "id": "components/kaleidoscope",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {
@@ -422,7 +422,7 @@
     },
     {
       "id": "components/particle-word",
-      "passed": false,
+      "passed": true,
       "profile": "lab"
     },
     {

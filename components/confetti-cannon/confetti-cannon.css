@@ -3,3 +3,5 @@
 .k-conf canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .k-conf-btn{position:relative;z-index:2;background:var(--k-on-color);color:var(--k-zinc-950);border:0;font-family:inherit;font-size:14.5px;font-weight:650;padding:12px 24px;border-radius:99px;cursor:pointer}
 .k-conf-btn:active{transform:scale(.96)}
+/* The stage is fixed zinc-950 in both themes, so focus uses the fixed light color. */
+.k-conf-btn:focus-visible{outline:2px solid var(--k-on-color);outline-offset:2px}

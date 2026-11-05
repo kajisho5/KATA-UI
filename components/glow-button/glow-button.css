@@ -9,3 +9,5 @@
 .k-glowfield .in{flex:1;display:flex;align-items:center;gap:9px;background:var(--k-bg);border-radius:9.5px;padding:0 12px}
 .k-glowfield input{flex:1;border:0;background:none;font-family:inherit;font-size:13.5px;height:38px;color:var(--k-ink);outline:none;min-width:0}
 @media (prefers-reduced-motion:reduce){.k-glowbtn,.k-glowfield:focus-within{animation:none}}
+/* The input draws no outline; the field carries the shared 3:1 keyboard ring. */
+.k-glowfield:has(input:focus-visible){box-shadow:var(--k-ring)}

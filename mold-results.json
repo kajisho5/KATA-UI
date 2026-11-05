@@ -2,14 +2,14 @@
   "updated_at": "2026-11-06",
   "schema_version": 2,
   "summary": {
-    "passed": 112,
-    "failed": 52,
+    "passed": 116,
+    "failed": 48,
     "total": 164,
     "warnings": 318,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 104,
+      "focus-visible": 99,
       "js-global-bindings": 0,
       "js-single-instance": 0,
       "legacy-contract": 0,
@@ -22,13 +22,13 @@
     },
     "by_profile": {
       "ui": {
-        "passed": 77,
-        "failed": 44,
+        "passed": 78,
+        "failed": 43,
         "total": 121
       },
       "lab": {
-        "passed": 35,
-        "failed": 8,
+        "passed": 38,
+        "failed": 5,
         "total": 43
       }
     }
@@ -4399,7 +4399,7 @@
     {
       "id": "components/chip",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -4503,19 +4503,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/chip/preview.html: <button> k-chip-x"
-          ],
-          "details": [
-            {
-              "path": "components/chip/preview.html",
-              "tag": "button",
-              "class_or_role": "k-chip-x",
-              "occurrences": 4
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -5392,7 +5383,7 @@
     {
       "id": "components/confetti-cannon",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -5476,19 +5467,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/confetti-cannon/preview.html: <button> k-conf-btn"
-          ],
-          "details": [
-            {
-              "path": "components/confetti-cannon/preview.html",
-              "tag": "button",
-              "class_or_role": "k-conf-btn",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -11256,7 +11238,7 @@
     {
       "id": "components/kaleidoscope",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -11380,19 +11362,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/kaleidoscope/preview.html: <button> k-kal-btn"
-          ],
-          "details": [
-            {
-              "path": "components/kaleidoscope/preview.html",
-              "tag": "button",
-              "class_or_role": "k-kal-btn",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -14520,7 +14493,7 @@
     {
       "id": "components/particle-word",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -14654,26 +14627,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/particle-word/preview.html: <button> k-pw-btn on",
-            "components/particle-word/preview.html: <button> k-pw-btn"
-          ],
-          "details": [
-            {
-              "path": "components/particle-word/preview.html",
-              "tag": "button",
-              "class_or_role": "k-pw-btn on",
-              "occurrences": 1
-            },
-            {
-              "path": "components/particle-word/preview.html",
-              "tag": "button",
-              "class_or_role": "k-pw-btn",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",

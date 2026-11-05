@@ -2,13 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), main `4dddb8a3df5590ff8f4c69f4b408d83aa1bb5ef1`
-(after #33; #34, mold v3 focus, changes no counts).
+Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/focus-ring-components` on main
+`0b8f5f6659a9f5c208ccd82ef02379e1e7c225ef` (after #34). Counts become main's when #35 merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
-**Mold Verified 112 / 164 · UI 77 / 121 · Lab 35 / 43**.
-52 targets fail at least one check. The JSON reports 318 warning-bearing
+**Mold Verified 116 / 164 · UI 78 / 121 · Lab 38 / 43**.
+48 targets fail at least one check. The JSON reports 318 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -16,7 +16,7 @@ not browser or screen-reader certification.
 |---|---:|---|
 | accessible-label | 0 | fail |
 | button-type | 0 | fail |
-| focus-visible | 104 | fail |
+| focus-visible | 99 | fail |
 | js-global-bindings | 0 | fail |
 | js-single-instance | 0 | fail |
 | legacy-contract | 0 | fail |
@@ -27,7 +27,7 @@ not browser or screen-reader certification.
 | type-values | 638 | warn |
 | variant-hover | 0 | fail |
 
-Focus-visible fails for **52 parts**, with 104 findings; parts and
+Focus-visible fails for **48 parts**, with 99 findings; parts and
 findings are different units. spacing-values has 891 warning findings;
 type-values has 638. token-values has no remaining findings.
 
@@ -40,7 +40,7 @@ docs/review/upload-color-carousel/, docs/review/split-reorder-follow/ and
 docs/review/blocks-instances/. The JS checker is lexical; a pass is not proof of
 every contract item (see Contract implementation gaps, item 11).
 
-### Merged work, PR #11 through #33
+### Merged work, PR #11 through #34
 
 The following one-line summaries are based on main's first-parent git log.
 Missing number #12 is open, not silently assumed merged.
@@ -69,13 +69,14 @@ Missing number #12 is open, not silently assumed merged.
 | #31 | 1ec074e | Pricing, Site Header and Use Cases block instances; JS findings reach 0. |
 | #32 | 69b5a86 | Focus-ring visibility measurement and baseline (T2 step 1). |
 | #33 | 4dddb8a | Closed Dropdown menus and collapsed Speed Dial actions leave the Tab order. |
+| #34 | 0b8f5f6 | Mold v3: --k-ring and the focus floor become a 2px ink ring. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#33 were squash-merged the same way after green CI. The owner then asked the
+#29–#34 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -92,7 +93,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| [#34](https://github.com/kajisho5/KATA-UI/pull/34) | --k-ring and the focus floor become a 2px ink ring (T2 step 2); moldVersion 3. |
+| [#35](https://github.com/kajisho5/KATA-UI/pull/35) | Part-owned weak focus rings replaced (T2 step 3, part 1); 112 → 116. |
 
 ### npm and environment
 
@@ -144,8 +145,8 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #34 (T2 step 2) must be merged before
-step 3 starts.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #35 (T2 step 3, part 1) must be merged
+before the clipped-ring PR.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -167,14 +168,15 @@ Step 2 is done by #34: the owner chose a 2px ink ring (option 1,
 2026-11-06). `--k-ring` is a 2px page-colored gap plus a 2px ink ring, and the
 generated focus floor is a 2px ink outline (outline, not box-shadow, so component
 shadows and forced colors cannot remove it). Below 3:1: light 380 → 20, dark
-156 → 4 (docs/review/focus-ring-v3/). **Next, step 3:** replace the remaining
-component-owned accent outlines (Dual Range, Toggle, Glow Button, Confetti Cannon,
-Kaleidoscope, Particle Word, Wagara search, Use Cases rows), the dark error-field
-ring (`--k-ring-danger`), the three no-change stops (Rating, Chip remove,
-Comparison Slider) and 52 clipped stops in 9 parts. Then step 4 (checker rule,
-owner review) and step 5. After #34 merges, regenerate
-system/mold-history.json with `--ref origin/main` so the v3 event points at the
-squash commit instead of the branch commit.
+156 → 4 (docs/review/focus-ring-v3/). Step 3 part 1 (#35) replaced the part-owned weak
+rings (Toggle, Dual Range, Rating, Wagara, Use Cases, Confetti Cannon,
+Kaleidoscope, Particle Word, selected Chip, Comparison Slider, Glow Button, error
+Input/Textarea): below 3:1 is now 1 per theme, Rating, which the tool cannot see
+(1px input, ring on its label). docs/review/focus-ring-components/. **Next, step 3
+part 2:** the 52 clipped stops in 9 parts (Time Picker, Wagara, Navigation Menu,
+List, Stepper, Product Page, Split Panel, Comparison Slider, Inbox). Then step 4
+(checker rule, owner review; it should also accept `:has()` focus rules such as
+Comparison Slider and Glow Button) and step 5. `--k-ring-danger` is now unused.
 
 1. First add a Playwright focus-ring test, tests/focus-ring.spec (using the runner's required extension). For every part test page, Tab through focusable controls in light/dark, compare before/after screenshots and check ring pixels outside the control are not clipped by overflow:hidden.
 2. Add the shared --k-ring focus rule in canonical tokens.json and generate CSS; do not hand-edit tokens.css. Targets are a[href], button, input, select, textarea, summary and tabindex other than -1. Use outline:none and box-shadow:var(--k-ring). Keep the whole selector, including :focus-visible, inside :where for actual zero specificity; e.g. :where(:is(a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])):focus-visible).

@@ -4,3 +4,5 @@
 .k-chip[data-on] .k-chip-x{background:color-mix(in srgb,var(--k-bg) 16%,transparent);color:var(--k-bg)}
 .k-chip-x:hover{color:var(--k-danger-ink)}
 .k-chips{display:flex;flex-wrap:wrap;gap:8px}
+/* On a selected (ink) chip the ink focus ring would vanish; use the page color. */
+.k-chip[data-on] .k-chip-x:focus-visible{outline-color:var(--k-bg)}

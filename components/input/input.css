@@ -6,7 +6,7 @@
 .input::placeholder{color:var(--k-ink-3)}
 .input:focus{outline:0;border-color:var(--k-ink);box-shadow:var(--k-ring)}
 .input.errb{border-color:var(--k-danger)}
-.input.errb:focus{box-shadow:var(--k-ring-danger)}
+.input.errb:focus{box-shadow:var(--k-ring)}
 .searchwrap{position:relative;display:block}
 .searchwrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%)}
 .searchwrap .input{padding-inline-start:34px}

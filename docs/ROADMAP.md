@@ -61,7 +61,7 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] Fifth batch: Split Panel, Reorder and Follow Frame: RTL-aware separator with stacked mode, pausable autoplay, per-zone pointer following that idles when settled ([PR #30](https://github.com/kajisho5/KATA-UI/pull/30)).
   - [x] Sixth batch: Pricing, Site Header and Use Cases blocks: per-section state, Escape/outside-press menu dismissal with one document listener, keyboard row focus. js-single-instance and js-global-bindings reached **0** ([PR #31](https://github.com/kajisho5/KATA-UI/pull/31)).
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
-  - [x] Measurement baseline: 444 Tab stops in 98 parts; below 3:1 contrast on 380 (light) and 156 (dark); 49 clipped stops in 8 parts (PR_PLACEHOLDER). The current `--k-ring` and light accent outline are below 3:1, so the ring value needs an owner decision before the shared rule.
+  - [x] Measurement baseline: 444 Tab stops in 98 parts; below 3:1 contrast on 380 (light) and 156 (dark); 49 clipped stops in 8 parts ([PR #32](https://github.com/kajisho5/KATA-UI/pull/32)). The current `--k-ring` and light accent outline are below 3:1, so the ring value needs an owner decision before the shared rule.
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
 
 **Completion criteria:** no hard-coded audit counts; CI rejects score loss and

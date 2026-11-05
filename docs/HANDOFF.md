@@ -3,7 +3,7 @@
 ## Status
 
 Snapshot: 2026-11-05 (Asia/Tokyo), main `1ec074ee3198580444fa92945e1c3f9b03d42bac`
-(after #31; the T2 measurement PR changes no counts).
+(after #31; #32, the T2 measurement, changes no counts).
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -90,7 +90,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| T2 measurement PR | Focus-ring visibility tool and baseline (T2 step 1). No counts change. |
+| [#32](https://github.com/kajisho5/KATA-UI/pull/32) | Focus-ring visibility tool and baseline (T2 step 1). No counts change. |
 
 ### npm and environment
 
@@ -143,7 +143,7 @@ output and report skips rather than claiming headless verification happened.
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
 PR. Do not start while the previous task's PR is open. **Current blocker: T2 step 2 needs an owner decision on the focus-ring
-value (see T2 below). The step 1 measurement PR is the last T2 work done without it.**
+value (see T2 below). #32 (step 1) is the last T2 work done without it.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -159,7 +159,7 @@ markup and CSS selectors.
 
 ### T2 — focus-visible (in progress)
 
-Step 1 is done by the T2 measurement PR: `python3 -m tools.verify_focus_ring`
+Step 1 is done by #32: `python3 -m tools.verify_focus_ring`
 and docs/review/focus-ring/. Measured: 444 Tab stops in 98 parts; below 3:1
 contrast on 380 (light) / 156 (dark); no change at all on 10 / 9; 49 clipped
 stops in 8 parts. **Owner decision needed before step 2:** the current

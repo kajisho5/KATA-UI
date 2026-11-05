@@ -3,7 +3,7 @@
 ## Status
 
 Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/t3-spacing` on main
-`f6f7bc590d992baf2f15522e38c6abd2383d3678` (after #38). Counts become main's when the spacing PR merges.
+`f6f7bc590d992baf2f15522e38c6abd2383d3678` (after #38). Counts become main's when #39 merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
@@ -98,7 +98,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
-| Spacing PR | T3: 762 raw spacing declarations → tokens; UI spacing findings 763 → 12. |
+| [#39](https://github.com/kajisho5/KATA-UI/pull/39) | T3: 762 raw spacing declarations → tokens; UI spacing findings 763 → 12. |
 
 ### npm and environment
 
@@ -150,7 +150,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: the spacing PR must be merged before the font-size PR.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #39 (T3 spacing) must be merged before the font-size PR.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -183,7 +183,7 @@ follows KATA.md §0.5. Mappings with counts: docs/token-migration.md (T3 section
 Order changed with reason: replace spacing, then font size, then line height
 while the checks are warnings, and promote both to fail for UI last, at 0 UI
 findings, so the pass count and trusted-main ratchet never drop. Step 1 (scales,
-mold v4) is #38. The spacing PR replaced 762 declarations (UI 763 → 12;
+mold v4) is #38. #39 replaced 762 declarations (UI 763 → 12;
 the 12 are `* -1` negatives, one `env(safe-area-inset-bottom)` and one `12vh`,
 to settle with the checker change in the final promotion PR). Next: font size
 (`python3 -m tools.t3_migrate font-size`), then line height, then promotion.

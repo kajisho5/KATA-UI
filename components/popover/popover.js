@@ -58,7 +58,10 @@
       if (composing || event.isComposing || event.keyCode === 229) return;
       if (event.key === 'Escape' && open) { event.preventDefault(); event.stopPropagation(); close(true); }
     });
-    wrap.addEventListener('focusout', event => { if (!event.relatedTarget || !wrap.contains(event.relatedTarget)) close(); });
+    wrap.addEventListener('focusout', event => {
+      if (!event.relatedTarget) return;
+      if (!wrap.contains(event.relatedTarget)) close();
+    });
     document.addEventListener('click', event => { if (!wrap.contains(event.target)) close(); });
     panel.addEventListener('transitionend', event => { if (event.target === panel && event.propertyName === 'opacity' && !open) finish(); });
     panel.addEventListener('transitioncancel', event => { if (event.target === panel && !open) finish(); });

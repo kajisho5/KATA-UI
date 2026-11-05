@@ -27,6 +27,7 @@
     if (!dialog.hasAttribute('aria-label') && !dialog.hasAttribute('aria-labelledby') && heading) dialog.setAttribute('aria-labelledby', ensureId(heading, 'title'));
     if (!dialog.hasAttribute('aria-describedby') && description) dialog.setAttribute('aria-describedby', ensureId(description, 'description'));
     if (!dialog.hasAttribute('tabindex')) dialog.tabIndex = -1;
+    dialog.inert = !dialog.open;
     let opener = null;
     let composing = false;
     function focusables() {
@@ -42,6 +43,7 @@
         if (dialog.open) return;
         composing = false;
         opener = trigger;
+        dialog.inert = false;
         dialog.showModal();
         (focusables().find(element => element.hasAttribute('autofocus')) || focusables()[0] || dialog).focus();
       });
@@ -67,12 +69,10 @@
       const rect = dialog.getBoundingClientRect();
       if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) close();
     });
-    dialog.addEventListener('focusout', event => {
-      if (dialog.open && event.relatedTarget && !dialog.contains(event.relatedTarget)) close();
-    });
     dialog.addEventListener('close', () => {
       if (dialog.open) return; // Ignore a queued close event from an earlier opening.
       composing = false;
+      dialog.inert = true;
       if (opener?.isConnected && !opener.disabled && !document.querySelectorAll('dialog[open]').length) opener.focus();
     });
   });

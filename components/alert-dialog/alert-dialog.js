@@ -43,13 +43,12 @@
         composing = false;
         opener = trigger;
         dialog.showModal();
-        (focusables().find(element => element.hasAttribute('autofocus')) || focusables()[0] || dialog).focus();
+        (focusables().find(element => element.hasAttribute('data-autofocus') || element.hasAttribute('autofocus')) || focusables().find(element => element.matches('button:not(.btn-pri):not(.btn-danger):not([data-primary])')) || dialog).focus();
       });
     });
     dialog.querySelectorAll('[data-alert-close]').forEach(button => button.addEventListener('click', close));
     dialog.addEventListener('compositionstart', () => { composing = true; });
     dialog.addEventListener('compositionend', () => { composing = false; });
-    dialog.addEventListener('cancel', event => { if (composing) event.preventDefault(); });
     dialog.addEventListener('keydown', event => {
       if (composing || event.isComposing || event.keyCode === 229) {
         if (event.key === 'Escape') event.preventDefault();
@@ -61,14 +60,6 @@
       if (!first) { event.preventDefault(); dialog.focus(); return; }
       if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) { event.preventDefault(); last.focus(); }
       else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) { event.preventDefault(); first.focus(); }
-    });
-    dialog.addEventListener('click', event => {
-      if (event.target !== dialog) return;
-      const rect = dialog.getBoundingClientRect();
-      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) close();
-    });
-    dialog.addEventListener('focusout', event => {
-      if (dialog.open && event.relatedTarget && !dialog.contains(event.relatedTarget)) close();
     });
     dialog.addEventListener('close', () => {
       if (dialog.open) return; // Ignore a queued close event from an earlier opening.

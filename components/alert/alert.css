@@ -1,5 +1,5 @@
 /* KATA Alert */
-.k-alert{display:flex;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-3);border:1px solid var(--k-accent-line);border-radius:var(--k-radius-lg);background:var(--k-accent-bg);color:var(--k-ink);font-size:13.5px;line-height:1.65;letter-spacing:.012em}
+.k-alert{display:flex;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-3);border:1px solid var(--k-accent-line);border-radius:var(--k-radius-lg);background:var(--k-accent-bg);color:var(--k-ink);font-size:var(--k-text-base);line-height:1.65;letter-spacing:.012em}
 .k-alert svg{flex:none;margin-top:var(--k-space-px);color:var(--k-accent-ink)}
 .k-alert b{font-weight:600}
 .k-alert p{color:var(--k-ink-2)}

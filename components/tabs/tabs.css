@@ -1,5 +1,5 @@
 .tabs{display:inline-flex;background:var(--k-seg);border-radius:var(--k-radius-lg);padding:var(--k-space-1);gap:var(--k-space-0-5);position:relative;font-family:var(--k-font)}
-.tabs button{position:relative;z-index:1;border:0;background:transparent;font-family:var(--k-font);font-size:13px;font-weight:500;color:var(--k-ink-2);padding:var(--k-space-2) var(--k-space-4);border-radius:var(--k-radius-md);cursor:pointer}
+.tabs button{position:relative;z-index:1;border:0;background:transparent;font-family:var(--k-font);font-size:var(--k-text-base);font-weight:500;color:var(--k-ink-2);padding:var(--k-space-2) var(--k-space-4);border-radius:var(--k-radius-md);cursor:pointer}
 .tabs button.on{color:var(--k-ink)}
 .tabs .thumb{position:absolute;top:3px;bottom:3px;background:var(--k-bg);border-radius:var(--k-radius-md);box-shadow:var(--k-shadow-xs);transition:left var(--k-dur-slow) var(--k-ease),width var(--k-dur-slow) var(--k-ease)}
-.tabpane{margin-top:var(--k-space-3);font-size:13.5px;color:var(--k-ink-2);line-height:1.8;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-4) var(--k-space-4);width:100%;font-family:var(--k-font);letter-spacing:.012em}
+.tabpane{margin-top:var(--k-space-3);font-size:var(--k-text-base);color:var(--k-ink-2);line-height:1.8;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-4) var(--k-space-4);width:100%;font-family:var(--k-font);letter-spacing:.012em}

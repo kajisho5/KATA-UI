@@ -1,8 +1,8 @@
 /* KATA Block: Team Grid */
 .k-team{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--k-space-3);font-family:var(--k-font);color:var(--k-ink)}
 .k-team-c{border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:var(--k-space-5);background:var(--k-bg)}
-.k-team-c h3{font-size:15px;font-weight:650;margin:var(--k-space-3) 0 var(--k-space-0-5)}
-.k-team-c .r{font-size:12px;font-weight:600;color:var(--k-accent-ink)}
-.k-team-c .b{font-size:12.5px;line-height:1.7;color:var(--k-ink-2);margin-top:var(--k-space-2);letter-spacing:.01em}
+.k-team-c h3{font-size:var(--k-text-lead);font-weight:650;margin:var(--k-space-3) 0 var(--k-space-0-5)}
+.k-team-c .r{font-size:var(--k-text-sm);font-weight:600;color:var(--k-accent-ink)}
+.k-team-c .b{font-size:var(--k-text-sm);line-height:1.7;color:var(--k-ink-2);margin-top:var(--k-space-2);letter-spacing:.01em}
 @media (max-width:720px){.k-team{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:460px){.k-team{grid-template-columns:1fr}}

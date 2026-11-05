@@ -4,7 +4,7 @@
 .k-igroup .input:first-child{border-start-start-radius:var(--k-radius);border-end-start-radius:var(--k-radius);margin-inline-start:0}
 .k-igroup .input:last-child{border-start-end-radius:var(--k-radius);border-end-end-radius:var(--k-radius)}
 .k-igroup .input:focus{z-index:1}
-.k-ig-addon{display:flex;align-items:center;padding:0 var(--k-space-3);background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);font-size:13px;margin-inline-start:calc(var(--k-space-px) * -1);white-space:nowrap}
+.k-ig-addon{display:flex;align-items:center;padding:0 var(--k-space-3);background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);font-size:var(--k-text-base);margin-inline-start:calc(var(--k-space-px) * -1);white-space:nowrap}
 .k-ig-addon:first-child{border-start-start-radius:var(--k-radius);border-end-start-radius:var(--k-radius);margin-inline-start:0}
 .k-ig-addon:last-child{border-start-end-radius:var(--k-radius);border-end-end-radius:var(--k-radius)}
 .k-igroup .btn{border-radius:0;margin-inline-start:calc(var(--k-space-px) * -1);position:relative}

@@ -1,6 +1,6 @@
 /* KATA Empty state */
 .k-empty{display:grid;justify-items:center;text-align:center;gap:var(--k-space-2);padding:calc(var(--k-space-1) * 9) var(--k-space-5);border:1.5px dashed var(--k-border-strong);border-radius:var(--k-radius-lg);background:var(--k-bg)}
 .k-empty .k-empty-ic{width:46px;height:46px;border-radius:50%;background:var(--k-bg-soft);display:grid;place-content:center;color:var(--k-ink-3);margin-bottom:var(--k-space-1)}
-.k-empty h3{font-size:14px;font-weight:600;color:var(--k-ink);font-family:var(--k-font)}
-.k-empty p{font-size:13px;line-height:1.7;color:var(--k-ink-2);max-width:36ch;font-family:var(--k-font);letter-spacing:.01em}
+.k-empty h3{font-size:var(--k-text-md);font-weight:600;color:var(--k-ink);font-family:var(--k-font)}
+.k-empty p{font-size:var(--k-text-base);line-height:1.7;color:var(--k-ink-2);max-width:36ch;font-family:var(--k-font);letter-spacing:.01em}
 .k-empty .k-empty-act{margin-top:var(--k-space-2)}

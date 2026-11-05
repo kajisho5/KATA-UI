@@ -1,13 +1,13 @@
 /* KATA Calendar — one month of real buttons. */
 .k-cal{font-family:var(--k-font);color:var(--k-ink);background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-3);width:288px}
 .k-cal-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--k-space-2)}
-.k-cal-title{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.k-cal-title{font-size:var(--k-text-md);font-weight:600;letter-spacing:-.01em}
 .k-cal-nav{width:30px;height:30px;border-radius:var(--k-radius-md);border:1px solid var(--k-line);background:var(--k-bg);color:var(--k-ink-2);display:flex;align-items:center;justify-content:center;cursor:pointer}
 .k-cal-nav:hover{background:var(--k-bg-soft);color:var(--k-ink)}
 .k-cal-wd{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:var(--k-space-1)}
-.k-cal-wd span{text-align:center;font-size:11px;font-weight:600;color:var(--k-ink-3);padding:var(--k-space-1) 0}
+.k-cal-wd span{text-align:center;font-size:var(--k-text-xs);font-weight:600;color:var(--k-ink-3);padding:var(--k-space-1) 0}
 .k-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:var(--k-space-0-5)}
-.k-cal-day{height:34px;border:0;border-radius:var(--k-radius-md);background:none;font-family:inherit;font-size:13px;color:var(--k-ink);cursor:pointer;position:relative}
+.k-cal-day{height:34px;border:0;border-radius:var(--k-radius-md);background:none;font-family:inherit;font-size:var(--k-text-base);color:var(--k-ink);cursor:pointer;position:relative}
 .k-cal-day:hover{background:var(--k-bg-soft)}
 .k-cal-day.off{color:var(--k-ink-3);opacity:.55}
 .k-cal-day.today{font-weight:650}
@@ -15,4 +15,4 @@
 .k-cal-day.sel{background:var(--k-ink);color:var(--k-bg);font-weight:600}
 .k-cal-day.sel::after{background:var(--k-bg)}
 .k-cal.sm{width:248px;padding:var(--k-space-3)}
-.k-cal.sm .k-cal-day{height:29px;font-size:12.5px}
+.k-cal.sm .k-cal-day{height:29px;font-size:var(--k-text-sm)}

@@ -2,14 +2,14 @@
 .k-kan{display:grid;grid-template-columns:repeat(3,minmax(225px,1fr));gap:var(--k-space-3);font-family:var(--k-font);color:var(--k-ink);align-items:start}
 .k-kan-col{background:var(--k-bg-soft);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:var(--k-space-2);min-height:180px}
 .k-kan-col.over{outline:2px dashed var(--k-accent-line);outline-offset:-6px}
-.k-kan-h{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-1) var(--k-space-1) var(--k-space-2);font-size:12.5px;font-weight:650;letter-spacing:.02em}
-.k-kan-h .cnt{margin-inline-start:auto;font-size:11.5px;font-weight:600;color:var(--k-ink-3);background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-full);padding:var(--k-space-px) var(--k-space-2)}
+.k-kan-h{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-1) var(--k-space-1) var(--k-space-2);font-size:var(--k-text-sm);font-weight:650;letter-spacing:.02em}
+.k-kan-h .cnt{margin-inline-start:auto;font-size:var(--k-text-xs);font-weight:600;color:var(--k-ink-3);background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-full);padding:var(--k-space-px) var(--k-space-2)}
 .k-kan-list{display:flex;flex-direction:column;gap:var(--k-space-2);min-height:60px}
 .k-kan-card{background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);padding:var(--k-space-3) var(--k-space-3);box-shadow:var(--k-shadow-xs);cursor:grab}
 .k-kan-card:active{cursor:grabbing}
 .k-kan-card.drag{opacity:.45}
-.k-kan-card h4{font-size:13.5px;font-weight:600;line-height:1.5}
-.k-kan-card p{font-size:12.5px;color:var(--k-ink-2);line-height:1.65;margin-top:var(--k-space-1);letter-spacing:.01em}
+.k-kan-card h4{font-size:var(--k-text-base);font-weight:600;line-height:1.5}
+.k-kan-card p{font-size:var(--k-text-sm);color:var(--k-ink-2);line-height:1.65;margin-top:var(--k-space-1);letter-spacing:.01em}
 .k-kan-meta{display:flex;align-items:center;gap:var(--k-space-2);margin-top:var(--k-space-2)}
 .k-kan-meta .k-avatar{margin-inline-start:auto}
 @media (max-width:760px){.k-kan{grid-template-columns:1fr}}

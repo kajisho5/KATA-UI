@@ -2679,6 +2679,10 @@ Negative values keep their sign (-5/-6px → -4px, -9px → -8px). Applied by `t
 | 29px, 31px, 32px | `--k-text-3xl` (30px) | 4, 1, 1 |
 | 41px, 44px | `--k-text-display` (44px) | 1, 1 |
 
+Applied by `tools/t3_migrate.py font-size`: 433 declarations in 148 files. Two more
+font-size findings are `.86em` on inline `code` (Typeset, Blog Article): the size
+follows the surrounding text, so no px token fits; they stay for the promotion PR.
+
 ### Line height (UI, 86 values)
 
 | Raw | Token | Count |
@@ -2690,7 +2694,6 @@ Negative values keep their sign (-5/-6px → -4px, -9px → -8px). Applied by `t
 | 1.5, 1.55, 1.6 | `--k-lh-small` (1.6) | 2, 2, 6 |
 | 1.65, 1.7, 1.75 | `--k-lh-body` (1.7) | 13, 13, 19 |
 | 1.8, 1.85 | `--k-lh-loose` (1.85) | 11, 2 |
-| .86em | reviewed per part in the line-height PR | 2 |
 
 Order: this PR adds the scale only (no component changes). Then one PR each for
 spacing, font size and line height while the checks are still warnings; the last

@@ -1,5 +1,5 @@
 /* KATA Breadcrumbs */
-.k-crumbs{display:flex;align-items:center;gap:var(--k-space-2);flex-wrap:wrap;font-size:13px;font-family:var(--k-font);list-style:none}
+.k-crumbs{display:flex;align-items:center;gap:var(--k-space-2);flex-wrap:wrap;font-size:var(--k-text-base);font-family:var(--k-font);list-style:none}
 .k-crumbs li{display:flex;align-items:center;gap:var(--k-space-2)}
 .k-crumbs a{color:var(--k-ink-2);text-decoration:none}
 .k-crumbs a:hover{color:var(--k-ink);text-decoration:underline;text-underline-offset:3px}

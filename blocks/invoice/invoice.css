@@ -1,18 +1,18 @@
 /* KATA Block: Invoice */
 .k-inv{font-family:var(--k-font);color:var(--k-ink);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:var(--k-space-6);background:var(--k-bg);max-width:640px}
 .k-inv-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--k-space-3);margin-bottom:var(--k-space-4)}
-.k-inv-head h3{font-size:17px;font-weight:650;letter-spacing:-.015em}
-.k-inv-head p{font-size:12.5px;color:var(--k-ink-2);margin-top:var(--k-space-1)}
+.k-inv-head h3{font-size:var(--k-text-lg);font-weight:650;letter-spacing:-.015em}
+.k-inv-head p{font-size:var(--k-text-sm);color:var(--k-ink-2);margin-top:var(--k-space-1)}
 .k-inv-parties{display:grid;grid-template-columns:1fr 1fr;gap:var(--k-space-3);margin-bottom:var(--k-space-4)}
-.k-inv-parties h4{font-size:11px;font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--k-ink-3);margin-bottom:var(--k-space-1)}
-.k-inv-parties p{font-size:13px;line-height:1.65;letter-spacing:.01em}
-.k-inv table{width:100%;border-collapse:collapse;font-size:13.5px}
+.k-inv-parties h4{font-size:var(--k-text-xs);font-weight:650;letter-spacing:.09em;text-transform:uppercase;color:var(--k-ink-3);margin-bottom:var(--k-space-1)}
+.k-inv-parties p{font-size:var(--k-text-base);line-height:1.65;letter-spacing:.01em}
+.k-inv table{width:100%;border-collapse:collapse;font-size:var(--k-text-base)}
 .k-inv th,.k-inv td{padding:var(--k-space-2) var(--k-space-2);border-bottom:1px solid var(--k-line);text-align:left}
-.k-inv th{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:650}
+.k-inv th{font-size:var(--k-text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:650}
 .k-inv td.n,.k-inv th.n{text-align:right;font-variant-numeric:tabular-nums}
 .k-inv-sums{margin-left:auto;width:220px;margin-top:var(--k-space-3)}
-.k-inv-sums .r{display:flex;justify-content:space-between;font-size:13px;padding:var(--k-space-1) var(--k-space-2);color:var(--k-ink-2)}
-.k-inv-sums .t{display:flex;justify-content:space-between;font-size:15px;font-weight:700;padding:var(--k-space-2) var(--k-space-2) 0;margin-top:var(--k-space-1);border-top:2px solid var(--k-line);color:var(--k-ink)}
+.k-inv-sums .r{display:flex;justify-content:space-between;font-size:var(--k-text-base);padding:var(--k-space-1) var(--k-space-2);color:var(--k-ink-2)}
+.k-inv-sums .t{display:flex;justify-content:space-between;font-size:var(--k-text-lead);font-weight:700;padding:var(--k-space-2) var(--k-space-2) 0;margin-top:var(--k-space-1);border-top:2px solid var(--k-line);color:var(--k-ink)}
 .k-inv-foot{display:flex;justify-content:space-between;align-items:center;gap:var(--k-space-3);margin-top:var(--k-space-5);flex-wrap:wrap}
-.k-inv-foot p{font-size:12px;color:var(--k-ink-3)}
+.k-inv-foot p{font-size:var(--k-text-sm);color:var(--k-ink-3)}
 @media (max-width:520px){.k-inv-parties{grid-template-columns:1fr}}

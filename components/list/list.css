@@ -3,9 +3,9 @@
 .k-list-row{display:flex;align-items:center;gap:var(--k-space-3);padding:var(--k-space-3) var(--k-space-4);text-decoration:none;color:var(--k-ink)}
 a.k-list-row:hover{background:var(--k-bg-soft)}
 .k-list-row .main{flex:1;min-width:0}
-.k-list-row .tt{display:block;font-size:13.5px;font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.k-list-row .ss{display:block;font-size:12px;color:var(--k-ink-3);margin-top:var(--k-space-px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.k-list-row .meta{font-size:12px;color:var(--k-ink-3);flex:none}
+.k-list-row .tt{display:block;font-size:var(--k-text-base);font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.k-list-row .ss{display:block;font-size:var(--k-text-sm);color:var(--k-ink-3);margin-top:var(--k-space-px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.k-list-row .meta{font-size:var(--k-text-sm);color:var(--k-ink-3);flex:none}
 .k-list-row .chev{color:var(--k-ink-3);flex:none;display:grid;place-items:center}
 /* The list clips overflow, so rows draw their focus ring inside. */
 .k-list-row:focus-visible{outline:2px solid var(--k-ink);outline-offset:-2px}

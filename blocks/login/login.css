@@ -1,11 +1,11 @@
 .login-card{max-width:368px;margin:0 auto;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);padding:var(--k-space-7) var(--k-space-7);font-family:var(--k-font);color:var(--k-ink);text-align:start}
 .login-mark{display:grid;place-items:center;color:var(--k-ink)}
-.login-h{margin-top:var(--k-space-3);text-align:center;font-size:19px;font-weight:600;letter-spacing:-.015em}
-.login-sub{margin-top:var(--k-space-1);text-align:center;font-size:13px;color:var(--k-ink-2)}
+.login-h{margin-top:var(--k-space-3);text-align:center;font-size:var(--k-text-xl);font-weight:600;letter-spacing:-.015em}
+.login-sub{margin-top:var(--k-space-1);text-align:center;font-size:var(--k-text-base);color:var(--k-ink-2)}
 .login-card .field{margin-top:var(--k-space-4)}
-.login-row{display:flex;align-items:center;justify-content:space-between;margin-top:var(--k-space-3);font-size:13px}
+.login-row{display:flex;align-items:center;justify-content:space-between;margin-top:var(--k-space-3);font-size:var(--k-text-base)}
 .login-link{color:var(--k-accent-ink);text-decoration:none}
 .login-cta{width:100%;justify-content:center;margin-top:var(--k-space-4)}
 .login-card .k-sep-label{margin-top:var(--k-space-4)}
-.login-foot{margin-top:var(--k-space-4);text-align:center;font-size:13px;color:var(--k-ink-2)}
+.login-foot{margin-top:var(--k-space-4);text-align:center;font-size:var(--k-text-base);color:var(--k-ink-2)}
 .login-foot a{color:var(--k-accent-ink);text-decoration:none;font-weight:550}

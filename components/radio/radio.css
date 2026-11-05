@@ -1,5 +1,5 @@
 /* KATA Radio — native input, styled face. No JS. */
-.k-radio{display:inline-flex;align-items:center;gap:var(--k-space-2);font-size:13.5px;cursor:pointer}
+.k-radio{display:inline-flex;align-items:center;gap:var(--k-space-2);font-size:var(--k-text-base);cursor:pointer}
 .k-radio input{appearance:none;-webkit-appearance:none;width:17px;height:17px;margin:0;border:1.5px solid var(--k-border-strong);border-radius:50%;background:var(--k-bg);display:grid;place-content:center;cursor:pointer;transition:border-color var(--k-dur-fast);flex:none}
 .k-radio input::after{content:"";width:9px;height:9px;border-radius:50%;background:var(--k-core);transform:scale(0);transition:transform var(--k-dur-fast) var(--k-ease)}
 .k-radio input:checked{border-color:var(--k-ink)}

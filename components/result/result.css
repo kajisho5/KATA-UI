@@ -3,6 +3,6 @@
 .k-result-ic{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto var(--k-space-4)}
 .k-result-ic.ok{background:var(--k-success-bg);color:var(--k-success-ink)}
 .k-result-ic.err{background:var(--k-danger-bg);color:var(--k-danger-ink)}
-.k-result h3{font-size:17px;font-weight:600;letter-spacing:-.015em}
-.k-result p{margin-top:var(--k-space-2);font-size:13.5px;line-height:1.8;color:var(--k-ink-2);letter-spacing:.012em}
+.k-result h3{font-size:var(--k-text-lg);font-weight:600;letter-spacing:-.015em}
+.k-result p{margin-top:var(--k-space-2);font-size:var(--k-text-base);line-height:1.8;color:var(--k-ink-2);letter-spacing:.012em}
 .k-result .acts{margin-top:var(--k-space-4);display:flex;gap:var(--k-space-2);justify-content:center;flex-wrap:wrap}

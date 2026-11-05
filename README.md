@@ -46,7 +46,7 @@ If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rail
 <!-- mold-summary:start -->
 [Mold Verified 112 / 164 · UI 77 / 121 · Lab 35 / 43](https://kata-ui.dev/audit/)
 
-164 parts. Static checks only. Updated 2026-11-05 (Asia/Tokyo).
+164 parts. Static checks only. Updated 2026-11-06 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 <!-- mold-summary:end -->
 
@@ -58,7 +58,7 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 # 1. write the design tokens into ./kata (every part reads them)
 
 <!-- mold-version:start -->
-moldVersion: 2. Before copying a part, check the tokens.css mold header against requiresMold; update the mold before using newer parts. Unversioned tokens.css is legacy v1.
+moldVersion: 3. Before copying a part, check the tokens.css mold header against requiresMold; update the mold before using newer parts. Unversioned tokens.css is legacy v1.
 <!-- mold-version:end -->
 npx @kajisho5/kataui init
 

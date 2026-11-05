@@ -25,6 +25,9 @@ def values(tokens,mode):
         result['--k-radius']=f'{base:g}px'
         for name,value in radii.items():
             result['--k-radius-'+name]=(f'{value:g}px' if name=='full' else 'var(--k-radius)' if name=='md' else f'calc(var(--k-radius) * {value/base:g})')
+    # Declared in every theme block, like the other rings: var() resolves where the
+    # property is declared, so a nested [data-theme] needs its own copy.
+    if 'focus' in tokens['elevation']:result['--k-ring']=tokens['elevation']['focus']
     for name,value in tokens['elevation']['rings'].items():result['--k-ring-'+name]=value
     for name,target in tokens['elevation']['aliases'].items():result['--k-shadow-'+name]='var(--k-shadow-'+target+')'
     theme='light' if mode=='root' else mode
@@ -41,6 +44,13 @@ def sync(root=ROOT,check=False):
         if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing/duplicate shape adapter region: '+mode)
         content='\n'.join('  '+name+':'+value+';' for name,value in values(tokens,mode).items())
         new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+content+'\n  '+end,new,flags=re.S)
+    outline=tokens['elevation'].get('focusOutline')
+    if outline:
+        start='/* focus-floor:start */';end='/* focus-floor:end */'
+        if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing/duplicate focus floor region')
+        # Zero specificity: any component rule replaces the floor, but nothing has to declare it.
+        rule=f":where(:focus-visible){{outline:{outline['width']} solid {outline['color']};outline-offset:{outline['offset']}}}"
+        new=re.sub(re.escape(start)+r'.*?'+re.escape(end),lambda _:start+'\n'+rule+'\n'+end,new,flags=re.S)
     if 'contrast' in tokens:
         start='/* relative-color-roles:start */';end='/* relative-color-roles:end */'
         if new.count(start)!=1 or new.count(end)!=1:raise ValueError('Missing relative color adapter region')

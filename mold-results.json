@@ -2,28 +2,28 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 97,
-    "failed": 67,
+    "passed": 100,
+    "failed": 64,
     "total": 164,
     "warnings": 318,
     "findings": {
-      "accessible-label": 1,
+      "accessible-label": 0,
       "button-type": 0,
-      "focus-visible": 132,
-      "js-global-bindings": 52,
-      "js-single-instance": 19,
+      "focus-visible": 125,
+      "js-global-bindings": 37,
+      "js-single-instance": 14,
       "legacy-contract": 0,
       "reduced-motion": 0,
       "shared-token-scope": 0,
-      "spacing-values": 892,
+      "spacing-values": 891,
       "token-values": 0,
       "type-values": 638,
       "variant-hover": 0
     },
     "by_profile": {
       "ui": {
-        "passed": 64,
-        "failed": 57,
+        "passed": 67,
+        "failed": 54,
         "total": 121
       },
       "lab": {
@@ -5059,7 +5059,7 @@
     {
       "id": "components/command",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -5256,33 +5256,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/command/preview.html: <input> kcmd-input",
-            "components/command/preview.html: <button> active kcmd-item",
-            "components/command/preview.html: <button> kcmd-item"
-          ],
-          "details": [
-            {
-              "path": "components/command/preview.html",
-              "tag": "input",
-              "class_or_role": "kcmd-input",
-              "occurrences": 1
-            },
-            {
-              "path": "components/command/preview.html",
-              "tag": "button",
-              "class_or_role": "active kcmd-item",
-              "occurrences": 1
-            },
-            {
-              "path": "components/command/preview.html",
-              "tag": "button",
-              "class_or_role": "kcmd-item",
-              "occurrences": 5
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -5298,24 +5275,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-command]",
-            "document.querySelector('[data-command-open]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const cmdDlg",
-            "const cmdInput",
-            "const cmdItems",
-            "const cmdEmpty",
-            "let cmdActive"
-          ]
+          "findings": []
         }
       ]
     },
@@ -5606,7 +5574,7 @@
     {
       "id": "components/context-menu",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -5751,19 +5719,10 @@
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/context-menu/preview.html: <div> k-ctx-zone"
-          ],
-          "details": [
-            {
-              "path": "components/context-menu/preview.html",
-              "tag": "div",
-              "class_or_role": "k-ctx-zone",
-              "occurrences": 1
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -5779,21 +5738,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-ctx-zone]",
-            "document.querySelector('[data-ctx]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const ctxZone",
-            "const ctxMenu"
-          ]
+          "findings": []
         }
       ]
     },
@@ -6552,7 +6505,7 @@
     {
       "id": "components/date-picker",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -6583,8 +6536,7 @@
             "components/date-picker/date-picker.css: padding: 14px [spacing] — raw spacing: 14px",
             "components/date-picker/date-picker.css: margin-bottom: 10px [spacing] — raw spacing: 10px",
             "components/date-picker/date-picker.css: margin-bottom: 5px [spacing] — raw spacing: 5px",
-            "components/date-picker/date-picker.css: gap: 2px [spacing] — raw spacing: 2px",
-            "components/date-picker/preview.html: padding-right: 42px [spacing] — raw spacing: 42px"
+            "components/date-picker/date-picker.css: gap: 2px [spacing] — raw spacing: 2px"
           ],
           "profile": "ui",
           "details": [
@@ -6623,19 +6575,10 @@
               "reasons": [
                 "raw spacing: 2px"
               ]
-            },
-            {
-              "path": "components/date-picker/preview.html",
-              "property": "padding-right",
-              "value": "42px",
-              "kind": "spacing",
-              "reasons": [
-                "raw spacing: 42px"
-              ]
             }
           ],
           "by_kind": {
-            "spacing": 5
+            "spacing": 4
           }
         },
         {
@@ -6689,41 +6632,16 @@
         },
         {
           "id": "accessible-label",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "preview.html: <input> input"
-          ]
+          "findings": []
         },
         {
           "id": "focus-visible",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/date-picker/preview.html: <input> input",
-            "components/date-picker/preview.html: <button> cal-btn",
-            "components/date-picker/preview.html: <button> k-dp-nav"
-          ],
-          "details": [
-            {
-              "path": "components/date-picker/preview.html",
-              "tag": "input",
-              "class_or_role": "input",
-              "occurrences": 1
-            },
-            {
-              "path": "components/date-picker/preview.html",
-              "tag": "button",
-              "class_or_role": "cal-btn",
-              "occurrences": 1
-            },
-            {
-              "path": "components/date-picker/preview.html",
-              "tag": "button",
-              "class_or_role": "k-dp-nav",
-              "occurrences": 2
-            }
-          ]
+          "findings": [],
+          "details": []
         },
         {
           "id": "variant-hover",
@@ -6739,26 +6657,15 @@
         },
         {
           "id": "js-single-instance",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "document.querySelector('[data-dp]"
-          ]
+          "findings": []
         },
         {
           "id": "js-global-bindings",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "const dp",
-            "const dpInput",
-            "const dpPanel",
-            "const dpGrid",
-            "const dpTitle",
-            "const MONTHS",
-            "let dpView",
-            "let dpSel"
-          ]
+          "findings": []
         }
       ]
     },

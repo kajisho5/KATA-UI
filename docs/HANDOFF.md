@@ -87,6 +87,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Not wholly duplicated: Button combos id/for, Input focus-visible and a triple/RTL test remain. Revisit during T4; do not discard the remainder. |
 | [#25](https://github.com/kajisho5/KATA-UI/pull/25) | Open, rebased onto #26, Node20/22 tests and mold warnings proposed. Owner review/merge is required. Current main CLI is still 1.0.0 with no npm test script. |
 | [#27](https://github.com/kajisho5/KATA-UI/pull/27) | Open JS batch for Tag Input/OTP/Data Table. Owner review/merge is required before another implementation task. Do not duplicate it. |
+| [#28](https://github.com/kajisho5/KATA-UI/pull/28) | This documentation handoff. Owner review/merge is required before starting its queue; refresh this snapshot after merge. |
 
 This owner-requested documentation handoff records those open PRs without merging
 them. It does not authorize another implementation task. The owner must also

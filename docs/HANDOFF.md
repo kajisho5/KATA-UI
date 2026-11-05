@@ -111,7 +111,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| This PR (fix/product-page-swatch-names) | Product Page colour swatches had no accessible name; aria-label from the visible colour name. Repair before the empty-label checker rule. |
+| [#52](https://github.com/kajisho5/KATA-UI/pull/52) | Product Page colour swatches had no accessible name; aria-label from the visible colour name. Repair before the empty-label checker rule. |
 
 ### npm and environment
 
@@ -163,7 +163,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: this repair, then the empty-label checker PR (owner approved), then T4 Modal.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #52 (swatch repair), then the empty-label checker PR (owner approved), then T4 Modal.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -290,7 +290,7 @@ no text; detecting empty labels is a rule change and needs owner approval.
 The owner approved it in chat on 2026-11-06 ("なおしてもいいよ"). A prototype of the
 stricter rule (name from aria-label, title, aria-labelledby text, label[for] or
 ancestor label text/aria-label/img alt) flags only the three Product Page colour
-swatches; per KATA.md F the repair lands first (this PR), then the checker PR.
+swatches; per KATA.md F the repair lands first (#52), then the checker PR.
 Next: the checker PR, then modal.
 
 Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.

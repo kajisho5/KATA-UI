@@ -3,7 +3,7 @@
 Implementation agent: Claude Code (from 2026-11-05).
 
 <!-- mold-snapshot:start -->
-[Mold Verified 103 / 164 · UI 70 / 121 · Lab 33 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 106 / 164 · UI 73 / 121 · Lab 33 / 43](https://kata-ui.dev/audit/)
 
 164 parts. Static checks only. Updated 2026-11-05 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
@@ -20,9 +20,9 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 | token-values: easing | 0 |
 | spacing-values (warn) | 891 |
 | type-values (warn) | 638 |
-| focus-visible | 119 |
-| js-single-instance | 12 |
-| js-global-bindings | 31 |
+| focus-visible | 112 |
+| js-single-instance | 7 |
+| js-global-bindings | 18 |
 | shared-token-scope | 0 |
 | accessible-label | 0 |
 <!-- mold-snapshot:end -->
@@ -57,6 +57,7 @@ separate release statuses. The phases below are targets, not shipped features.
   - [x] First batch: Alert Dialog, Drawer and Popover JS instances, focus and zero-motion safety ([PR #24](https://github.com/kajisho5/KATA-UI/pull/24)).
   - [x] Second batch: Command, Context Menu and Date Picker: independent instances, keyboard/IME guards and zero-motion regression tests ([PR #26](https://github.com/kajisho5/KATA-UI/pull/26)).
   - [x] Third batch: Tag Input, Input OTP and Data Table: independent state, visual arrows, LTR codes and native/custom change events ([PR #27](https://github.com/kajisho5/KATA-UI/pull/27)).
+  - [x] Fourth batch: File Upload, Color Picker and Carousel: keyboard-reachable file input, radio swatches with visual arrows, RTL-safe carousel with settled announcements ([PR #29](https://github.com/kajisho5/KATA-UI/pull/29)).
 - [ ] P7: First add Playwright checks that measure whether a focused control has a visible ring. Then resolve focus findings using those checks.
 - [ ] P8: Promote spacing-values and type-values to fail for UI only, then replace the failing values.
 

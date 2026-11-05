@@ -1,0 +1,285 @@
+{
+  "cases": [
+    {
+      "component": "file-upload",
+      "case": "normal",
+      "theme": "light",
+      "mscale": 1,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "file-upload",
+      "case": "zero",
+      "theme": "dark",
+      "mscale": 0,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "file-upload",
+      "case": "reduce",
+      "theme": "dark",
+      "mscale": 2,
+      "reducedMotion": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "color-picker",
+      "case": "normal",
+      "theme": "light",
+      "mscale": 1,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "color-picker",
+      "case": "zero",
+      "theme": "dark",
+      "mscale": 0,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "color-picker",
+      "case": "reduce",
+      "theme": "dark",
+      "mscale": 2,
+      "reducedMotion": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "carousel",
+      "case": "normal",
+      "theme": "light",
+      "mscale": 1,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "carousel",
+      "case": "zero",
+      "theme": "dark",
+      "mscale": 0,
+      "reducedMotion": "no-preference",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    },
+    {
+      "component": "carousel",
+      "case": "reduce",
+      "theme": "dark",
+      "mscale": 2,
+      "reducedMotion": "reduce",
+      "threeIndependent": true,
+      "doubleLoad": true,
+      "rtl": true,
+      "uniqueIds": true,
+      "existingIdsPreserved": true,
+      "nullFocusoutAndBodyClickSafe": true,
+      "keyboard": true,
+      "eventsCounted": true,
+      "globalListeners": 0
+    }
+  ],
+  "horizontalPositions": [
+    {
+      "component": "color-picker",
+      "instance": 0,
+      "key": "ArrowRight",
+      "beforeLeft": 24,
+      "afterLeft": 66
+    },
+    {
+      "component": "color-picker",
+      "instance": 1,
+      "key": "ArrowRight",
+      "beforeLeft": 24,
+      "afterLeft": 66
+    },
+    {
+      "component": "color-picker",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "beforeLeft": 1042,
+      "afterLeft": 1000
+    },
+    {
+      "component": "color-picker",
+      "instance": 0,
+      "key": "ArrowRight",
+      "beforeLeft": 24,
+      "afterLeft": 66
+    },
+    {
+      "component": "color-picker",
+      "instance": 1,
+      "key": "ArrowRight",
+      "beforeLeft": 24,
+      "afterLeft": 66
+    },
+    {
+      "component": "color-picker",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "beforeLeft": 1042,
+      "afterLeft": 1000
+    },
+    {
+      "component": "color-picker",
+      "instance": 0,
+      "key": "ArrowRight",
+      "beforeLeft": 24,
+      "afterLeft": 66
+    },
+    {
+      "component": "color-picker",
+      "instance": 1,
+      "key": "ArrowRight",
+      "beforeLeft": 24,
+      "afterLeft": 66
+    },
+    {
+      "component": "color-picker",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "beforeLeft": 1042,
+      "afterLeft": 1000
+    },
+    {
+      "component": "carousel",
+      "instance": 0,
+      "key": "ArrowRight",
+      "slide2LeftBefore": 409.390625,
+      "slide2LeftAfter": 25.390625
+    },
+    {
+      "component": "carousel",
+      "instance": 1,
+      "key": "ArrowRight",
+      "slide2LeftBefore": 409.390625,
+      "slide2LeftAfter": 25.390625
+    },
+    {
+      "component": "carousel",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "slide2LeftBefore": 317.21875,
+      "slide2LeftAfter": 701.21875
+    },
+    {
+      "component": "carousel",
+      "instance": 0,
+      "key": "ArrowRight",
+      "slide2LeftBefore": 409.390625,
+      "slide2LeftAfter": 24.390625
+    },
+    {
+      "component": "carousel",
+      "instance": 1,
+      "key": "ArrowRight",
+      "slide2LeftBefore": 409.390625,
+      "slide2LeftAfter": 24.390625
+    },
+    {
+      "component": "carousel",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "slide2LeftBefore": 317.21875,
+      "slide2LeftAfter": 702.21875
+    },
+    {
+      "component": "carousel",
+      "instance": 0,
+      "key": "ArrowRight",
+      "slide2LeftBefore": 409.390625,
+      "slide2LeftAfter": 24.390625
+    },
+    {
+      "component": "carousel",
+      "instance": 1,
+      "key": "ArrowRight",
+      "slide2LeftBefore": 409.390625,
+      "slide2LeftAfter": 24.390625
+    },
+    {
+      "component": "carousel",
+      "instance": 2,
+      "key": "ArrowLeft",
+      "slide2LeftBefore": 317.21875,
+      "slide2LeftAfter": 702.21875
+    }
+  ],
+  "consoleErrors": [],
+  "unverified": [
+    "Real Japanese IME",
+    "Screen readers",
+    "Firefox",
+    "Safari",
+    "Native file and color pickers on mobile",
+    "Real drag and drop from the operating system"
+  ]
+}

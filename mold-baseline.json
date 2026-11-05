@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 103,
+    "passed": 106,
     "total": 164
   },
   "items": [
@@ -107,7 +107,7 @@
     },
     {
       "id": "components/carousel",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
       "id": "components/color-picker",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {
@@ -232,7 +232,7 @@
     },
     {
       "id": "components/file-upload",
-      "passed": false,
+      "passed": true,
       "profile": "ui"
     },
     {

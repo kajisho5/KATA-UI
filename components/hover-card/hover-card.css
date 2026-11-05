@@ -1,5 +1,5 @@
 .k-hover{position:relative;display:inline-block;font-family:var(--k-font)}
-.k-hover .card{position:absolute;left:50%;top:calc(100% + 10px);transform:translate(-50%,4px);width:262px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);box-shadow:var(--k-shadow-pop);padding:15px;text-align:left;opacity:0;pointer-events:none;transition:opacity .16s var(--k-ease),transform .16s var(--k-ease);z-index:40}
+.k-hover .card{position:absolute;left:50%;top:calc(100% + 10px);transform:translate(-50%,4px);width:262px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);box-shadow:var(--k-shadow-pop);padding:15px;text-align:left;opacity:0;pointer-events:none;transition:opacity var(--k-dur-base) var(--k-ease),transform var(--k-dur-base) var(--k-ease);z-index:40}
 .k-hover.open .card{opacity:1;pointer-events:auto;transform:translate(-50%,0)}
 .k-hover .card h4{font-size:13.5px;font-weight:600;color:var(--k-ink)}
 .k-hover .card p{margin-top:4px;font-size:12.5px;line-height:1.65;color:var(--k-ink-2);letter-spacing:.01em}

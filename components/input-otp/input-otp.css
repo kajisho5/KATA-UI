@@ -1,4 +1,4 @@
 .k-otp{display:flex;gap:8px;align-items:center;font-family:var(--k-font)}
-.k-otp input{-webkit-appearance:none;appearance:none;width:44px;height:50px;border:1px solid var(--k-line);border-radius:var(--k-radius-lg);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-mono);font-size:19px;font-weight:600;text-align:center;outline:none;transition:border-color .13s, box-shadow .13s}
+.k-otp input{-webkit-appearance:none;appearance:none;width:44px;height:50px;border:1px solid var(--k-line);border-radius:var(--k-radius-lg);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-mono);font-size:19px;font-weight:600;text-align:center;outline:none;transition:border-color var(--k-dur-fast), box-shadow var(--k-dur-fast)}
 .k-otp input:focus{border-color:var(--k-accent);box-shadow:var(--k-ring)}
 .k-otp .gap{width:10px;height:2px;border-radius:var(--k-radius-xs);background:var(--k-line)}

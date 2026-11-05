@@ -1,0 +1,1770 @@
+{
+  "beforeRef": "c6982b885f9fd0331283c1b67991444bf9682922",
+  "measurements": {
+    "before": {
+      "0.5": {
+        "button": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.spin",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.35s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-rot"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "input": [],
+        "select": [
+          {
+            "element": "select.",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 13,
+            "pseudo": "",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 22,
+            "pseudo": "",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          }
+        ],
+        "card": [
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-sm",
+            "index": 11,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "badge": [],
+        "modal": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "drawer": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "dialog.kdrawer",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.18s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "kdrawer-in"
+          },
+          {
+            "element": "button.btn btn-ghost btn-sm",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "dropdown": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.menu open",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ],
+        "popover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.kpop open",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.13s, 0.13s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "tabs": [
+          {
+            "element": "span.thumb",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.22s, 0.22s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "toast": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.toast",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.3s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-tin"
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::before",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::after",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::before",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::after",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::before",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::after",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ]
+      },
+      "2": {
+        "button": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.spin",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "1.4s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-rot"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "input": [],
+        "select": [
+          {
+            "element": "select.",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 13,
+            "pseudo": "",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 22,
+            "pseudo": "",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          }
+        ],
+        "card": [
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-sm",
+            "index": 11,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "badge": [],
+        "modal": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "drawer": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "dialog.kdrawer",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.18s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "kdrawer-in"
+          },
+          {
+            "element": "button.btn btn-ghost btn-sm",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "dropdown": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.menu open",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ],
+        "popover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.kpop open",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.13s, 0.13s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "tabs": [
+          {
+            "element": "span.thumb",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.22s, 0.22s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "toast": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.toast",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.3s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-tin"
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::before",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::after",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::before",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::after",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::before",
+            "transition": "0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::after",
+            "transition": "0.15s, 0.15s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ]
+      }
+    },
+    "after": {
+      "0.5": {
+        "button": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.spin",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.35s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-rot"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "input": [],
+        "select": [
+          {
+            "element": "select.",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 13,
+            "pseudo": "",
+            "transition": "0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 22,
+            "pseudo": "",
+            "transition": "0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          }
+        ],
+        "card": [
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-sm",
+            "index": 11,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "badge": [],
+        "modal": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "drawer": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "dialog.kdrawer",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.09s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "kdrawer-in"
+          },
+          {
+            "element": "button.btn btn-ghost btn-sm",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "dropdown": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.menu open",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ],
+        "popover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.kpop open",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "tabs": [
+          {
+            "element": "span.thumb",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.11s, 0.11s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "toast": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.toast",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.11s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-tin"
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::before",
+            "transition": "0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::after",
+            "transition": "0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::before",
+            "transition": "0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::after",
+            "transition": "0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.065s, 0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::before",
+            "transition": "0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::after",
+            "transition": "0.065s, 0.065s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ]
+      },
+      "2": {
+        "button": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-ghost btn-md",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-accent btn-md",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-danger btn-md",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 5,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.spin",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "1.4s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-rot"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 8,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-lg",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "input": [],
+        "select": [
+          {
+            "element": "select.",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 13,
+            "pseudo": "",
+            "transition": "0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "select.",
+            "index": 22,
+            "pseudo": "",
+            "transition": "0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          }
+        ],
+        "card": [
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-sm",
+            "index": 11,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "badge": [],
+        "modal": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "drawer": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "dialog.kdrawer",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.36s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "kdrawer-in"
+          },
+          {
+            "element": "button.btn btn-ghost btn-sm",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 9,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 10,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "dropdown": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "span.menu open",
+            "index": 4,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ],
+        "popover": [
+          {
+            "element": "button.btn btn-pri btn-md",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.kpop open",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 6,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-sm",
+            "index": 7,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "tabs": [
+          {
+            "element": "span.thumb",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.44s, 0.44s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          }
+        ],
+        "toast": [
+          {
+            "element": "button.btn btn-sec btn-md",
+            "index": 0,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "div.toast",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0s",
+            "animation": "0.44s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "k-tin"
+          }
+        ],
+        "tooltip": [
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::before",
+            "transition": "0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 1,
+            "pseudo": "::after",
+            "transition": "0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::before",
+            "transition": "0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-sec btn-md k-tip",
+            "index": 2,
+            "pseudo": "::after",
+            "transition": "0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "",
+            "transition": "0.26s, 0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1), cubic-bezier(0.3, 0.7, 0.3, 1)",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::before",
+            "transition": "0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease",
+            "animationName": "none"
+          },
+          {
+            "element": "button.btn btn-pri btn-md k-tip",
+            "index": 3,
+            "pseudo": "::after",
+            "transition": "0.26s, 0.26s",
+            "animation": "0s",
+            "delay": "0s",
+            "easing": "ease, ease",
+            "animationName": "none"
+          }
+        ]
+      }
+    }
+  },
+  "safety": [
+    {
+      "preference": "no-preference",
+      "inlineMultiplier": 0,
+      "effectiveMultiplier": "0",
+      "modalClosed": true,
+      "drawerClosed": true,
+      "toastRemoved": true,
+      "jellyReset": true,
+      "doubleLoadSafe": true,
+      "runningAnimations": []
+    },
+    {
+      "preference": "reduce",
+      "inlineMultiplier": 2,
+      "effectiveMultiplier": "0",
+      "modalClosed": true,
+      "drawerClosed": true,
+      "toastRemoved": true,
+      "jellyReset": true,
+      "doubleLoadSafe": true,
+      "runningAnimations": []
+    }
+  ],
+  "errors": []
+}

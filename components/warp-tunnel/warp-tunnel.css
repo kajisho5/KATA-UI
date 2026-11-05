@@ -1,7 +1,7 @@
 /* KATA Warp Tunnel — KATAYABURI. Twelve rings, zero script. */
 .k-warp{position:relative;width:100%;background:var(--k-zinc-950);border-radius:14px;overflow:hidden;height:250px;perspective:340px;font-family:var(--k-font)}
 .k-warp-in{position:absolute;inset:0;transform-style:preserve-3d}
-.k-warp-r{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;border:2px solid var(--k-zinc-700);border-radius:50%;opacity:0;animation:k-warp-fly 5s linear infinite}
+.k-warp-r{position:absolute;left:50%;top:50%;width:300px;height:300px;margin:-150px 0 0 -150px;border:2px solid var(--k-zinc-700);border-radius:50%;opacity:0;animation:k-warp-fly calc(5s * var(--k-mscale)) linear infinite}
 .k-warp-r:nth-child(3n){border-color:var(--k-accent)}
 @keyframes k-warp-fly{0%{transform:scale(.05);opacity:0}14%{opacity:.95}70%{opacity:.8}100%{transform:scale(2.35);opacity:0}}
 .k-warp p{position:relative;z-index:2;text-align:center;padding-top:106px;font-size:14px;font-weight:600;color:var(--k-on-color);letter-spacing:.14em}

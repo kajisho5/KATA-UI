@@ -40,7 +40,7 @@ class RenderedRoles(unittest.TestCase):
             for mode in ('light','dark'):
                 for accent in ('#1f3a5f','#ffd166','#33a6b8','#777777','#ff0000'):
                     for base in (css,fallback+theme_css(accent,CONFIG)):
-                        page.set_content('<html data-theme="'+mode+'"><style>'+base+buttons+'</style><button type="button" class="btn btn-accent">Accent</button>')
+                        page.set_content('<html data-theme="'+mode+'"><style>'+base+buttons+' *{transition:none!important;animation:none!important}</style><button type="button" class="btn btn-accent">Accent</button>')
                         page.evaluate('(color)=>document.documentElement.style.setProperty("--k-accent",color)',accent)
                         self.assertGreaterEqual(rows(page)[0]['ratio'],4.5,(mode,accent))
                         page.locator('button').hover()

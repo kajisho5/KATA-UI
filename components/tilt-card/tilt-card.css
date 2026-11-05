@@ -1,7 +1,7 @@
 /* KATA Tilt Card — perspective, a glare, one floating layer. */
 .k-tilt{perspective:900px;font-family:var(--k-font);max-width:330px}
-.k-tilt-in{position:relative;background:var(--k-zinc-950);touch-action:none;color:var(--k-on-color);border-radius:16px;padding:22px;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .3s ease-out;transform-style:preserve-3d;overflow:hidden}
-.k-tilt.live .k-tilt-in{transition:transform .08s linear}
+.k-tilt-in{position:relative;background:var(--k-zinc-950);touch-action:none;color:var(--k-on-color);border-radius:16px;padding:22px;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform calc(.3s * var(--k-mscale)) ease-out;transform-style:preserve-3d;overflow:hidden}
+.k-tilt.live .k-tilt-in{transition:transform calc(.08s * var(--k-mscale)) linear}
 .k-tilt-in::after{content:"";position:absolute;inset:0;background:radial-gradient(340px circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.14), transparent 65%);pointer-events:none}
 .k-tilt .pop{transform:translateZ(34px)}
 .k-tilt h3{font-size:17px;font-weight:650;letter-spacing:-.015em}

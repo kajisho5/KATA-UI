@@ -13,7 +13,7 @@
 .k-side-item svg{flex:none}
 .k-side-badge{margin-inline-start:auto;font-size:11px;font-weight:600;background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);border-radius:var(--k-radius-full);padding:1px 7px}
 .k-side-item.on .k-side-badge{background:var(--k-bg)}
-.k-side-chev{margin-inline-start:auto;transition:transform .18s}
+.k-side-chev{margin-inline-start:auto;transition:transform var(--k-dur-base)}
 .k-side-group.open .k-side-chev{transform:rotate(180deg)}
 .k-side-sub{display:none;gap:2px;margin:2px 0 2px 25px}
 .k-side-group.open .k-side-sub{display:grid}

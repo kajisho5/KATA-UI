@@ -7,7 +7,7 @@
 .k-dt-t .num{text-align:end;font-variant-numeric:tabular-nums}
 .k-dt-t th.num{text-align:end}
 .k-dt-sort{display:inline-flex;align-items:center;gap:5px;border:none;background:none;font:inherit;color:inherit;cursor:pointer;padding:0;text-transform:inherit;letter-spacing:inherit}
-.k-dt-sort .arr{display:grid;place-items:center;opacity:.35;transition:transform .15s var(--k-ease),opacity .15s}
+.k-dt-sort .arr{display:grid;place-items:center;opacity:.35;transition:transform var(--k-dur-fast) var(--k-ease),opacity var(--k-dur-fast)}
 .k-dt-sort[data-dir="asc"] .arr{opacity:1;transform:rotate(180deg)}
 .k-dt-sort[data-dir="desc"] .arr{opacity:1}
 .k-dt input[type="checkbox"]{accent-color:var(--k-accent);width:15px;height:15px;cursor:pointer;vertical-align:middle}

@@ -1,5 +1,5 @@
 /* KATA Shine Text — a sweep of light, clipped to the letters. */
-.k-shine{font-family:var(--k-font);font-weight:650;letter-spacing:-.025em;line-height:1.16;background:linear-gradient(100deg, var(--k-ink) 25%, var(--k-zinc-400) 50%, var(--k-ink) 75%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:k-shine-move 3.4s linear infinite}
+.k-shine{font-family:var(--k-font);font-weight:650;letter-spacing:-.025em;line-height:1.16;background:linear-gradient(100deg, var(--k-ink) 25%, var(--k-zinc-400) 50%, var(--k-ink) 75%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:k-shine-move calc(3.4s * var(--k-mscale)) linear infinite}
 .k-shine.on-dark{background-image:linear-gradient(100deg, var(--k-zinc-400) 25%, var(--k-on-color) 50%, var(--k-zinc-400) 75%)}
 @keyframes k-shine-move{from{background-position:120% 0}to{background-position:-120% 0}}
 @media (prefers-reduced-motion:reduce){.k-shine{animation:none;background:none;color:var(--k-ink)}.k-shine.on-dark{color:var(--k-on-color)}}

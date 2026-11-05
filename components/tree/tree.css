@@ -3,7 +3,7 @@
 .k-tree-row{display:flex;align-items:center;gap:7px;padding:4.5px 7px;border-radius:var(--k-radius-md)}
 .k-tree-row:hover{background:var(--k-bg-soft)}
 .k-tree-row .tg{width:20px;height:20px;border:none;background:transparent;color:var(--k-ink-3);display:grid;place-items:center;cursor:pointer;border-radius:var(--k-radius-sm);padding:0;flex:none}
-.k-tree-row .tg svg{transition:transform .15s var(--k-ease)}
+.k-tree-row .tg svg{transition:transform var(--k-dur-fast) var(--k-ease)}
 .k-tree-row .tg[aria-expanded="false"] svg{transform:rotate(-90deg)}
 .k-tree-row .fi{color:var(--k-ink-3);display:grid;place-items:center;flex:none}
 .k-tree-row .fi.fold{color:var(--k-accent-ink)}

@@ -1,12 +1,12 @@
 /* KATA Speed Dial — one button, a fan of actions. */
 .k-dial{position:absolute;right:18px;bottom:18px;display:flex;flex-direction:column;align-items:flex-end;gap:10px;font-family:var(--k-font)}
-.k-dial .acts{display:flex;flex-direction:column;align-items:flex-end;gap:9px;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .18s,transform .18s}
+.k-dial .acts{display:flex;flex-direction:column;align-items:flex-end;gap:9px;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity var(--k-dur-base),transform var(--k-dur-base)}
 .k-dial.open .acts{opacity:1;transform:none;pointer-events:auto}
 .k-dial .act{display:flex;align-items:center;gap:9px;background:none;border:0;cursor:pointer;font-family:inherit;padding:0}
 .k-dial .act .lbl{font-size:12.5px;font-weight:550;color:var(--k-ink);background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-md);padding:5px 10px;box-shadow:var(--k-shadow-sm)}
 .k-dial .act .fab{width:42px;height:42px;border-radius:50%;background:var(--k-bg);border:1px solid var(--k-line);color:var(--k-ink-2);display:flex;align-items:center;justify-content:center;box-shadow:var(--k-shadow-sm)}
 .k-dial .act:hover .fab{background:var(--k-bg-soft);color:var(--k-ink)}
 .k-dial .main{width:54px;height:54px;border-radius:50%;background:var(--k-ink);color:var(--k-bg);border:0;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--k-shadow-sm)}
-.k-dial .main svg{transition:transform .2s}
+.k-dial .main svg{transition:transform var(--k-dur-base)}
 .k-dial.open .main svg{transform:rotate(45deg)}
 @media (prefers-reduced-motion:reduce){.k-dial .acts,.k-dial .main svg{transition:none}}

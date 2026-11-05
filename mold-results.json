@@ -2,8 +2,8 @@
   "updated_at": "2026-11-05",
   "schema_version": 2,
   "summary": {
-    "passed": 53,
-    "failed": 111,
+    "passed": 88,
+    "failed": 76,
     "total": 164,
     "warnings": 318,
     "findings": {
@@ -16,19 +16,19 @@
       "reduced-motion": 0,
       "shared-token-scope": 0,
       "spacing-values": 892,
-      "token-values": 137,
+      "token-values": 20,
       "type-values": 638,
       "variant-hover": 0
     },
     "by_profile": {
       "ui": {
-        "passed": 42,
-        "failed": 79,
+        "passed": 59,
+        "failed": 62,
         "total": 121
       },
       "lab": {
-        "passed": 11,
-        "failed": 32,
+        "passed": 29,
+        "failed": 14,
         "total": 43
       }
     }
@@ -37,7 +37,7 @@
     {
       "id": "components/accordion",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -53,26 +53,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/accordion/accordion.css: transition: transform .18s cubic-bezier(.3,.7,.3,1) [duration] — raw duration: .18s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/accordion/accordion.css",
-              "property": "transition",
-              "value": "transform .18s cubic-bezier(.3,.7,.3,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -220,7 +206,7 @@
     {
       "id": "components/accordion-gallery",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -236,48 +222,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/accordion-gallery/accordion-gallery.css: transition: flex .55s cubic-bezier(.6,0,.2,1) [duration] — raw duration: .55s",
-            "components/accordion-gallery/accordion-gallery.css: transition: flex .55s cubic-bezier(.6,0,.2,1) [easing] — raw easing: cubic-bezier(.6,0,.2,1)",
-            "components/accordion-gallery/accordion-gallery.css: transition: opacity .3s .18s [duration] — raw duration: .3s; raw duration: .18s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/accordion-gallery/accordion-gallery.css",
-              "property": "transition",
-              "value": "flex .55s cubic-bezier(.6,0,.2,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .55s"
-              ]
-            },
-            {
-              "path": "components/accordion-gallery/accordion-gallery.css",
-              "property": "transition",
-              "value": "flex .55s cubic-bezier(.6,0,.2,1)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.6,0,.2,1)"
-              ]
-            },
-            {
-              "path": "components/accordion-gallery/accordion-gallery.css",
-              "property": "transition",
-              "value": "opacity .3s .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .3s",
-                "raw duration: .18s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -840,7 +790,7 @@
     {
       "id": "components/aurora",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -856,56 +806,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/aurora/aurora.css: animation: k-aur-a 9s var(--k-ease) infinite alternate [duration] — raw duration: 9s",
-            "components/aurora/aurora.css: animation: k-aur-b 12s var(--k-ease) infinite alternate [duration] — raw duration: 12s",
-            "components/aurora/aurora.css: animation: k-aur-c 11s var(--k-ease) infinite alternate [duration] — raw duration: 11s",
-            "components/aurora/aurora.css: animation: k-aur-pat 26s linear infinite alternate [duration] — raw duration: 26s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/aurora/aurora.css",
-              "property": "animation",
-              "value": "k-aur-a 9s var(--k-ease) infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 9s"
-              ]
-            },
-            {
-              "path": "components/aurora/aurora.css",
-              "property": "animation",
-              "value": "k-aur-b 12s var(--k-ease) infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 12s"
-              ]
-            },
-            {
-              "path": "components/aurora/aurora.css",
-              "property": "animation",
-              "value": "k-aur-c 11s var(--k-ease) infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 11s"
-              ]
-            },
-            {
-              "path": "components/aurora/aurora.css",
-              "property": "animation",
-              "value": "k-aur-pat 26s linear infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 26s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 4
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -1693,7 +1599,7 @@
     {
       "id": "components/beam-border",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -1709,26 +1615,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/beam-border/beam-border.css: animation: k-beam-spin 4.5s linear infinite [duration] — raw duration: 4.5s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/beam-border/beam-border.css",
-              "property": "animation",
-              "value": "k-beam-spin 4.5s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 4.5s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -1884,7 +1776,7 @@
     {
       "id": "components/blur-in",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -1900,37 +1792,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/blur-in/blur-in.css: animation: k-blur-in .7s cubic-bezier(.2,.6,.2,1) forwards [duration] — raw duration: .7s",
-            "components/blur-in/blur-in.css: animation: k-blur-in .7s cubic-bezier(.2,.6,.2,1) forwards [easing] — raw easing: cubic-bezier(.2,.6,.2,1)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/blur-in/blur-in.css",
-              "property": "animation",
-              "value": "k-blur-in .7s cubic-bezier(.2,.6,.2,1) forwards",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .7s"
-              ]
-            },
-            {
-              "path": "components/blur-in/blur-in.css",
-              "property": "animation",
-              "value": "k-blur-in .7s cubic-bezier(.2,.6,.2,1) forwards",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.2,.6,.2,1)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -2323,7 +2190,7 @@
     {
       "id": "components/bounce-letters",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -2339,37 +2206,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/bounce-letters/bounce-letters.css: transition: transform .34s cubic-bezier(.3,2.3,.4,1) [duration] — raw duration: .34s",
-            "components/bounce-letters/bounce-letters.css: transition: transform .34s cubic-bezier(.3,2.3,.4,1) [easing] — raw easing: cubic-bezier(.3,2.3,.4,1)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/bounce-letters/bounce-letters.css",
-              "property": "transition",
-              "value": "transform .34s cubic-bezier(.3,2.3,.4,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .34s"
-              ]
-            },
-            {
-              "path": "components/bounce-letters/bounce-letters.css",
-              "property": "transition",
-              "value": "transform .34s cubic-bezier(.3,2.3,.4,1)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.3,2.3,.4,1)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -2627,26 +2469,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/burst-button/burst-button.css: transition: transform .12s [duration] — raw duration: .12s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/burst-button/burst-button.css",
-              "property": "transition",
-              "value": "transform .12s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .12s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -3873,26 +3701,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/carousel/carousel.css: transition: width .18s var(--k-ease),background .18s [duration] — raw duration: .18s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/carousel/carousel.css",
-              "property": "transition",
-              "value": "width .18s var(--k-ease),background .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -4092,7 +3906,7 @@
     {
       "id": "components/carousel-ring",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -4108,26 +3922,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/carousel-ring/carousel-ring.css: animation: k-ring-spin 26s linear infinite [duration] — raw duration: 26s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/carousel-ring/carousel-ring.css",
-              "property": "animation",
-              "value": "k-ring-spin 26s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 26s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -4461,7 +4261,7 @@
     {
       "id": "components/checkbox",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -4477,36 +4277,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/checkbox/checkbox.css: transition: background .13s,border-color .13s [duration] — raw duration: .13s",
-            "components/checkbox/checkbox.css: transition: transform .13s [duration] — raw duration: .13s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/checkbox/checkbox.css",
-              "property": "transition",
-              "value": "background .13s,border-color .13s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .13s"
-              ]
-            },
-            {
-              "path": "components/checkbox/checkbox.css",
-              "property": "transition",
-              "value": "transform .13s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .13s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -4829,26 +4605,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/collapsible/collapsible.css: transition: transform .18s [duration] — raw duration: .18s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/collapsible/collapsible.css",
-              "property": "transition",
-              "value": "transform .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -5020,21 +4782,11 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/color-picker/color-picker.css: transition: transform .12s var(--k-ease) [duration] — raw duration: .12s",
             "components/color-picker/color-picker.css: color: #fff [color] — raw color: #fff",
             "components/color-picker/preview.html: background: hsl(175 84% 32%) [color] — raw color: hsl(175 84% 32%)"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/color-picker/color-picker.css",
-              "property": "transition",
-              "value": "transform .12s var(--k-ease)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .12s"
-              ]
-            },
             {
               "path": "components/color-picker/color-picker.css",
               "property": "color",
@@ -5055,8 +4807,7 @@
             }
           ],
           "by_kind": {
-            "color": 2,
-            "duration": 1
+            "color": 2
           }
         },
         {
@@ -6132,11 +5883,6 @@
             "components/converge/converge.css: fill: hsl(32 95% 60%) [color] — raw color: hsl(32 95% 60%)",
             "components/converge/converge.css: fill: hsl(205 90% 63%) [color] — raw color: hsl(205 90% 63%)",
             "components/converge/converge.css: background: radial-gradient(circle at 38% 32%,color-mix(in srgb,hsl(335 85% 68%) 34%,transparent),transparent 62%),radial-gradient(circle at 66% 70%,color-mix(in srgb,hsl(205 90% 63%) 30%,transparent),transparent 62%),radial-gradient(circle,color-mix(in srgb,var(--k-accent) 42%,transparent),transparent 68%) [color] — raw color: hsl(335 85% 68%); raw color: hsl(205 90% 63%)",
-            "components/converge/converge.css: animation: k-conv-pulse 3.4s var(--k-ease) infinite alternate [duration] — raw duration: 3.4s",
-            "components/converge/converge.css: animation: k-conv-tw 2.2s ease-in-out infinite alternate [duration] — raw duration: 2.2s",
-            "components/converge/converge.css: animation-delay: .5s [duration] — raw duration: .5s",
-            "components/converge/converge.css: animation-delay: 1.1s [duration] — raw duration: 1.1s",
-            "components/converge/converge.css: animation-delay: 1.6s [duration] — raw duration: 1.6s",
             "components/converge/preview.html: color: hsl(335 85% 72%) [color] — raw color: hsl(335 85% 72%)",
             "components/converge/preview.html: color: hsl(32 95% 64%) [color] — raw color: hsl(32 95% 64%)",
             "components/converge/preview.html: color: hsl(205 90% 66%) [color] — raw color: hsl(205 90% 66%)"
@@ -6208,51 +5954,6 @@
               ]
             },
             {
-              "path": "components/converge/converge.css",
-              "property": "animation",
-              "value": "k-conv-pulse 3.4s var(--k-ease) infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 3.4s"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "animation",
-              "value": "k-conv-tw 2.2s ease-in-out infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 2.2s"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "animation-delay",
-              "value": ".5s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .5s"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "animation-delay",
-              "value": "1.1s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1.1s"
-              ]
-            },
-            {
-              "path": "components/converge/converge.css",
-              "property": "animation-delay",
-              "value": "1.6s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1.6s"
-              ]
-            },
-            {
               "path": "components/converge/preview.html",
               "property": "color",
               "value": "hsl(335 85% 72%)",
@@ -6281,8 +5982,7 @@
             }
           ],
           "by_kind": {
-            "color": 10,
-            "duration": 5
+            "color": 10
           }
         },
         {
@@ -6416,26 +6116,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/copy-field/copy-field.css: transition: background .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/copy-field/copy-field.css",
-              "property": "transition",
-              "value": "background .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -6803,26 +6489,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/data-table/data-table.css: transition: transform .15s var(--k-ease),opacity .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/data-table/data-table.css",
-              "property": "transition",
-              "value": "transform .15s var(--k-ease),opacity .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -7424,7 +7096,7 @@
     {
       "id": "components/dock",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -7440,36 +7112,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/dock/dock.css: transition: transform .14s ease-out [duration] — raw duration: .14s",
-            "components/dock/dock.css: transition: opacity .15s,transform .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/dock/dock.css",
-              "property": "transition",
-              "value": "transform .14s ease-out",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .14s"
-              ]
-            },
-            {
-              "path": "components/dock/dock.css",
-              "property": "transition",
-              "value": "opacity .15s,transform .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -8004,26 +7652,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/dropdown/dropdown.css: transition: opacity .15s,transform .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/dropdown/dropdown.css",
-              "property": "transition",
-              "value": "opacity .15s,transform .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -8696,26 +8330,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/file-upload/file-upload.css: transition: border-color .15s,background .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/file-upload/file-upload.css",
-              "property": "transition",
-              "value": "border-color .15s,background .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -9683,56 +9303,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/glow-button/glow-button.css: animation: k-ga-spin 3.6s linear infinite [duration] — raw duration: 3.6s",
-            "components/glow-button/glow-button.css: transition: box-shadow .3s [duration] — raw duration: .3s",
-            "components/glow-button/glow-button.css: transition: background .3s, box-shadow .3s [duration] — raw duration: .3s",
-            "components/glow-button/glow-button.css: animation: k-ga-spin 3.6s linear infinite [duration] — raw duration: 3.6s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/glow-button/glow-button.css",
-              "property": "animation",
-              "value": "k-ga-spin 3.6s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 3.6s"
-              ]
-            },
-            {
-              "path": "components/glow-button/glow-button.css",
-              "property": "transition",
-              "value": "box-shadow .3s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .3s"
-              ]
-            },
-            {
-              "path": "components/glow-button/glow-button.css",
-              "property": "transition",
-              "value": "background .3s, box-shadow .3s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .3s"
-              ]
-            },
-            {
-              "path": "components/glow-button/glow-button.css",
-              "property": "animation",
-              "value": "k-ga-spin 3.6s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 3.6s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 4
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -9925,7 +9501,7 @@
     {
       "id": "components/glow-cards",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -9941,26 +9517,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/glow-cards/glow-cards.css: transition: opacity .25s [duration] — raw duration: .25s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/glow-cards/glow-cards.css",
-              "property": "transition",
-              "value": "opacity .25s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .25s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -10279,48 +9841,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/goo-tabs/goo-tabs.css: transition: left .45s cubic-bezier(.6,-0.1,.2,1.25), width .45s cubic-bezier(.6,-0.1,.2,1.25), transform .3s [duration] — raw duration: .45s; raw duration: .3s",
-            "components/goo-tabs/goo-tabs.css: transition: left .45s cubic-bezier(.6,-0.1,.2,1.25), width .45s cubic-bezier(.6,-0.1,.2,1.25), transform .3s [easing] — raw easing: cubic-bezier(.6,-0.1,.2,1.25)",
-            "components/goo-tabs/goo-tabs.css: transition: color .25s [duration] — raw duration: .25s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/goo-tabs/goo-tabs.css",
-              "property": "transition",
-              "value": "left .45s cubic-bezier(.6,-0.1,.2,1.25), width .45s cubic-bezier(.6,-0.1,.2,1.25), transform .3s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .45s",
-                "raw duration: .3s"
-              ]
-            },
-            {
-              "path": "components/goo-tabs/goo-tabs.css",
-              "property": "transition",
-              "value": "left .45s cubic-bezier(.6,-0.1,.2,1.25), width .45s cubic-bezier(.6,-0.1,.2,1.25), transform .3s",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.6,-0.1,.2,1.25)"
-              ]
-            },
-            {
-              "path": "components/goo-tabs/goo-tabs.css",
-              "property": "transition",
-              "value": "color .25s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .25s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -10606,7 +10132,7 @@
     {
       "id": "components/hanko",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -10622,36 +10148,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/hanko/hanko.css: animation: k-seal-in .5s cubic-bezier(.2,1.6,.4,1) [duration] — raw duration: .5s",
-            "components/hanko/hanko.css: animation: k-seal-ring .55s ease-out [duration] — raw duration: .55s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/hanko/hanko.css",
-              "property": "animation",
-              "value": "k-seal-in .5s cubic-bezier(.2,1.6,.4,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .5s"
-              ]
-            },
-            {
-              "path": "components/hanko/hanko.css",
-              "property": "animation",
-              "value": "k-seal-ring .55s ease-out",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .55s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -11227,26 +10729,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/hover-card/hover-card.css: transition: opacity .16s var(--k-ease),transform .16s var(--k-ease) [duration] — raw duration: .16s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/hover-card/hover-card.css",
-              "property": "transition",
-              "value": "opacity .16s var(--k-ease),transform .16s var(--k-ease)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .16s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -11854,26 +11342,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/input-otp/input-otp.css: transition: border-color .13s, box-shadow .13s [duration] — raw duration: .13s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/input-otp/input-otp.css",
-              "property": "transition",
-              "value": "border-color .13s, box-shadow .13s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .13s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -11996,57 +11470,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/jelly-buttons/jelly-buttons.css: transition: transform .28s cubic-bezier(.3,2.4,.45,1) [duration] — raw duration: .28s",
-            "components/jelly-buttons/jelly-buttons.css: transition: transform .28s cubic-bezier(.3,2.4,.45,1) [easing] — raw easing: cubic-bezier(.3,2.4,.45,1)",
-            "components/jelly-buttons/jelly-buttons.css: animation: k-jelly-wob .55s cubic-bezier(.3,2.2,.45,1) [duration] — raw duration: .55s",
-            "components/jelly-buttons/jelly-buttons.css: animation: k-jelly-wob .55s cubic-bezier(.3,2.2,.45,1) [easing] — raw easing: cubic-bezier(.3,2.2,.45,1)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/jelly-buttons/jelly-buttons.css",
-              "property": "transition",
-              "value": "transform .28s cubic-bezier(.3,2.4,.45,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .28s"
-              ]
-            },
-            {
-              "path": "components/jelly-buttons/jelly-buttons.css",
-              "property": "transition",
-              "value": "transform .28s cubic-bezier(.3,2.4,.45,1)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.3,2.4,.45,1)"
-              ]
-            },
-            {
-              "path": "components/jelly-buttons/jelly-buttons.css",
-              "property": "animation",
-              "value": "k-jelly-wob .55s cubic-bezier(.3,2.2,.45,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .55s"
-              ]
-            },
-            {
-              "path": "components/jelly-buttons/jelly-buttons.css",
-              "property": "animation",
-              "value": "k-jelly-wob .55s cubic-bezier(.3,2.2,.45,1)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.3,2.2,.45,1)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2,
-            "easing": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -12979,7 +12408,7 @@
     {
       "id": "components/liquid-button",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -12995,47 +12424,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/liquid-button/liquid-button.css: transition: transform .65s cubic-bezier(.5,0,.2,1) [duration] — raw duration: .65s",
-            "components/liquid-button/liquid-button.css: transition: transform .65s cubic-bezier(.5,0,.2,1) [easing] — raw easing: cubic-bezier(.5,0,.2,1)",
-            "components/liquid-button/liquid-button.css: transition: color .4s [duration] — raw duration: .4s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/liquid-button/liquid-button.css",
-              "property": "transition",
-              "value": "transform .65s cubic-bezier(.5,0,.2,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .65s"
-              ]
-            },
-            {
-              "path": "components/liquid-button/liquid-button.css",
-              "property": "transition",
-              "value": "transform .65s cubic-bezier(.5,0,.2,1)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.5,0,.2,1)"
-              ]
-            },
-            {
-              "path": "components/liquid-button/liquid-button.css",
-              "property": "transition",
-              "value": "color .4s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .4s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -13349,7 +12743,7 @@
     {
       "id": "components/magnet",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13365,47 +12759,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/magnet/magnet.css: transition: transform .35s cubic-bezier(.2,.8,.25,1.2) [duration] — raw duration: .35s",
-            "components/magnet/magnet.css: transition: transform .35s cubic-bezier(.2,.8,.25,1.2) [easing] — raw easing: cubic-bezier(.2,.8,.25,1.2)",
-            "components/magnet/magnet.css: transition: transform .12s ease-out [duration] — raw duration: .12s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/magnet/magnet.css",
-              "property": "transition",
-              "value": "transform .35s cubic-bezier(.2,.8,.25,1.2)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .35s"
-              ]
-            },
-            {
-              "path": "components/magnet/magnet.css",
-              "property": "transition",
-              "value": "transform .35s cubic-bezier(.2,.8,.25,1.2)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.2,.8,.25,1.2)"
-              ]
-            },
-            {
-              "path": "components/magnet/magnet.css",
-              "property": "transition",
-              "value": "transform .12s ease-out",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .12s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -13521,7 +12880,7 @@
     {
       "id": "components/marquee",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -13537,26 +12896,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/marquee/marquee.css: animation: k-marquee 30s linear infinite [duration] — raw duration: 30s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/marquee/marquee.css",
-              "property": "animation",
-              "value": "k-marquee 30s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 30s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -14645,26 +13990,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/navigation-menu/navigation-menu.css: transition: transform .18s [duration] — raw duration: .18s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/navigation-menu/navigation-menu.css",
-              "property": "transition",
-              "value": "transform .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -14897,7 +14228,7 @@
     {
       "id": "components/newtons-cradle",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -14913,36 +14244,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/newtons-cradle/newtons-cradle.css: animation: k-cr-l 2.4s ease-in-out infinite [duration] — raw duration: 2.4s",
-            "components/newtons-cradle/newtons-cradle.css: animation: k-cr-r 2.4s ease-in-out infinite [duration] — raw duration: 2.4s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/newtons-cradle/newtons-cradle.css",
-              "property": "animation",
-              "value": "k-cr-l 2.4s ease-in-out infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 2.4s"
-              ]
-            },
-            {
-              "path": "components/newtons-cradle/newtons-cradle.css",
-              "property": "animation",
-              "value": "k-cr-r 2.4s ease-in-out infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 2.4s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -15025,7 +14332,7 @@
     {
       "id": "components/noren",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -15041,56 +14348,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/noren/noren.css: transition: transform .5s cubic-bezier(.4,0,.2,1) [duration] — raw duration: .5s",
-            "components/noren/noren.css: animation: k-nor-sway 5.2s ease-in-out infinite alternate [duration] — raw duration: 5.2s",
-            "components/noren/noren.css: animation: k-nor-sway 6.4s ease-in-out infinite alternate-reverse [duration] — raw duration: 6.4s",
-            "components/noren/noren.css: animation: k-nor-sway 5.8s ease-in-out infinite alternate [duration] — raw duration: 5.8s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/noren/noren.css",
-              "property": "transition",
-              "value": "transform .5s cubic-bezier(.4,0,.2,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .5s"
-              ]
-            },
-            {
-              "path": "components/noren/noren.css",
-              "property": "animation",
-              "value": "k-nor-sway 5.2s ease-in-out infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 5.2s"
-              ]
-            },
-            {
-              "path": "components/noren/noren.css",
-              "property": "animation",
-              "value": "k-nor-sway 6.4s ease-in-out infinite alternate-reverse",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 6.4s"
-              ]
-            },
-            {
-              "path": "components/noren/noren.css",
-              "property": "animation",
-              "value": "k-nor-sway 5.8s ease-in-out infinite alternate",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 5.8s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 4
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -15217,7 +14480,7 @@
     {
       "id": "components/orbit",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -15233,56 +14496,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/orbit/orbit.css: animation-duration: 16s [duration] — raw duration: 16s",
-            "components/orbit/orbit.css: animation-duration: 26s [duration] — raw duration: 26s",
-            "components/orbit/orbit.css: animation-duration: 16s [duration] — raw duration: 16s",
-            "components/orbit/orbit.css: animation-duration: 26s [duration] — raw duration: 26s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/orbit/orbit.css",
-              "property": "animation-duration",
-              "value": "16s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 16s"
-              ]
-            },
-            {
-              "path": "components/orbit/orbit.css",
-              "property": "animation-duration",
-              "value": "26s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 26s"
-              ]
-            },
-            {
-              "path": "components/orbit/orbit.css",
-              "property": "animation-duration",
-              "value": "16s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 16s"
-              ]
-            },
-            {
-              "path": "components/orbit/orbit.css",
-              "property": "animation-duration",
-              "value": "26s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 26s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 4
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -15410,26 +14629,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/pagination/pagination.css: transition: background .13s [duration] — raw duration: .13s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/pagination/pagination.css",
-              "property": "transition",
-              "value": "background .13s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .13s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -16079,7 +15284,7 @@
     {
       "id": "components/progress",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -16095,26 +15300,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/progress/progress.css: transition: width .3s cubic-bezier(.3,.7,.3,1) [duration] — raw duration: .3s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/progress/progress.css",
-              "property": "transition",
-              "value": "width .3s cubic-bezier(.3,.7,.3,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .3s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -16634,7 +15825,7 @@
     {
       "id": "components/radio",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -16650,36 +15841,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/radio/radio.css: transition: border-color .15s [duration] — raw duration: .15s",
-            "components/radio/radio.css: transition: transform .15s cubic-bezier(.3,.7,.3,1) [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/radio/radio.css",
-              "property": "transition",
-              "value": "border-color .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            },
-            {
-              "path": "components/radio/radio.css",
-              "property": "transition",
-              "value": "transform .15s cubic-bezier(.3,.7,.3,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -16815,7 +15982,7 @@
     {
       "id": "components/rating",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -16831,26 +15998,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/rating/rating.css: transition: fill .12s [duration] — raw duration: .12s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/rating/rating.css",
-              "property": "transition",
-              "value": "fill .12s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .12s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -18016,7 +17169,7 @@
     {
       "id": "components/segmented",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -18032,26 +17185,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/segmented/segmented.css: transition: background .15s,color .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/segmented/segmented.css",
-              "property": "transition",
-              "value": "background .15s,color .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -18177,7 +17316,7 @@
     {
       "id": "components/select",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -18193,26 +17332,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/select/select.css: transition: border-color .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/select/select.css",
-              "property": "transition",
-              "value": "border-color .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -18536,7 +17661,7 @@
     {
       "id": "components/shine-text",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -18552,26 +17677,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/shine-text/shine-text.css: animation: k-shine-move 3.4s linear infinite [duration] — raw duration: 3.4s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/shine-text/shine-text.css",
-              "property": "animation",
-              "value": "k-shine-move 3.4s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 3.4s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -18703,26 +17814,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/sidebar/sidebar.css: transition: transform .18s [duration] — raw duration: .18s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/sidebar/sidebar.css",
-              "property": "transition",
-              "value": "transform .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -19279,7 +18376,7 @@
     {
       "id": "components/skeleton",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -19295,26 +18392,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/skeleton/skeleton.css: animation: k-shimmer 1.4s ease-in-out infinite [duration] — raw duration: 1.4s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/skeleton/skeleton.css",
-              "property": "animation",
-              "value": "k-shimmer 1.4s ease-in-out infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1.4s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -20055,36 +19138,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/speed-dial/speed-dial.css: transition: opacity .18s,transform .18s [duration] — raw duration: .18s",
-            "components/speed-dial/speed-dial.css: transition: transform .2s [duration] — raw duration: .2s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/speed-dial/speed-dial.css",
-              "property": "transition",
-              "value": "opacity .18s,transform .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            },
-            {
-              "path": "components/speed-dial/speed-dial.css",
-              "property": "transition",
-              "value": "transform .2s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .2s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -20237,7 +19296,7 @@
     {
       "id": "components/spinner",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -20253,36 +19312,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/spinner/spinner.css: animation: k-spin .7s linear infinite [duration] — raw duration: .7s",
-            "components/spinner/spinner.css: animation-duration: 1.6s [duration] — raw duration: 1.6s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/spinner/spinner.css",
-              "property": "animation",
-              "value": "k-spin .7s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .7s"
-              ]
-            },
-            {
-              "path": "components/spinner/spinner.css",
-              "property": "animation-duration",
-              "value": "1.6s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1.6s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -21197,7 +20232,7 @@
     {
       "id": "components/stepper",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -21213,26 +20248,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/stepper/stepper.css: transition: background .13s [duration] — raw duration: .13s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/stepper/stepper.css",
-              "property": "transition",
-              "value": "background .13s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .13s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -21515,7 +20536,7 @@
     {
       "id": "components/switch",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -21531,36 +20552,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/switch/switch.css: transition: background .18s [duration] — raw duration: .18s",
-            "components/switch/switch.css: transition: transform .18s [duration] — raw duration: .18s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/switch/switch.css",
-              "property": "transition",
-              "value": "background .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            },
-            {
-              "path": "components/switch/switch.css",
-              "property": "transition",
-              "value": "transform .18s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .18s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -21911,26 +20908,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tabs/tabs.css: transition: left .22s cubic-bezier(.3,.7,.3,1),width .22s cubic-bezier(.3,.7,.3,1) [duration] — raw duration: .22s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tabs/tabs.css",
-              "property": "transition",
-              "value": "left .22s cubic-bezier(.3,.7,.3,1),width .22s cubic-bezier(.3,.7,.3,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .22s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22144,26 +21127,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tag-input/tag-input.css: transition: border-color .13s, box-shadow .13s [duration] — raw duration: .13s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tag-input/tag-input.css",
-              "property": "transition",
-              "value": "border-color .13s, box-shadow .13s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .13s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22302,7 +21271,7 @@
     {
       "id": "components/tategaki",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -22318,56 +21287,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tategaki/tategaki.css: animation: k-tate-in 1s cubic-bezier(.2,.7,.2,1) both [duration] — raw duration: 1s",
-            "components/tategaki/tategaki.css: animation-delay: .05s [duration] — raw duration: .05s",
-            "components/tategaki/tategaki.css: animation-delay: .22s [duration] — raw duration: .22s",
-            "components/tategaki/tategaki.css: animation-delay: .39s [duration] — raw duration: .39s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tategaki/tategaki.css",
-              "property": "animation",
-              "value": "k-tate-in 1s cubic-bezier(.2,.7,.2,1) both",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1s"
-              ]
-            },
-            {
-              "path": "components/tategaki/tategaki.css",
-              "property": "animation-delay",
-              "value": ".05s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .05s"
-              ]
-            },
-            {
-              "path": "components/tategaki/tategaki.css",
-              "property": "animation-delay",
-              "value": ".22s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .22s"
-              ]
-            },
-            {
-              "path": "components/tategaki/tategaki.css",
-              "property": "animation-delay",
-              "value": ".39s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .39s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 4
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22553,7 +21478,7 @@
     {
       "id": "components/text-reveal",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -22569,47 +21494,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/text-reveal/text-reveal.css: transition: transform .7s cubic-bezier(.3,.7,.3,1) [duration] — raw duration: .7s",
-            "components/text-reveal/text-reveal.css: transition: transform .7s cubic-bezier(.3,.7,.3,1) [easing] — raw easing: cubic-bezier(.3,.7,.3,1)",
-            "components/text-reveal/text-reveal.css: transition-delay: calc(var(--i,0)*45ms) [duration] — raw duration: 45ms"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/text-reveal/text-reveal.css",
-              "property": "transition",
-              "value": "transform .7s cubic-bezier(.3,.7,.3,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .7s"
-              ]
-            },
-            {
-              "path": "components/text-reveal/text-reveal.css",
-              "property": "transition",
-              "value": "transform .7s cubic-bezier(.3,.7,.3,1)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.3,.7,.3,1)"
-              ]
-            },
-            {
-              "path": "components/text-reveal/text-reveal.css",
-              "property": "transition-delay",
-              "value": "calc(var(--i,0)*45ms)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 45ms"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22743,26 +21633,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/textarea/textarea.css: transition: border-color .15s,box-shadow .15s [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/textarea/textarea.css",
-              "property": "transition",
-              "value": "border-color .15s,box-shadow .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -22937,30 +21813,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/tilt-card/tilt-card.css: transition: transform .3s ease-out [duration] — raw duration: .3s",
-            "components/tilt-card/tilt-card.css: transition: transform .08s linear [duration] — raw duration: .08s",
             "components/tilt-card/tilt-card.css: background: radial-gradient(340px circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.14), transparent 65%) [color] — raw color: rgba(255,255,255,.14)"
           ],
           "profile": "lab",
           "details": [
-            {
-              "path": "components/tilt-card/tilt-card.css",
-              "property": "transition",
-              "value": "transform .3s ease-out",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .3s"
-              ]
-            },
-            {
-              "path": "components/tilt-card/tilt-card.css",
-              "property": "transition",
-              "value": "transform .08s linear",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .08s"
-              ]
-            },
             {
               "path": "components/tilt-card/tilt-card.css",
               "property": "background",
@@ -22972,8 +21828,7 @@
             }
           ],
           "by_kind": {
-            "color": 1,
-            "duration": 2
+            "color": 1
           }
         },
         {
@@ -23513,7 +22368,7 @@
     {
       "id": "components/toast",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -23529,26 +22384,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/toast/toast.css: animation: k-tin .3s cubic-bezier(.3,1.2,.4,1) [duration] — raw duration: .3s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/toast/toast.css",
-              "property": "animation",
-              "value": "k-tin .3s cubic-bezier(.3,1.2,.4,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .3s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -23725,7 +22566,7 @@
     {
       "id": "components/toggle",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -23741,26 +22582,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/toggle/toggle.css: transition: background .13s,border-color .13s,color .13s [duration] — raw duration: .13s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/toggle/toggle.css",
-              "property": "transition",
-              "value": "background .13s,border-color .13s,color .13s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .13s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -23915,21 +22742,10 @@
           "status": "fail",
           "severity": "error",
           "findings": [
-            "components/tooltip/tooltip.css: transition: opacity .15s,transform .15s [duration] — raw duration: .15s",
-            "components/tooltip/tooltip.css: border: 5px solid transparent [border] — raw border: 5px",
-            "components/tooltip/tooltip.css: transition: opacity .15s [duration] — raw duration: .15s"
+            "components/tooltip/tooltip.css: border: 5px solid transparent [border] — raw border: 5px"
           ],
           "profile": "ui",
           "details": [
-            {
-              "path": "components/tooltip/tooltip.css",
-              "property": "transition",
-              "value": "opacity .15s,transform .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            },
             {
               "path": "components/tooltip/tooltip.css",
               "property": "border",
@@ -23938,20 +22754,10 @@
               "reasons": [
                 "raw border: 5px"
               ]
-            },
-            {
-              "path": "components/tooltip/tooltip.css",
-              "property": "transition",
-              "value": "opacity .15s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
             }
           ],
           "by_kind": {
-            "border": 1,
-            "duration": 2
+            "border": 1
           }
         },
         {
@@ -24957,26 +23763,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/tree/tree.css: transition: transform .15s var(--k-ease) [duration] — raw duration: .15s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "components/tree/tree.css",
-              "property": "transition",
-              "value": "transform .15s var(--k-ease)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .15s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -25542,7 +24334,7 @@
     {
       "id": "components/typewriter",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -25558,26 +24350,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/typewriter/typewriter.css: animation: k-type-blink 1.05s steps(1) infinite [duration] — raw duration: 1.05s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/typewriter/typewriter.css",
-              "property": "animation",
-              "value": "k-type-blink 1.05s steps(1) infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1.05s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -25966,7 +24744,7 @@
     {
       "id": "components/warp-tunnel",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -25982,136 +24760,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/warp-tunnel/warp-tunnel.css: animation: k-warp-fly 5s linear infinite [duration] — raw duration: 5s",
-            "components/warp-tunnel/preview.html: animation-delay: 0.42s [duration] — raw duration: 0.42s",
-            "components/warp-tunnel/preview.html: animation-delay: 0.84s [duration] — raw duration: 0.84s",
-            "components/warp-tunnel/preview.html: animation-delay: 1.26s [duration] — raw duration: 1.26s",
-            "components/warp-tunnel/preview.html: animation-delay: 1.68s [duration] — raw duration: 1.68s",
-            "components/warp-tunnel/preview.html: animation-delay: 2.10s [duration] — raw duration: 2.10s",
-            "components/warp-tunnel/preview.html: animation-delay: 2.52s [duration] — raw duration: 2.52s",
-            "components/warp-tunnel/preview.html: animation-delay: 2.94s [duration] — raw duration: 2.94s",
-            "components/warp-tunnel/preview.html: animation-delay: 3.36s [duration] — raw duration: 3.36s",
-            "components/warp-tunnel/preview.html: animation-delay: 3.78s [duration] — raw duration: 3.78s",
-            "components/warp-tunnel/preview.html: animation-delay: 4.20s [duration] — raw duration: 4.20s",
-            "components/warp-tunnel/preview.html: animation-delay: 4.62s [duration] — raw duration: 4.62s"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/warp-tunnel/warp-tunnel.css",
-              "property": "animation",
-              "value": "k-warp-fly 5s linear infinite",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 5s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "0.42s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 0.42s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "0.84s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 0.84s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "1.26s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1.26s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "1.68s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 1.68s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "2.10s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 2.10s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "2.52s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 2.52s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "2.94s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 2.94s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "3.36s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 3.36s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "3.78s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 3.78s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "4.20s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 4.20s"
-              ]
-            },
-            {
-              "path": "components/warp-tunnel/preview.html",
-              "property": "animation-delay",
-              "value": "4.62s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: 4.62s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 12
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -26217,7 +24871,7 @@
     {
       "id": "components/word-rotate",
       "profile": "lab",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -26233,37 +24887,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "components/word-rotate/word-rotate.css: transition: transform .55s cubic-bezier(.65,0,.2,1) [duration] — raw duration: .55s",
-            "components/word-rotate/word-rotate.css: transition: transform .55s cubic-bezier(.65,0,.2,1) [easing] — raw easing: cubic-bezier(.65,0,.2,1)"
-          ],
+          "findings": [],
           "profile": "lab",
-          "details": [
-            {
-              "path": "components/word-rotate/word-rotate.css",
-              "property": "transition",
-              "value": "transform .55s cubic-bezier(.65,0,.2,1)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .55s"
-              ]
-            },
-            {
-              "path": "components/word-rotate/word-rotate.css",
-              "property": "transition",
-              "value": "transform .55s cubic-bezier(.65,0,.2,1)",
-              "kind": "easing",
-              "reasons": [
-                "raw easing: cubic-bezier(.65,0,.2,1)"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1,
-            "easing": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -27324,7 +25953,7 @@
     {
       "id": "blocks/integrations",
       "profile": "ui",
-      "passed": false,
+      "passed": true,
       "checks": [
         {
           "id": "legacy-contract",
@@ -27340,26 +25969,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/integrations/integrations.css: transition: border-color .14s [duration] — raw duration: .14s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/integrations/integrations.css",
-              "property": "transition",
-              "value": "border-color .14s",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .14s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 1
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",
@@ -30750,36 +29365,12 @@
         },
         {
           "id": "token-values",
-          "status": "fail",
+          "status": "pass",
           "severity": "error",
-          "findings": [
-            "blocks/use-cases/use-cases.css: transition: transform .2s var(--k-ease) [duration] — raw duration: .2s",
-            "blocks/use-cases/use-cases.css: animation: k-uc-in .45s var(--k-ease) [duration] — raw duration: .45s"
-          ],
+          "findings": [],
           "profile": "ui",
-          "details": [
-            {
-              "path": "blocks/use-cases/use-cases.css",
-              "property": "transition",
-              "value": "transform .2s var(--k-ease)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .2s"
-              ]
-            },
-            {
-              "path": "blocks/use-cases/use-cases.css",
-              "property": "animation",
-              "value": "k-uc-in .45s var(--k-ease)",
-              "kind": "duration",
-              "reasons": [
-                "raw duration: .45s"
-              ]
-            }
-          ],
-          "by_kind": {
-            "duration": 2
-          }
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "spacing-values",

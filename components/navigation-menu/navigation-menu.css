@@ -5,7 +5,7 @@
 .k-navm-item{position:relative}
 .k-navm-btn{display:flex;align-items:center;gap:6px;padding:8px 12px;border:0;background:none;font-family:inherit;font-size:13.5px;font-weight:550;color:var(--k-ink-2);border-radius:var(--k-radius-md);cursor:pointer;text-decoration:none}
 .k-navm-btn:hover,.k-navm-item.open .k-navm-btn{background:var(--k-bg-soft);color:var(--k-ink)}
-.k-navm-btn svg{transition:transform .18s;color:var(--k-ink-3)}
+.k-navm-btn svg{transition:transform var(--k-dur-base);color:var(--k-ink-3)}
 .k-navm-item.open .k-navm-btn svg{transform:rotate(180deg)}
 .k-navm-panel{position:absolute;inset-inline-start:0;top:calc(100% + 8px);min-width:300px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);box-shadow:var(--k-shadow-pop);padding:8px;display:none;z-index:60}
 .k-navm-item.open .k-navm-panel{display:block}

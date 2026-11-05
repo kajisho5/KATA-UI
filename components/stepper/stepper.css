@@ -1,6 +1,6 @@
 /* KATA Stepper */
 .k-stepper{display:inline-flex;align-items:stretch;height:38px;border:1px solid var(--k-line);border-radius:var(--k-radius);background:var(--k-bg);overflow:hidden}
-.k-stepper button{width:37px;border:0;background:transparent;color:var(--k-ink);font-family:var(--k-font);font-size:16px;cursor:pointer;transition:background .13s}
+.k-stepper button{width:37px;border:0;background:transparent;color:var(--k-ink);font-family:var(--k-font);font-size:16px;cursor:pointer;transition:background var(--k-dur-fast)}
 .k-stepper button:hover:not(:disabled){background:var(--k-bg-soft)}
 .k-stepper button:disabled{opacity:.35;cursor:not-allowed}
 .k-stepper button:focus-visible{outline:none;box-shadow:inset var(--k-ring)}

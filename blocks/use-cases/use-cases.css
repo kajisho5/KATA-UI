@@ -6,7 +6,7 @@
 .k-uc-head{display:flex;align-items:center;gap:12px;padding:15px 17px}
 .k-uc-head .no{font-family:var(--k-mono);font-size:11px;color:var(--k-ink-3)}
 .k-uc-head .lb{font-size:14px;font-weight:550;flex:1}
-.k-uc-head .pl{color:var(--k-ink-3);display:grid;place-items:center;transition:transform .2s var(--k-ease)}
+.k-uc-head .pl{color:var(--k-ink-3);display:grid;place-items:center;transition:transform var(--k-dur-base) var(--k-ease)}
 .k-uc-row.open .pl{transform:rotate(45deg)}
 .k-uc-body{display:none;padding:0 17px 17px 41px}
 .k-uc-row.open .k-uc-body{display:block}
@@ -17,7 +17,7 @@
 .k-uc-body li svg{color:var(--k-accent-ink);flex:none}
 .k-uc-stage{position:relative;border-radius:var(--k-radius-xl);overflow:hidden;min-height:320px}
 .k-uc-stage .k-aurora{position:absolute;inset:0;border-radius:var(--k-radius-xl)}
-.k-uc-scene{position:absolute;inset:0;display:grid;place-items:center;padding:22px;animation:k-uc-in .45s var(--k-ease)}
+.k-uc-scene{position:absolute;inset:0;display:grid;place-items:center;padding:22px;animation:k-uc-in calc(.45s * var(--k-mscale)) var(--k-ease)}
 .k-uc-scene[hidden]{display:none}
 .k-uc-scene .k-glass{width:100%;max-width:300px}
 @keyframes k-uc-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}

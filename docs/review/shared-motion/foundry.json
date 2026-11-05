@@ -1,0 +1,18 @@
+[
+  {
+    "setting": 2,
+    "fastDuration": "0.26s",
+    "label": "fast 260ms \u00b7 base 360ms \u00b7 slow 440ms"
+  },
+  {
+    "setting": 0,
+    "fastDuration": "0s",
+    "label": "fast 0ms \u00b7 base 0ms \u00b7 slow 0ms"
+  },
+  {
+    "setting": "reduce, inline2",
+    "fastDuration": "0s",
+    "label": "fast 0ms \u00b7 base 0ms \u00b7 slow 0ms",
+    "zeroPersisted": true
+  }
+]

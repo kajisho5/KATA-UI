@@ -2,10 +2,10 @@
 .k-orbit{position:relative;width:252px;height:252px;margin:6px auto;font-family:var(--k-font);color:var(--k-ink)}
 .k-orbit .core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:18px;background:var(--k-ink);color:var(--k-bg);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px -10px color-mix(in srgb,var(--k-zinc-900) 40%,transparent)}
 .k-orbit .ring{position:absolute;border:1px dashed var(--k-zinc-300);border-radius:50%;animation:k-orb-spin linear infinite}
-.k-orbit .ring.r1{inset:26px;animation-duration:16s}
-.k-orbit .ring.r2{inset:-2px;animation-duration:26s;animation-direction:reverse}
+.k-orbit .ring.r1{inset:26px;animation-duration:calc(16s * var(--k-mscale))}
+.k-orbit .ring.r2{inset:-2px;animation-duration:calc(26s * var(--k-mscale));animation-direction:reverse}
 .k-orbit .chip{position:absolute;width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:12px;background:var(--k-bg);border:1px solid var(--k-line);box-shadow:0 4px 12px color-mix(in srgb,var(--k-zinc-900) 10%,transparent);display:flex;align-items:center;justify-content:center;color:var(--k-ink-2);animation:k-orb-spin linear infinite reverse}
-.k-orbit .r1 .chip{animation-duration:16s}
-.k-orbit .r2 .chip{animation-duration:26s}
+.k-orbit .r1 .chip{animation-duration:calc(16s * var(--k-mscale))}
+.k-orbit .r2 .chip{animation-duration:calc(26s * var(--k-mscale))}
 @keyframes k-orb-spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.k-orbit .ring,.k-orbit .chip{animation:none}}

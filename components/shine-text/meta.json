@@ -9,7 +9,7 @@
     "headline",
     "sweep"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "One headline per page, large. The sweep is a background gradient moving behind clipped text — no script, and it survives copy-paste intact. On dark panels the same part runs light-on-dark (see the example).",
   "a11y": "The text is real text in a real heading; the gradient is paint. Under prefers-reduced-motion the sweep stops and the headline sits at full contrast — check yours does, because a mid-sweep frame must never be the resting state."
 }

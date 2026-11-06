@@ -130,7 +130,8 @@ least 90% of UI-profile targets pass all checks.
   [PR #87](https://github.com/kajisho5/KATA-UI/pull/87)). Its one finding, the Tabs panel overflow, is fixed in
   [PR #88](https://github.com/kajisho5/KATA-UI/pull/88); all 8 conditions now record 0 failures.
 - [ ] Require static checks and the release procedure before marking each part Stable.
-- [ ] Show the measured Stable / Beta split on the home page.
+- [x] Show the measured Stable / Beta split on the home page (counted from meta.json;
+  0 stable · 136 beta after 13 legacy labels were demoted, [PR #89](https://github.com/kajisho5/KATA-UI/pull/89)).
 - [ ] Keep all First five recommendations Stable and passing.
 
 **Completion criteria:** 40 components pass every check and are Stable; the

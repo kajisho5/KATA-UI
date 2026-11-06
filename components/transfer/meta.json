@@ -9,7 +9,7 @@
     "assign",
     "pick"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "For assigning things in bulk — members to a team, parts to a page, tags to a post. Each side filters itself, the buttons move only what is checked, and the counts always say how many are where.",
   "a11y": "Real checkboxes in two labelled groups; the move buttons say what they move (\"Move selected right\"), and the header checkbox per side selects that side only. Moving focus is left to the reader — nothing jumps."
 }

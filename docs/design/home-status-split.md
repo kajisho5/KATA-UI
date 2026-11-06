@@ -1,6 +1,6 @@
 # ホームページに Stable / Beta の数を出す：設計書（案）
 
-作成：2026-11-06　状態：**確認待ち（まだ作っていません）**
+作成：2026-11-06　状態：**案 A に決定・実装済み（PR #89）**
 
 ## 1. 要件
 ROADMAP Phase 1「Show the measured Stable / Beta split on the home page」。部品の meta.json に書かれた状態（stable / beta）を build.py が数え、ホームページの一番上に出す。手で数字を書かない（部品の状態が変われば自動で変わる）。
@@ -25,7 +25,7 @@ ROADMAP Phase 1「Show the measured Stable / Beta split on the home page」。�
 
 - 変更前：`136 components · 21 blocks · 7 templates`
 - 変更後：`136 components (0 stable · 136 beta) · 21 blocks · 7 templates`（案 A の場合）
-- 「stable」「beta」は部品一覧の絞り込み（`/components/?status=…` があればそこ、なければ一覧）へのリンクにする。
+- 「stable」「beta」は部品一覧の絞り込み `/components/?status=…` へのリンクにする（一覧ページがこの指定を読むように足した）。
 
 文字の大きさ・色・フォントは今の行と同じです（新しい部品や色は足しません）。
 

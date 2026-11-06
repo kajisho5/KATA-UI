@@ -84,6 +84,7 @@ least 90% of UI-profile targets pass all checks.
   switch, dialog/modal, dropdown-menu, popover, tooltip, toast, card, tabs,
   accordion, badge, alert, table, pagination, breadcrumb, then the remaining
   components needed to reach 40. Map requested names to repository slugs in each PR.
+  - [ ] Spinner: release procedure run; tests only; beta until a screen-reader pass (docs/review/spinner, [PR #78](https://github.com/kajisho5/KATA-UI/pull/78)).
   - [ ] Skeleton: release procedure run; status label, RTL shimmer; beta until a screen-reader pass (docs/review/skeleton, [PR #77](https://github.com/kajisho5/KATA-UI/pull/77)).
   - [ ] Progress: release procedure run; named bars; beta until a screen-reader pass (docs/review/progress, [PR #76](https://github.com/kajisho5/KATA-UI/pull/76)).
   - [ ] Avatar: release procedure run; hidden or named avatars, RTL dot; beta until a screen-reader pass (docs/review/avatar, [PR #75](https://github.com/kajisho5/KATA-UI/pull/75)).

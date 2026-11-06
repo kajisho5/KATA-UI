@@ -7,6 +7,6 @@
     "index"
   ],
   "status": "beta",
-  "usage": "For indexes, member lists, file lists — anywhere the same row shape repeats. If rows need sorting or filtering, that is the Data Table pattern, not this part.",
+  "usage": "For indexes, member lists, file lists — anywhere the same row shape repeats. If rows need sorting or filtering, use Data Table instead.",
   "a11y": "A real list element underneath. Rows that navigate are links; rows that act are buttons — never a clickable div."
 }

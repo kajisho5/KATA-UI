@@ -144,6 +144,8 @@ and its First five meet those requirements.
 - [x] Fix singular/plural part counts and add generated distribution headers ([PR #5](https://github.com/kajisho5/KATA-UI/pull/5)).
 - [x] Move the Lab to `/lab/` and shorten home/Pricing copy ([PR #9](https://github.com/kajisho5/KATA-UI/pull/9)).
 - [ ] Review remaining "X, not Y", "honest" and "not a render" phrasing.
+  - [x] Part, block and template meta.json: 0 "honest" (was 18); "X, not Y" constructions 52 → 13. The 13 left are accessibility facts such as "not by color alone" (PR #91).
+  - [ ] Site copy in build.py; dated changelog entries stay as written.
 - [ ] Write Japanese documentation for the ten most-used components; establish usage evidence before choosing them.
 - [ ] Publish a ten-screen comparison: a direct AI draft and the same screen assembled from fetched KATA sources. Publish the prompts and method.
 - [ ] Reduce home-page prose to half the Phase 2 baseline recorded below.

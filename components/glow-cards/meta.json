@@ -1,7 +1,7 @@
 {
   "title": "Glow Cards",
   "category": "Motion",
-  "description": "A grid of cards whose borders light up where the cursor passes — the glow lives in the frame, not the fill.",
+  "description": "A grid of cards whose borders light up where the cursor passes — only the border glows.",
   "tags": [
     "glow",
     "cards",

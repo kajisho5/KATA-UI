@@ -1,7 +1,7 @@
 {
   "title": "Counter",
   "category": "Motion",
-  "description": "Numbers that count up once, when they arrive on screen — machined, not bouncy.",
+  "description": "Numbers that count up once, when they arrive on screen — a steady ease with no overshoot.",
   "tags": [
     "number",
     "count-up",

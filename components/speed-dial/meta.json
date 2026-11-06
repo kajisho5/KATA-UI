@@ -10,5 +10,5 @@
   ],
   "status": "beta",
   "usage": "For app-shaped pages where one verb (\"add\", \"compose\") has variants: the button rests at the corner, the actions rise with their labels showing. Three to five actions — a sixth is a menu wearing a costume. Fixing it to the viewport is the page’s job; the part is the cluster.",
-  "a11y": "The trigger carries aria-expanded and the actions are ordinary buttons, reachable by keyboard in order when open; while collapsed they are hidden from Tab and assistive tech after the fade-out. Labels are text, not tooltips — the name of each action is visible, not hovered into existence."
+  "a11y": "The trigger carries aria-expanded and the actions are ordinary buttons, reachable by keyboard in order when open; while collapsed they are hidden from Tab and assistive tech after the fade-out. Each action shows its name as visible text, without hovering."
 }

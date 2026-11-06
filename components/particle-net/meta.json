@@ -12,5 +12,5 @@
   ],
   "status": "beta",
   "usage": "A background for hero sections and empty states: points drift slowly, lines form between near neighbors, and the cursor gathers a small crowd. Density and speed are set low on purpose — a net you notice working is a net set wrong. Real content rides above it in the same panel.",
-  "a11y": "The canvas is aria-hidden scenery behind real, high-contrast content. Under prefers-reduced-motion a single still constellation is drawn and left alone. If the text cannot be read with the net removed, the problem is the text, not the net."
+  "a11y": "The canvas is aria-hidden scenery behind real, high-contrast content. Under prefers-reduced-motion a single still constellation is drawn and left alone. If the text cannot be read with the net removed, fix the text."
 }

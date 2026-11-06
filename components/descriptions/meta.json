@@ -9,6 +9,6 @@
     "spec"
   ],
   "status": "beta",
-  "usage": "For reading a record, not editing it — the moment the pairs become inputs, it is a form and Field takes over. Keep labels short and values complete; the pair is the sentence.",
+  "usage": "For reading a record. The moment the pairs become inputs, it is a form and Field takes over. Keep labels short and values complete; the pair is the sentence.",
   "a11y": "A real dl: term and description stay paired for assistive technology. Do not fake the pairing with two loose columns of divs."
 }

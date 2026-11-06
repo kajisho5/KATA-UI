@@ -8,6 +8,6 @@
     "completion"
   ],
   "status": "beta",
-  "usage": "Determinate work only — uploads, exports, steps. The percentage in mono type next to the bar is part of the component, not decoration.",
+  "usage": "Determinate work only — uploads, exports, steps. The percentage in mono type next to the bar is part of the component.",
   "a11y": "role=\"progressbar\" with aria-valuenow/min/max and an aria-label that repeats the visible task name. Keep the visible percentage in sync with the value. The fill starts at the inline start, so it grows from the right in RTL."
 }

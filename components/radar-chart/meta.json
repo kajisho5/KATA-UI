@@ -1,7 +1,7 @@
 {
   "title": "Radar Chart",
   "category": "Display & Media",
-  "description": "Five or six qualities on one shape — the chart for profiles, not for precision.",
+  "description": "Five or six qualities on one shape — for comparing profiles; use a Bar Chart for exact values.",
   "tags": [
     "chart",
     "radar",

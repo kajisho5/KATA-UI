@@ -10,6 +10,6 @@
     "hover"
   ],
   "status": "beta",
-  "usage": "For app launchers and playful navigation. The script measures each tile’s distance from the cursor and scales by proximity — near tiles grow, the wave falls off within about two tiles. Tiles are buttons or links with real names; the label above a hovered tile is its name, not a decoration.",
+  "usage": "For app launchers and playful navigation. The script measures each tile’s distance from the cursor and scales by proximity — near tiles grow, the wave falls off within about two tiles. Tiles are buttons or links with real names; the label above a hovered tile is its accessible name.",
   "a11y": "Magnification is pointer theatre: focus order, names and layout never move, and a keyboard user tabs through ordinary buttons. Under prefers-reduced-motion the wave is off and every tile sits at rest size."
 }

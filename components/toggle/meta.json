@@ -1,7 +1,7 @@
 {
   "title": "Toggle",
   "category": "Form & Input",
-  "description": "A button that stays pressed — for bold, for pinning, for anything that is a state, not an action.",
+  "description": "A button that stays pressed — for bold, for pinning, for any on/off state. For one-off actions, use Button.",
   "tags": [
     "toggle",
     "pressed",

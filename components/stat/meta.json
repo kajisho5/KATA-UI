@@ -9,6 +9,6 @@
     "number"
   ],
   "status": "beta",
-  "usage": "For dashboards and summaries. One stat per idea; the delta always names its period in the label or title. Green means better, not just up.",
+  "usage": "For dashboards and summaries. One stat per idea; the delta always names its period in the label or title. Green means better: for costs, a decrease is green.",
   "a11y": "The delta's direction is in the text (the arrow and the sign), never color alone."
 }

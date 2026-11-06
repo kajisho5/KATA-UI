@@ -8,6 +8,7 @@
     return id;
   }
 
+  const instances = [];
   document.querySelectorAll('[data-combo]').forEach(combo => {
     if (combo.hasAttribute('data-kata-ready')) return;
     const input = combo.querySelector('[data-combo-input]');
@@ -152,7 +153,10 @@
       if (!event.relatedTarget) return;
       if (!combo.contains(event.relatedTarget)) close();
     });
-    document.addEventListener('click', event => { if (!combo.contains(event.target)) close(); });
+    instances.push({ combo, close });
     close();
   });
+  // One outside-press listener per script load, shared by its instances (contract item 11).
+  if (!instances.length) return;
+  document.addEventListener('pointerdown', event => { instances.forEach(instance => { if (!instance.combo.contains(event.target)) instance.close(); }); });
 })();

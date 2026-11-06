@@ -84,6 +84,7 @@ least 90% of UI-profile targets pass all checks.
   switch, dialog/modal, dropdown-menu, popover, tooltip, toast, card, tabs,
   accordion, badge, alert, table, pagination, breadcrumb, then the remaining
   components needed to reach 40. Map requested names to repository slugs in each PR.
+  - [ ] File Upload: release procedure run; readable hint on hover/drag, active and disabled states; beta until a screen-reader pass (docs/review/file-upload, [PR #86](https://github.com/kajisho5/KATA-UI/pull/86)).
   - [ ] Data Table: release procedure run; scroll region at narrow widths; beta until a screen-reader pass (docs/review/data-table, [PR #85](https://github.com/kajisho5/KATA-UI/pull/85)).
   - [ ] Hover Card: release procedure run; hidden when closed, Escape, viewport fit; beta until a screen-reader pass (docs/review/hover-card, [PR #84](https://github.com/kajisho5/KATA-UI/pull/84)).
   - [ ] Context Menu: release procedure run; shared outside-press listener; beta until a screen-reader pass (docs/review/context-menu, [PR #83](https://github.com/kajisho5/KATA-UI/pull/83)).

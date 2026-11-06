@@ -102,6 +102,7 @@ Missing number #12 is open, not silently assumed merged.
 | #64 | 0a0ce65 | T4 Table: thead/scope, keyboard-scrollable named region, avatar initials hidden, end-aligned numbers; beta. |
 | #65 | 140b679 | T4 Pagination: RTL arrows, real disabled state (no href + aria-disabled), current page keeps its fill on hover; beta. |
 | #66 | 21a9515 | T4 Breadcrumbs: separators mirror in RTL (also the App Shell block); three-set page and test; beta. |
+| #67 | 05a6bd1 | T4 Alert Dialog: button row wraps at 320px (ran 16px into the padding); layout/contrast test; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -109,7 +110,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#66 were squash-merged the same way after green CI. The owner then asked the
+#29–#67 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -126,7 +127,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#67](https://github.com/kajisho5/KATA-UI/pull/67) | T4 Alert Dialog: button row wraps at 320px (ran 16px into the padding); layout/contrast test; beta. |
+| [#68](https://github.com/kajisho5/KATA-UI/pull/68) | T4 Drawer: opens from the inline end in RTL (logical inset/margin, mirrored slide); beta. |
 
 ### npm and environment
 
@@ -178,7 +179,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #67 (T4 Alert Dialog), then drawer (prepared locally), then the rest of the remaining 19 below.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #68 (T4 Drawer), then combobox and date-picker (prepared locally), then the Input box-sizing follow-up, then the rest of the remaining 19 below.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -368,7 +369,11 @@ Breadcrumbs ([#66](https://github.com/kajisho5/KATA-UI/pull/66)): chevron separa
 mirror (App Shell uses the same markup). No other defect found. Beta.
 Alert Dialog ([#67](https://github.com/kajisho5/KATA-UI/pull/67)): at 320px the button row ran 16px into the left
 padding; it now wraps. Behaviour stays covered by verify_overlay_instances. Beta.
-Next: drawer.
+Drawer ([#68](https://github.com/kajisho5/KATA-UI/pull/68)): physical margin/inset kept the panel on the right in RTL; logical
+properties put it at the inline end and kdrawer-in-rtl slides it from the left;
+reduced motion removes both. verify_overlay_instances now clicks the backdrop
+outside the panel. Beta.
+Next: combobox.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

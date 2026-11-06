@@ -113,6 +113,7 @@ Missing number #12 is open, not silently assumed merged.
 | #75 | 3c43aec | T4 Avatar: every avatar hidden or a named image (31 hidden next to visible names), fictional sample names, RTL status dot, dot no longer clipped; beta. |
 | #76 | 763e450 | T4 Progress: both preview bars named (were unnamed progressbars), three-set page and browser test; beta. |
 | #77 | 401bde0 | T4 Skeleton: role=status with a visually hidden loading label, shapes stay aria-hidden, shimmer reversed in RTL; beta. |
+| #78 | 5e05ccd | T4 Spinner: no source change; browser test for names, sizes, edge contrast and reduced motion; forced-colors gap recorded; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -120,7 +121,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#77 were squash-merged the same way after green CI. The owner then asked the
+#29–#78 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -137,7 +138,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#78](https://github.com/kajisho5/KATA-UI/pull/78) | T4 Spinner: no source change; browser test for names, sizes, edge contrast and reduced motion; forced-colors gap recorded; beta. |
+| [#79](https://github.com/kajisho5/KATA-UI/pull/79) | T4 Empty State: decorative icon aria-hidden (Chromium exposed an unnamed image), logical spacing; beta. |
 
 ### npm and environment
 
@@ -189,7 +190,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #78 (T4 Spinner), then empty-state, separator, sidebar, command, context-menu, hover-card, data-table and file-upload (prepared locally).**
+PR. Do not start while the previous task's PR is open. **Current blocker: #79 (T4 Empty State), then separator, sidebar, command, context-menu, hover-card, data-table and file-upload (prepared locally).**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -422,7 +423,10 @@ Spinner ([#78](https://github.com/kajisho5/KATA-UI/pull/78)): no defect found; t
 edge is 17.72/16.12:1. In Chromium forced-colors emulation edge and track both
 become black, so the ring shows no moving edge; no part handles forced colors
 yet (separate decision). Beta.
-Next: empty-state.
+Empty State ([#79](https://github.com/kajisho5/KATA-UI/pull/79)): the decorative SVG icon had no aria-hidden, so Chromium
+exposed an unnamed image; it is now hidden. Spacing uses logical properties.
+Pixel-identical in light and dark. Text 17.72/16.12 and 7.73/6.91, icon 4.51/4.71. Beta.
+Next: separator.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

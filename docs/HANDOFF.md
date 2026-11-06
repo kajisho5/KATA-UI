@@ -125,13 +125,14 @@ Missing number #12 is open, not silently assumed merged.
 | #86 | 8dbe8fd | T4 File Upload: hint readable on hover/drag (4.48 -> 7.16:1 light), zone and remove-button active states, disabled zone; beta. Last of the remaining 19. |
 | #87 | b81edc3 | Torture Test page: tests/torture.html (40 parts × 3), 8-condition matrix with six checks, CI ratchet on docs/review/torture/results.json. |
 | #88 | e437cde | Tabs panel border-box: .tabpane fits its container; Torture Test 0 failures in all 8 conditions. |
+| #89 | 49e850f | Home page Stable/Beta split counted from meta.json; 13 legacy stable labels demoted (owner chose A); stable requires docs/review/<slug>/screen-reader.md. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#88 were squash-merged the same way after green CI. The owner then asked the
+#29–#89 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -148,7 +149,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#89](https://github.com/kajisho5/KATA-UI/pull/89) | Home page Stable/Beta split counted from meta.json (0 stable · 136 beta); 13 legacy stable labels demoted to beta (owner chose option A); catalog accepts ?status=. |
+| [#90](https://github.com/kajisho5/KATA-UI/pull/90) | Button Stable: owner-reported VoiceOver pass on iPhone (no transcript) recorded in docs/review/button/screen-reader.md; home shows 1 stable · 135 beta. |
 
 ### npm and environment
 
@@ -200,7 +201,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #89 (home-page Stable/Beta split). Phase 1 then needs recorded screen-reader passes (owner) before any part becomes Stable.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #90 (Button Stable). Then more screen-reader passes from the owner, First five next (input, badge, tabs, toast).**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -486,6 +487,11 @@ legacy stable labels had no release record and are now beta (owner chose A).
 Rule now tested: a part may be stable only with docs/review/<slug>/screen-reader.md.
 Next: recorded screen-reader passes (needs the owner's devices), starting with
 the First five (button, input, badge, tabs, toast).
+Button ([#90](https://github.com/kajisho5/KATA-UI/pull/90)) is the first Stable part: the owner checked the preview with
+VoiceOver on iPhone and reported it worked; no transcript, Disabled/aria-busy
+announcements not individually confirmed, NVDA untested (all stated in
+docs/review/button/screen-reader.md). Home shows 1 stable · 135 beta.
+Next: input, badge, tabs, toast the same way (owner on iPhone).
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

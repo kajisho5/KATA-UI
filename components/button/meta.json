@@ -7,7 +7,7 @@
     "cta",
     "submit"
   ],
-  "status": "beta",
+  "status": "stable",
   "usage": "One primary action per view. Use Secondary for the alternative, Ghost for tertiary actions, Danger only for destructive ones.",
-  "a11y": "Native buttons with explicit types; no JavaScript. Keyboard focus shows --k-ring (2px gap plus 2px ink ring, measured at 3:1 in light and dark). Primary, Secondary, Ghost, Accent and Danger each have hover, pressed and disabled styles; enabled text measures at least 5.5:1 in every state in both themes (docs/review/button). Disabled uses the native disabled attribute; loading examples keep their text and add disabled with aria-busy, and their spinner is aria-hidden and stops with prefers-reduced-motion. btn-asagi is a deprecated alias of btn-accent. Beta until a manual screen-reader pass (VoiceOver or NVDA) is recorded; IME does not apply because a button takes no text input. Checked in Chromium only; Safari and Firefox are not yet verified."
+  "a11y": "Native buttons with explicit types; no JavaScript. Keyboard focus shows --k-ring (2px gap plus 2px ink ring, measured at 3:1 in light and dark). Primary, Secondary, Ghost, Accent and Danger each have hover, pressed and disabled styles; enabled text measures at least 5.5:1 in every state in both themes (docs/review/button). Disabled uses the native disabled attribute; loading examples keep their text and add disabled with aria-busy, and their spinner is aria-hidden and stops with prefers-reduced-motion. btn-asagi is a deprecated alias of btn-accent. Owner-reported VoiceOver pass on iPhone, 2026-11-06, without a transcript (docs/review/button/screen-reader.md); NVDA not tested. IME does not apply because a button takes no text input. Checked in Chromium only; Safari and Firefox are not yet verified."
 }

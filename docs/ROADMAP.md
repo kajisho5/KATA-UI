@@ -124,7 +124,7 @@ least 90% of UI-profile targets pass all checks.
   - [ ] Textarea: release procedure run; beta until screen-reader and IME passes (docs/review/textarea, [PR #47](https://github.com/kajisho5/KATA-UI/pull/47)).
   - [ ] Field: release procedure run; field.js links hint/error; beta until screen-reader and IME passes (docs/review/field, [PR #46](https://github.com/kajisho5/KATA-UI/pull/46)).
   - [ ] Input: release procedure run; beta until screen-reader and IME passes (docs/review/input, [PR #45](https://github.com/kajisho5/KATA-UI/pull/45)).
-  - [ ] Button: release procedure run; beta until a recorded screen-reader pass (docs/review/button, [PR #44](https://github.com/kajisho5/KATA-UI/pull/44)).
+  - [x] Button: release procedure run; Stable after an owner-reported VoiceOver pass on iPhone without a transcript (docs/review/button/screen-reader.md, [PR #90](https://github.com/kajisho5/KATA-UI/pull/90)).
 - [x] Build one Torture Test page: three instances per component, RTL, dark mode,
   200% zoom and keyboard-only operation (tests/torture.html, docs/review/torture,
   [PR #87](https://github.com/kajisho5/KATA-UI/pull/87)). Its one finding, the Tabs panel overflow, is fixed in

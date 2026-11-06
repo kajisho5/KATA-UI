@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For profile previews on names and avatars. Rich content only — anything actionable belongs in a Popover, which also works on tap.",
-  "a11y": "Opens on focus as well as hover, with a delay both ways so it never flickers. Touch users get the Popover pattern instead; never hide essential content here."
+  "a11y": "Opens on focus at once and on hover after 300ms; closes 180ms after the pointer or focus leaves. Escape dismisses it without moving focus (WCAG 1.4.13). While closed the card is visibility:hidden, so screen readers do not read it inside the sentence. The card shifts to stay inside the viewport. Touch users get the Popover pattern instead; never hide essential content here."
 }

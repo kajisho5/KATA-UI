@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   let serial = 0;
+  const instances = [];
   function identify(element, prefix) {
     if (!element.id) {
       let candidate;
@@ -142,14 +143,19 @@
       exit.cancel(); input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant');
       if (opener?.isConnected) opener.focus();
     });
-    document.addEventListener('keydown', event => {
-      if (event.isComposing || composing || event.keyCode === 229 || !(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== 'k') return;
-      const dialogs = [...document.querySelectorAll('[data-command][data-kata-ready]')];
-      const focused = document.activeElement;
-      const target = dialogs.find(candidate => candidate.open) || dialogs.find(candidate => focused?.getAttribute('aria-controls') === candidate.id) || dialogs[0];
-      if (target !== dialog) return;
-      event.preventDefault(); if (!dialog.open) open(focused);
-    });
+    instances.push({ dialog, open, composing: () => composing });
     filter();
+  });
+
+  // One shared Cmd/Ctrl+K listener per script load; a second load finds no new palette and adds none.
+  if (!instances.length) return;
+  document.addEventListener('keydown', event => {
+    if (event.isComposing || event.keyCode === 229 || instances.some(instance => instance.composing()) || !(event.metaKey || event.ctrlKey) || event.key.toLowerCase() !== 'k') return;
+    const dialogs = [...document.querySelectorAll('[data-command][data-kata-ready]')];
+    const focused = document.activeElement;
+    const target = dialogs.find(candidate => candidate.open) || dialogs.find(candidate => focused?.getAttribute('aria-controls') === candidate.id) || dialogs[0];
+    const instance = instances.find(candidate => candidate.dialog === target);
+    if (!instance) return;
+    event.preventDefault(); if (!target.open) instance.open(focused);
   });
 })();

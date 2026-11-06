@@ -116,6 +116,7 @@ Missing number #12 is open, not silently assumed merged.
 | #78 | 5e05ccd | T4 Spinner: no source change; browser test for names, sizes, edge contrast and reduced motion; forced-colors gap recorded; beta. |
 | #79 | daf59f7 | T4 Empty State: decorative icon aria-hidden (Chromium exposed an unnamed image), logical spacing; beta. |
 | #80 | dd0da8e | T4 Separator: hr no longer shrinks to 0px in grid/flex (UA auto margins), lines are borders so forced colors keep them; beta. |
+| #81 | b77fe09 | T4 Sidebar: guarded script (double load toggled twice), rail labels visually hidden instead of removed, aria-current, RTL sub-item indent; stable -> beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -123,7 +124,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#80 were squash-merged the same way after green CI. The owner then asked the
+#29–#81 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -140,7 +141,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#81](https://github.com/kajisho5/KATA-UI/pull/81) | T4 Sidebar: guarded script (double load toggled twice), rail labels visually hidden instead of removed, aria-current, RTL sub-item indent; stable -> beta. |
+| [#82](https://github.com/kajisho5/KATA-UI/pull/82) | T4 Command: one shared Cmd/Ctrl+K document listener per script load (was one per palette), logical CSS; beta. |
 
 ### npm and environment
 
@@ -192,7 +193,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #81 (T4 Sidebar), then command, context-menu, hover-card, data-table and file-upload (prepared locally).**
+PR. Do not start while the previous task's PR is open. **Current blocker: #82 (T4 Command), then context-menu, hover-card, data-table and file-upload (prepared locally).**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -438,7 +439,11 @@ group twice per click; it is now an IIFE with data-kata-ready. The rail hid labe
 with display:none, removing link names; they are now clipped to 1px. The current
 link carries aria-current=page. Sub-items used a physical left margin; now
 margin-inline-start. Avatar initials aria-hidden. LTR pixel-identical. stable -> beta.
-Next: command.
+Command ([#82](https://github.com/kajisho5/KATA-UI/pull/82)): command.js added one document keydown listener per palette
+(3 on the three-palette page); it now adds one per script load and keeps the
+same target rule (open palette, focused trigger's palette, else first).
+Logical CSS; pixel-identical. Item 11 audit: Command now uses a shared listener. Beta.
+Next: context-menu.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

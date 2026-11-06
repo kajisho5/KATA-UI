@@ -20,163 +20,35 @@
   "results": {
     "ltr-light-100": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 9px"
-        }
-      ]
+      "failures": []
     },
     "ltr-light-200": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 17px"
-        }
-      ]
+      "failures": []
     },
     "ltr-dark-100": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 9px"
-        }
-      ]
+      "failures": []
     },
     "ltr-dark-200": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 17px"
-        }
-      ]
+      "failures": []
     },
     "rtl-light-100": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 9px"
-        }
-      ]
+      "failures": []
     },
     "rtl-light-200": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 17px"
-        }
-      ]
+      "failures": []
     },
     "rtl-dark-100": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 9px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 9px"
-        }
-      ]
+      "failures": []
     },
     "rtl-dark-200": {
       "tab_stops": 316,
-      "failures": [
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 1: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 2: div.tabpane sticks out 17px"
-        },
-        {
-          "check": "C",
-          "part": "tabs",
-          "detail": "Tabs 3: div.tabpane sticks out 17px"
-        }
-      ]
+      "failures": []
     }
   }
 }

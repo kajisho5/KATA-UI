@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For state that lives on the button itself: formatting, filters, pins. If pressing it does something and finishes, that is a Button; if it stays down, it is this.",
-  "a11y": "aria-pressed carries the state, and the pressed style is more than color — weight and fill change too, so the state survives grayscale."
+  "a11y": "aria-pressed carries the state, and the pressed style is more than color — weight and fill change too, so the state survives grayscale. Icon- or letter-only toggles need an aria-label (the formatting sample names B/I/U as Bold, Italic, Underline). A disabled toggle is dimmed and does not change. One click flips the state once even if the script loads twice; a bubbling kata-toggle-change event reports detail.pressed. Beta until a recorded screen-reader pass."
 }

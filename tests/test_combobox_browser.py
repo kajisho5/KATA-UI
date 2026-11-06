@@ -54,3 +54,33 @@ class ComboboxBrowser(unittest.TestCase):
                 self.assertEqual(combo.locator('[role=status]').inner_text(),'')
                 self.assertEqual(errors,[])
             finally:browser.close()
+
+
+@unittest.skipUnless(AVAILABLE, 'Requires Playwright Python and Chromium')
+class ComboboxOutsideListener(unittest.TestCase):
+    def test_one_shared_pointerdown_listener(self):
+        """Contract item 11: outside dismissal uses pointerdown, registered once per script load, not per instance."""
+        from playwright.sync_api import sync_playwright
+        root=Path(__file__).resolve().parents[1]
+        handler=functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(root))
+        server=http.server.ThreadingHTTPServer(('127.0.0.1',0),handler)
+        threading.Thread(target=server.serve_forever,daemon=True).start()
+        self.addCleanup(server.server_close);self.addCleanup(server.shutdown)
+        with sync_playwright() as p:
+            browser=p.chromium.launch(executable_path=shutil.which('chromium'),args=['--no-sandbox'])
+            try:
+                page=browser.new_page()
+                page.goto(f'http://127.0.0.1:{server.server_port}/tests/combobox-multi.html')
+                cdp=page.context.new_cdp_session(page)
+                doc=cdp.send('Runtime.evaluate',{'expression':'document'})['result']['objectId']
+                types=[l['type'] for l in cdp.send('DOMDebugger.getEventListeners',{'objectId':doc})['listeners']]
+                # Three instances, script loaded twice: the second load finds no new instance and adds nothing.
+                self.assertEqual(types.count('click'),0)
+                self.assertEqual(types.count('pointerdown'),1)
+                field=page.locator('[data-combo] input').first;field.click()
+                self.assertEqual(field.get_attribute('aria-expanded'),'true')
+                page.mouse.move(2,2);page.mouse.down()
+                self.assertEqual(field.get_attribute('aria-expanded'),'false')
+                page.mouse.up()
+            finally:
+                browser.close()

@@ -11,6 +11,6 @@
     "light"
   ],
   "status": "beta",
-  "usage": "One per page — the action the page is for. The ring is a conic gradient rotating behind a 1.5px frame (an @property angle, so it animates smoothly), and the halo is a plain box-shadow that deepens on hover and focus. The example below shows the same ring as a field treatment: the glow belongs on the control that matters, not on all of them.",
+  "usage": "One per page — the action the page is for. The ring is a conic gradient rotating behind a 1.5px frame (an @property angle, so it animates smoothly), and the halo is a plain box-shadow that deepens on hover and focus. The example below shows the same ring as a field treatment: use the glow on one control per view.",
   "a11y": "The button’s name, size and focus ring are untouched — focus shows the standard outline outside the glow. The orbit is decorative and stops under prefers-reduced-motion, leaving a still, lit border that reads as emphasis, not as a state."
 }

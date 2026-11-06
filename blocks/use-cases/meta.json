@@ -14,6 +14,6 @@
     "badge",
     "progress"
   ],
-  "usage": "For the \"who is it for\" section of a landing page. Each case pairs a promise on the left with its evidence on the right — a real screen fragment, not an illustration. Listen for the chosen case:\n\n```js\ndocument.addEventListener('kata-use-cases-change', event => {\n  console.log(event.detail.index);\n});\n```",
+  "usage": "For the \"who is it for\" section of a landing page. Each case pairs a promise on the left with its evidence on the right — a working screen fragment built from catalog parts. Listen for the chosen case:\n\n```js\ndocument.addEventListener('kata-use-cases-change', event => {\n  console.log(event.detail.index);\n});\n```",
   "a11y": "Each case is a button with aria-expanded that controls its scene. Up/Down move focus between cases (Home/End jump), and Enter or Space opens one; only the open case's scene is shown. Each section switches independently. The buttons still contain their headings and lists, which screen readers read as one long button name; splitting them is follow-up work. Screen-reader output is not yet verified by hand."
 }

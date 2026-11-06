@@ -12,5 +12,5 @@
   ],
   "status": "beta",
   "usage": "Two native range inputs share one track; the fill between the thumbs is the selection, and the script keeps a minimum gap so the thumbs cannot cross into nonsense. Values mirror into the outputs beside it — wire those to your filter, and the URL if you are serious. Steps, min and max are plain attributes on the inputs.",
-  "a11y": "Both thumbs are real range inputs with their own labels (\"Minimum price\", \"Maximum price\"), fully keyboard-operable with arrow keys — the overlap is paint, not a custom widget. The visible numbers are outputs tied to the inputs, so what is announced is what is shown."
+  "a11y": "Both thumbs are real range inputs with their own labels (\"Minimum price\", \"Maximum price\"), fully keyboard-operable with arrow keys — only the overlapping track is custom paint. The visible numbers are outputs tied to the inputs, so what is announced is what is shown."
 }

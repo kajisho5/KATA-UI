@@ -12,5 +12,5 @@
   ],
   "status": "beta",
   "usage": "The seal is cast in shu-iro — the same vermillion reserved for the mark and the live center of controls — because a hanko is exactly that: a signature with weight. It stamps in when it arrives (scale, a breath of overshoot, an ink ring that fades) and re-stamps on click. Use it where a human means it: approvals, signed releases, the end of a document that is finished.",
-  "a11y": "The approval itself is stated in words beside the seal (\"Approved — Mara Sato, Nov 2\") — the stamp is the signature, not the record. The stamp-in is a transform only and is skipped under prefers-reduced-motion, where the seal simply sits, already pressed."
+  "a11y": "The approval itself is stated in words beside the seal (\"Approved — Mara Sato, Nov 2\") — the text carries the approval for every reader. The stamp-in is a transform only and is skipped under prefers-reduced-motion, where the seal simply sits, already pressed."
 }

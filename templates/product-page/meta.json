@@ -17,5 +17,5 @@
   "blocks": [],
   "url": "shop.acme.studio/trail-pack-20",
   "usage": "The gallery panels are gradient stand-ins — drop photographs into the same frames. Options are real form controls (swatches are radios, sizes the Segmented part), the quantity stepper is three buttons and a number, and the accordions are native details: the page needs no script until the cart does. Price, stock and shipping claims sit above the fold because that is where buying decisions happen.",
-  "a11y": "Every option is a labeled native control; the rating is text as well as stars (\"4.8, 212 reviews\"); and the purchase button names the action, not the vibe. Stock states must be announced in words, never by color alone."
+  "a11y": "Every option is a labeled native control; the rating is text as well as stars (\"4.8, 212 reviews\"); and the purchase button names the action it performs. Stock states must be announced in words, never by color alone."
 }

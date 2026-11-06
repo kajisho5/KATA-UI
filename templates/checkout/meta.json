@@ -1,6 +1,6 @@
 {
   "title": "Checkout",
-  "description": "A complete checkout page: steps, shipping and payment forms, and a sticky order summary that keeps the total honest.",
+  "description": "A complete checkout page: steps, shipping and payment forms, and a sticky order summary with the running total.",
   "tags": [
     "checkout",
     "commerce",

@@ -11,5 +11,5 @@
   ],
   "status": "beta",
   "usage": "The script splits the headline into letter spans; a hover hops one letter on a spring curve, and a click sends a staggered wave down the line. For the one headline a page is allowed to show off with — a launch name, a thank-you, a very confident 404.",
-  "a11y": "The unsplit sentence lives in an aria-label and the letters are aria-hidden confetti — screen readers get the headline, not forty separate hops. Under prefers-reduced-motion the letters stand still and take their bow as text."
+  "a11y": "The unsplit sentence lives in an aria-label and the letters are aria-hidden confetti — screen readers read the headline once. Under prefers-reduced-motion the letters stand still and take their bow as text."
 }

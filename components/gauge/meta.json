@@ -8,6 +8,6 @@
     "health"
   ],
   "status": "beta",
-  "usage": "For a single health metric with a known ceiling: uptime, budget burn, quota. If there is no meaningful limit, a Stat is the honest part instead.",
+  "usage": "For a single health metric with a known ceiling: uptime, budget burn, quota. If there is no meaningful limit, use a Stat instead.",
   "a11y": "A chart is a picture of numbers: give the figure role=\"img\" and an aria-label that states the conclusion (\"Signups rose from 22 to 71 over the year\"), and keep the data available as a table nearby."
 }

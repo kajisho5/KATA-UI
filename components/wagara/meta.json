@@ -14,6 +14,6 @@
     "karakusa"
   ],
   "status": "beta",
-  "usage": "Patterns are drawn, not tiled from images — each has a period and a logic. Search the picker by name or motif; the caption under the canvas tells each pattern's story.",
+  "usage": "Patterns are drawn in code — each has a period and a logic. Search the picker by name or motif; the caption under the canvas tells each pattern's story.",
   "a11y": "Pattern is texture: the canvas is aria-hidden and any text over it must pass contrast on the flat tone color alone, pattern removed. Under prefers-reduced-motion nothing changes — patterns were always still."
 }

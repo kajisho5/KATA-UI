@@ -1,7 +1,7 @@
 {
   "title": "Stepper",
   "category": "Form & Input",
-  "description": "A number with minus and plus on either side, cast as one control. Bounds are enforced, not suggested.",
+  "description": "A number with minus and plus on either side, cast as one control. Bounds are enforced: the value cannot leave the range.",
   "tags": [
     "number",
     "quantity",

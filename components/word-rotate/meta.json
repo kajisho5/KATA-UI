@@ -11,5 +11,5 @@
   ],
   "status": "beta",
   "usage": "For the hero sentence with a variable in it — \"Built for dashboards / docs / pricing pages\". The words sit in the markup as a stack; the script steps the stack every two seconds and loops it cleanly. Keep the words one length family apart at most, or the sentence breathes oddly as it changes.",
-  "a11y": "Screen readers should meet one sentence, not five: the rotating stack is aria-hidden and a visually-hidden static version carries the meaning. The rotation pauses under prefers-reduced-motion, leaving the first word standing."
+  "a11y": "Screen readers get one sentence: the rotating stack is aria-hidden and a visually-hidden static version carries the meaning. The rotation pauses under prefers-reduced-motion, leaving the first word standing."
 }

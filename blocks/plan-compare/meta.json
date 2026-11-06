@@ -1,6 +1,6 @@
 {
   "title": "Plan Compare",
-  "description": "The feature matrix under the pricing cards: what each plan really includes, row by honest row.",
+  "description": "The feature matrix under the pricing cards: what each plan includes, one feature per row.",
   "tags": [
     "pricing",
     "compare",

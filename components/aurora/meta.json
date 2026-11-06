@@ -8,6 +8,6 @@
     "ambient"
   ],
   "status": "beta",
-  "usage": "As the backdrop of a hero or a featured card. It is a surface, not a decoration: keep the text on top short and let the wash move.",
+  "usage": "As the backdrop of a hero or a featured card. Use it as a background surface: keep the text on top short and let the wash move.",
   "a11y": "Pure CSS. Under prefers-reduced-motion the wash holds still; text contrast comes from the dark ground, not the moving color."
 }

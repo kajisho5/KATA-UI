@@ -1,7 +1,7 @@
 {
   "title": "Data Table",
   "category": "Display & Media",
-  "description": "The table with its working clothes on: sortable columns, selectable rows, and an honest footer.",
+  "description": "The table with its working clothes on: sortable columns, selectable rows, and a footer that counts the rows shown.",
   "tags": [
     "table",
     "sorting",

@@ -1,7 +1,7 @@
 {
   "title": "Breadcrumbs",
   "category": "Layout & Navigation",
-  "description": "Where you are, as a path. The last crumb is the page itself — not a link.",
+  "description": "Where you are, as a path. The last crumb is the current page, shown as plain text.",
   "tags": [
     "navigation",
     "path",

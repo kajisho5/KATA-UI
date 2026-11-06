@@ -10,6 +10,6 @@
     "stars"
   ],
   "status": "beta",
-  "usage": "A background, not a foreground: the stage is a dark panel and the script seeds about fourteen meteors with random starts, delays and speeds, forever. Put one short line of type over it and stop — a sky with a paragraph on it is weather, not design.",
+  "usage": "Use it as a background: the stage is a dark panel and the script seeds about fourteen meteors with random starts, delays and speeds, forever. Put one short line of type over it and stop; a paragraph over moving meteors is hard to read.",
   "a11y": "Pure decoration: the meteors are aria-hidden and the words over them are ordinary text. Under prefers-reduced-motion the sky goes still and the meteors hide — the panel and the message remain."
 }

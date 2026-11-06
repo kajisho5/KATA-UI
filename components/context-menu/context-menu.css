@@ -1,10 +1,10 @@
-.k-ctx-zone{border:1.5px dashed var(--k-border-strong);border-radius:var(--k-radius-xl);min-height:168px;display:grid;place-items:center;font-family:var(--k-font);color:var(--k-ink-3);font-size:var(--k-text-base);text-align:center;padding:var(--k-space-4)}
+.k-ctx-zone{border:1.5px dashed var(--k-border-strong);border-radius:var(--k-radius-xl);min-block-size:168px;display:grid;place-items:center;font-family:var(--k-font);color:var(--k-ink-3);font-size:var(--k-text-base);text-align:center;padding:var(--k-space-4)}
 .k-ctx{position:fixed;z-index:90;width:224px;background:var(--k-bg);border:1px solid var(--k-line);border-radius:var(--k-radius-lg);box-shadow:var(--k-shadow-pop);padding:var(--k-space-1);font-family:var(--k-font);text-align:start}
 .k-ctx[hidden]{display:none}
 .k-ctx button{display:flex;align-items:center;gap:var(--k-space-2);width:100%;padding:var(--k-space-2) var(--k-space-2);border:none;background:transparent;border-radius:var(--k-radius-md);font:inherit;font-size:var(--k-text-base);color:var(--k-ink);cursor:pointer}
 .k-ctx button:hover,.k-ctx button:focus-visible{background:var(--k-bg-soft);outline:none}
 .k-ctx button .hint{margin-inline-start:auto;font-family:var(--k-mono);font-size:var(--k-text-xs);color:var(--k-ink-3)}
 .k-ctx button.danger{color:var(--k-danger-ink)}
-.k-ctx hr{border:none;border-top:1px solid var(--k-line);margin:var(--k-space-1) var(--k-space-1)}
+.k-ctx hr{border:none;border-block-start:1px solid var(--k-line);margin:var(--k-space-1) var(--k-space-1)}
 
 .k-ctx-zone:focus-visible,.k-ctx button:focus-visible{outline:0;box-shadow:var(--k-ring)}

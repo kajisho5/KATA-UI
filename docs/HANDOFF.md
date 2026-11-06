@@ -104,6 +104,7 @@ Missing number #12 is open, not silently assumed merged.
 | #66 | 21a9515 | T4 Breadcrumbs: separators mirror in RTL (also the App Shell block); three-set page and test; beta. |
 | #67 | 05a6bd1 | T4 Alert Dialog: button row wraps at 320px (ran 16px into the padding); layout/contrast test; beta. |
 | #68 | 497ad98 | T4 Drawer: opens from the inline end in RTL (logical inset/margin, mirrored slide); beta. |
+| #69 | 3b2f22e | T4 Combobox: one shared pointerdown listener replaces a document click listener per instance (item 11); beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -111,7 +112,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#68 were squash-merged the same way after green CI. The owner then asked the
+#29–#69 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -128,7 +129,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#69](https://github.com/kajisho5/KATA-UI/pull/69) | T4 Combobox: one shared pointerdown listener replaces a document click listener per instance (item 11); beta. |
+| [#70](https://github.com/kajisho5/KATA-UI/pull/70) | T4 Date Picker: one shared pointerdown listener replaces one per instance (item 11); beta. |
 
 ### npm and environment
 
@@ -180,7 +181,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #69 (T4 Combobox), then date-picker and the Input box-sizing follow-up (prepared locally), then the rest of the remaining 19 below.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #70 (T4 Date Picker), then the Input box-sizing follow-up and slider (prepared locally), then the rest of the remaining 19 below.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -378,7 +379,10 @@ Combobox ([#69](https://github.com/kajisho5/KATA-UI/pull/69)): each instance add
 pointerdown listener per script load now serves all instances (item 11).
 test_combobox_browser counts the listeners over CDP and now runs in CI after
 Chromium. Beta.
-Next: date-picker.
+Date Picker ([#70](https://github.com/kajisho5/KATA-UI/pull/70)): each instance added a document pointerdown listener;
+one per script load now serves all instances. At 320px the page scrolls
+sideways by 44px because of the Input box-sizing follow-up (next PR). Beta.
+Next: Input box-sizing, then slider.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):
@@ -408,7 +412,7 @@ The contract is a target. No code is changed to conceal these differences:
 - Item 6: templates/product-page/product-page.css replaces the selected swatch box-shadow with an offset focus shadow; preservation of both states needs a browser test.
 - Item 7: prior 40-part contrast artifacts exist under docs/review; no complete fresh 164-part/state contrast certification was performed for this handoff.
 - Item 10: #25 is merged, so main's CLI (1.1.0 in cli/package.json) has the mold-header warnings and safe forced-add behavior. npm still serves 1.0.0 until the owner publishes. Explicit owner init --force is an intentional update, not automatic add overwrite.
-- Item 11: Combobox, Popover and Dropdown now register one outside-press listener per script load (#69, #56, #55). Date Picker still registers one per instance (fix prepared). Other parts were not audited for this. The JS checker does not detect every contract violation; the measured remaining JS failures are listed above.
+- Item 11: Combobox, Popover and Dropdown now register one outside-press listener per script load (#69, #56, #55). Date Picker since #70. Other parts were not audited for this. The JS checker does not detect every contract violation; the measured remaining JS failures are listed above.
 - Item 12: Date Picker's RTL correction is merged in #26; Tag/OTP behavior (including OTP LTR/IME/completion) is merged in #27. Color Picker and Carousel visual arrows are in #29; Split Panel visual arrows are in #30.
 - Item 13: Modal closes on backdrop click since #54 (browser-tested with Drawer and Alert Dialog in tools/verify_overlay_instances). Modal remains Beta until a recorded screen-reader pass.
 - Item 14: inline sample styles and fixed IDs remain across legacy parts; the static inline-data-color allowance is not proof of full sample compliance.

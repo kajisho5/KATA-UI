@@ -1,12 +1,13 @@
 """Torture Test matrix: 8 conditions over tests/torture.html; fails on failures not in results.json."""
 import importlib.util
 import json
+import os
 import shutil
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CHROMIUM = shutil.which('chromium') or '/usr/bin/chromium'
+CHROMIUM = os.environ.get('CHROMIUM_PATH') or shutil.which('chromium') or '/usr/bin/chromium'
 AVAILABLE = importlib.util.find_spec('playwright') is not None and Path(CHROMIUM).exists()
 
 

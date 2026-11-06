@@ -18,6 +18,7 @@ Checks per condition:
 E is a style-change check. The pixel and 3:1 contrast check stays in tools/verify_focus_ring.
 """
 import functools
+import os
 import http.server
 import json
 import shutil
@@ -28,7 +29,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'docs' / 'review' / 'torture'
-CHROMIUM = shutil.which('chromium') or '/usr/bin/chromium'
+CHROMIUM = os.environ.get('CHROMIUM_PATH') or shutil.which('chromium') or '/usr/bin/chromium'
 WIDTHS = {'100': 1280, '200': 640}
 CONDITIONS = [f'{d}-{t}-{z}' for d in ('ltr', 'rtl') for t in ('light', 'dark') for z in ('100', '200')]
 CHECKS = {'A': 'errors', 'B': 'page-overflow', 'C': 'part-overflow', 'D': 'keyboard', 'E': 'focus-visible', 'F': 'parity'}

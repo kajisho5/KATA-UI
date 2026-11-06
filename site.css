@@ -34,6 +34,8 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(253,253,253,.9);back
 .card{display:block;text-decoration:none;border:1px solid var(--hair);border-radius:14px;padding:20px;background:var(--paper);transition:box-shadow .15s,transform .15s}
 .card:hover{box-shadow:0 12px 32px -14px rgba(16,24,40,.18);transform:translateY(-1px)}
 .card h3{font-size:15.5px;font-weight:600;display:flex;align-items:center;gap:9px}
+.cards-min{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.cards-min .card{padding:14px 16px}
 .card p{margin-top:8px;font-size:13px;color:var(--ink2);line-height:1.7;letter-spacing:.01em}
 .card .tags{margin-top:13px;display:flex;gap:6px;flex-wrap:wrap}
 .tag{font-size:11px;color:var(--ink3);background:var(--soft);border-radius:99px;padding:3px 9px;font-family:var(--mono)}

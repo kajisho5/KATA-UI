@@ -132,7 +132,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#92 were squash-merged the same way after green CI. The owner then asked the
+#29–#93 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -149,7 +149,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#93](https://github.com/kajisho5/KATA-UI/pull/93) | Test timing fix: the Input OTP check waits for the part's post-composition timer before the next fill (intermittent full-suite failure). |
+| [#94](https://github.com/kajisho5/KATA-UI/pull/94) | Home body prose 369 → 153 words (owner-approved design in docs/design/home-prose.*); tests/test_home_prose.py keeps it at 185 or fewer. |
 
 ### npm and environment
 

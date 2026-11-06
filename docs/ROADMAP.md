@@ -5,7 +5,7 @@ Implementation agent: Claude Code (from 2026-11-05).
 <!-- mold-snapshot:start -->
 [Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43](https://kata-ui.dev/audit/)
 
-164 parts. Static checks only. Updated 2026-11-06 (Asia/Tokyo).
+164 parts. Static checks only. Updated 2026-11-07 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 
 | Remaining check findings | Count |
@@ -148,7 +148,7 @@ and its First five meet those requirements.
   - [x] Site copy in build.py and README: 58 sentences rewritten; 0 left outside the dated changelog entries, which stay as written (12 matches) (PR #92).
 - [ ] Write Japanese documentation for the ten most-used components; establish usage evidence before choosing them.
 - [ ] Publish a ten-screen comparison: a direct AI draft and the same screen assembled from fetched KATA sources. Publish the prompts and method.
-- [ ] Reduce home-page prose to half the Phase 2 baseline recorded below.
+- [x] Reduce home-page prose to half the Phase 2 baseline recorded below: body 369 → 153 words, held at 185 or fewer by tests/test_home_prose.py (PR #94).
 
 **Completion criteria:** the home page has no more than half its recorded
 baseline prose length; the listed documentation and ten-screen comparison are
@@ -158,6 +158,8 @@ The Phase 2 word-count baseline and measurement method are recorded below before
 <!-- home-prose-baseline:start -->
 Baseline: 815 whitespace-delimited words in the generated home page before this PR. Count text nodes outside script/style, including common navigation and controls. Use the same scope for the Phase 2 comparison. This is a measured planning baseline, not an audit score.
 <!-- home-prose-baseline:end -->
+
+Scope change (owner decision, 2026-11-06): the whole-page count reached 851 words, of which 482 are shared chrome on every page (catalog sidebar 358, Foundry panel 71, header, drawer and footer 53). Halving the whole page would require removing site navigation, so the target now counts only the home body (`<div class="wrap lp">`, hero through the last section). Body baseline: 369 words; target: 185 or fewer. Method otherwise unchanged.
 
 ## Phase 3 — Prepare for release
 

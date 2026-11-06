@@ -118,6 +118,7 @@ Missing number #12 is open, not silently assumed merged.
 | #80 | dd0da8e | T4 Separator: hr no longer shrinks to 0px in grid/flex (UA auto margins), lines are borders so forced colors keep them; beta. |
 | #81 | b77fe09 | T4 Sidebar: guarded script (double load toggled twice), rail labels visually hidden instead of removed, aria-current, RTL sub-item indent; stable -> beta. |
 | #82 | 14f035a | T4 Command: one shared Cmd/Ctrl+K document listener per script load (was one per palette), logical CSS; beta. |
+| #83 | 55b5f02 | T4 Context Menu: one shared outside-press document listener per script load (was one per menu), logical CSS; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -125,7 +126,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#82 were squash-merged the same way after green CI. The owner then asked the
+#29–#83 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -142,7 +143,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#83](https://github.com/kajisho5/KATA-UI/pull/83) | T4 Context Menu: one shared outside-press document listener per script load (was one per menu), logical CSS; beta. |
+| [#84](https://github.com/kajisho5/KATA-UI/pull/84) | T4 Hover Card: closed card visibility:hidden (was read in the sentence), Escape dismisses (WCAG 1.4.13), guarded IIFE, viewport fit at 360px; beta. |
 
 ### npm and environment
 
@@ -194,7 +195,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #83 (T4 Context Menu), then hover-card, data-table and file-upload (prepared locally).**
+PR. Do not start while the previous task's PR is open. **Current blocker: #84 (T4 Hover Card), then data-table and file-upload (prepared locally).**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -447,7 +448,12 @@ Logical CSS; pixel-identical. Item 11 audit: Command now uses a shared listener.
 Context Menu ([#83](https://github.com/kajisho5/KATA-UI/pull/83)): context-menu.js added one document pointerdown listener
 per menu (3 on the three-menu page); it now adds one per script load. The window
 blur listener already had a guard. Logical CSS; pixel-identical. Beta.
-Next: hover-card.
+Hover Card ([#84](https://github.com/kajisho5/KATA-UI/pull/84)): a closed card was only opacity:0, so its heading, initials
+and paragraphs stayed in the accessibility tree after the link; closed cards are
+now visibility:hidden. Escape closes open cards (one shared keydown listener).
+hover-card.js is a guarded IIFE. At 360px the card started at x=-73px; a
+--khover-shift clamp (as Popover #56) keeps it 16px inside. 900px pixel-identical. Beta.
+Next: data-table.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

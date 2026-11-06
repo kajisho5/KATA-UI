@@ -105,6 +105,7 @@ Missing number #12 is open, not silently assumed merged.
 | #67 | 05a6bd1 | T4 Alert Dialog: button row wraps at 320px (ran 16px into the padding); layout/contrast test; beta. |
 | #68 | 497ad98 | T4 Drawer: opens from the inline end in RTL (logical inset/margin, mirrored slide); beta. |
 | #69 | 3b2f22e | T4 Combobox: one shared pointerdown listener replaces a document click listener per instance (item 11); beta. |
+| #70 | ac54ccb | T4 Date Picker: one shared pointerdown listener replaces one per instance (item 11); beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -112,7 +113,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#69 were squash-merged the same way after green CI. The owner then asked the
+#29–#70 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -129,7 +130,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#70](https://github.com/kajisho5/KATA-UI/pull/70) | T4 Date Picker: one shared pointerdown listener replaces one per instance (item 11); beta. |
+| [#71](https://github.com/kajisho5/KATA-UI/pull/71) | Input box-sizing follow-up: .input is border-box, fits its container and is 38px tall like .btn-md. |
 
 ### npm and environment
 
@@ -181,7 +182,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #70 (T4 Date Picker), then the Input box-sizing follow-up and slider (prepared locally), then the rest of the remaining 19 below.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #71 (Input box-sizing), then slider and toggle (prepared locally), then the rest of the remaining 19 below.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -268,10 +269,8 @@ error (while data-invalid) with generated IDs, keeps author IDs, syncs
 aria-invalid and sets role="alert" only when data-invalid is added after load.
 The old a11y text claimed this without code. Controls in a Field use
 border-box: they overflowed by 26px (Settings Page inputs ran past the card).
-Follow-up for Input: `.input` is content-box, so `width:100%` overflows its
-container by 26px and the height is 40px, not 38px, everywhere outside a Field;
-fixing it in input.css changes about ten parts, so it needs its own PR with
-screenshots.
+Follow-up for Input (done in #71): `.input` was content-box, so `width:100%`
+overflowed its container by 26px and the height was 40px outside a Field.
 Textarea ([#47](https://github.com/kajisho5/KATA-UI/pull/47)): border-box (it overflowed by 26px and rendered 110px for a
 92px minimum; Settings block is 18px shorter), :focus-visible, aria-invalid as
 an alias of data-invalid, hover skips disabled, read-only gets a soft
@@ -382,7 +381,12 @@ Chromium. Beta.
 Date Picker ([#70](https://github.com/kajisho5/KATA-UI/pull/70)): each instance added a document pointerdown listener;
 one per script load now serves all instances. At 320px the page scrolls
 sideways by 44px because of the Input box-sizing follow-up (next PR). Beta.
-Next: Input box-sizing, then slider.
+Input box-sizing ([#71](https://github.com/kajisho5/KATA-UI/pull/71)): .input is border-box. At 360px, 16 overflowing inputs
+across Checkout, Date Picker, Input, Login, Settings and Time Picker now fit;
+all .input controls are 38px tall (were 40). Dashboard's fixed-width search is
+26px narrower. Checkout and Settings still scroll sideways at 360px for other
+reasons (not audited).
+Next: slider.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

@@ -1,10 +1,10 @@
 <div style="display:grid;gap:var(--k-space-4);max-width:400px">
-  <div data-slider style="display:grid;gap:var(--k-space-0-5)">
-    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><label for="sl-vol" style="font-weight:550">Volume</label><span data-slider-val style="font-family:var(--k-mono);color:var(--k-ink-2)">60</span></div>
-    <input class="k-slider" id="sl-vol" type="range" min="0" max="100" value="60">
-  </div>
-  <div data-slider style="display:grid;gap:var(--k-space-0-5)">
-    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><label for="sl-br" style="font-weight:550">Brightness</label><span data-slider-val style="font-family:var(--k-mono);color:var(--k-ink-2)">30</span></div>
-    <input class="k-slider" id="sl-br" type="range" min="0" max="100" value="30">
-  </div>
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Volume</span><span class="k-slider-val" data-slider-val aria-hidden="true">60</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="60">
+  </label>
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Brightness</span><span class="k-slider-val" data-slider-val aria-hidden="true">30</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="30">
+  </label>
 </div>

@@ -1,9 +1,16 @@
 /* KATA Slider */
 .k-slider{-webkit-appearance:none;appearance:none;width:100%;height:20px;background:transparent;cursor:pointer;--p:50%}
-.k-slider::-webkit-slider-runnable-track{height:4px;border-radius:var(--k-radius-full);background:linear-gradient(90deg,var(--k-ink) var(--p),var(--k-track) var(--p))}
-.k-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:calc(var(--k-space-1) * -1);border-radius:50%;background:radial-gradient(circle at center,var(--k-core) 0 2.5px,var(--k-knob) 3.2px);border:1.5px solid var(--k-border-strong);box-shadow:var(--k-shadow-xs)}
+.k-slider::-webkit-slider-runnable-track{height:4px;border-radius:var(--k-radius-full);background:linear-gradient(to right,var(--k-ink) var(--p),var(--k-track) var(--p))}
+/* In RTL the native range runs right to left, so the fill starts at the right. */
+.k-slider:dir(rtl)::-webkit-slider-runnable-track{background:linear-gradient(to left,var(--k-ink) var(--p),var(--k-track) var(--p))}
+.k-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;margin-top:calc(var(--k-space-1) * -1);border-radius:50%;background:radial-gradient(circle at center,var(--k-core) 0 2.5px,var(--k-knob) 3.2px);border:1.5px solid var(--k-ink-3);box-shadow:var(--k-shadow-xs)}
 .k-slider::-moz-range-track{height:4px;border-radius:var(--k-radius-full);background:var(--k-track)}
 .k-slider::-moz-range-progress{height:4px;border-radius:var(--k-radius-full);background:var(--k-ink)}
-.k-slider::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at center,var(--k-core) 0 2.5px,var(--k-knob) 3.2px);border:1.5px solid var(--k-border-strong);box-shadow:var(--k-shadow-xs)}
+.k-slider::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:radial-gradient(circle at center,var(--k-core) 0 2.5px,var(--k-knob) 3.2px);border:1.5px solid var(--k-ink-3);box-shadow:var(--k-shadow-xs)}
 .k-slider:focus-visible{outline:none}
 .k-slider:focus-visible::-webkit-slider-thumb{box-shadow:var(--k-ring)}
+/* Label row: the label wraps the range, so a pasted sample needs no id/for. The readout repeats the value the range already exposes. */
+.k-slider-row{display:grid;gap:var(--k-space-0-5)}
+.k-slider-head{display:flex;justify-content:space-between;font-size:var(--k-text-sm)}
+.k-slider-label{font-weight:550}
+.k-slider-val{font-family:var(--k-mono);color:var(--k-ink-2)}

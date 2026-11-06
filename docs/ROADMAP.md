@@ -127,7 +127,8 @@ least 90% of UI-profile targets pass all checks.
   - [ ] Button: release procedure run; beta until a recorded screen-reader pass (docs/review/button, [PR #44](https://github.com/kajisho5/KATA-UI/pull/44)).
 - [x] Build one Torture Test page: three instances per component, RTL, dark mode,
   200% zoom and keyboard-only operation (tests/torture.html, docs/review/torture,
-  [PR #87](https://github.com/kajisho5/KATA-UI/pull/87)). Open finding: Tabs panel overflows its container by 9px.
+  [PR #87](https://github.com/kajisho5/KATA-UI/pull/87)). Its one finding, the Tabs panel overflow, is fixed in
+  [PR #88](https://github.com/kajisho5/KATA-UI/pull/88); all 8 conditions now record 0 failures.
 - [ ] Require static checks and the release procedure before marking each part Stable.
 - [ ] Show the measured Stable / Beta split on the home page.
 - [ ] Keep all First five recommendations Stable and passing.

@@ -75,7 +75,7 @@ npx @kajisho5/kataui add login             # blocks and templates install the sa
 <link rel="stylesheet" href="kata/components/button/button.css">
 ```
 
-Prefer no terminal at all? Open the part on [kata-ui.dev](https://kata-ui.dev/components/) and copy its three files from the page. Same code, same mold — the CLI is a faster pair of hands, not a different product.
+Prefer no terminal at all? Open the part on [kata-ui.dev](https://kata-ui.dev/components/) and copy its three files from the page. Same code, same mold — the CLI copies the same files, faster.
 
 ## What's inside
 

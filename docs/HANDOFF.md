@@ -122,13 +122,14 @@ Missing number #12 is open, not silently assumed merged.
 | #84 | c7e14f4 | T4 Hover Card: closed card visibility:hidden (was read in the sentence), Escape dismisses (WCAG 1.4.13), guarded IIFE, viewport fit at 360px; beta. |
 | #85 | c9e98f7 | T4 Data Table: table scrolls inside a named, focusable .k-dt-scroll region (was clipped at narrow widths), inset focus outline, logical borders; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
+| #86 | 8dbe8fd | T4 File Upload: hint readable on hover/drag (4.48 -> 7.16:1 light), zone and remove-button active states, disabled zone; beta. Last of the remaining 19. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
 in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#85 were squash-merged the same way after green CI. The owner then asked the
+#29–#86 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -145,7 +146,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#86](https://github.com/kajisho5/KATA-UI/pull/86) | T4 File Upload: hint readable on hover/drag (4.48 -> 7.16:1 light), zone and remove-button active states, disabled zone; beta. Last of the remaining 19. |
+| [#87](https://github.com/kajisho5/KATA-UI/pull/87) | Torture Test page: tests/torture.html (40 parts × 3, generated), 8-condition matrix (LTR/RTL × light/dark × 1280/640px) with six checks; results in docs/review/torture; CI fails on new failures. |
 
 ### npm and environment
 
@@ -197,7 +198,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #86 (T4 File Upload, the last of the remaining 19), then the Torture Test page below.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #87 (Torture Test page), then fix the recorded Torture Test failures one part per PR (Tabs first), then the home-page Stable/Beta split.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -464,7 +465,16 @@ File Upload ([#86](https://github.com/kajisho5/KATA-UI/pull/86)): the hint was -
 background (4.48:1 light); it steps up to --k-ink-2 there (7.16 / 6.24). Added
 :active for the zone and remove button and a disabled zone (:has(input:disabled)).
 At rest pixel-identical. Beta.
-The remaining 19 are done (#67-#86). Next: the Torture Test page below.
+The remaining 19 are done (#67-#86).
+Torture Test ([#87](https://github.com/kajisho5/KATA-UI/pull/87)): `python3 -m tools.build_torture` writes tests/torture.html
+from the 40 previews (three copies, radio names suffixed -1/-2/-3, direction and
+theme from ?dir=&theme=). `python3 -m tools.verify_torture` runs LTR/RTL ×
+light/dark × 1280/640px with checks A errors, B page overflow, C part overflow,
+D Tab reaches the end, E focus change on every stop (style, then pixel fallback),
+F equal Tab stops per copy. 316 Tab stops per condition; the only failure is
+Tabs C in 8/8: .tabpane is content-box with width:100% plus padding and border,
+9px past its stage. tests/test_torture_browser.py fails on failures not in
+docs/review/torture/results.json. Next: fix Tabs, then the Stable/Beta split.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):
@@ -472,7 +482,7 @@ alert-dialog, drawer, combobox, date-picker, slider, toggle, segmented, avatar,
 progress, skeleton, spinner, empty-state, separator, sidebar, command,
 context-menu, hover-card, data-table, file-upload.
 
-Then build one Torture Test page: each part ×3, RTL, dark, 200% zoom, keyboard only.
+Torture Test page: built in #87 (tests/torture.html, docs/review/torture).
 Show a measured N stable / M beta split on the home page.
 
 ### T5 — Phase 2 onward

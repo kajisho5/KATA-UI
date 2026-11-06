@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "To separate groups, not to fill space. If everything needs a separator, the grouping is wrong. The labelled form is for alternatives (OR) and section breaks in forms.",
-  "a11y": "Use role=\"separator\" on the plain form when it carries meaning; purely visual separators are aria-hidden."
+  "a11y": "The plain form is a native <hr> (role=\"separator\"); use role=\"separator\" on other elements only when the division carries meaning, and aria-hidden=\"true\" on purely visual ones such as the vertical form. Every line is a 1px border, so it stays visible in forced-colors mode."
 }

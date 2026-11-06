@@ -8,17 +8,17 @@
 .k-side-nav{display:grid;gap:var(--k-space-0-5)}
 .k-side-item{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-2) var(--k-space-2);border-radius:var(--k-radius-md);font-size:var(--k-text-base);letter-spacing:.01em;color:var(--k-ink-2);text-decoration:none;cursor:pointer;background:none;border:0;width:100%;text-align:start;font-family:inherit}
 .k-side-item:hover{background:var(--k-bg-soft);color:var(--k-ink)}
-.k-side-item.on{background:var(--k-bg-soft);color:var(--k-ink);font-weight:550}
-.k-side-item.on svg{color:var(--k-core)}
+.k-side-item.on,.k-side-item[aria-current="page"]{background:var(--k-bg-soft);color:var(--k-ink);font-weight:550}
+.k-side-item.on svg,.k-side-item[aria-current="page"] svg{color:var(--k-core)}
 .k-side-item svg{flex:none}
 .k-side-badge{margin-inline-start:auto;font-size:var(--k-text-xs);font-weight:600;background:var(--k-bg-soft);border:1px solid var(--k-line);color:var(--k-ink-2);border-radius:var(--k-radius-full);padding:var(--k-space-px) var(--k-space-2)}
-.k-side-item.on .k-side-badge{background:var(--k-bg)}
+.k-side-item.on .k-side-badge,.k-side-item[aria-current="page"] .k-side-badge{background:var(--k-bg)}
 .k-side-chev{margin-inline-start:auto;transition:transform var(--k-dur-base)}
 .k-side-group.open .k-side-chev{transform:rotate(180deg)}
-.k-side-sub{display:none;gap:var(--k-space-0-5);margin:var(--k-space-0-5) 0 var(--k-space-0-5) var(--k-space-6)}
+.k-side-sub{display:none;gap:var(--k-space-0-5);margin-block:var(--k-space-0-5);margin-inline-start:var(--k-space-6)}
 .k-side-group.open .k-side-sub{display:grid}
 .k-side-sub .k-side-item{font-size:var(--k-text-base);padding:var(--k-space-1) var(--k-space-2)}
-.k-side-user{margin-top:auto;display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-2) var(--k-space-0-5);border-top:1px solid var(--k-line)}
+.k-side-user{margin-block-start:auto;display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-2) var(--k-space-0-5);border-block-start:1px solid var(--k-line)}
 .k-side-ava{width:30px;height:30px;border-radius:50%;background:var(--k-ink);color:var(--k-bg);display:flex;align-items:center;justify-content:center;font-size:var(--k-text-sm);font-weight:600;flex:none}
 .k-side-uname{font-size:var(--k-text-base);font-weight:550;line-height:var(--k-lh-heading)}
 .k-side-urole{font-size:var(--k-text-xs);color:var(--k-ink-3);letter-spacing:.01em}
@@ -26,6 +26,9 @@
 .k-side.rail .k-side-brand{padding:var(--k-space-0-5) 0 var(--k-space-3)}
 .k-side.rail .k-side-nav{justify-items:center}
 .k-side.rail .k-side-item{justify-content:center;padding:var(--k-space-2) 0;width:40px}
-.k-side.rail .k-side-t,.k-side.rail .k-side-sec,.k-side.rail .k-side-badge,.k-side.rail .k-side-chev,.k-side.rail .k-side-umeta{display:none}
+.k-side.rail .k-side-sec,.k-side.rail .k-side-badge,.k-side.rail .k-side-chev{display:none}
+/* Rail labels stay in the accessibility tree: hidden visually, not removed. */
+.k-side.rail .k-side-item,.k-side.rail .k-side-user{position:relative}
+.k-side.rail .k-side-t,.k-side.rail .k-side-umeta{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .k-side.rail .k-side-user{justify-content:center;padding:var(--k-space-3) 0 var(--k-space-0-5)}
 @media (prefers-reduced-motion:reduce){.k-side-chev{transition:none}}

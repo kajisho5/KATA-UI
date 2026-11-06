@@ -3,3 +3,5 @@
 .k-sk-circle{border-radius:50%}
 @keyframes k-shimmer{0%{background-position:120% 0}100%{background-position:-80% 0}}
 @media (prefers-reduced-motion: reduce){.k-sk{animation:none}}
+.k-sk:dir(rtl){animation-direction:reverse}
+.k-sk-status{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

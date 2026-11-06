@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "Match the skeleton to the layout it replaces — same widths, same heights. If the wait passes a second, prefer a spinner with a label instead.",
-  "a11y": "Skeletons are aria-hidden. Announce loading once on the container with role=\"status\"; do not animate for users with prefers-reduced-motion."
+  "a11y": "The placeholder shapes sit inside an aria-hidden wrapper. The container has role=\"status\" and one visually hidden .k-sk-status label (\"Loading profile\" in the preview) that is read once. The shimmer runs in reverse under dir=\"rtl\" and stops under prefers-reduced-motion."
 }

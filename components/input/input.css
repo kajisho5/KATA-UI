@@ -4,7 +4,7 @@
 .field .err{font-size:var(--k-text-sm);color:var(--k-danger-ink)}
 /* A label that wraps its input needs no id/for, so a pasted sample can appear twice. */
 .field label:has(> .input,> .searchwrap){display:grid;gap:var(--k-space-1)}
-.input{-webkit-appearance:none;appearance:none;height:38px;border:1px solid var(--k-line);border-radius:var(--k-radius);padding:0 var(--k-space-3);font-family:var(--k-font);font-size:var(--k-text-base);background:var(--k-bg);color:var(--k-ink);box-shadow:var(--k-shadow-xs);width:100%}
+.input{-webkit-appearance:none;appearance:none;height:38px;border:1px solid var(--k-line);border-radius:var(--k-radius);padding:0 var(--k-space-3);font-family:var(--k-font);font-size:var(--k-text-base);background:var(--k-bg);color:var(--k-ink);box-shadow:var(--k-shadow-xs);width:100%;box-sizing:border-box}
 .input::placeholder{color:var(--k-ink-3)}
 .input:focus-visible{outline:0;border-color:var(--k-ink);box-shadow:var(--k-ring)}
 /* aria-invalid is the accessible error state; .errb stays as the visual class. */

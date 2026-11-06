@@ -84,6 +84,7 @@ least 90% of UI-profile targets pass all checks.
   switch, dialog/modal, dropdown-menu, popover, tooltip, toast, card, tabs,
   accordion, badge, alert, table, pagination, breadcrumb, then the remaining
   components needed to reach 40. Map requested names to repository slugs in each PR.
+  - [ ] Separator: release procedure run; visible hr in grid/flex, forced-colors lines; beta until a screen-reader pass (docs/review/separator, [PR #80](https://github.com/kajisho5/KATA-UI/pull/80)).
   - [ ] Empty State: release procedure run; hidden icon, logical spacing; beta until a screen-reader pass (docs/review/empty-state, [PR #79](https://github.com/kajisho5/KATA-UI/pull/79)).
   - [ ] Spinner: release procedure run; tests only; beta until a screen-reader pass (docs/review/spinner, [PR #78](https://github.com/kajisho5/KATA-UI/pull/78)).
   - [ ] Skeleton: release procedure run; status label, RTL shimmer; beta until a screen-reader pass (docs/review/skeleton, [PR #77](https://github.com/kajisho5/KATA-UI/pull/77)).

@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For values that are felt, not typed: volume, brightness, opacity. Always pair with the numeric value; if the exact number matters, add an Input beside it.",
-  "a11y": "A native range input: arrows, Page Up/Down and screen readers work as the platform defines. The visible value updates with it."
+  "a11y": "A native range input wrapped in its <label>, so the label names it without id/for: arrows, Page Up/Down and screen readers work as the platform defines. The visible readout repeats the value and is aria-hidden. The filled track starts at the inline start (left in LTR, right in RTL). The thumb outline uses --k-ink-3 (4.83:1 on the light page). Instances initialize once even if the script loads twice. Beta until a recorded screen-reader pass."
 }

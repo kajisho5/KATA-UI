@@ -21,6 +21,9 @@ shows the ring; clicking a label selects it. 0 page errors.
 Text contrast (2x pixels): selected 17.72:1 light / 16.12:1 dark; unchecked
 6.55:1 / 5.81:1.
 
+Screenshots: `before-after-hover-light.png`, `before-after-hover-dark.png`
+(pointer on "Week"). The resting state is unchanged.
+
 ## Not verified
 
 Screen readers (VoiceOver, NVDA), Safari and Firefox, touch devices. Beta until

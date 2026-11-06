@@ -125,8 +125,9 @@ least 90% of UI-profile targets pass all checks.
   - [ ] Field: release procedure run; field.js links hint/error; beta until screen-reader and IME passes (docs/review/field, [PR #46](https://github.com/kajisho5/KATA-UI/pull/46)).
   - [ ] Input: release procedure run; beta until screen-reader and IME passes (docs/review/input, [PR #45](https://github.com/kajisho5/KATA-UI/pull/45)).
   - [ ] Button: release procedure run; beta until a recorded screen-reader pass (docs/review/button, [PR #44](https://github.com/kajisho5/KATA-UI/pull/44)).
-- [ ] Build one Torture Test page: three instances per component, RTL, dark mode,
-  200% zoom and keyboard-only operation.
+- [x] Build one Torture Test page: three instances per component, RTL, dark mode,
+  200% zoom and keyboard-only operation (tests/torture.html, docs/review/torture,
+  [PR #87](https://github.com/kajisho5/KATA-UI/pull/87)). Open finding: Tabs panel overflows its container by 9px.
 - [ ] Require static checks and the release procedure before marking each part Stable.
 - [ ] Show the measured Stable / Beta split on the home page.
 - [ ] Keep all First five recommendations Stable and passing.

@@ -1,0 +1,182 @@
+{
+  "conditions": [
+    "ltr-light-100",
+    "ltr-light-200",
+    "ltr-dark-100",
+    "ltr-dark-200",
+    "rtl-light-100",
+    "rtl-light-200",
+    "rtl-dark-100",
+    "rtl-dark-200"
+  ],
+  "checks": {
+    "A": "errors",
+    "B": "page-overflow",
+    "C": "part-overflow",
+    "D": "keyboard",
+    "E": "focus-visible",
+    "F": "parity"
+  },
+  "results": {
+    "ltr-light-100": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 9px"
+        }
+      ]
+    },
+    "ltr-light-200": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 17px"
+        }
+      ]
+    },
+    "ltr-dark-100": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 9px"
+        }
+      ]
+    },
+    "ltr-dark-200": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 17px"
+        }
+      ]
+    },
+    "rtl-light-100": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 9px"
+        }
+      ]
+    },
+    "rtl-light-200": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 17px"
+        }
+      ]
+    },
+    "rtl-dark-100": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 9px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 9px"
+        }
+      ]
+    },
+    "rtl-dark-200": {
+      "tab_stops": 316,
+      "failures": [
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 1: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 2: div.tabpane sticks out 17px"
+        },
+        {
+          "check": "C",
+          "part": "tabs",
+          "detail": "Tabs 3: div.tabpane sticks out 17px"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Torture Test — KATA UI</title><link rel="icon" href="../logo/favicon.svg"><link rel="stylesheet" href="../tokens.css"><link rel="stylesheet" href="../components/segmented/segmented.css"><link rel="stylesheet" href="../components/select/select.css"><link rel="stylesheet" href="../components/badge/badge.css"><link rel="stylesheet" href="../components/button/button.css"><link rel="stylesheet" href="../components/input/input.css"><link rel="stylesheet" href="../components/field/field.css"><link rel="stylesheet" href="../components/textarea/textarea.css"><link rel="stylesheet" href="../components/checkbox/checkbox.css"><link rel="stylesheet" href="../components/radio/radio.css"><link rel="stylesheet" href="../components/switch/switch.css"><link rel="stylesheet" href="../components/modal/modal.css"><link rel="stylesheet" href="../components/dropdown/dropdown.css"><link rel="stylesheet" href="../components/popover/popover.css"><link rel="stylesheet" href="../components/tooltip/tooltip.css"><link rel="stylesheet" href="../components/toast/toast.css"><link rel="stylesheet" href="../components/card/card.css"><link rel="stylesheet" href="../components/tabs/tabs.css"><link rel="stylesheet" href="../components/accordion/accordion.css"><link rel="stylesheet" href="../components/alert/alert.css"><link rel="stylesheet" href="../components/table/table.css"><link rel="stylesheet" href="../components/pagination/pagination.css"><link rel="stylesheet" href="../components/breadcrumbs/breadcrumbs.css"><link rel="stylesheet" href="../components/alert-dialog/alert-dialog.css"><link rel="stylesheet" href="../components/drawer/drawer.css"><link rel="stylesheet" href="../components/combobox/combobox.css"><link rel="stylesheet" href="../components/date-picker/date-picker.css"><link rel="stylesheet" href="../components/slider/slider.css"><link rel="stylesheet" href="../components/toggle/toggle.css"><link rel="stylesheet" href="../components/avatar/avatar.css"><link rel="stylesheet" href="../components/progress/progress.css"><link rel="stylesheet" href="../components/skeleton/skeleton.css"><link rel="stylesheet" href="../components/spinner/spinner.css"><link rel="stylesheet" href="../components/empty-state/empty-state.css"><link rel="stylesheet" href="../components/separator/separator.css"><link rel="stylesheet" href="../components/sidebar/sidebar.css"><link rel="stylesheet" href="../components/kbd/kbd.css"><link rel="stylesheet" href="../components/command/command.css"><link rel="stylesheet" href="../components/context-menu/context-menu.css"><link rel="stylesheet" href="../components/hover-card/hover-card.css"><link rel="stylesheet" href="../components/data-table/data-table.css"><link rel="stylesheet" href="../components/file-upload/file-upload.css"><style>body{margin:0;font-family:var(--k-font);background:var(--k-bg);color:var(--k-ink)}
+.tt-bar{position:sticky;inset-block-start:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;gap:var(--k-space-3) var(--k-space-6);padding:var(--k-space-3) var(--k-space-6);background:var(--k-bg);border-block-end:1px solid var(--k-line)}
+.tt-title{display:flex;align-items:baseline;gap:var(--k-space-3);margin:0;font-size:var(--k-text-lg);font-weight:650}
+.tt-count{font-size:var(--k-text-sm);font-weight:400;color:var(--k-ink-2)}
+.tt-ctl{display:flex;align-items:center;gap:var(--k-space-2);font-size:var(--k-text-xs);font-weight:600;letter-spacing:.04em;color:var(--k-ink-2)}
+.tt-zoom{margin-inline-start:auto;font-size:var(--k-text-xs);color:var(--k-ink-2)}
+.tt-main{max-inline-size:880px;margin-inline:auto;padding:var(--k-space-8) var(--k-space-6)}
+.tt-part{padding-block:var(--k-space-8);border-block-end:1px solid var(--k-line);scroll-margin-block-start:var(--k-space-16)}
+.tt-head{display:flex;flex-wrap:wrap;align-items:center;gap:var(--k-space-3)}
+.tt-num{font-family:var(--k-mono);font-size:var(--k-text-sm);color:var(--k-ink-2)}
+.tt-name{margin:0;font-size:var(--k-text-xl);font-weight:650}
+.tt-link{margin-inline-start:auto;font-size:var(--k-text-sm);color:var(--k-accent-ink)}
+.tt-note{margin:var(--k-space-1) 0 0;font-size:var(--k-text-sm);color:var(--k-ink-2)}
+.tt-stage{position:relative;margin-block-start:var(--k-space-3);padding:var(--k-space-10) var(--k-space-6) var(--k-space-6);border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background-color:var(--k-bg-soft);background-image:radial-gradient(var(--k-line) 1px,transparent 1px);background-size:14px 14px}
+.tt-tag{position:absolute;inset-block-start:var(--k-space-3);inset-inline-start:var(--k-space-3);min-inline-size:24px;padding:0 var(--k-space-1);border:1px solid var(--k-line);border-radius:var(--k-radius-md);background:var(--k-bg);font-size:var(--k-text-xs);font-weight:650;line-height:20px;text-align:center;color:var(--k-ink-2)}
+@media (max-width:640px){.tt-bar,.tt-main{padding-inline:var(--k-space-4)}.tt-stage{padding-inline:var(--k-space-4)}.tt-zoom{margin-inline-start:0}}</style></head>
+<body>
+<!-- Generated by tools/build_torture.py. Do not edit by hand. -->
+<header class="tt-bar"><h1 class="tt-title">Torture Test <bdi class="tt-count">40 parts × 3</bdi></h1><div class="tt-ctl"><span id="tt-dir-label">DIRECTION</span><div class="k-seg" role="radiogroup" aria-labelledby="tt-dir-label"><label class="k-seg-item"><input type="radio" name="dir" value="ltr" data-tt-set data-tt-default="ltr" checked><span>LTR</span></label><label class="k-seg-item"><input type="radio" name="dir" value="rtl" data-tt-set data-tt-default="ltr"><span>RTL</span></label></div></div><div class="tt-ctl"><span id="tt-theme-label">THEME</span><div class="k-seg" role="radiogroup" aria-labelledby="tt-theme-label"><label class="k-seg-item"><input type="radio" name="theme" value="light" data-tt-set data-tt-default="light" checked><span>Light</span></label><label class="k-seg-item"><input type="radio" name="theme" value="dark" data-tt-set data-tt-default="light"><span>Dark</span></label></div></div><div class="tt-ctl"><label for="tt-jump">JUMP TO</label><span class="k-select"><select id="tt-jump" data-tt-jump><option value="part-button">01 Button</option><option value="part-input">02 Input</option><option value="part-field">03 Field</option><option value="part-textarea">04 Textarea</option><option value="part-select">05 Select</option><option value="part-checkbox">06 Checkbox / Radio</option><option value="part-radio">07 Radio group</option><option value="part-switch">08 Switch</option><option value="part-modal">09 Modal</option><option value="part-dropdown">10 Dropdown</option><option value="part-popover">11 Popover</option><option value="part-tooltip">12 Tooltip</option><option value="part-toast">13 Toast</option><option value="part-card">14 Card</option><option value="part-tabs">15 Tabs</option><option value="part-accordion">16 Accordion</option><option value="part-badge">17 Badge</option><option value="part-alert">18 Alert</option><option value="part-table">19 Table</option><option value="part-pagination">20 Pagination</option><option value="part-breadcrumbs">21 Breadcrumbs</option><option value="part-alert-dialog">22 Alert Dialog</option><option value="part-drawer">23 Drawer</option><option value="part-combobox">24 Combobox</option><option value="part-date-picker">25 Date Picker</option><option value="part-slider">26 Slider</option><option value="part-toggle">27 Toggle</option><option value="part-segmented">28 Segmented control</option><option value="part-avatar">29 Avatar</option><option value="part-progress">30 Progress</option><option value="part-skeleton">31 Skeleton</option><option value="part-spinner">32 Spinner</option><option value="part-empty-state">33 Empty state</option><option value="part-separator">34 Separator</option><option value="part-sidebar">35 Sidebar</option><option value="part-command">36 Command</option><option value="part-context-menu">37 Context Menu</option><option value="part-hover-card">38 Hover Card</option><option value="part-data-table">39 Data Table</option><option value="part-file-upload">40 File Upload</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></div><p class="tt-zoom"><bdi>Zoom: browser 200% (Ctrl / ⌘ and +)</bdi></p></header>
+<main class="tt-main">
+<article class="tt-part" id="part-button" aria-labelledby="h-button"><div class="tt-head"><span class="tt-num" aria-hidden="true">01</span><h2 class="tt-name" id="h-button" tabindex="-1">Button</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/button/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Button 1"><span class="tt-tag" aria-hidden="true">1</span><button type="button" class="btn btn-pri btn-md">Primary</button>
+<button type="button" class="btn btn-sec btn-md">Secondary</button>
+<button type="button" class="btn btn-ghost btn-md">Ghost</button>
+<button type="button" class="btn btn-accent btn-md">Accent</button>
+<button type="button" class="btn btn-danger btn-md">Delete</button>
+<button type="button" class="btn btn-pri btn-md" disabled>Disabled</button>
+<button type="button" class="btn btn-pri btn-md" disabled aria-busy="true"><span class="spin" aria-hidden="true"></span>Saving…</button>
+<button type="button" class="btn btn-sec btn-sm">Small</button>
+<button type="button" class="btn btn-pri btn-lg">Large</button></section><section class="tt-stage" aria-label="Button 2"><span class="tt-tag" aria-hidden="true">2</span><button type="button" class="btn btn-pri btn-md">Primary</button>
+<button type="button" class="btn btn-sec btn-md">Secondary</button>
+<button type="button" class="btn btn-ghost btn-md">Ghost</button>
+<button type="button" class="btn btn-accent btn-md">Accent</button>
+<button type="button" class="btn btn-danger btn-md">Delete</button>
+<button type="button" class="btn btn-pri btn-md" disabled>Disabled</button>
+<button type="button" class="btn btn-pri btn-md" disabled aria-busy="true"><span class="spin" aria-hidden="true"></span>Saving…</button>
+<button type="button" class="btn btn-sec btn-sm">Small</button>
+<button type="button" class="btn btn-pri btn-lg">Large</button></section><section class="tt-stage" aria-label="Button 3"><span class="tt-tag" aria-hidden="true">3</span><button type="button" class="btn btn-pri btn-md">Primary</button>
+<button type="button" class="btn btn-sec btn-md">Secondary</button>
+<button type="button" class="btn btn-ghost btn-md">Ghost</button>
+<button type="button" class="btn btn-accent btn-md">Accent</button>
+<button type="button" class="btn btn-danger btn-md">Delete</button>
+<button type="button" class="btn btn-pri btn-md" disabled>Disabled</button>
+<button type="button" class="btn btn-pri btn-md" disabled aria-busy="true"><span class="spin" aria-hidden="true"></span>Saving…</button>
+<button type="button" class="btn btn-sec btn-sm">Small</button>
+<button type="button" class="btn btn-pri btn-lg">Large</button></section></article>
+<article class="tt-part" id="part-input" aria-labelledby="h-input"><div class="tt-head"><span class="tt-num" aria-hidden="true">02</span><h2 class="tt-name" id="h-input" tabindex="-1">Input</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/input/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Input 1"><span class="tt-tag" aria-hidden="true">1</span><div class="field"><label>Email<input class="input" placeholder="you@example.com"></label><span class="hint">Used for invoice delivery</span></div>
+<div class="field"><label>Full name<input aria-invalid="true" class="input errb" value="tanaka"></label><span class="err">Please enter your full name</span></div>
+<div class="field"><label>Search<span class="searchwrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="color:var(--k-ink-3)" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input class="input" placeholder="Search components…"></span></label></div></section><section class="tt-stage" aria-label="Input 2"><span class="tt-tag" aria-hidden="true">2</span><div class="field"><label>Email<input class="input" placeholder="you@example.com"></label><span class="hint">Used for invoice delivery</span></div>
+<div class="field"><label>Full name<input aria-invalid="true" class="input errb" value="tanaka"></label><span class="err">Please enter your full name</span></div>
+<div class="field"><label>Search<span class="searchwrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="color:var(--k-ink-3)" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input class="input" placeholder="Search components…"></span></label></div></section><section class="tt-stage" aria-label="Input 3"><span class="tt-tag" aria-hidden="true">3</span><div class="field"><label>Email<input class="input" placeholder="you@example.com"></label><span class="hint">Used for invoice delivery</span></div>
+<div class="field"><label>Full name<input aria-invalid="true" class="input errb" value="tanaka"></label><span class="err">Please enter your full name</span></div>
+<div class="field"><label>Search<span class="searchwrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="color:var(--k-ink-3)" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input class="input" placeholder="Search components…"></span></label></div></section></article>
+<article class="tt-part" id="part-field" aria-labelledby="h-field"><div class="tt-head"><span class="tt-num" aria-hidden="true">03</span><h2 class="tt-name" id="h-field" tabindex="-1">Field</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/field/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Field 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <div class="k-field">
+    <label class="lab">Workspace name <span class="opt">Optional</span><input class="input" type="text" value="Acme Studio"></label>
+    <p class="hint">Shown in menus and the sidebar. You can change it later.</p>
+  </div>
+  <div class="k-field" data-invalid>
+    <label class="lab">Billing email <span class="req">Required</span><input class="input" type="email" value="accounts@acme" aria-invalid="true"></label>
+    <p class="err"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m9.5 9.5 5 5m0-5-5 5"/></svg> That address is missing its domain.</p>
+  </div>
+</div></section><section class="tt-stage" aria-label="Field 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <div class="k-field">
+    <label class="lab">Workspace name <span class="opt">Optional</span><input class="input" type="text" value="Acme Studio"></label>
+    <p class="hint">Shown in menus and the sidebar. You can change it later.</p>
+  </div>
+  <div class="k-field" data-invalid>
+    <label class="lab">Billing email <span class="req">Required</span><input class="input" type="email" value="accounts@acme" aria-invalid="true"></label>
+    <p class="err"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m9.5 9.5 5 5m0-5-5 5"/></svg> That address is missing its domain.</p>
+  </div>
+</div></section><section class="tt-stage" aria-label="Field 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <div class="k-field">
+    <label class="lab">Workspace name <span class="opt">Optional</span><input class="input" type="text" value="Acme Studio"></label>
+    <p class="hint">Shown in menus and the sidebar. You can change it later.</p>
+  </div>
+  <div class="k-field" data-invalid>
+    <label class="lab">Billing email <span class="req">Required</span><input class="input" type="email" value="accounts@acme" aria-invalid="true"></label>
+    <p class="err"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m9.5 9.5 5 5m0-5-5 5"/></svg> That address is missing its domain.</p>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-textarea" aria-labelledby="h-textarea"><div class="tt-head"><span class="tt-num" aria-hidden="true">04</span><h2 class="tt-name" id="h-textarea" tabindex="-1">Textarea</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/textarea/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Textarea 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:grid;gap:var(--k-space-1);max-width:420px">
+  <label style="display:grid;gap:var(--k-space-1);font-size:var(--k-text-sm);font-weight:550">Release notes<textarea class="k-textarea" rows="3" placeholder="What changed in this version?">Fixed the export dialog. Copy buttons now confirm with a check.</textarea></label>
+  <span style="font-size:var(--k-text-sm);color:var(--k-ink-3)">Markdown is fine. 62 / 280</span>
+</div></section><section class="tt-stage" aria-label="Textarea 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:grid;gap:var(--k-space-1);max-width:420px">
+  <label style="display:grid;gap:var(--k-space-1);font-size:var(--k-text-sm);font-weight:550">Release notes<textarea class="k-textarea" rows="3" placeholder="What changed in this version?">Fixed the export dialog. Copy buttons now confirm with a check.</textarea></label>
+  <span style="font-size:var(--k-text-sm);color:var(--k-ink-3)">Markdown is fine. 62 / 280</span>
+</div></section><section class="tt-stage" aria-label="Textarea 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:grid;gap:var(--k-space-1);max-width:420px">
+  <label style="display:grid;gap:var(--k-space-1);font-size:var(--k-text-sm);font-weight:550">Release notes<textarea class="k-textarea" rows="3" placeholder="What changed in this version?">Fixed the export dialog. Copy buttons now confirm with a check.</textarea></label>
+  <span style="font-size:var(--k-text-sm);color:var(--k-ink-3)">Markdown is fine. 62 / 280</span>
+</div></section></article>
+<article class="tt-part" id="part-select" aria-labelledby="h-select"><div class="tt-head"><span class="tt-num" aria-hidden="true">05</span><h2 class="tt-name" id="h-select" tabindex="-1">Select</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/select/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Select 1"><span class="tt-tag" aria-hidden="true">1</span><div class="k-select-examples">
+  <div class="field"><label>Plan
+    <span class="k-select"><select><option>Starter</option><option selected>Studio</option><option>Scale</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </label></div>
+  <div class="field"><label>Region
+    <span class="k-select"><select><option selected>Tokyo</option><option>Osaka</option><option>Remote</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </label></div>
+  <div class="field"><label>Availability<span class="k-select"><select disabled><option>Locked</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></label></div>
+</div></section><section class="tt-stage" aria-label="Select 2"><span class="tt-tag" aria-hidden="true">2</span><div class="k-select-examples">
+  <div class="field"><label>Plan
+    <span class="k-select"><select><option>Starter</option><option selected>Studio</option><option>Scale</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </label></div>
+  <div class="field"><label>Region
+    <span class="k-select"><select><option selected>Tokyo</option><option>Osaka</option><option>Remote</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </label></div>
+  <div class="field"><label>Availability<span class="k-select"><select disabled><option>Locked</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></label></div>
+</div></section><section class="tt-stage" aria-label="Select 3"><span class="tt-tag" aria-hidden="true">3</span><div class="k-select-examples">
+  <div class="field"><label>Plan
+    <span class="k-select"><select><option>Starter</option><option selected>Studio</option><option>Scale</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </label></div>
+  <div class="field"><label>Region
+    <span class="k-select"><select><option selected>Tokyo</option><option>Osaka</option><option>Remote</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  </label></div>
+  <div class="field"><label>Availability<span class="k-select"><select disabled><option>Locked</option></select><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></label></div>
+</div></section></article>
+<article class="tt-part" id="part-checkbox" aria-labelledby="h-checkbox"><div class="tt-head"><span class="tt-num" aria-hidden="true">06</span><h2 class="tt-name" id="h-checkbox" tabindex="-1">Checkbox / Radio</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/checkbox/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Checkbox / Radio 1"><span class="tt-tag" aria-hidden="true">1</span><label class="check"><input type="checkbox" checked>Send estimate</label>
+<label class="check"><input type="checkbox">Include travel</label>
+<label class="check"><input type="radio" name="kpay-1" checked>End of month</label>
+<label class="check"><input type="radio" name="kpay-1">End of next month</label></section><section class="tt-stage" aria-label="Checkbox / Radio 2"><span class="tt-tag" aria-hidden="true">2</span><label class="check"><input type="checkbox" checked>Send estimate</label>
+<label class="check"><input type="checkbox">Include travel</label>
+<label class="check"><input type="radio" name="kpay-2" checked>End of month</label>
+<label class="check"><input type="radio" name="kpay-2">End of next month</label></section><section class="tt-stage" aria-label="Checkbox / Radio 3"><span class="tt-tag" aria-hidden="true">3</span><label class="check"><input type="checkbox" checked>Send estimate</label>
+<label class="check"><input type="checkbox">Include travel</label>
+<label class="check"><input type="radio" name="kpay-3" checked>End of month</label>
+<label class="check"><input type="radio" name="kpay-3">End of next month</label></section></article>
+<article class="tt-part" id="part-radio" aria-labelledby="h-radio"><div class="tt-head"><span class="tt-num" aria-hidden="true">07</span><h2 class="tt-name" id="h-radio" tabindex="-1">Radio group</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/radio/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Radio group 1"><span class="tt-tag" aria-hidden="true">1</span><fieldset style="border:0;padding:0;margin:0;display:grid;gap:var(--k-space-2)">
+  <legend style="font-size:var(--k-text-sm);font-weight:550;margin-bottom:var(--k-space-0-5)">Billing cycle</legend>
+  <label class="k-radio"><input type="radio" name="cycle-1" checked> Monthly</label>
+  <label class="k-radio"><input type="radio" name="cycle-1"> Yearly <span style="color:var(--k-accent-ink);font-size:var(--k-text-sm);font-weight:600">−20%</span></label>
+  <label class="k-radio"><input type="radio" name="cycle-1" disabled> Lifetime (sold out)</label>
+</fieldset></section><section class="tt-stage" aria-label="Radio group 2"><span class="tt-tag" aria-hidden="true">2</span><fieldset style="border:0;padding:0;margin:0;display:grid;gap:var(--k-space-2)">
+  <legend style="font-size:var(--k-text-sm);font-weight:550;margin-bottom:var(--k-space-0-5)">Billing cycle</legend>
+  <label class="k-radio"><input type="radio" name="cycle-2" checked> Monthly</label>
+  <label class="k-radio"><input type="radio" name="cycle-2"> Yearly <span style="color:var(--k-accent-ink);font-size:var(--k-text-sm);font-weight:600">−20%</span></label>
+  <label class="k-radio"><input type="radio" name="cycle-2" disabled> Lifetime (sold out)</label>
+</fieldset></section><section class="tt-stage" aria-label="Radio group 3"><span class="tt-tag" aria-hidden="true">3</span><fieldset style="border:0;padding:0;margin:0;display:grid;gap:var(--k-space-2)">
+  <legend style="font-size:var(--k-text-sm);font-weight:550;margin-bottom:var(--k-space-0-5)">Billing cycle</legend>
+  <label class="k-radio"><input type="radio" name="cycle-3" checked> Monthly</label>
+  <label class="k-radio"><input type="radio" name="cycle-3"> Yearly <span style="color:var(--k-accent-ink);font-size:var(--k-text-sm);font-weight:600">−20%</span></label>
+  <label class="k-radio"><input type="radio" name="cycle-3" disabled> Lifetime (sold out)</label>
+</fieldset></section></article>
+<article class="tt-part" id="part-switch" aria-labelledby="h-switch"><div class="tt-head"><span class="tt-num" aria-hidden="true">08</span><h2 class="tt-name" id="h-switch" tabindex="-1">Switch</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/switch/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Switch 1"><span class="tt-tag" aria-hidden="true">1</span><label class="switchrow"><span class="switch"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Notifications</label>
+<label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Auto-save</label>
+<label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Public</label></section><section class="tt-stage" aria-label="Switch 2"><span class="tt-tag" aria-hidden="true">2</span><label class="switchrow"><span class="switch"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Notifications</label>
+<label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Auto-save</label>
+<label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Public</label></section><section class="tt-stage" aria-label="Switch 3"><span class="tt-tag" aria-hidden="true">3</span><label class="switchrow"><span class="switch"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Notifications</label>
+<label class="switchrow"><span class="switch asagi"><input role="switch" type="checkbox" checked><span class="tr"></span></span>Auto-save</label>
+<label class="switchrow"><span class="switch"><input role="switch" type="checkbox"><span class="tr"></span></span>Public</label></section></article>
+<article class="tt-part" id="part-modal" aria-labelledby="h-modal"><div class="tt-head"><span class="tt-num" aria-hidden="true">09</span><h2 class="tt-name" id="h-modal" tabindex="-1">Modal</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/modal/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Modal 1"><span class="tt-tag" aria-hidden="true">1</span><button type="button" class="btn btn-pri btn-md" data-modal-open>Open modal</button>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Send this estimate?</h3>
+    <p>Once sent, it can't be undone. Check the recipient and the amount first.</p>
+    <div class="row">
+      <button type="button" class="btn btn-sec btn-md" data-modal-close>Cancel</button>
+      <button type="button" class="btn btn-pri btn-md" data-modal-close>Send</button>
+    </div>
+  </div>
+</dialog></section><section class="tt-stage" aria-label="Modal 2"><span class="tt-tag" aria-hidden="true">2</span><button type="button" class="btn btn-pri btn-md" data-modal-open>Open modal</button>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Send this estimate?</h3>
+    <p>Once sent, it can't be undone. Check the recipient and the amount first.</p>
+    <div class="row">
+      <button type="button" class="btn btn-sec btn-md" data-modal-close>Cancel</button>
+      <button type="button" class="btn btn-pri btn-md" data-modal-close>Send</button>
+    </div>
+  </div>
+</dialog></section><section class="tt-stage" aria-label="Modal 3"><span class="tt-tag" aria-hidden="true">3</span><button type="button" class="btn btn-pri btn-md" data-modal-open>Open modal</button>
+<dialog class="kmodal" data-modal>
+  <div class="modal-in">
+    <h3>Send this estimate?</h3>
+    <p>Once sent, it can't be undone. Check the recipient and the amount first.</p>
+    <div class="row">
+      <button type="button" class="btn btn-sec btn-md" data-modal-close>Cancel</button>
+      <button type="button" class="btn btn-pri btn-md" data-modal-close>Send</button>
+    </div>
+  </div>
+</dialog></section></article>
+<article class="tt-part" id="part-dropdown" aria-labelledby="h-dropdown"><div class="tt-head"><span class="tt-num" aria-hidden="true">10</span><h2 class="tt-name" id="h-dropdown" tabindex="-1">Dropdown</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/dropdown/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Dropdown 1"><span class="tt-tag" aria-hidden="true">1</span><span class="dd">
+  <button type="button" class="btn btn-sec btn-md" data-dd-trigger>Actions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+  <span class="menu" data-dd-menu>
+    <span class="mh">Project</span>
+    <a href="#">Edit</a><a href="#">Duplicate</a><a href="#">Copy share link</a>
+    <hr>
+    <a href="#" class="danger">Delete</a>
+  </span>
+</span></section><section class="tt-stage" aria-label="Dropdown 2"><span class="tt-tag" aria-hidden="true">2</span><span class="dd">
+  <button type="button" class="btn btn-sec btn-md" data-dd-trigger>Actions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+  <span class="menu" data-dd-menu>
+    <span class="mh">Project</span>
+    <a href="#">Edit</a><a href="#">Duplicate</a><a href="#">Copy share link</a>
+    <hr>
+    <a href="#" class="danger">Delete</a>
+  </span>
+</span></section><section class="tt-stage" aria-label="Dropdown 3"><span class="tt-tag" aria-hidden="true">3</span><span class="dd">
+  <button type="button" class="btn btn-sec btn-md" data-dd-trigger>Actions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+  <span class="menu" data-dd-menu>
+    <span class="mh">Project</span>
+    <a href="#">Edit</a><a href="#">Duplicate</a><a href="#">Copy share link</a>
+    <hr>
+    <a href="#" class="danger">Delete</a>
+  </span>
+</span></section></article>
+<article class="tt-part" id="part-popover" aria-labelledby="h-popover"><div class="tt-head"><span class="tt-num" aria-hidden="true">11</span><h2 class="tt-name" id="h-popover" tabindex="-1">Popover</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/popover/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Popover 1"><span class="tt-tag" aria-hidden="true">1</span><div class="kpop-wrap" data-popover>
+  <button type="button" class="btn btn-pri btn-md" data-popover-btn aria-expanded="false" aria-haspopup="dialog">Share</button>
+  <div class="kpop" data-popover-panel hidden inert role="dialog" aria-label="Share">
+    <div class="kpop-h">Share this page</div>
+    <p class="kpop-p">Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.</p>
+    <div class="kpop-row">
+      <button type="button" class="btn btn-sec btn-sm">Copy link</button>
+      <button type="button" class="btn btn-sec btn-sm">Permissions</button>
+    </div>
+  </div>
+</div></section><section class="tt-stage" aria-label="Popover 2"><span class="tt-tag" aria-hidden="true">2</span><div class="kpop-wrap" data-popover>
+  <button type="button" class="btn btn-pri btn-md" data-popover-btn aria-expanded="false" aria-haspopup="dialog">Share</button>
+  <div class="kpop" data-popover-panel hidden inert role="dialog" aria-label="Share">
+    <div class="kpop-h">Share this page</div>
+    <p class="kpop-p">Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.</p>
+    <div class="kpop-row">
+      <button type="button" class="btn btn-sec btn-sm">Copy link</button>
+      <button type="button" class="btn btn-sec btn-sm">Permissions</button>
+    </div>
+  </div>
+</div></section><section class="tt-stage" aria-label="Popover 3"><span class="tt-tag" aria-hidden="true">3</span><div class="kpop-wrap" data-popover>
+  <button type="button" class="btn btn-pri btn-md" data-popover-btn aria-expanded="false" aria-haspopup="dialog">Share</button>
+  <div class="kpop" data-popover-panel hidden inert role="dialog" aria-label="Share">
+    <div class="kpop-h">Share this page</div>
+    <p class="kpop-p">Anyone with the link can view it. No sign-in needed, and the link can be revoked at any time.</p>
+    <div class="kpop-row">
+      <button type="button" class="btn btn-sec btn-sm">Copy link</button>
+      <button type="button" class="btn btn-sec btn-sm">Permissions</button>
+    </div>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-tooltip" aria-labelledby="h-tooltip"><div class="tt-head"><span class="tt-num" aria-hidden="true">12</span><h2 class="tt-name" id="h-tooltip" tabindex="-1">Tooltip</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/tooltip/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Tooltip 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:flex;gap:var(--k-space-2);padding-top:var(--k-space-7);flex-wrap:wrap">
+  <button class="btn btn-sec btn-md k-tip" data-tip="Copy link" type="button">Copy</button>
+  <button class="btn btn-sec btn-md k-tip" data-tip="Open settings" type="button">Settings</button>
+  <button class="btn btn-pri btn-md k-tip" data-tip="Nothing to save yet" data-side="bottom" type="button">Save</button>
+</div></section><section class="tt-stage" aria-label="Tooltip 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:flex;gap:var(--k-space-2);padding-top:var(--k-space-7);flex-wrap:wrap">
+  <button class="btn btn-sec btn-md k-tip" data-tip="Copy link" type="button">Copy</button>
+  <button class="btn btn-sec btn-md k-tip" data-tip="Open settings" type="button">Settings</button>
+  <button class="btn btn-pri btn-md k-tip" data-tip="Nothing to save yet" data-side="bottom" type="button">Save</button>
+</div></section><section class="tt-stage" aria-label="Tooltip 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:flex;gap:var(--k-space-2);padding-top:var(--k-space-7);flex-wrap:wrap">
+  <button class="btn btn-sec btn-md k-tip" data-tip="Copy link" type="button">Copy</button>
+  <button class="btn btn-sec btn-md k-tip" data-tip="Open settings" type="button">Settings</button>
+  <button class="btn btn-pri btn-md k-tip" data-tip="Nothing to save yet" data-side="bottom" type="button">Save</button>
+</div></section></article>
+<article class="tt-part" id="part-toast" aria-labelledby="h-toast"><div class="tt-head"><span class="tt-num" aria-hidden="true">13</span><h2 class="tt-name" id="h-toast" tabindex="-1">Toast</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/toast/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Toast 1"><span class="tt-tag" aria-hidden="true">1</span><button type="button" class="btn btn-sec btn-md" data-toast-demo>Show toast</button>
+<div class="toasts k-toast" data-toasts></div></section><section class="tt-stage" aria-label="Toast 2"><span class="tt-tag" aria-hidden="true">2</span><button type="button" class="btn btn-sec btn-md" data-toast-demo>Show toast</button>
+<div class="toasts k-toast" data-toasts></div></section><section class="tt-stage" aria-label="Toast 3"><span class="tt-tag" aria-hidden="true">3</span><button type="button" class="btn btn-sec btn-md" data-toast-demo>Show toast</button>
+<div class="toasts k-toast" data-toasts></div></section></article>
+<article class="tt-part" id="part-card" aria-labelledby="h-card"><div class="tt-head"><span class="tt-num" aria-hidden="true">14</span><h2 class="tt-name" id="h-card" tabindex="-1">Card</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/card/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Card 1"><span class="tt-tag" aria-hidden="true">1</span><div class="k-card" style="max-width:430px">
+  <div class="k-card-h">
+    <div><h3>Usage this month</h3><p>Across all projects in this workspace.</p></div>
+    <span class="sp"><span class="badge asagi">On track</span></span>
+  </div>
+  <div class="k-card-b">Build minutes are at 62% with nine days left. The deploy queue cleared twice as fast since the cache change, and nothing is waiting on review.</div>
+  <div class="k-card-f">Updated 2 hours ago<span class="sp"><button type="button" class="btn btn-sec btn-sm">Details</button><button type="button" class="btn btn-pri btn-sm">Open report</button></span></div>
+</div></section><section class="tt-stage" aria-label="Card 2"><span class="tt-tag" aria-hidden="true">2</span><div class="k-card" style="max-width:430px">
+  <div class="k-card-h">
+    <div><h3>Usage this month</h3><p>Across all projects in this workspace.</p></div>
+    <span class="sp"><span class="badge asagi">On track</span></span>
+  </div>
+  <div class="k-card-b">Build minutes are at 62% with nine days left. The deploy queue cleared twice as fast since the cache change, and nothing is waiting on review.</div>
+  <div class="k-card-f">Updated 2 hours ago<span class="sp"><button type="button" class="btn btn-sec btn-sm">Details</button><button type="button" class="btn btn-pri btn-sm">Open report</button></span></div>
+</div></section><section class="tt-stage" aria-label="Card 3"><span class="tt-tag" aria-hidden="true">3</span><div class="k-card" style="max-width:430px">
+  <div class="k-card-h">
+    <div><h3>Usage this month</h3><p>Across all projects in this workspace.</p></div>
+    <span class="sp"><span class="badge asagi">On track</span></span>
+  </div>
+  <div class="k-card-b">Build minutes are at 62% with nine days left. The deploy queue cleared twice as fast since the cache change, and nothing is waiting on review.</div>
+  <div class="k-card-f">Updated 2 hours ago<span class="sp"><button type="button" class="btn btn-sec btn-sm">Details</button><button type="button" class="btn btn-pri btn-sm">Open report</button></span></div>
+</div></section></article>
+<article class="tt-part" id="part-tabs" aria-labelledby="h-tabs"><div class="tt-head"><span class="tt-num" aria-hidden="true">15</span><h2 class="tt-name" id="h-tabs" tabindex="-1">Tabs</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/tabs/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Tabs 1"><span class="tt-tag" aria-hidden="true">1</span><span class="tabs" data-tabs><span class="thumb"></span>
+  <button type="button" class="on">Overview</button><button type="button">Details</button><button type="button">History</button>
+</span>
+<div class="tabpane" data-tabpane>Overview panel — the essentials of the project live here.</div>
+<div class="tabpane" data-tabpane>Details panel — labor, day rates and travel, itemized.</div>
+<div class="tabpane" data-tabpane>History panel — created, edited and sent.</div></section><section class="tt-stage" aria-label="Tabs 2"><span class="tt-tag" aria-hidden="true">2</span><span class="tabs" data-tabs><span class="thumb"></span>
+  <button type="button" class="on">Overview</button><button type="button">Details</button><button type="button">History</button>
+</span>
+<div class="tabpane" data-tabpane>Overview panel — the essentials of the project live here.</div>
+<div class="tabpane" data-tabpane>Details panel — labor, day rates and travel, itemized.</div>
+<div class="tabpane" data-tabpane>History panel — created, edited and sent.</div></section><section class="tt-stage" aria-label="Tabs 3"><span class="tt-tag" aria-hidden="true">3</span><span class="tabs" data-tabs><span class="thumb"></span>
+  <button type="button" class="on">Overview</button><button type="button">Details</button><button type="button">History</button>
+</span>
+<div class="tabpane" data-tabpane>Overview panel — the essentials of the project live here.</div>
+<div class="tabpane" data-tabpane>Details panel — labor, day rates and travel, itemized.</div>
+<div class="tabpane" data-tabpane>History panel — created, edited and sent.</div></section></article>
+<article class="tt-part" id="part-accordion" aria-labelledby="h-accordion"><div class="tt-head"><span class="tt-num" aria-hidden="true">16</span><h2 class="tt-name" id="h-accordion" tabindex="-1">Accordion</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/accordion/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Accordion 1"><span class="tt-tag" aria-hidden="true">1</span><div style="max-width:460px">
+  <details class="k-acc" open>
+    <summary>Is there a build step?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">No. Copy the CSS, paste the markup. This accordion itself runs on native details — there is no script on this page for it.</div>
+  </details>
+  <details class="k-acc">
+    <summary>Does it work in dark mode?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">Yes. Every color comes from a token, and the token set has a dark theme.</div>
+  </details>
+  <details class="k-acc">
+    <summary>Can I change the radius?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">Change --k-radius-lg once and every component follows. That is the point of the mold.</div>
+  </details>
+</div></section><section class="tt-stage" aria-label="Accordion 2"><span class="tt-tag" aria-hidden="true">2</span><div style="max-width:460px">
+  <details class="k-acc" open>
+    <summary>Is there a build step?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">No. Copy the CSS, paste the markup. This accordion itself runs on native details — there is no script on this page for it.</div>
+  </details>
+  <details class="k-acc">
+    <summary>Does it work in dark mode?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">Yes. Every color comes from a token, and the token set has a dark theme.</div>
+  </details>
+  <details class="k-acc">
+    <summary>Can I change the radius?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">Change --k-radius-lg once and every component follows. That is the point of the mold.</div>
+  </details>
+</div></section><section class="tt-stage" aria-label="Accordion 3"><span class="tt-tag" aria-hidden="true">3</span><div style="max-width:460px">
+  <details class="k-acc" open>
+    <summary>Is there a build step?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">No. Copy the CSS, paste the markup. This accordion itself runs on native details — there is no script on this page for it.</div>
+  </details>
+  <details class="k-acc">
+    <summary>Does it work in dark mode?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">Yes. Every color comes from a token, and the token set has a dark theme.</div>
+  </details>
+  <details class="k-acc">
+    <summary>Can I change the radius?<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="k-acc-body">Change --k-radius-lg once and every component follows. That is the point of the mold.</div>
+  </details>
+</div></section></article>
+<article class="tt-part" id="part-badge" aria-labelledby="h-badge"><div class="tt-head"><span class="tt-num" aria-hidden="true">17</span><h2 class="tt-name" id="h-badge" tabindex="-1">Badge</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/badge/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Badge 1"><span class="tt-tag" aria-hidden="true">1</span><span class="badge"><i></i>Draft</span>
+<span class="badge asagi"><i></i>Live</span>
+<span class="badge red"><i></i>Needs action</span>
+<span class="badge yamabuki"><i></i>In review</span>
+<span class="badge dark">Pro</span>
+<span class="badge">3 left</span></section><section class="tt-stage" aria-label="Badge 2"><span class="tt-tag" aria-hidden="true">2</span><span class="badge"><i></i>Draft</span>
+<span class="badge asagi"><i></i>Live</span>
+<span class="badge red"><i></i>Needs action</span>
+<span class="badge yamabuki"><i></i>In review</span>
+<span class="badge dark">Pro</span>
+<span class="badge">3 left</span></section><section class="tt-stage" aria-label="Badge 3"><span class="tt-tag" aria-hidden="true">3</span><span class="badge"><i></i>Draft</span>
+<span class="badge asagi"><i></i>Live</span>
+<span class="badge red"><i></i>Needs action</span>
+<span class="badge yamabuki"><i></i>In review</span>
+<span class="badge dark">Pro</span>
+<span class="badge">3 left</span></section></article>
+<article class="tt-part" id="part-alert" aria-labelledby="h-alert"><div class="tt-head"><span class="tt-num" aria-hidden="true">18</span><h2 class="tt-name" id="h-alert" tabindex="-1">Alert</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/alert/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Alert 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:grid;gap:var(--k-space-2);max-width:460px">
+  <div class="k-alert"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><b>Deploy scheduled.</b><p>The new version goes out at 02:00 JST. No action needed.</p></div></div>
+  <div class="k-alert" data-tone="success"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg><div><b>Backup complete.</b><p>All 128 files verified against the manifest.</p></div></div>
+  <div class="k-alert" data-tone="warning"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><path d="M12 4 2.8 20h18.4L12 4Z"/><path d="M12 10v4.4M12 17.2h.01"/></svg><div><b>Storage at 86%.</b><p>Exports stop working at 100%. Clear old previews or raise the limit.</p></div></div>
+  <div class="k-alert" data-tone="danger"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg><div><b>Payment failed.</b><p>The card on file was declined. Update it before the next invoice on the 1st.</p></div></div>
+</div></section><section class="tt-stage" aria-label="Alert 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:grid;gap:var(--k-space-2);max-width:460px">
+  <div class="k-alert"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><b>Deploy scheduled.</b><p>The new version goes out at 02:00 JST. No action needed.</p></div></div>
+  <div class="k-alert" data-tone="success"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg><div><b>Backup complete.</b><p>All 128 files verified against the manifest.</p></div></div>
+  <div class="k-alert" data-tone="warning"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><path d="M12 4 2.8 20h18.4L12 4Z"/><path d="M12 10v4.4M12 17.2h.01"/></svg><div><b>Storage at 86%.</b><p>Exports stop working at 100%. Clear old previews or raise the limit.</p></div></div>
+  <div class="k-alert" data-tone="danger"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg><div><b>Payment failed.</b><p>The card on file was declined. Update it before the next invoice on the 1st.</p></div></div>
+</div></section><section class="tt-stage" aria-label="Alert 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:grid;gap:var(--k-space-2);max-width:460px">
+  <div class="k-alert"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><div><b>Deploy scheduled.</b><p>The new version goes out at 02:00 JST. No action needed.</p></div></div>
+  <div class="k-alert" data-tone="success"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-5"/></svg><div><b>Backup complete.</b><p>All 128 files verified against the manifest.</p></div></div>
+  <div class="k-alert" data-tone="warning"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><path d="M12 4 2.8 20h18.4L12 4Z"/><path d="M12 10v4.4M12 17.2h.01"/></svg><div><b>Storage at 86%.</b><p>Exports stop working at 100%. Clear old previews or raise the limit.</p></div></div>
+  <div class="k-alert" data-tone="danger"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg><div><b>Payment failed.</b><p>The card on file was declined. Update it before the next invoice on the 1st.</p></div></div>
+</div></section></article>
+<article class="tt-part" id="part-table" aria-labelledby="h-table"><div class="tt-head"><span class="tt-num" aria-hidden="true">19</span><h2 class="tt-name" id="h-table" tabindex="-1">Table</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/table/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Table 1"><span class="tt-tag" aria-hidden="true">1</span><div class="ktable-wrap" role="region" aria-label="Projects" tabindex="0">
+<table class="ktable">
+  <thead><tr><th scope="col">Project</th><th scope="col">Owner</th><th scope="col">Status</th><th scope="col" class="num">Amount</th></tr></thead>
+  <tbody>
+  <tr><td>Product launch</td><td><span class="ava" aria-hidden="true">YM</span>Yamada</td><td><span class="badge asagi"><i></i>Confirmed</span></td><td class="num">$860</td></tr>
+  <tr><td>Conference — live day</td><td><span class="ava" aria-hidden="true">ST</span>Sato</td><td><span class="badge yamabuki"><i></i>Preparing</span></td><td class="num">$3,200</td></tr>
+  <tr><td>Expo booth</td><td><span class="ava" aria-hidden="true">SZ</span>Suzuki</td><td><span class="badge"><i></i>Draft</span></td><td class="num">$545</td></tr>
+  </tbody>
+</table>
+</div></section><section class="tt-stage" aria-label="Table 2"><span class="tt-tag" aria-hidden="true">2</span><div class="ktable-wrap" role="region" aria-label="Projects" tabindex="0">
+<table class="ktable">
+  <thead><tr><th scope="col">Project</th><th scope="col">Owner</th><th scope="col">Status</th><th scope="col" class="num">Amount</th></tr></thead>
+  <tbody>
+  <tr><td>Product launch</td><td><span class="ava" aria-hidden="true">YM</span>Yamada</td><td><span class="badge asagi"><i></i>Confirmed</span></td><td class="num">$860</td></tr>
+  <tr><td>Conference — live day</td><td><span class="ava" aria-hidden="true">ST</span>Sato</td><td><span class="badge yamabuki"><i></i>Preparing</span></td><td class="num">$3,200</td></tr>
+  <tr><td>Expo booth</td><td><span class="ava" aria-hidden="true">SZ</span>Suzuki</td><td><span class="badge"><i></i>Draft</span></td><td class="num">$545</td></tr>
+  </tbody>
+</table>
+</div></section><section class="tt-stage" aria-label="Table 3"><span class="tt-tag" aria-hidden="true">3</span><div class="ktable-wrap" role="region" aria-label="Projects" tabindex="0">
+<table class="ktable">
+  <thead><tr><th scope="col">Project</th><th scope="col">Owner</th><th scope="col">Status</th><th scope="col" class="num">Amount</th></tr></thead>
+  <tbody>
+  <tr><td>Product launch</td><td><span class="ava" aria-hidden="true">YM</span>Yamada</td><td><span class="badge asagi"><i></i>Confirmed</span></td><td class="num">$860</td></tr>
+  <tr><td>Conference — live day</td><td><span class="ava" aria-hidden="true">ST</span>Sato</td><td><span class="badge yamabuki"><i></i>Preparing</span></td><td class="num">$3,200</td></tr>
+  <tr><td>Expo booth</td><td><span class="ava" aria-hidden="true">SZ</span>Suzuki</td><td><span class="badge"><i></i>Draft</span></td><td class="num">$545</td></tr>
+  </tbody>
+</table>
+</div></section></article>
+<article class="tt-part" id="part-pagination" aria-labelledby="h-pagination"><div class="tt-head"><span class="tt-num" aria-hidden="true">20</span><h2 class="tt-name" id="h-pagination" tabindex="-1">Pagination</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/pagination/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Pagination 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:grid;gap:var(--k-space-4)">
+  <nav class="k-pagination" aria-label="Pagination">
+    <a class="k-page" href="#" aria-label="Previous page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m15 6-6 6 6 6"/></svg></a>
+    <a class="k-page" href="#">1</a><a class="k-page" href="#" aria-current="page">2</a><a class="k-page" href="#">3</a><a class="k-page" href="#">4</a><span class="k-page dots" aria-hidden="true">…</span><a class="k-page" href="#">18</a>
+    <a class="k-page" href="#" aria-label="Next page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m9 6 6 6-6 6"/></svg></a>
+  </nav>
+  <nav class="k-pagination" aria-label="Pagination, first page">
+    <a class="k-page" aria-disabled="true" aria-label="Previous page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m15 6-6 6 6 6"/></svg></a>
+    <a class="k-page" href="#" aria-current="page">1</a><a class="k-page" href="#">2</a><a class="k-page" href="#">3</a>
+    <a class="k-page" href="#" aria-label="Next page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m9 6 6 6-6 6"/></svg></a>
+  </nav>
+  <nav class="k-pagination" aria-label="Pagination compact">
+    <a class="k-page" href="#"><span class="k-page-arrow" aria-hidden="true">←</span> Prev</a><span class="k-page-pos">Page 3 of 12</span><a class="k-page" href="#">Next <span class="k-page-arrow" aria-hidden="true">→</span></a>
+  </nav>
+</div></section><section class="tt-stage" aria-label="Pagination 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:grid;gap:var(--k-space-4)">
+  <nav class="k-pagination" aria-label="Pagination">
+    <a class="k-page" href="#" aria-label="Previous page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m15 6-6 6 6 6"/></svg></a>
+    <a class="k-page" href="#">1</a><a class="k-page" href="#" aria-current="page">2</a><a class="k-page" href="#">3</a><a class="k-page" href="#">4</a><span class="k-page dots" aria-hidden="true">…</span><a class="k-page" href="#">18</a>
+    <a class="k-page" href="#" aria-label="Next page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m9 6 6 6-6 6"/></svg></a>
+  </nav>
+  <nav class="k-pagination" aria-label="Pagination, first page">
+    <a class="k-page" aria-disabled="true" aria-label="Previous page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m15 6-6 6 6 6"/></svg></a>
+    <a class="k-page" href="#" aria-current="page">1</a><a class="k-page" href="#">2</a><a class="k-page" href="#">3</a>
+    <a class="k-page" href="#" aria-label="Next page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m9 6 6 6-6 6"/></svg></a>
+  </nav>
+  <nav class="k-pagination" aria-label="Pagination compact">
+    <a class="k-page" href="#"><span class="k-page-arrow" aria-hidden="true">←</span> Prev</a><span class="k-page-pos">Page 3 of 12</span><a class="k-page" href="#">Next <span class="k-page-arrow" aria-hidden="true">→</span></a>
+  </nav>
+</div></section><section class="tt-stage" aria-label="Pagination 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:grid;gap:var(--k-space-4)">
+  <nav class="k-pagination" aria-label="Pagination">
+    <a class="k-page" href="#" aria-label="Previous page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m15 6-6 6 6 6"/></svg></a>
+    <a class="k-page" href="#">1</a><a class="k-page" href="#" aria-current="page">2</a><a class="k-page" href="#">3</a><a class="k-page" href="#">4</a><span class="k-page dots" aria-hidden="true">…</span><a class="k-page" href="#">18</a>
+    <a class="k-page" href="#" aria-label="Next page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m9 6 6 6-6 6"/></svg></a>
+  </nav>
+  <nav class="k-pagination" aria-label="Pagination, first page">
+    <a class="k-page" aria-disabled="true" aria-label="Previous page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m15 6-6 6 6 6"/></svg></a>
+    <a class="k-page" href="#" aria-current="page">1</a><a class="k-page" href="#">2</a><a class="k-page" href="#">3</a>
+    <a class="k-page" href="#" aria-label="Next page"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square"><path d="m9 6 6 6-6 6"/></svg></a>
+  </nav>
+  <nav class="k-pagination" aria-label="Pagination compact">
+    <a class="k-page" href="#"><span class="k-page-arrow" aria-hidden="true">←</span> Prev</a><span class="k-page-pos">Page 3 of 12</span><a class="k-page" href="#">Next <span class="k-page-arrow" aria-hidden="true">→</span></a>
+  </nav>
+</div></section></article>
+<article class="tt-part" id="part-breadcrumbs" aria-labelledby="h-breadcrumbs"><div class="tt-head"><span class="tt-num" aria-hidden="true">21</span><h2 class="tt-name" id="h-breadcrumbs" tabindex="-1">Breadcrumbs</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/breadcrumbs/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Breadcrumbs 1"><span class="tt-tag" aria-hidden="true">1</span><nav aria-label="Breadcrumb"><ol class="k-crumbs">
+  <li><a href="#">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><a href="#">Projects</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><a href="#">kata-ui</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><span aria-current="page">Components</span></li>
+</ol></nav></section><section class="tt-stage" aria-label="Breadcrumbs 2"><span class="tt-tag" aria-hidden="true">2</span><nav aria-label="Breadcrumb"><ol class="k-crumbs">
+  <li><a href="#">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><a href="#">Projects</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><a href="#">kata-ui</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><span aria-current="page">Components</span></li>
+</ol></nav></section><section class="tt-stage" aria-label="Breadcrumbs 3"><span class="tt-tag" aria-hidden="true">3</span><nav aria-label="Breadcrumb"><ol class="k-crumbs">
+  <li><a href="#">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><a href="#">Projects</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><a href="#">kata-ui</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></li>
+  <li><span aria-current="page">Components</span></li>
+</ol></nav></section></article>
+<article class="tt-part" id="part-alert-dialog" aria-labelledby="h-alert-dialog"><div class="tt-head"><span class="tt-num" aria-hidden="true">22</span><h2 class="tt-name" id="h-alert-dialog" tabindex="-1">Alert Dialog</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/alert-dialog/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Alert Dialog 1"><span class="tt-tag" aria-hidden="true">1</span><button type="button" class="btn btn-danger btn-md" data-alert-open>Delete project</button>
+<dialog class="kalert" data-alert-dialog role="alertdialog" aria-label="Delete project">
+  <div class="kalert-in">
+    <h3>Delete this project?</h3>
+    <p>The project and all of its files will be permanently deleted. This cannot be undone, and shared links stop working immediately.</p>
+    <div class="kalert-row">
+      <button type="button" class="btn btn-sec btn-md" data-autofocus data-alert-close>Keep project</button>
+      <button type="button" class="btn btn-danger btn-md" data-alert-close>Delete project</button>
+    </div>
+  </div>
+</dialog></section><section class="tt-stage" aria-label="Alert Dialog 2"><span class="tt-tag" aria-hidden="true">2</span><button type="button" class="btn btn-danger btn-md" data-alert-open>Delete project</button>
+<dialog class="kalert" data-alert-dialog role="alertdialog" aria-label="Delete project">
+  <div class="kalert-in">
+    <h3>Delete this project?</h3>
+    <p>The project and all of its files will be permanently deleted. This cannot be undone, and shared links stop working immediately.</p>
+    <div class="kalert-row">
+      <button type="button" class="btn btn-sec btn-md" data-autofocus data-alert-close>Keep project</button>
+      <button type="button" class="btn btn-danger btn-md" data-alert-close>Delete project</button>
+    </div>
+  </div>
+</dialog></section><section class="tt-stage" aria-label="Alert Dialog 3"><span class="tt-tag" aria-hidden="true">3</span><button type="button" class="btn btn-danger btn-md" data-alert-open>Delete project</button>
+<dialog class="kalert" data-alert-dialog role="alertdialog" aria-label="Delete project">
+  <div class="kalert-in">
+    <h3>Delete this project?</h3>
+    <p>The project and all of its files will be permanently deleted. This cannot be undone, and shared links stop working immediately.</p>
+    <div class="kalert-row">
+      <button type="button" class="btn btn-sec btn-md" data-autofocus data-alert-close>Keep project</button>
+      <button type="button" class="btn btn-danger btn-md" data-alert-close>Delete project</button>
+    </div>
+  </div>
+</dialog></section></article>
+<article class="tt-part" id="part-drawer" aria-labelledby="h-drawer"><div class="tt-head"><span class="tt-num" aria-hidden="true">23</span><h2 class="tt-name" id="h-drawer" tabindex="-1">Drawer</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/drawer/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Drawer 1"><span class="tt-tag" aria-hidden="true">1</span><button type="button" class="btn btn-pri btn-md" data-drawer-open>Open drawer</button>
+<dialog class="kdrawer" data-drawer aria-label="Invoice detail">
+  <div class="kdrawer-head">
+    <div class="kdrawer-title">Invoice INV-1042</div>
+    <button type="button" class="btn btn-ghost btn-sm" data-drawer-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="kdrawer-body">Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.</div>
+  <div class="kdrawer-foot">
+    <button type="button" class="btn btn-sec btn-md" data-drawer-close>Close</button>
+    <button type="button" class="btn btn-pri btn-md" data-drawer-close>Send reminder</button>
+  </div>
+</dialog></section><section class="tt-stage" aria-label="Drawer 2"><span class="tt-tag" aria-hidden="true">2</span><button type="button" class="btn btn-pri btn-md" data-drawer-open>Open drawer</button>
+<dialog class="kdrawer" data-drawer aria-label="Invoice detail">
+  <div class="kdrawer-head">
+    <div class="kdrawer-title">Invoice INV-1042</div>
+    <button type="button" class="btn btn-ghost btn-sm" data-drawer-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="kdrawer-body">Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.</div>
+  <div class="kdrawer-foot">
+    <button type="button" class="btn btn-sec btn-md" data-drawer-close>Close</button>
+    <button type="button" class="btn btn-pri btn-md" data-drawer-close>Send reminder</button>
+  </div>
+</dialog></section><section class="tt-stage" aria-label="Drawer 3"><span class="tt-tag" aria-hidden="true">3</span><button type="button" class="btn btn-pri btn-md" data-drawer-open>Open drawer</button>
+<dialog class="kdrawer" data-drawer aria-label="Invoice detail">
+  <div class="kdrawer-head">
+    <div class="kdrawer-title">Invoice INV-1042</div>
+    <button type="button" class="btn btn-ghost btn-sm" data-drawer-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="kdrawer-body">Issued on the 1st, due at the end of the month. Two line items, both confirmed by the client. The full breakdown and the payment link live here, next to the list they came from.</div>
+  <div class="kdrawer-foot">
+    <button type="button" class="btn btn-sec btn-md" data-drawer-close>Close</button>
+    <button type="button" class="btn btn-pri btn-md" data-drawer-close>Send reminder</button>
+  </div>
+</dialog></section></article>
+<article class="tt-part" id="part-combobox" aria-labelledby="h-combobox"><div class="tt-head"><span class="tt-num" aria-hidden="true">24</span><h2 class="tt-name" id="h-combobox" tabindex="-1">Combobox</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/combobox/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Combobox 1"><span class="tt-tag" aria-hidden="true">1</span><div class="k-combo" data-combo data-combo-result-one="{count} result available." data-combo-result-many="{count} results available.">
+  <label>Framework
+  <input class="input" data-combo-input type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" placeholder="Choose a framework" value="Astro"></label>
+  <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  <ul class="k-combo-list" data-combo-list role="listbox" hidden>
+    <li role="option" data-val="Astro" aria-selected="true"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Astro</li><li role="option" data-val="Django" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Django</li><li role="option" data-val="Hugo" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Hugo</li><li role="option" data-val="Laravel" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Laravel</li><li role="option" data-val="Next.js" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Next.js</li><li role="option" data-val="Nuxt" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Nuxt</li><li role="option" data-val="Rails" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Rails</li><li role="option" data-val="Remix" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Remix</li><li role="option" data-val="SvelteKit" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>SvelteKit</li><li role="option" data-val="WordPress" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>WordPress</li>
+<li role="option" data-val="Angular" aria-selected="false">Angular</li><li role="option" data-val="Eleventy" aria-selected="false">Eleventy</li><li role="option" data-val="Express" aria-selected="false">Express</li><li role="option" data-val="Flask" aria-selected="false">Flask</li><li role="option" data-val="Phoenix" aria-selected="false">Phoenix</li><li role="option" data-val="SolidStart" aria-selected="false">SolidStart</li>
+  </ul>
+  <p class="none" hidden>No matches.</p>
+  <span class="k-combo-status" role="status" aria-atomic="true"></span>
+</div></section><section class="tt-stage" aria-label="Combobox 2"><span class="tt-tag" aria-hidden="true">2</span><div class="k-combo" data-combo data-combo-result-one="{count} result available." data-combo-result-many="{count} results available.">
+  <label>Framework
+  <input class="input" data-combo-input type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" placeholder="Choose a framework" value="Astro"></label>
+  <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  <ul class="k-combo-list" data-combo-list role="listbox" hidden>
+    <li role="option" data-val="Astro" aria-selected="true"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Astro</li><li role="option" data-val="Django" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Django</li><li role="option" data-val="Hugo" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Hugo</li><li role="option" data-val="Laravel" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Laravel</li><li role="option" data-val="Next.js" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Next.js</li><li role="option" data-val="Nuxt" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Nuxt</li><li role="option" data-val="Rails" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Rails</li><li role="option" data-val="Remix" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Remix</li><li role="option" data-val="SvelteKit" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>SvelteKit</li><li role="option" data-val="WordPress" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>WordPress</li>
+<li role="option" data-val="Angular" aria-selected="false">Angular</li><li role="option" data-val="Eleventy" aria-selected="false">Eleventy</li><li role="option" data-val="Express" aria-selected="false">Express</li><li role="option" data-val="Flask" aria-selected="false">Flask</li><li role="option" data-val="Phoenix" aria-selected="false">Phoenix</li><li role="option" data-val="SolidStart" aria-selected="false">SolidStart</li>
+  </ul>
+  <p class="none" hidden>No matches.</p>
+  <span class="k-combo-status" role="status" aria-atomic="true"></span>
+</div></section><section class="tt-stage" aria-label="Combobox 3"><span class="tt-tag" aria-hidden="true">3</span><div class="k-combo" data-combo data-combo-result-one="{count} result available." data-combo-result-many="{count} results available.">
+  <label>Framework
+  <input class="input" data-combo-input type="text" role="combobox" aria-expanded="false" aria-autocomplete="list" autocomplete="off" placeholder="Choose a framework" value="Astro"></label>
+  <span class="chev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+  <ul class="k-combo-list" data-combo-list role="listbox" hidden>
+    <li role="option" data-val="Astro" aria-selected="true"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Astro</li><li role="option" data-val="Django" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Django</li><li role="option" data-val="Hugo" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Hugo</li><li role="option" data-val="Laravel" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Laravel</li><li role="option" data-val="Next.js" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Next.js</li><li role="option" data-val="Nuxt" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Nuxt</li><li role="option" data-val="Rails" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Rails</li><li role="option" data-val="Remix" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>Remix</li><li role="option" data-val="SvelteKit" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>SvelteKit</li><li role="option" data-val="WordPress" aria-selected="false"><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m4.5 12.5 5 5L19.5 6.5"/></svg></span>WordPress</li>
+<li role="option" data-val="Angular" aria-selected="false">Angular</li><li role="option" data-val="Eleventy" aria-selected="false">Eleventy</li><li role="option" data-val="Express" aria-selected="false">Express</li><li role="option" data-val="Flask" aria-selected="false">Flask</li><li role="option" data-val="Phoenix" aria-selected="false">Phoenix</li><li role="option" data-val="SolidStart" aria-selected="false">SolidStart</li>
+  </ul>
+  <p class="none" hidden>No matches.</p>
+  <span class="k-combo-status" role="status" aria-atomic="true"></span>
+</div></section></article>
+<article class="tt-part" id="part-date-picker" aria-labelledby="h-date-picker"><div class="tt-head"><span class="tt-num" aria-hidden="true">25</span><h2 class="tt-name" id="h-date-picker" tabindex="-1">Date Picker</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/date-picker/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Date Picker 1"><span class="tt-tag" aria-hidden="true">1</span><div class="k-dp" data-dp style="max-width:300px">
+  <label class="k-dp-label" data-dp-label>Date</label>
+  <div class="wrap-in">
+    <input class="input" data-dp-input aria-label="Date" type="text" placeholder="Pick a date" readonly aria-haspopup="dialog" aria-expanded="false">
+    <button class="cal-btn" data-dp-btn type="button" aria-label="Open calendar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
+  </div>
+  <div class="k-dp-panel" data-dp-panel role="dialog" aria-label="Choose a date" hidden>
+    <div class="k-dp-h">
+      <button class="k-dp-nav" data-dp-prev type="button" aria-label="Previous month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <b data-dp-title></b>
+      <button class="k-dp-nav" data-dp-next type="button" aria-label="Next month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="k-dp-wd"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+    <div class="k-dp-grid" data-dp-grid></div>
+  </div>
+</div></section><section class="tt-stage" aria-label="Date Picker 2"><span class="tt-tag" aria-hidden="true">2</span><div class="k-dp" data-dp style="max-width:300px">
+  <label class="k-dp-label" data-dp-label>Date</label>
+  <div class="wrap-in">
+    <input class="input" data-dp-input aria-label="Date" type="text" placeholder="Pick a date" readonly aria-haspopup="dialog" aria-expanded="false">
+    <button class="cal-btn" data-dp-btn type="button" aria-label="Open calendar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
+  </div>
+  <div class="k-dp-panel" data-dp-panel role="dialog" aria-label="Choose a date" hidden>
+    <div class="k-dp-h">
+      <button class="k-dp-nav" data-dp-prev type="button" aria-label="Previous month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <b data-dp-title></b>
+      <button class="k-dp-nav" data-dp-next type="button" aria-label="Next month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="k-dp-wd"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+    <div class="k-dp-grid" data-dp-grid></div>
+  </div>
+</div></section><section class="tt-stage" aria-label="Date Picker 3"><span class="tt-tag" aria-hidden="true">3</span><div class="k-dp" data-dp style="max-width:300px">
+  <label class="k-dp-label" data-dp-label>Date</label>
+  <div class="wrap-in">
+    <input class="input" data-dp-input aria-label="Date" type="text" placeholder="Pick a date" readonly aria-haspopup="dialog" aria-expanded="false">
+    <button class="cal-btn" data-dp-btn type="button" aria-label="Open calendar"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></button>
+  </div>
+  <div class="k-dp-panel" data-dp-panel role="dialog" aria-label="Choose a date" hidden>
+    <div class="k-dp-h">
+      <button class="k-dp-nav" data-dp-prev type="button" aria-label="Previous month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <b data-dp-title></b>
+      <button class="k-dp-nav" data-dp-next type="button" aria-label="Next month"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+    <div class="k-dp-wd"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+    <div class="k-dp-grid" data-dp-grid></div>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-slider" aria-labelledby="h-slider"><div class="tt-head"><span class="tt-num" aria-hidden="true">26</span><h2 class="tt-name" id="h-slider" tabindex="-1">Slider</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/slider/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Slider 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:grid;gap:var(--k-space-4);max-width:400px">
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Volume</span><span class="k-slider-val" data-slider-val aria-hidden="true">60</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="60">
+  </label>
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Brightness</span><span class="k-slider-val" data-slider-val aria-hidden="true">30</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="30">
+  </label>
+</div></section><section class="tt-stage" aria-label="Slider 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:grid;gap:var(--k-space-4);max-width:400px">
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Volume</span><span class="k-slider-val" data-slider-val aria-hidden="true">60</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="60">
+  </label>
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Brightness</span><span class="k-slider-val" data-slider-val aria-hidden="true">30</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="30">
+  </label>
+</div></section><section class="tt-stage" aria-label="Slider 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:grid;gap:var(--k-space-4);max-width:400px">
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Volume</span><span class="k-slider-val" data-slider-val aria-hidden="true">60</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="60">
+  </label>
+  <label class="k-slider-row" data-slider>
+    <span class="k-slider-head"><span class="k-slider-label">Brightness</span><span class="k-slider-val" data-slider-val aria-hidden="true">30</span></span>
+    <input class="k-slider" type="range" min="0" max="100" value="30">
+  </label>
+</div></section></article>
+<article class="tt-part" id="part-toggle" aria-labelledby="h-toggle"><div class="tt-head"><span class="tt-num" aria-hidden="true">27</span><h2 class="tt-name" id="h-toggle" tabindex="-1">Toggle</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/toggle/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Toggle 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:flex;gap:var(--k-space-3);align-items:center;flex-wrap:wrap">
+  <button class="k-tgl" type="button" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Pinned</button>
+  <div class="k-tgroup" role="group" aria-label="Text formatting">
+    <button class="k-tgl" type="button" aria-pressed="true" aria-label="Bold" style="font-weight:700">B</button>
+    <button class="k-tgl" type="button" aria-pressed="false" aria-label="Italic" style="font-style:italic">I</button>
+    <button class="k-tgl" type="button" aria-pressed="false" aria-label="Underline" style="text-decoration:underline">U</button>
+  </div>
+</div></section><section class="tt-stage" aria-label="Toggle 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:flex;gap:var(--k-space-3);align-items:center;flex-wrap:wrap">
+  <button class="k-tgl" type="button" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Pinned</button>
+  <div class="k-tgroup" role="group" aria-label="Text formatting">
+    <button class="k-tgl" type="button" aria-pressed="true" aria-label="Bold" style="font-weight:700">B</button>
+    <button class="k-tgl" type="button" aria-pressed="false" aria-label="Italic" style="font-style:italic">I</button>
+    <button class="k-tgl" type="button" aria-pressed="false" aria-label="Underline" style="text-decoration:underline">U</button>
+  </div>
+</div></section><section class="tt-stage" aria-label="Toggle 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:flex;gap:var(--k-space-3);align-items:center;flex-wrap:wrap">
+  <button class="k-tgl" type="button" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg> Pinned</button>
+  <div class="k-tgroup" role="group" aria-label="Text formatting">
+    <button class="k-tgl" type="button" aria-pressed="true" aria-label="Bold" style="font-weight:700">B</button>
+    <button class="k-tgl" type="button" aria-pressed="false" aria-label="Italic" style="font-style:italic">I</button>
+    <button class="k-tgl" type="button" aria-pressed="false" aria-label="Underline" style="text-decoration:underline">U</button>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-segmented" aria-labelledby="h-segmented"><div class="tt-head"><span class="tt-num" aria-hidden="true">28</span><h2 class="tt-name" id="h-segmented" tabindex="-1">Segmented control</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/segmented/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Segmented control 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:flex;gap:var(--k-space-3);flex-wrap:wrap;align-items:center">
+  <div class="k-seg" role="radiogroup" aria-label="Range">
+    <label class="k-seg-item"><input type="radio" name="range-1" checked><span>Day</span></label>
+    <label class="k-seg-item"><input type="radio" name="range-1"><span>Week</span></label>
+    <label class="k-seg-item"><input type="radio" name="range-1"><span>Month</span></label>
+  </div>
+  <div class="k-seg" role="radiogroup" aria-label="Density">
+    <label class="k-seg-item"><input type="radio" name="density-1"><span>Comfort</span></label>
+    <label class="k-seg-item"><input type="radio" name="density-1" checked><span>Compact</span></label>
+  </div>
+</div></section><section class="tt-stage" aria-label="Segmented control 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:flex;gap:var(--k-space-3);flex-wrap:wrap;align-items:center">
+  <div class="k-seg" role="radiogroup" aria-label="Range">
+    <label class="k-seg-item"><input type="radio" name="range-2" checked><span>Day</span></label>
+    <label class="k-seg-item"><input type="radio" name="range-2"><span>Week</span></label>
+    <label class="k-seg-item"><input type="radio" name="range-2"><span>Month</span></label>
+  </div>
+  <div class="k-seg" role="radiogroup" aria-label="Density">
+    <label class="k-seg-item"><input type="radio" name="density-2"><span>Comfort</span></label>
+    <label class="k-seg-item"><input type="radio" name="density-2" checked><span>Compact</span></label>
+  </div>
+</div></section><section class="tt-stage" aria-label="Segmented control 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:flex;gap:var(--k-space-3);flex-wrap:wrap;align-items:center">
+  <div class="k-seg" role="radiogroup" aria-label="Range">
+    <label class="k-seg-item"><input type="radio" name="range-3" checked><span>Day</span></label>
+    <label class="k-seg-item"><input type="radio" name="range-3"><span>Week</span></label>
+    <label class="k-seg-item"><input type="radio" name="range-3"><span>Month</span></label>
+  </div>
+  <div class="k-seg" role="radiogroup" aria-label="Density">
+    <label class="k-seg-item"><input type="radio" name="density-3"><span>Comfort</span></label>
+    <label class="k-seg-item"><input type="radio" name="density-3" checked><span>Compact</span></label>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-avatar" aria-labelledby="h-avatar"><div class="tt-head"><span class="tt-num" aria-hidden="true">29</span><h2 class="tt-name" id="h-avatar" tabindex="-1">Avatar</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/avatar/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Avatar 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:flex;gap:var(--k-space-5);align-items:center;flex-wrap:wrap">
+  <div style="display:flex;gap:var(--k-space-2);align-items:center">
+    <span class="k-avatar" data-size="sm" aria-hidden="true">AM</span>
+    <span class="k-avatar" aria-hidden="true">AM</span>
+    <span class="k-avatar" data-size="lg" aria-hidden="true">AM</span>
+    <span class="k-avatar" data-size="lg" data-status role="img" aria-label="Aki Morita, online">AM</span>
+  </div>
+  <span class="k-avatars" role="img" aria-label="Ren A., Mio T., Jun O. and 3 more">
+    <span class="k-avatar">RA</span><span class="k-avatar">MT</span><span class="k-avatar">JO</span><span class="k-avatar">+3</span>
+  </span>
+</div></section><section class="tt-stage" aria-label="Avatar 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:flex;gap:var(--k-space-5);align-items:center;flex-wrap:wrap">
+  <div style="display:flex;gap:var(--k-space-2);align-items:center">
+    <span class="k-avatar" data-size="sm" aria-hidden="true">AM</span>
+    <span class="k-avatar" aria-hidden="true">AM</span>
+    <span class="k-avatar" data-size="lg" aria-hidden="true">AM</span>
+    <span class="k-avatar" data-size="lg" data-status role="img" aria-label="Aki Morita, online">AM</span>
+  </div>
+  <span class="k-avatars" role="img" aria-label="Ren A., Mio T., Jun O. and 3 more">
+    <span class="k-avatar">RA</span><span class="k-avatar">MT</span><span class="k-avatar">JO</span><span class="k-avatar">+3</span>
+  </span>
+</div></section><section class="tt-stage" aria-label="Avatar 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:flex;gap:var(--k-space-5);align-items:center;flex-wrap:wrap">
+  <div style="display:flex;gap:var(--k-space-2);align-items:center">
+    <span class="k-avatar" data-size="sm" aria-hidden="true">AM</span>
+    <span class="k-avatar" aria-hidden="true">AM</span>
+    <span class="k-avatar" data-size="lg" aria-hidden="true">AM</span>
+    <span class="k-avatar" data-size="lg" data-status role="img" aria-label="Aki Morita, online">AM</span>
+  </div>
+  <span class="k-avatars" role="img" aria-label="Ren A., Mio T., Jun O. and 3 more">
+    <span class="k-avatar">RA</span><span class="k-avatar">MT</span><span class="k-avatar">JO</span><span class="k-avatar">+3</span>
+  </span>
+</div></section></article>
+<article class="tt-part" id="part-progress" aria-labelledby="h-progress"><div class="tt-head"><span class="tt-num" aria-hidden="true">30</span><h2 class="tt-name" id="h-progress" tabindex="-1">Progress</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/progress/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Progress 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:grid;gap:var(--k-space-4);max-width:420px;width:100%">
+  <div style="display:grid;gap:var(--k-space-2)">
+    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><span style="font-weight:550">Uploading footage</span><span style="font-family:var(--k-mono);color:var(--k-ink-2)">68%</span></div>
+    <div class="k-progress" role="progressbar" aria-label="Uploading footage" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><div class="k-progress-bar" style="width:68%"></div></div>
+  </div>
+  <div style="display:grid;gap:var(--k-space-2)">
+    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><span style="font-weight:550">Verifying files</span><span style="font-family:var(--k-mono);color:var(--k-ink-2)">92%</span></div>
+    <div class="k-progress" data-tone="accent" role="progressbar" aria-label="Verifying files" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="k-progress-bar" style="width:92%"></div></div>
+  </div>
+</div></section><section class="tt-stage" aria-label="Progress 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:grid;gap:var(--k-space-4);max-width:420px;width:100%">
+  <div style="display:grid;gap:var(--k-space-2)">
+    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><span style="font-weight:550">Uploading footage</span><span style="font-family:var(--k-mono);color:var(--k-ink-2)">68%</span></div>
+    <div class="k-progress" role="progressbar" aria-label="Uploading footage" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><div class="k-progress-bar" style="width:68%"></div></div>
+  </div>
+  <div style="display:grid;gap:var(--k-space-2)">
+    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><span style="font-weight:550">Verifying files</span><span style="font-family:var(--k-mono);color:var(--k-ink-2)">92%</span></div>
+    <div class="k-progress" data-tone="accent" role="progressbar" aria-label="Verifying files" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="k-progress-bar" style="width:92%"></div></div>
+  </div>
+</div></section><section class="tt-stage" aria-label="Progress 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:grid;gap:var(--k-space-4);max-width:420px;width:100%">
+  <div style="display:grid;gap:var(--k-space-2)">
+    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><span style="font-weight:550">Uploading footage</span><span style="font-family:var(--k-mono);color:var(--k-ink-2)">68%</span></div>
+    <div class="k-progress" role="progressbar" aria-label="Uploading footage" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"><div class="k-progress-bar" style="width:68%"></div></div>
+  </div>
+  <div style="display:grid;gap:var(--k-space-2)">
+    <div style="display:flex;justify-content:space-between;font-size:var(--k-text-sm)"><span style="font-weight:550">Verifying files</span><span style="font-family:var(--k-mono);color:var(--k-ink-2)">92%</span></div>
+    <div class="k-progress" data-tone="accent" role="progressbar" aria-label="Verifying files" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="k-progress-bar" style="width:92%"></div></div>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-skeleton" aria-labelledby="h-skeleton"><div class="tt-head"><span class="tt-num" aria-hidden="true">31</span><h2 class="tt-name" id="h-skeleton" tabindex="-1">Skeleton</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/skeleton/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Skeleton 1"><span class="tt-tag" aria-hidden="true">1</span><div role="status" style="display:grid;gap:var(--k-space-3);max-width:380px;width:100%">
+  <span class="k-sk-status">Loading profile</span>
+  <div style="display:grid;gap:var(--k-space-3)" aria-hidden="true">
+  <div style="display:flex;gap:var(--k-space-3);align-items:center">
+    <span class="k-sk k-sk-circle" style="width:40px;height:40px"></span>
+    <div style="display:grid;gap:var(--k-space-2);flex:1"><span class="k-sk" style="height:12px;width:46%"></span><span class="k-sk" style="height:12px;width:72%"></span></div>
+  </div>
+  <span class="k-sk" style="height:12px"></span>
+  <span class="k-sk" style="height:12px;width:84%"></span>
+  <span class="k-sk" style="height:64px;border-radius:var(--k-radius-lg)"></span>
+  </div>
+</div></section><section class="tt-stage" aria-label="Skeleton 2"><span class="tt-tag" aria-hidden="true">2</span><div role="status" style="display:grid;gap:var(--k-space-3);max-width:380px;width:100%">
+  <span class="k-sk-status">Loading profile</span>
+  <div style="display:grid;gap:var(--k-space-3)" aria-hidden="true">
+  <div style="display:flex;gap:var(--k-space-3);align-items:center">
+    <span class="k-sk k-sk-circle" style="width:40px;height:40px"></span>
+    <div style="display:grid;gap:var(--k-space-2);flex:1"><span class="k-sk" style="height:12px;width:46%"></span><span class="k-sk" style="height:12px;width:72%"></span></div>
+  </div>
+  <span class="k-sk" style="height:12px"></span>
+  <span class="k-sk" style="height:12px;width:84%"></span>
+  <span class="k-sk" style="height:64px;border-radius:var(--k-radius-lg)"></span>
+  </div>
+</div></section><section class="tt-stage" aria-label="Skeleton 3"><span class="tt-tag" aria-hidden="true">3</span><div role="status" style="display:grid;gap:var(--k-space-3);max-width:380px;width:100%">
+  <span class="k-sk-status">Loading profile</span>
+  <div style="display:grid;gap:var(--k-space-3)" aria-hidden="true">
+  <div style="display:flex;gap:var(--k-space-3);align-items:center">
+    <span class="k-sk k-sk-circle" style="width:40px;height:40px"></span>
+    <div style="display:grid;gap:var(--k-space-2);flex:1"><span class="k-sk" style="height:12px;width:46%"></span><span class="k-sk" style="height:12px;width:72%"></span></div>
+  </div>
+  <span class="k-sk" style="height:12px"></span>
+  <span class="k-sk" style="height:12px;width:84%"></span>
+  <span class="k-sk" style="height:64px;border-radius:var(--k-radius-lg)"></span>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-spinner" aria-labelledby="h-spinner"><div class="tt-head"><span class="tt-num" aria-hidden="true">32</span><h2 class="tt-name" id="h-spinner" tabindex="-1">Spinner</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/spinner/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Spinner 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:flex;gap:var(--k-space-5);align-items:center;flex-wrap:wrap">
+  <span class="k-spinner" data-size="sm" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" data-size="lg" role="status" aria-label="Loading"></span>
+  <button type="button" class="btn btn-sec btn-md" disabled><span class="k-spinner" data-size="sm"></span> Saving…</button>
+</div></section><section class="tt-stage" aria-label="Spinner 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:flex;gap:var(--k-space-5);align-items:center;flex-wrap:wrap">
+  <span class="k-spinner" data-size="sm" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" data-size="lg" role="status" aria-label="Loading"></span>
+  <button type="button" class="btn btn-sec btn-md" disabled><span class="k-spinner" data-size="sm"></span> Saving…</button>
+</div></section><section class="tt-stage" aria-label="Spinner 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:flex;gap:var(--k-space-5);align-items:center;flex-wrap:wrap">
+  <span class="k-spinner" data-size="sm" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" role="status" aria-label="Loading"></span>
+  <span class="k-spinner" data-size="lg" role="status" aria-label="Loading"></span>
+  <button type="button" class="btn btn-sec btn-md" disabled><span class="k-spinner" data-size="sm"></span> Saving…</button>
+</div></section></article>
+<article class="tt-part" id="part-empty-state" aria-labelledby="h-empty-state"><div class="tt-head"><span class="tt-num" aria-hidden="true">33</span><h2 class="tt-name" id="h-empty-state" tabindex="-1">Empty state</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/empty-state/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Empty state 1"><span class="tt-tag" aria-hidden="true">1</span><div class="k-empty" style="max-width:440px">
+  <span class="k-empty-ic"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><path d="M12 3v10m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+  <h3>No exports yet</h3>
+  <p>Exports you create will appear here, ready to download or share.</p>
+  <span class="k-empty-act"><button class="btn btn-pri btn-md" type="button">Create export</button></span>
+</div></section><section class="tt-stage" aria-label="Empty state 2"><span class="tt-tag" aria-hidden="true">2</span><div class="k-empty" style="max-width:440px">
+  <span class="k-empty-ic"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><path d="M12 3v10m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+  <h3>No exports yet</h3>
+  <p>Exports you create will appear here, ready to download or share.</p>
+  <span class="k-empty-act"><button class="btn btn-pri btn-md" type="button">Create export</button></span>
+</div></section><section class="tt-stage" aria-label="Empty state 3"><span class="tt-tag" aria-hidden="true">3</span><div class="k-empty" style="max-width:440px">
+  <span class="k-empty-ic"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><path d="M12 3v10m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+  <h3>No exports yet</h3>
+  <p>Exports you create will appear here, ready to download or share.</p>
+  <span class="k-empty-act"><button class="btn btn-pri btn-md" type="button">Create export</button></span>
+</div></section></article>
+<article class="tt-part" id="part-separator" aria-labelledby="h-separator"><div class="tt-head"><span class="tt-num" aria-hidden="true">34</span><h2 class="tt-name" id="h-separator" tabindex="-1">Separator</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/separator/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Separator 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <p style="font-size:var(--k-text-base)">Account details</p>
+  <hr class="k-sep">
+  <p style="font-size:var(--k-text-base)">Billing address</p>
+  <div class="k-sep-label">OR</div>
+  <div style="display:flex;gap:var(--k-space-3);align-items:center;font-size:var(--k-text-base);color:var(--k-ink-2)"><span>Docs</span><span class="k-sep-v" style="height:16px" aria-hidden="true"></span><span>Support</span><span class="k-sep-v" style="height:16px" aria-hidden="true"></span><span>Community</span></div>
+</div></section><section class="tt-stage" aria-label="Separator 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <p style="font-size:var(--k-text-base)">Account details</p>
+  <hr class="k-sep">
+  <p style="font-size:var(--k-text-base)">Billing address</p>
+  <div class="k-sep-label">OR</div>
+  <div style="display:flex;gap:var(--k-space-3);align-items:center;font-size:var(--k-text-base);color:var(--k-ink-2)"><span>Docs</span><span class="k-sep-v" style="height:16px" aria-hidden="true"></span><span>Support</span><span class="k-sep-v" style="height:16px" aria-hidden="true"></span><span>Community</span></div>
+</div></section><section class="tt-stage" aria-label="Separator 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:grid;gap:var(--k-space-4);max-width:430px">
+  <p style="font-size:var(--k-text-base)">Account details</p>
+  <hr class="k-sep">
+  <p style="font-size:var(--k-text-base)">Billing address</p>
+  <div class="k-sep-label">OR</div>
+  <div style="display:flex;gap:var(--k-space-3);align-items:center;font-size:var(--k-text-base);color:var(--k-ink-2)"><span>Docs</span><span class="k-sep-v" style="height:16px" aria-hidden="true"></span><span>Support</span><span class="k-sep-v" style="height:16px" aria-hidden="true"></span><span>Community</span></div>
+</div></section></article>
+<article class="tt-part" id="part-sidebar" aria-labelledby="h-sidebar"><div class="tt-head"><span class="tt-num" aria-hidden="true">35</span><h2 class="tt-name" id="h-sidebar" tabindex="-1">Sidebar</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/sidebar/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Sidebar 1"><span class="tt-tag" aria-hidden="true">1</span><div style="display:flex;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);overflow:hidden;max-width:620px;background:var(--k-bg)">
+  <nav class="k-side" data-side aria-label="Sidebar preview">
+    <div class="k-side-brand"><span class="k-side-mark"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3.5 2.5 8.5 12 13.5l9.5-5L12 3.5Z"/><path d="m2.5 12.8 9.5 5 9.5-5"/></svg></span>Northwind</div>
+    <div class="k-side-sec">MAIN</div>
+    <div class="k-side-nav">
+      <a class="k-side-item on" href="#" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/></svg><span class="k-side-t">Overview</span></a>
+      <div class="k-side-group open">
+        <button class="k-side-item" type="button" data-side-toggle aria-expanded="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span class="k-side-t">Projects</span><svg class="k-side-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="k-side-sub">
+          <a class="k-side-item" href="#"><span class="k-side-t">Website rebuild</span></a>
+          <a class="k-side-item" href="#"><span class="k-side-t">Mobile app</span></a>
+          <a class="k-side-item" href="#"><span class="k-side-t">Brand refresh</span></a>
+        </div>
+      </div>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="k-side-t">Calendar</span><span class="k-side-badge">3</span></a>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 20v-6M12 20V4M18 20v-9"/><path d="M3.5 20.5h17"/></svg><span class="k-side-t">Reports</span></a>
+    </div>
+    <div class="k-side-sec">MANAGE</div>
+    <div class="k-side-nav">
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="9" cy="8.5" r="3.4"/><path d="M2.8 20c.7-3.4 3.2-5.2 6.2-5.2s5.5 1.8 6.2 5.2"/><path d="M16 5.4a3.4 3.4 0 0 1 0 6.4M18.5 15.4c1.5.8 2.5 2.4 2.9 4.6"/></svg><span class="k-side-t">Team</span></a>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span class="k-side-t">Settings</span></a>
+    </div>
+    <div class="k-side-user"><span class="k-side-ava" aria-hidden="true">AR</span><span class="k-side-umeta"><span class="k-side-uname">Aoki Ren</span><br><span class="k-side-urole">Workspace admin</span></span></div>
+  </nav>
+  <div style="flex:1;padding:var(--k-space-5);min-width:0">
+    <p style="font-size:var(--k-text-lead);font-weight:600">Overview</p>
+    <p style="font-size:var(--k-text-base);color:var(--k-ink-2);line-height:var(--k-lh-loose);margin-top:var(--k-space-1);letter-spacing:.01em">The sidebar is the part; this column is just the room it stands in. Try the Projects group — it folds. The current page carries the vermillion core on its icon, and the user sits at the foot, out of the way until needed.</p>
+  </div>
+</div></section><section class="tt-stage" aria-label="Sidebar 2"><span class="tt-tag" aria-hidden="true">2</span><div style="display:flex;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);overflow:hidden;max-width:620px;background:var(--k-bg)">
+  <nav class="k-side" data-side aria-label="Sidebar preview">
+    <div class="k-side-brand"><span class="k-side-mark"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3.5 2.5 8.5 12 13.5l9.5-5L12 3.5Z"/><path d="m2.5 12.8 9.5 5 9.5-5"/></svg></span>Northwind</div>
+    <div class="k-side-sec">MAIN</div>
+    <div class="k-side-nav">
+      <a class="k-side-item on" href="#" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/></svg><span class="k-side-t">Overview</span></a>
+      <div class="k-side-group open">
+        <button class="k-side-item" type="button" data-side-toggle aria-expanded="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span class="k-side-t">Projects</span><svg class="k-side-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="k-side-sub">
+          <a class="k-side-item" href="#"><span class="k-side-t">Website rebuild</span></a>
+          <a class="k-side-item" href="#"><span class="k-side-t">Mobile app</span></a>
+          <a class="k-side-item" href="#"><span class="k-side-t">Brand refresh</span></a>
+        </div>
+      </div>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="k-side-t">Calendar</span><span class="k-side-badge">3</span></a>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 20v-6M12 20V4M18 20v-9"/><path d="M3.5 20.5h17"/></svg><span class="k-side-t">Reports</span></a>
+    </div>
+    <div class="k-side-sec">MANAGE</div>
+    <div class="k-side-nav">
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="9" cy="8.5" r="3.4"/><path d="M2.8 20c.7-3.4 3.2-5.2 6.2-5.2s5.5 1.8 6.2 5.2"/><path d="M16 5.4a3.4 3.4 0 0 1 0 6.4M18.5 15.4c1.5.8 2.5 2.4 2.9 4.6"/></svg><span class="k-side-t">Team</span></a>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span class="k-side-t">Settings</span></a>
+    </div>
+    <div class="k-side-user"><span class="k-side-ava" aria-hidden="true">AR</span><span class="k-side-umeta"><span class="k-side-uname">Aoki Ren</span><br><span class="k-side-urole">Workspace admin</span></span></div>
+  </nav>
+  <div style="flex:1;padding:var(--k-space-5);min-width:0">
+    <p style="font-size:var(--k-text-lead);font-weight:600">Overview</p>
+    <p style="font-size:var(--k-text-base);color:var(--k-ink-2);line-height:var(--k-lh-loose);margin-top:var(--k-space-1);letter-spacing:.01em">The sidebar is the part; this column is just the room it stands in. Try the Projects group — it folds. The current page carries the vermillion core on its icon, and the user sits at the foot, out of the way until needed.</p>
+  </div>
+</div></section><section class="tt-stage" aria-label="Sidebar 3"><span class="tt-tag" aria-hidden="true">3</span><div style="display:flex;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);overflow:hidden;max-width:620px;background:var(--k-bg)">
+  <nav class="k-side" data-side aria-label="Sidebar preview">
+    <div class="k-side-brand"><span class="k-side-mark"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3.5 2.5 8.5 12 13.5l9.5-5L12 3.5Z"/><path d="m2.5 12.8 9.5 5 9.5-5"/></svg></span>Northwind</div>
+    <div class="k-side-sec">MAIN</div>
+    <div class="k-side-nav">
+      <a class="k-side-item on" href="#" aria-current="page"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/></svg><span class="k-side-t">Overview</span></a>
+      <div class="k-side-group open">
+        <button class="k-side-item" type="button" data-side-toggle aria-expanded="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><span class="k-side-t">Projects</span><svg class="k-side-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        <div class="k-side-sub">
+          <a class="k-side-item" href="#"><span class="k-side-t">Website rebuild</span></a>
+          <a class="k-side-item" href="#"><span class="k-side-t">Mobile app</span></a>
+          <a class="k-side-item" href="#"><span class="k-side-t">Brand refresh</span></a>
+        </div>
+      </div>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="k-side-t">Calendar</span><span class="k-side-badge">3</span></a>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 20v-6M12 20V4M18 20v-9"/><path d="M3.5 20.5h17"/></svg><span class="k-side-t">Reports</span></a>
+    </div>
+    <div class="k-side-sec">MANAGE</div>
+    <div class="k-side-nav">
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="9" cy="8.5" r="3.4"/><path d="M2.8 20c.7-3.4 3.2-5.2 6.2-5.2s5.5 1.8 6.2 5.2"/><path d="M16 5.4a3.4 3.4 0 0 1 0 6.4M18.5 15.4c1.5.8 2.5 2.4 2.9 4.6"/></svg><span class="k-side-t">Team</span></a>
+      <a class="k-side-item" href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span class="k-side-t">Settings</span></a>
+    </div>
+    <div class="k-side-user"><span class="k-side-ava" aria-hidden="true">AR</span><span class="k-side-umeta"><span class="k-side-uname">Aoki Ren</span><br><span class="k-side-urole">Workspace admin</span></span></div>
+  </nav>
+  <div style="flex:1;padding:var(--k-space-5);min-width:0">
+    <p style="font-size:var(--k-text-lead);font-weight:600">Overview</p>
+    <p style="font-size:var(--k-text-base);color:var(--k-ink-2);line-height:var(--k-lh-loose);margin-top:var(--k-space-1);letter-spacing:.01em">The sidebar is the part; this column is just the room it stands in. Try the Projects group — it folds. The current page carries the vermillion core on its icon, and the user sits at the foot, out of the way until needed.</p>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-command" aria-labelledby="h-command"><div class="tt-head"><span class="tt-num" aria-hidden="true">36</span><h2 class="tt-name" id="h-command" tabindex="-1">Command</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/command/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Command 1"><span class="tt-tag" aria-hidden="true">1</span><button type="button" class="btn btn-sec btn-md" data-command-open><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span style="margin:0 var(--k-space-6) 0 var(--k-space-0-5)">Search…</span><span class="k-kbd">⌘</span> <span class="k-kbd">K</span></button>
+<dialog class="kcmd" data-command aria-label="Command palette">
+  <div class="kcmd-input-row">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg>
+    <input class="kcmd-input" data-command-input type="text" placeholder="Type a command or search…" aria-label="Search commands">
+  </div>
+  <ul class="kcmd-list">
+    <li><button type="button" class="kcmd-item active" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M9.5 9.5v10"/></svg><span>Go to Dashboard</span><span class="kcmd-hint">Page</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M12 12v6M9 15h6"/></svg><span>New file</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3 19 19M19 5l-1.7 1.7M6.7 17.3 5 19"/></svg><span>Toggle theme</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span>Open settings</span><span class="kcmd-hint">Page</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 1 0-6-6l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 1 0 6 6l1.5-1.5"/></svg><span>Copy page link</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>Download report</span><span class="kcmd-hint">Action</span></button></li>
+  </ul>
+  <div class="kcmd-empty" data-command-empty style="display:none">No results.</div>
+</dialog></section><section class="tt-stage" aria-label="Command 2"><span class="tt-tag" aria-hidden="true">2</span><button type="button" class="btn btn-sec btn-md" data-command-open><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span style="margin:0 var(--k-space-6) 0 var(--k-space-0-5)">Search…</span><span class="k-kbd">⌘</span> <span class="k-kbd">K</span></button>
+<dialog class="kcmd" data-command aria-label="Command palette">
+  <div class="kcmd-input-row">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg>
+    <input class="kcmd-input" data-command-input type="text" placeholder="Type a command or search…" aria-label="Search commands">
+  </div>
+  <ul class="kcmd-list">
+    <li><button type="button" class="kcmd-item active" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M9.5 9.5v10"/></svg><span>Go to Dashboard</span><span class="kcmd-hint">Page</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M12 12v6M9 15h6"/></svg><span>New file</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3 19 19M19 5l-1.7 1.7M6.7 17.3 5 19"/></svg><span>Toggle theme</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span>Open settings</span><span class="kcmd-hint">Page</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 1 0-6-6l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 1 0 6 6l1.5-1.5"/></svg><span>Copy page link</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>Download report</span><span class="kcmd-hint">Action</span></button></li>
+  </ul>
+  <div class="kcmd-empty" data-command-empty style="display:none">No results.</div>
+</dialog></section><section class="tt-stage" aria-label="Command 3"><span class="tt-tag" aria-hidden="true">3</span><button type="button" class="btn btn-sec btn-md" data-command-open><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg><span style="margin:0 var(--k-space-6) 0 var(--k-space-0-5)">Search…</span><span class="k-kbd">⌘</span> <span class="k-kbd">K</span></button>
+<dialog class="kcmd" data-command aria-label="Command palette">
+  <div class="kcmd-input-row">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.5-4.5"/></svg>
+    <input class="kcmd-input" data-command-input type="text" placeholder="Type a command or search…" aria-label="Search commands">
+  </div>
+  <ul class="kcmd-list">
+    <li><button type="button" class="kcmd-item active" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M9.5 9.5v10"/></svg><span>Go to Dashboard</span><span class="kcmd-hint">Page</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M12 12v6M9 15h6"/></svg><span>New file</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3 19 19M19 5l-1.7 1.7M6.7 17.3 5 19"/></svg><span>Toggle theme</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M3 6h10M17 6h4M3 12h4M11 12h10M3 18h12M19 18h2"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></svg><span>Open settings</span><span class="kcmd-hint">Page</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 1 0-6-6l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 1 0 6 6l1.5-1.5"/></svg><span>Copy page link</span><span class="kcmd-hint">Action</span></button></li>
+    <li><button type="button" class="kcmd-item" data-cmd-item><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>Download report</span><span class="kcmd-hint">Action</span></button></li>
+  </ul>
+  <div class="kcmd-empty" data-command-empty style="display:none">No results.</div>
+</dialog></section></article>
+<article class="tt-part" id="part-context-menu" aria-labelledby="h-context-menu"><div class="tt-head"><span class="tt-num" aria-hidden="true">37</span><h2 class="tt-name" id="h-context-menu" tabindex="-1">Context Menu</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/context-menu/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Context Menu 1"><span class="tt-tag" aria-hidden="true">1</span><div style="max-width:430px">
+  <div class="k-ctx-zone" data-ctx-zone tabindex="0">Right-click in this area<br>(or press Shift+F10)</div>
+  <div class="k-ctx" data-ctx role="menu" hidden>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg> Open preview <span class="hint">⏎</span></button>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Duplicate <span class="hint">⌘D</span></button>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 1 0-6-6l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 1 0 6 6l1.5-1.5"/></svg> Copy link</button>
+    <hr>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Download</button>
+    <button type="button" role="menuitem" class="danger"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6.5 7l1 12a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2l1-12"/><path d="M10 11.5v5.5M14 11.5v5.5"/></svg> Delete <span class="hint">⌫</span></button>
+  </div>
+</div></section><section class="tt-stage" aria-label="Context Menu 2"><span class="tt-tag" aria-hidden="true">2</span><div style="max-width:430px">
+  <div class="k-ctx-zone" data-ctx-zone tabindex="0">Right-click in this area<br>(or press Shift+F10)</div>
+  <div class="k-ctx" data-ctx role="menu" hidden>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg> Open preview <span class="hint">⏎</span></button>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Duplicate <span class="hint">⌘D</span></button>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 1 0-6-6l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 1 0 6 6l1.5-1.5"/></svg> Copy link</button>
+    <hr>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Download</button>
+    <button type="button" role="menuitem" class="danger"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6.5 7l1 12a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2l1-12"/><path d="M10 11.5v5.5M14 11.5v5.5"/></svg> Delete <span class="hint">⌫</span></button>
+  </div>
+</div></section><section class="tt-stage" aria-label="Context Menu 3"><span class="tt-tag" aria-hidden="true">3</span><div style="max-width:430px">
+  <div class="k-ctx-zone" data-ctx-zone tabindex="0">Right-click in this area<br>(or press Shift+F10)</div>
+  <div class="k-ctx" data-ctx role="menu" hidden>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg> Open preview <span class="hint">⏎</span></button>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Duplicate <span class="hint">⌘D</span></button>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 1 0-6-6l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 1 0 6 6l1.5-1.5"/></svg> Copy link</button>
+    <hr>
+    <button type="button" role="menuitem"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg> Download</button>
+    <button type="button" role="menuitem" class="danger"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6.5 7l1 12a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2l1-12"/><path d="M10 11.5v5.5M14 11.5v5.5"/></svg> Delete <span class="hint">⌫</span></button>
+  </div>
+</div></section></article>
+<article class="tt-part" id="part-hover-card" aria-labelledby="h-hover-card"><div class="tt-head"><span class="tt-num" aria-hidden="true">38</span><h2 class="tt-name" id="h-hover-card" tabindex="-1">Hover Card</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/hover-card/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Hover Card 1"><span class="tt-tag" aria-hidden="true">1</span><div style="font-size:var(--k-text-base);color:var(--k-ink-2)">The release notes were drafted by
+  <span class="k-hover" data-hover>
+    <a class="trigger" href="#">Aoi Kimura</a>
+    <span class="card">
+      <span style="display:flex;gap:var(--k-space-3);align-items:center"><span class="k-avatar" aria-hidden="true" data-size="lg">AK</span><span><h4>Aoi Kimura</h4><p style="margin:0">Product designer, Tokyo</p></span></span>
+      <p>Owns the design system and the Motion line. Usually replies within the hour.</p>
+    </span>
+  </span>
+  and are ready for review.</div></section><section class="tt-stage" aria-label="Hover Card 2"><span class="tt-tag" aria-hidden="true">2</span><div style="font-size:var(--k-text-base);color:var(--k-ink-2)">The release notes were drafted by
+  <span class="k-hover" data-hover>
+    <a class="trigger" href="#">Aoi Kimura</a>
+    <span class="card">
+      <span style="display:flex;gap:var(--k-space-3);align-items:center"><span class="k-avatar" aria-hidden="true" data-size="lg">AK</span><span><h4>Aoi Kimura</h4><p style="margin:0">Product designer, Tokyo</p></span></span>
+      <p>Owns the design system and the Motion line. Usually replies within the hour.</p>
+    </span>
+  </span>
+  and are ready for review.</div></section><section class="tt-stage" aria-label="Hover Card 3"><span class="tt-tag" aria-hidden="true">3</span><div style="font-size:var(--k-text-base);color:var(--k-ink-2)">The release notes were drafted by
+  <span class="k-hover" data-hover>
+    <a class="trigger" href="#">Aoi Kimura</a>
+    <span class="card">
+      <span style="display:flex;gap:var(--k-space-3);align-items:center"><span class="k-avatar" aria-hidden="true" data-size="lg">AK</span><span><h4>Aoi Kimura</h4><p style="margin:0">Product designer, Tokyo</p></span></span>
+      <p>Owns the design system and the Motion line. Usually replies within the hour.</p>
+    </span>
+  </span>
+  and are ready for review.</div></section></article>
+<article class="tt-part" id="part-data-table" aria-labelledby="h-data-table"><div class="tt-head"><span class="tt-num" aria-hidden="true">39</span><h2 class="tt-name" id="h-data-table" tabindex="-1">Data Table</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/data-table/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="Data Table 1"><span class="tt-tag" aria-hidden="true">1</span><div class="k-dt" data-dt style="max-width:560px">
+  <div class="k-dt-scroll" role="region" aria-label="Members" tabindex="0">
+    <table class="k-dt-t">
+      <caption class="k-dt-caption">Members</caption>
+      <thead><tr>
+        <th style="width:34px"><input type="checkbox" aria-label="Select all rows"></th>
+        <th aria-sort="none"><button class="k-dt-sort" data-sort="str" data-dir="" type="button">Name <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
+        <th>Role</th>
+        <th>Status</th>
+        <th class="num"><button class="k-dt-sort" data-sort="num" data-dir="" type="button">Billed <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
+      </tr></thead>
+      <tbody><tr><td><input type="checkbox" aria-label="Select Aoi Kimura"></td><td style="font-weight:550">Aoi Kimura</td><td>Designer</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="4820">$4,820</td></tr><tr><td><input type="checkbox" aria-label="Select Ren Sato"></td><td style="font-weight:550">Ren Sato</td><td>Engineer</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="3950">$3,950</td></tr><tr><td><input type="checkbox" aria-label="Select Mei Chen"></td><td style="font-weight:550">Mei Chen</td><td>Engineer</td><td><span class="badge">Invited</span></td><td class="num" data-v="0">$0</td></tr><tr><td><input type="checkbox" aria-label="Select Jonas Berg"></td><td style="font-weight:550">Jonas Berg</td><td>Support</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="2715">$2,715</td></tr><tr><td><input type="checkbox" aria-label="Select Priya Nair"></td><td style="font-weight:550">Priya Nair</td><td>Designer</td><td><span class="badge red">Suspended</span></td><td class="num" data-v="1980">$1,980</td></tr></tbody>
+    </table>
+  </div>
+  <div class="k-dt-f">5 members<span class="pg"><button type="button" class="btn btn-sec btn-sm" disabled>Previous</button><button type="button" class="btn btn-sec btn-sm">Next</button></span></div>
+</div></section><section class="tt-stage" aria-label="Data Table 2"><span class="tt-tag" aria-hidden="true">2</span><div class="k-dt" data-dt style="max-width:560px">
+  <div class="k-dt-scroll" role="region" aria-label="Members" tabindex="0">
+    <table class="k-dt-t">
+      <caption class="k-dt-caption">Members</caption>
+      <thead><tr>
+        <th style="width:34px"><input type="checkbox" aria-label="Select all rows"></th>
+        <th aria-sort="none"><button class="k-dt-sort" data-sort="str" data-dir="" type="button">Name <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
+        <th>Role</th>
+        <th>Status</th>
+        <th class="num"><button class="k-dt-sort" data-sort="num" data-dir="" type="button">Billed <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
+      </tr></thead>
+      <tbody><tr><td><input type="checkbox" aria-label="Select Aoi Kimura"></td><td style="font-weight:550">Aoi Kimura</td><td>Designer</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="4820">$4,820</td></tr><tr><td><input type="checkbox" aria-label="Select Ren Sato"></td><td style="font-weight:550">Ren Sato</td><td>Engineer</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="3950">$3,950</td></tr><tr><td><input type="checkbox" aria-label="Select Mei Chen"></td><td style="font-weight:550">Mei Chen</td><td>Engineer</td><td><span class="badge">Invited</span></td><td class="num" data-v="0">$0</td></tr><tr><td><input type="checkbox" aria-label="Select Jonas Berg"></td><td style="font-weight:550">Jonas Berg</td><td>Support</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="2715">$2,715</td></tr><tr><td><input type="checkbox" aria-label="Select Priya Nair"></td><td style="font-weight:550">Priya Nair</td><td>Designer</td><td><span class="badge red">Suspended</span></td><td class="num" data-v="1980">$1,980</td></tr></tbody>
+    </table>
+  </div>
+  <div class="k-dt-f">5 members<span class="pg"><button type="button" class="btn btn-sec btn-sm" disabled>Previous</button><button type="button" class="btn btn-sec btn-sm">Next</button></span></div>
+</div></section><section class="tt-stage" aria-label="Data Table 3"><span class="tt-tag" aria-hidden="true">3</span><div class="k-dt" data-dt style="max-width:560px">
+  <div class="k-dt-scroll" role="region" aria-label="Members" tabindex="0">
+    <table class="k-dt-t">
+      <caption class="k-dt-caption">Members</caption>
+      <thead><tr>
+        <th style="width:34px"><input type="checkbox" aria-label="Select all rows"></th>
+        <th aria-sort="none"><button class="k-dt-sort" data-sort="str" data-dir="" type="button">Name <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
+        <th>Role</th>
+        <th>Status</th>
+        <th class="num"><button class="k-dt-sort" data-sort="num" data-dir="" type="button">Billed <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
+      </tr></thead>
+      <tbody><tr><td><input type="checkbox" aria-label="Select Aoi Kimura"></td><td style="font-weight:550">Aoi Kimura</td><td>Designer</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="4820">$4,820</td></tr><tr><td><input type="checkbox" aria-label="Select Ren Sato"></td><td style="font-weight:550">Ren Sato</td><td>Engineer</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="3950">$3,950</td></tr><tr><td><input type="checkbox" aria-label="Select Mei Chen"></td><td style="font-weight:550">Mei Chen</td><td>Engineer</td><td><span class="badge">Invited</span></td><td class="num" data-v="0">$0</td></tr><tr><td><input type="checkbox" aria-label="Select Jonas Berg"></td><td style="font-weight:550">Jonas Berg</td><td>Support</td><td><span class="badge asagi">Active</span></td><td class="num" data-v="2715">$2,715</td></tr><tr><td><input type="checkbox" aria-label="Select Priya Nair"></td><td style="font-weight:550">Priya Nair</td><td>Designer</td><td><span class="badge red">Suspended</span></td><td class="num" data-v="1980">$1,980</td></tr></tbody>
+    </table>
+  </div>
+  <div class="k-dt-f">5 members<span class="pg"><button type="button" class="btn btn-sec btn-sm" disabled>Previous</button><button type="button" class="btn btn-sec btn-sm">Next</button></span></div>
+</div></section></article>
+<article class="tt-part" id="part-file-upload" aria-labelledby="h-file-upload"><div class="tt-head"><span class="tt-num" aria-hidden="true">40</span><h2 class="tt-name" id="h-file-upload" tabindex="-1">File Upload</h2><span class="badge yamabuki">Beta</span><a class="tt-link" href="../components/file-upload/preview.html">Part source</a></div><p class="tt-note"><bdi>3 instances, same markup.</bdi></p><section class="tt-stage" aria-label="File Upload 1"><span class="tt-tag" aria-hidden="true">1</span><div class="k-up" data-upload style="max-width:430px">
+  <label class="k-up-zone">
+    <input type="file" multiple>
+    <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+    <b>Drop files here, or <u>browse</u></b>
+    <span>PNG, JPG or PDF — up to 10 MB each</span>
+  </label>
+  <ul class="k-up-list" data-up-list data-rm-icon="<svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.7&quot; stroke-linecap=&quot;square&quot; stroke-linejoin=&quot;bevel&quot; aria-hidden=&quot;true&quot;><path d=&quot;M6 6l12 12M18 6 6 18&quot;/></svg>" data-icon="<svg width=&quot;17&quot; height=&quot;17&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z&quot;/><path d=&quot;M14 3v5h5&quot;/></svg>">
+    <li class="k-up-item"><span class="fi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg></span><span class="nm">q3-board-deck.pdf</span><span class="sz">2.4 MB</span><button class="rm" type="button" aria-label="Remove q3-board-deck.pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></li>
+  </ul>
+</div></section><section class="tt-stage" aria-label="File Upload 2"><span class="tt-tag" aria-hidden="true">2</span><div class="k-up" data-upload style="max-width:430px">
+  <label class="k-up-zone">
+    <input type="file" multiple>
+    <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+    <b>Drop files here, or <u>browse</u></b>
+    <span>PNG, JPG or PDF — up to 10 MB each</span>
+  </label>
+  <ul class="k-up-list" data-up-list data-rm-icon="<svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.7&quot; stroke-linecap=&quot;square&quot; stroke-linejoin=&quot;bevel&quot; aria-hidden=&quot;true&quot;><path d=&quot;M6 6l12 12M18 6 6 18&quot;/></svg>" data-icon="<svg width=&quot;17&quot; height=&quot;17&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z&quot;/><path d=&quot;M14 3v5h5&quot;/></svg>">
+    <li class="k-up-item"><span class="fi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg></span><span class="nm">q3-board-deck.pdf</span><span class="sz">2.4 MB</span><button class="rm" type="button" aria-label="Remove q3-board-deck.pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></li>
+  </ul>
+</div></section><section class="tt-stage" aria-label="File Upload 3"><span class="tt-tag" aria-hidden="true">3</span><div class="k-up" data-upload style="max-width:430px">
+  <label class="k-up-zone">
+    <input type="file" multiple>
+    <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+    <b>Drop files here, or <u>browse</u></b>
+    <span>PNG, JPG or PDF — up to 10 MB each</span>
+  </label>
+  <ul class="k-up-list" data-up-list data-rm-icon="<svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.7&quot; stroke-linecap=&quot;square&quot; stroke-linejoin=&quot;bevel&quot; aria-hidden=&quot;true&quot;><path d=&quot;M6 6l12 12M18 6 6 18&quot;/></svg>" data-icon="<svg width=&quot;17&quot; height=&quot;17&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z&quot;/><path d=&quot;M14 3v5h5&quot;/></svg>">
+    <li class="k-up-item"><span class="fi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg></span><span class="nm">q3-board-deck.pdf</span><span class="sz">2.4 MB</span><button class="rm" type="button" aria-label="Remove q3-board-deck.pdf"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></li>
+  </ul>
+</div></section></article>
+</main>
+<script src="../components/field/field.js"></script><script src="../components/modal/modal.js"></script><script src="../components/dropdown/dropdown.js"></script><script src="../components/popover/popover.js"></script><script src="../components/toast/toast.js"></script><script src="../components/tabs/tabs.js"></script><script src="../components/alert-dialog/alert-dialog.js"></script><script src="../components/drawer/drawer.js"></script><script src="../components/combobox/combobox.js"></script><script src="../components/date-picker/date-picker.js"></script><script src="../components/slider/slider.js"></script><script src="../components/toggle/toggle.js"></script><script src="../components/sidebar/sidebar.js"></script><script src="../components/command/command.js"></script><script src="../components/context-menu/context-menu.js"></script><script src="../components/hover-card/hover-card.js"></script><script src="../components/data-table/data-table.js"></script><script src="../components/file-upload/file-upload.js"></script>
+<script>(() => {
+  'use strict';
+  const root = document.documentElement;
+  if (root.hasAttribute('data-tt-ready')) return;
+  root.setAttribute('data-tt-ready', '');
+  const params = new URLSearchParams(location.search);
+  const apply = () => {
+    root.dir = params.get('dir') === 'rtl' ? 'rtl' : 'ltr';
+    root.dataset.theme = params.get('theme') === 'dark' ? 'dark' : 'light';
+    document.querySelectorAll('[data-tt-set]').forEach(input => {
+      input.checked = (params.get(input.name) || input.dataset.ttDefault) === input.value;
+    });
+  };
+  apply();
+  document.querySelectorAll('[data-tt-set]').forEach(input => input.addEventListener('change', () => {
+    params.set(input.name, input.value);
+    history.replaceState(null, '', '?' + params.toString());
+    apply();
+  }));
+  const jump = document.querySelector('[data-tt-jump]');
+  if (jump) jump.addEventListener('change', () => {
+    const target = document.getElementById(jump.value);
+    if (!target) return;
+    target.scrollIntoView({ block: 'start' });
+    target.querySelector('h2').focus({ preventScroll: true });
+  });
+})();</script>
+</body></html>

@@ -455,6 +455,7 @@ LP_STYLE = """<style>
 .fc-cta{margin-top:22px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .hero3{text-align:center;padding:76px 0 6px}
 .hero3-eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink2)}
+.hero3-eyebrow a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .hero3 h1{font-size:64px;line-height:1.06;letter-spacing:-.028em;font-weight:650;margin-top:24px}
 .hero3 h1 .dim{color:var(--ink2)}
 .hero3-sub{max-width:60ch;margin:24px auto 0;font-size:15.5px;line-height:1.85;color:var(--ink2);letter-spacing:.012em}
@@ -573,6 +574,12 @@ def audit_page():
 
 def plain_footer():
     return '<div class="wrap"><footer class="site"><b>KATA UI</b><a href="/audit/">' + MOLD_STATUS + '</a><a href="/docs/">Docs</a><a href="/lab/">Lab</a><a href="https://github.com/kajisho5/KATA-UI">GitHub</a></footer></div>'
+
+
+def status_split(comps):
+    """Count meta.json status values; the home page prints these, never a typed number."""
+    stable = sum(1 for c in comps if c['meta'].get('status') == 'stable')
+    return stable, len(comps) - stable
 
 
 def landing(comps, blocks, n_icons, templates=None):
@@ -780,7 +787,7 @@ def landing(comps, blocks, n_icons, templates=None):
     body = f"""
 <div class="wrap lp">
 <header class="hero3">
-<p class="hero3-eyebrow">{n} components · {nb} blocks · {nt} templates</p>
+<p class="hero3-eyebrow">{n} components (<a href="/components/?status=stable">{status_split(comps)[0]} stable</a> · <a href="/components/?status=beta">{status_split(comps)[1]} beta</a>) · {nb} blocks · {nt} templates</p>
 <h1>HTML, CSS and JavaScript<br><span class="dim">for the page you're building.</span></h1>
 <p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. No framework, no build step.</p>
 <div class="cta"><a class="btn btn-pri btn-lg" href="/components/">Browse components</a><a class="btn btn-ghost btn-lg" href="/docs/getting-started/">Get started</a></div>
@@ -917,7 +924,7 @@ def components_index(comps):
   <p class="catnone" id="catnone" style="display:none">No parts match that word. Try something shorter.</p>
 {catalog_sections(comps)}
 {CATALOG_SCRIPT}
-<script>document.querySelectorAll('.catstat button').forEach(b => b.addEventListener('click', () => {{ window.__stf = b.dataset.st; document.querySelectorAll('.catstat button').forEach(x => x.classList.toggle('on', x === b)); document.getElementById('catq').dispatchEvent(new Event('input')); }}));</script>
+<script>document.querySelectorAll('.catstat button').forEach(b => b.addEventListener('click', () => {{ window.__stf = b.dataset.st; document.querySelectorAll('.catstat button').forEach(x => x.classList.toggle('on', x === b)); document.getElementById('catq').dispatchEvent(new Event('input')); }})); {{ const st = new URLSearchParams(location.search).get('status'); const b = st && document.querySelector('.catstat button[data-st="' + st + '"]'); if (b) b.click(); }}</script>
 </div>
 {FOOTER}
 </body>

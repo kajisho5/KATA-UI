@@ -9,7 +9,7 @@
     "suffix",
     "form"
   ],
-  "status": "stable",
+  "status": "beta",
   "usage": "One outline for the whole row: the group draws the seams, the Input part keeps its own focus ring. Text addons are for units and fixed prefixes (¥, https://); anything clickable should be a real button at the end.",
   "a11y": "The addon is decoration for the eye — the label and the placeholder must carry the unit on their own (\"Amount in yen\", not just \"Amount\"). Attached buttons are ordinary buttons with ordinary names."
 }

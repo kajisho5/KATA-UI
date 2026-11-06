@@ -120,6 +120,7 @@ Missing number #12 is open, not silently assumed merged.
 | #82 | 14f035a | T4 Command: one shared Cmd/Ctrl+K document listener per script load (was one per palette), logical CSS; beta. |
 | #83 | 55b5f02 | T4 Context Menu: one shared outside-press document listener per script load (was one per menu), logical CSS; beta. |
 | #84 | c7e14f4 | T4 Hover Card: closed card visibility:hidden (was read in the sentence), Escape dismisses (WCAG 1.4.13), guarded IIFE, viewport fit at 360px; beta. |
+| #85 | c9e98f7 | T4 Data Table: table scrolls inside a named, focusable .k-dt-scroll region (was clipped at narrow widths), inset focus outline, logical borders; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -127,7 +128,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#84 were squash-merged the same way after green CI. The owner then asked the
+#29–#85 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -144,7 +145,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#85](https://github.com/kajisho5/KATA-UI/pull/85) | T4 Data Table: table scrolls inside a named, focusable .k-dt-scroll region (was clipped at narrow widths), inset focus outline, logical borders; beta. |
+| [#86](https://github.com/kajisho5/KATA-UI/pull/86) | T4 File Upload: hint readable on hover/drag (4.48 -> 7.16:1 light), zone and remove-button active states, disabled zone; beta. Last of the remaining 19. |
 
 ### npm and environment
 
@@ -196,7 +197,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #85 (T4 Data Table), then file-upload (prepared locally).**
+PR. Do not start while the previous task's PR is open. **Current blocker: #86 (T4 File Upload, the last of the remaining 19), then the Torture Test page below.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -459,7 +460,11 @@ the preview (381px in 292px), combo, Dashboard demo and listing preview were
 clipped and could not scroll. Tables now sit in .k-dt-scroll (role=region,
 aria-label, tabindex=0, overflow-x:auto) like Table #64, with a 2px inset outline
 (an outer ring would be clipped). New class .k-dt-scroll. 1280px pixel-identical. Beta.
-Next: file-upload.
+File Upload ([#86](https://github.com/kajisho5/KATA-UI/pull/86)): the hint was --k-ink-3 on the tinted hover/drag
+background (4.48:1 light); it steps up to --k-ink-2 there (7.16 / 6.24). Added
+:active for the zone and remove button and a disabled zone (:has(input:disabled)).
+At rest pixel-identical. Beta.
+The remaining 19 are done (#67-#86). Next: the Torture Test page below.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

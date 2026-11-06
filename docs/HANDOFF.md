@@ -110,6 +110,7 @@ Missing number #12 is open, not silently assumed merged.
 | #72 | 5c8f50c | T4 Slider: RTL fill on the correct side, label-wrapped samples (no fixed IDs), thumb edge 4.83:1, IIFE with data-kata-ready; beta. |
 | #73 | 82e041b | T4 Toggle: guarded IIFE (a second load no longer undoes every click), Bold/Italic/Underline names, active and disabled states; beta. |
 | #74 | 47872f4 | T4 Segmented: hover state on unchecked segments, per-group name note, three-set page and browser test; beta. |
+| #75 | 3c43aec | T4 Avatar: every avatar hidden or a named image (31 hidden next to visible names), fictional sample names, RTL status dot, dot no longer clipped; beta. |
 | #37 | 7d7b562 | Focus rule: shared floor plus cancellation detection; browser focus measurement in CI; 120 → 164. The owner approved this checker change in chat on 2026-11-06. |
 
 #25, #27 and #28 were squash-merged on 2026-11-05 by the Claude Code session,
@@ -117,7 +118,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#74 were squash-merged the same way after green CI. The owner then asked the
+#29–#75 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -134,7 +135,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#75](https://github.com/kajisho5/KATA-UI/pull/75) | T4 Avatar: every avatar hidden or a named image (31 hidden next to visible names), fictional sample names, RTL status dot; beta. |
+| [#76](https://github.com/kajisho5/KATA-UI/pull/76) | T4 Progress: both preview bars named (were unnamed progressbars), three-set page and browser test; beta. |
 
 ### npm and environment
 
@@ -186,7 +187,7 @@ output and report skips rather than claiming headless verification happened.
 ## Task queue
 
 Execute top to bottom. One task = one PR. Update Status and this queue in the same
-PR. Do not start while the previous task's PR is open. **Current blocker: #75 (T4 Avatar), then progress, skeleton, spinner, empty-state, separator and sidebar (prepared locally), then the rest of the remaining 19 below.**
+PR. Do not start while the previous task's PR is open. **Current blocker: #76 (T4 Progress), then skeleton, spinner, empty-state, separator, sidebar, command, context-menu and hover-card (prepared locally), then data-table and file-upload.**
 Never merge, publish, deprecate or close PRs/issues as the implementation agent
 unless the owner explicitly asks in that session (see Merged work above).
 
@@ -406,7 +407,11 @@ Avatar ([#75](https://github.com/kajisho5/KATA-UI/pull/75)): initials were read 
 blocks, templates and combos are aria-hidden; labelled avatars are role=img.
 The preview uses fictional names. The status dot uses inset-inline-end.
 tests/test_avatar_names.py checks every .k-avatar statically. Beta.
-Next: progress.
+Progress ([#76](https://github.com/kajisho5/KATA-UI/pull/76)): both preview progressbars had no accessible name; they now
+carry aria-label matching the visible task. No other unnamed progressbar exists
+in components, blocks or templates. The fill starts at the inline start in RTL.
+Contrast: task 17.72/16.12, percentage 7.73/6.91. Beta.
+Next: skeleton.
 
 Remaining 19 of the forty (chosen by the session on 2026-11-06 from parts most
 UI libraries ship; the queue names only 21; the owner may reorder or swap):

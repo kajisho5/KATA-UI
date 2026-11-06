@@ -1,5 +1,7 @@
 /* KATA Separator */
-.k-sep{border:0;border-top:1px solid var(--k-line)}
+/* Zero inline margins: the UA hr margin is auto, which shrinks it to 0px inside grid and flex containers. */
+.k-sep{border:0;border-block-start:1px solid var(--k-line);margin-inline:0}
 .k-sep-label{display:flex;align-items:center;gap:var(--k-space-3);color:var(--k-ink-3);font-size:var(--k-text-sm);font-family:var(--k-font)}
-.k-sep-label::before,.k-sep-label::after{content:"";height:1px;background:var(--k-line);flex:1}
-.k-sep-v{width:1px;align-self:stretch;background:var(--k-line);flex:none}
+/* Borders, not backgrounds: forced-colors mode drops background colors. */
+.k-sep-label::before,.k-sep-label::after{content:"";block-size:0;border-block-start:1px solid var(--k-line);flex:1}
+.k-sep-v{inline-size:0;align-self:stretch;border-inline-start:1px solid var(--k-line);flex:none}

@@ -6,3 +6,4 @@
 .k-seg-item input:checked + span{background:var(--k-bg);color:var(--k-ink);font-weight:550;box-shadow:var(--k-shadow-xs)}
 .k-seg-item input:focus-visible + span{box-shadow:var(--k-ring)}
 .k-seg-item input:disabled + span{opacity:.5;cursor:not-allowed}
+.k-seg-item:hover input:not(:checked):not(:disabled) + span{color:var(--k-ink)}

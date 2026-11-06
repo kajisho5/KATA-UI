@@ -10,5 +10,5 @@
   ],
   "status": "beta",
   "usage": "For 2–4 mutually exclusive modes that switch content in place (Day / Week / Month). For settings that submit with a form, Tabs or Radio group may be the honest choice.",
-  "a11y": "Real radio inputs underneath, so arrows keys and screen readers behave. The pill is presentation only."
+  "a11y": "Real radio inputs underneath, so arrow keys and screen readers behave. The pill is presentation only; the group is a named radiogroup and each segment is named by its label text. Each group needs its own name attribute: a sample pasted twice with the same names joins one radio group. Unchecked text measures 6.55:1 light / 5.81:1 dark on the segment track; the selected segment 17.72:1 / 16.12:1. Beta until a recorded screen-reader pass."
 }

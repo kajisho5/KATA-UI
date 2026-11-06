@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   let serial = 0;
+  const instances = [];
   function identify(element, prefix) {
     if (!element.id) {
       let candidate;
@@ -125,6 +126,11 @@
       }
     });
     items.forEach(item => item.addEventListener('click', () => close()));
-    document.addEventListener('pointerdown', event => { if (!zone.contains(event.target) && !menu.contains(event.target)) close(false); });
+    instances.push({ zone, menu, close });
+  });
+  // One shared outside-press listener per script load; a second load finds no new menu and adds none.
+  if (!instances.length) return;
+  document.addEventListener('pointerdown', event => {
+    instances.forEach(({ zone, menu, close }) => { if (!zone.contains(event.target) && !menu.contains(event.target)) close(false); });
   });
 })();

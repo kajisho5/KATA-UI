@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "Initials are the default — they never 404. Use the group for teams; cap it at 4 faces plus a count chip.",
-  "a11y": "Decorative avatars are aria-hidden; meaningful ones carry the person's name as alt text or aria-label."
+  "a11y": "Decorative avatars (initials next to a visible name) are aria-hidden; an avatar that stands for a person on its own is role=\"img\" with the name in aria-label (a bare aria-label on a span is not allowed for generic elements). A stack is one role=\"img\" with a summary label. The status dot sits at the inline end (left in RTL); its state is in the label, not the color. Beta until a recorded screen-reader pass."
 }

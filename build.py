@@ -358,7 +358,7 @@ def head(title, desc, extra=''):
 {HEADER}
 """
 
-def card(c, gallery=False):
+def card(c, gallery=False, compact=False):
     m = c['meta']
     tags = ''.join(f'<span class="tag">{esc(t)}</span>' for t in m.get('tags', []))
     q = esc((m['title'] + ' ' + c['slug'] + ' ' + ' '.join(m.get('tags', [])) + ' ' + m['category']).lower())
@@ -375,8 +375,8 @@ def card(c, gallery=False):
         stage = f'<span class="gstage" aria-hidden="true"><span class="gscale">{pv_html}</span></span>'
     return f"""<a class="card{' gcard' if gallery else ''}" data-q="{q}" data-status="{esc(m.get('status','stable'))}" href="/components/{c['slug']}/">
   {stage}<h3>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h3>
-  <p>{esc(m['description'])}</p>
-  <span class="tags">{tags}</span>
+  {'' if compact else f'<p>{esc(m["description"])}</p>'}
+  {'' if compact else f'<span class="tags">{tags}</span>'}
 </a>"""
 
 def catalog_sections(comps):
@@ -789,18 +789,17 @@ def landing(comps, blocks, n_icons, templates=None):
 <header class="hero3">
 <p class="hero3-eyebrow">{n} components (<a href="/components/?status=stable">{status_split(comps)[0]} stable</a> · <a href="/components/?status=beta">{status_split(comps)[1]} beta</a>) · {nb} blocks · {nt} templates</p>
 <h1>HTML, CSS and JavaScript<br><span class="dim">for the page you're building.</span></h1>
-<p class="hero3-sub">Copy a button, form or table into your project. Edit the files yourself. No framework, no build step.</p>
+<p class="hero3-sub">Copy the files into your project. No framework, no build step.</p>
 <div class="cta"><a class="btn btn-pri btn-lg" href="/components/">Browse components</a><a class="btn btn-ghost btn-lg" href="/docs/getting-started/">Get started</a></div>
-<p class="herotrust">Components are MIT licensed. <a class="fmold" href="/audit/">{MOLD_STATUS}</a> · <a href="/audit/">Read the results</a></p>
+<p class="herotrust">MIT · <a class="fmold" href="/audit/">{MOLD_STATUS.split(' · ')[0]}</a> · <a href="/audit/">Results</a></p>
 </header>
-<section class="lpsec"><h2>One mold: shared design tokens</h2><p class="lpnote">Load tokens.css, then the component's CSS and HTML. Add its JavaScript if it has any. Change colors and spacing through the tokens.</p></section>
-<section class="lpsec"><h2>Start with five components</h2><p class="lpnote">Buttons for actions, inputs for text, badges for status, tabs for views and toasts for feedback.</p><div class="cards">{''.join(card(c) for c in _five)}</div></section>
-<section class="lpsec"><h2>Install from your terminal</h2><div class="term">npx @kajisho5/kataui init<br>npx @kajisho5/kataui add button</div><p class="lpnote">The CLI copies files and includes dependencies. You can also copy code from each component page.</p></section>
-<section class="lpsec"><h2>A page built from these components</h2><p class="lpnote">Try a <a href="/templates/dashboard/demo/">dashboard</a>, <a href="/templates/inbox/demo/">inbox</a> or <a href="/templates/settings-page/demo/">settings page</a>. Each template lists its components.</p><p class="lpnote">For individual controls, see the <a href="/components/">component previews</a>.</p></section>
-<section class="lpsec"><h2>Use the source in your tools</h2><p class="lpnote">The <a href="/registry.json">registry</a>, <a href="/docs/mcp-server/">MCP server</a> and <a href="/skill/SKILL.md">AI skill</a> give assistants the same files you copy here. Check results and Beta labels show what still needs work.</p><p class="lpnote">Works with plain HTML, Astro, Laravel, Django, Rails and WordPress. React projects need <a href="/docs/react/">a few markup changes</a>.</p></section>
-<section class="lpsec"><h2>Components are free. Pro adds layouts.</h2><p class="lpnote">{nb} blocks and {nt} templates. Planned price: $129 once, including future additions. Sales have not opened.</p><a href="/pricing/">See pricing and the full list</a></section>
-<section class="lpsec"><h2>Motion experiments</h2><p class="lpnote">Animated text, backgrounds and KATAYABURI experiments are in the <a href="/lab/">Lab</a>.</p></section>
-<section class="lpsec"><h2>Built something with KATA?</h2><p class="lpnote"><a href="/showcase/">See the showcase</a> or <a href="https://github.com/kajisho5/KATA-UI">report a problem on GitHub</a>.</p></section>
+<section class="lpsec"><h2>One mold: shared tokens</h2><p class="lpnote">Load tokens.css, then a component. Change a token; every part follows.</p></section>
+<section class="lpsec"><h2>Five to start</h2><div class="cards cards-min">{''.join(card(c, compact=True) for c in _five)}</div></section>
+<section class="lpsec"><h2>Install</h2><div class="term">npx @kajisho5/kataui init<br>npx @kajisho5/kataui add button</div><p class="lpnote">Or copy from any component page.</p></section>
+<section class="lpsec"><h2>Templates</h2><p class="lpnote">Try a <a href="/templates/dashboard/demo/">dashboard</a>, <a href="/templates/inbox/demo/">inbox</a> or <a href="/templates/settings-page/demo/">settings page</a>.</p></section>
+<section class="lpsec"><h2>AI tools</h2><p class="lpnote">The <a href="/registry.json">registry</a>, <a href="/docs/mcp-server/">MCP server</a> and <a href="/skill/SKILL.md">AI skill</a> serve the files you copy here.</p><p class="lpnote">Works with any HTML stack; React needs <a href="/docs/react/">a few markup changes</a>.</p></section>
+<section class="lpsec"><h2>Components are free. Pro adds layouts.</h2><p class="lpnote">{nb} blocks, {nt} templates, $129 once. Not on sale yet. <a href="/pricing/">Pricing</a></p></section>
+<section class="lpsec"><p class="lpnote">More: <a href="/lab/">Lab</a> · <a href="/showcase/">Showcase</a> · <a href="https://github.com/kajisho5/KATA-UI">Report a problem</a></p></section>
 </div>{plain_footer()}</body></html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
              + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('sidebar', 'select', 'bar-chart', 'calendar', 'sparkline', 'card', 'aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'word-rotate', 'goo-tabs', 'dock', 'jelly-buttons', 'scramble', 'bounce-letters', 'tilt-card', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/kanban/kanban.css?v={_v(kb_block["css"])}">' if kb_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))

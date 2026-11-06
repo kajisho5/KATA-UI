@@ -44,6 +44,7 @@
     return { cancel, close };
   }
 
+  const instances = [];
   document.querySelectorAll('[data-dp]').forEach(root => {
     if (root.dataset.kataReady) return;
     const input = root.querySelector('[data-dp-input]'), panel = root.querySelector('[data-dp-panel]');
@@ -143,7 +144,10 @@
       event.preventDefault(); view = new Date(focused.getFullYear(), focused.getMonth(), 1); render(true);
     });
     root.addEventListener('focusout', event => { if (event.relatedTarget && !root.contains(event.relatedTarget)) close(); });
-    document.addEventListener('pointerdown', event => { if (!root.contains(event.target)) close(); });
+    instances.push({ root, close });
     input.setAttribute('aria-expanded', 'false'); trigger.setAttribute('aria-expanded', 'false'); render();
   });
+  // One outside-press listener per script load, shared by its instances (contract item 11).
+  if (!instances.length) return;
+  document.addEventListener('pointerdown', event => { instances.forEach(instance => { if (!instance.root.contains(event.target)) instance.close(); }); });
 })();

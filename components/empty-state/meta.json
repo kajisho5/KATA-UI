@@ -9,5 +9,5 @@
   ],
   "status": "beta",
   "usage": "For first-run and no-results states. Name what is missing, then give the single action that fixes it. Never a dead end, never a joke at the user's expense.",
-  "a11y": "The heading inside is a real heading at the right level for the page. The action is a real button or link."
+  "a11y": "The heading inside is a real heading at the right level for the page. The action is a real button or link. The icon is decorative and aria-hidden=\"true\". Spacing uses logical properties, so the layout holds under dir=\"rtl\"."
 }

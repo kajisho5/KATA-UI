@@ -81,6 +81,9 @@ def run(output=ROOT/'docs/review/tag-otp-table'):
                             inputs.first.focus();inputs.first.dispatch_event('compositionstart');inputs.first.evaluate('e=>{e.value="あ";e.dispatchEvent(new InputEvent("input",{bubbles:true,isComposing:true}))}')
                             page.keyboard.press('Enter');assert inputs.first.evaluate('e=>e===document.activeElement')
                             inputs.first.dispatch_event('compositionend');assert inputs.first.input_value()==''
+                            # The part ignores input until a zero-delay timer after compositionend; a later
+                            # zero-delay timer runs after it, so the next fill is not dropped under load.
+                            page.evaluate('()=>new Promise(resolve=>setTimeout(resolve,0))')
                             inputs.first.fill('9');assert root.get_attribute('data-value')=='987654'
                             # Re-entering a complete value after an incomplete state is a new completion.
                             assert page.evaluate('(id)=>window.completions.filter(e=>e.root===id).length',root.get_attribute('id'))==3

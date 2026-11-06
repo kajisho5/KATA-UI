@@ -84,6 +84,7 @@ least 90% of UI-profile targets pass all checks.
   switch, dialog/modal, dropdown-menu, popover, tooltip, toast, card, tabs,
   accordion, badge, alert, table, pagination, breadcrumb, then the remaining
   components needed to reach 40. Map requested names to repository slugs in each PR.
+  - [ ] Date Picker: release procedure run; shared outside-press listener; beta until a screen-reader pass (docs/review/date-picker, [PR #70](https://github.com/kajisho5/KATA-UI/pull/70)).
   - [ ] Combobox: release procedure run; shared outside-press listener; beta until a screen-reader pass (docs/review/combobox, [PR #69](https://github.com/kajisho5/KATA-UI/pull/69)).
   - [ ] Drawer: release procedure run; opens from the inline end in RTL; beta until a screen-reader pass (docs/review/drawer, [PR #68](https://github.com/kajisho5/KATA-UI/pull/68)).
   - [ ] Alert Dialog: release procedure run; button row wraps on narrow screens; beta until a screen-reader pass (docs/review/alert-dialog, [PR #67](https://github.com/kajisho5/KATA-UI/pull/67)).

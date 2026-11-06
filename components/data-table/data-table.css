@@ -1,9 +1,13 @@
 .k-dt{border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);font-family:var(--k-font);overflow:hidden;text-align:start;color:var(--k-ink)}
+/* Narrow screens: the table scrolls inside a named, focusable region; .k-dt keeps overflow:hidden for its corners. */
+.k-dt-scroll{overflow-x:auto}
+/* Inset ring: .k-dt clips anything drawn outside the scroller. */
+.k-dt-scroll:focus-visible{outline:2px solid var(--k-ink);outline-offset:-2px}
 .k-dt-t{width:100%;border-collapse:collapse;font-size:var(--k-text-base)}
-.k-dt-t th{font-size:var(--k-text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;text-align:start;padding:var(--k-space-3) var(--k-space-3);border-bottom:1px solid var(--k-line);background:var(--k-bg-soft);white-space:nowrap}
-.k-dt-t td{padding:var(--k-space-3) var(--k-space-3);border-bottom:1px solid var(--k-line);vertical-align:middle}
+.k-dt-t th{font-size:var(--k-text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--k-ink-3);font-weight:600;text-align:start;padding:var(--k-space-3) var(--k-space-3);border-block-end:1px solid var(--k-line);background:var(--k-bg-soft);white-space:nowrap}
+.k-dt-t td{padding:var(--k-space-3) var(--k-space-3);border-block-end:1px solid var(--k-line);vertical-align:middle}
 .k-dt-t tbody tr:hover{background:var(--k-bg-soft)}
-.k-dt-t tbody tr:last-child td{border-bottom:none}
+.k-dt-t tbody tr:last-child td{border-block-end:none}
 .k-dt-t .num{text-align:end;font-variant-numeric:tabular-nums}
 .k-dt-t th.num{text-align:end}
 .k-dt-sort{display:inline-flex;align-items:center;gap:var(--k-space-1);border:none;background:none;font:inherit;color:inherit;cursor:pointer;padding:0;text-transform:inherit;letter-spacing:inherit}
@@ -11,7 +15,7 @@
 .k-dt-sort[data-dir="asc"] .arr{opacity:1;transform:rotate(180deg)}
 .k-dt-sort[data-dir="desc"] .arr{opacity:1}
 .k-dt input[type="checkbox"]{accent-color:var(--k-accent);width:15px;height:15px;cursor:pointer;vertical-align:middle}
-.k-dt-f{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-3);border-top:1px solid var(--k-line);font-size:var(--k-text-sm);color:var(--k-ink-3)}
+.k-dt-f{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-3);border-block-start:1px solid var(--k-line);font-size:var(--k-text-sm);color:var(--k-ink-3)}
 .k-dt-f .pg{margin-inline-start:auto;display:flex;gap:var(--k-space-2)}
 
 .k-dt-sort:focus-visible,.k-dt input:focus-visible{outline:0;box-shadow:var(--k-ring)}

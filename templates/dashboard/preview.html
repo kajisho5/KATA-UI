@@ -51,15 +51,17 @@
     </section>
     <section class="k-tpl-card">
       <div class="k-dt" data-dt>
-        <table class="k-dt-t">
-          <thead><tr>
-            <th>Order</th>
-            <th>Customer</th>
-            <th>Status</th>
-            <th class="num"><button class="k-dt-sort" data-sort="num" data-dir="" type="button">Total <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
-          </tr></thead>
-          <tbody><tr><td style="font-weight:550">ORD-1042</td><td>Aoi Kimura</td><td><span class="badge asagi">Paid</span></td><td class="num" data-v="4820">$4,820</td></tr><tr><td style="font-weight:550">ORD-1041</td><td>Ren Sato</td><td><span class="badge asagi">Paid</span></td><td class="num" data-v="3950">$3,950</td></tr><tr><td style="font-weight:550">ORD-1040</td><td>Mei Chen</td><td><span class="badge yamabuki">Pending</span></td><td class="num" data-v="1280">$1,280</td></tr><tr><td style="font-weight:550">ORD-1039</td><td>Jonas Berg</td><td><span class="badge asagi">Paid</span></td><td class="num" data-v="2715">$2,715</td></tr><tr><td style="font-weight:550">ORD-1038</td><td>Priya Nair</td><td><span class="badge red">Failed</span></td><td class="num" data-v="980">$980</td></tr></tbody>
-        </table>
+        <div class="k-dt-scroll" role="region" aria-label="Recent orders" tabindex="0">
+          <table class="k-dt-t" aria-label="Recent orders">
+            <thead><tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Status</th>
+              <th class="num"><button class="k-dt-sort" data-sort="num" data-dir="" type="button">Total <span class="arr"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></th>
+            </tr></thead>
+            <tbody><tr><td style="font-weight:550">ORD-1042</td><td>Aoi Kimura</td><td><span class="badge asagi">Paid</span></td><td class="num" data-v="4820">$4,820</td></tr><tr><td style="font-weight:550">ORD-1041</td><td>Ren Sato</td><td><span class="badge asagi">Paid</span></td><td class="num" data-v="3950">$3,950</td></tr><tr><td style="font-weight:550">ORD-1040</td><td>Mei Chen</td><td><span class="badge yamabuki">Pending</span></td><td class="num" data-v="1280">$1,280</td></tr><tr><td style="font-weight:550">ORD-1039</td><td>Jonas Berg</td><td><span class="badge asagi">Paid</span></td><td class="num" data-v="2715">$2,715</td></tr><tr><td style="font-weight:550">ORD-1038</td><td>Priya Nair</td><td><span class="badge red">Failed</span></td><td class="num" data-v="980">$980</td></tr></tbody>
+          </table>
+        </div>
         <div class="k-dt-f">5 orders<span class="pg"><button type="button" class="btn btn-sec btn-sm" disabled>Previous</button><button type="button" class="btn btn-sec btn-sm">Next</button></span></div>
       </div>
     </section>

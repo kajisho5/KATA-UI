@@ -14,6 +14,10 @@ CSS only. There was no three-set page before this pass.
   `aria-label` on a generic span is not allowed by ARIA 1.2. The preview stack
   is one `role="img"` labelled "Ren A., Mio T., Jun O. and 3 more".
 - **RTL.** The status dot used `right:0`; it now uses `inset-inline-end:0`.
+- **Clipped dot.** `.k-avatar` had `overflow:hidden`, so the circle cut the
+  status dot in half. The clip moved to `.k-avatar img` (`border-radius:inherit`);
+  initials never overflow. Screenshots: `before-after-ltr-*.png`,
+  `before-after-rtl-*.png` (only the dot changes).
 - `tests/test_avatar_names.py` (static, every run): every `.k-avatar` in
   components, blocks and templates is hidden or a named image. The old markup
   fails it.

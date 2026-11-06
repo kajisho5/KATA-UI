@@ -1,9 +1,9 @@
 .kcmd{border:0;padding:0;border-radius:var(--k-radius-xl);width:min(560px,calc(100% - 40px));margin:var(--k-space-16) auto auto;background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font);box-shadow:var(--k-shadow-modal)}
 .kcmd::backdrop{background:var(--k-backdrop);backdrop-filter:blur(3px)}
-.kcmd-input-row{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-4);border-bottom:1px solid var(--k-line);color:var(--k-ink-3)}
+.kcmd-input-row{display:flex;align-items:center;gap:var(--k-space-2);padding:var(--k-space-3) var(--k-space-4);border-block-end:1px solid var(--k-line);color:var(--k-ink-3)}
 .kcmd-input{-webkit-appearance:none;appearance:none;flex:1;border:0;outline:0;font:inherit;font-size:var(--k-text-lead);background:transparent;color:var(--k-ink)}
 .kcmd-input::placeholder{color:var(--k-ink-3)}
-.kcmd-list{list-style:none;margin:0;padding:var(--k-space-1);max-height:300px;overflow:auto}
+.kcmd-list{list-style:none;margin:0;padding:var(--k-space-1);max-block-size:300px;overflow:auto}
 .kcmd-item{display:flex;align-items:center;gap:var(--k-space-3);width:100%;padding:var(--k-space-2) var(--k-space-2);border:0;border-radius:var(--k-radius-md);background:transparent;font:inherit;font-size:var(--k-text-base);color:var(--k-ink);cursor:pointer;text-align:start}
 .kcmd-item svg{color:var(--k-ink-3);flex:none}
 .kcmd-item.active{background:var(--k-bg-soft)}

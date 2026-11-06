@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" font-family="Inter, system-ui, sans-serif">
+<rect width="1280" height="560" fill="#ededef"/>
+<text x="40" y="40" font-size="18" font-weight="650" fill="#18181b">変更前</text>
+<g transform="translate(40,56)"><rect width="1200" height="200" rx="12" fill="#fcfcfc"/>
+<text x="600" y="44" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" fill="#52525b" text-anchor="middle" letter-spacing=".5">136 components · 21 blocks · 7 templates</text>
+<text x="600" y="110" font-size="52" font-weight="650" fill="#18181b" text-anchor="middle">HTML, CSS and JavaScript</text>
+<text x="600" y="170" font-size="15" fill="#52525b" text-anchor="middle">Copy a button, form or table into your project. …</text></g>
+<text x="40" y="300" font-size="18" font-weight="650" fill="#18181b">変更後（案 A：先に13部品を beta に直した場合）</text>
+<g transform="translate(40,316)"><rect width="1200" height="200" rx="12" fill="#fcfcfc"/>
+<text x="540" y="44" font-size="12" font-family="'Geist Mono', ui-monospace, monospace" fill="#52525b" text-anchor="middle" letter-spacing=".5">136 components (<tspan text-decoration="underline">0 stable</tspan> · <tspan text-decoration="underline">136 beta</tspan>) · 21 blocks · 7 templates</text>
+<path d="M796 40 h84" stroke="#eb471f" stroke-width="1.5"/><text x="888" y="44" font-size="12" fill="#eb471f">← meta.json から自動で数える／部品一覧へのリンク</text>
+<text x="600" y="120" font-size="52" font-weight="650" fill="#18181b" text-anchor="middle">HTML, CSS and JavaScript</text>
+<text x="600" y="180" font-size="15" fill="#52525b" text-anchor="middle">Copy a button, form or table into your project. …</text></g>
+<text x="40" y="545" font-size="12" fill="#52525b">案 B なら同じ場所に「136 components (13 stable · 123 beta)」。文字の大きさ・色・フォントは今の行と同じ（--mono、--ink2）。</text>
+</svg>

@@ -840,7 +840,9 @@ def registry_json(comps, blocks, templates=None):
         for file in item['files']:
             file['content'] = distribution_header(file['path'], file['content'])
     return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': RELEASE_VERSION,
-                       'moldVersion': MOLD_CONFIG['moldVersion'], 'moldInstruction': version_line(ROOT), 'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
+                       'moldVersion': MOLD_CONFIG['moldVersion'], 'moldInstruction': version_line(ROOT),
+                       'tokens': {'url': 'https://kata-ui.dev/tokens.css', 'moldVersion': MOLD_CONFIG['moldVersion'],
+                                  'note': 'Every part reads its colors, spacing, radius and motion from tokens.css. Load it once, before any part CSS.'}, 'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
     catalog = (f'Catalog: {len(comps)} components, {len(blocks)} blocks, {len(templates or [])} templates and {n_icons} icons. '

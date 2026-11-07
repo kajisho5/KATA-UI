@@ -27,5 +27,11 @@ class RegistryUsage(unittest.TestCase):
         self.assertGreater(checked, 0)
 
 
+    def test_registry_points_at_tokens(self):
+        data = json.loads((ROOT / 'dist' / 'registry.json').read_text(encoding='utf-8'))
+        self.assertEqual(data['tokens']['url'], 'https://kata-ui.dev/tokens.css')
+        self.assertEqual(data['tokens']['moldVersion'], data['moldVersion'])
+
+
 if __name__ == '__main__':
     unittest.main()

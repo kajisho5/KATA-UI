@@ -109,7 +109,7 @@ async function callTool(name, a) {
   if (name === 'get_component') {
     const it = items.find(x => x.name === a.name);
     if (!it) return 'No catalog item named "' + a.name + '". Try search_components.';
-    return JSON.stringify({moldVersion: reg.moldVersion || 1, moldInstruction: reg.moldInstruction, ...it}, null, 1);
+    return JSON.stringify({moldVersion: reg.moldVersion || 1, moldInstruction: reg.moldInstruction, tokens: reg.tokens, ...it}, null, 1);
   }
   throw new Error('unknown tool: ' + name);
 }

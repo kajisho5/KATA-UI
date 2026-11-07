@@ -132,7 +132,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#99 were squash-merged the same way after green CI. The owner then asked the
+#29–#100 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -149,7 +149,7 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#100](https://github.com/kajisho5/KATA-UI/pull/100) | Japanese docs, step 3 of 3: the other eight parts (ja/components/*.json). With it every Phase 2 item in docs/ROADMAP.md is checked; the next session should re-read the Phase 2 completion criteria and then Phase 3. |
+| [#101](https://github.com/kajisho5/KATA-UI/pull/101) | Phase 3: free/Pro boundary documented (docs/pro-boundary.md) and copy aligned (pricing, home, README, FAQ, vs-shadcn, /ja/). npm name check 2026-11-07: `kata-ui` is taken by another publisher (1.0.0, 2024-11-16); `@kata-ui/cli` and `kataui` are unpublished; whether the `kata-ui` npm org is free is unknown — owner asked to try creating it. |
 
 ### npm and environment
 

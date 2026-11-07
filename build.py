@@ -627,18 +627,6 @@ def landing(comps, blocks, n_icons, templates=None):
     finalcta = ('<section class="lpsec finalcta"><h2>Start with one part.</h2>'
       '<p class="sub" style="margin-left:auto;margin-right:auto">Ninety seconds from now it can be on your page \u2014 tokens in, part pasted, shipped.</p>'
       '<p class="fc-cta"><a class="btn btn-pri btn-lg" href="#first-five">Copy your first part</a><a class="btn btn-ghost btn-lg" href="/pricing/">See what Pro adds</a></p></section>')
-    _pro_chips_b = ''.join('<a class="prochip" href="/blocks/' + b['slug'] + '/">' + esc(b['meta']['title']) + '</a>' for b in load_blocks())
-    _pro_chips_t = ''.join('<a class="prochip" href="/templates/' + t['slug'] + '/">' + esc(t['meta']['title']) + '</a>' for t in load_templates())
-    _proster = ('<div class="proster"><p class="proster-h">EVERYTHING IN PRO \u2014 21 BLOCKS</p><div class="prochips">' + _pro_chips_b + '</div>'
-      '<p class="proster-h">7 TEMPLATES</p><div class="prochips">' + _pro_chips_t + '</div>'
-      '<p class="lpnote" style="margin-top:12px">Every one of them is a live page on this site \u2014 open any chip and inspect exactly what you would get.</p></div>')
-    proband = ('<section class="lpsec proof" id="pro"><h2>Pro is assembled time.</h2>'
-      '<p class="sub">The parts are free. What Pro sells is the hours you do not spend composing them \u2014 21 blocks and 7 templates, with source files and current static check results.</p>'
-      '<div class="pronums"><div><b>&asymp;77 h</b><span>of assembly, done for you</span></div><div><b>$129</b><span>once \u2014 lifetime, every future block</span></div><div><b>$1.68</b><span>per hour of it</span></div></div>'
-      '<div class="probars"><div class="probar"><span>Assemble it yourself</span><div class="track"><i style="width:100%;background:var(--ink)"></i></div><b>&asymp;77 h</b></div><div class="probar"><span>With Pro</span><div class="track"><i style="width:2%;background:var(--acc);min-width:10px"></i></div><b>minutes</b></div></div>'
-      '<p class="lpnote" style="margin-top:16px">Founding 100: $99, plus two blocks that will never be sold separately \u2014 Help Center and Job Board.</p>'
-      + _proster +
-      '<p class="lpnote" style="margin-top:14px">Free is the finished product. Pro is for people who would rather not compose. <a href="/pricing/" style="color:var(--acc)">Pricing and the launch list</a></p></section>')
     pr_block = next((b for b in blocks if b['slug'] == 'pricing'), None)
     asmx = ''
     if pr_block:
@@ -798,7 +786,7 @@ def landing(comps, blocks, n_icons, templates=None):
 <section class="lpsec"><h2>Install</h2><div class="term">npx @kajisho5/kataui init<br>npx @kajisho5/kataui add button</div><p class="lpnote">Or copy from any component page.</p></section>
 <section class="lpsec"><h2>Templates</h2><p class="lpnote">Try a <a href="/templates/dashboard/demo/">dashboard</a>, <a href="/templates/inbox/demo/">inbox</a> or <a href="/templates/settings-page/demo/">settings page</a>.</p></section>
 <section class="lpsec"><h2>AI tools</h2><p class="lpnote">The <a href="/registry.json">registry</a>, <a href="/docs/mcp-server/">MCP server</a> and <a href="/skill/SKILL.md">AI skill</a> serve the files you copy here.</p><p class="lpnote">Works with any HTML stack; React needs <a href="/docs/react/">a few markup changes</a>.</p></section>
-<section class="lpsec"><h2>Components are free. Pro adds layouts.</h2><p class="lpnote">{nb} blocks, {nt} templates, $129 once. Not on sale yet. <a href="/pricing/">Pricing</a></p></section>
+<section class="lpsec"><h2>Everything here is free.</h2><p class="lpnote">All {n} components, {nb} blocks and {nt} templates are MIT. Pro will add new layouts, $129 once. <a href="/pricing/">Pricing</a></p></section>
 <section class="lpsec"><p class="lpnote">More: <a href="/lab/">Lab</a> · <a href="/showcase/">Showcase</a> · <a href="/compare/">Comparison</a> · <a href="https://github.com/kajisho5/KATA-UI">Report a problem</a></p></section>
 </div>{plain_footer()}</body></html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
@@ -1522,15 +1510,15 @@ def inventory_html():
 def pricing_page():
     body = """
 <div class="wrap pr"><h1>Pricing</h1>
-<p class="lead">Components are free under MIT. Pro will bundle the blocks and templates for a one-time payment.</p>
-<div class="tiers"><div class="tier"><h2>Free</h2><p class="price">$0</p><p class="per">MIT license. No account required.</p><ul><li>136 HTML, CSS and JavaScript components</li><li>150 icons and 220 brand marks</li><li>Themes and design tokens</li><li>CLI, registry, MCP server and AI skill</li><li>Documentation and examples</li></ul><a class="cta" href="/components/">Browse components</a></div>
-<div class="tier pro"><h2>Pro</h2><p class="price">$129</p><p class="per">Planned price. One payment for lifetime access.</p><ul><li>21 blocks and 7 templates</li><li>Future blocks and templates included</li><li>Unlimited projects and seats</li></ul><p>Sales have not opened. Blocks and templates are currently available on this site.</p>__WAITLIST__</div></div>
-<div class="inventory"><h2>Blocks and templates</h2><p class="rs">Open an item to see its preview, source and component list.</p><div class="invgrid">__INVENTORY__</div></div>
-<div class="valueband"><h2>What you're paying for</h2><p>Pro groups components into page sections and complete layouts, with their styles and responsive structure.</p><p class="note">Our assembly estimate is 77 hours (21 blocks × 2 hours + 7 templates × 5 hours); $129 is about $1.68 per estimated hour. Your time will vary.</p></div>
+<p class="lead">Everything in the public repository is free under MIT: components, blocks and templates. Pro will add new blocks and templates that are not in the repository, for a one-time payment.</p>
+<div class="tiers"><div class="tier"><h2>Free</h2><p class="price">$0</p><p class="per">MIT license. No account required.</p><ul><li>136 HTML, CSS and JavaScript components</li><li>21 blocks and 7 templates</li><li>150 icons and 220 brand marks</li><li>Themes and design tokens</li><li>CLI, registry, MCP server and AI skill</li><li>Documentation and examples</li></ul><a class="cta" href="/components/">Browse components</a></div>
+<div class="tier pro"><h2>Pro</h2><p class="price">$129</p><p class="per">Planned price. One payment for lifetime access.</p><ul><li>New blocks and templates, delivered outside the public repository</li><li>Every future Pro release included</li><li>Unlimited projects and seats</li></ul><p>Sales have not opened, and no Pro item exists yet. The 21 blocks and 7 templates on this site stay free.</p>__WAITLIST__</div></div>
+<div class="inventory"><h2>Free blocks and templates</h2><p class="rs">MIT, like the components. Open an item to see its preview, source and component list.</p><div class="invgrid">__INVENTORY__</div></div>
+<div class="valueband"><h2>Where the line is</h2><p>Anything published in the repository, the registry or the CLI is MIT and stays free, including later versions of it. Pro items are new work sold under their own license and never moved from the free side.</p><p class="note">The full statement is in <a href="https://github.com/kajisho5/KATA-UI/blob/main/docs/pro-boundary.md">docs/pro-boundary.md</a>.</p></div>
 <div class="founding"><h2>First 100 licenses</h2><p>The launch offer is $99 for the first 100 licenses, including Help Center and Job Board blocks and priority support. Join the list for the launch email.</p></div>
-<div class="qa"><div><h3>Why charge for blocks?</h3><p>Components handle individual controls. Blocks and templates save you the work of arranging them into layouts. The component source stays free.</p></div><div><h3>What happens to code I've copied?</h3><p>You keep it under the license supplied with it. A later pricing change does not change that license.</p></div><div><h3>What still needs work?</h3><p>See the <a href="/mold-results.json">current check results</a> and each component's status. Test the components you use with your content and supported browsers.</p></div></div>
+<div class="qa"><div><h3>Why charge for new blocks?</h3><p>Pro pays for building more layouts. Everything already published stays free, so buying Pro is never needed to use what is on this site.</p></div><div><h3>What happens to code I've copied?</h3><p>You keep it under the license supplied with it. A later pricing change does not change that license.</p></div><div><h3>What still needs work?</h3><p>See the <a href="/mold-results.json">current check results</a> and each component's status. Test the components you use with your content and supported browsers.</p></div></div>
 </div>""" + plain_footer() + "</body></html>"
-    return (head('Pricing — KATA UI', 'Free MIT components. Pro blocks and templates: planned price $129 once.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form(note='One email when sales open.', done='You are on the list. We will email you when sales open.')).replace('__INVENTORY__', inventory_html())
+    return (head('Pricing — KATA UI', 'Free MIT components, blocks and templates. Pro: new layouts, planned price $129 once.', PRICING_STYLE) + body).replace('__WAITLIST__', waitlist_form(note='One email when sales open.', done='You are on the list. We will email you when sales open.')).replace('__INVENTORY__', inventory_html())
 
 
 def lab_page(comps):
@@ -1618,13 +1606,13 @@ def ja_page():
   </section>
   <section class="ja-sec">
     <h2>料金</h2>
-    <p>コンポーネントとアイコンは永久無料（MIT）。有料の Pro は、組み上げ済みのブロックとテンプレートで、$129の買い切り・買い切り後の追加料金なし。販売は近日開始です。</p>
+    <p>コンポーネント・アイコン・今ある21ブロックと7テンプレートは、すべて無料（MIT）です。有料の Pro は、これから作る新しいブロックとテンプレートで、$129の買い切り・追加料金なしの予定です。販売はまだ始まっていません。</p>
   </section>
   <section class="ja-sec">
     <h2>よくある質問</h2>
     <p><b>商用利用はできますか。</b><br>はい。コンポーネントとアイコンはMITライセンスで、商用・改変・再配布が自由です。クレジット表記も不要です。</p>
-    <p><b>パーツが有料になることはありますか。</b><br>ありません。無料の線は永久で、有料なのは組み上げ済みのブロックとテンプレートだけです。すでにコピーしたコードの扱いが変わることもありません。</p>
-    <p><b>Proはいくらですか。</b><br>$129の一回払いです（目安として約2万円）。サブスクリプションではなく、購入後の追加課金もありません。販売開始までは全ブロック・全テンプレートをこのサイトで公開しています。</p>
+    <p><b>パーツが有料になることはありますか。</b><br>ありません。リポジトリ・registry・CLI で公開したものは、のちの版も含めて無料のままです。有料なのは、Pro 用に新しく作るブロックとテンプレートだけです。すでにコピーしたコードの扱いが変わることもありません。</p>
+    <p><b>Proはいくらですか。</b><br>$129の一回払いの予定です。サブスクリプションではなく、購入後の追加課金もありません。今サイトにある全ブロック・全テンプレートは、販売開始後も無料のままです。</p>
     <p><b>Reactのプロジェクトでも使えますか。</b><br>使えます。部品は素のHTMLなので、JSXに貼ってclassをclassNameに変えるだけです。手順は英語ドキュメントの React &amp; Next.js ページにあります。</p>
   </section>
   <div class="ja-wl">
@@ -2554,9 +2542,9 @@ DOCS = [
    [('The short version', 'shadcn/ui and KATA start from the same conviction: you should own the code — copy it into your project, change it, never rent it back from a package. shadcn casts that idea for React. KATA casts it for everywhere else HTML renders: plain files, Astro, Laravel, Django, Rails, WordPress, email templates, the admin page nobody frameworks. If your product is a React app, shadcn is excellent and this page will tell you so twice. If your stack is anything else, the React door is simply not your door.', None, None),
     ('Where shadcn wins', 'The React ecosystem, first: thousands of projects, snippets, and answers already exist, and a team hiring React developers hires people who know it. Its primitives stand on Radix, whose accessibility engineering — focus management, aria patterns, edge cases in dialogs and menus — is deep and battle-tested. It is TypeScript-first in a way KATA, being plain files, does not try to be. And its design language is the current default for a reason: it is tasteful, consistent, and safe to choose in a meeting.', None, None),
     ('Where KATA wins', 'Adoption cost outside React: a KATA part is three files and no toolchain, so it lands in a ten-year-old Laravel app as easily as in a fresh Astro site. Range: the catalog carries shelves shadcn does not — a Motion line, the KATAYABURI shelf of deliberate showpieces, a Japan genre (wagara patterns constructed from their geometry, a hanko seal, a kintsugi card), charts, and 150 icons cut to one spec. Composed work: blocks and templates ship in this repository. And the machine surface: registry.json, an MCP server, and an installable AI Skill are published by the catalog itself, so an assistant asked for a sidebar installs this Sidebar instead of improvising one.', None, None),
-    ('Summary', 'Framework: React and Tailwind, versus none at all. Runtime: React, versus nothing. Distribution: a CLI and registry, versus copy-paste, a CLI and a registry. License: MIT, versus MIT for every part (blocks and templates are the paid line here). Community: enormous, versus one maker and a mold. Neither list is an embarrassment — they are answers to different questions. Choose by the stack you actually ship.', None, 'A fair number of teams will run both: shadcn inside the product, KATA on the marketing site, the docs, and the pages that were never going to be React.')]),
+    ('Summary', 'Framework: React and Tailwind, versus none at all. Runtime: React, versus nothing. Distribution: a CLI and registry, versus copy-paste, a CLI and a registry. License: MIT, versus MIT for every published part, block and template (Pro will add new paid layouts). Community: enormous, versus one maker and a mold. Neither list is an embarrassment — they are answers to different questions. Choose by the stack you actually ship.', None, 'A fair number of teams will run both: shadcn inside the product, KATA on the marketing site, the docs, and the pages that were never going to be React.')]),
   ('site-faq', 'FAQ', 'About the library itself — licensing, the Pro line, and what is not planned.',
-   [('Licensing and Pro', 'Every component and icon in this catalog is MIT-licensed: copy it, ship it, sell what you build with it. Blocks and full templates are the commercial line — sold once, lifetime, no subscription — because composed screens are where the hours actually go. The parts will never move behind the paywall retroactively; a part that is free is free in every future version.', None, None),
+   [('Licensing and Pro', 'Everything published in this repository, the registry and the CLI is MIT-licensed — components, icons, blocks and templates: copy it, ship it, sell what you build with it. Pro, when it opens, will be new blocks and templates delivered outside the repository, sold once, lifetime, no subscription. Nothing moves from the free side to Pro; what is free is free in every future version. Details: docs/pro-boundary.md.', None, None),
     ('Is there a React version?', 'Not today. The parts paste into any stack that renders HTML, including inside React as plain markup for static sections. A native React port, in the shadcn registry format, is the most-requested item on the list and is under consideration — the registry file already published is the first step, since it describes every part in that format.', None, None),
     ('Why no npm package?', 'Because the package would become the product, and the product is the code in your repo. The one-file bundle and the starter kit cover the “just give me everything” case without a dependency. If a package ever ships, it will be a mirror of these files, never the source of truth.', None, None),
     ('Who makes this?', 'One person, in the open, with the mold as the second pair of hands. The repository holds the parts, the checker, and the standard they are built to — issues and corrections are welcome there.', None, None)]),

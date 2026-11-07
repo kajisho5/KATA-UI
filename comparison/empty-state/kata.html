@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Projects · Tallyboard</title>
+<meta name="description" content="First-run empty state for a new Tallyboard user with no projects.">
+<script>
+// Follow the operating system color scheme; the KATA mold switches on data-theme.
+(function () {
+  var root = document.documentElement;
+  var query = window.matchMedia('(prefers-color-scheme: dark)');
+  function apply() {
+    if (!root.hasAttribute('data-theme-lock')) root.setAttribute('data-theme', query.matches ? 'dark' : 'light');
+  }
+  apply();
+  if (query.addEventListener) query.addEventListener('change', apply);
+  else if (query.addListener) query.addListener(apply);
+})();
+</script>
+<!-- KATA mold: tokens.css from kata-ui.dev -->
+<style>
+/* KATA mold v5 — 2026-11-06 — kata-ui.dev/docs/mold-changelog */
+/* KATA UI — design tokens. Components reference ONLY these variables. */
+:root{
+  /* shape-tokens:root:start */
+  --k-mold:5;
+  --k-tsutsuji:#e95295;
+  --k-mscale:1;
+  --k-dur-fast:calc(130ms * var(--k-mscale));
+  --k-dur-base:calc(180ms * var(--k-mscale));
+  --k-dur-slow:calc(220ms * var(--k-mscale));
+  --k-dur-1:var(--k-dur-fast);
+  --k-dur-2:var(--k-dur-base);
+  --k-dur-3:var(--k-dur-slow);
+  --k-ease:cubic-bezier(.3,.7,.3,1);
+  --k-ease-in-out:cubic-bezier(.6,0,.2,1);
+  --k-ease-spring:cubic-bezier(.3,1.2,.4,1);
+  --k-ease-bounce:cubic-bezier(.3,2.2,.45,1);
+  --k-ease-out:var(--k-ease-in-out);
+  --k-radius:8px;
+  --k-radius-xs:calc(var(--k-radius) * 0.375);
+  --k-radius-sm:calc(var(--k-radius) * 0.75);
+  --k-radius-md:var(--k-radius);
+  --k-radius-lg:calc(var(--k-radius) * 1.5);
+  --k-radius-xl:calc(var(--k-radius) * 2);
+  --k-radius-full:999px;
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
+  --k-ring-inset:inset 0 0 0 1px currentColor;
+  --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
+  --k-shadow-overlay:var(--k-shadow-pop);
+  --k-shadow-xs:0 1px 2px rgba(16,24,40,.05);
+  --k-shadow-sm:0 1px 4px rgba(16,24,40,.18);
+  --k-shadow-pop:0 20px 44px -14px rgba(16,24,40,.22);
+  --k-shadow-modal:0 30px 80px -20px rgba(0,0,0,.4);
+  --k-backdrop:color-mix(in srgb,var(--k-zinc-900) 45%,transparent);
+  --k-ink-3:#71717a;
+  --k-yamabuki-ink:#876019;
+  --k-danger-ink:#b7282e;
+  --k-accent-ink:#165e83;
+  --k-on-accent:var(--k-ink);
+  --k-accent-contrast-surface:var(--k-bg);
+  --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
+  /* shape-tokens:root:end */
+  --k-bg:#ffffff; --k-bg-soft:#f7f7f7; --k-ink:#18181b; --k-ink-2:#52525b;
+  --k-line:#e4e4e7; --k-accent:#33a6b8; --k-core:#eb471f; --k-danger:#c9171e; --k-yamabuki:#ffb11b;
+  --k-font:"Inter","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --k-mono:"Geist Mono",ui-monospace,monospace;
+  --k-on-color:#ffffff; --k-knob:#ffffff;
+
+  --k-accent-bg:rgba(51,166,184,.08); --k-accent-bg-strong:rgba(51,166,184,.1); --k-accent-line:rgba(51,166,184,.18);
+  --k-danger-bg:rgba(201,23,30,.07); --k-danger-line:rgba(201,23,30,.17); --k-danger-ring:rgba(201,23,30,.14); --k-ring-danger:0 0 0 3px rgba(201,23,30,.14);
+  --k-yamabuki-bg:rgba(255,177,27,.12); --k-yamabuki-line:rgba(255,177,27,.3);
+  --k-track:#d4d4d8; --k-seg:#ececee; --k-border-strong:#c9c9cf;
+  --k-success-bg:rgba(93,172,129,.1); --k-success-line:rgba(93,172,129,.32); --k-success-ink:#1b813e;
+  --k-success:#5dac81;
+
+  --k-z-overlay:50;
+
+  /* scales (mirror of system/tokens.json) */
+  --k-zinc-50:#fafafa; --k-zinc-100:#f4f4f5; --k-zinc-200:#e4e4e7; --k-zinc-300:#d4d4d8; --k-zinc-400:#a1a1aa; --k-zinc-500:#71717a; --k-zinc-600:#52525b; --k-zinc-700:#3f3f46; --k-zinc-800:#27272a; --k-zinc-900:#18181b; --k-zinc-950:#09090b;
+  --k-asagi-50:#eef9fa; --k-asagi-100:#d7f0f3; --k-asagi-200:#b0e0e7; --k-asagi-300:#7fc9d4; --k-asagi-400:#4fb0bf; --k-asagi-500:#33a6b8; --k-asagi-600:#29889a; --k-asagi-700:#206b79; --k-asagi-800:#1a5561; --k-asagi-900:#143f47;
+  /* scale-tokens:start */
+  --k-space-px:1px; --k-space-0-5:2px; --k-space-1:4px; --k-space-2:8px; --k-space-3:12px; --k-space-4:16px; --k-space-5:20px; --k-space-6:24px; --k-space-7:28px; --k-space-8:32px; --k-space-10:40px; --k-space-12:48px; --k-space-16:64px;
+  --k-text-xs:11px; --k-text-sm:12.5px; --k-text-base:13.5px; --k-text-md:14px; --k-text-lead:15px; --k-text-lg:16.5px; --k-text-xl:19px; --k-text-2xl:24px; --k-text-3xl:30px; --k-text-display:44px;
+  --k-text-code:.86em;
+  /* type tracking & leading — the table in KATA.md §0.5 */
+  --k-ls-display:-.025em; --k-ls-heading:-.015em; --k-ls-body:.012em; --k-ls-small:.01em; --k-ls-caps:.1em; --k-ls-mono:.02em; --k-ls-cjk:.06em; --k-ls-cjk-small:.05em;
+  --k-lh-tight:1; --k-lh-display:1.1; --k-lh-heading:1.3; --k-lh-card:1.35; --k-lh-small:1.6; --k-lh-body:1.7; --k-lh-loose:1.85;
+  /* scale-tokens:end */
+}
+/* craftsmanship floors — every part inherits these (KATA.md §0.6):
+   a 2px ink keyboard focus ring (3:1 in both themes), generated from
+   system/tokens.json. Reduced motion only changes the KATA multiplier; each
+   component owns its animation stop rules. Host motion is untouched. */
+/* focus-floor:start */
+:where(:focus-visible){outline:2px solid var(--k-ink);outline-offset:2px}
+/* focus-floor:end */
+@media (prefers-reduced-motion:reduce){
+  :root{--k-mscale:0 !important}
+}
+[data-theme="dark"]{
+  /* shape-tokens:dark:start */
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
+  --k-ring-inset:inset 0 0 0 1px currentColor;
+  --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
+  --k-shadow-overlay:var(--k-shadow-pop);
+  --k-shadow-xs:0 1px 2px rgba(0,0,0,.25);
+  --k-shadow-sm:0 1px 4px rgba(0,0,0,.35);
+  --k-shadow-pop:0 20px 44px -14px rgba(0,0,0,.55);
+  --k-shadow-modal:0 30px 80px -20px rgba(0,0,0,.65);
+  --k-backdrop:color-mix(in srgb,var(--k-zinc-950) 70%,transparent);
+  --k-ink-3:#90909a;
+  --k-yamabuki-ink:#f6c555;
+  --k-danger-ink:#f28b90;
+  --k-accent-ink:#81c7d4;
+  --k-on-accent:var(--k-ink);
+  --k-accent-contrast-surface:var(--k-bg);
+  --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
+  /* shape-tokens:dark:end */
+  --k-bg:#18181b; --k-bg-soft:#27272a; --k-ink:#f4f4f5; --k-ink-2:#a1a1aa;
+  --k-line:#3f3f46;
+
+  --k-track:#52525b; --k-seg:#27272a; --k-border-strong:#52525b;
+}
+[data-theme="light"]{
+  /* shape-tokens:light:start */
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
+  --k-ring-inset:inset 0 0 0 1px currentColor;
+  --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
+  --k-shadow-overlay:var(--k-shadow-pop);
+  --k-shadow-xs:0 1px 2px rgba(16,24,40,.05);
+  --k-shadow-sm:0 1px 4px rgba(16,24,40,.18);
+  --k-shadow-pop:0 20px 44px -14px rgba(16,24,40,.22);
+  --k-shadow-modal:0 30px 80px -20px rgba(0,0,0,.4);
+  --k-backdrop:color-mix(in srgb,var(--k-zinc-900) 45%,transparent);
+  --k-ink-3:#71717a;
+  --k-yamabuki-ink:#876019;
+  --k-danger-ink:#b7282e;
+  --k-accent-ink:#165e83;
+  --k-on-accent:var(--k-ink);
+  --k-accent-contrast-surface:var(--k-bg);
+  --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
+  /* shape-tokens:light:end */
+  --k-bg:#ffffff; --k-bg-soft:#f7f7f7; --k-ink:#18181b; --k-ink-2:#52525b;
+  --k-line:#e4e4e7;
+
+  --k-track:#d4d4d8; --k-seg:#ececee; --k-border-strong:#c9c9cf;
+}
+
+/* relative-color-roles:start */
+@supports (color: oklch(from red l c h)) {
+  :root,[data-theme="light"],[data-theme="dark"] {
+    --k-accent-luminance:color(from var(--k-accent) srgb-linear calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722));
+    --k-on-accent:color(from var(--k-accent-luminance) srgb-linear max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.0109600940065, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 1.18284201626))));
+    --k-accent-contrast-surface:color(from var(--k-accent-luminance) srgb-linear calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)));
+  }
+  :root,[data-theme="light"] {--k-accent-ink:oklch(from var(--k-accent) min(l, 0.48) c h);}
+  [data-theme="dark"] {--k-accent-ink:oklch(from var(--k-accent) max(l, 0.78) c h);}
+}
+/* relative-color-roles:end */
+
+</style>
+<!-- KATA part: button (kata-ui.dev/registry.json) -->
+<style>
+/* KATA button 1.1.0 — kata-ui.dev/components/button — requires mold >= 4 */
+.btn{--k-btn-gap:var(--k-space-2);--k-btn-weight:500;--k-btn-press:.5px;--k-btn-height-sm:32px;--k-btn-height-md:38px;--k-btn-height-lg:44px;--k-btn-pad-lg:var(--k-space-5);--k-btn-text-lg:var(--k-text-md);--k-btn-disabled-opacity:.45;--k-btn-shadow:var(--k-shadow-xs);--k-btn-inset:var(--k-ring-inset);--k-btn-spinner-size:14px;--k-btn-spinner-border:2px;--k-btn-spinner-track:color-mix(in srgb,currentColor 35%,transparent);--k-btn-spin-duration:700ms;--k-btn-spin-turn:360deg;display:inline-flex;align-items:center;justify-content:center;gap:var(--k-btn-gap);font-weight:var(--k-btn-weight);border-radius:var(--k-radius);cursor:pointer;border:1px solid transparent;font-family:var(--k-font);transition:background-color var(--k-dur-1) var(--k-ease),color var(--k-dur-1) var(--k-ease),box-shadow var(--k-dur-1) var(--k-ease);white-space:nowrap;text-decoration:none;background:none;color:var(--k-ink)}
+.btn:hover:not(:disabled){background:var(--k-bg-soft)}
+.btn:active:not(:disabled){transform:translateY(var(--k-btn-press));background:var(--k-seg)}
+.btn-pri{background:var(--k-ink);color:var(--k-bg)}
+.btn-pri:hover:not(:disabled){background:var(--k-ink-2)}
+.btn-pri:active:not(:disabled){background:var(--k-ink)}
+.btn-sec{background:var(--k-bg);color:var(--k-ink);border-color:var(--k-line);box-shadow:var(--k-btn-shadow)}
+.btn-sec:hover:not(:disabled){background:var(--k-bg-soft)}
+.btn-sec:active:not(:disabled){background:var(--k-seg)}
+.btn-ghost{background:transparent;color:var(--k-ink-2)}
+.btn-ghost:hover:not(:disabled){background:var(--k-bg-soft);color:var(--k-ink)}
+.btn-ghost:active:not(:disabled){background:var(--k-seg);color:var(--k-ink)}
+.btn-danger{background:var(--k-danger);color:var(--k-on-color)}
+.btn-danger:hover:not(:disabled){background:var(--k-danger-bg);color:var(--k-danger-ink)}
+.btn-danger:active:not(:disabled){background:var(--k-danger);color:var(--k-on-color);box-shadow:var(--k-btn-inset)}
+/* Deprecated: .btn-asagi is retained as an alias for .btn-accent. */
+.btn-accent,.btn-asagi{background:var(--k-accent);color:var(--k-on-accent)}
+.btn-accent:hover:not(:disabled),.btn-asagi:hover:not(:disabled){background:var(--k-accent-hover);color:var(--k-on-accent)}
+.btn-accent:active:not(:disabled),.btn-asagi:active:not(:disabled){background:var(--k-accent);box-shadow:var(--k-btn-inset);color:var(--k-on-accent)}
+.btn-sm{height:var(--k-btn-height-sm);padding:0 var(--k-space-3);font-size:var(--k-text-sm);border-radius:var(--k-radius-sm)}
+.btn-md{height:var(--k-btn-height-md);padding:0 var(--k-space-4);font-size:var(--k-text-base)}
+.btn-lg{height:var(--k-btn-height-lg);padding:0 var(--k-btn-pad-lg);font-size:var(--k-btn-text-lg)}
+.btn:focus-visible{outline:none;box-shadow:var(--k-ring)}
+.btn:disabled{opacity:var(--k-btn-disabled-opacity);cursor:not-allowed;transform:none}
+.btn[aria-busy="true"]{cursor:progress}
+.btn .spin{width:var(--k-btn-spinner-size);height:var(--k-btn-spinner-size);flex-shrink:0;border-radius:var(--k-radius-full);border:var(--k-btn-spinner-border) solid var(--k-btn-spinner-track);border-top-color:currentColor;animation:k-rot calc(var(--k-btn-spin-duration) * var(--k-mscale, 1)) linear infinite}
+@keyframes k-rot{to{transform:rotate(var(--k-btn-spin-turn))}}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}.btn .spin{animation:none}}
+
+</style>
+<!-- KATA part: checkbox (kata-ui.dev/registry.json) -->
+<style>
+/* KATA checkbox 1.1.0 — kata-ui.dev/components/checkbox — requires mold >= 3 */
+.check{display:inline-flex;align-items:center;gap:var(--k-space-2);cursor:pointer;font-size:var(--k-text-base);font-family:var(--k-font);color:var(--k-ink)}
+/* The unchecked border uses --k-ink-3: --k-border-strong measured 1.65:1 (light) and 2.29:1 (dark), below the 3:1 WCAG 1.4.11 asks of a control boundary. */
+.check input{-webkit-appearance:none;appearance:none;width:18px;height:18px;border:1.5px solid var(--k-ink-3);border-radius:var(--k-radius-sm);background:var(--k-bg);display:grid;place-content:center;cursor:pointer;transition:background var(--k-dur-fast),border-color var(--k-dur-fast);margin:0;flex:none}
+.check input::before{content:"";width:10px;height:10px;transform:scale(0);transition:transform var(--k-dur-fast);background:var(--k-bg);clip-path:polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0%,43% 62%)}
+.check input:hover:not(:disabled):not(:checked):not(:indeterminate){border-color:var(--k-ink-2)}
+.check input:checked{background:var(--k-ink);border-color:var(--k-ink)}
+.check input:checked::before{transform:scale(1)}
+/* Mixed state for a parent of partly selected items: a bar instead of the check. */
+.check input[type="checkbox"]:indeterminate{background:var(--k-ink);border-color:var(--k-ink)}
+.check input[type="checkbox"]:indeterminate::before{clip-path:none;height:2px;transform:scale(1)}
+.check input:focus-visible{box-shadow:var(--k-ring);outline:0}
+.check input[aria-invalid="true"]:not(:checked){border-color:var(--k-danger)}
+.check input:disabled{opacity:.5;cursor:not-allowed}
+.check:has(input:disabled){color:var(--k-ink-3);cursor:not-allowed}
+.check input[type="radio"]{border-radius:50%}
+.check input[type="radio"]::before{clip-path:none;border-radius:50%;width:8px;height:8px}
+
+.check input[type="radio"]:checked::before{background:var(--k-core)}
+
+</style>
+<!-- KATA part: list (kata-ui.dev/registry.json) -->
+<style>
+/* KATA list 1.1.0 — kata-ui.dev/components/list — requires mold >= 4 */
+.k-list{list-style:none;margin:0;padding:0;border:1px solid var(--k-line);border-radius:var(--k-radius-xl);background:var(--k-bg);font-family:var(--k-font);overflow:hidden;text-align:start}
+.k-list li+li{border-top:1px solid var(--k-line)}
+.k-list-row{display:flex;align-items:center;gap:var(--k-space-3);padding:var(--k-space-3) var(--k-space-4);text-decoration:none;color:var(--k-ink)}
+a.k-list-row:hover{background:var(--k-bg-soft)}
+.k-list-row .main{flex:1;min-width:0}
+.k-list-row .tt{display:block;font-size:var(--k-text-base);font-weight:550;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.k-list-row .ss{display:block;font-size:var(--k-text-sm);color:var(--k-ink-3);margin-top:var(--k-space-px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.k-list-row .meta{font-size:var(--k-text-sm);color:var(--k-ink-3);flex:none}
+.k-list-row .chev{color:var(--k-ink-3);flex:none;display:grid;place-items:center}
+/* The list clips overflow, so rows draw their focus ring inside. */
+.k-list-row:focus-visible{outline:2px solid var(--k-ink);outline-offset:-2px}
+
+</style>
+<!-- KATA part: empty-state (kata-ui.dev/registry.json) -->
+<style>
+/* KATA empty-state 1.1.0 — kata-ui.dev/components/empty-state — requires mold >= 4 */
+/* KATA Empty state */
+.k-empty{display:grid;justify-items:center;text-align:center;gap:var(--k-space-2);padding:calc(var(--k-space-1) * 9) var(--k-space-5);border:1.5px dashed var(--k-border-strong);border-radius:var(--k-radius-lg);background:var(--k-bg)}
+.k-empty .k-empty-ic{width:46px;height:46px;border-radius:50%;background:var(--k-bg-soft);display:grid;place-content:center;color:var(--k-ink-3);margin-block-end:var(--k-space-1)}
+.k-empty h3{font-size:var(--k-text-md);font-weight:600;color:var(--k-ink);font-family:var(--k-font)}
+.k-empty p{font-size:var(--k-text-base);line-height:var(--k-lh-body);color:var(--k-ink-2);max-inline-size:36ch;font-family:var(--k-font);letter-spacing:.01em}
+.k-empty .k-empty-act{margin-block-start:var(--k-space-2)}
+
+</style>
+<!-- Page layout -->
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:var(--k-bg-soft);color:var(--k-ink);font-family:var(--k-font);line-height:1.5}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+.page{padding:var(--k-space-8) var(--k-space-4)}
+.wrap{max-width:1080px;margin:0 auto}
+.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+@media (max-width:560px){.page{padding:var(--k-space-4)}}
+.app-top{display:flex;align-items:center;gap:var(--k-space-3);padding:var(--k-space-3) var(--k-space-5);background:var(--k-bg);border-bottom:1px solid var(--k-line)}
+.brand{display:flex;align-items:center;gap:var(--k-space-2);font-weight:600;font-size:var(--k-text-lead)}
+.brand-mark{width:24px;height:24px;border-radius:var(--k-radius-md);border:2px solid var(--k-ink);display:grid;place-items:center}
+.brand-mark i{width:8px;height:8px;border-radius:var(--k-radius-xs);background:var(--k-core);display:block}
+.narrow{max-width:640px}
+.page-h{font-size:var(--k-text-2xl);font-weight:600;letter-spacing:-.02em}
+.block{margin-top:var(--k-space-6)}
+.sec-h{font-size:var(--k-text-lead);font-weight:600;margin-bottom:var(--k-space-3)}
+.sec-row{display:flex;align-items:baseline;justify-content:space-between;gap:var(--k-space-3)}
+.progress{font-size:var(--k-text-sm);color:var(--k-ink-2)}
+.k-empty-act{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--k-space-2)}
+.k-list-row .ss{margin-inline-start:calc(18px + var(--k-space-2))}
+.k-list-row .check input:checked + .tt{text-decoration:line-through;color:var(--k-ink-2)}
+
+</style>
+</head>
+<body>
+<header class="app-top">
+  <span class="brand"><span class="brand-mark" aria-hidden="true"><i></i></span>Tallyboard</span>
+</header>
+<main class="page">
+  <div class="wrap narrow">
+    <h1 class="page-h">Welcome to Tallyboard, Maya</h1>
+    <section class="block" aria-labelledby="projects-h">
+      <h2 class="sec-h" id="projects-h">Projects</h2>
+      <div class="k-empty">
+        <span class="k-empty-ic"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="bevel"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/><path d="M5.5 8h1.5M11 8h2M11 11h2M17 8h1.5"/></svg></span>
+        <h3>No projects yet</h3>
+        <p>Projects hold your team's tasks, deadlines and files, so create one or import the tasks you already track in a spreadsheet.</p>
+        <span class="k-empty-act"><button class="btn btn-pri btn-md" type="button">Create project</button><button class="btn btn-sec btn-md" type="button">Import from CSV</button></span>
+      </div>
+    </section>
+    <section class="block" aria-labelledby="start-h">
+      <div class="sec-row"><h2 class="sec-h" id="start-h">Getting started</h2><p class="progress" id="cl-progress" role="status">0 of 3 done</p></div>
+      <ul class="k-list" id="checklist">
+        <li><div class="k-list-row"><span class="main"><label class="check"><input type="checkbox" aria-describedby="c1-d"><span class="tt">Create your first project</span></label><span class="ss" id="c1-d">Name it and choose a board or list layout.</span></span><span class="meta">Step 1</span></div></li>
+        <li><div class="k-list-row"><span class="main"><label class="check"><input type="checkbox" aria-describedby="c2-d"><span class="tt">Invite your teammates</span></label><span class="ss" id="c2-d">Add people by email so they can pick up tasks.</span></span><span class="meta">Step 2</span></div></li>
+        <li><div class="k-list-row"><span class="main"><label class="check"><input type="checkbox" aria-describedby="c3-d"><span class="tt">Add your first task</span></label><span class="ss" id="c3-d">Give it an assignee and a due date.</span></span><span class="meta">Step 3</span></div></li>
+      </ul>
+    </section>
+  </div>
+</main>
+<!-- Page behavior -->
+<script>
+(() => {
+  const boxes = [...document.querySelectorAll('#checklist input[type="checkbox"]')];
+  const progress = document.getElementById('cl-progress');
+  function update() {
+    const done = boxes.filter(box => box.checked).length;
+    progress.textContent = done + ' of ' + boxes.length + ' done';
+  }
+  boxes.forEach(box => box.addEventListener('change', update));
+  update();
+})();
+</script>
+</body>
+</html>

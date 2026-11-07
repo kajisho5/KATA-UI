@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Dashboard · Tallyboard</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --surface: #fff; --text: #1a1d23; --muted: #5b6270;
+    --border: #e1e4ea; --primary: #3b4fd8; --primary-text: #fff; --grid: #e6e9ee;
+    --up: #067647; --down: #b42318; --focus: #3b4fd8;
+    --s-todo-bg: #eef0f3; --s-todo: #3f4652;
+    --s-prog-bg: #eef0fd; --s-prog: #2f40b8;
+    --s-done-bg: #ecfdf3; --s-done: #067647;
+    --s-late-bg: #fef3f2; --s-late: #b42318;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115; --surface: #181b21; --text: #e8eaee; --muted: #a3aab6;
+      --border: #2c313b; --primary: #8a9bff; --primary-text: #0f1115; --grid: #2a2f38;
+      --up: #6ce9a6; --down: #ff8a80; --focus: #a6b3ff;
+      --s-todo-bg: #262a32; --s-todo: #c9ced8;
+      --s-prog-bg: #1e2340; --s-prog: #b4c0ff;
+      --s-done-bg: #10261b; --s-done: #6ce9a6;
+      --s-late-bg: #2a1614; --s-late: #ff8a80;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .skip { position: absolute; inset-inline-start: 8px; top: -40px; background: var(--primary); color: var(--primary-text); padding: 8px 12px; border-radius: 6px; z-index: 10; }
+  .skip:focus { top: 8px; }
+  header { background: var(--surface); border-bottom: 1px solid var(--border); }
+  .bar { max-width: 1200px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .logo { width: 28px; height: 28px; border-radius: 7px; background: var(--primary); color: var(--primary-text); display: grid; place-items: center; font-size: .85rem; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .stats { list-style: none; padding: 0; margin: 0 0 20px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+  .stat-label { color: var(--muted); font-size: .875rem; font-weight: 600; margin: 0; }
+  .stat-value { font-size: 2rem; font-weight: 800; margin: 4px 0; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .delta { font-size: .85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; margin: 0; }
+  .delta.good { color: var(--up); }
+  .delta.bad { color: var(--down); }
+  .delta .vs { color: var(--muted); font-weight: 400; }
+  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .grid { grid-template-columns: 5fr 7fr; } }
+  h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  .card .hint { color: var(--muted); font-size: .85rem; margin: 0 0 12px; }
+  .chart-wrap { position: relative; }
+  svg.chart { width: 100%; height: auto; display: block; overflow: visible; }
+  .chart .gridline { stroke: var(--grid); stroke-width: 1; }
+  .chart .axis-text { fill: var(--muted); font-size: 11px; }
+  .chart .line { fill: none; stroke: var(--primary); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+  .chart .area { fill: var(--primary); opacity: .1; }
+  .chart .pt { fill: var(--surface); stroke: var(--primary); stroke-width: 2; cursor: pointer; }
+  .chart .pt:focus { outline: none; }
+  .chart .pt:focus-visible, .chart .pt.active { stroke-width: 3; r: 6; }
+  .tip {
+    position: absolute; pointer-events: none; background: var(--text); color: var(--bg);
+    font-size: .8rem; font-weight: 600; padding: 4px 8px; border-radius: 6px; white-space: nowrap;
+    transform: translate(-50%, -130%);
+  }
+  .tip[hidden] { display: none; }
+  details { margin-top: 8px; font-size: .875rem; }
+  summary { cursor: pointer; color: var(--muted); }
+  details table { margin-top: 8px; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th, td { text-align: start; padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  th { color: var(--muted); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+  tbody tr:last-child td { border-bottom: 0; }
+  .who { display: inline-flex; align-items: center; gap: 8px; }
+  .avatar { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font-size: .7rem; font-weight: 700; background: var(--s-prog-bg); color: var(--s-prog); }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+  .pill.todo { background: var(--s-todo-bg); color: var(--s-todo); }
+  .pill.prog { background: var(--s-prog-bg); color: var(--s-prog); }
+  .pill.done { background: var(--s-done-bg); color: var(--s-done); }
+  .pill.late { background: var(--s-late-bg); color: var(--s-late); }
+  .task-link { color: var(--text); font-weight: 600; text-decoration: none; }
+  .task-link:hover { text-decoration: underline; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="bar"><span class="logo" aria-hidden="true">T</span>Tallyboard</div></header>
+<main id="main">
+  <h1>Dashboard</h1>
+  <p class="sub">Week of Nov 2 – Nov 8, compared with the previous week.</p>
+
+  <ul class="stats" aria-label="Key metrics">
+    <li class="card">
+      <p class="stat-label">Open tasks</p>
+      <p class="stat-value">128</p>
+      <p class="delta bad"><span aria-hidden="true">▲</span> 12 <span class="vs">vs last week</span><span class="sr-only"> (up 12, more open work)</span></p>
+    </li>
+    <li class="card">
+      <p class="stat-label">Completed this week</p>
+      <p class="stat-value">342</p>
+      <p class="delta good"><span aria-hidden="true">▲</span> 8.2% <span class="vs">vs last week</span><span class="sr-only"> (up 8.2 percent)</span></p>
+    </li>
+    <li class="card">
+      <p class="stat-label">Overdue</p>
+      <p class="stat-value">7</p>
+      <p class="delta good"><span aria-hidden="true">▼</span> 3 <span class="vs">vs last week</span><span class="sr-only"> (down 3)</span></p>
+    </li>
+    <li class="card">
+      <p class="stat-label">Active members</p>
+      <p class="stat-value">24</p>
+      <p class="delta good"><span aria-hidden="true">▲</span> 2 <span class="vs">vs last week</span><span class="sr-only"> (up 2)</span></p>
+    </li>
+  </ul>
+
+  <div class="grid">
+    <section class="card" aria-labelledby="chart-title">
+      <h2 id="chart-title">Tasks completed, last 7 days</h2>
+      <p class="hint" id="chart-desc">Total 342. Peak 64 on Thursday. Use Tab or arrow keys on the points for daily values.</p>
+      <div class="chart-wrap">
+        <svg class="chart" id="chart" viewBox="0 0 440 220" role="group" aria-labelledby="chart-title" aria-describedby="chart-desc"></svg>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <details>
+        <summary>Show data as table</summary>
+        <table id="chart-table"><thead><tr><th scope="col">Day</th><th scope="col">Completed</th></tr></thead><tbody></tbody></table>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="recent-title">
+      <h2 id="recent-title">Recent tasks</h2>
+      <p class="hint">The five most recently updated tasks.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="recent-title">
+        <table>
+          <thead><tr><th scope="col">Task</th><th scope="col">Assignee</th><th scope="col">Status</th><th scope="col">Due date</th></tr></thead>
+          <tbody>
+            <tr><td><a class="task-link" href="#t-412">Draft Q4 roadmap</a></td><td><span class="who"><span class="avatar" aria-hidden="true">MC</span>Maya Chen</span></td><td><span class="pill prog">In progress</span></td><td><time datetime="2026-11-12">Nov 12, 2026</time></td></tr>
+            <tr><td><a class="task-link" href="#t-409">Fix login redirect bug</a></td><td><span class="who"><span class="avatar" aria-hidden="true">DO</span>Daniel Okafor</span></td><td><span class="pill done">Done</span></td><td><time datetime="2026-11-07">Nov 7, 2026</time></td></tr>
+            <tr><td><a class="task-link" href="#t-405">Update onboarding emails</a></td><td><span class="who"><span class="avatar" aria-hidden="true">PS</span>Priya Shah</span></td><td><span class="pill late">Overdue</span></td><td><time datetime="2026-11-04">Nov 4, 2026</time></td></tr>
+            <tr><td><a class="task-link" href="#t-401">Design settings page</a></td><td><span class="who"><span class="avatar" aria-hidden="true">LG</span>Lucas García</span></td><td><span class="pill todo">To do</span></td><td><time datetime="2026-11-18">Nov 18, 2026</time></td></tr>
+            <tr><td><a class="task-link" href="#t-398">Write release notes v2.3</a></td><td><span class="who"><span class="avatar" aria-hidden="true">AK</span>Aiko Kimura</span></td><td><span class="pill prog">In progress</span></td><td><time datetime="2026-11-10">Nov 10, 2026</time></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+(function () {
+  var data = [
+    { d: 'Sun', full: 'Sunday, Nov 2', v: 22 },
+    { d: 'Mon', full: 'Monday, Nov 3', v: 51 },
+    { d: 'Tue', full: 'Tuesday, Nov 4', v: 58 },
+    { d: 'Wed', full: 'Wednesday, Nov 5', v: 55 },
+    { d: 'Thu', full: 'Thursday, Nov 6', v: 64 },
+    { d: 'Fri', full: 'Friday, Nov 7', v: 60 },
+    { d: 'Sat', full: 'Saturday, Nov 8', v: 32 }
+  ];
+  var NS = 'http://www.w3.org/2000/svg';
+  var svg = document.getElementById('chart');
+  var tip = document.getElementById('tip');
+  var W = 440, H = 220, L = 34, R = 12, T = 14, B = 28;
+  var max = 80;
+  function x(i) { return L + i * (W - L - R) / (data.length - 1); }
+  function y(v) { return T + (1 - v / max) * (H - T - B); }
+  function el(name, attrs, parent) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(n);
+    return n;
+  }
+  for (var g = 0; g <= max; g += 20) {
+    el('line', { 'class': 'gridline', x1: L, x2: W - R, y1: y(g), y2: y(g), 'aria-hidden': 'true' });
+    var t = el('text', { 'class': 'axis-text', x: L - 8, y: y(g) + 4, 'text-anchor': 'end', 'aria-hidden': 'true' });
+    t.textContent = g;
+  }
+  data.forEach(function (p, i) {
+    var t = el('text', { 'class': 'axis-text', x: x(i), y: H - 8, 'text-anchor': 'middle', 'aria-hidden': 'true' });
+    t.textContent = p.d;
+  });
+  var dPath = data.map(function (p, i) { return (i ? 'L' : 'M') + x(i) + ' ' + y(p.v); }).join(' ');
+  el('path', { 'class': 'area', d: dPath + ' L' + x(data.length - 1) + ' ' + y(0) + ' L' + x(0) + ' ' + y(0) + ' Z', 'aria-hidden': 'true' });
+  el('path', { 'class': 'line', d: dPath, 'aria-hidden': 'true' });
+
+  var pts = data.map(function (p, i) {
+    var c = el('circle', { 'class': 'pt', cx: x(i), cy: y(p.v), r: 4.5, tabindex: i === 0 ? '0' : '-1', role: 'img', 'aria-label': p.full + ': ' + p.v + ' tasks completed' });
+    function show() {
+      pts.forEach(function (q) { q.classList.remove('active'); });
+      c.classList.add('active');
+      var rect = svg.getBoundingClientRect();
+      tip.style.left = (x(i) / W * rect.width) + 'px';
+      tip.style.top = (y(p.v) / H * rect.height) + 'px';
+      tip.textContent = p.d + ': ' + p.v;
+      tip.hidden = false;
+    }
+    function hide() { c.classList.remove('active'); tip.hidden = true; }
+    c.addEventListener('mouseenter', show);
+    c.addEventListener('mouseleave', hide);
+    c.addEventListener('focus', show);
+    c.addEventListener('blur', hide);
+    c.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') n = Math.min(i + 1, data.length - 1);
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') n = Math.max(i - 1, 0);
+      if (e.key === 'Home') n = 0;
+      if (e.key === 'End') n = data.length - 1;
+      if (n !== null) {
+        e.preventDefault();
+        pts.forEach(function (q) { q.setAttribute('tabindex', '-1'); });
+        pts[n].setAttribute('tabindex', '0');
+        pts[n].focus();
+      }
+    });
+    return c;
+  });
+
+  var tb = document.querySelector('#chart-table tbody');
+  data.forEach(function (p) {
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<th scope="row"></th><td></td>';
+    tr.firstChild.textContent = p.full;
+    tr.lastChild.textContent = p.v;
+    tb.appendChild(tr);
+  });
+})();
+</script>
+</body>
+</html>

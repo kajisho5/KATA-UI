@@ -1,0 +1,306 @@
+{
+  "agent": "Claude (Anthropic) via Claude Code",
+  "generated": "2026-11-07",
+  "screens": [
+    {
+      "slug": "sign-in",
+      "title": "Sign in",
+      "direct": {
+        "bytes": 7247,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 8,
+        "spacings": 15,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 7,
+        "lowContrastDark": 0,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 20032,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 10,
+        "spacings": 7,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 6,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "sign-up",
+      "title": "Sign up form",
+      "direct": {
+        "bytes": 7916,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 8,
+        "spacings": 11,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 9,
+        "lowContrastDark": 1,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 30257,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 8,
+        "spacings": 7,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 7,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "settings",
+      "title": "Settings",
+      "direct": {
+        "bytes": 9441,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 8,
+        "spacings": 15,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 7,
+        "lowContrastDark": 0,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 33358,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 9,
+        "spacings": 13,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 10,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "pricing",
+      "title": "Pricing",
+      "direct": {
+        "bytes": 8176,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 7,
+        "spacings": 15,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 3,
+        "lowContrastDark": 0,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 21415,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 8,
+        "spacings": 7,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 3,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "dashboard",
+      "title": "Dashboard",
+      "direct": {
+        "bytes": 12852,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 14,
+        "spacings": 11,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 8,
+        "lowContrastDark": 0,
+        "overflow": 43
+      },
+      "kata": {
+        "bytes": 31775,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 14,
+        "spacings": 11,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 8,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "data-table",
+      "title": "Data table",
+      "direct": {
+        "bytes": 13773,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 16,
+        "spacings": 14,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 10,
+        "lowContrastDark": 1,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 30496,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 12,
+        "spacings": 8,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 8,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "checkout",
+      "title": "Checkout",
+      "direct": {
+        "bytes": 15631,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 9,
+        "spacings": 13,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 13,
+        "lowContrastDark": 3,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 28504,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 7,
+        "spacings": 8,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 12,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "inbox",
+      "title": "Inbox",
+      "direct": {
+        "bytes": 14744,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 9,
+        "spacings": 10,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 10,
+        "lowContrastDark": 1,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 41285,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 16,
+        "spacings": 19,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 16,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "empty-state",
+      "title": "Empty state",
+      "direct": {
+        "bytes": 8727,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 9,
+        "spacings": 17,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 5,
+        "lowContrastDark": 0,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 20867,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 9,
+        "spacings": 11,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 5,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    },
+    {
+      "slug": "delete-confirm",
+      "title": "Delete with confirmation",
+      "direct": {
+        "bytes": 10204,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 11,
+        "spacings": 9,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 4,
+        "lowContrastDark": 0,
+        "overflow": 0
+      },
+      "kata": {
+        "bytes": 28616,
+        "buttonNoType": 0,
+        "consoleErrors": 0,
+        "colors": 8,
+        "spacings": 7,
+        "lowContrast": 0,
+        "unnamed": 0,
+        "focusInvisible": 0,
+        "tabStops": 5,
+        "lowContrastDark": 0,
+        "overflow": 0
+      }
+    }
+  ]
+}

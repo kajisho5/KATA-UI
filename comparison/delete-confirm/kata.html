@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Projects · Tallyboard</title>
+<meta name="description" content="Tallyboard project list with a delete confirmation dialog.">
+<script>
+// Follow the operating system color scheme; the KATA mold switches on data-theme.
+(function () {
+  var root = document.documentElement;
+  var query = window.matchMedia('(prefers-color-scheme: dark)');
+  function apply() {
+    if (!root.hasAttribute('data-theme-lock')) root.setAttribute('data-theme', query.matches ? 'dark' : 'light');
+  }
+  apply();
+  if (query.addEventListener) query.addEventListener('change', apply);
+  else if (query.addListener) query.addListener(apply);
+})();
+</script>
+<!-- KATA mold: tokens.css from kata-ui.dev -->
+<style>
+/* KATA mold v5 — 2026-11-06 — kata-ui.dev/docs/mold-changelog */
+/* KATA UI — design tokens. Components reference ONLY these variables. */
+:root{
+  /* shape-tokens:root:start */
+  --k-mold:5;
+  --k-tsutsuji:#e95295;
+  --k-mscale:1;
+  --k-dur-fast:calc(130ms * var(--k-mscale));
+  --k-dur-base:calc(180ms * var(--k-mscale));
+  --k-dur-slow:calc(220ms * var(--k-mscale));
+  --k-dur-1:var(--k-dur-fast);
+  --k-dur-2:var(--k-dur-base);
+  --k-dur-3:var(--k-dur-slow);
+  --k-ease:cubic-bezier(.3,.7,.3,1);
+  --k-ease-in-out:cubic-bezier(.6,0,.2,1);
+  --k-ease-spring:cubic-bezier(.3,1.2,.4,1);
+  --k-ease-bounce:cubic-bezier(.3,2.2,.45,1);
+  --k-ease-out:var(--k-ease-in-out);
+  --k-radius:8px;
+  --k-radius-xs:calc(var(--k-radius) * 0.375);
+  --k-radius-sm:calc(var(--k-radius) * 0.75);
+  --k-radius-md:var(--k-radius);
+  --k-radius-lg:calc(var(--k-radius) * 1.5);
+  --k-radius-xl:calc(var(--k-radius) * 2);
+  --k-radius-full:999px;
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
+  --k-ring-inset:inset 0 0 0 1px currentColor;
+  --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
+  --k-shadow-overlay:var(--k-shadow-pop);
+  --k-shadow-xs:0 1px 2px rgba(16,24,40,.05);
+  --k-shadow-sm:0 1px 4px rgba(16,24,40,.18);
+  --k-shadow-pop:0 20px 44px -14px rgba(16,24,40,.22);
+  --k-shadow-modal:0 30px 80px -20px rgba(0,0,0,.4);
+  --k-backdrop:color-mix(in srgb,var(--k-zinc-900) 45%,transparent);
+  --k-ink-3:#71717a;
+  --k-yamabuki-ink:#876019;
+  --k-danger-ink:#b7282e;
+  --k-accent-ink:#165e83;
+  --k-on-accent:var(--k-ink);
+  --k-accent-contrast-surface:var(--k-bg);
+  --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
+  /* shape-tokens:root:end */
+  --k-bg:#ffffff; --k-bg-soft:#f7f7f7; --k-ink:#18181b; --k-ink-2:#52525b;
+  --k-line:#e4e4e7; --k-accent:#33a6b8; --k-core:#eb471f; --k-danger:#c9171e; --k-yamabuki:#ffb11b;
+  --k-font:"Inter","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --k-mono:"Geist Mono",ui-monospace,monospace;
+  --k-on-color:#ffffff; --k-knob:#ffffff;
+
+  --k-accent-bg:rgba(51,166,184,.08); --k-accent-bg-strong:rgba(51,166,184,.1); --k-accent-line:rgba(51,166,184,.18);
+  --k-danger-bg:rgba(201,23,30,.07); --k-danger-line:rgba(201,23,30,.17); --k-danger-ring:rgba(201,23,30,.14); --k-ring-danger:0 0 0 3px rgba(201,23,30,.14);
+  --k-yamabuki-bg:rgba(255,177,27,.12); --k-yamabuki-line:rgba(255,177,27,.3);
+  --k-track:#d4d4d8; --k-seg:#ececee; --k-border-strong:#c9c9cf;
+  --k-success-bg:rgba(93,172,129,.1); --k-success-line:rgba(93,172,129,.32); --k-success-ink:#1b813e;
+  --k-success:#5dac81;
+
+  --k-z-overlay:50;
+
+  /* scales (mirror of system/tokens.json) */
+  --k-zinc-50:#fafafa; --k-zinc-100:#f4f4f5; --k-zinc-200:#e4e4e7; --k-zinc-300:#d4d4d8; --k-zinc-400:#a1a1aa; --k-zinc-500:#71717a; --k-zinc-600:#52525b; --k-zinc-700:#3f3f46; --k-zinc-800:#27272a; --k-zinc-900:#18181b; --k-zinc-950:#09090b;
+  --k-asagi-50:#eef9fa; --k-asagi-100:#d7f0f3; --k-asagi-200:#b0e0e7; --k-asagi-300:#7fc9d4; --k-asagi-400:#4fb0bf; --k-asagi-500:#33a6b8; --k-asagi-600:#29889a; --k-asagi-700:#206b79; --k-asagi-800:#1a5561; --k-asagi-900:#143f47;
+  /* scale-tokens:start */
+  --k-space-px:1px; --k-space-0-5:2px; --k-space-1:4px; --k-space-2:8px; --k-space-3:12px; --k-space-4:16px; --k-space-5:20px; --k-space-6:24px; --k-space-7:28px; --k-space-8:32px; --k-space-10:40px; --k-space-12:48px; --k-space-16:64px;
+  --k-text-xs:11px; --k-text-sm:12.5px; --k-text-base:13.5px; --k-text-md:14px; --k-text-lead:15px; --k-text-lg:16.5px; --k-text-xl:19px; --k-text-2xl:24px; --k-text-3xl:30px; --k-text-display:44px;
+  --k-text-code:.86em;
+  /* type tracking & leading — the table in KATA.md §0.5 */
+  --k-ls-display:-.025em; --k-ls-heading:-.015em; --k-ls-body:.012em; --k-ls-small:.01em; --k-ls-caps:.1em; --k-ls-mono:.02em; --k-ls-cjk:.06em; --k-ls-cjk-small:.05em;
+  --k-lh-tight:1; --k-lh-display:1.1; --k-lh-heading:1.3; --k-lh-card:1.35; --k-lh-small:1.6; --k-lh-body:1.7; --k-lh-loose:1.85;
+  /* scale-tokens:end */
+}
+/* craftsmanship floors — every part inherits these (KATA.md §0.6):
+   a 2px ink keyboard focus ring (3:1 in both themes), generated from
+   system/tokens.json. Reduced motion only changes the KATA multiplier; each
+   component owns its animation stop rules. Host motion is untouched. */
+/* focus-floor:start */
+:where(:focus-visible){outline:2px solid var(--k-ink);outline-offset:2px}
+/* focus-floor:end */
+@media (prefers-reduced-motion:reduce){
+  :root{--k-mscale:0 !important}
+}
+[data-theme="dark"]{
+  /* shape-tokens:dark:start */
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
+  --k-ring-inset:inset 0 0 0 1px currentColor;
+  --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
+  --k-shadow-overlay:var(--k-shadow-pop);
+  --k-shadow-xs:0 1px 2px rgba(0,0,0,.25);
+  --k-shadow-sm:0 1px 4px rgba(0,0,0,.35);
+  --k-shadow-pop:0 20px 44px -14px rgba(0,0,0,.55);
+  --k-shadow-modal:0 30px 80px -20px rgba(0,0,0,.65);
+  --k-backdrop:color-mix(in srgb,var(--k-zinc-950) 70%,transparent);
+  --k-ink-3:#90909a;
+  --k-yamabuki-ink:#f6c555;
+  --k-danger-ink:#f28b90;
+  --k-accent-ink:#81c7d4;
+  --k-on-accent:var(--k-ink);
+  --k-accent-contrast-surface:var(--k-bg);
+  --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
+  /* shape-tokens:dark:end */
+  --k-bg:#18181b; --k-bg-soft:#27272a; --k-ink:#f4f4f5; --k-ink-2:#a1a1aa;
+  --k-line:#3f3f46;
+
+  --k-track:#52525b; --k-seg:#27272a; --k-border-strong:#52525b;
+}
+[data-theme="light"]{
+  /* shape-tokens:light:start */
+  --k-ring:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-ink);
+  --k-ring-inset:inset 0 0 0 1px currentColor;
+  --k-ring-line:0 0 0 1px var(--k-line);
+  --k-ring-selected:0 0 0 2px var(--k-ink);
+  --k-ring-offset:0 0 0 2px var(--k-bg), 0 0 0 4px var(--k-accent);
+  --k-shadow-overlay:var(--k-shadow-pop);
+  --k-shadow-xs:0 1px 2px rgba(16,24,40,.05);
+  --k-shadow-sm:0 1px 4px rgba(16,24,40,.18);
+  --k-shadow-pop:0 20px 44px -14px rgba(16,24,40,.22);
+  --k-shadow-modal:0 30px 80px -20px rgba(0,0,0,.4);
+  --k-backdrop:color-mix(in srgb,var(--k-zinc-900) 45%,transparent);
+  --k-ink-3:#71717a;
+  --k-yamabuki-ink:#876019;
+  --k-danger-ink:#b7282e;
+  --k-accent-ink:#165e83;
+  --k-on-accent:var(--k-ink);
+  --k-accent-contrast-surface:var(--k-bg);
+  --k-accent-hover:color-mix(in srgb,var(--k-accent) 90%,var(--k-accent-contrast-surface));
+  /* shape-tokens:light:end */
+  --k-bg:#ffffff; --k-bg-soft:#f7f7f7; --k-ink:#18181b; --k-ink-2:#52525b;
+  --k-line:#e4e4e7;
+
+  --k-track:#d4d4d8; --k-seg:#ececee; --k-border-strong:#c9c9cf;
+}
+
+/* relative-color-roles:start */
+@supports (color: oklch(from red l c h)) {
+  :root,[data-theme="light"],[data-theme="dark"] {
+    --k-accent-luminance:color(from var(--k-accent) srgb-linear calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722) calc(r * 0.2126 + g * 0.7152 + b * 0.0722));
+    --k-on-accent:color(from var(--k-accent-luminance) srgb-linear max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.00913405870222, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 0.985771509405))) max(clamp(0, calc((0.179 - r) * 10000000000), 1), min(0.0109600940065, calc(max(0, calc((r + 0.05) / 4.6 - 0.05)) * 1.18284201626))));
+    --k-accent-contrast-surface:color(from var(--k-accent-luminance) srgb-linear calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)) calc(1 - clamp(0, calc((0.179 - r) * 10000000000), 1)));
+  }
+  :root,[data-theme="light"] {--k-accent-ink:oklch(from var(--k-accent) min(l, 0.48) c h);}
+  [data-theme="dark"] {--k-accent-ink:oklch(from var(--k-accent) max(l, 0.78) c h);}
+}
+/* relative-color-roles:end */
+
+</style>
+<!-- KATA part: button (kata-ui.dev/registry.json) -->
+<style>
+/* KATA button 1.1.0 — kata-ui.dev/components/button — requires mold >= 4 */
+.btn{--k-btn-gap:var(--k-space-2);--k-btn-weight:500;--k-btn-press:.5px;--k-btn-height-sm:32px;--k-btn-height-md:38px;--k-btn-height-lg:44px;--k-btn-pad-lg:var(--k-space-5);--k-btn-text-lg:var(--k-text-md);--k-btn-disabled-opacity:.45;--k-btn-shadow:var(--k-shadow-xs);--k-btn-inset:var(--k-ring-inset);--k-btn-spinner-size:14px;--k-btn-spinner-border:2px;--k-btn-spinner-track:color-mix(in srgb,currentColor 35%,transparent);--k-btn-spin-duration:700ms;--k-btn-spin-turn:360deg;display:inline-flex;align-items:center;justify-content:center;gap:var(--k-btn-gap);font-weight:var(--k-btn-weight);border-radius:var(--k-radius);cursor:pointer;border:1px solid transparent;font-family:var(--k-font);transition:background-color var(--k-dur-1) var(--k-ease),color var(--k-dur-1) var(--k-ease),box-shadow var(--k-dur-1) var(--k-ease);white-space:nowrap;text-decoration:none;background:none;color:var(--k-ink)}
+.btn:hover:not(:disabled){background:var(--k-bg-soft)}
+.btn:active:not(:disabled){transform:translateY(var(--k-btn-press));background:var(--k-seg)}
+.btn-pri{background:var(--k-ink);color:var(--k-bg)}
+.btn-pri:hover:not(:disabled){background:var(--k-ink-2)}
+.btn-pri:active:not(:disabled){background:var(--k-ink)}
+.btn-sec{background:var(--k-bg);color:var(--k-ink);border-color:var(--k-line);box-shadow:var(--k-btn-shadow)}
+.btn-sec:hover:not(:disabled){background:var(--k-bg-soft)}
+.btn-sec:active:not(:disabled){background:var(--k-seg)}
+.btn-ghost{background:transparent;color:var(--k-ink-2)}
+.btn-ghost:hover:not(:disabled){background:var(--k-bg-soft);color:var(--k-ink)}
+.btn-ghost:active:not(:disabled){background:var(--k-seg);color:var(--k-ink)}
+.btn-danger{background:var(--k-danger);color:var(--k-on-color)}
+.btn-danger:hover:not(:disabled){background:var(--k-danger-bg);color:var(--k-danger-ink)}
+.btn-danger:active:not(:disabled){background:var(--k-danger);color:var(--k-on-color);box-shadow:var(--k-btn-inset)}
+/* Deprecated: .btn-asagi is retained as an alias for .btn-accent. */
+.btn-accent,.btn-asagi{background:var(--k-accent);color:var(--k-on-accent)}
+.btn-accent:hover:not(:disabled),.btn-asagi:hover:not(:disabled){background:var(--k-accent-hover);color:var(--k-on-accent)}
+.btn-accent:active:not(:disabled),.btn-asagi:active:not(:disabled){background:var(--k-accent);box-shadow:var(--k-btn-inset);color:var(--k-on-accent)}
+.btn-sm{height:var(--k-btn-height-sm);padding:0 var(--k-space-3);font-size:var(--k-text-sm);border-radius:var(--k-radius-sm)}
+.btn-md{height:var(--k-btn-height-md);padding:0 var(--k-space-4);font-size:var(--k-text-base)}
+.btn-lg{height:var(--k-btn-height-lg);padding:0 var(--k-btn-pad-lg);font-size:var(--k-btn-text-lg)}
+.btn:focus-visible{outline:none;box-shadow:var(--k-ring)}
+.btn:disabled{opacity:var(--k-btn-disabled-opacity);cursor:not-allowed;transform:none}
+.btn[aria-busy="true"]{cursor:progress}
+.btn .spin{width:var(--k-btn-spinner-size);height:var(--k-btn-spinner-size);flex-shrink:0;border-radius:var(--k-radius-full);border:var(--k-btn-spinner-border) solid var(--k-btn-spinner-track);border-top-color:currentColor;animation:k-rot calc(var(--k-btn-spin-duration) * var(--k-mscale, 1)) linear infinite}
+@keyframes k-rot{to{transform:rotate(var(--k-btn-spin-turn))}}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}.btn .spin{animation:none}}
+
+</style>
+<!-- KATA part: table (kata-ui.dev/registry.json) -->
+<style>
+/* KATA table 1.1.0 — kata-ui.dev/components/table — requires mold >= 2 */
+.ktable-wrap{max-width:100%;overflow-x:auto;border:1px solid var(--k-line);border-radius:var(--k-radius-lg);background:var(--k-bg)}
+.ktable{width:100%;border-collapse:collapse;background:var(--k-bg);font-size:var(--k-text-base);font-family:var(--k-font)}
+.ktable th{text-align:start;font-size:var(--k-text-xs);letter-spacing:.05em;color:var(--k-ink-3);font-weight:600;background:var(--k-bg-soft);padding:var(--k-space-2) var(--k-space-3);border-bottom:1px solid var(--k-line)}
+.ktable td{padding:var(--k-space-3) var(--k-space-3);border-bottom:1px solid var(--k-line);color:var(--k-ink-2)}
+.ktable tr:last-child td{border-bottom:0}
+.ktable td:first-child{color:var(--k-ink);font-weight:500}
+.ktable .ava{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--k-accent-bg-strong);color:var(--k-accent-ink);font-size:var(--k-text-xs);font-weight:600;margin-inline-end:var(--k-space-2);vertical-align:middle}
+/* Numbers: end-aligned with equal-width digits so columns of amounts line up. */
+.ktable .num{text-align:end;font-variant-numeric:tabular-nums}
+
+</style>
+<!-- KATA part: alert-dialog (kata-ui.dev/registry.json) -->
+<style>
+/* KATA alert-dialog 1.1.0 — kata-ui.dev/components/alert-dialog — requires mold >= 4 */
+.kalert{border:0;border-radius:var(--k-radius-xl);padding:0;max-width:420px;width:calc(100% - 40px);box-shadow:var(--k-shadow-modal);background:var(--k-bg);color:var(--k-ink);font-family:var(--k-font)}
+.kalert::backdrop{background:var(--k-backdrop);backdrop-filter:blur(3px)}
+.kalert-in{padding:var(--k-space-6)}
+.kalert-in h3{font-size:var(--k-text-lg);font-weight:600}
+.kalert-in p{margin-top:var(--k-space-2);font-size:var(--k-text-base);color:var(--k-ink-2);line-height:var(--k-lh-loose);letter-spacing:.012em}
+.kalert-row{display:flex;flex-wrap:wrap;gap:var(--k-space-2);justify-content:flex-end;margin-top:var(--k-space-5)}
+
+</style>
+<!-- KATA part: toast (kata-ui.dev/registry.json) -->
+<style>
+/* KATA toast 1.1.0 — kata-ui.dev/components/toast — requires mold >= 4 */
+.k-toast,.toasts{--k-toast-ink:var(--k-bg);--k-toast-sub:var(--k-bg-soft)}
+.toasts{position:fixed;inset-inline-end:var(--k-space-4);bottom:18px;display:flex;flex-direction:column;gap:var(--k-space-2);z-index:99;font-family:var(--k-font)}
+.toast{display:flex;gap:var(--k-space-3);align-items:flex-start;background:var(--k-ink);color:var(--k-toast-ink);border-radius:var(--k-radius-lg);padding:var(--k-space-3) var(--k-space-4);font-size:var(--k-text-base);box-shadow:var(--k-shadow-pop);animation:k-tin var(--k-dur-slow) var(--k-ease-spring);max-width:320px}
+.toast-icon{flex:none;margin-top:var(--k-space-px);color:var(--k-success)}
+.toast small{display:block;color:var(--k-toast-sub);margin-top:var(--k-space-0-5);font-size:var(--k-text-sm);line-height:var(--k-lh-small)}
+.toast[data-closing]{transition:opacity var(--k-dur-slow) var(--k-ease)}
+@keyframes k-tin{from{opacity:0;transform:translateY(10px) scale(.97)}}
+
+@media (prefers-reduced-motion:reduce){.toast{animation:none;transition:none!important}}
+
+</style>
+<!-- Page layout -->
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;background:var(--k-bg-soft);color:var(--k-ink);font-family:var(--k-font);line-height:1.5}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+.page{padding:var(--k-space-8) var(--k-space-4)}
+.wrap{max-width:1080px;margin:0 auto}
+.sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+@media (max-width:560px){.page{padding:var(--k-space-4)}}
+.projects-wrap{max-width:760px}
+.page-h{font-size:var(--k-text-2xl);font-weight:600;letter-spacing:-.02em}
+.page-sub{margin:var(--k-space-1) 0 var(--k-space-5);font-size:var(--k-text-base);color:var(--k-ink-2)}
+.ktable td{vertical-align:middle;white-space:nowrap}
+.ktable .act{text-align:end;width:1%}
+.none{padding:var(--k-space-5) var(--k-space-3);text-align:center;font-size:var(--k-text-base);color:var(--k-ink-2)}
+
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="wrap projects-wrap">
+    <h1 class="page-h" id="proj-h" tabindex="-1">Projects</h1>
+    <p class="page-sub" id="proj-count">4 projects in the Northwind Studio workspace</p>
+    <div class="ktable-wrap" role="region" aria-labelledby="proj-h" tabindex="0">
+      <table class="ktable">
+        <thead><tr><th scope="col">Project</th><th scope="col">Owner</th><th scope="col" class="num">Open tasks</th><th scope="col" class="act"><span class="sr-only">Actions</span></th></tr></thead>
+        <tbody id="proj-body">
+          <tr data-name="Website redesign" data-tasks="18"><td>Website redesign</td><td><span class="ava" aria-hidden="true">MO</span>Maya Ortiz</td><td class="num">18</td><td class="act"><button type="button" class="btn btn-sec btn-sm" data-alert-open aria-label="Delete Website redesign">Delete</button></td></tr>
+          <tr data-name="Mobile app v2" data-tasks="32"><td>Mobile app v2</td><td><span class="ava" aria-hidden="true">SP</span>Sam Patel</td><td class="num">32</td><td class="act"><button type="button" class="btn btn-sec btn-sm" data-alert-open aria-label="Delete Mobile app v2">Delete</button></td></tr>
+          <tr data-name="Q4 marketing campaign" data-tasks="9"><td>Q4 marketing campaign</td><td><span class="ava" aria-hidden="true">LF</span>Lena Fischer</td><td class="num">9</td><td class="act"><button type="button" class="btn btn-sec btn-sm" data-alert-open aria-label="Delete Q4 marketing campaign">Delete</button></td></tr>
+          <tr data-name="Customer onboarding" data-tasks="14"><td>Customer onboarding</td><td><span class="ava" aria-hidden="true">NK</span>Noah Kim</td><td class="num">14</td><td class="act"><button type="button" class="btn btn-sec btn-sm" data-alert-open aria-label="Delete Customer onboarding">Delete</button></td></tr>
+        </tbody>
+      </table>
+      <p class="none" id="no-proj" hidden>No projects left in this workspace.</p>
+    </div>
+  </div>
+</main>
+<dialog class="kalert" data-alert-dialog role="alertdialog" aria-labelledby="del-title" aria-describedby="del-desc">
+  <div class="kalert-in">
+    <h3 id="del-title">Delete project?</h3>
+    <p id="del-desc">This project and its tasks will be permanently deleted. This cannot be undone.</p>
+    <div class="kalert-row">
+      <button type="button" class="btn btn-sec btn-md" data-autofocus data-alert-close>Cancel</button>
+      <button type="button" class="btn btn-danger btn-md" data-alert-close id="del-confirm">Delete project</button>
+    </div>
+  </div>
+</dialog>
+<div class="toasts k-toast" data-toasts></div>
+<!-- KATA part: alert-dialog (kata-ui.dev/registry.json) -->
+<script>
+/* KATA alert-dialog 1.1.0 — kata-ui.dev/components/alert-dialog — requires mold >= 4 */
+// KATA Alert Dialog — independent native modal instances.
+(() => {
+  let nextId = 0;
+  function ensureId(element, suffix) {
+    if (element.id) return element.id;
+    let id;
+    do { id = `kata-alert-dialog-${++nextId}-${suffix}`; } while (document.getElementById(id));
+    element.id = id;
+    return id;
+  }
+  const dialogs = [...document.querySelectorAll('[data-alert-dialog]')];
+  const triggers = [...document.querySelectorAll('[data-alert-open]')];
+  function targetOf(trigger) {
+    const controls = trigger.getAttribute('aria-controls');
+    if (controls) {
+      const target = dialogs.find(dialog => dialog.id === controls);
+      if (target) return target;
+    }
+    return dialogs.find(dialog => trigger.compareDocumentPosition(dialog) & Node.DOCUMENT_POSITION_FOLLOWING) || dialogs[dialogs.length - 1];
+  }
+  dialogs.forEach(dialog => {
+    if (dialog.hasAttribute('data-kata-ready') || !(dialog instanceof HTMLDialogElement)) return;
+    dialog.setAttribute('data-kata-ready', '');
+    const id = ensureId(dialog, 'dialog');
+    const heading = dialog.querySelector('h1,h2,h3,h4,h5,h6');
+    const description = dialog.querySelector('p');
+    if (!dialog.hasAttribute('aria-label') && !dialog.hasAttribute('aria-labelledby') && heading) dialog.setAttribute('aria-labelledby', ensureId(heading, 'title'));
+    if (!dialog.hasAttribute('aria-describedby') && description) dialog.setAttribute('aria-describedby', ensureId(description, 'description'));
+    if (!dialog.hasAttribute('tabindex')) dialog.tabIndex = -1;
+    let opener = null;
+    let composing = false;
+    function focusables() {
+      return [...dialog.querySelectorAll('button,a[href],input,select,textarea,[tabindex]')].filter(element => element.tabIndex >= 0 && !element.disabled && !element.closest('[inert]') && element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
+    }
+    // Native close is immediate; it never waits for a CSS end event.
+    function close() { composing = false; if (dialog.open) dialog.close(); }
+    triggers.filter(trigger => targetOf(trigger) === dialog).forEach(trigger => {
+      ensureId(trigger, 'trigger');
+      trigger.setAttribute('aria-controls', id);
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.addEventListener('click', () => {
+        if (dialog.open) return;
+        composing = false;
+        opener = trigger;
+        dialog.showModal();
+        (focusables().find(element => element.hasAttribute('data-autofocus') || element.hasAttribute('autofocus')) || focusables().find(element => element.matches('button:not(.btn-pri):not(.btn-danger):not([data-primary])')) || dialog).focus();
+      });
+    });
+    dialog.querySelectorAll('[data-alert-close]').forEach(button => button.addEventListener('click', close));
+    dialog.addEventListener('compositionstart', () => { composing = true; });
+    dialog.addEventListener('compositionend', () => { composing = false; });
+    dialog.addEventListener('keydown', event => {
+      if (composing || event.isComposing || event.keyCode === 229) {
+        if (event.key === 'Escape') event.preventDefault();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const items = focusables();
+      const first = items[0], last = items[items.length - 1];
+      if (!first) { event.preventDefault(); dialog.focus(); return; }
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === dialog)) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && (document.activeElement === last || document.activeElement === dialog)) { event.preventDefault(); first.focus(); }
+    });
+    dialog.addEventListener('close', () => {
+      if (dialog.open) return; // Ignore a queued close event from an earlier opening.
+      composing = false;
+      if (opener?.isConnected && !opener.disabled && !document.querySelectorAll('dialog[open]').length) opener.focus();
+    });
+  });
+})();
+
+</script>
+<!-- KATA part: toast (kata-ui.dev/registry.json) -->
+<script>
+/* KATA toast 1.1.0 — kata-ui.dev/components/toast — requires mold >= 4 */
+(function () {
+'use strict';
+function toastBox(near){
+  const all = [...document.querySelectorAll('[data-toasts]')];
+  if (!all.length) return null;
+  if (!near) return all[0];
+  return all.find(t => near.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_FOLLOWING) || all[0];
+}
+function toast(title, sub, near){
+  const toasts = toastBox(near);
+  if (!toasts) return;
+  const el = document.createElement('div');
+  el.className = 'toast';
+  // Text goes in as text, never as markup. The check icon is decorative; the title says the outcome.
+  el.innerHTML = '<svg class="toast-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg><span><b></b></span>';
+  el.querySelector('b').textContent = title;
+  if (sub) { const small = document.createElement('small'); small.textContent = sub; el.querySelector('span').append(small); }
+  toasts.appendChild(el);
+  setTimeout(() => {
+    el.setAttribute('data-closing', '');
+    // Commit the visible state before starting the exit transition.
+    void el.offsetWidth;
+    el.style.opacity = '0';
+    const style = getComputedStyle(el);
+    const milliseconds = value => value.split(',').map(part => parseFloat(part) * (part.trim().endsWith('ms') ? 1 : 1000));
+    const duration = Math.max(...milliseconds(style.transitionDuration));
+    const delay = Math.max(...milliseconds(style.transitionDelay));
+    if (duration === 0) { el.remove(); return; }
+    const timer = setTimeout(() => el.remove(), duration + Math.max(0, delay) + 50);
+    const finish = event => {
+      if (event.target !== el || event.propertyName !== 'opacity') return;
+      clearTimeout(timer);
+      el.remove();
+    };
+    el.addEventListener('transitionend', finish);
+    el.addEventListener('transitioncancel', finish);
+  }, 4000);
+}
+// Each stack is a polite status live region before any toast is added, so screen readers announce new toasts.
+document.querySelectorAll('[data-toasts]').forEach(box => {
+  if (!box.hasAttribute('role')) box.setAttribute('role', 'status');
+  if (!box.hasAttribute('aria-live')) box.setAttribute('aria-live', 'polite');
+});
+document.querySelectorAll('[data-toast-demo]').forEach(btn => {
+  if (btn.dataset.kataReady) return;
+  btn.dataset.kataReady = 'true';
+  btn.addEventListener('click', () => toast('Saved', 'Your draft is synced automatically.', btn));
+});
+
+})();
+
+</script>
+<!-- Page behavior -->
+<script>
+(() => {
+  const dialog = document.querySelector('[data-alert-dialog]');
+  const title = document.getElementById('del-title');
+  const desc = document.getElementById('del-desc');
+  const confirm = document.getElementById('del-confirm');
+  const body = document.getElementById('proj-body');
+  const countEl = document.getElementById('proj-count');
+  const none = document.getElementById('no-proj');
+  const heading = document.getElementById('proj-h');
+  const toasts = document.querySelector('[data-toasts]');
+  let pending = null;
+  let focusAfterClose = null;
+
+  // Same markup and timing as the Toast part, with this page's message.
+  function notify(heading, detail) {
+    const el = document.createElement('div');
+    el.className = 'toast';
+    el.innerHTML = '<svg class="toast-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 12.5l5 5L20 6.5"/></svg><span><b></b><small></small></span>';
+    el.querySelector('b').textContent = heading;
+    el.querySelector('small').textContent = detail;
+    toasts.appendChild(el);
+    setTimeout(() => {
+      el.setAttribute('data-closing', '');
+      void el.offsetWidth;
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 400);
+    }, 4000);
+  }
+
+  body.querySelectorAll('[data-alert-open]').forEach(button => {
+    button.addEventListener('click', () => {
+      const row = button.closest('tr');
+      pending = row;
+      const name = row.dataset.name;
+      const tasks = Number(row.dataset.tasks);
+      title.textContent = 'Delete “' + name + '”?';
+      desc.textContent = 'The project and its ' + tasks + ' open tasks will be permanently deleted for everyone in the workspace. This cannot be undone.';
+      confirm.setAttribute('aria-label', 'Delete project ' + name);
+    });
+  });
+
+  confirm.addEventListener('click', () => {
+    if (!pending) return;
+    const row = pending;
+    const name = row.dataset.name;
+    const rows = [...body.rows];
+    const index = rows.indexOf(row);
+    const neighbour = rows[index + 1] || rows[index - 1] || null;
+    row.remove();
+    pending = null;
+    focusAfterClose = neighbour ? neighbour.querySelector('[data-alert-open]') : heading;
+    const left = body.rows.length;
+    countEl.textContent = left + (left === 1 ? ' project' : ' projects') + ' in the Northwind Studio workspace';
+    none.hidden = left > 0;
+    notify('Project deleted', '“' + name + '” was removed.');
+  });
+
+  dialog.addEventListener('close', () => {
+    pending = null;
+    if (focusAfterClose) {
+      focusAfterClose.focus();
+      focusAfterClose = null;
+    }
+  });
+})();
+</script>
+</body>
+</html>

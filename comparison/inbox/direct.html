@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Inbox · Helpline</title>
+<style>
+  :root {
+    --bg: #f4f5f7; --surface: #fff; --text: #191c21; --muted: #5d6471;
+    --border: #e0e3e8; --input-border: #c3c9d3; --primary: #0b6b62; --primary-hover: #08544d; --primary-text: #fff;
+    --selected: #e7f3f1; --hover: #f6f7f9; --unread: #0b6b62; --bubble-in: #f0f2f5; --bubble-out: #0b6b62; --bubble-out-text: #fff;
+    --focus: #0b6b62; --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1013; --surface: #171a1f; --text: #e6e8ec; --muted: #a2a9b4;
+      --border: #2b3038; --input-border: #474e5a; --primary: #5fd1c1; --primary-hover: #86e0d4; --primary-text: #062420;
+      --selected: #12302c; --hover: #1d2128; --unread: #5fd1c1; --bubble-in: #232830; --bubble-out: #1d4d47; --bubble-out-text: #e6f7f4;
+      --focus: #86e0d4;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; display: flex; flex-direction: column; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  header.top { flex: none; display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--surface); border-bottom: 1px solid var(--border); font-weight: 700; }
+  .logo { width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: var(--primary-text); display: grid; place-items: center; }
+  .app { flex: 1; min-height: 0; display: grid; grid-template-columns: 340px minmax(0, 1fr); }
+  .list-pane { background: var(--surface); border-inline-end: 1px solid var(--border); display: flex; flex-direction: column; min-height: 0; }
+  .list-head { padding: 14px 16px 10px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; }
+  .list-head h1 { font-size: 1.1rem; margin: 0; }
+  .list-head span { color: var(--muted); font-size: .85rem; }
+  .convos { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; }
+  .convo {
+    display: grid; grid-template-columns: 10px 1fr auto; column-gap: 10px; row-gap: 1px; width: 100%;
+    padding: 12px 16px 12px 10px; border: 0; border-bottom: 1px solid var(--border); background: transparent;
+    color: inherit; font: inherit; text-align: start; cursor: pointer;
+  }
+  .convo:hover { background: var(--hover); }
+  .convo[aria-current="true"] { background: var(--selected); box-shadow: inset 3px 0 0 var(--primary); }
+  .convo:focus-visible { outline-offset: -3px; }
+  .dot { grid-row: 1; align-self: center; width: 8px; height: 8px; border-radius: 50%; }
+  .unread .dot { background: var(--unread); }
+  .sender { grid-column: 2; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .unread .sender, .unread .subject { font-weight: 700; }
+  .time { grid-column: 3; color: var(--muted); font-size: .8rem; white-space: nowrap; }
+  .unread .time { color: var(--unread); font-weight: 600; }
+  .subject { grid-column: 2 / 4; font-size: .9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .preview { grid-column: 2 / 4; color: var(--muted); font-size: .85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .thread { display: flex; flex-direction: column; min-height: 0; }
+  .thread-head { flex: none; display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+  .thread-head h2 { margin: 0; font-size: 1.1rem; }
+  .thread-head p { margin: 0; color: var(--muted); font-size: .85rem; }
+  .back { display: none; border: 1px solid var(--input-border); background: var(--surface); color: var(--text); border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
+  .back:hover { background: var(--hover); }
+  .messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+  .msg { max-width: min(560px, 85%); }
+  .msg .meta { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
+  .msg .bubble { padding: 10px 14px; border-radius: 14px; background: var(--bubble-in); white-space: pre-wrap; overflow-wrap: anywhere; }
+  .msg.out { align-self: flex-end; }
+  .msg.out .meta { text-align: end; }
+  .msg.out .bubble { background: var(--bubble-out); color: var(--bubble-out-text); }
+  .reply { flex: none; border-top: 1px solid var(--border); background: var(--surface); padding: 12px 20px 16px; }
+  .reply label { display: block; font-weight: 600; font-size: .85rem; margin-bottom: 6px; }
+  .reply-row { display: flex; gap: 10px; align-items: flex-end; }
+  textarea {
+    flex: 1; min-height: 44px; max-height: 180px; resize: vertical; padding: 10px 12px; font: inherit; color: var(--text);
+    background: var(--surface); border: 1px solid var(--input-border); border-radius: var(--radius);
+  }
+  .send {
+    flex: none; padding: 11px 20px; font: inherit; font-weight: 600; border: 0; border-radius: var(--radius);
+    background: var(--primary); color: var(--primary-text); cursor: pointer;
+  }
+  .send:hover { background: var(--primary-hover); }
+  .send:disabled { opacity: .5; cursor: not-allowed; }
+  .hint { color: var(--muted); font-size: .8rem; margin: 6px 0 0; }
+  kbd { font: inherit; font-size: .75rem; border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  @media (max-width: 760px) {
+    .app { grid-template-columns: 1fr; }
+    .app.show-thread .list-pane { display: none; }
+    .app:not(.show-thread) .thread { display: none; }
+    .back { display: inline-block; }
+    .list-pane { border-inline-end: 0; }
+  }
+</style>
+</head>
+<body>
+<header class="top"><span class="logo" aria-hidden="true">H</span>Helpline</header>
+<div class="app" id="app">
+  <nav class="list-pane" aria-labelledby="inbox-title">
+    <div class="list-head"><h1 id="inbox-title">Inbox</h1><span id="unread-count"></span></div>
+    <ul class="convos" id="convos"></ul>
+  </nav>
+  <main class="thread" id="thread" aria-labelledby="thread-title">
+    <div class="thread-head">
+      <button type="button" class="back" id="back">← Inbox</button>
+      <div><h2 id="thread-title" tabindex="-1"></h2><p id="thread-sub"></p></div>
+    </div>
+    <div class="messages" id="messages" role="log" aria-labelledby="thread-title" tabindex="0"></div>
+    <form class="reply" id="reply">
+      <label for="reply-text">Reply</label>
+      <div class="reply-row">
+        <textarea id="reply-text" rows="2" placeholder="Write a reply…" aria-describedby="reply-hint"></textarea>
+        <button type="submit" class="send" id="send" disabled>Send</button>
+      </div>
+      <p class="hint" id="reply-hint">Press <kbd>Ctrl</kbd>+<kbd>Enter</kbd> (or <kbd>⌘</kbd>+<kbd>Enter</kbd>) to send.</p>
+    </form>
+  </main>
+</div>
+<p class="sr-only" id="announce" aria-live="polite"></p>
+
+<script>
+(function () {
+  var AGENT = 'You';
+  var convos = [
+    { id: 1, sender: 'Hannah Lee', email: 'hannah@northwind.example', subject: 'Can’t reset my password', time: '9:42 AM', unread: true, messages: [
+      { from: 'Hannah Lee', at: '9:38 AM', text: 'Hi, I requested a password reset twice but never got the email.' },
+      { from: 'Hannah Lee', at: '9:42 AM', text: 'I checked spam too. Could you send the link again?' } ] },
+    { id: 2, sender: 'Omar Haddad', email: 'omar@brightline.example', subject: 'Invoice #4821 shows wrong amount', time: '9:15 AM', unread: true, messages: [
+      { from: 'Omar Haddad', at: '9:15 AM', text: 'Our November invoice charges for 14 seats, but we only have 11 active users. Can you check?' } ] },
+    { id: 3, sender: 'Grace Park', email: 'grace@lumen.example', subject: 'Export to CSV is timing out', time: '8:57 AM', unread: true, messages: [
+      { from: 'Grace Park', at: '8:51 AM', text: 'Exporting our tickets for October fails after about a minute.' },
+      { from: AGENT, at: '8:54 AM', text: 'Thanks Grace. Roughly how many tickets are in that range?' },
+      { from: 'Grace Park', at: '8:57 AM', text: 'Around 18,000.' } ] },
+    { id: 4, sender: 'Tomás Rivera', email: 'tomas@cedarworks.example', subject: 'Feature request: dark mode', time: 'Yesterday', unread: false, messages: [
+      { from: 'Tomás Rivera', at: 'Yesterday, 4:10 PM', text: 'Our night-shift team would love a dark theme for the agent view.' },
+      { from: AGENT, at: 'Yesterday, 4:32 PM', text: 'Great idea. I’ve passed it to the product team and will update you when it ships.' } ] },
+    { id: 5, sender: 'Nadia Ivanova', email: 'nadia@foxglove.example', subject: 'SSO login loop', time: 'Yesterday', unread: true, messages: [
+      { from: 'Nadia Ivanova', at: 'Yesterday, 2:05 PM', text: 'After enabling SSO, some users get redirected back to the login page repeatedly.' } ] },
+    { id: 6, sender: 'Ben Carter', email: 'ben@harbor.example', subject: 'Thanks for the quick fix!', time: 'Mon', unread: false, messages: [
+      { from: 'Ben Carter', at: 'Mon, 11:20 AM', text: 'The webhook issue is resolved on our side. Thanks for the quick fix!' },
+      { from: AGENT, at: 'Mon, 11:31 AM', text: 'Glad to hear it, Ben. Closing this one out.' } ] },
+    { id: 7, sender: 'Aisha Bello', email: 'aisha@meridian.example', subject: 'How do I add a teammate?', time: 'Mon', unread: false, messages: [
+      { from: 'Aisha Bello', at: 'Mon, 9:02 AM', text: 'Where do I invite a new teammate to our workspace?' },
+      { from: AGENT, at: 'Mon, 9:10 AM', text: 'Go to Settings → Team → Invite member, then enter their email address.' } ] },
+    { id: 8, sender: 'Leo Martin', email: 'leo@quarry.example', subject: 'Request to cancel subscription', time: 'Sun', unread: false, messages: [
+      { from: 'Leo Martin', at: 'Sun, 6:45 PM', text: 'We’re winding down the project, so please cancel our plan at the end of this billing period.' } ] }
+  ];
+
+  var listEl = document.getElementById('convos');
+  var app = document.getElementById('app');
+  var title = document.getElementById('thread-title');
+  var sub = document.getElementById('thread-sub');
+  var msgs = document.getElementById('messages');
+  var form = document.getElementById('reply');
+  var ta = document.getElementById('reply-text');
+  var send = document.getElementById('send');
+  var announce = document.getElementById('announce');
+  var current = null;
+  var narrow = matchMedia('(max-width: 760px)');
+
+  function preview(c) { return c.messages[c.messages.length - 1].text; }
+
+  function renderList() {
+    listEl.textContent = '';
+    convos.forEach(function (c) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'convo' + (c.unread ? ' unread' : '');
+      b.dataset.id = c.id;
+      if (current && current.id === c.id) b.setAttribute('aria-current', 'true');
+      b.setAttribute('aria-label', (c.unread ? 'Unread. ' : '') + c.sender + ', ' + c.subject + ', ' + c.time + '. ' + preview(c));
+      b.innerHTML = '<span class="dot" aria-hidden="true"></span><span class="sender"></span><span class="time"></span><span class="subject"></span><span class="preview"></span>';
+      b.querySelector('.sender').textContent = c.sender;
+      b.querySelector('.time').textContent = c.time;
+      b.querySelector('.subject').textContent = c.subject;
+      b.querySelector('.preview').textContent = preview(c);
+      b.addEventListener('click', function () { open(c.id, true); });
+      li.appendChild(b);
+      listEl.appendChild(li);
+    });
+    var n = convos.filter(function (c) { return c.unread; }).length;
+    document.getElementById('unread-count').textContent = n + ' unread';
+  }
+
+  function renderThread() {
+    var c = current;
+    title.textContent = c.subject;
+    sub.textContent = c.sender + ' · ' + c.email;
+    msgs.textContent = '';
+    c.messages.forEach(function (m) {
+      var d = document.createElement('div');
+      d.className = 'msg' + (m.from === AGENT ? ' out' : '');
+      var meta = document.createElement('div'); meta.className = 'meta'; meta.textContent = m.from + ' · ' + m.at;
+      var bub = document.createElement('div'); bub.className = 'bubble'; bub.textContent = m.text;
+      d.appendChild(meta); d.appendChild(bub); msgs.appendChild(d);
+    });
+    msgs.scrollTop = msgs.scrollHeight;
+    ta.placeholder = 'Reply to ' + c.sender + '…';
+  }
+
+  function open(id, moveFocus) {
+    current = convos.find(function (c) { return c.id === id; });
+    current.unread = false;
+    renderList();
+    renderThread();
+    app.classList.add('show-thread');
+    if (moveFocus) {
+      if (narrow.matches) title.focus(); else ta.focus();
+    }
+  }
+
+  // Arrow-key navigation within the conversation list.
+  listEl.addEventListener('keydown', function (e) {
+    var btns = Array.prototype.slice.call(listEl.querySelectorAll('.convo'));
+    var i = btns.indexOf(document.activeElement);
+    if (i === -1) return;
+    var n = null;
+    if (e.key === 'ArrowDown') n = Math.min(i + 1, btns.length - 1);
+    if (e.key === 'ArrowUp') n = Math.max(i - 1, 0);
+    if (e.key === 'Home') n = 0;
+    if (e.key === 'End') n = btns.length - 1;
+    if (n !== null) { e.preventDefault(); btns[n].focus(); }
+  });
+
+  document.getElementById('back').addEventListener('click', function () {
+    app.classList.remove('show-thread');
+    var b = listEl.querySelector('[aria-current="true"]');
+    if (b) b.focus();
+  });
+
+  ta.addEventListener('input', function () { send.disabled = !ta.value.trim(); });
+  ta.addEventListener('keydown', function (e) {
+    if (e.isComposing || e.keyCode === 229) return;
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); if (ta.value.trim()) form.requestSubmit(); }
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = ta.value.trim();
+    if (!text || !current) return;
+    var now = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    current.messages.push({ from: AGENT, at: now, text: text });
+    current.time = now;
+    convos.splice(convos.indexOf(current), 1);
+    convos.unshift(current);
+    ta.value = ''; send.disabled = true;
+    renderList(); renderThread();
+    announce.textContent = 'Reply sent to ' + current.sender + '.';
+    ta.focus();
+  });
+
+  renderList();
+  open(1, false);
+  // On small screens start with the list visible.
+  if (narrow.matches) app.classList.remove('show-thread');
+})();
+</script>
+</body>
+</html>

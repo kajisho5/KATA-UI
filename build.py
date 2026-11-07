@@ -804,7 +804,8 @@ def registry_json(comps, blocks, templates=None):
         files.append({'path': f"components/{c['slug']}/example.html", 'type': 'registry:component', 'content': example})
         items.append({'name': c['slug'], 'type': 'registry:component', 'title': m['title'],
                       'description': m['description'], 'categories': [m['category']],
-                      'dependencies': c['deps'], 'files': files})
+                      'dependencies': c['deps'], 'files': files,
+                      'meta': {'status': m.get('status', 'stable'), 'usage': m.get('usage', ''), 'accessibility': m.get('a11y', '')}})
     for b in blocks:
         m = b['meta']
         files = [{'path': f"blocks/{b['slug']}/{b['slug']}.css", 'type': 'registry:block', 'content': b['css']}]
@@ -814,7 +815,8 @@ def registry_json(comps, blocks, templates=None):
         files.append({'path': f"blocks/{b['slug']}/example.html", 'type': 'registry:block', 'content': example})
         items.append({'name': b['slug'], 'type': 'registry:block', 'title': m['title'],
                       'description': m['description'], 'categories': ['Blocks'],
-                      'dependencies': m.get('uses', []), 'files': files})
+                      'dependencies': m.get('uses', []), 'files': files,
+                      'meta': {'status': m.get('status', 'stable'), 'usage': m.get('usage', ''), 'accessibility': m.get('a11y', '')}})
     for t in (templates or []):
         m = t['meta']
         files = [{'path': f"templates/{t['slug']}/{t['slug']}.css", 'type': 'registry:page', 'content': t['css']}]
@@ -824,7 +826,8 @@ def registry_json(comps, blocks, templates=None):
         files.append({'path': f"templates/{t['slug']}/example.html", 'type': 'registry:page', 'content': example})
         items.append({'name': t['slug'], 'type': 'registry:page', 'title': m['title'],
                       'description': m['description'], 'categories': ['Templates'],
-                      'dependencies': m.get('blocks', []) + m.get('uses', []), 'files': files})
+                      'dependencies': m.get('blocks', []) + m.get('uses', []), 'files': files,
+                      'meta': {'status': m.get('status', 'stable'), 'usage': m.get('usage', ''), 'accessibility': m.get('a11y', '')}})
     for t in load_themes():
         items.append({'name': 'theme-' + t['name'], 'type': 'registry:theme', 'title': 'Theme: ' + t['label'],
                       'description': t['note'], 'categories': ['Themes'],
@@ -837,7 +840,9 @@ def registry_json(comps, blocks, templates=None):
         for file in item['files']:
             file['content'] = distribution_header(file['path'], file['content'])
     return json.dumps({'$schema': 'https://ui.shadcn.com/schema/registry.json', 'name': 'kata-ui', 'version': RELEASE_VERSION,
-                       'moldVersion': MOLD_CONFIG['moldVersion'], 'moldInstruction': version_line(ROOT), 'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
+                       'moldVersion': MOLD_CONFIG['moldVersion'], 'moldInstruction': version_line(ROOT),
+                       'tokens': {'url': 'https://kata-ui.dev/tokens.css', 'moldVersion': MOLD_CONFIG['moldVersion'],
+                                  'note': 'Every part reads its colors, spacing, radius and motion from tokens.css. Load it once, before any part CSS.'}, 'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
     catalog = (f'Catalog: {len(comps)} components, {len(blocks)} blocks, {len(templates or [])} templates and {n_icons} icons. '

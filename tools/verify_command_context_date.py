@@ -89,6 +89,9 @@ def run(output=ROOT/'docs/review/command-context-date'):
                             input_.evaluate('(e)=>e.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",keyCode:229,bubbles:true}))'); assert opened(index)
                             input_.evaluate('(e)=>e.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",isComposing:true,bubbles:true}))'); assert opened(index)
                             page.evaluate('()=>{window.selections=0;if(!window.selectionProbe){document.addEventListener("kata-command-select",()=>window.selections++);window.selectionProbe=true}}')
+                            # The palette ignores Enter until a zero-delay timer after compositionend; a
+                            # later zero-delay timer runs after it, so this Enter is not dropped under load.
+                            page.evaluate('()=>new Promise(resolve=>setTimeout(resolve,0))')
                             page.keyboard.press('Enter'); closed(index); assert page.evaluate('window.selections') == 1
                             assert triggers.nth(index).evaluate('(e)=>e===document.activeElement')
                             assert input_.get_attribute('aria-activedescendant') is None

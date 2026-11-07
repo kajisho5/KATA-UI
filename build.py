@@ -1044,6 +1044,119 @@ DETAIL_JS = """<script>
   });
 </script>"""
 
+JA_DOCS = ['button', 'input', 'field', 'textarea', 'select', 'checkbox', 'radio', 'switch', 'modal', 'dropdown']
+JA_CATEGORY = {'Form & Input': 'フォームと入力', 'Overlays & Dialogs': '重なる表示とダイアログ',
+               'Layout & Navigation': 'レイアウトと移動', 'Feedback & Status': 'お知らせと状態', 'Display & Media': '表示とメディア'}
+JA_STATUS = {'stable': 'stable', 'beta': 'beta'}
+JA_DOC_STYLE = """<style>
+html[lang="ja"] .detail{line-height:1.8}
+.ja-nav{margin-bottom:22px}
+.ja-nav .h{font-size:11px;font-weight:650;letter-spacing:.14em;color:var(--ink);margin:0 0 8px;padding-inline:10px}
+.ja-nav a{display:flex;gap:8px;padding:5px 10px;border-radius:6px;font-size:13px;color:var(--ink2);text-decoration:none}
+.ja-nav a span{color:var(--ink3)}
+.ja-nav a[aria-current="page"]{background:var(--hair);color:var(--ink);font-weight:600}
+.ja-nav a:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ja-title .ja-en:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ja-title{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.ja-title .ja-name{font-size:17px;font-weight:500;color:var(--ink2)}
+.ja-title .ja-en{margin-inline-start:auto;font-size:13px;border:1px solid var(--hair);border-radius:8px;padding:5px 12px;text-decoration:none;color:var(--ink)}
+.ja-keys{border-collapse:collapse;margin-top:10px;font-size:14px;min-width:min(100%,520px)}
+.ja-keys th,.ja-keys td{text-align:start;padding:8px 14px;border-block-end:1px solid var(--hair)}
+.ja-keys th{font-size:12.5px;color:var(--ink2);font-weight:600}
+.ja-only{border:1px solid var(--hair);border-radius:12px;padding:14px 18px;background:var(--paper)}
+.ja-src{margin-top:28px;padding-top:14px;border-top:1px solid var(--hair);font-size:12.5px;color:var(--ink3)}
+</style>"""
+
+
+def ja_docs():
+    """Japanese copy for the parts in JA_DOCS, read from ja/components/<slug>.json."""
+    out = {}
+    for slug in JA_DOCS:
+        path = ROOT / 'ja' / 'components' / f'{slug}.json'
+        if path.exists():
+            out[slug] = json.loads(path.read_text(encoding='utf-8'))
+    return out
+
+
+def ja_nav(docs, by_slug, current):
+    CURRENT = ' aria-current="page"'
+    links = ''.join(
+        f'<a href="/ja/components/{sl}/"{CURRENT if sl == current else ""}>{esc(by_slug[sl]["meta"]["title"])}<span>{esc(docs[sl]["name_ja"])}</span></a>'
+        for sl in JA_DOCS if sl in docs and sl in by_slug)
+    return f'<nav class="ja-nav" aria-label="日本語ドキュメント"><p class="h">日本語ドキュメント</p>{links}</nav>'
+
+
+def ja_detail(comps, idx, docs):
+    """Japanese page for one part: same preview and code as detail(), translated prose."""
+    c = comps[idx]
+    m = c['meta']
+    slug = c['slug']
+    ja = docs[slug]
+    by_slug = {x['slug']: x for x in comps}
+    display_html = re.sub(r'\s*<link rel="stylesheet"[^>]*>', '', c['preview']).strip()
+    tabs = [('HTML', display_html), ('CSS', c['css'])] + ([('JS', c['js'])] if c['js'] else [])
+    on = ' class="on"'
+    tab_btns = ''.join(f'<button data-tab="{name}"{on if i == 0 else ""}>{name}</button>' for i, (name, _) in enumerate(tabs))
+    panes = ''.join(
+        f'<div class="pane{" on" if i == 0 else ""}" data-pane="{name}"><pre>{esc(code)}</pre><div class="copyrow"><button class="copybtn">コピー</button></div></div>'
+        for i, (name, code) in enumerate(tabs))
+    stage_cls = 'stage col' if m.get('stage') == 'col' else 'stage'
+    js_tag = f'<script src="/components/{slug}/{slug}.js?v={_v(c["js"])}"></script>' if c['js'] else ''
+    js_step = ' この部品にはスクリプトがあります。HTML のあとで読み込むと、自分で動き始めます。' if c['js'] else ''
+    deps = ''
+    if c['deps']:
+        names = '、'.join(f'<a href="/components/{d}/">{esc(by_slug[d]["meta"]["title"])}</a>' for d in c['deps'] if d in by_slug)
+        deps = f'<p class="deps">この部品は {names} も使います。その CSS も一緒に読み込んでください。</p>'
+    keys = ''.join(f'<tr><td><kbd>{esc(k)}</kbd></td><td>{esc(v)}</td></tr>' for k, v in ja.get('keys', []))
+    keys_html = f'<table class="ja-keys"><thead><tr><th scope="col">キー</th><th scope="col">動き</th></tr></thead><tbody>{keys}</tbody></table>' if keys else ''
+    status = m.get('status', 'stable')
+    body = f"""
+<div class="wrap dc">
+  <div class="layout">
+    <div class="sidenav">{ja_nav(docs, by_slug, slug)}{''.join(tree_sections(comps, slug, '/ja/components/' + slug + '/'))}</div>
+    <main class="detail" lang="ja">
+      <p class="crumb"><a href="/ja/">日本語ドキュメント</a> / {esc(JA_CATEGORY.get(m['category'], m['category']))} / {esc(m['title'])}</p>
+      <div class="ja-title"><h1>{esc(m['title'])}</h1><span class="ja-name">{esc(ja['name_ja'])}</span><span class="st st-{esc(status)}">{esc(status)}</span><a class="ja-en" href="/components/{slug}/" hreflang="en" lang="en">English →</a></div>
+      <p class="desc">{esc(ja['description'])}</p>
+      <div class="stagebar">
+        <span class="lbl">見本</span>
+        <span class="seg" data-seg="width"><button data-v="desktop" class="on">Desktop</button><button data-v="mobile">Mobile</button></span>
+        <span class="seg" data-seg="theme"><button data-v="light" class="on">Light</button><button data-v="dark">Dark</button></span>
+      </div>
+      <div class="dcols"><div class="dcol-l">
+      <div class="{stage_cls}" id="stage" lang="en">
+{c['preview']}
+      </div>
+      {deps}
+      </div><div class="dcol-r">
+      <div class="codebox" lang="en"><div class="codetabs">{tab_btns}</div>{panes}</div>
+      </div></div>
+      <section class="doc"><h2>導入</h2>
+        <div class="codebox"><div class="pane on"><pre lang="en">npx @kajisho5/kataui add {slug}</pre><div class="copyrow"><button class="copybtn">コピー</button></div></div></div>
+        <p class="anote">手動で入れる場合：</p>
+        <ol class="instol">
+          <li><code>tokens.css</code> をページで一度だけ読み込む</li>
+          <li>CSS タブの中身を、自分のスタイルシートに貼る</li>
+          <li>HTML タブの中身を、使いたい場所に貼る。{js_step}</li>
+        </ol></section>
+      <section class="doc"><h2>使いどころ</h2><p>{esc(ja['usage'])}</p></section>
+      <section class="doc"><h2>アクセシビリティ</h2><p>{esc(ja['a11y'])}</p>{keys_html}</section>
+      <section class="doc"><h2>英語版にだけある情報</h2><div class="ja-only"><p>静的チェックの結果・部品の構造（Anatomy）・読むトークン・使い方の例・関連する部品</p><p><a href="/components/{slug}/" hreflang="en">英語版の {esc(m['title'])} ページで見る →</a></p></div></section>
+      <p class="ja-src">この訳は、英語版の {esc(ja['source']['date'])} の内容をもとにしています。英語版の文が変わると、テストで知らせます。</p>
+    </main>
+  </div>
+</div>
+{FOOTER}
+{js_tag}
+{DETAIL_JS}
+</body>
+</html>"""
+    extra = JA_DOC_STYLE + f'<link rel="stylesheet" href="/components/{slug}/{slug}.css?v={_v(c["css"])}">' + ''.join(
+        f'<link rel="stylesheet" href="/components/{d}/{d}.css?v={_v(by_slug[d]["css"])}">' for d in c['deps'] if d in by_slug)
+    page = head(f"{m['title']}（{ja['name_ja']}）— KATA UI 日本語ドキュメント", ja['description'], extra) + body
+    return page.replace('<html lang="en">', '<html lang="ja">', 1)
+
+
 def detail(comps, idx):
     c = comps[idx]
     m = c['meta']
@@ -1168,7 +1281,7 @@ def detail(comps, idx):
     {nav_tree(comps, slug, '/components/' + slug + '/')}
     <main class="detail">
       <p class="crumb"><a href="/components/">Components</a> / {esc(m['category'])} / {esc(m['title'])}</p>
-      <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span></h1>
+      <h1>{esc(m['title'])} <span class="st st-{esc(m.get('status','stable'))}">{esc(m.get('status','stable'))}</span>{f' <a class="ja-link" href="/ja/components/{slug}/" hreflang="ja" lang="ja">日本語</a>' if (ROOT / 'ja' / 'components' / (slug + '.json')).exists() else ''}</h1>
       <div class="vrow"><span class="vchip"><i></i>{'Mold Verified — passed' if MOLD_ITEMS['components/' + slug]['passed'] else 'Mold check — failed'}</span><button class="aibtn" type="button" data-aiprompt="{slug}" data-title="{esc(m['title'])}">Pass this part to your AI</button></div>
       <p class="desc">{esc(m['description'])}</p>{'<p class="expnote">From the experimental line \u2014 a showpiece. The production shelf carries the same mold without the performance.</p>' if m.get('category') in ('Motion', 'KATAYABURI') else ''}
       <div class="stagebar">
@@ -1452,6 +1565,14 @@ JA_STYLE = """<style>
 @media (max-width:720px){.ja-steps,.ja-cards{grid-template-columns:1fr}.ja-hero h1{font-size:27px}.ja-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 18px}}
 </style>"""
 
+def ja_doc_cards():
+    cards = []
+    for slug, ja in ja_docs().items():
+        title = json.loads((ROOT / 'components' / slug / 'meta.json').read_text(encoding='utf-8'))['title']
+        cards.append(f'<a class="ja-card" href="/ja/components/{slug}/"><h3>{esc(title)}　{esc(ja["name_ja"])}</h3><p>{esc(ja["description"])}</p></a>')
+    return ''.join(cards)
+
+
 def ja_page():
     body = """
 <div class="wrap ja">
@@ -1473,6 +1594,11 @@ def ja_page():
       <div class="ja-step"><span class="no">STEP 2</span><h3>部品を貼る</h3><p>部品ページからHTML・CSS・JSをコピー。インストールもパッケージもありません。</p></div>
       <div class="ja-step"><span class="no">STEP 3</span><h3>型を調整する</h3><p>変えるのは部品ではなくトークン。型をひとつ変えれば、ページ全体が鋳直されます。</p></div>
     </div>
+  </section>
+  <section class="ja-sec">
+    <h2>日本語ドキュメント</h2>
+    <p>よく使う部品から順に、説明・使いどころ・アクセシビリティを日本語で読めます。コードと見本は英語版と同じです。</p>
+    <div class="ja-cards">""" + ja_doc_cards() + """</div>
   </section>
   <section class="ja-sec">
     <h2>棚の紹介</h2>
@@ -2654,6 +2780,12 @@ def main():
                 else:
                     shutil.copy(f, dst / f.name)
         (dst / 'index.html').write_text(emit(detail(comps, i), comps, comps[i]['slug']), encoding='utf-8')
+    jadocs = ja_docs()
+    for i, c in enumerate(comps):
+        if c['slug'] in jadocs:
+            jdst = DIST / 'ja' / 'components' / c['slug']
+            jdst.mkdir(parents=True, exist_ok=True)
+            (jdst / 'index.html').write_text(emit(ja_detail(comps, i, jadocs), comps, c['slug']), encoding='utf-8')
     tokens = json.loads((ROOT / 'system' / 'tokens.json').read_text(encoding='utf-8'))
     dsdir = DIST / 'design-system'
     dsdir.mkdir()
@@ -2662,7 +2794,7 @@ def main():
     prdir.mkdir()
     (prdir / 'index.html').write_text(emit(pricing_page(), comps, None, '/pricing/', True), encoding='utf-8')
     jadir = DIST / 'ja'
-    jadir.mkdir()
+    jadir.mkdir(exist_ok=True)
     (jadir / 'index.html').write_text(emit(ja_page(), comps, None, '/ja/', True), encoding='utf-8')
     scdir = DIST / 'showcase'
     scdir.mkdir()
@@ -2792,7 +2924,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/audit/', '/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/', '/compare/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/audit/', '/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/', '/compare/'] + [f"/ja/components/{s}/" for s in ja_docs()] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

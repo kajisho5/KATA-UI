@@ -1,0 +1,29 @@
+{
+  "slug": "button",
+  "name_ja": "ボタン",
+  "source": {
+    "date": "2026-11-07",
+    "sha1": {
+      "description": "5f247a286992569b027b28c0eecd98fac51110d5",
+      "usage": "92ef6f8cda1a3415697604333cfa5be4cfce6099",
+      "a11y": "65657b68a3c6ff485969f015452e991d179251ac"
+    }
+  },
+  "description": "主な操作・もう一つの操作・取り消せない操作に使うボタンです。押せない状態と読み込み中の見本も入っています。",
+  "usage": "1つの画面で、主な操作（Primary）は1つだけにします。もう一つの選択肢には Secondary、3番目以降の操作には Ghost を使います。Danger は、削除のような取り消せない操作にだけ使います。",
+  "a11y": "ブラウザ標準の <button> を使い、type を必ず書きます。JavaScript は使いません。キーボードで選ぶと --k-ring の枠が出ます（2px のすき間と 2px の枠。ライト・ダークとも背景との差 3:1 を測って確認済み）。Primary・Secondary・Ghost・Accent・Danger のそれぞれに、マウスを乗せたとき・押したとき・押せないときの見た目があります。押せる状態の文字は、どの状態でも両方のテーマで 5.5:1 以上です（docs/review/button）。押せない状態はブラウザ標準の disabled 属性を使います。読み込み中の見本は文字を残したまま disabled と aria-busy を付け、回る印は aria-hidden で読み上げから外し、動きを減らす設定（prefers-reduced-motion）では止まります。btn-asagi は btn-accent の古い別名で、今後は使いません。2026-11-06 にオーナーが iPhone の VoiceOver で確認しました（記録の書き起こしはありません。docs/review/button/screen-reader.md）。NVDA では確かめていません。ボタンは文字を入力しないので、日本語入力（IME）は関係ありません。確認したのは Chromium だけで、Safari と Firefox はまだです。",
+  "keys": [
+    [
+      "Tab",
+      "次のボタンへ移動"
+    ],
+    [
+      "Shift + Tab",
+      "前のボタンへ戻る"
+    ],
+    [
+      "Enter / Space",
+      "押す"
+    ]
+  ]
+}

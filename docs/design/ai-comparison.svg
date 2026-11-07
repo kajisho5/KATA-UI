@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="1640" viewBox="0 0 1280 1640" font-family="Inter, -apple-system, 'Segoe UI', sans-serif">
+  <title>Ten screens, two ways: page design</title>
+  <rect width="1280" height="1640" fill="#fafafa"/>
+
+  <!-- site header (existing chrome) -->
+  <line x1="0" x2="1280" y1="58" y2="58" stroke="#e4e4e7"/>
+  <rect x="92" y="22" width="16" height="16" fill="#18181b"/><rect x="100" y="30" width="8" height="8" fill="#e83a1f"/>
+  <text x="118" y="35" font-size="14" font-weight="600" fill="#18181b">KATA UI</text>
+  <text x="290" y="35" font-size="13" fill="#3f3f46">Docs    Components    Blocks    Templates    Icons    Themes    Design System    Pricing</text>
+  <rect x="893" y="13" width="122" height="32" rx="7" fill="#ffffff" stroke="#e4e4e7"/>
+  <text x="925" y="34" font-size="13" fill="#a1a1aa">Search  ⌘K</text>
+
+  <!-- 1 title -->
+  <text x="90" y="128" font-size="12" fill="#52525b" font-family="'Space Mono', ui-monospace, monospace">COMPARISON · 10 SCREENS · GENERATED 2026-11-07</text>
+  <text x="90" y="176" font-size="40" font-weight="700" fill="#18181b" letter-spacing="-1">Ten screens, two ways</text>
+  <text x="90" y="210" font-size="15" fill="#3f3f46">One prompt per screen. A: the prompt alone. B: the same prompt, assembled from parts fetched from the KATA registry.</text>
+
+  <!-- 2 method box -->
+  <rect x="90" y="236" width="1100" height="128" rx="14" fill="#ffffff" stroke="#e4e4e7"/>
+  <text x="114" y="266" font-size="13" font-weight="650" fill="#18181b">Method</text>
+  <g font-size="13" fill="#3f3f46">
+    <text x="114" y="292">· Agent: Claude (Anthropic) via Claude Code, both drafts on the same day.</text>
+    <text x="114" y="314">· First output kept for every draft: no retries, no picking, no hand edits.</text>
+    <text x="114" y="336">· B adds one fixed sentence to the prompt: “Fetch each part from kata-ui.dev/registry.json and use it unmodified.”</text>
+  </g>
+  <text x="1166" y="292" font-size="13" fill="#18181b" text-anchor="end" text-decoration="underline">Prompts and raw HTML</text>
+  <text x="1166" y="314" font-size="13" fill="#18181b" text-anchor="end" text-decoration="underline">Measurement script</text>
+
+  <!-- 3 summary table -->
+  <text x="90" y="414" font-size="22" font-weight="650" fill="#18181b">Summary</text>
+  <rect x="90" y="430" width="1100" height="318" rx="14" fill="#ffffff" stroke="#e4e4e7"/>
+  <g font-size="12" font-weight="600" fill="#52525b">
+    <text x="114" y="458">Screen</text>
+    <text x="370" y="458" text-anchor="end">Focus hidden</text>
+    <text x="370" y="474" text-anchor="end" font-weight="400" fill="#71717a">A / B</text>
+    <text x="520" y="458" text-anchor="end">Unnamed controls</text>
+    <text x="520" y="474" text-anchor="end" font-weight="400" fill="#71717a">A / B</text>
+    <text x="670" y="458" text-anchor="end">Contrast &lt; 4.5</text>
+    <text x="670" y="474" text-anchor="end" font-weight="400" fill="#71717a">A / B</text>
+    <text x="820" y="458" text-anchor="end">Colors used</text>
+    <text x="820" y="474" text-anchor="end" font-weight="400" fill="#71717a">A / B</text>
+    <text x="970" y="458" text-anchor="end">Dark + RTL breaks</text>
+    <text x="970" y="474" text-anchor="end" font-weight="400" fill="#71717a">A / B</text>
+    <text x="1166" y="458" text-anchor="end">Console errors</text>
+    <text x="1166" y="474" text-anchor="end" font-weight="400" fill="#71717a">A / B</text>
+  </g>
+  <line x1="90" x2="1190" y1="486" y2="486" stroke="#e4e4e7"/>
+  <g font-size="13" fill="#18181b">
+    <text x="114" y="512">1  Sign in</text>
+    <text x="114" y="540">2  Sign up form</text>
+    <text x="114" y="568">3  Settings</text>
+    <text x="114" y="596">4  Pricing</text>
+    <text x="114" y="624">5  Dashboard</text>
+    <text x="114" y="652">6  Data table</text>
+    <text x="114" y="680">7  Checkout</text>
+    <text x="114" y="708">8  Inbox</text>
+    <text x="114" y="736">9  Empty state</text>
+  </g>
+  <g font-size="13" fill="#a1a1aa" font-family="'Space Mono', ui-monospace, monospace" text-anchor="end">
+    <text x="370" y="512">– / –</text><text x="520" y="512">– / –</text><text x="670" y="512">– / –</text><text x="820" y="512">– / –</text><text x="970" y="512">– / –</text><text x="1166" y="512">– / –</text>
+    <text x="370" y="540">– / –</text><text x="520" y="540">– / –</text><text x="670" y="540">– / –</text><text x="820" y="540">– / –</text><text x="970" y="540">– / –</text><text x="1166" y="540">– / –</text>
+    <text x="370" y="568">– / –</text><text x="520" y="568">– / –</text><text x="670" y="568">– / –</text><text x="820" y="568">– / –</text><text x="970" y="568">– / –</text><text x="1166" y="568">– / –</text>
+    <text x="370" y="596">– / –</text><text x="520" y="596">– / –</text><text x="670" y="596">– / –</text><text x="820" y="596">– / –</text><text x="970" y="596">– / –</text><text x="1166" y="596">– / –</text>
+    <text x="370" y="624">– / –</text><text x="520" y="624">– / –</text><text x="670" y="624">– / –</text><text x="820" y="624">– / –</text><text x="970" y="624">– / –</text><text x="1166" y="624">– / –</text>
+    <text x="370" y="652">– / –</text><text x="520" y="652">– / –</text><text x="670" y="652">– / –</text><text x="820" y="652">– / –</text><text x="970" y="652">– / –</text><text x="1166" y="652">– / –</text>
+    <text x="370" y="680">– / –</text><text x="520" y="680">– / –</text><text x="670" y="680">– / –</text><text x="820" y="680">– / –</text><text x="970" y="680">– / –</text><text x="1166" y="680">– / –</text>
+    <text x="370" y="708">– / –</text><text x="520" y="708">– / –</text><text x="670" y="708">– / –</text><text x="820" y="708">– / –</text><text x="970" y="708">– / –</text><text x="1166" y="708">– / –</text>
+    <text x="370" y="736">– / –</text><text x="520" y="736">– / –</text><text x="670" y="736">– / –</text><text x="820" y="736">– / –</text><text x="970" y="736">– / –</text><text x="1166" y="736">– / –</text>
+  </g>
+  <text x="90" y="770" font-size="12" fill="#71717a">“–” = measured value goes here. Row 10 (Delete with confirm) continues below the fold. Differences are set in bold; no colors mark better or worse.</text>
+
+  <!-- 4 per-screen section -->
+  <text x="90" y="826" font-size="12" fill="#52525b" font-family="'Space Mono', ui-monospace, monospace">01</text>
+  <text x="122" y="828" font-size="22" font-weight="650" fill="#18181b">Sign in</text>
+  <!-- tabs light/dark -->
+  <rect x="1046" y="806" width="144" height="32" rx="8" fill="#f4f4f5" stroke="#e4e4e7"/>
+  <rect x="1050" y="810" width="68" height="24" rx="6" fill="#ffffff" stroke="#e4e4e7"/>
+  <text x="1084" y="826" font-size="12" font-weight="600" fill="#18181b" text-anchor="middle">Light</text>
+  <text x="1152" y="826" font-size="12" fill="#52525b" text-anchor="middle">Dark</text>
+
+  <!-- A shot -->
+  <rect x="90" y="852" width="540" height="360" rx="12" fill="#ffffff" stroke="#e4e4e7"/>
+  <rect x="90" y="852" width="540" height="34" rx="12" fill="#f4f4f5"/>
+  <text x="108" y="874" font-size="12" font-weight="650" fill="#18181b">A · Prompt alone</text>
+  <text x="612" y="874" font-size="12" fill="#18181b" text-anchor="end" text-decoration="underline">direct.html</text>
+  <g>
+    <rect x="245" y="920" width="230" height="260" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="270" y="944" width="120" height="14" rx="3" fill="#334155"/>
+    <rect x="270" y="976" width="60" height="8" rx="2" fill="#94a3b8"/><rect x="270" y="990" width="180" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+    <rect x="270" y="1032" width="70" height="8" rx="2" fill="#94a3b8"/><rect x="270" y="1046" width="180" height="30" rx="6" fill="#ffffff" stroke="#94a3b8"/>
+    <rect x="270" y="1094" width="180" height="34" rx="6" fill="#4f46e5"/>
+    <rect x="310" y="1146" width="100" height="8" rx="2" fill="#a5b4fc"/>
+  </g>
+  <text x="360" y="1202" font-size="11" fill="#71717a" text-anchor="middle">Screenshot of the raw output (placeholder)</text>
+
+  <!-- B shot -->
+  <rect x="650" y="852" width="540" height="360" rx="12" fill="#ffffff" stroke="#e4e4e7"/>
+  <rect x="650" y="852" width="540" height="34" rx="12" fill="#f4f4f5"/>
+  <text x="668" y="874" font-size="12" font-weight="650" fill="#18181b">B · Assembled from KATA parts</text>
+  <text x="1172" y="874" font-size="12" fill="#18181b" text-anchor="end" text-decoration="underline">kata.html</text>
+  <g>
+    <rect x="805" y="920" width="230" height="260" rx="12" fill="#ffffff" stroke="#e4e4e7"/>
+    <rect x="830" y="944" width="110" height="14" rx="3" fill="#18181b"/>
+    <rect x="830" y="976" width="60" height="8" rx="2" fill="#71717a"/><rect x="830" y="990" width="180" height="30" rx="8" fill="#ffffff" stroke="#d4d4d8"/>
+    <rect x="830" y="1032" width="70" height="8" rx="2" fill="#71717a"/><rect x="830" y="1046" width="180" height="30" rx="8" fill="#ffffff" stroke="#d4d4d8"/>
+    <rect x="830" y="1094" width="180" height="34" rx="8" fill="#18181b"/>
+    <circle cx="920" cy="1111" r="3" fill="#e83a1f"/>
+    <rect x="870" y="1146" width="100" height="8" rx="2" fill="#a1a1aa"/>
+  </g>
+  <text x="920" y="1202" font-size="11" fill="#71717a" text-anchor="middle">Screenshot of the raw output (placeholder)</text>
+
+  <!-- metrics table for this screen -->
+  <rect x="90" y="1232" width="1100" height="176" rx="12" fill="#ffffff" stroke="#e4e4e7"/>
+  <g font-size="12" font-weight="600" fill="#52525b">
+    <text x="114" y="1260">Measure</text><text x="760" y="1260" text-anchor="end">A</text><text x="900" y="1260" text-anchor="end">B</text><text x="1166" y="1260" text-anchor="end">How</text>
+  </g>
+  <line x1="90" x2="1190" y1="1272" y2="1272" stroke="#e4e4e7"/>
+  <g font-size="13" fill="#18181b">
+    <text x="114" y="1296">Tab stops with no visible focus</text>
+    <text x="114" y="1322">Controls with no accessible name</text>
+    <text x="114" y="1348">Text below 4.5:1</text>
+    <text x="114" y="1374">Distinct colors · distinct spacings</text>
+    <text x="114" y="1400">Bytes</text>
+  </g>
+  <g font-size="13" fill="#a1a1aa" font-family="'Space Mono', ui-monospace, monospace" text-anchor="end">
+    <text x="760" y="1296">–</text><text x="900" y="1296">–</text>
+    <text x="760" y="1322">–</text><text x="900" y="1322">–</text>
+    <text x="760" y="1348">–</text><text x="900" y="1348">–</text>
+    <text x="760" y="1374">– · –</text><text x="900" y="1374">– · –</text>
+    <text x="760" y="1400">–</text><text x="900" y="1400">–</text>
+  </g>
+  <g font-size="12" fill="#52525b" text-anchor="end">
+    <text x="1166" y="1296">verify_focus_ring rule</text>
+    <text x="1166" y="1322">browser accessibility tree</text>
+    <text x="1166" y="1348">capture_text_contrast rule</text>
+    <text x="1166" y="1374">computed CSS values</text>
+    <text x="1166" y="1400">file size</text>
+  </g>
+
+  <!-- prompt accordion -->
+  <rect x="90" y="1428" width="1100" height="48" rx="12" fill="#ffffff" stroke="#e4e4e7"/>
+  <text x="114" y="1457" font-size="14" font-weight="600" fill="#18181b">Prompt</text>
+  <path d="M1160 1446 l6 6 6 -6" fill="none" stroke="#52525b" stroke-width="1.7" stroke-linecap="square"/>
+
+  <text x="90" y="1530" font-size="12" fill="#52525b" font-family="'Space Mono', ui-monospace, monospace">02</text>
+  <text x="122" y="1532" font-size="22" font-weight="650" fill="#18181b">Sign up form</text>
+  <text x="90" y="1570" font-size="12" fill="#71717a">… sections 02–10 repeat the same layout. Under 640px the two shots stack (A above B).</text>
+  <line x1="90" x2="1190" y1="1600" y2="1600" stroke="#e4e4e7"/>
+  <text x="90" y="1624" font-size="12" fill="#71717a">Not verified: other agents or dates, screen readers, Safari, Firefox, real devices.</text>
+</svg>

@@ -49,9 +49,6 @@ class Comparison(unittest.TestCase):
                 self.assertEqual(s[draft]['buttonNoType'], len(missing), s['slug'] + ' ' + draft)
 
 
-if __name__ == '__main__':
-    unittest.main()
-
 
 class ComparePage(unittest.TestCase):
     """The published /compare/ page shows the recorded numbers and links the raw files."""
@@ -82,3 +79,7 @@ class ComparePage(unittest.TestCase):
                     'consoleErrors', 'buttonNoType', 'colors', 'spacings', 'bytes']
             for key, (a, b) in zip(keys, cells):
                 self.assertEqual((int(a), int(b)), (s['direct'][key], s['kata'][key]), f'{s["slug"]} {key}')
+
+
+if __name__ == '__main__':
+    unittest.main()

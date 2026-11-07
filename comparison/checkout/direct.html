@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Checkout · Inkwell Supply</title>
+<style>
+  :root {
+    --bg: #f7f5f2; --surface: #fff; --text: #1f1c19; --muted: #625b53;
+    --border: #d9d3cb; --input-border: #bdb5ab; --primary: #1f4d3a; --primary-hover: #163a2b; --primary-text: #fff;
+    --selected-bg: #eef5f1; --danger: #b42318; --focus: #2f6f54; --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121110; --surface: #1c1a18; --text: #ece8e3; --muted: #aca49a;
+      --border: #3a3632; --input-border: #57514a; --primary: #7fcfaa; --primary-hover: #a1e0c3; --primary-text: #0f1a14;
+      --selected-bg: #17271f; --danger: #ff8a80; --focus: #a1e0c3;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { border-bottom: 1px solid var(--border); background: var(--surface); }
+  .bar { max-width: 1080px; margin: 0 auto; padding: 14px 16px; font-weight: 800; font-size: 1.15rem; letter-spacing: -.01em; display: flex; align-items: center; gap: 8px; }
+  main { max-width: 1080px; margin: 0 auto; padding: 28px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 20px; }
+  .layout { display: grid; gap: 28px; grid-template-columns: 1fr; }
+  @media (min-width: 880px) { .layout { grid-template-columns: minmax(0, 1fr) 360px; align-items: start; } .summary { position: sticky; top: 16px; } }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  fieldset { border: 1px solid var(--border); background: var(--surface); border-radius: 14px; padding: 18px 20px 6px; margin: 0 0 20px; min-width: 0; }
+  legend { font-weight: 700; font-size: 1.05rem; padding: 0 6px; margin-inline-start: -6px; }
+  .field { margin-bottom: 14px; }
+  .row { display: grid; gap: 12px; grid-template-columns: 1fr; }
+  @media (min-width: 520px) { .row.two { grid-template-columns: 1fr 1fr; } .row.three { grid-template-columns: 2fr 1fr 1fr; } }
+  label { display: block; font-weight: 600; font-size: .875rem; margin-bottom: 6px; }
+  .opt { color: var(--muted); font-weight: 400; }
+  input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%; padding: 10px 12px; font: inherit; color: var(--text); background: var(--surface);
+    border: 1px solid var(--input-border); border-radius: var(--radius);
+  }
+  [aria-invalid="true"] { border-color: var(--danger) !important; }
+  .error { color: var(--danger); font-size: .85rem; margin: 6px 0 0; }
+  .error:empty { display: none; }
+  .radio-card {
+    display: flex; align-items: center; gap: 12px; padding: 14px; margin: 0 0 10px;
+    border: 1px solid var(--input-border); border-radius: var(--radius); cursor: pointer; font-weight: 400;
+  }
+  .radio-card:has(input:checked) { border-color: var(--primary); background: var(--selected-bg); box-shadow: inset 0 0 0 1px var(--primary); }
+  .radio-card input { width: 18px; height: 18px; margin: 0; accent-color: var(--primary); flex: none; }
+  .radio-card .t { flex: 1; }
+  .radio-card strong { display: block; }
+  .radio-card .d { color: var(--muted); font-size: .85rem; }
+  .radio-card .p { font-weight: 700; }
+  .secure { color: var(--muted); font-size: .85rem; display: flex; gap: 6px; align-items: center; margin: -4px 0 14px; }
+  .summary { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .summary h2 { font-size: 1.1rem; margin: 0 0 14px; }
+  .items { list-style: none; margin: 0; padding: 0; }
+  .item { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .thumb { width: 52px; height: 52px; border-radius: 8px; flex: none; display: grid; place-items: center; background: var(--selected-bg); color: var(--primary); }
+  .item .name { flex: 1; font-weight: 600; font-size: .95rem; }
+  .item .qty { display: block; color: var(--muted); font-weight: 400; font-size: .85rem; }
+  .item .price { font-variant-numeric: tabular-nums; font-weight: 600; }
+  dl { margin: 12px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 8px 12px; font-variant-numeric: tabular-nums; }
+  dt { color: var(--muted); }
+  dd { margin: 0; text-align: end; }
+  .total { font-weight: 800; font-size: 1.15rem; color: var(--text); padding-top: 10px; border-top: 1px solid var(--border); }
+  .place {
+    width: 100%; margin-top: 18px; padding: 14px 16px; font: inherit; font-weight: 700; font-size: 1.02rem;
+    border: 0; border-radius: var(--radius); background: var(--primary); color: var(--primary-text); cursor: pointer;
+  }
+  .place:hover { background: var(--primary-hover); }
+  .place:disabled { opacity: .6; cursor: progress; }
+  .fine { color: var(--muted); font-size: .8rem; margin: 10px 0 0; text-align: center; }
+  .confirm { border: 1px solid var(--primary); background: var(--selected-bg); border-radius: var(--radius); padding: 14px 16px; margin: 0 0 20px; }
+  .confirm h2 { margin: 0 0 4px; font-size: 1.05rem; }
+  .confirm p { margin: 0; }
+  .errsum { border: 1px solid var(--danger); color: var(--danger); border-radius: var(--radius); padding: 12px 16px; margin: 0 0 20px; }
+  .errsum ul { margin: 6px 0 0; padding-inline-start: 20px; }
+  .errsum a { color: inherit; }
+</style>
+</head>
+<body>
+<header><div class="bar"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3l7 7-9 9H5v-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M5 19l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Inkwell Supply</div></header>
+<main>
+  <h1>Checkout</h1>
+  <div id="confirm" class="confirm" role="status" tabindex="-1" hidden>
+    <h2>Order placed</h2>
+    <p>Thanks! Order #IW-20481 is confirmed. A receipt is on its way to <span id="confirm-email"></span>.</p>
+  </div>
+  <div id="errsum" class="errsum" role="alert" tabindex="-1" hidden>
+    <strong>Please fix the following:</strong>
+    <ul id="errlist"></ul>
+  </div>
+
+  <div class="layout">
+    <form id="checkout" novalidate>
+      <fieldset>
+        <legend>Contact</legend>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" inputmode="email" required data-msg="Enter a valid email address.">
+          <p class="error" id="email-err"></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Shipping address</legend>
+        <div class="row two">
+          <div class="field"><label for="fname">First name</label><input id="fname" type="text" autocomplete="shipping given-name" required data-msg="Enter your first name."><p class="error" id="fname-err"></p></div>
+          <div class="field"><label for="lname">Last name</label><input id="lname" type="text" autocomplete="shipping family-name" required data-msg="Enter your last name."><p class="error" id="lname-err"></p></div>
+        </div>
+        <div class="field"><label for="addr1">Address</label><input id="addr1" type="text" autocomplete="shipping address-line1" required data-msg="Enter your street address."><p class="error" id="addr1-err"></p></div>
+        <div class="field"><label for="addr2">Apartment, suite, etc. <span class="opt">(optional)</span></label><input id="addr2" type="text" autocomplete="shipping address-line2"></div>
+        <div class="row three">
+          <div class="field"><label for="city">City</label><input id="city" type="text" autocomplete="shipping address-level2" required data-msg="Enter your city."><p class="error" id="city-err"></p></div>
+          <div class="field"><label for="state">State</label>
+            <select id="state" autocomplete="shipping address-level1" required data-msg="Select a state.">
+              <option value="">Select</option><option>CA</option><option>IL</option><option>MA</option><option>NY</option><option>OR</option><option>TX</option><option>WA</option>
+            </select><p class="error" id="state-err"></p></div>
+          <div class="field"><label for="zip">ZIP code</label><input id="zip" type="text" inputmode="numeric" autocomplete="shipping postal-code" required pattern="\d{5}(-\d{4})?" data-msg="Enter a 5-digit ZIP code."><p class="error" id="zip-err"></p></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Shipping method</legend>
+        <label class="radio-card"><input type="radio" name="ship" value="4" checked><span class="t"><strong>Standard</strong><span class="d">5–7 business days</span></span><span class="p">$4.00</span></label>
+        <label class="radio-card"><input type="radio" name="ship" value="12"><span class="t"><strong>Express</strong><span class="d">1–2 business days</span></span><span class="p">$12.00</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Payment</legend>
+        <p class="secure"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>Demo form. No payment is processed.</p>
+        <div class="field"><label for="card">Card number</label><input id="card" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="1234 5678 9012 3456" maxlength="23" required data-msg="Enter a valid card number." aria-describedby="card-err"><p class="error" id="card-err"></p></div>
+        <div class="row two">
+          <div class="field"><label for="exp">Expiry (MM/YY)</label><input id="exp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" maxlength="5" required data-msg="Enter a valid future expiry date."><p class="error" id="exp-err"></p></div>
+          <div class="field"><label for="cvc">CVC</label><input id="cvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4" required data-msg="Enter the 3- or 4-digit CVC."><p class="error" id="cvc-err"></p></div>
+        </div>
+      </fieldset>
+    </form>
+
+    <aside class="summary" aria-labelledby="sum-title">
+      <h2 id="sum-title">Order summary</h2>
+      <ul class="items">
+        <li class="item">
+          <span class="thumb" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 3v18" stroke="currentColor" stroke-width="1.6"/></svg></span>
+          <span class="name">Dot-grid notebook, A5<span class="qty">Qty 2 × $14.00</span></span>
+          <span class="price">$28.00</span>
+        </li>
+        <li class="item">
+          <span class="thumb" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M16 3l5 5-11 11-6 1 1-6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+          <span class="name">Brass fountain pen<span class="qty">Qty 1 × $36.00</span></span>
+          <span class="price">$36.00</span>
+        </li>
+      </ul>
+      <dl>
+        <dt>Subtotal</dt><dd id="subtotal">$64.00</dd>
+        <dt>Shipping <span id="ship-name">(Standard)</span></dt><dd id="shipping">$4.00</dd>
+        <dt class="total">Total</dt><dd class="total" id="total" aria-live="polite">$68.00</dd>
+      </dl>
+      <button type="submit" form="checkout" class="place" id="place">Place order</button>
+      <p class="fine">By placing your order you agree to our terms of sale.</p>
+    </aside>
+  </div>
+</main>
+
+<script>
+(function () {
+  var SUBTOTAL = 64;
+  var money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+  var form = document.getElementById('checkout');
+
+  function updateTotals() {
+    var r = form.querySelector('input[name="ship"]:checked');
+    var ship = Number(r.value);
+    document.getElementById('shipping').textContent = money.format(ship);
+    document.getElementById('ship-name').textContent = ship === 12 ? '(Express)' : '(Standard)';
+    document.getElementById('total').textContent = money.format(SUBTOTAL + ship);
+  }
+  form.querySelectorAll('input[name="ship"]').forEach(function (r) { r.addEventListener('change', updateTotals); });
+
+  var card = document.getElementById('card');
+  card.addEventListener('input', function () {
+    var digits = card.value.replace(/\D/g, '').slice(0, 19);
+    card.value = digits.replace(/(.{4})/g, '$1 ').trim();
+  });
+  var exp = document.getElementById('exp');
+  exp.addEventListener('input', function (e) {
+    var d = exp.value.replace(/\D/g, '').slice(0, 4);
+    if (e.inputType && e.inputType.indexOf('delete') === 0) { exp.value = exp.value.replace(/[^\d/]/g, ''); return; }
+    exp.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : (d.length === 2 ? d + '/' : d);
+  });
+  var cvc = document.getElementById('cvc');
+  cvc.addEventListener('input', function () { cvc.value = cvc.value.replace(/\D/g, '').slice(0, 4); });
+
+  function luhn(num) {
+    var sum = 0, alt = false;
+    for (var i = num.length - 1; i >= 0; i--) {
+      var n = +num[i];
+      if (alt) { n *= 2; if (n > 9) n -= 9; }
+      sum += n; alt = !alt;
+    }
+    return sum % 10 === 0;
+  }
+  function validExp(v) {
+    var m = /^(\d{2})\/(\d{2})$/.exec(v);
+    if (!m) return false;
+    var mo = +m[1], yr = 2000 + +m[2];
+    if (mo < 1 || mo > 12) return false;
+    var now = new Date();
+    return yr > now.getFullYear() || (yr === now.getFullYear() && mo >= now.getMonth() + 1);
+  }
+  function check(el) {
+    var v = el.value.trim();
+    var ok = el.checkValidity() && !!v;
+    if (el.id === 'card') { var d = v.replace(/\s/g, ''); ok = d.length >= 13 && luhn(d); }
+    if (el.id === 'exp') ok = validExp(v);
+    if (el.id === 'cvc') ok = /^\d{3,4}$/.test(v);
+    var err = document.getElementById(el.id + '-err');
+    err.textContent = ok ? '' : el.dataset.msg;
+    if (ok) el.removeAttribute('aria-invalid'); else el.setAttribute('aria-invalid', 'true');
+    if (!el.hasAttribute('aria-describedby')) el.setAttribute('aria-describedby', el.id + '-err');
+    return ok;
+  }
+  form.querySelectorAll('[data-msg]').forEach(function (el) {
+    el.addEventListener('blur', function () { if (el.value) check(el); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var bad = [];
+    form.querySelectorAll('[data-msg]').forEach(function (el) { if (!check(el)) bad.push(el); });
+    var sum = document.getElementById('errsum');
+    var list = document.getElementById('errlist');
+    list.textContent = '';
+    if (bad.length) {
+      bad.forEach(function (el) {
+        var li = document.createElement('li'); var a = document.createElement('a');
+        a.href = '#' + el.id; a.textContent = el.dataset.msg;
+        a.addEventListener('click', function (ev) { ev.preventDefault(); el.focus(); });
+        li.appendChild(a); list.appendChild(li);
+      });
+      sum.hidden = false; sum.focus();
+      return;
+    }
+    sum.hidden = true;
+    var btn = document.getElementById('place');
+    btn.disabled = true; btn.textContent = 'Placing order…';
+    setTimeout(function () {
+      btn.textContent = 'Order placed';
+      document.getElementById('confirm-email').textContent = document.getElementById('email').value;
+      var c = document.getElementById('confirm'); c.hidden = false; c.focus();
+      window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }, 700);
+  });
+  updateTotals();
+})();
+</script>
+</body>
+</html>

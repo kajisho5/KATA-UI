@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Pricing · Tallyboard</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --surface: #fff; --text: #1a1d23; --muted: #5b6270;
+    --border: #d6dae1; --primary: #3b4fd8; --primary-hover: #2f40b8; --primary-text: #fff;
+    --accent-bg: #eef0fd; --check: #067647; --focus: #3b4fd8; --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115; --surface: #181b21; --text: #e8eaee; --muted: #a3aab6;
+      --border: #343944; --primary: #8a9bff; --primary-hover: #a6b3ff; --primary-text: #0f1115;
+      --accent-bg: #1e2340; --check: #6ce9a6; --focus: #a6b3ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  section { max-width: 1080px; margin: 0 auto; padding: 56px 16px 72px; }
+  .head { text-align: center; max-width: 620px; margin: 0 auto 40px; }
+  .eyebrow { color: var(--primary); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: .8rem; margin: 0 0 8px; }
+  h2 { font-size: clamp(1.75rem, 4vw, 2.4rem); line-height: 1.2; margin: 0 0 12px; }
+  .head p { color: var(--muted); margin: 0; }
+  .plans { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); align-items: stretch; }
+  .plan {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px;
+  }
+  .plan.popular { border: 2px solid var(--primary); box-shadow: 0 12px 32px rgba(59,79,216,.15); }
+  .badge {
+    position: absolute; top: -13px; inset-inline-start: 50%; transform: translateX(-50%);
+    background: var(--primary); color: var(--primary-text); font-size: .78rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 999px; white-space: nowrap;
+  }
+  [dir="rtl"] .badge { transform: translateX(50%); }
+  h3 { margin: 0 0 4px; font-size: 1.2rem; }
+  .tagline { color: var(--muted); margin: 0 0 20px; font-size: .95rem; min-height: 3em; }
+  .price { display: flex; align-items: baseline; gap: 6px; margin: 0 0 4px; }
+  .amount { font-size: 2.6rem; font-weight: 800; line-height: 1; letter-spacing: -.02em; }
+  .per { color: var(--muted); font-size: .9rem; margin: 0 0 22px; min-height: 1.5em; }
+  ul.features { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; flex: 1; }
+  ul.features li { display: flex; gap: 10px; align-items: flex-start; }
+  ul.features svg { flex: none; margin-top: 4px; color: var(--check); }
+  .cta {
+    display: block; width: 100%; text-align: center; padding: 12px 16px; font: inherit; font-weight: 600;
+    border-radius: var(--radius); cursor: pointer; text-decoration: none;
+    border: 1px solid var(--border); background: transparent; color: var(--text);
+  }
+  .cta:hover { background: var(--accent-bg); }
+  .popular .cta { background: var(--primary); border-color: var(--primary); color: var(--primary-text); }
+  .popular .cta:hover { background: var(--primary-hover); }
+  .cta:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .note { text-align: center; color: var(--muted); font-size: .875rem; margin-top: 28px; }
+  @media (prefers-reduced-motion: no-preference) { .cta { transition: background-color .15s; } }
+</style>
+</head>
+<body>
+<main>
+<section aria-labelledby="pricing-title">
+  <div class="head">
+    <p class="eyebrow">Pricing</p>
+    <h2 id="pricing-title">Simple plans for teams of every size</h2>
+    <p>Start free. Upgrade when your team needs more boards, automation and control.</p>
+  </div>
+
+  <ul class="plans">
+    <li class="plan" aria-labelledby="p-free">
+      <h3 id="p-free">Free</h3>
+      <p class="tagline">For individuals and small side projects.</p>
+      <p class="price"><span class="amount">$0</span></p>
+      <p class="per">Free forever</p>
+      <ul class="features" aria-label="Free plan features">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 3 boards</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 5 members</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Task lists and due dates</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>100 MB file storage</li>
+      </ul>
+      <a class="cta" href="#signup-free" aria-label="Get started with the Free plan">Get started</a>
+    </li>
+
+    <li class="plan popular" aria-labelledby="p-team">
+      <span class="badge">Most popular</span>
+      <h3 id="p-team">Team</h3>
+      <p class="tagline">For growing teams that ship together.</p>
+      <p class="price"><span class="amount">$12</span></p>
+      <p class="per">per user per month</p>
+      <ul class="features" aria-label="Team plan features">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Unlimited boards</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Timeline and calendar views</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Workflow automations</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>10 GB storage per user</li>
+      </ul>
+      <a class="cta" href="#trial-team" aria-label="Start a free trial of the Team plan">Start free trial</a>
+    </li>
+
+    <li class="plan" aria-labelledby="p-business">
+      <h3 id="p-business">Business</h3>
+      <p class="tagline">For organizations that need security and control.</p>
+      <p class="price"><span class="amount">$24</span></p>
+      <p class="per">per user per month</p>
+      <ul class="features" aria-label="Business plan features">
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Everything in Team</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>SAML single sign-on</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Audit log and admin roles</li>
+        <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Priority support</li>
+      </ul>
+      <a class="cta" href="#contact-sales" aria-label="Contact sales about the Business plan">Contact sales</a>
+    </li>
+  </ul>
+  <p class="note">Prices in USD. Billed monthly; save 20% with annual billing.</p>
+</section>
+</main>
+</body>
+</html>

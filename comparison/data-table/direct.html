@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tasks · Tallyboard</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --surface: #fff; --text: #1a1d23; --muted: #5b6270;
+    --border: #e1e4ea; --input-border: #c3c9d3; --primary: #3b4fd8; --primary-text: #fff;
+    --row-hover: #f7f8fa; --focus: #3b4fd8; --radius: 10px;
+    --s-todo-bg: #eef0f3; --s-todo: #3f4652;
+    --s-prog-bg: #eef0fd; --s-prog: #2f40b8;
+    --s-done-bg: #ecfdf3; --s-done: #067647;
+    --s-block-bg: #fef3f2; --s-block: #b42318;
+    --p-high: #b42318; --p-med: #8a5300; --p-low: #5b6270;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115; --surface: #181b21; --text: #e8eaee; --muted: #a3aab6;
+      --border: #2c313b; --input-border: #4a505c; --primary: #8a9bff; --primary-text: #0f1115;
+      --row-hover: #1e2229; --focus: #a6b3ff;
+      --s-todo-bg: #262a32; --s-todo: #c9ced8;
+      --s-prog-bg: #1e2340; --s-prog: #b4c0ff;
+      --s-done-bg: #10261b; --s-done: #6ce9a6;
+      --s-block-bg: #2a1614; --s-block: #ff8a80;
+      --p-high: #ff8a80; --p-med: #fdb022; --p-low: #a3aab6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 28px 16px 48px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; margin-bottom: 18px; }
+  .logo { width: 28px; height: 28px; border-radius: 7px; background: var(--primary); color: var(--primary-text); display: grid; place-items: center; font-size: .85rem; }
+  h1 { font-size: 1.5rem; margin: 0 0 16px; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+  .filter label { display: block; font-weight: 600; font-size: .875rem; margin-bottom: 6px; }
+  .filter input {
+    width: min(340px, 100%); padding: 9px 12px 9px 34px; font: inherit; color: var(--text);
+    background: var(--surface) no-repeat 11px center; border: 1px solid var(--input-border); border-radius: var(--radius);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle cx='7' cy='7' r='5' fill='none' stroke='%23888' stroke-width='1.6'/%3E%3Cpath d='M11 11l3.5 3.5' stroke='%23888' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+  .filter { flex: 1 1 260px; }
+  .count { color: var(--muted); font-size: .9rem; margin: 0; }
+  .table-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  caption { text-align: start; padding: 0; }
+  th, td { padding: 11px 14px; text-align: start; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  thead th { padding: 0; background: var(--surface); }
+  th button {
+    all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 6px; width: 100%;
+    padding: 11px 14px; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--muted); cursor: pointer;
+  }
+  th button:hover { color: var(--text); }
+  th button:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+  th[aria-sort="ascending"] button, th[aria-sort="descending"] button { color: var(--text); }
+  .arrow { width: 12px; height: 12px; opacity: .35; flex: none; }
+  th[aria-sort] .arrow { opacity: 1; }
+  th[aria-sort="descending"] .arrow { transform: rotate(180deg); }
+  tbody tr:hover { background: var(--row-hover); }
+  tbody tr:last-child td { border-bottom: 0; }
+  .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; }
+  .st-todo { background: var(--s-todo-bg); color: var(--s-todo); }
+  .st-prog { background: var(--s-prog-bg); color: var(--s-prog); }
+  .st-done { background: var(--s-done-bg); color: var(--s-done); }
+  .st-block { background: var(--s-block-bg); color: var(--s-block); }
+  .pri { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: .875rem; }
+  .pri::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .pri-High { color: var(--p-high); }
+  .pri-Medium { color: var(--p-med); }
+  .pri-Low { color: var(--p-low); }
+  .empty td { text-align: center; color: var(--muted); padding: 32px 14px; white-space: normal; }
+  .pager { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border-top: 1px solid var(--border); }
+  .pager p { margin: 0; color: var(--muted); font-size: .875rem; }
+  .pages { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; }
+  .pages button {
+    min-width: 36px; height: 36px; padding: 0 10px; font: inherit; font-size: .875rem; font-weight: 600;
+    border: 1px solid var(--input-border); background: var(--surface); color: var(--text); border-radius: 8px; cursor: pointer;
+  }
+  .pages button:hover:not(:disabled) { background: var(--row-hover); }
+  .pages button[aria-current="page"] { background: var(--primary); border-color: var(--primary); color: var(--primary-text); }
+  .pages button:disabled { opacity: .45; cursor: not-allowed; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><span class="logo" aria-hidden="true">T</span>Tallyboard</div>
+  <h1 id="title">Tasks</h1>
+
+  <div class="toolbar">
+    <div class="filter">
+      <label for="filter">Filter tasks</label>
+      <input id="filter" type="search" placeholder="Search task, assignee, status…" autocomplete="off" aria-describedby="count">
+    </div>
+    <p class="count" id="count" role="status" aria-live="polite"></p>
+  </div>
+
+  <div class="table-card">
+    <div class="scroll">
+      <table aria-labelledby="title" aria-describedby="sort-help">
+        <thead>
+          <tr>
+            <th scope="col" data-key="task"><button type="button">Task<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2.5l3.5 5h-7z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-key="assignee"><button type="button">Assignee<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2.5l3.5 5h-7z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-key="status"><button type="button">Status<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2.5l3.5 5h-7z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-key="priority"><button type="button">Priority<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2.5l3.5 5h-7z" fill="currentColor"/></svg></button></th>
+            <th scope="col" data-key="due"><button type="button">Due date<svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2.5l3.5 5h-7z" fill="currentColor"/></svg></button></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <nav class="pager" aria-label="Table pagination">
+      <p id="range"></p>
+      <ul class="pages" id="pages"></ul>
+    </nav>
+  </div>
+  <p class="sr-only" id="sort-help">Column headers are buttons; activate one to sort by that column.</p>
+</main>
+
+<script>
+(function () {
+  var tasks = [
+    { task: 'Draft Q4 roadmap', assignee: 'Maya Chen', status: 'In progress', priority: 'High', due: '2026-11-12' },
+    { task: 'Fix login redirect bug', assignee: 'Daniel Okafor', status: 'Done', priority: 'High', due: '2026-11-07' },
+    { task: 'Update onboarding emails', assignee: 'Priya Shah', status: 'Blocked', priority: 'Medium', due: '2026-11-04' },
+    { task: 'Design settings page', assignee: 'Lucas García', status: 'To do', priority: 'Medium', due: '2026-11-18' },
+    { task: 'Write release notes v2.3', assignee: 'Aiko Kimura', status: 'In progress', priority: 'Low', due: '2026-11-10' },
+    { task: 'Audit color contrast', assignee: 'Maya Chen', status: 'To do', priority: 'Medium', due: '2026-11-21' },
+    { task: 'Migrate billing webhooks', assignee: 'Daniel Okafor', status: 'In progress', priority: 'High', due: '2026-11-14' },
+    { task: 'Plan team offsite', assignee: 'Sofia Rossi', status: 'To do', priority: 'Low', due: '2026-12-02' },
+    { task: 'Review API rate limits', assignee: 'Priya Shah', status: 'Done', priority: 'Medium', due: '2026-11-03' },
+    { task: 'Set up error alerts', assignee: 'Lucas García', status: 'Blocked', priority: 'High', due: '2026-11-09' },
+    { task: 'Interview beta customers', assignee: 'Sofia Rossi', status: 'In progress', priority: 'Medium', due: '2026-11-16' },
+    { task: 'Clean up old feature flags', assignee: 'Aiko Kimura', status: 'To do', priority: 'Low', due: '2026-11-25' }
+  ];
+  var PAGE = 5;
+  var priorityRank = { High: 0, Medium: 1, Low: 2 };
+  var statusRank = { 'To do': 0, 'In progress': 1, 'Blocked': 2, 'Done': 3 };
+  var statusClass = { 'To do': 'st-todo', 'In progress': 'st-prog', 'Blocked': 'st-block', 'Done': 'st-done' };
+  var state = { q: '', key: null, dir: 1, page: 1 };
+  var fmt = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+
+  var tbody = document.getElementById('rows');
+  var count = document.getElementById('count');
+  var range = document.getElementById('range');
+  var pages = document.getElementById('pages');
+  var filter = document.getElementById('filter');
+  var ths = document.querySelectorAll('thead th');
+
+  function cmp(a, b, key) {
+    if (key === 'priority') return priorityRank[a.priority] - priorityRank[b.priority];
+    if (key === 'status') return statusRank[a.status] - statusRank[b.status];
+    return a[key].localeCompare(b[key], 'en', { sensitivity: 'base' });
+  }
+
+  function rows() {
+    var q = state.q.trim().toLowerCase();
+    var list = tasks.filter(function (t) {
+      if (!q) return true;
+      return [t.task, t.assignee, t.status, t.priority, fmt.format(new Date(t.due))].join(' ').toLowerCase().indexOf(q) !== -1;
+    });
+    if (state.key) {
+      list = list.slice().sort(function (a, b) { return cmp(a, b, state.key) * state.dir; });
+    }
+    return list;
+  }
+
+  function td(text, cls) {
+    var c = document.createElement('td');
+    if (cls) { var s = document.createElement('span'); s.className = cls; s.textContent = text; c.appendChild(s); }
+    else c.textContent = text;
+    return c;
+  }
+
+  function render() {
+    var list = rows();
+    var total = list.length;
+    var pageCount = Math.max(1, Math.ceil(total / PAGE));
+    if (state.page > pageCount) state.page = pageCount;
+    var start = (state.page - 1) * PAGE;
+    var slice = list.slice(start, start + PAGE);
+
+    tbody.textContent = '';
+    if (!slice.length) {
+      var tr = document.createElement('tr'); tr.className = 'empty';
+      var c = document.createElement('td'); c.colSpan = 5; c.textContent = 'No tasks match “' + state.q + '”.';
+      tr.appendChild(c); tbody.appendChild(tr);
+    }
+    slice.forEach(function (t) {
+      var tr = document.createElement('tr');
+      tr.appendChild(td(t.task));
+      tr.appendChild(td(t.assignee));
+      tr.appendChild(td(t.status, 'pill ' + statusClass[t.status]));
+      tr.appendChild(td(t.priority, 'pri pri-' + t.priority));
+      var d = td('');
+      var time = document.createElement('time'); time.dateTime = t.due; time.textContent = fmt.format(new Date(t.due));
+      d.appendChild(time); tr.appendChild(d);
+      tbody.appendChild(tr);
+    });
+
+    count.textContent = total === tasks.length
+      ? 'Showing all ' + total + ' tasks'
+      : total + ' of ' + tasks.length + ' tasks match';
+    range.textContent = total ? 'Rows ' + (start + 1) + '–' + (start + slice.length) + ' of ' + total : 'No rows';
+
+    pages.textContent = '';
+    function pageBtn(label, page, opts) {
+      var li = document.createElement('li');
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = label;
+      if (opts && opts.aria) b.setAttribute('aria-label', opts.aria);
+      if (opts && opts.disabled) b.disabled = true;
+      if (opts && opts.current) b.setAttribute('aria-current', 'page');
+      b.addEventListener('click', function () { state.page = page; render(); var f = pages.querySelector('[data-p="' + page + '"]') || pages.querySelector('[aria-current]'); if (f) f.focus(); });
+      b.dataset.p = opts && opts.nav ? opts.nav : page;
+      li.appendChild(b); pages.appendChild(li);
+    }
+    pageBtn('‹', state.page - 1, { aria: 'Previous page', disabled: state.page === 1, nav: 'prev' });
+    for (var i = 1; i <= pageCount; i++) pageBtn(String(i), i, { aria: 'Page ' + i, current: i === state.page });
+    pageBtn('›', state.page + 1, { aria: 'Next page', disabled: state.page === pageCount, nav: 'next' });
+
+    ths.forEach(function (th) {
+      if (th.dataset.key === state.key) th.setAttribute('aria-sort', state.dir === 1 ? 'ascending' : 'descending');
+      else th.removeAttribute('aria-sort');
+    });
+  }
+
+  ths.forEach(function (th) {
+    th.querySelector('button').addEventListener('click', function () {
+      if (state.key === th.dataset.key) state.dir = -state.dir;
+      else { state.key = th.dataset.key; state.dir = 1; }
+      state.page = 1;
+      render();
+    });
+  });
+
+  filter.addEventListener('input', function () { state.q = filter.value; state.page = 1; render(); });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Account settings · Tallyboard</title>
+<style>
+  :root {
+    --bg: #f5f6f8; --surface: #fff; --text: #1a1d23; --muted: #5b6270;
+    --border: #d6dae1; --primary: #3b4fd8; --primary-hover: #2f40b8; --primary-text: #fff;
+    --track: #b8bec9; --ok: #067647; --ok-bg: #ecfdf3; --focus: #3b4fd8; --radius: 10px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1115; --surface: #181b21; --text: #e8eaee; --muted: #a3aab6;
+      --border: #343944; --primary: #8a9bff; --primary-hover: #a6b3ff; --primary-text: #0f1115;
+      --track: #4a505c; --ok: #6ce9a6; --ok-bg: #10261b; --focus: #a6b3ff;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1115; --surface: #181b21; --text: #e8eaee; --muted: #a3aab6;
+    --border: #343944; --primary: #8a9bff; --primary-hover: #a6b3ff; --primary-text: #0f1115;
+    --track: #4a505c; --ok: #6ce9a6; --ok-bg: #10261b; --focus: #a6b3ff;
+    color-scheme: dark;
+  }
+  :root[data-theme="light"] { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { border-bottom: 1px solid var(--border); background: var(--surface); }
+  .bar { max-width: 760px; margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  .logo { width: 28px; height: 28px; border-radius: 7px; background: var(--primary); color: var(--primary-text); display: grid; place-items: center; font-size: .85rem; }
+  main { max-width: 760px; margin: 0 auto; padding: 28px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  fieldset {
+    border: 1px solid var(--border); border-radius: 14px; background: var(--surface);
+    padding: 20px 22px 8px; margin: 0 0 20px;
+  }
+  legend { font-weight: 700; font-size: 1.05rem; padding: 0 6px; margin-inline-start: -6px; }
+  .desc { color: var(--muted); font-size: .9rem; margin: 0 0 16px; }
+  .field { margin-bottom: 16px; }
+  label { font-weight: 600; font-size: .9rem; display: block; margin-bottom: 6px; }
+  input[type="text"], input[type="email"], select {
+    width: 100%; max-width: 420px; padding: 10px 12px; font: inherit; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .switch-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 14px 0; border-top: 1px solid var(--border);
+  }
+  .switch-row:first-of-type { border-top: 0; padding-top: 0; }
+  .switch-row label { margin: 0; }
+  .switch-row .help { display: block; font-weight: 400; color: var(--muted); font-size: .85rem; }
+  .switch {
+    flex: none; position: relative; width: 46px; height: 26px; border-radius: 999px;
+    border: 0; padding: 0; background: var(--track); cursor: pointer;
+  }
+  .switch::after {
+    content: ""; position: absolute; top: 3px; inset-inline-start: 3px;
+    width: 20px; height: 20px; border-radius: 50%; background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  }
+  .switch[aria-checked="true"] { background: var(--primary); }
+  .switch[aria-checked="true"]::after { inset-inline-start: 23px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .switch, .switch::after { transition: all .15s ease; }
+  }
+  @media (forced-colors: active) {
+    .switch { border: 1px solid CanvasText; }
+    .switch[aria-checked="true"]::after { background: Highlight; }
+  }
+  .actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .primary {
+    padding: 11px 20px; font: inherit; font-weight: 600; border: 0; border-radius: var(--radius);
+    background: var(--primary); color: var(--primary-text); cursor: pointer;
+  }
+  .primary:hover { background: var(--primary-hover); }
+  .toast {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+    border-radius: var(--radius); background: var(--ok-bg); color: var(--ok); font-weight: 600; font-size: .9rem;
+  }
+  .toast[hidden] { display: none; }
+  .error { color: #b42318; font-size: .85rem; margin: 6px 0 0; }
+  @media (prefers-color-scheme: dark) { .error { color: #ff8a80; } }
+  .error:empty { display: none; }
+</style>
+</head>
+<body>
+<header><div class="bar"><span class="logo" aria-hidden="true">T</span>Tallyboard</div></header>
+<main>
+  <h1>Account settings</h1>
+  <p class="sub">Manage your profile, notifications and how Tallyboard looks.</p>
+
+  <form id="settings" novalidate>
+    <fieldset>
+      <legend>Profile</legend>
+      <p class="desc">This information is visible to your teammates.</p>
+      <div class="field">
+        <label for="display-name">Display name</label>
+        <input id="display-name" name="displayName" type="text" autocomplete="nickname" value="Maya Chen" aria-describedby="dn-err" required>
+        <p class="error" id="dn-err"></p>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" value="maya.chen@example.com" aria-describedby="em-err" required>
+        <p class="error" id="em-err"></p>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Notifications</legend>
+      <div class="switch-row">
+        <label id="l-digest" for="digest">Email digests<span class="help" id="h-digest">A daily summary of activity on your boards.</span></label>
+        <button type="button" class="switch" role="switch" id="digest" aria-checked="true" aria-labelledby="l-digest" aria-describedby="h-digest"></button>
+      </div>
+      <div class="switch-row">
+        <label id="l-mentions" for="mentions">Mentions<span class="help" id="h-mentions">Notify me when someone @mentions me.</span></label>
+        <button type="button" class="switch" role="switch" id="mentions" aria-checked="true" aria-labelledby="l-mentions" aria-describedby="h-mentions"></button>
+      </div>
+      <div class="switch-row">
+        <label id="l-weekly" for="weekly">Weekly report<span class="help" id="h-weekly">A Monday recap of completed and overdue tasks.</span></label>
+        <button type="button" class="switch" role="switch" id="weekly" aria-checked="false" aria-labelledby="l-weekly" aria-describedby="h-weekly"></button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Appearance</legend>
+      <div class="field">
+        <label for="theme">Theme</label>
+        <select id="theme" name="theme">
+          <option value="system" selected>System</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit" class="primary">Save changes</button>
+      <p class="toast" id="saved" role="status" aria-live="polite" hidden>
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Changes saved.</span>
+      </p>
+    </div>
+  </form>
+</main>
+
+<script>
+(function () {
+  document.querySelectorAll('.switch').forEach(function (sw) {
+    sw.addEventListener('click', function () {
+      sw.setAttribute('aria-checked', sw.getAttribute('aria-checked') === 'true' ? 'false' : 'true');
+    });
+  });
+  // Clicking a switch's label toggles it too (labels on buttons focus them but do not click in every browser).
+  document.querySelectorAll('.switch-row label').forEach(function (lab) {
+    lab.addEventListener('click', function (e) {
+      e.preventDefault();
+      var sw = document.getElementById(lab.getAttribute('for'));
+      sw.click(); sw.focus();
+    });
+  });
+
+  var theme = document.getElementById('theme');
+  function applyTheme(v) {
+    if (v === 'system') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', v);
+  }
+  theme.addEventListener('change', function () { applyTheme(theme.value); });
+
+  var form = document.getElementById('settings');
+  var saved = document.getElementById('saved');
+  var timer;
+  form.addEventListener('input', function () { saved.hidden = true; });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var dn = document.getElementById('display-name');
+    var em = document.getElementById('email');
+    var ok = true;
+    document.getElementById('dn-err').textContent = dn.value.trim() ? '' : 'Display name cannot be empty.';
+    document.getElementById('em-err').textContent = em.value && em.checkValidity() ? '' : 'Enter a valid email address.';
+    [dn, em].forEach(function (el) {
+      var bad = !!document.getElementById(el.getAttribute('aria-describedby')).textContent;
+      if (bad) { el.setAttribute('aria-invalid', 'true'); if (ok) el.focus(); ok = false; }
+      else el.removeAttribute('aria-invalid');
+    });
+    if (!ok) return;
+    saved.hidden = true;
+    clearTimeout(timer);
+    requestAnimationFrame(function () {
+      saved.hidden = false;
+      timer = setTimeout(function () { saved.hidden = true; }, 5000);
+    });
+  });
+})();
+</script>
+</body>
+</html>

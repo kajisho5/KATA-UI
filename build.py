@@ -840,7 +840,9 @@ def registry_json(comps, blocks, templates=None):
                        'moldVersion': MOLD_CONFIG['moldVersion'], 'moldInstruction': version_line(ROOT), 'homepage': 'https://kata-ui.dev', 'audit': audit_metadata(MOLD_REPORT), 'items': items}, ensure_ascii=False, indent=1)
 
 def llms_txt(comps, blocks, n_icons, templates=None):
-    lines = ['# KATA UI', '', summary_block(MOLD_REPORT), '', version_line(ROOT), '',
+    catalog = (f'Catalog: {len(comps)} components, {len(blocks)} blocks, {len(templates or [])} templates and {n_icons} icons. '
+               f"The audit line below covers all {MOLD_REPORT['summary']['total']} checked parts: components, blocks and templates together.")
+    lines = ['# KATA UI', '', catalog, '', summary_block(MOLD_REPORT), '', version_line(ROOT), '',
              'Copy a button, form or table into your project. Edit the files yourself. No framework, no build step.', '',
              'KATA is framework-free: parts drop into plain HTML, Astro, Laravel, Django, Rails and templates unchanged. Components depend on tokens.css (design tokens) being loaded once.', '',
              '## Docs', '',

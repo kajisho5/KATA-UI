@@ -172,6 +172,8 @@ Scope change (owner decision, 2026-11-06): the whole-page count reached 851 word
 - [x] Add DaisyUI, Web Awesome, Basecoat, Pico CSS and Franken UI to the comparison. Include areas where KATA loses. `/docs/vs-css-libraries/`, facts from official pages on 2026-11-07 (PR #103). Pico CSS was archived on 2026-10-04; Franken UI announced a rename to 0build.
 - [ ] Check npm name availability and migrate to `kata-ui` or `@kata-ui/cli` with a compatibility plan.
 - [ ] Test llms.txt, SKILL.md and MCP in Claude Code and Cursor. Publish commands, versions, prompts and results.
+  - [x] Claude Code 2.1.319: all three work; commands, prompts and answers in [docs/review/ai-integration/claude-code.md](review/ai-integration/claude-code.md) (PR #104). Three findings listed there.
+  - [ ] Cursor: not tested; needs a person with Cursor installed.
 
 **Completion criteria:** the access boundary is documented, the expanded
 comparison is sourced, the npm migration is tested, and both tool integrations

@@ -51,3 +51,34 @@ class Comparison(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class ComparePage(unittest.TestCase):
+    """The published /compare/ page shows the recorded numbers and links the raw files."""
+
+    @classmethod
+    def setUpClass(cls):
+        import subprocess
+        import sys
+        page = ROOT / 'dist' / 'compare' / 'index.html'
+        if not page.exists():
+            subprocess.run([sys.executable, 'build.py'], cwd=ROOT, check=True, capture_output=True)
+        cls.html = page.read_text(encoding='utf-8')
+        cls.results = json.loads((DIR / 'results.json').read_text(encoding='utf-8'))
+
+    def test_every_screen_section_and_raw_file_is_present(self):
+        for s in self.results['screens']:
+            self.assertIn(f'id="cmp-{s["slug"]}"', self.html)
+            for name in ('direct.html', 'kata.html'):
+                self.assertIn(f'href="/compare/{s["slug"]}/{name}"', self.html)
+                self.assertTrue((ROOT / 'dist' / 'compare' / s['slug'] / name).is_file())
+
+    def test_page_numbers_match_results(self):
+        for s in self.results['screens']:
+            section = self.html.split(f'id="cmp-{s["slug"]}"', 1)[1].split('</section>', 1)[0]
+            cells = re.findall(r'<td class="num"><span[^>]*>(\d+)</span> / <span[^>]*>(\d+)</span></td>', section)
+            self.assertEqual(len(cells), 10, s['slug'])
+            keys = ['focusInvisible', 'unnamed', 'lowContrast', 'lowContrastDark', 'overflow',
+                    'consoleErrors', 'buttonNoType', 'colors', 'spacings', 'bytes']
+            for key, (a, b) in zip(keys, cells):
+                self.assertEqual((int(a), int(b)), (s['direct'][key], s['kata'][key]), f'{s["slug"]} {key}')

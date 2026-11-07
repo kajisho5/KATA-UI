@@ -261,7 +261,7 @@ def search_html(comps):
     items = [{'t': c['meta']['title'], 'u': '/components/' + c['slug'] + '/', 'k': 'Component'} for c in comps]
     items += _block_search_items()
     items += [{'t': d[1], 'u': '/docs/' + d[0] + '/', 'k': 'Docs'} for d in DOCS]
-    items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Templates', '/templates/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/'), ('Pricing', '/pricing/'), ('Showcase', '/showcase/')]]
+    items += [{'t': t, 'u': u, 'k': 'Page'} for t, u in [('Components', '/components/'), ('Blocks', '/blocks/'), ('Templates', '/templates/'), ('Icons', '/icons/'), ('Themes', '/themes/'), ('Design System', '/design-system/'), ('Docs', '/docs/'), ('Pricing', '/pricing/'), ('Showcase', '/showcase/'), ('Comparison', '/compare/')]]
     return SEARCH_TMPL.replace('__KATA_INDEX__', _json.dumps(items, ensure_ascii=False))
 
 
@@ -799,7 +799,7 @@ def landing(comps, blocks, n_icons, templates=None):
 <section class="lpsec"><h2>Templates</h2><p class="lpnote">Try a <a href="/templates/dashboard/demo/">dashboard</a>, <a href="/templates/inbox/demo/">inbox</a> or <a href="/templates/settings-page/demo/">settings page</a>.</p></section>
 <section class="lpsec"><h2>AI tools</h2><p class="lpnote">The <a href="/registry.json">registry</a>, <a href="/docs/mcp-server/">MCP server</a> and <a href="/skill/SKILL.md">AI skill</a> serve the files you copy here.</p><p class="lpnote">Works with any HTML stack; React needs <a href="/docs/react/">a few markup changes</a>.</p></section>
 <section class="lpsec"><h2>Components are free. Pro adds layouts.</h2><p class="lpnote">{nb} blocks, {nt} templates, $129 once. Not on sale yet. <a href="/pricing/">Pricing</a></p></section>
-<section class="lpsec"><p class="lpnote">More: <a href="/lab/">Lab</a> · <a href="/showcase/">Showcase</a> · <a href="https://github.com/kajisho5/KATA-UI">Report a problem</a></p></section>
+<section class="lpsec"><p class="lpnote">More: <a href="/lab/">Lab</a> · <a href="/showcase/">Showcase</a> · <a href="/compare/">Comparison</a> · <a href="https://github.com/kajisho5/KATA-UI">Report a problem</a></p></section>
 </div>{plain_footer()}</body></html>"""
     extra = ('<link rel="stylesheet" href="/blocks/app-shell/app-shell.css">'
              + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v(pv[sl]["css"])}">' for sl in ('sidebar', 'select', 'bar-chart', 'calendar', 'sparkline', 'card', 'aurora', 'follow-frame', 'spotlight', 'beam-border', 'marquee', 'text-reveal', 'counter', 'glass-panel', 'converge', 'reorder', 'word-rotate', 'goo-tabs', 'dock', 'jelly-buttons', 'scramble', 'bounce-letters', 'tilt-card', 'line-chart', 'donut-chart', 'data-table', 'button', 'switch', 'input', 'badge', 'separator') if pv.get(sl)) + (f'<link rel="stylesheet" href="/blocks/stat-cards/stat-cards.css?v={_v(sc_block["css"])}">' if sc_block else '') + (f'<link rel="stylesheet" href="/blocks/kanban/kanban.css?v={_v(kb_block["css"])}">' if kb_block else '') + (f'<link rel="stylesheet" href="/blocks/faq/faq.css?v={_v(faq_b["css"])}">' if faq_b else '') + (f'<link rel="stylesheet" href="/blocks/pricing/pricing.css?v={_v(pr_block["css"])}">' if pr_block else ''))
@@ -1551,6 +1551,107 @@ def showcase_page(templates, blocks):
 </body>
 </html>"""
     return head('Showcase — KATA UI', 'Live pages assembled from the KATA UI catalog itself: templates, the starter kit, and this site.', SC_STYLE) + body
+
+CMP_STYLE = """<style>
+.cmp h1{margin-top:32px}
+.cmp .lead{max-width:760px;margin-top:8px}
+.cmp-method{margin-top:20px;border:1px solid var(--hair);border-radius:14px;padding:18px 20px;background:var(--paper);font-size:13.5px;line-height:1.75;color:var(--ink2)}
+.cmp-method b{color:var(--ink)}
+.cmp-method ul{margin:6px 0 0;padding-inline-start:18px}
+.cmp h2{font-size:22px;margin:40px 0 12px}
+.cmp .ktable-wrap{margin-top:8px}
+.cmp .ktable td.num,.cmp .ktable th.num{font-variant-numeric:tabular-nums;text-align:end;white-space:nowrap}
+.cmp .diff{font-weight:700;color:var(--ink)}
+.cmp-sec{margin-top:48px;scroll-margin-top:72px}
+.cmp-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.cmp-head .no{font-family:var(--k-mono);font-size:12px;color:var(--ink3)}
+.cmp-head h2{margin:0}
+.cmp-shots{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.cmp-shot{border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--paper);margin:0}
+.cmp-shot figcaption{display:flex;justify-content:space-between;gap:8px;padding:9px 14px;font-size:12.5px;font-weight:600;border-block-end:1px solid var(--hair)}
+.cmp-shot img{display:block;inline-size:100%;block-size:auto}
+.cmp .tabpane{margin-block-start:10px}
+.cmp .k-acc{margin-top:12px}
+.cmp pre{white-space:pre-wrap;font-size:12.5px;line-height:1.7;margin:0}
+.cmp .note{font-size:13px;color:var(--ink3);line-height:1.8;margin-top:28px}
+@media (max-width:640px){.cmp-shots{grid-template-columns:1fr}}
+</style>"""
+
+CMP_ROWS = [('focusInvisible', 'Tab stops with no visible focus', 'verify_focus_ring rule'),
+            ('unnamed', 'Controls with no accessible name', 'Chromium accessibility tree'),
+            ('lowContrast', 'Text below 4.5:1, light', 'capture_text_contrast metric'),
+            ('lowContrastDark', 'Text below 4.5:1, dark', 'capture_text_contrast metric'),
+            ('overflow', 'Elements past a 390px viewport, dark + RTL', 'bounding boxes'),
+            ('consoleErrors', 'Console errors on load', 'Chromium console'),
+            ('buttonNoType', '&lt;button&gt; without type', 'source'),
+            ('colors', 'Distinct colors', 'computed CSS'),
+            ('spacings', 'Distinct spacing values', 'computed CSS'),
+            ('bytes', 'File size (bytes)', 'file size')]
+CMP_SUMMARY = ['focusInvisible', 'unnamed', 'lowContrastDark', 'overflow', 'consoleErrors', 'colors', 'spacings']
+
+
+def compare_page():
+    data = json.loads((ROOT / 'comparison' / 'results.json').read_text(encoding='utf-8'))
+    screens = data['screens']
+    labels = {k: t for k, t, _ in CMP_ROWS}
+    chevron = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="square" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
+
+    def pair(a, b):
+        cls = ' class="diff"' if a != b else ''
+        return f'<span{cls}>{a}</span> / <span{cls}>{b}</span>'
+
+    head_cells = ''.join(f'<th scope="col" class="num">{labels[k]}<br><small>A / B</small></th>' for k in CMP_SUMMARY)
+    rows = ''.join(
+        f'<tr><td><a href="#cmp-{s["slug"]}">{i:02d} {esc(s["title"])}</a></td>'
+        + ''.join(f'<td class="num">{pair(s["direct"][k], s["kata"][k])}</td>' for k in CMP_SUMMARY) + '</tr>'
+        for i, s in enumerate(screens, 1))
+    summary = ('<div class="ktable-wrap" role="region" aria-label="Summary, A then B" tabindex="0"><table class="ktable">'
+               f'<thead><tr><th scope="col">Screen</th>{head_cells}</tr></thead><tbody>{rows}</tbody></table></div>')
+    sections = []
+    for i, s in enumerate(screens, 1):
+        slug = s['slug']
+        prompt = (ROOT / 'comparison' / slug / 'prompt.md').read_text(encoding='utf-8')
+        prompt = re.sub(r'^# .*\n+', '', prompt)
+
+        def shots(theme):
+            return '<div class="cmp-shots">' + ''.join(
+                f'<figure class="cmp-shot"><figcaption><span>{tag}</span><a href="/compare/{slug}/{file}">{file}</a></figcaption>'
+                f'<img src="/compare/shots/{slug}-{draft}-{theme}.png" width="1280" height="900" loading="lazy" '
+                f'alt="{esc(s["title"])}, draft {"B" if draft == "kata" else "A"}, {theme} theme"></figure>'
+                for draft, file, tag in (('direct', 'direct.html', 'A · Prompt alone'), ('kata', 'kata.html', 'B · Assembled from KATA parts'))) + '</div>'
+        table = ''.join(f'<tr><td>{t}</td><td class="num">{pair(s["direct"][k], s["kata"][k])}</td><td>{how}</td></tr>' for k, t, how in CMP_ROWS)
+        sections.append(
+            f'<section class="cmp-sec" id="cmp-{slug}" aria-labelledby="cmp-h-{slug}">'
+            f'<div class="cmp-head"><span class="no" aria-hidden="true">{i:02d}</span><h2 id="cmp-h-{slug}">{esc(s["title"])}</h2></div>'
+            f'<span class="tabs" data-tabs aria-label="{esc(s["title"])} screenshots"><span class="thumb"></span><button type="button" class="on">Light</button><button type="button">Dark</button></span>'
+            f'<div class="tabpane" data-tabpane>{shots("light")}</div><div class="tabpane" data-tabpane>{shots("dark")}</div>'
+            f'<div class="ktable-wrap" role="region" aria-label="{esc(s["title"])} measurements" tabindex="0"><table class="ktable">'
+            f'<thead><tr><th scope="col">Measure</th><th scope="col" class="num">A / B</th><th scope="col">How</th></tr></thead><tbody>{table}</tbody></table></div>'
+            f'<details class="k-acc"><summary>Prompts{chevron}</summary><div class="k-acc-body"><pre>{esc(prompt.strip())}</pre></div></details>'
+            '</section>')
+    body = f"""
+<div class="wrap cmp">
+  <h1>Ten screens, two ways</h1>
+  <p class="lead">One prompt per screen. A: the prompt alone. B: the same prompt plus one sentence that points at the KATA registry. Every number below comes from <code>comparison/results.json</code>.</p>
+  <div class="cmp-method"><b>Method</b><ul>
+    <li>Agent: {esc(data['agent'])}, {esc(data['generated'])}. A and B were written by two separate agents with no earlier conversation; A could read only the prompts, B the prompts and kata-ui.dev.</li>
+    <li>First output kept for all 20 drafts: no retries, no picking, no hand edits, nothing rendered before measuring.</li>
+    <li>B adds this sentence to prompt A: “Fetch each part from kata-ui.dev/registry.json and use it unmodified.”</li>
+    <li>Measured in Chromium by <a href="https://github.com/kajisho5/KATA-UI/blob/main/tools/measure_comparison.py">tools/measure_comparison.py</a>; prompts and raw files are in <a href="https://github.com/kajisho5/KATA-UI/tree/main/comparison">comparison/</a>. Differing values are set in bold.</li>
+  </ul></div>
+  <h2>Summary</h2>
+  {summary}
+  {''.join(sections)}
+  <p class="note">One run, one agent, one date: another agent or day gives other numbers. Not verified: screen readers, Safari, Firefox, real devices.</p>
+</div>
+""" + FOOTER + """
+</body>
+</html>"""
+    extra = (CMP_STYLE + ''.join(f'<link rel="stylesheet" href="/components/{sl}/{sl}.css?v={_v((ROOT / "components" / sl / (sl + ".css")).read_text(encoding="utf-8"))}">'
+                                 for sl in ('table', 'tabs', 'accordion')))
+    script = f'<script src="/components/tabs/tabs.js?v={_v((ROOT / "components/tabs/tabs.js").read_text(encoding="utf-8"))}"></script>'
+    return head('Ten screens, two ways — KATA UI', 'Ten common screens drafted twice by an AI agent: from the prompt alone, and assembled from KATA registry parts. Prompts, raw files and measurements.', extra) + body.replace('</body>', script + '</body>', 1)
+
 
 DS_CAST_TAG = "<script>" + "\n(function(){\n  var root=document.documentElement;\n  var PRESETS={Asagi:['#33A6B8','#165E83','#81C7D4'],Ruri:['#1E50A2','#223A70','#58B2DC'],Edomurasaki:['#745399','#592C63','#8B81C3'],Suo:['#8E354A','#64363C','#DC9FB4'],Kaki:['#ED6D3D','#95483F','#E2943B']};\n  function load(){try{return JSON.parse(localStorage.getItem('kata-fdeck')||'{}')}catch(e){return{}}}\n  function save(S){try{localStorage.setItem('kata-fdeck',JSON.stringify(S))}catch(e){}}\n  function stat(msg){var el=document.getElementById('ds-stat');if(el)el.textContent=msg;var card=document.getElementById('ds-floor');if(card){card.classList.remove('castflash');void card.offsetWidth;card.classList.add('castflash');}}\n  function castRadius(v){var S=load();S.radius=v;root.style.setProperty('--k-radius',v+'px');var sl=document.getElementById('fd-radius');if(sl){sl.value=v;var o=document.getElementById('fd-rv');if(o)o.textContent=v+'px';}save(S);stat('Cast \\u2014 radius '+v+'px. The parts above re-cast; the deck remembers it.');}\n  function castAccent(name){var p=PRESETS[name];if(!p)return;var S=load();S.accent=p[0];S.accentInk=p[1];S.darkInk=p[2];S.accentName=name;var dark=root.getAttribute('data-theme')==='dark';root.style.setProperty('--k-accent',p[0]);root.style.setProperty('--acc',p[0]);root.style.removeProperty('--k-accent-ink');save(S);document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===name)});stat('Cast \\u2014 accent '+name+'.');}\n  function castMotion(v){var S=load();S.mscale=v;root.style.setProperty('--k-mscale',v);var sl=document.getElementById('fd-motion');if(sl)sl.value=v;save(S);stat('Cast \\u2014 motion '+v+'\\u00d7.');}\n  document.querySelectorAll('[data-cast-radius]').forEach(function(b){b.addEventListener('click',function(){castRadius(+b.dataset.castRadius)})});\n  document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.addEventListener('click',function(){castAccent(b.dataset.castAccent)})});\n  document.querySelectorAll('[data-cast-motion]').forEach(function(b){b.addEventListener('click',function(){castMotion(+b.dataset.castMotion)})});\n  var S0=load();if(S0.accentName)document.querySelectorAll('[data-cast-accent]').forEach(function(b){b.classList.toggle('on',b.dataset.castAccent===S0.accentName)});\n})();\n" + "</script>\n"
 
@@ -2566,6 +2667,9 @@ def main():
     scdir = DIST / 'showcase'
     scdir.mkdir()
     (scdir / 'index.html').write_text(emit(showcase_page(templates, blocks), comps, None, '/showcase/', True), encoding='utf-8')
+    cmpdir = DIST / 'compare'
+    shutil.copytree(ROOT / 'comparison', cmpdir, ignore=shutil.ignore_patterns('*.md', 'results.json'))
+    (cmpdir / 'index.html').write_text(emit(compare_page(), comps, None, '/compare/', True), encoding='utf-8')
     shutil.copy(ROOT / 'system' / 'tokens.json', dsdir / 'tokens.json')
     idir = DIST / 'icons'
     idir.mkdir(exist_ok=True)
@@ -2688,7 +2792,7 @@ def main():
 </html>"""
     (DIST / '404.html').write_text(emit(nf, comps, None), encoding='utf-8')
     (DIST / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://kata-ui.dev/sitemap.xml\n', encoding='utf-8')
-    urls = ['/audit/', '/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
+    urls = ['/audit/', '/lab/', '/', '/components/', '/design-system/', '/icons/', '/blocks/', '/templates/', '/themes/', '/docs/', '/pricing/', '/ja/', '/showcase/', '/compare/'] + [f"/components/{c['slug']}/" for c in comps] + [f"/blocks/{b['slug']}/" for b in blocks] + [f"/templates/{t['slug']}/" for t in templates] + [f"/templates/{t['slug']}/demo/" for t in templates] + [f"/docs/{d[0]}/" for d in DOCS]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + \
          '\n'.join(f'<url><loc>https://kata-ui.dev{u}</loc></url>' for u in urls) + '\n</urlset>\n'
     (DIST / 'sitemap.xml').write_text(sm, encoding='utf-8')

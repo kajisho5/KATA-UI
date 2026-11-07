@@ -148,9 +148,9 @@ and its First five meet those requirements.
   - [x] Site copy in build.py and README: 58 sentences rewritten; 0 left outside the dated changelog entries, which stay as written (12 matches) (PR #92).
 - [ ] Write Japanese documentation for the ten most-used components; establish usage evidence before choosing them.
   - Usage evidence: none yet. The site has no users, and its request analytics count shared CSS loads, not part use. Owner decision (2026-11-07): document the first ten parts of the T4 common-parts list (Button, Input, Field, Textarea, Select, Checkbox, Radio, Switch, Modal, Dropdown).
-- [ ] Publish a ten-screen comparison: a direct AI draft and the same screen assembled from fetched KATA sources. Publish the prompts and method.
+- [x] Publish a ten-screen comparison: a direct AI draft and the same screen assembled from fetched KATA sources. Publish the prompts and method.
   - [x] Design (PR #95); prompts, 20 unedited drafts and measurements in `comparison/` (PR #96).
-  - [ ] `/compare/` page.
+  - [x] `/compare/` page, linked from the home page and search (PR #97).
 - [x] Reduce home-page prose to half the Phase 2 baseline recorded below: body 369 → 153 words, held at 185 or fewer by tests/test_home_prose.py (PR #94).
 
 **Completion criteria:** the home page has no more than half its recorded

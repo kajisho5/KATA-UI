@@ -130,7 +130,7 @@ does not state the component count on its own line.
 ## Findings to fix (separate PRs)
 
 1. llms.txt: state 136 components, 21 blocks and 7 templates near the top, apart from the
-   164-part audit line.
+   164-part audit line. Fixed in PR #105; a rerun with the new file (Read on a local copy) answered "136 components" and explained the 164.
 2. MCP `get_component`: include the part's usage and accessibility text from meta.json.
 3. registry.json: no item carries tokens.css; agents fetch it separately (also seen in the
    ten-screen comparison, PR #96).

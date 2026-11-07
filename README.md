@@ -143,7 +143,7 @@ Start at [kata-ui.dev/docs](https://kata-ui.dev/docs/): Getting Started, Install
 
 ## License
 
-MIT. The components, icons and tokens are free to use, including commercially. Blocks and templates will be sold separately as a one-time purchase (Pro, $129 lifetime — [pricing](https://kata-ui.dev/pricing/)); everything in this repository stays MIT.
+MIT. Everything in this repository — components, icons, tokens, blocks and templates — is free to use, including commercially, and stays MIT in later versions. Pro, when it opens, will be new blocks and templates delivered outside this repository (one-time purchase, planned $129 — [pricing](https://kata-ui.dev/pricing/)). See [docs/pro-boundary.md](docs/pro-boundary.md).
 
 [Development roadmap](docs/ROADMAP.md)
 

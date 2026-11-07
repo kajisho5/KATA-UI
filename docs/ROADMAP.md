@@ -169,7 +169,7 @@ Scope change (owner decision, 2026-11-06): the whole-page count reached 851 word
 ## Phase 3 — Prepare for release
 
 - [x] Document the Pro free/paid boundary. Keep everything already visible accessible. Owner decision 2026-11-07: everything published stays MIT; Pro is new blocks and templates outside the repository ([docs/pro-boundary.md](pro-boundary.md), PR #101).
-- [ ] Add DaisyUI, Web Awesome, Basecoat, Pico CSS and Franken UI to the comparison. Include areas where KATA loses.
+- [x] Add DaisyUI, Web Awesome, Basecoat, Pico CSS and Franken UI to the comparison. Include areas where KATA loses. `/docs/vs-css-libraries/`, facts from official pages on 2026-11-07 (PR #103). Pico CSS was archived on 2026-10-04; Franken UI announced a rename to 0build.
 - [ ] Check npm name availability and migrate to `kata-ui` or `@kata-ui/cli` with a compatibility plan.
 - [ ] Test llms.txt, SKILL.md and MCP in Claude Code and Cursor. Publish commands, versions, prompts and results.
 

@@ -146,10 +146,10 @@ and its First five meet those requirements.
 - [x] Review remaining "X, not Y", "honest" and "not a render" phrasing.
   - [x] Part, block and template meta.json: 0 "honest" (was 18); "X, not Y" constructions 52 → 13. The 13 left are accessibility facts such as "not by color alone" (PR #91).
   - [x] Site copy in build.py and README: 58 sentences rewritten; 0 left outside the dated changelog entries, which stay as written (12 matches) (PR #92).
-- [ ] Write Japanese documentation for the ten most-used components; establish usage evidence before choosing them.
+- [x] Write Japanese documentation for the ten most-used components; establish usage evidence before choosing them.
   - Usage evidence: none yet. The site has no users, and its request analytics count shared CSS loads, not part use. Owner decision (2026-11-07): document the first ten parts of the T4 common-parts list (Button, Input, Field, Textarea, Select, Checkbox, Radio, Switch, Modal, Dropdown).
   - [x] Design (PR #98); page builder, translation fingerprints and Button + Input at `/ja/components/<slug>/` (PR #99).
-  - [ ] Field, Textarea, Select, Checkbox, Radio, Switch, Modal, Dropdown.
+  - [x] Field, Textarea, Select, Checkbox, Radio, Switch, Modal, Dropdown (PR #100).
 - [x] Publish a ten-screen comparison: a direct AI draft and the same screen assembled from fetched KATA sources. Publish the prompts and method.
   - [x] Design (PR #95); prompts, 20 unedited drafts and measurements in `comparison/` (PR #96).
   - [x] `/compare/` page, linked from the home page and search (PR #97).

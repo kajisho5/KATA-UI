@@ -8,7 +8,7 @@
 <h1 align="center">KATA UI</h1>
 
 <p align="center"><b>Vanilla HTML, CSS and JS. Copy the code. Own the design.</b><br>
-136 components, 21 blocks and 7 templates — every part cast from a single design-token mold.<br>
+137 components, 21 blocks and 7 templates — every part cast from a single design-token mold.<br>
 No framework · No build step · No runtime</p>
 
 <p align="center">
@@ -44,9 +44,9 @@ A zero-dependency CLI ([`@kajisho5/kataui`](https://www.npmjs.com/package/@kajis
 If it renders HTML, it works: plain files, Astro, Laravel Blade, Django and Rails templates, WordPress themes, or one island inside a React app.
 
 <!-- mold-summary:start -->
-[Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 165 / 165 · UI 121 / 121 · Lab 44 / 44](https://kata-ui.dev/audit/)
 
-164 parts. Static checks only. Updated 2026-11-07 (Asia/Tokyo).
+165 parts. Static checks only. Updated 2026-11-12 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 <!-- mold-summary:end -->
 
@@ -79,13 +79,13 @@ Prefer no terminal at all? Open the part on [kata-ui.dev](https://kata-ui.dev/co
 
 ## What's inside
 
-**136 components** in eight groups:
+**137 components** in eight groups:
 
 | Group | Parts | What lives there |
 |---|---:|---|
 | Form & Input | 27 | Button, Input, Select, Combobox, Date Picker, OTP Field, Tag Input, File Upload, Switch, Slider |
 | Display & Media | 26 | Card, Data Table, the charts (line, bar, donut, radar, funnel…), Avatar, QR Code, Calendar |
-| Motion | 31 | Aurora, Spotlight, Text Reveal, Marquee, Counter, Converge — the ambient line |
+| Motion | 32 | Aurora, Spotlight, Text Reveal, Marquee, Counter, Converge, Pixel Switch — the ambient line |
 | Layout & Navigation | 16 | Sidebar, Command Menu, Tabs, Breadcrumb, Pagination, Dock |
 | KATAYABURI | 12 | 型破り — deliberate mold-breakers: Newton's Cradle, Warp Tunnel, Noren, Goo Tabs |
 | Overlays & Dialogs | 10 | Modal, Drawer, Popover, Tooltip, Context Menu |

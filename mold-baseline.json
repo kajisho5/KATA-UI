@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "summary": {
-    "passed": 164,
-    "total": 164
+    "passed": 165,
+    "total": 165
   },
   "items": [
     {
@@ -422,6 +422,11 @@
     },
     {
       "id": "components/particle-word",
+      "passed": true,
+      "profile": "lab"
+    },
+    {
+      "id": "components/pixel-switch",
       "passed": true,
       "profile": "lab"
     },

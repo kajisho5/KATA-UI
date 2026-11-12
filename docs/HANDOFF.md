@@ -506,6 +506,10 @@ Home-page Stable/Beta split: done in #89 (counted from meta.json).
 Button became Stable in #90 (owner-reported VoiceOver pass). On 2026-11-06 the owner
 chose to skip the remaining screen-reader passes for now, so the other 39 Phase 1
 parts stay beta. Do not ask again; move on to Phase 2.
+docs/review/voiceover-checklist.md (2026-11-12, `python3 -m tools.voiceover_checklist`)
+lists, per part, the page, the iPhone gesture steps and the names/roles/states Chromium
+exposes. When the owner reports a part, record docs/review/<slug>/screen-reader.md the
+way Button's is written, set the part stable, and let tests/test_stable_release.py confirm.
 
 ### T5 — Phase 2 onward
 

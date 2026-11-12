@@ -211,8 +211,10 @@ component has a published article. Phase 1's restriction on new components still
 ## Phase 6 — Operate
 
 - [ ] Update the audit and changelog monthly.
+  - Monthly routine written in [docs/metrics/README.md](metrics/README.md). Recurring; this item stays open.
 - [ ] Add one Pro block per quarter after the quality gates are met.
 - [ ] Track GitHub stars, npm downloads, llms.txt requests and Pro revenue using documented collection methods.
+  - [x] Methods documented and first record taken: [docs/metrics/](metrics/README.md), `python3 -m tools.collect_metrics` (2026-11, to 11-12: 0 stars, 244 npm downloads; llms.txt waits on the owner's Cloudflare number; Pro not on sale).
 
 **Completion criteria:** audit/changelog updates cover each month, quarterly
 block delivery is recorded, and the four metrics have dated measurements.

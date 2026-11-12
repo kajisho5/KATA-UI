@@ -531,6 +531,12 @@ totals or the install command in an unposted draft no longer matches the reposit
 update the draft in the same PR. The owner posts them in order and records each URL in
 docs/announce/README.md, which stops the check for that post.
 
+Phase 6 metrics (2026-11-12): `python3 -m tools.collect_metrics` writes
+docs/metrics/<YYYY-MM>.json from the GitHub and npm public APIs; llms.txt requests and
+Pro revenue are owner-entered fields (null / "not on sale" until given). First record:
+2026-11 to 11-12, 0 stars, 244 npm downloads. The monthly routine is in
+docs/metrics/README.md.
+
 ## Review protocol
 
 The owner pastes each PR URL to a reviewer. Every PR uses the AGENTS.md template;

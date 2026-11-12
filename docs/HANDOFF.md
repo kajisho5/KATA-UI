@@ -484,6 +484,9 @@ Home split ([#89](https://github.com/kajisho5/KATA-UI/pull/89)): build.py's stat
 "136 components (0 stable · 136 beta)", linking to /components/?status=. The 13
 legacy stable labels had no release record and are now beta (owner chose A).
 Rule now tested: a part may be stable only with docs/review/<slug>/screen-reader.md.
+tests/test_stable_release.py (2026-11-12) also requires a passing static result, the
+three-instance page (RTL, script loaded twice) and a browser test that opens it.
+Measured on 2026-11-12: the other 39 Phase 1 parts lack only the screen-reader record.
 Next: recorded screen-reader passes (needs the owner's devices), starting with
 the First five (button, input, badge, tabs, toast).
 Button ([#90](https://github.com/kajisho5/KATA-UI/pull/90)) is the first Stable part: the owner checked the preview with

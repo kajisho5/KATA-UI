@@ -450,4 +450,9 @@ index does not add checks or exceptions.
     console clean), and manual IME/screen-reader evidence recorded in the PR.
     For non-text parts record why IME is inapplicable. Otherwise keep Beta and
     explain the missing evidence. Existing legacy Stable labels are not evidence
-    that this release procedure has been completed.
+    that this release procedure has been completed. tests/test_stable_release.py
+    enforces the recorded evidence for every part marked stable: a passing static
+    result in mold-results.json, tests/<slug>-multi.html with an RTL instance and
+    the script loaded twice, a test or verify tool that opens that page, and
+    docs/review/<slug>/screen-reader.md. It reads files only; the browser run and
+    the screen-reader pass themselves are recorded in the PR.

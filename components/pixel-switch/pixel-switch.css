@@ -1,0 +1,29 @@
+/* KATA Pixel Switch — an 11 x 11 dot icon on the knob, a lit arc on its rim. */
+@property --k-pxs-a{syntax:"<angle>";inherits:true;initial-value:210deg}
+@property --k-pxs-glow{syntax:"<color>";inherits:true;initial-value:transparent}
+/* The 1px rim keeps the track 3:1 from the page (WCAG 1.4.11), as in Switch. Every length derives from --k-pxs-h (88px; 44px in .k-pxs-sm), so one value resizes the whole part. */
+.k-pxs{--k-pxs-h:88px;--k-pxs-u:calc(var(--k-pxs-h) / 88);--k-pxs-track:var(--k-bg-soft);--k-pxs-face:var(--k-bg);--k-pxs-dot:var(--k-ink-2);--k-pxs-rim:var(--k-ink-3);--k-pxs-rim-hover:var(--k-ink-2);--k-pxs-glow:var(--k-accent);--k-pxs-halo:transparent;--k-pxs-lit:0;--k-pxs-inset:inset 0 calc(var(--k-pxs-u) * 2) calc(var(--k-pxs-u) * 6) color-mix(in srgb,var(--k-zinc-950) 18%,transparent);position:relative;display:inline-block;flex:none;vertical-align:middle;inline-size:calc(var(--k-pxs-u) * 168);block-size:var(--k-pxs-h);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:--k-pxs-glow calc(.6s * var(--k-mscale)) var(--k-ease-in-out)}
+.k-pxs-sm{--k-pxs-h:44px}
+/* The native checkbox covers the whole part: it takes the pointer, the keyboard and the accessible state. */
+.k-pxs input{position:absolute;inset:0;inline-size:100%;block-size:100%;margin:0;opacity:0;cursor:inherit;z-index:2}
+.k-pxs-track{position:absolute;inset:0;border-radius:calc(var(--k-pxs-u) * 24);background:var(--k-pxs-track);box-shadow:var(--k-pxs-inset),inset 0 0 0 1px var(--k-pxs-rim);transition:background-color calc(.6s * var(--k-mscale)) var(--k-ease-in-out),box-shadow var(--k-dur-base) var(--k-ease)}
+.k-pxs-knob{--k-pxs-a:210deg;position:absolute;inset-block-start:calc(var(--k-pxs-u) * 8);inset-inline-start:calc(var(--k-pxs-u) * 8);inline-size:calc(var(--k-pxs-u) * 72);block-size:calc(var(--k-pxs-u) * 72);border-radius:calc(var(--k-pxs-u) * 18);display:grid;place-items:center;color:var(--k-pxs-dot);background:linear-gradient(160deg,color-mix(in srgb,var(--k-zinc-50) 32%,transparent),transparent 62%) var(--k-pxs-face);box-shadow:0 calc(var(--k-pxs-u) * 6) calc(var(--k-pxs-u) * 14) color-mix(in srgb,var(--k-zinc-950) 18%,transparent),0 0 calc(var(--k-pxs-u) * 30) calc(var(--k-pxs-u) * 2) var(--k-pxs-halo);transition:transform calc(.7s * var(--k-mscale)) var(--k-ease-in-out),scale var(--k-dur-fast) var(--k-ease),background-color calc(.6s * var(--k-mscale)) var(--k-ease-in-out),color calc(.6s * var(--k-mscale)) var(--k-ease-in-out),box-shadow calc(.6s * var(--k-mscale)) var(--k-ease-in-out),--k-pxs-a calc(.9s * var(--k-mscale)) var(--k-ease-in-out)}
+/* The rim: a bright arc masked to a 3px ring, and a blurred copy of it for the bloom. */
+.k-pxs-knob::before,.k-pxs-bloom{content:"";position:absolute;inset:calc(var(--k-pxs-u) * -3);padding:calc(var(--k-pxs-u) * 3);border-radius:calc(var(--k-pxs-u) * 21);pointer-events:none;background:conic-gradient(from var(--k-pxs-a),transparent 0deg 40deg,var(--k-pxs-glow) 120deg,var(--k-zinc-50) 150deg,var(--k-pxs-glow) 180deg,transparent 260deg 360deg);-webkit-mask:linear-gradient(var(--k-zinc-950) 0 0) content-box,linear-gradient(var(--k-zinc-950) 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:var(--k-pxs-lit);transition:opacity calc(.6s * var(--k-mscale)) var(--k-ease-in-out)}
+.k-pxs-bloom{inset:calc(var(--k-pxs-u) * -9);padding:calc(var(--k-pxs-u) * 9);border-radius:calc(var(--k-pxs-u) * 27);filter:blur(calc(var(--k-pxs-u) * 10));opacity:calc(var(--k-pxs-lit) * .95)}
+/* Dot coordinates are pixel-art coordinates: the icon keeps its drawing in RTL. */
+.k-pxs-dots{position:relative;z-index:1;direction:ltr;inline-size:calc(var(--k-pxs-u) * 44);block-size:calc(var(--k-pxs-u) * 44)}
+.k-pxs-dots > span{position:absolute;inset-block-start:0;inset-inline-start:0;inline-size:calc(100% / 11);block-size:calc(100% / 11)}
+/* A 1px gutter on the end edges keeps each 3px dot on whole pixels at 1x. */
+.k-pxs-dots > span::before{content:"";position:absolute;inset-block:0 var(--k-pxs-u);inset-inline:0 var(--k-pxs-u);background:currentColor;border-radius:calc(var(--k-pxs-u) * .5)}
+/* On: the knob travels to the inline end, the arc makes one full turn and the rim lights. */
+.k-pxs:has(input:checked){--k-pxs-dot:var(--k-ink);--k-pxs-lit:1;--k-pxs-halo:color-mix(in srgb,var(--k-pxs-glow) 45%,transparent)}
+.k-pxs input:checked ~ .k-pxs-knob{--k-pxs-a:570deg;transform:translateX(calc(var(--k-pxs-u) * 80))}
+[dir="rtl"] .k-pxs input:checked ~ .k-pxs-knob,.k-pxs input:checked:dir(rtl) ~ .k-pxs-knob{transform:translateX(calc(var(--k-pxs-u) * -80))}
+/* Theme pair: both states are lit, on fixed palette, so the sun chip stays light and the moon chip stays dark in either page theme. */
+.k-pxs[data-pxs="theme"]{--k-pxs-track:var(--k-zinc-200);--k-pxs-face:var(--k-zinc-50);--k-pxs-dot:var(--k-zinc-900);--k-pxs-rim:var(--k-zinc-500);--k-pxs-rim-hover:var(--k-zinc-700);--k-pxs-glow:var(--k-yamabuki);--k-pxs-lit:1;--k-pxs-halo:color-mix(in srgb,var(--k-pxs-glow) 45%,transparent)}
+.k-pxs[data-pxs="theme"]:has(input:checked){--k-pxs-track:var(--k-zinc-950);--k-pxs-face:var(--k-zinc-800);--k-pxs-dot:var(--k-zinc-50);--k-pxs-rim:var(--k-zinc-500);--k-pxs-rim-hover:var(--k-zinc-300);--k-pxs-glow:var(--k-asagi-300)}
+.k-pxs:hover input:not(:disabled) ~ .k-pxs-track{box-shadow:var(--k-pxs-inset),inset 0 0 0 1px var(--k-pxs-rim-hover)}
+.k-pxs input:active:not(:disabled) ~ .k-pxs-knob{scale:.96}
+.k-pxs input:focus-visible ~ .k-pxs-track{box-shadow:var(--k-ring),var(--k-pxs-inset),inset 0 0 0 1px var(--k-pxs-rim-hover)}
+.k-pxs:has(input:disabled){cursor:not-allowed;opacity:.5}

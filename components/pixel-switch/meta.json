@@ -1,0 +1,23 @@
+{
+  "title": "Pixel Switch",
+  "category": "Motion",
+  "description": "A switch whose knob carries a dot icon: on change the dots scatter and re-form, and a lit arc sweeps the rim.",
+  "tags": [
+    "switch",
+    "toggle",
+    "pixel",
+    "glow"
+  ],
+  "status": "beta",
+  "stage": "row",
+  "keywords": [
+    "pixel art toggle switch",
+    "animated dark mode toggle",
+    "vanilla js glowing switch"
+  ],
+  "prefix": "pxs",
+  "since": "2026-11-12",
+  "pro": false,
+  "usage": "For one or two settings per view that deserve a moment: theme, sound, notifications, power. Four icon pairs ship in MAPS inside pixel-switch.js (theme, sound, bell, power); edit a pair or add one, then name it in data-pxs. The control is a native checkbox, so read it on change: for the theme pair, set document.documentElement.dataset.theme from input.checked. After setting checked from script, dispatch a change event so the icon follows. For a list of settings, use Switch.",
+  "a11y": "A native checkbox with role=\"switch\" covers the whole part: Tab focuses it, Space toggles it, and assistive technology reads its name from aria-label (or a visible label) and its on/off state from the checkbox. Keyboard focus draws the shared --k-ring around the track. The dots, rim and glow are aria-hidden decoration; in Chromium the icon measured at least 6.9:1 against the knob and the 1px rim at least 3.6:1 against the page in both themes. Under prefers-reduced-motion or a zero motion multiplier the icon and knob change without animation. Without JavaScript the switch still toggles and reports its state; the knob shows no icon."
+}

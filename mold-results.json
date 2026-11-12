@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-07",
+  "updated_at": "2026-11-12",
   "schema_version": 2,
   "summary": {
-    "passed": 164,
+    "passed": 165,
     "failed": 0,
-    "total": 164,
-    "warnings": 80,
+    "total": 165,
+    "warnings": 81,
     "findings": {
       "accessible-label": 0,
       "button-type": 0,
@@ -15,7 +15,7 @@
       "legacy-contract": 0,
       "reduced-motion": 0,
       "shared-token-scope": 0,
-      "spacing-values": 128,
+      "spacing-values": 136,
       "token-values": 0,
       "type-values": 119,
       "variant-hover": 0
@@ -27,9 +27,9 @@
         "total": 121
       },
       "lab": {
-        "passed": 43,
+        "passed": 44,
         "failed": 0,
-        "total": 43
+        "total": 44
       }
     }
   },
@@ -9425,6 +9425,187 @@
           "by_kind": {
             "type": 2
           }
+        },
+        {
+          "id": "button-type",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        },
+        {
+          "id": "accessible-label",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        },
+        {
+          "id": "focus-visible",
+          "status": "pass",
+          "severity": "error",
+          "findings": [],
+          "details": []
+        },
+        {
+          "id": "variant-hover",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        },
+        {
+          "id": "reduced-motion",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        },
+        {
+          "id": "js-single-instance",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        },
+        {
+          "id": "js-global-bindings",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        }
+      ]
+    },
+    {
+      "id": "components/pixel-switch",
+      "profile": "lab",
+      "passed": true,
+      "checks": [
+        {
+          "id": "legacy-contract",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        },
+        {
+          "id": "shared-token-scope",
+          "status": "pass",
+          "severity": "error",
+          "findings": []
+        },
+        {
+          "id": "token-values",
+          "status": "pass",
+          "severity": "error",
+          "findings": [],
+          "profile": "lab",
+          "details": [],
+          "by_kind": {}
+        },
+        {
+          "id": "spacing-values",
+          "status": "warn",
+          "severity": "warning",
+          "findings": [
+            "components/pixel-switch/pixel-switch.css: inset-block-start: calc(var(--k-pxs-u) * 8) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px",
+            "components/pixel-switch/pixel-switch.css: inset-inline-start: calc(var(--k-pxs-u) * 8) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px",
+            "components/pixel-switch/pixel-switch.css: inset: calc(var(--k-pxs-u) * -3) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px",
+            "components/pixel-switch/pixel-switch.css: padding: calc(var(--k-pxs-u) * 3) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px",
+            "components/pixel-switch/pixel-switch.css: inset: calc(var(--k-pxs-u) * -9) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px",
+            "components/pixel-switch/pixel-switch.css: padding: calc(var(--k-pxs-u) * 9) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px",
+            "components/pixel-switch/pixel-switch.css: inset-block: 0 var(--k-pxs-u) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px",
+            "components/pixel-switch/pixel-switch.css: inset-inline: 0 var(--k-pxs-u) [spacing] — --k-pxs-u -> --k-pxs-h -> raw spacing: 88px; --k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+          ],
+          "profile": "lab",
+          "details": [
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "inset-block-start",
+              "value": "calc(var(--k-pxs-u) * 8)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            },
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "inset-inline-start",
+              "value": "calc(var(--k-pxs-u) * 8)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            },
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "inset",
+              "value": "calc(var(--k-pxs-u) * -3)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            },
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "padding",
+              "value": "calc(var(--k-pxs-u) * 3)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            },
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "inset",
+              "value": "calc(var(--k-pxs-u) * -9)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            },
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "padding",
+              "value": "calc(var(--k-pxs-u) * 9)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            },
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "inset-block",
+              "value": "0 var(--k-pxs-u)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            },
+            {
+              "path": "components/pixel-switch/pixel-switch.css",
+              "property": "inset-inline",
+              "value": "0 var(--k-pxs-u)",
+              "kind": "spacing",
+              "reasons": [
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 88px",
+                "--k-pxs-u -> --k-pxs-h -> raw spacing: 44px"
+              ]
+            }
+          ],
+          "by_kind": {
+            "spacing": 8
+          }
+        },
+        {
+          "id": "type-values",
+          "status": "pass",
+          "severity": "warning",
+          "findings": [],
+          "profile": "lab",
+          "details": [],
+          "by_kind": {}
         },
         {
           "id": "button-type",

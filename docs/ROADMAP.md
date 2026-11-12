@@ -3,9 +3,9 @@
 Implementation agent: Claude Code (from 2026-11-05).
 
 <!-- mold-snapshot:start -->
-[Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43](https://kata-ui.dev/audit/)
+[Mold Verified 165 / 165 · UI 121 / 121 · Lab 44 / 44](https://kata-ui.dev/audit/)
 
-164 parts. Static checks only. Updated 2026-11-07 (Asia/Tokyo).
+165 parts. Static checks only. Updated 2026-11-12 (Asia/Tokyo).
 Read the audit for each part's pass, fail and warning results. Browser behavior needs separate testing.
 
 | Remaining check findings | Count |
@@ -18,7 +18,7 @@ Read the audit for each part's pass, fail and warning results. Browser behavior 
 | token-values: border | 0 |
 | token-values: color | 0 |
 | token-values: easing | 0 |
-| spacing-values (UI fail, Lab warn) | 128 |
+| spacing-values (UI fail, Lab warn) | 136 |
 | type-values (UI fail, Lab warn) | 119 |
 | focus-visible | 0 |
 | js-single-instance | 0 |
@@ -33,7 +33,8 @@ separate release statuses. The phases below are targets, not shipped features.
 
 ## Principles
 
-1. Add no new catalog components until Phase 1 is complete.
+1. Add no new catalog components until Phase 1 is complete. Owner exception on
+   2026-11-12: Pixel Switch (Motion, beta), requested in chat after a prototype.
 2. Keep checker rules strict. Do not change them to improve the score.
 3. Site, README and model-facing copy state only what checks establish.
 4. Work on one PR at a time. Give each PR one purpose.

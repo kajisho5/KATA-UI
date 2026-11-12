@@ -2,13 +2,13 @@
 
 ## Status
 
-Snapshot: 2026-11-06 (Asia/Tokyo), branch `fix/product-page-swatch-names` on main
-`adab2528eda6570b789e9a33904cd67e055d2c39` (after #51). Counts become main's when this PR merges.
+Snapshot: 2026-11-12 (Asia/Tokyo), branch `feat/pixel-switch` on main
+`76f061e5024a75ad1f585231125f1e7ba7c61c67` (after #106). Counts become main's when this PR merges.
 Regenerated with `python3 check.py --json mold-results.json`; all counts below
 come from that JSON.
 
-**Mold Verified 164 / 164 · UI 121 / 121 · Lab 43 / 43**.
-No target fails a check. The JSON reports 80 warning-bearing
+**Mold Verified 165 / 165 · UI 121 / 121 · Lab 44 / 44**.
+No target fails a check. The JSON reports 81 warning-bearing
 checks; warning findings are counted separately below. This is static evidence,
 not browser or screen-reader certification.
 
@@ -22,14 +22,14 @@ not browser or screen-reader certification.
 | legacy-contract | 0 | fail |
 | reduced-motion | 0 | fail |
 | shared-token-scope | 0 | fail |
-| spacing-values | 128 | fail (UI), warn (Lab) |
+| spacing-values | 135 | fail (UI), warn (Lab) |
 | token-values | 0 | fail |
 | type-values | 119 | fail (UI), warn (Lab) |
 | variant-hover | 0 | fail |
 
 Focus-visible has no findings under the T2 step 4 rule (shared floor plus
 cancellation detection, KATA.md Focus); the browser measurement in CI finds
-0 Tab stops below 3:1 or clipped. Since mold v5 spacing-values and type-values fail for UI parts; all 128 spacing and
+0 Tab stops below 3:1 or clipped. Since mold v5 spacing-values and type-values fail for UI parts; all 135 spacing and
 119 type findings are Lab warnings (UI 0). token-values has no remaining findings.
 
 ### Remaining JS failures
@@ -132,7 +132,7 @@ in that order, on the owner's explicit chat instruction to do the merging. Each
 PR's CI was green. #25 shared no files with the others and was based on main.
 #27 and #28 were each merged locally onto the updated main first and checked
 (check, ratchet, unittest, build, distribution; CLI tests for #27).
-#29–#105 were squash-merged the same way after green CI. The owner then asked the
+#29–#106 were squash-merged the same way after green CI. The owner then asked the
 session to keep going: after each batch PR's CI is green, merge it and start
 the next task. That instruction applies to this session; record it again if a
 later session is given the same permission.
@@ -149,7 +149,6 @@ Snapshot checked through GitHub on 2026-11-05. Refresh before selecting work.
 | [#1](https://github.com/kajisho5/KATA-UI/pull/1) | Old CLI safety patch. #25 is now merged, so the owner may close it. Do not merge the stale branch wholesale. |
 | [#3](https://github.com/kajisho5/KATA-UI/pull/3) | CLI consolidation landed in #25. Preserve its useful UI remainder as owner-created issues using #25's paste-ready list, then owner decides closure. |
 | [#12](https://github.com/kajisho5/KATA-UI/pull/12) | Its remainder landed in T4: Button combos id/for and the three-set/RTL test in #44, Input focus-visible in #45. Nothing in #12 is left unmerged; the owner may close it. |
-| [#106](https://github.com/kajisho5/KATA-UI/pull/106) | Findings 2 and 3 of docs/review/ai-integration/claude-code.md: registry items carry meta.status, meta.usage and meta.accessibility; registry.json has a top-level tokens pointer that get_component also returns (tests/test_registry_usage.py). Phase 3 then waits only on the owner: the `kata-ui` npm org and a Cursor run. |
 
 ### npm and environment
 
@@ -508,7 +507,9 @@ parts stay beta. Do not ask again; move on to Phase 2.
 ### T5 — Phase 2 onward
 
 Follow docs/ROADMAP.md. Keep one purpose per PR and update measured Status and the
-queue. Do not add catalog components before Phase 1 is complete.
+queue. Do not add catalog components before Phase 1 is complete. One owner exception: on
+2026-11-12 the owner asked in chat for Pixel Switch (Motion, beta), after reviewing a
+prototype; it is the only part added under that request.
 
 ## Review protocol
 

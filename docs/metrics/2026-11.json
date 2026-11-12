@@ -1,0 +1,29 @@
+{
+  "month": "2026-11",
+  "measured": "2026-11-12",
+  "complete": false,
+  "github": {
+    "repo": "kajisho5/KATA-UI",
+    "stars": 0,
+    "forks": 0,
+    "source": "https://api.github.com/repos/kajisho5/KATA-UI"
+  },
+  "npm": {
+    "downloads": {
+      "@kajisho5/kataui": {
+        "total": 244,
+        "start": "2026-11-01",
+        "end": "2026-11-12"
+      }
+    },
+    "source": "https://api.npmjs.org/downloads/range/"
+  },
+  "llmsTxt": {
+    "requests": null,
+    "source": "owner: Cloudflare dashboard (not entered)"
+  },
+  "pro": {
+    "revenueUsd": null,
+    "state": "not on sale"
+  }
+}

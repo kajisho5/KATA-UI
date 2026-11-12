@@ -117,7 +117,7 @@ Load `tokens.css` before component styles. `data-theme="dark"` selects dark them
 The catalog is published for tools as well as people, all generated from the same source folders as the site:
 
 - **Registry** — [`registry.json`](https://kata-ui.dev/registry.json) in the shadcn registry format: names, files, dependencies.
-- **CLI** — [`@kajisho5/kataui`](https://www.npmjs.com/package/@kajisho5/kataui) on npm, or the same single file [downloaded directly](https://kata-ui.dev/cli/kata-ui.mjs). Zero dependencies, Node 18+.
+- **CLI** — [`@kajisho5/kataui`](https://www.npmjs.com/package/@kajisho5/kataui) on npm, or the same single file [downloaded directly](https://kata-ui.dev/cli/kata-ui.mjs). Zero dependencies, Node 20+.
 - **MCP server** — a read-only, zero-dependency server (`mcp/kata-ui-mcp.mjs`) that lists, searches and fetches parts from the registry.
 - **AI Skill** — [`skill/SKILL.md`](skill/SKILL.md) teaches coding models the catalog's shape, so an assistant asked for "a sidebar" installs this Sidebar instead of inventing one.
 - **llms.txt** — the catalog as prose for models that read the web: [llms.txt](https://kata-ui.dev/llms.txt) and [llms-full.txt](https://kata-ui.dev/llms-full.txt).

@@ -159,6 +159,13 @@ publish/deprecate or ownership changes were made. The owner alone may use the
 manual publish workflow after reviewing its version and provenance requirements.
 Do not trigger it as an implementation agent.
 
+Name check, 2026-11-12 (read-only `npm view`): `kata-ui` is published by a different
+account (1.0.0, created 2024-11-16); `kataui` and `@kata-ui/cli` are not in the registry.
+Target `@kata-ui/cli`; plan in docs/npm-migration.md. It waits on the owner creating the
+`kata-ui` organization. tests/test_cli_package_name.py lists every install command that
+names another package and every stated Node version that differs from engines (it found
+and this PR fixed two "Node 18+" statements; engines is >=20).
+
 Ubuntu setup target: Python >=3.11 and Node >=20. This session (cloud container)
 reports Python 3.13.18, Node 22.23.4, Playwright 1.62.0 (from
 tools/agent-setup.sh) and Pillow 12.3.0. Node 20 is not installed here, so CLI

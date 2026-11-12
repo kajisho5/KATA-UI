@@ -174,6 +174,8 @@ Scope change (owner decision, 2026-11-06): the whole-page count reached 851 word
 - [x] Document the Pro free/paid boundary. Keep everything already visible accessible. Owner decision 2026-11-07: everything published stays MIT; Pro is new blocks and templates outside the repository ([docs/pro-boundary.md](pro-boundary.md), PR #101).
 - [x] Add DaisyUI, Web Awesome, Basecoat, Pico CSS and Franken UI to the comparison. Include areas where KATA loses. `/docs/vs-css-libraries/`, facts from official pages on 2026-11-07 (PR #103). Pico CSS was archived on 2026-10-04; Franken UI announced a rename to 0build.
 - [ ] Check npm name availability and migrate to `kata-ui` or `@kata-ui/cli` with a compatibility plan.
+  - [x] Names checked on 2026-11-12: `kata-ui` is taken by another npm account, so the target is `@kata-ui/cli` (command `kataui` unchanged). Plan and owner steps: [docs/npm-migration.md](npm-migration.md). tests/test_cli_package_name.py keeps every install command on the name in cli/package.json.
+  - [ ] Owner: create the `kata-ui` npm organization (https://www.npmjs.com/org/create). Then a rename PR, and the owner's publish run.
 - [ ] Test llms.txt, SKILL.md and MCP in Claude Code and Cursor. Publish commands, versions, prompts and results.
   - [x] Claude Code 2.1.319: all three work; commands, prompts and answers in [docs/review/ai-integration/claude-code.md](review/ai-integration/claude-code.md) (PR #104). Three findings listed there.
   - [ ] Cursor: not tested; needs a person with Cursor installed.

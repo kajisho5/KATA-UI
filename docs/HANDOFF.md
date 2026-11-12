@@ -525,6 +525,12 @@ queue. Do not add catalog components before Phase 1 is complete. One owner excep
 2026-11-12 the owner asked in chat for Pixel Switch (Motion, beta), after reviewing a
 prototype; it is the only part added under that request.
 
+Phase 4 drafts (2026-11-12): docs/announce/ holds the Zenn, X, Show HN and Product Hunt
+texts. tests/test_announce_drafts.py fails when a count, the Stable split, the comparison
+totals or the install command in an unposted draft no longer matches the repository;
+update the draft in the same PR. The owner posts them in order and records each URL in
+docs/announce/README.md, which stops the check for that post.
+
 ## Review protocol
 
 The owner pastes each PR URL to a reviewer. Every PR uses the AGENTS.md template;

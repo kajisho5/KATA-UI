@@ -186,6 +186,7 @@ have reproducible published results.
 
 ## Phase 4 — Announce
 
+- Drafts for all four posts: [docs/announce/](announce/README.md) (2026-11-12). tests/test_announce_drafts.py keeps their numbers equal to the repository until each post's URL is recorded. Posting is the owner's action.
 - [ ] Publish on Zenn in Japanese.
 - [ ] Post on X, then Show HN, then Product Hunt.
 - [ ] Reserve the announcement week for support and fixes; ship no new features.
